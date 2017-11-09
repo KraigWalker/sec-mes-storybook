@@ -1,0 +1,23 @@
+.c-btn{
+    @extend %jura--label;
+    font-family: $text-regular;
+    width: 176px;
+    height: 48px;
+    background: white;
+    color: #7B59F7;
+    border: 1px solid #7B59F7;
+    border-radius: 8px;
+    padding: 4px 16px;
+    margin: 0;
+    margin-right: 16px;
+    cursor: pointer;
+} 
+
+.c-btn--primary{
+    background: #7B59F7;
+    color: white;
+}
+
+.c-btn--secondary{
+    background: white;
+}

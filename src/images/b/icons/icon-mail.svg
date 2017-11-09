@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="40px" height="28px" viewBox="0 0 40 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-mail</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Base-Size---For-Vector-Export" transform="translate(-925.000000, -508.000000)" fill="#FFFFFF">
+            <g id="icon-mail" transform="translate(925.000000, 508.000000)">
+                <path d="M4.71546872,3 L33.9262243,3 L19.5462653,12.728149 L4.71546872,3 Z M37,4.53278762 L37,23.9975383 C37,24.5511826 36.5450757,25 36.0008579,25 L3.99914214,25 C3.44733117,25 3,24.5605417 3,23.9975383 L3,5.45302646 L18.7362382,15.6928025 C19.2401342,16.0206942 19.8911227,16.016056 20.3902954,15.6810174 L37,4.53278762 Z M0,2.99649048 C0,1.34157448 1.34230941,0 3.0065012,0 L36.9934988,0 C38.6539436,0 40,1.3504982 40,2.99649048 L40,25.0035095 C40,26.6584255 38.6576906,28 36.9934988,28 L3.0065012,28 C1.34605644,28 0,26.6495018 0,25.0035095 L0,2.99649048 Z" id="Rectangle-64"></path>
+            </g>
+        </g>
+    </g>
+</svg>

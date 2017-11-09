@@ -1,0 +1,31 @@
+///*----------------------------------*\
+//  #TEXT UTILITIES
+//\*----------------------------------*/
+
+
+//----- Text Ellipse
+//------------------
+
+@mixin ellipse($width) {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: $width;
+}
+
+
+//----- Converting px to em
+//--------------------------
+
+// @function calculateRem($size) {
+// 	$remSize: $size / $base-font-size;
+// 	@return $remSize * 1rem;
+// }
+
+// @mixin font-size($size) {
+// 	font-size: $size;
+// 	font-size: calculateRem($size);
+// }
+
+// usages
+// @include font-size(16px);

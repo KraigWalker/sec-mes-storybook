@@ -1,0 +1,44 @@
+.c-card{
+    width: 40%;
+    border-radius: 5px;
+    padding: 16px;
+    background: white;
+    position: relative;
+    margin-bottom: 16px;
+    cursor: pointer;
+    color: #4a4a4a;
+    min-height: 120px;
+    transition: box-shadow .3s ease-out;
+    &:hover{
+        box-shadow: 0 1px 30px 0 rgba(0, 0, 0, 0.2);
+    }
+}
+.c-card__block {
+    margin-bottom: 16px;
+    display: inline-block;
+    width: 100%;
+    
+}
+.c-card__block__left {
+    float: left;
+}
+.c-card__block__right {
+    float: right;
+}
+.c-card__bottom{
+    width: 100%;
+    display: inline-block;
+}
+.c-card__block__link{
+    float: right;
+    margin: 0;
+}
+.c-card__block__title, .c-card__block__subtext, .c-card__block--bottom {
+    margin: 0;
+}
+.c-card__block__subtext, .c-card__block__link {
+    @extend %uist;
+}
+.c-card__block--secondary{
+    margin-bottom: 8px;
+}

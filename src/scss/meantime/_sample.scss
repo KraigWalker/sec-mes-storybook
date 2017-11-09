@@ -1,0 +1,12 @@
+// %floatleft{
+//     float:left !important;
+//     color: blueviolet !important;
+// }
+
+// .container{
+//     @extend %floatleft;
+// }
+
+.modal-open .modal{
+    display: block;
+}

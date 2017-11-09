@@ -1,0 +1,73 @@
+.c-message {
+    display: flex;
+    margin-top: get-px(b);
+    border: 1px solid;
+}
+
+.c-message__summary {
+    margin: get-px(a) get-px(a) get-px(a) 0;
+    width: 100%;
+}
+    
+.c-message__summary__head {
+    margin-bottom: get-px(a);
+}
+
+.c-message__icon {
+    display: inline-flex;
+    margin: get-px(a);
+
+    svg { @include general-theme(fill, blue, account); }
+}
+
+.c-message__summary__head .c-message__summary__head__subject {
+    @extend %uist;
+    @include brand-heading(bold);
+    margin-bottom: 0;
+}
+
+.c-message__summary__head .c-message__summary__head__actions {
+    float: right;
+
+    &__reply,
+    &__reply--sm,
+    &__delete,
+    &__delete--sm {
+        @extend %bute;
+        margin-left: get-px(a);
+    }
+
+    &__reply,
+    &__delete {
+        display: none;
+        @include media-breakpoint-up(md1) {
+            display: inline-block;
+        }
+    }
+
+    &__reply--sm,
+    &__delete--sm {
+        display: inline-block;
+
+        svg { @include general-theme(fill, blue, account); }
+        
+        @include media-breakpoint-up(md1) {
+            display: none;
+        }
+
+    }
+}
+
+.c-message__summary {
+    @extend %uist;
+
+    &__account,
+    &__ref {
+        margin-bottom: get-px(a);
+    }
+
+    &__date {
+        margin-bottom: 0;
+    }
+}
+

@@ -1,0 +1,544 @@
+@import '../-old/mixins/responsive';
+@import '../vendor/bootstrap/mixins/vendor-prefixes';
+$screen-min: 767px;
+$screen-max: 800px;
+
+.datepicker-wrapper [style*="z-index:999;"] {
+	.account-opening & {
+		.dyb & {
+			z-index: $z-index-date-picker-overlay !important;
+		}
+	}
+}
+
+.bootstrap-datetimepicker-widget {
+	.account-opening & {
+		.dyb & {
+			z-index: $z-index-date-picker !important;
+		}
+	}
+}
+
+//TODO: Investigate refactoring z-index variables to work with vendors better.
+// @ticket DYB-18533
+div[style*="z-index: 999;"] +
+.bootstrap-datetimepicker-widget {
+	.account-opening &, .switch-page {
+		.dyb > div:not(.blur) & {
+			z-index: 1000 !important;
+		}
+	}
+}
+
+.container-fluid-full {
+	margin-right: auto;
+	margin-left: auto;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.modal-content  {
+	border-radius: 7px;
+	
+	.b {
+		height: auto !important;
+	}
+
+}
+
+.modal-content .icon {
+	font-size: 39px;
+
+	.dyb & {
+		color: #00db6d;
+	}
+
+	.cb & {
+		color: palette((color: red, brand: cb)...);
+	}
+
+	.yb & {
+		color: palette((color: blue, brand: yb)...);
+	}
+}
+.modal-backdrop {
+	height: 100%;
+	z-index: 8;
+}
+
+.popover.right {
+	.spendings-grid & {
+		background-color: bow-palette((blue, light, dyb)...);
+		width: auto !important;
+		min-width: 280px !important;
+		left: 20px !important;
+		border-radius: 7px;
+		top: -25px !important;
+		box-shadow: 0 0 35px rgba(0, 0, 0, 0.4);
+		border: 0;
+
+		&:before {
+			content: '';
+			position: absolute;
+			display: block;
+			background-color: bow-palette((blue, light, dyb)...);
+			height: 15px;
+			left: -6px;
+			width: 15px;
+			-webkit-transform: rotate(45deg);
+			transform: rotate(45deg);
+			top: 50%;
+			margin-top: -10px;
+			border-radius: 3px;
+		}
+
+		> .arrow {
+			display: none;
+		}
+	}
+}
+
+.popover.bottom  {
+	.spendings-grid & {
+		width: auto !important;
+		min-width: 280px !important;
+		left: auto !important;
+		top: 78px !important;
+		background-color: bow-palette(blue, light, yb);
+		border-radius: 7px;
+		box-shadow: 0 0 35px rgba(0, 0, 0, 0.4);
+		border: 0;
+		margin-left: 190px;
+
+		@include responsive-max(1201px){
+			left: 248px !important;
+		}
+
+		&:before {
+			content: '';
+			position: absolute;
+			display: block;
+			background-color: bow-palette(blue, light, yb);
+			background-color: #DCE7F1;
+			height: 20px;
+			right: 50%;
+			margin-right: -10px;
+			width: 20px;
+			-webkit-transform: rotate(45deg);
+			transform: rotate(45deg);
+			top: -5px;
+			border-radius: 3px;
+		}
+
+		> .arrow {
+			display: none;
+		}
+	}
+}
+
+
+.nav {
+	.b & {
+		border-radius: 6px  !important;
+		float: left;
+		overflow: hidden;
+		padding: 0;
+
+		.dyb & {
+			border: 2px solid #00db6d;
+		}
+
+		.cb & {
+			border: 2px solid palette((color: red, brand: cb)...);
+		}
+
+		.yb & {
+			border: 2px solid palette((color: blue, brand: yb)...);
+		}
+
+		> li {
+			list-style: none;
+
+			> a {
+				border-radius:0  !important;
+				padding: 4px 0;
+
+				&:hover,
+				&:focus {
+					text-decoration: none;
+					outline: 0;
+					background-color: none !important;
+				}
+			}
+
+			// Disabled state sets text to gray and nukes hover/tab effects
+			&.disabled > a {
+				color: $nav-disabled-link-color;
+
+				&:hover,
+				&:focus {
+					color: $nav-disabled-link-hover-color;
+					text-decoration: none;
+					background-color: none;
+					cursor: $cursor-disabled;
+				}
+			}
+		}
+
+		&.nav-pills{
+			> li {
+				display: inline-block;
+				padding: 10px 0;
+				list-style: none;
+
+				// Links rendered as pills
+				> a {
+					border-radius: $nav-pills-border-radius;
+				}	
+
+				+ li {
+					margin-left: 0px;
+				}
+
+				// Active state
+				&.active > a {
+					&,
+					&:hover,
+					&:focus {
+						color: $nav-pills-active-link-hover-color !important;
+					}
+				}
+			}
+
+		
+		}
+
+		&.nav-tabs {
+			> li {
+				float: left;
+				
+				padding: 5px 0px;
+				list-style: none !important;
+
+				// Actual tabs (as links)
+				> a {
+					margin-right: 0px;
+					line-height: $line-height-base;
+					border: 0;
+					padding: 5px 10px;
+					&:hover {
+						border: 0;
+					}
+				}
+
+				// Active state, and its :hover to override normal :hover
+				&.active > a {
+					&,
+					&:hover,
+					&:focus {
+						background:  #00dcb6;
+						color: #fff;
+						cursor: default;
+					}
+				}
+			}
+			// pulling this in mainly for less shorthand
+			
+		}
+
+		&.nav-justified {
+			width: 100%;
+			
+			@include responsive-max($screen-xs) {
+				font-size: 15px;
+			}
+
+			> li {
+				display: table-cell;
+				width: 1%;
+				
+				.dyb & {
+					border-right: 2px solid #00db6d;
+				}
+
+				.cb & {
+					border-right: 2px solid palette((color: red, brand: cb)...);
+				}
+
+				.yb & {
+					border-right: 2px solid palette((color: blue, brand: yb)...);
+				}
+
+
+				&:last-child {
+					border-right: 0;
+				}
+
+				&.active {
+					color: white;
+
+					> a {
+						color: #fff !important;
+						width: 101%;
+
+						.dyb & {
+							background: #00db6d;
+						}
+
+						.cb & {
+							background: palette((color: red, brand: cb)...);
+						}
+
+						.yb & {
+							background: palette((color: blue, brand: yb)...);
+						}
+					}
+				}
+
+				> a {
+					text-align: center;
+					float: left;
+					width: 101%;
+					margin-bottom: 0;
+
+					.dyb & {
+						color: #00db6d;
+					}
+
+					.cb & {
+						color: palette((color: red, brand: cb)...);
+					}
+
+					.yb & {
+						color: palette((color: blue, brand: yb)...);
+					}
+
+					&:active {
+						width: 101% !important;
+					}
+				}
+
+			}
+
+			> .dropdown .dropdown-menu {
+				top: auto;
+				left: auto;
+			}
+		}
+	}
+
+	.device-small & {
+		&.nav-justified {
+			overflow: hidden;
+			width: 65%;
+			margin: 0 0 10px 17%;
+			display: table;
+
+			@include responsive-min(801px) {
+				display:none;
+			}
+		}
+
+		&.tab-content {
+			border: 1px solid;
+			.tab-pane {
+				border: 1px solid;
+				> .title {
+					border: 1px solid;
+				}
+			}
+		}
+	}
+}
+
+.dashboard {
+	.meta-navigation {
+		z-index: 11;
+	}
+}
+
+.tab-content {
+.dashboard & {
+		.b & {
+		
+		overflow: hidden;
+		clear: both;
+		@include responsive-max($screen-min) {
+			padding-top: 55px;
+		}
+
+		@include responsive-between($screen-min, $screen-max) {
+			padding-top: 75px;
+		}
+
+		div[role=tabpanel] {
+			.title {
+				display: block;
+				margin-top: 5px;
+				padding-bottom: 12px;
+
+				@include responsive-max(801px) {
+					display: none;
+					
+				}
+			}
+		}
+
+		.tab-pane {
+			
+			display: block;
+			visibility: visible;
+		}
+
+		.device-small & {
+			.tab-pane {
+				display: none !important;
+				visibility: hidden !important;
+
+				@include responsive-min(801px) {
+					h4 {
+						display: none;
+					}
+				}
+			}
+		}
+
+		> .active {
+			display: block;
+			visibility: visible;
+		 }
+		}
+	}
+}
+
+
+.progress-bar-success {
+  @include progress-bar-variant($progress-bar-success-bg);
+}
+
+.progress-bar-info {
+  @include progress-bar-variant($progress-bar-info-bg);
+}
+
+.progress-bar-warning {
+  @include progress-bar-variant($progress-bar-warning-bg);
+}
+
+.progress-bar-danger {
+  @include progress-bar-variant($progress-bar-danger-bg);
+}
+
+
+.modal-body{
+		height: auto;
+
+	&.nobottom {
+		padding-bottom: 10px !important;
+		height: 500px;
+		overflow: hidden;
+
+		pre {
+			background: none;
+			border: 0;
+			font-family: GalanoGrotesqueRegular;
+			font-size: 15px;
+			word-break: normal;
+		}
+
+		@include responsive-max($screen-sm) {
+			height: auto !important;
+		}
+
+		@media only screen 
+		and (min-device-width : 320px) 
+		and (max-device-width : 568px) { 
+			height: 450px !important;
+		}
+
+		@media only screen 
+		and (min-device-width : 375px) 
+		and (max-device-width : 667px) {
+			height: 557px !important;
+		}
+
+		@media only screen 
+		and (min-device-width : 414px) 
+		and (max-device-width : 736px) { 
+			height: 618px !important;
+		}
+
+		@media  (min-width: 1921px) 
+		and (max-width: 2700px) { 
+			height: 595px;
+		}
+	}
+
+	
+
+	&.height-auto {
+		height: auto;
+		overflow-y: hidden;
+	}
+	&.talk-width {
+		width: auto;
+	}
+
+	&.style-email {
+		height: 350px;
+		overflow-y: hidden;
+	}
+	&.email-width {
+		width: auto;
+	}
+	
+}
+.datepicker table {
+	margin-top: 0 !important;
+}
+
+
+
+
+.modal-backdrop {
+	height: 100vh;
+}
+
+.modal {
+	text-align: center;
+}
+
+@media screen and (min-width: 768px) { 
+	.modal:before {
+		display: inline-block;
+		vertical-align: middle;
+		content: " ";
+		height: 100%;
+	}
+}
+
+.modal-dialog {
+	display: inline-block;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.bootstrap-datetimepicker-widget {
+	right: 0 !important;
+	margin-top: 30px;
+	top: auto !important;
+}
+
+
+.overlayer {
+	position: fixed;
+	left: 0 !important;
+	top: 0;
+	background: rgba(0, 0, 0, 0.3);
+	height: 100%;
+	width: 100%;
+	z-index: 100;
+	overflow: hidden;
+}
+.hidden {
+ transition: all 0.8s ease;
+}

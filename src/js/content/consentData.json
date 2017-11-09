@@ -1,0 +1,63 @@
+{
+    "user_id" : "1000000123",
+    "consents" : [
+       {
+          "consent_id" : "44458765-a654drt-76gt-8990h-98iuh",
+          "client_id" : "877ghf-ytrfdt-76ft-jhgt-765",
+          "client_name" : "Amazon",
+          "scope_name" : "Voice",
+          "scope_description" : "Voice",
+          "consent_format" : "Default",
+          "required_trust_level" : "40",
+          "start_date" : "2017-09-22T14:01:09Z",
+          "expiry_date" : "2017-12-22T14:01:09Z",
+          "client_scope_credentials" : [
+             {
+                "credential_type" : "pin",
+                "pin_type" : "alexa_pin"
+             }
+        
+          ],
+          "client_scope_tandcs_applicable" : "true",
+          "client_scope_tandcs_service_name" : "service_name",
+          "must_accept_new_client_scope_tandcs" : "true",
+          "thumbnail_link" : "<url to third party logo>",
+          "accounts" : [
+             {
+                "account_number" : "121212-19857624",
+                "account_name" : "B Current",
+                "nickname" : "My B",
+                "product_type" : "B"
+             }
+             
+          ]
+       },
+       {
+        "consent_id" : "44458765-a654drt-76gt-8990h-98iuh",
+        "client_id" : "877ghf-ytrfdt-76ft-jhgt-765",
+        "client_name" : "Amazon",
+        "scope_name" : "Payments",
+        "scope_description" : "Payments",
+        "consent_format" : "Default",
+        "required_trust_level" : "40",
+        "start_date" : "2017-09-22T14:01:09Z",
+        "expiry_date" : "2017-12-22T14:01:09Z",
+        "client_scope_credentials" : [
+          
+        ],
+        "client_scope_tandcs_applicable" : "true",
+        "client_scope_tandcs_service_name" : "service_name",
+        "must_accept_new_client_scope_tandcs" : "false",
+        "thumbnail_link" : "<url to third party logo>",
+        "accounts" : [
+           {
+              "account_number" : "242424-19857111",
+              "account_name" : "B Current",
+              "nickname" : "My B",
+              "product_type" : "B"
+           }
+           
+        ]
+     }
+    ]
+ }
