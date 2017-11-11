@@ -10,21 +10,14 @@ import '../scss/main.scss';
 
 const app = document.getElementById('app');
 
-// window.init = () => {
-//   // Api Call to fetch the token
-  
-// }
-
-  //store.dispatch(getToken(meoData));
-  //store.dispatch(getConsent(meoData));
-
+ /**
+  * Starts the application with the Provider Wrapper from Redux
+  * @return {ReactComponent} AppRouter which initiates the application.
+ */
 const startApp = () => {
-  
-  ReactDOM.render(<Provider  store={store}>
+  ReactDOM.render(<Provider store={store}>
    {AppRouter.init()}
   </Provider>, app);
 }
-
-
 
 setTimeout(startApp, 50);

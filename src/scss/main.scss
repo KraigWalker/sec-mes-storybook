@@ -7,8 +7,6 @@
 // 
 // Each layer contains sub-dependencies and further documentation on it's use.
 
-// @import "vendor/bootstrap";
-// @import "meantime/fonts";
 @import "1-settings/settings.all";
 @import "2-tools/Tools.all";
 @import "5-objects/Objects.all";
@@ -23,32 +21,3 @@
 @import "vendor/bootstrap/navs";
 
 @import "6-components/components.all";
-//@import "5-objects/object-imports";
-
-
-// @import "meantime/typography";
-// @import "meantime/typeContent";
-// @import "meantime/mixins";
-// @import "meantime/sample";
-// // @import "meantime/buttons";
-// @import "meantime/cards";
-// @import "meantime/header";
-// @import "meantime/layouts";
-// @import "meantime/inputs";
-// @import "meantime/p-consentHome";
-// @import "meantime/p-consentSummary";
-// @import "meantime/definations";
-// @import "meantime/modals";
-// @import "meantime/spinner";
-
-
-
-// @import "01-settings/setting-imports";
-// @import "02-tools/tool-imports";
-// @import "03-generics/generic-imports";
-// // @import "04-elements/element-imports";
-// @import "05-objects/object-imports";
-// @import "06-components/atoms/component.atom-imports";
-//  @import "06-components/molecules/component.molecule-imports";
-// // @import "06-components/organisms/component.organism-imports";
-// @import "07-utilities/utility-imports";

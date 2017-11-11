@@ -1,4 +1,10 @@
 
+/**
+ * 
+ * @param {*} state 
+ * @param {*} action 
+ */
+
 export default function reducer(state={
     messages: []
 }, action) {
