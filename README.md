@@ -1,7 +1,3 @@
-# README #
-
-This README would normally document whatever steps are necessary to get your application up and running.
-
 ### What is this repository for? 
 The repository is for Secure Message Web App.
 This application is web version of Secure Message Functionality from RIB application.
