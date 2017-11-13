@@ -1,6 +1,6 @@
 import { Switch, BrowserRouter, Route, Redirect } from 'react-router-dom';
 import React from 'react';
-import SecureMessageLanding from '../components/SecureMessageLanding';
+import LandingPage from '../components/LandingPage';
 import Inbox from '../components/Inbox';
 import Main from '../components/Main';
 
@@ -15,17 +15,18 @@ class AppRouter {
  */
     static init() {
         return (
-        <Main>
             <BrowserRouter>
-            <div>
-                <Switch>
-                    <Route path = '/securemessages'  component = { SecureMessageLanding }/>
-                    <Route path = '/securemessages:inbox' component = { Inbox }/>
-                    <Redirect from = '/' to = '/securemessages'/>
-                </Switch>
-            </div>
+                <div>
+                <Main>
+                    <Switch>
+                        <Route path = '/securemessages' component = { LandingPage }/>}/>
+                        <Route path = '/securemessages:inbox' component = { Inbox }/>
+                        <Redirect from = '/' to = '/securemessages'/>
+                    </Switch>
+                </Main>
+                </div>
             </BrowserRouter>
-        </Main>
+       
     );
     }
 }

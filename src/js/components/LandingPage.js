@@ -1,14 +1,18 @@
 import React from 'react';
 import Inbox from './Inbox';
 import { Link } from 'react-router-dom';
+import { getSecureMessages } from '../actions/AppActions';
+import { connect } from 'react-redux';
 
 /**
- * @class SecureMessageLanding 
+ * @class Landing Page 
  * Landing Page of the application
 */
 
-class SecureMessageLanding extends React.Component {
-    
+class LandingPage extends React.Component {
+    componentWillMount() {
+        this.props.dispatch(getSecureMessages());
+    }
     render() {
         return(
             <div>
@@ -23,6 +27,11 @@ class SecureMessageLanding extends React.Component {
  * Maps the state of the component to the state of the redux store
  * @param {object} state. State of the application
  */
+const mapState = (state) => { 
+    return {
+        messages: state.messages,
+    }
+};
 
 
-export default SecureMessageLanding;
+export default connect(mapState)(LandingPage);

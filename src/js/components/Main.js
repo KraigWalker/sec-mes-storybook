@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 
 class Main extends React.PureComponent {
@@ -7,17 +6,13 @@ class Main extends React.PureComponent {
         return (
             <div>
                 <h1>
-                Secure Message Web App
+                React redux Web App
                 </h1>
             <div>
-                { this.props.children }
+                <div>{ this.props.children }</div>
             </div>
         </div>);
     }
 }
 
-const mapState = (state) => {
-    return state
-} 
-
-export default connect(mapState)(Main);
+export default Main;
