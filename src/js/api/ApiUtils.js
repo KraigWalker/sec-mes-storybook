@@ -8,11 +8,11 @@ class ApiUtils {
         switch (apiData.method) {
             case 'GET':
                 return axios.get(apiData.url)
-                    .then(response => { onSuccess(response); })
+                    .then(response => { onSuccess(response.data); })
                     .catch(error => { onFail(error); });
             case 'POST':
                 return axios.post(apiData.url, apiData.requestData, requestHeaders)
-                    .then(response => { onSuccess(response); })
+                    .then(response => { onSuccess(response.data); })
                     .catch(error =>{ onFail(error); });
         }
     }

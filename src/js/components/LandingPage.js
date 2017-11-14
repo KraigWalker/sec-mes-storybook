@@ -9,15 +9,15 @@ import { connect } from 'react-redux';
  * Landing Page of the application
 */
 
-class LandingPage extends React.Component {
+class LandingPage extends React.PureComponent {
     componentWillMount() {
-        this.props.dispatch(getSecureMessages());
+        !this.props.messages.fetched && this.props.dispatch(getSecureMessages());
     }
     render() {
         return(
             <div>
                 <ul>
-                    <li><Link to = '/securemessages:inbox'>Inbox</Link></li>
+                    <li><Link to = {{ pathname : '/securemessages:inbox', state: this.props.messages }}>Show my messages</Link></li>
                 </ul>
             </div>
         );

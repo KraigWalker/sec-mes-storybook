@@ -1,6 +1,6 @@
 import AppApi from '../api/AppApi.js';
 import AppConstants from '../constants/AppConstants';
-
+import { parseMessages } from '../parsers/MessageParser';
 
 export function getSecureMessages() {
   return function(dispatch) {
@@ -9,9 +9,10 @@ export function getSecureMessages() {
     };
     dispatch(payload);
     const success = (response) => {
+      const parseData = parseMessages(response);
       const payload = {
         type: AppConstants.REQUEST_DATA_SUCCESS,
-        payload: response
+        payload: parseData
       }
       dispatch(payload);
     }
