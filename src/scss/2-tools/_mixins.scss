@@ -1,0 +1,233 @@
+/// Slightly lighten a color
+/// @access public
+/// @param {Color} $color - color to tint
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function tint($color, $percentage) {
+    @return mix(white, $color, $percentage);
+  }
+  
+  /// Slightly darken a color
+  /// @access public
+  /// @param {Color} $color - color to shade
+  /// @param {Number} $percentage - percentage of `$color` in returned color
+  /// @return {Color}
+  @function shade($color, $percentage) {
+    @return mix(black, $color, $percentage);
+  }
+  
+  
+  // generic transform
+  @mixin transform($transforms) {
+       -moz-transform: $transforms;
+         -o-transform: $transforms;
+        -ms-transform: $transforms;
+    -webkit-transform: $transforms;
+            transform: $transforms;
+  }
+  
+  
+  @mixin noselect {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+  }
+  
+  // CSS3 PROPERTIES
+  // --------------------------------------------------
+  
+  // Box sizing
+  @mixin box-sizing($boxmodel) {
+      -webkit-box-sizing: $boxmodel;
+      -moz-box-sizing: $boxmodel;
+      box-sizing: $boxmodel;
+  }
+  
+  // Border Radius
+  @mixin border-radius($radius) {
+      -webkit-border-radius: $radius;
+      -moz-border-radius: $radius;
+      border-radius: $radius;
+  }
+  
+  // Drop shadows
+  @mixin box-shadow($shadow) {
+      -webkit-box-shadow: $shadow;
+      -moz-box-shadow: $shadow;
+      box-shadow: $shadow;
+  }
+  
+  // Transitions
+  @mixin transition($transition) {
+      -webkit-transition: $transition;
+      -moz-transition: $transition;
+      -o-transition: $transition;
+      transition: $transition;
+  }
+  
+  @mixin transition-delay($transition-delay) {
+      -webkit-transition-delay: $transition-delay;
+      -moz-transition-delay: $transition-delay;
+      -o-transition-delay: $transition-delay;
+      transition-delay: $transition-delay;
+  }
+  
+  @mixin transition-duration($transition-duration) {
+      -webkit-transition-duration: $transition-duration;
+      -moz-transition-duration: $transition-duration;
+      -o-transition-duration: $transition-duration;
+      transition-duration: $transition-duration;
+  }
+  
+  // Transformations
+  @mixin rotate($degrees) {
+      -webkit-transform: rotate($degrees);
+      -moz-transform: rotate($degrees);
+      -ms-transform: rotate($degrees);
+      -o-transform: rotate($degrees);
+      transform: rotate($degrees);
+  }
+  
+  @mixin scale($ratio) {
+      -webkit-transform: scale($ratio);
+      -moz-transform: scale($ratio);
+      -ms-transform: scale($ratio);
+      -o-transform: scale($ratio);
+      transform: scale($ratio);
+  }
+  
+  @mixin placeholder($color) {
+      &::-moz-placeholder { color: $color; }
+      &::-webkit-input-placeholder { color: $color; }
+      &:-ms-input-placeholder { color: $color; }
+  }
+  
+  
+  %cf,
+  .cf {
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  }
+  
+  %hidden,
+  .hidden {
+    display: none;
+  }
+  
+  ///*----------------------------------*\
+//  #COMPONENT MIXINS
+//\*----------------------------------*/
+
+
+//--- Button
+//------------
+
+@mixin btn-body($border: 2px solid, $color: bow-palette(white, base), $min-width: 152px, $height: 48px, $padding: 0 16px, $text-align: center, $hoverBg: grey, $hoverColor: bow-palette(white, base) ) {
+    @include general-theme(color, blue, account);
+    background-color: transparent;
+    border: $border;
+    border-radius: 5px;
+    height: $height;
+    min-width: $min-width;
+    padding: $padding;
+    text-align: $text-align;
+}
+
+
+
+//--- Dropdown
+//------------
+
+@mixin custom-dropdown-button (
+    $background: gray, $border: 0, 
+    $border-radius: 0, $color: bow-palette(white, base), 
+    $height: 48px, $min-width: 160px, 
+    $padding: 0 8px 0 16px, $text-align: center, 
+    $svgfill: bow-palette(white, base)) {
+    align-items: center;
+    background-color: $background;
+    border: $border;
+    border-radius: $border-radius;
+    color: $color;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    height: $height;
+    min-width: $min-width;
+    padding: $padding;
+    text-align: $text-align;
+
+    &:focus{
+        @include on-focus();
+    }
+
+    .btn--title {
+        flex-grow: 2;
+        width: calc((100% - 32px) - 8px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .symbol {
+        width: 32px;
+        margin-left: 8px;
+        height: 32px;
+        text-align: center;
+
+        svg {
+            fill: $svgfill;
+        }
+    }
+
+    .open & {
+        background-color: $background;
+        color: $color;
+
+        .btn-default.dropdown-toggle {
+            color: inherit;
+            background-color: transparent;
+        }
+
+        button {box-shadow: none;}
+
+        .symbol svg {
+            fill: $svgfill;
+        }
+    }
+}
+
+@mixin dropdown-menu(
+    $background: bow-palette(white, base), $border: 1px solid gray, 
+    $border-radius: 0, $padding: 0, 
+    $height: 48px, $min-width: 100%, 
+    $hover: #eee, $font-size: 16px,  
+    $hover-color: inherite, $margin: 0) {
+    background: $background;
+    border: $border;
+    padding: 0;
+    overflow: hidden;
+    min-width: $min-width;
+    border-radius: $border-radius;
+    margin: $margin;
+
+    li a {
+        border-bottom: 1px solid rgb(239, 239, 239);
+        display: block;
+        // font-size: $font-size;
+        padding: 5px 16px;
+        white-space: nowrap;
+        transition: all .2s ease-in;
+
+        &:hover,
+        &:focus {
+            background-color: $hover;
+            color: bow-palette(grey,x-dark);
+        }
+    }
+}
