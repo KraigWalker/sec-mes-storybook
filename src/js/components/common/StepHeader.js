@@ -25,7 +25,7 @@ class StepHeader extends React.Component {
 	getSubtext(){
 		let subText = [];
 		_.map(this.props.headerSubtext, (item, index) => {
-			subText.push(<p className="c-step-header__subtext" dangerouslySetInnerHTML={{ __html: item }} ></p>);
+			subText.push(<p className="c-step-header__subtext" dangerouslySetInnerHTML={{ __html: item }} key={index}></p>);
 		});
 		return subText;
 	}
