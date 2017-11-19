@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import StepHeader from './StepHeaderComponent.jsx'
 import GetTabs from './common/GetTabs.jsx'
 import ButtonComponent from './ButtonComponent.jsx';
-import Inbox from './InboxComponent.jsx'
+import Inbox from './InboxMessageComp.jsx'
 
 
 import { getSecureMessages } from '../actions/SecureMessageActions.js';
