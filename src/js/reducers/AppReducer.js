@@ -11,6 +11,7 @@ export default function reducer(state={
     fetching: false,
     fetched: false,
     error: false,
+    activeTab: 'inbox',
 }, action) {
 
   switch (action.type) {
@@ -19,6 +20,9 @@ export default function reducer(state={
     }
     case AppConstants.REQUEST_DATA_SUCCESS: {
       return {...state, fetching : false, fetched: true, messages: action.payload}
+    }
+    case AppConstants.REQUEST_TAB_ACTIVE: {
+      return {...state, activeTab: action.payload.activeTab}
     }
    default:
     return state;
