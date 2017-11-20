@@ -1,9 +1,4 @@
 const webpack = require('webpack');
-// const ExtractTextPlugin = require('extract-text-webpack-plugin');
-// var path = require('path');
-// const merge = require('webpack-merge');
-//  const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-// const baseConfig = require('./base.config.js');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 
