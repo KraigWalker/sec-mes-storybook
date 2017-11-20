@@ -56,3 +56,13 @@ export function getAccounts() {
   }
 }
 
+export function getActiveTab(activeTab) {
+  return function(dispatch) {
+      const payload = {
+        type: AppConstants.REQUEST_TAB_ACTIVE,
+        payload: activeTab
+      }
+      dispatch(payload);
+  }
+}
+

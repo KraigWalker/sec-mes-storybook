@@ -6,4 +6,5 @@ export default keyMirror({
     REQUEST_DATA_SUCCESS: null,
     REQUEST_SUBJECTS_SUCCESS:null,
     REQUEST_ACCOUNTS_SUCCESS:null,
+    REQUEST_TAB_ACTIVE: null,
 })
