@@ -18,7 +18,7 @@ class DropDownComoonent extends React.Component {
             let items = [];  
             _.map(this.props.subjects.subjects, (subject) => {
                 console.log('sub:',subject);
-                items.push(<option key = {subject.key} value={subject.key} >{subject.value}</option>);
+                items.push(<option key = {subject.key} value={subject.value} >{subject.value}</option>);
             },false);
             return items;
         }

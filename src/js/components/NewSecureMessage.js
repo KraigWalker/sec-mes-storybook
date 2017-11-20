@@ -5,12 +5,19 @@ import { Link } from 'react-router-dom';
 import { Dropdown, ButtonToolbar, MenuItem } from 'react-bootstrap/lib';
 import _ from 'lodash';
 import DropDownComponent from './DropDownComponent.js';
+import TextAreaComponent from './TextAreaComponent.js';
+let requestDataObject ={
+subject : '',
+account : '',
+message : '',
+};
 class NewSecureMessage extends React.Component {
     constructor(props) {
         super(props);
         this.returnMenuItem = this.returnMenuItem.bind(this);
         this.selectSubject = this.selectSubject.bind(this);
         this.selectValue = this.selectValue.bind(this);
+        this.sendData = this.sendData.bind(this);
     };
     componentWillMount() {
         this.props.dispatch(getMessageSubjects());
@@ -22,6 +29,12 @@ class NewSecureMessage extends React.Component {
     selectSubject(e){
         console.log('clicked',e.target.value);
         console.log('ID:',e.target.id);
+        if(e.target.id === 'accounts') {
+            requestDataObject.account = e.target.value;
+        }
+        if(e.target.id === 'subjects') {
+            requestDataObject.subject = e.target.value;
+        }
     }
     selectValue() {
         console.log('Value',e.target.value);
@@ -34,6 +47,11 @@ class NewSecureMessage extends React.Component {
             items.push(<option key = {subject.key} value={subject.key} onSelect = {this.selectValue}>{subject.value}</option>);
         },false);
         return items;
+    }
+    sendData(e) {
+        console.log('MessageData:',e);
+        requestDataObject.message = e;
+        console.log('REQUESTDATA:',requestDataObject);
     }
     render() {
         console.log('Messages',this.props.messages);
@@ -52,11 +70,8 @@ class NewSecureMessage extends React.Component {
                <option>Current Account</option>
                <option>Savings Account</option>
             </select><br/><br/><br/> */}
-            <Link to='/securemessages'>
-            <input type = 'button' name = 'cancel' value = 'Back'/>
-            </Link>
-            <input type = 'button' name = 'Save Draft' value = 'Save Draft'/>
-            <input type = 'button' name = 'Send' value = 'Send'/>
+            <TextAreaComponent sendData = {this.sendData}/>
+            
         </div>);
     }
 }
