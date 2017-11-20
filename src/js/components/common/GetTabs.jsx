@@ -66,20 +66,16 @@ class GetTabs extends React.Component {
 		return (
 			<div>
 				{!this.props.IconFlag ?
-				(<article>
-					<section>
-						<Tabs activeKey={this.state.key1} onSelect={this.handleSelect1} className="c-scroll-tabs">
-							{this.getTab(this.props.IconFlag)}
-						</Tabs>
-					</section>
-				</article>) :
-				(<article>
-					<section>
-						<Tabs activeKey={this.state.key2} onSelect={this.handleSelect2} className="c-scroll-tabs c-scroll-tabs--icon">
-							{this.getTab(this.props.IconFlag)}
-						</Tabs>
-					</section>
-				</article>)}
+				(
+					<Tabs activeKey={this.state.key1} onSelect={this.handleSelect1} className="c-scroll-tabs">
+						{this.getTab(this.props.IconFlag)}
+					</Tabs>
+				) :
+				(
+					<Tabs activeKey={this.state.key2} onSelect={this.handleSelect2} className="c-scroll-tabs c-scroll-tabs--icon">
+						{this.getTab(this.props.IconFlag)}
+					</Tabs>
+				)}
 			</div>
 		);
 	}
