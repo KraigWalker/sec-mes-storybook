@@ -3,6 +3,7 @@ import React from 'react';
 import LandingPage from '../components/LandingPage';
 import Inbox from '../components/Inbox';
 import Main from '../components/Main';
+import NewSecureMessage from '../components/NewSecureMessage';
 
 /** 
  * @class AppRouter Class to initiate and route the application 
@@ -21,6 +22,7 @@ class AppRouter {
                     <Switch>
                         <Route path = '/securemessages' component = { LandingPage }/>}/>
                         <Route path = '/securemessages:inbox' component = { Inbox }/>
+                        <Route path = '/newsecuremessage' component = {NewSecureMessage}/>
                         <Redirect from = '/' to = '/securemessages'/>
                     </Switch>
                 </Main>

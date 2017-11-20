@@ -19,6 +19,7 @@ class LandingPage extends React.PureComponent {
                 <ul>
                     <li><Link to = {{ pathname : '/securemessages:inbox', state: this.props.messages }}>Show my messages</Link></li>
                 </ul>
+                <Link to = {{ pathname : '/newsecuremessage' }}><input type = 'button' name = 'New secure message' value = 'New secure message'/></Link>
             </div>
         );
     }
