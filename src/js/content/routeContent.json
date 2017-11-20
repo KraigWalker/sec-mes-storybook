@@ -1,0 +1,11 @@
+[
+    {
+        "headerDetails" : {
+            "title": "Secure messages",
+            "subtext": ["<p>Got an enquiry? Send a message to the Team at B - we’re here to help. What’s more, because you’re logged in, these messages are safe and secure.</p>",
+                        "<p>Messages are displayed going back 13 months. For more info, please <a href='#'>search the FAQs</a> about message history.</p>"]
+        },
+        "path": "/securemessages",
+        "component" : "securemessages"
+    }
+]
