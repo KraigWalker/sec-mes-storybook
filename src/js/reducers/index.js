@@ -1,8 +1,8 @@
 import { combineReducers } from "redux"
 
-import SecureMessages from "./SecureMessagesReducer"
+import messages from "./AppReducer"
 
 
 export default combineReducers({
-  SecureMessages
+  messages
 })
