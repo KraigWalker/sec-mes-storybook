@@ -23,6 +23,7 @@ class LandingPage extends React.PureComponent {
         return(
             <div>
                 <StepHeader showheaderCrumbs={false} onClick={() => {}} headerCrumbsMessage="" headerTitle={this.props.headerDetails.title} headerSubtext={this.props.headerDetails.subtext}/>
+                <Link to = {{ pathname : '/newsecuremessage' }}><input type = 'button' name = 'New secure message' value = 'New secure message'/></Link>
                 <SecureMessageTabs location={this.props.location} onClick={this.linkClick}  messages={this.props.messages} activeTab={this.props.activeTab}/>
             </div>
         );
