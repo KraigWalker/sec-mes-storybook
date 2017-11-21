@@ -1,0 +1,115 @@
+{
+	"accounts": [{
+		"type": "current",
+		"number": "824404-20012550",
+		"product": {
+			"code": "136",
+			"name": "B Current",
+			"description": "DYB CURRENT ACCOUNT"
+		},
+		"actions_available": {
+			"/account/alerts": true,
+			"/account/consent": false,
+			"/account/payments/transfer/in": true,
+			"/account/mandates/so/write": true,
+			"/account/statements/order": true,
+			"/account/mandates/so/read": true,
+			"/account/books/cheque/reorder": true,
+			"/account/transactions/readwrite": false,
+			"/account/sweeps": true,
+			"/account/beneficiaries/read": true,
+			"/account/beneficiaries/delete": true,
+			"/account/sweeps/transfer/out": false,
+			"/account/beneficiaries/biller/write": true,
+			"/account/read": true,
+			"/account/projections": true,
+			"/account/payments/uk/ics/in": false,
+			"/account/books/payin/reorder": true,
+			"/account/beneficiaries/account/readwrite": true,
+			"/account/mandates/dd/read": true,
+			"/account/preferences/paperstatementoptout": true,
+			"/account/statements/read": true,
+			"/account/payments/uk/default/out": true,
+			"/account/payments/transfer/out": true,
+			"/account/transactions/write": true,
+			"/account/transactions/read": true,
+			"/account/pots": false,
+			"/account/mandates/dd/write": true
+		},
+		"bank_id": "CB",
+		"metadata": {
+			"display_name": null,
+			"display_order": null
+		},
+		"balances": [{
+			"type": "current",
+			"amount": {
+				"value": 2914.00,
+				"currency": "GBP"
+			}
+		}, {
+			"type": "available",
+			"amount": {
+				"value": 2914.00,
+				"currency": "GBP"
+			}
+		}],
+		"id": "92ff9258-f639-43c6-a58c-bacef915667c"
+	}, {
+		"type": "savings",
+		"number": "824404-20012899",
+		"product": {
+			"code": "138",
+			"name": "B Instant Savings",
+			"description": "DYB SAVINGS ACCOUNT"
+		},
+		"actions_available": {
+			"/account/alerts": false,
+			"/account/consent": false,
+			"/account/payments/transfer/in": true,
+			"/account/mandates/so/write": false,
+			"/account/statements/order": true,
+			"/account/mandates/so/read": false,
+			"/account/books/cheque/reorder": false,
+			"/account/transactions/readwrite": false,
+			"/account/sweeps": false,
+			"/account/beneficiaries/read": false,
+			"/account/beneficiaries/delete": false,
+			"/account/sweeps/transfer/out": true,
+			"/account/beneficiaries/biller/write": false,
+			"/account/read": true,
+			"/account/projections": false,
+			"/account/payments/uk/ics/in": false,
+			"/account/books/payin/reorder": false,
+			"/account/beneficiaries/account/readwrite": false,
+			"/account/mandates/dd/read": false,
+			"/account/preferences/paperstatementoptout": true,
+			"/account/statements/read": true,
+			"/account/payments/uk/default/out": false,
+			"/account/payments/transfer/out": true,
+			"/account/transactions/write": true,
+			"/account/transactions/read": true,
+			"/account/pots": true,
+			"/account/mandates/dd/write": false
+		},
+		"bank_id": "CB",
+		"metadata": {
+			"display_name": null,
+			"display_order": null
+		},
+		"balances": [{
+			"type": "current",
+			"amount": {
+				"value": 1564.00,
+				"currency": "GBP"
+			}
+		}, {
+			"type": "available",
+			"amount": {
+				"value": 1564.00,
+				"currency": "GBP"
+			}
+		}],
+		"id": "dba193e4-5e1c-40ad-bd53-a4f590db5c72"
+	}]
+}

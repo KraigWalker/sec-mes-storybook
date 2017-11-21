@@ -7,5 +7,13 @@
         },
         "path": "/securemessages",
         "component" : "securemessages"
+    },
+    {
+        "headerDetails" : {
+            "title": "New message"
+        },
+        "path": "/newsecuremessage",
+        "component" : "newsecuremessage"
+        
     }
 ]

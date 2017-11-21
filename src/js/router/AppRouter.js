@@ -3,6 +3,7 @@ import React from 'react';
 import _ from 'lodash';
 import LandingPage from '../components/landing/LandingPage';
 import Main from '../components/Main';
+import NewSecureMessage from '../components/newSecureMessage/NewSecureMessage';
 import RouteContent from '../content/routeContent';
 
 /** 
@@ -19,6 +20,8 @@ class AppRouter {
             switch(route.component){
                 case 'securemessages':
                 return <LandingPage {...props} headerDetails={route.headerDetails}/>;
+                case 'newsecuremessage' : 
+                return <NewSecureMessage {...props} headerDetails={route.headerDetails}/>
             }
         };
 
