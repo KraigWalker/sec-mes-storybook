@@ -3,6 +3,7 @@ import React from 'react';
 import _ from 'lodash';
 import LandingPage from '../components/secureMessageLanding/LandingPage';
 import Main from '../components/Main';
+import NewSecureMessage from '../components/newSecureMessage/NewSecureMessage';
 import RouteContent from '../content/routeContent';
 import ViewMessage from '../components/viewMessage/ViewMessage'
 
@@ -22,6 +23,8 @@ class AppRouter {
                 return <LandingPage {...props} headerDetails={route.headerDetails}/>;
                 case 'newmessage':
                 return <ViewMessage {...props} headerDetails={route.headerDetails}/>;
+                case 'newsecuremessage' : 
+                return <NewSecureMessage {...props} headerDetails={route.headerDetails}/>
             }
         };
 

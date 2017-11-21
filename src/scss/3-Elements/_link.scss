@@ -1,0 +1,20 @@
+/* ==========================================================================
+   #LINKS
+   ========================================================================== */
+
+/**
+ * This is simply to style bare A elements. Anything more complex should
+ * probably become a Component.
+ */
+
+
+ a {
+     &:focus {
+         @include on-focus();
+     }
+ 
+     &:active {
+         box-shadow: none;
+         outline: 0;
+     }
+ }

@@ -1,0 +1,94 @@
+///*----------------------------------*\
+//  #FONT FACE
+//\*----------------------------------*/
+
+// Mixin for multiple font faces
+@mixin font-face($font-family, $file-path, $extension, $format) {
+	@font-face {
+		font-family: $font-family;
+		font-style: normal;
+		font-weight: normal;
+		// src: url('#{$file-path}.eot');
+		src: url('#{$file-path}.eot?#iefix') format('embedded-opentype'),
+				 url('#{$file-path}.#{$extension}') format($format),
+				 url('#{$file-path}.svg##{$font-family}') format('svg');
+	}
+}
+
+
+//-- Source Sans Pro
+@include font-face(SourceSansProRegular, '../fonts/base/SourceSansPro-Regular', 'otf', 'opentype');
+@include font-face(SourceSansProSemiBold, '../fonts/base/SourceSansPro-SemiBold', 'otf', 'opentype');
+@include font-face(SourceSansProBold, '../fonts/base/SourceSansPro-Bold', 'otf', 'opentype');
+@include font-face(SourceSansProItalic, '../fonts/base/SourceSansPro-Italic', 'otf', 'opentype');
+@include font-face(SourceSansProBoldItalic, '../fonts/base/SourceSansPro-BoldItalic', 'otf', 'opentype');
+
+//--Galano Grotesque For B Headings
+@include font-face(GalanoGrotesqueLight, '../fonts/b/heading/GalanoGrotesque-Light', 'otf', 'opentype');
+@include font-face(GalanoGrotesqueLightItalic, '../fonts/b/heading/GalanoGrotesque-LightItalic', 'otf', 'opentype');
+@include font-face(GalanoGrotesqueMediumItalic, '../fonts/b/heading/GalanoGrotesque-MediumItalic', 'otf', 'opentype');
+@include font-face(GalanoGrotesqueRegular, '../fonts/b/heading/GalanoGrotesque-Regular', 'otf', 'opentype');
+@include font-face(GalanoGrotesqueSemiBold, '../fonts/b/heading/GalanoGrotesque-SemiBold', 'otf', 'opentype');
+@include font-face(GalanoGrotesqueMedium, '../fonts/b/heading/GalanoGrotesque-Medium', 'otf', 'opentype');
+@include font-face(GalanoGrotesqueBold, '../fonts/b/heading/GalanoGrotesque-Bold', 'otf', 'opentype');
+
+//--Muli for B text
+@include font-face(MuliRegular, '../fonts/b/body/Muli-Regular', 'otf', 'opentype');
+@include font-face(MuliSemiBold, '../fonts/b/body/Muli-SemiBold', 'otf', 'opentype');
+@include font-face(MuliBold, '../fonts/b/body/Muli-Bold', 'otf', 'opentype');
+@include font-face(MuliItalic, '../fonts/b/body/Muli-Italic', 'otf', 'opentype');
+@include font-face(MuliBoldItalic, '../fonts/b/body/Muli-BoldItalic', 'otf', 'opentype');
+
+//--Houschka for CB and YB Brand
+@include font-face(CYBHouschkaAltProBold, '../fonts/cyb/heading/CYBHouschkaAltPro-Bold', 'otf', 'opentype');
+@include font-face(CYBHouschkaAltProLight, '../fonts/cyb/heading/CYBHouschkaAltPro-Light', 'otf', 'opentype');
+@include font-face(CYBHouschkaAltProMedium, '../fonts/cyb/heading/CYBHouschkaAltPro-Medium', 'otf', 'opentype');
+
+//-- SF text
+@include font-face(SFRegular, '../fonts/cyb/body/sf-ui-regular', 'otf', 'opentype');
+@include font-face(SFBold, '../fonts/cyb/body/sf-ui-bold', 'otf', 'opentype');
+@include font-face(SFBoldItalic, '../fonts/cyb/body/sf-ui-bold-italic', 'otf', 'opentype');
+@include font-face(SFItalic, '../fonts/cyb/body/sf-ui-italic', 'otf', 'opentype');
+
+// Webfonts Fonts
+@include font-face(webfonts, '../fonts/webfont/webfonts', 'otf', 'opentype');
+
+// Glypse Fonts
+@include font-face(Glyphicons Halflings, '../fonts/webfont/glyphicons-halflings-regular', 'otf', 'opentype');
+
+
+
+//---- Font Face Variables
+//------------------------
+
+// Base Font
+$base-regular: SFRegular;
+$base-italic: SFItalic;
+$base-bold: SFBold;
+$base-bold-italic: SFBoldItalic;
+
+// B Heading font
+$dyb-light: GalanoGrotesqueLight;
+$dyb-regular: GalanoGrotesqueRegular;
+$dyb-medium: GalanoGrotesqueMedium;
+$dyb-semibold: GalanoGrotesqueSemiBold;
+$dyb-bold: GalanoGrotesqueBold;
+
+// B body font
+$dyb-body-regular: MuliRegular;
+$dyb-body-semibold: MuliSemiBold;
+$dyb-body-bold: MuliBold;
+$dyb-body-italic: MuliItalic;
+$dyb-body-bold-italic: MuliBoldItalic;
+
+// CB-YB heading font
+$cyb-medium: CYBHouschkaAltProMedium;
+$cyb-light: CYBHouschkaAltProLight;
+$cyb-bold: CYBHouschkaAltProBold;
+
+// CB-YB body font
+$cyb-body-regular: SourceSansProRegular;
+$cyb-body-semibold: SourceSansProSemiBold;
+$cyb-body-bold: SourceSansProBold;
+$cyb-body-italic: SourceSansProItalic;
+$cyb-body-bold-italic: SourceSansProBoldItalic;

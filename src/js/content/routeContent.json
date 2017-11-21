@@ -15,5 +15,13 @@
         },
         "path": "/viewmessage",
         "component" : "newmessage"
+    },
+    {
+        "headerDetails" : {
+            "title": "New message"
+        },
+        "path": "/newsecuremessage",
+        "component" : "newsecuremessage"
     }
+
 ]
