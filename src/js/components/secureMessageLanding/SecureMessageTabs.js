@@ -9,13 +9,13 @@ class SecureMessageTabs extends React.Component {
 	}
 
 	render() {
-        const { messages } = this.props.messages;
+		const { messages } = this.props;
 		return (messages?<div>
 				<Tabs activeKey={this.props.activeTab} onSelect={this.props.onClick} id="secure_tabs" className="c-scroll-tabs">
 					<Tab eventKey={'inbox'} title={<div>{titleName[0]}</div>}>
                         <SecureMessageList messages={messages? messages.inboxMessages : null}/>
 					</Tab>
-					<Tab eventKey={'drafts'} title={<div>{titleName[1]}</div>}>
+					<Tab eventKey={'draft'} title={<div>{titleName[1]}</div>}>
                         <SecureMessageList messages={messages? messages.draftMessages : null}/>
 					</Tab>
 					<Tab eventKey={'sent'} title={<div>{titleName[2]}</div>}>
