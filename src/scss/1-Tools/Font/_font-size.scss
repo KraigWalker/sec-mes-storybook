@@ -1,0 +1,76 @@
+///*----------------------------------*\
+//  #FONT SIZES
+//\*----------------------------------*/
+
+
+// For Font sizes
+//---------------
+
+@mixin type($type-name, $breakpoint) {
+    font-size: map-get(map-get(map-get($font-sizes, $type-name), $breakpoint), font-size) + 0px;
+    line-height: map-get(map-get(map-get($font-sizes, $type-name), $breakpoint), line-height) + 0px;
+  }
+  
+  @mixin type-responsive($type-name) {
+    @each $breakpoint in $breakpoint-groups {
+      $key: nth($breakpoint, 1);
+  
+      @include media-breakpoint-up($key) {
+        @include type($type-name, $key);
+      }
+    }
+  }
+  
+  .type,
+  %type {
+    @each $name in $font-sizes {
+      $name: nth($name, 1);
+  
+      &--#{$name} {
+        @each $breakpoint in $breakpoint-groups {
+          $key: nth($breakpoint, 1);
+  
+          @include media-breakpoint-up($key) {
+            @include type($name, $key);
+          }
+        }
+      }
+    }
+  }
+  
+  .show-type-size-info {
+    @each $name in $font-sizes {
+      $name: nth($name, 1);
+  
+      .type--#{$name} {
+        &::before {
+          @each $breakpoint in $breakpoint-groups {
+            $key: nth($breakpoint, 1);
+  
+            @include media-breakpoint-up($key) {
+              content: "#{map-get(map-get(map-get($font-sizes, $name), $key), font-size)} / #{map-get(map-get(map-get($font-sizes, $name), $key), line-height)}";
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  .show-type-size-info > [class^="type--"] {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  
+    &::before {
+      font-size: 12px;
+      line-height: 12px;
+      display: block;
+      background-color: #F1DFEF;
+      border-radius: 2px;
+      padding: 6px 6px;
+      width: 60px;
+      text-align: center;
+      margin-right: get-px(a);
+      flex-shrink: 0;
+    }
+  }
