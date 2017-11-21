@@ -17,10 +17,8 @@ $grid-columns: 24 !default;
 
 // Quickly modify global styling by enabling or disabling optional features.
 
-$grid-classes-enabled: true !default;
-$grid-flex-enabled: true !default;
-
-
+$enable-grid-classes: true !default;
+$enable-flex: true !default;
 
 
 // Grid breakpoint widths
@@ -44,7 +42,7 @@ $grid-breakpoints: (
 // ==================
 // This setting is used to define grid gutter width names and sizes.
 
-$grid-gutter-width-base: 16px !default;
+$grid-gutter-width-base: 30px !default;
 
 $grid-gutter-widths: ( 
 	xs1: 	16px,
@@ -59,27 +57,6 @@ $grid-gutter-widths: (
 ) !default;
 
 
-$enable-flex: true;
-
-$enable-grid-classes: true !default;
-
-
-$enable-grid-classes: true;
-$enable-flex: true;
-
-$grid-columns: 24;
-$grid-gutter-width-base: 30px;
-$grid-breakpoints: (
-	xs1: 	0,
-	xs2: 	480px,
-	sm1: 	600px,
-	sm2: 	840px,
-	md1: 	960px,
-	lg1: 	1280px,
-	lg2: 	1440px,
-	lg3: 	1600px,
-	xl1: 	1920px
-);
 // for using breakpoints as variables
 	$xs1: 	0;
 	$xs2: 	480px;
@@ -93,18 +70,6 @@ $grid-breakpoints: (
 
 $container-max-widths: (
 	xl1: 	1920px
-);
-
-$grid-gutter-widths: (
-	xs1:  16px,
-	xs2:  16px,
-	sm1:  24px,
-	sm2:  24px,
-	md1:  32px,
-	lg1:  40px,
-	lg2:  40px,
-	lg3:  40px,
-	xl1:  48px
 );
 
 $container-padding: (
@@ -136,7 +101,6 @@ $breakpoint-groups: (
 	xl1: map-get($grid-breakpoints, xl1)
 );
 
-
 $gutter-list: (
 	xs: 16px,
 	sm: 24px,
@@ -160,40 +124,3 @@ $breakpoints: (
 	lg: 1280px,
 	xl: 1920px
 );
-
-$xsmall: $xs1;
-$xsmall-max: 599px;
-$small: $sm1;
-$small-max: 959px;
-$medium: $md1;
-$medium-max: 1279px;
-$large: $lg1;
-$large-max: 1919px;
-$xlarge: $xl1;
-
-
-
-// Breakpoints
-$xs1: 	0;
-$xs2: 	480px; 
-$sm1: 	600px;
-$sm2: 	840px;
-$md1: 	960px;
-$lg1: 	1280px;
-$lg2: 	1440px;
-$lg3: 	1600px;
-$xl1: 	1920px;
-
-// $tablet: $sm1;
-// $desktop: $md1;
-// $wide: $lg1;
-
-//
-$alpha: 64px;
-$beta: 48px;
-$gamma: 32px;
-$delta: 24px;
-$epsilon: 16px;
-$zeta: 8px;
-
-$border-radius: 5px;
