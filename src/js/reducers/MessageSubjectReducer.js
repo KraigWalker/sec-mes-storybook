@@ -5,7 +5,7 @@ import AppConstants from '../constants/AppConstants';
  * @param {*} action 
  */
 
-export default function reducer(state={
+function reducer(state={
     subjects: [],
     fetching: false,
     fetched: false,
@@ -23,3 +23,4 @@ export default function reducer(state={
     return state;
   }
 }
+export default reducer;

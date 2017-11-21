@@ -1,6 +1,6 @@
 import React from 'react';
 
-class DropDownComoonent extends React.Component {
+class DropDownComponent extends React.Component {
     constructor(props) {
         super(props);
         this.returnMenuItem = this.returnMenuItem.bind(this);
@@ -17,7 +17,6 @@ class DropDownComoonent extends React.Component {
         } else {
             let items = [];  
             _.map(this.props.subjects.subjects, (subject) => {
-                console.log('sub:',subject);
                 items.push(<option key = {subject.key} value={subject.value} >{subject.value}</option>);
             },false);
             return items;
@@ -32,4 +31,4 @@ class DropDownComoonent extends React.Component {
     </div>);
     }
 }
-export default DropDownComoonent;
+export default DropDownComponent;

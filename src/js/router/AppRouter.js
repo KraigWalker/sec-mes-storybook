@@ -3,7 +3,7 @@ import React from 'react';
 import _ from 'lodash';
 import LandingPage from '../components/landing/LandingPage';
 import Main from '../components/Main';
-import NewSecureMessage from '../components/NewSecureMessage';
+import NewSecureMessage from '../components/newSecureMessage/NewSecureMessage';
 import RouteContent from '../content/routeContent';
 
 /** 

@@ -15,6 +15,11 @@ class AppApi {
   static getAccounts(success,error) {
     ApiUtils.makeRequest({ url: _getAccountsURL, method: 'GET' }, success, error);
   }
+  static sendMessageData(requestData,success,error) {
+    console.log('SEND MESSAGE DATA:',requestData);
+   // ApiUtils.makeRequest({ url: _sendMessageURL, method: 'POST' ,requestData : SendMessageRequestEntity.getMessageRequestData()}, success, error);
+  }
+  
 }
 
 export default AppApi;

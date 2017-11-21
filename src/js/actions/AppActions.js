@@ -65,4 +65,21 @@ export function getActiveTab(activeTab) {
       dispatch(payload);
   }
 }
+export function sendMessageData(requestData) {
+  return function(dispatch) {
+    const success = (response) => {
+      // const parseData = parseAccounts(response);
+      const payload = {
+        type: AppConstants.SEND_MESSAGE_DATA_SUCCESS,
+        payload: response
+      }
+      //dispatch(payload);
+    }
+    const error = (error) => {
+      console.log(error);
+    }
+    AppApi.sendMessageData(requestData,success,error);
+  }
+}
+
 
