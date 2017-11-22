@@ -7,7 +7,7 @@ import _ from 'lodash';
 import DropDownComponent from '../common/DropDownComponent.js';
 import TextAreaComponent from '../common/TextAreaComponent.js';
 import SendMessageRequestEntity from '../../entities/SendMessageRequestEntity.js'
-
+import RegexUtils from '../utils/RegexUtils.js';
 let messageEntity = new SendMessageRequestEntity();
 class NewSecureMessage extends React.Component {
     constructor(props) {
@@ -15,6 +15,11 @@ class NewSecureMessage extends React.Component {
         this.selectSubject = this.selectSubject.bind(this);
         this.sendData = this.sendData.bind(this);
         this.textChange = this.textChange.bind(this);
+        this.checkPastedData = this.checkPastedData.bind(this);
+        this.renderRemainingChar = this.renderRemainingChar.bind(this);
+        this.state = {
+            chars_left: 10,
+        };
     };
     componentWillMount() {
         this.props.dispatch(getMessageSubjects());
@@ -29,11 +34,25 @@ class NewSecureMessage extends React.Component {
         }
     }
     textChange(e) {
-        messageEntity.setMessage(e);
+        this.setState({ chars_left: 10 - e.length });
+        let extractedString = RegexUtils.matchString(e);
+        if (extractedString !== null) {
+            let lastFour = RegexUtils.getLastFourDigits(extractedString);
+            messageEntity.setMessage(e.replace(new RegExp(extractedString, 'g'), '************' + lastFour));
+        } else messageEntity.setMessage(e);
+
+
     }
     sendData() {
-        // console.log(messageEntity.getMessageRequestData());
         this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData()));
+    }
+    checkPastedData(data) {
+        console.log(RegexUtils.isValidPastedData(data));
+    }
+    renderRemainingChar() {
+        if (this.state.chars_left <= 3) {
+            return <p>Characters Left: {this.state.chars_left}</p>;
+        } else return '';
     }
     render() {
         return (<div>
@@ -43,7 +62,9 @@ class NewSecureMessage extends React.Component {
             <DropDownComponent subjects={this.props.subjects} selectSubject={this.selectSubject} id='subjects' />
             <h3>Accounts</h3><br />
             <DropDownComponent accounts={this.props.accounts} selectSubject={this.selectSubject} id='accounts' />
-            <TextAreaComponent textData={this.textChange} /> <br /><br />
+            <TextAreaComponent textData={this.textChange} pastedData={this.checkPastedData} /> <br /><br />
+            {this.renderRemainingChar()}
+
             <Link to='/securemessages'>
                 <input type='button' name='cancel' value='Back' />
             </Link>
