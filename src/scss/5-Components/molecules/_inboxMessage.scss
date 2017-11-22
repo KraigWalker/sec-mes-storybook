@@ -1,5 +1,4 @@
 .c-message {
-    @include on-focus();
     display: flex;
     margin-top: get-px(b);
     border: 1px solid bow-palette(grey, base, base);
@@ -8,6 +7,10 @@
     &.c-message--stacked {
         border-bottom: 0;
         margin-top: 0;
+    }
+
+    &:focus {
+        @include on-focus();
     }
 }
 
@@ -76,7 +79,7 @@
 }
 .c-message__summary__head .c-message__summary__head__title__ref {
     display: block;
-    margin-bottom: get-px(a);
+    // margin-bottom: get-px(a);
     @include media-breakpoint-up(md1) {
         display: inline;
         margin-bottom: 0;
@@ -121,7 +124,7 @@
 
     &__account {
         @include text-overflow();
-        margin-bottom: get-px(a);
+        // margin-bottom: get-px(a);
         width: 100%;
     } 
 
