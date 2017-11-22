@@ -228,18 +228,18 @@
 	// For Development environment
 	//---------------------------
 	@if (config(env) == dev) {
-		.dyb &{
-			background: url('../images/bow/icons/icon__chevron-down-white.svg') calc(100% - 7px) calc(100% + -6px) no-repeat,linear-gradient(to right, bow-palette( blue, account, dyb), bow-palette( blue, account, dyb)) right/48px 48px no-repeat;
-			background-color: white;
-		}
-		.cb &{
-			background: url('../images/bow/icons/icon__chevron-down-white.svg') calc(100% - 7px) calc(100% + -6px) no-repeat,linear-gradient(to right, bow-palette((color: red, brand: cb)...), bow-palette((color: red, brand: cb)...)) right/48px 48px no-repeat;
-			background-color: white;
-		}
-		.yb &{
-			background: url('../images/bow/icons/icon__chevron-down-white.svg') calc(100% - 7px) calc(100% + -6px) no-repeat,linear-gradient(to right, bow-palette((color: blue, brand: yb)...), bow-palette((color: blue, brand: yb)...)) right/48px 48px no-repeat;
-			background-color: white;
-		}
+		// .dyb &{
+		// 	background: url('../images/bow/icons/icon__chevron-down-white.svg') calc(100% - 7px) calc(100% + -6px) no-repeat,linear-gradient(to right, bow-palette( blue, account, dyb), bow-palette( blue, account, dyb)) right/48px 48px no-repeat;
+		// 	background-color: white;
+		// }
+		// .cb &{
+		// 	background: url('../images/bow/icons/icon__chevron-down-white.svg') calc(100% - 7px) calc(100% + -6px) no-repeat,linear-gradient(to right, bow-palette((color: red, brand: cb)...), bow-palette((color: red, brand: cb)...)) right/48px 48px no-repeat;
+		// 	background-color: white;
+		// }
+		// .yb &{
+		// 	background: url('../images/bow/icons/icon__chevron-down-white.svg') calc(100% - 7px) calc(100% + -6px) no-repeat,linear-gradient(to right, bow-palette((color: blue, brand: yb)...), bow-palette((color: blue, brand: yb)...)) right/48px 48px no-repeat;
+		// 	background-color: white;
+		// }
 	}
 
 
