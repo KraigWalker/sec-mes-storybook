@@ -1,31 +1,91 @@
 import React from 'react';
-import GetIcon from '../common/GetIcon';
+import PropTypes from 'prop-types';
+import SvgIcon from '../common/GetIcon';
+import cx from 'classnames';
+import MessageEntity from '../../entities/MessageEntity';
 
 class SecureMessage extends React.Component {
+    constructor(props){
+        console.log(PropTypes);
+        super(props);
+    }
     render() {
         const { message } = this.props;
+        let messageClass = cx({
+            'c-message': true,
+			'c-message--stacked': this.props.listFlag,
+            'c-message--read': this.props.readFlag,
+            'u-cursor-pointer': true,
+		});
+
+        let summaryClass = cx({
+            'c-message__summary': true,
+            'c-message__summary--draft': this.props.draftFlag,
+        });
+
+        let titleClass = cx({
+            'c-message__summary__head__title': true,
+            'c-message__summary__head__title--draft': this.props.draftFlag,
+        });
+
+        let subjectClass = cx({
+            'c-message__summary__head__title__subject': true,
+            'c-message__summary__head__title__subject--read': this.props.readFlag,
+        });
+
+        let iconId = this.props.readFlag ? 'icon-message-open' : 'icon-envelope';
         return (
-            <div>
-                <div className="c-message">
-                <span className="c-message__icon"><GetIcon id="icon-Information" width="24px" height="24px"/></span>
-                <div className="c-message__summary">
+            <div className={messageClass}>
+                {
+                    this.props.draftFlag
+                    ? null
+                    : <span className="c-message__icon"><SvgIcon id={iconId} width="24px" height="24px"/></span>
+                }
+                
+                <div className={summaryClass}>
                     <div className="c-message__summary__head">
-                        <label className="c-message__summary__head__subject">{message.getSubject()}</label>
-                        <span className="c-message__summary__head__actions">
-                            <button className="c-btn c-btn--link zero-padding c-message__summary__head__actions__reply">Reply</button>
-                            <a href="#/" className="c-message__summary__head__actions__reply--sm"><GetIcon id="icon-Information" width="24px" height="24px"/></a>
-                            <button className="c-btn c-btn--link zero-padding c-message__summary__head__actions__delete">Delete</button>
-                            <a href="#/" className="c-message__summary__head__actions__delete--sm"><GetIcon id="icon-delete" width="24px" height="24px"/></a>
-                        </span>
+                        <div className={titleClass}>
+                            <h2 className={subjectClass}>{message.getSubject()}</h2>
+                            <p className="c-message__summary__head__title__ref">(Reference number)</p>
+                        </div>
+                        <div className="c-message__summary__head__actions">
+                            {
+                                this.props.draftFlag
+                                ? null
+                                :
+                                <button className="c-btn c-btn--link zero-padding c-message__summary__head__actions__reply">
+                                    <span className="c-message__summary__head__actions__reply__txt">Reply</span>
+                                    <span className="c-message__summary__head__actions__reply__icon">
+                                        <SvgIcon id="icon-reply" width="24px" height="24px"/>
+                                    </span>
+                                </button>
+                            }
+                            <button className="c-btn c-btn--link zero-padding c-message__summary__head__actions__delete">
+                                <span className="c-message__summary__head__actions__reply__txt">Delete</span>
+                                <span className="c-message__summary__head__actions__reply__icon">
+                                    <SvgIcon id="icon-delete" width="24px" height="24px"/>
+                                </span>
+                            </button>
+                        </div>
                     </div>
-                    <p className="c-message__summary__account">Some account number</p>
-                    <p className="c-message__summary__ref">{message.getStatus()}</p>
-                    <p className="c-message__summary__date">Some Date</p>
-                </div>
+                    <p className="c-message__summary__account">First line of message</p>
+                    <p className="c-message__summary__date">Date</p>
                 </div>
             </div>
         );
     }
 }
+
+SecureMessage.propTypes = {
+    listFlag: PropTypes.bool,
+    draftFlag: PropTypes.bool,
+    readFlag: PropTypes.bool,
+    message: PropTypes.instanceOf(MessageEntity),
+};
+SecureMessage.defaultProps = {
+	listFlag: false,
+    draftFlag: false,
+    readFlag: false,
+};
 
 export default SecureMessage;
