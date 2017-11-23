@@ -34,7 +34,6 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 0;
-    position: relative;
 
     @include media-breakpoint-up(md1) {
         margin-bottom: get-px(a);
@@ -75,6 +74,18 @@
 
     &.c-message__summary__head__title__subject--read {
         @include brand-heading();
+    }
+
+    >a {
+        color: bow-palette(grey, text);
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
     }
 }
 .c-message__summary__head .c-message__summary__head__title__ref {
@@ -137,7 +148,7 @@
     padding: 0;
     max-width: 640px;
     
-    &__wrapper {
+    li {
         list-style: none;
 
         &:last-child {
