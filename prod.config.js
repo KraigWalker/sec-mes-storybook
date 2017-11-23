@@ -1,7 +1,15 @@
 const webpack = require('webpack');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const path = require('path');
+
+const brand = process.env.brand;
+const brandEntry = ["babel-polyfill","./src/scss/main.scss"];
+const noBrandEntry = ["babel-polyfill","./src/js/client.js"];
+
+console.log(brand);
 
 module.exports = {
-  entry: ["babel-polyfill","./src/js/client.js"],
+  entry: brand?brandEntry:noBrandEntry,
   output: {
       path:__dirname+ '/src/compiled/',
       filename: "[name].bundle.js",
@@ -21,13 +29,20 @@ module.exports = {
           {
             test: /\.scss$/,
             exclude: /node_modules/,
-            use: [{
-              loader: "style-loader" // creates style nodes from JS strings
-          }, {
-              loader: "css-loader" // translates CSS into CommonJS
-          }, {
-              loader: "sass-loader" // compiles Sass to CSS
-          }]
+            loader: ExtractTextPlugin.extract({
+                fallback: 'style-loader',
+                use: [
+                    {
+                        loader: 'css-loader',
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            data: "$brand: "+brand+";$env: prod;"
+                        }
+                    }
+                ]
+            }),
           },
           {
             test: /\.json$/,
@@ -45,6 +60,9 @@ module.exports = {
           }
 
       ]
-  }
+  },
+    plugins: [
+        new ExtractTextPlugin(brand+'.[name].css', { allChunks: true })
+    ],
 
 };

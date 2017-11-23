@@ -10,10 +10,18 @@
     },
     {
         "headerDetails" : {
+            "inboxtitle": "Inbox message",
+            "senttitle": "Sent message"
+        },
+        "path": "/viewmessage",
+        "component" : "newmessage"
+    },
+    {
+        "headerDetails" : {
             "title": "New message"
         },
         "path": "/newsecuremessage",
         "component" : "newsecuremessage"
-        
     }
+
 ]

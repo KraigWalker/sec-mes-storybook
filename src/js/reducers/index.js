@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import messages from "./AppReducer";
+import messages from "./SecureMessageLandingReducer";
 import subjects from "./MessageSubjectReducer";
 import accounts from "./AccountsReducer";
 

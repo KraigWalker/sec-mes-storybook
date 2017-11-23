@@ -4,6 +4,7 @@ import { getSecureMessages, getActiveTab } from '../../actions/AppActions';
 import { connect } from 'react-redux';
 import SecureMessageTabs from './SecureMessageTabs';
 import StepHeader from '../common/StepHeader';
+import {SecureMessageBL} from '../../bl/SecureMessageBL'
 /**
  * @class Landing Page 
  * Landing Page of the application
@@ -19,12 +20,16 @@ class LandingPage extends React.PureComponent {
     linkClick = (activeTab) => {
         this.props.dispatch(getActiveTab(activeTab));
     }
+    mapMessages(messages){
+        console.log(SecureMessageBL(messages));
+        return SecureMessageBL(messages);
+    }
     render() {
         return(
             <div>
                 <StepHeader showheaderCrumbs={false} onClick={() => {}} headerCrumbsMessage="" headerTitle={this.props.headerDetails.title} headerSubtext={this.props.headerDetails.subtext}/>
                 <Link to = {{ pathname : '/newsecuremessage' }}><input type = 'button' name = 'New secure message' value = 'New secure message'/></Link>
-                <SecureMessageTabs location={this.props.location} onClick={this.linkClick}  messages={this.props.messages} activeTab={this.props.activeTab}/>
+                <SecureMessageTabs location={this.props.location} onClick={this.linkClick}  messages={this.mapMessages(this.props.messages)} activeTab={this.props.activeTab}/>
             </div>
         );
     }
@@ -37,6 +42,7 @@ class LandingPage extends React.PureComponent {
 const mapState = (state) => { 
     return {
         messages: state.messages,
+        activeTab: state.messages.activeTab,
     }
 };
 

@@ -1,24 +1,29 @@
 const webpack = require('webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 module.exports = {
   entry: ["babel-polyfill","./src/js/client.js"],
   devtool: 'inline-source-map',
   output: {
-      path:__dirname+ '/src/compiled/local/',
+      path:__dirname+ '/src/compiled/',
       filename: "[name].bundle.js",
       publicPath: '/'
   },
   plugins: [    
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin()
+    new webpack.NamedModulesPlugin(),
+    new HtmlWebpackPlugin({  //  generate a index.html
+      filename: 'index.html',
+      template: 'src/html/index.html'
+    })
     ],
   devtool: "source-map",
   module: {
       rules: [
           {
-              test: /\.jsx?$/,
+              test: /\.js?$/,
               exclude:/node_modules/,
               loader: 'babel-loader',
               query: {
@@ -42,17 +47,26 @@ module.exports = {
             }, {
                 loader: "sass-loader", 
                 options: {
-                  sourceMap: true
-                }// compiles Sass to CSS
+                  sourceMap: true,
+                  data: "$brand: dyb;$env: dev;"
+                },// compiles Sass to CSS
             }]
           },
           {
             test: /\.json$/,
             loader: 'json-loader'
           },
-          { 
+          {
             test: /\.(png|woff|woff2|eot|ttf|svg|otf|gif)$/, 
             loader: 'url-loader' 
+          },
+          {
+            test: /\.(html)$/,
+            exclude:/node_modules/,
+            use: {
+              loader: 'html-loader'
+              
+            }
           }
 
       ]

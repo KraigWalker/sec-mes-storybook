@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import { Link } from 'react-router-dom';
-import SecureMessage from './SecureMessage';
+import SecureMessageSummary from '../common/SecureMessageSummary';
 
 
 class SecureMessageList extends React.Component {
@@ -9,7 +9,7 @@ class SecureMessageList extends React.Component {
         const { messages } = this.props;
         const allMessages = [];
         _.map(messages, (message, index) => {
-            allMessages.push(<SecureMessage message= { message } key={index}/>)
+            allMessages.push(<SecureMessageSummary message= { message } key={index}/>)
         })
         return allMessages;
     }

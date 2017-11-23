@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 
 import AppRouter from './router/AppRouter';
 import store from './stores/AppStore';
-import '../scss/main.scss';
+// import '../scss/main.scss';
 
 const app = document.getElementById('app');
 
