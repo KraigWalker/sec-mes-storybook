@@ -11,7 +11,7 @@ class SecureMessageList extends React.Component {
         const hasOnClick = true;
         const listFlag = true;
         _.map(messages, (message, index) => {
-            allMessages.push(<li><SecureMessage message= { message } key={index} hasOnClick={hasOnClick} listFlag={listFlag}/></li>)
+            allMessages.push(<li className="c-messagelist__wrapper"><SecureMessage message= { message } key={index} hasOnClick={hasOnClick} listFlag={listFlag}/></li>)
         })
         return allMessages;
     }

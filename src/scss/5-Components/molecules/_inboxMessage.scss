@@ -76,7 +76,7 @@
         @include brand-heading();
     }
 
-    >a {
+    &__link{
         color: bow-palette(grey, text);
         &:before {
             content: "";
@@ -148,7 +148,7 @@
     padding: 0;
     max-width: 640px;
     
-    li {
+    &__wrapper {
         list-style: none;
 
         &:last-child {
