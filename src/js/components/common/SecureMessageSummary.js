@@ -23,7 +23,7 @@ class SecureMessageSummary extends React.Component {
                         </div>
                         <p className="c-message__summary__account">{message.getAccount().accountNumber}</p>
                         <p className="c-message__summary__ref">{message.getReference()}</p>
-                        <p className="c-message__summary__date">Some Date</p>
+                        <p className="c-message__summary__date">{message.getDateCreated()}</p>
                     </div>
                 </div>
             </div>
