@@ -21,9 +21,13 @@ class LandingPage extends React.PureComponent {
     }
     render() {
         return(
-            <div>
-                <StepHeader showheaderCrumbs={false} onClick={() => {}} headerCrumbsMessage="" headerTitle={this.props.headerDetails.title} headerSubtext={this.props.headerDetails.subtext}/>
-                <Link to = {{ pathname : '/newsecuremessage' }}><input type = 'button' name = 'New secure message' value = 'New secure message'/></Link>
+            <div className="container">
+                <div className="row">
+                    <div className="col-md1-18">
+                        <StepHeader showheaderCrumbs={false} headerTitle={this.props.headerDetails.title} headerSubtext={this.props.headerDetails.subtext}/>
+                    </div>
+                </div>
+                <Link to = {{ pathname : '/newsecuremessage' }}><input type = 'button' name = 'New secure message' value = 'New secure message' className="c-btn c-btn--default"/></Link>
                 <SecureMessageTabs location={this.props.location} onClick={this.linkClick}  messages={this.props.messages} activeTab={this.props.activeTab}/>
             </div>
         );

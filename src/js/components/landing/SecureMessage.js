@@ -69,16 +69,16 @@ class SecureMessage extends React.Component {
                                 this.props.draftFlag
                                 ? null
                                 :
-                                <button className="c-btn c-btn--link zero-padding c-message__summary__head__actions__reply" onClick={this.handlebttn}>
+                                <button className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding" onClick={this.handlebttn}>
                                     <span className="c-message__summary__head__actions__reply__txt">Reply</span>
                                     <span className="c-message__summary__head__actions__reply__icon">
                                         <SvgIcon id="icon-reply" width="24px" height="24px"/>
                                     </span>
                                 </button>
                             }
-                            <button className="c-btn c-btn--link zero-padding c-message__summary__head__actions__delete" onClick={this.handlebttn}>
-                                <span className="c-message__summary__head__actions__reply__txt">Delete</span>
-                                <span className="c-message__summary__head__actions__reply__icon">
+                            <button className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding" onClick={this.handlebttn}>
+                                <span className="c-message__summary__head__actions__delete__txt">Delete</span>
+                                <span className="c-message__summary__head__actions__delete__icon">
                                     <SvgIcon id="icon-delete" width="24px" height="24px"/>
                                 </span>
                             </button>

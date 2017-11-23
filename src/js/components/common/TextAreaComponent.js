@@ -10,9 +10,15 @@ class TextAreaComponent extends React.Component{
         this.props.textData(e.target.value);
     }
     render() {
-        return (<div>
-            <input type = 'text' name = 'txtbox'onChange = {this.textChange}/><br/><br/>
-        </div>);
+        return (
+            <textarea className="c-field__input c-field__input--txtarea" 
+                name="message" 
+                id="message" 
+                rows="10" 
+                cols="20" 
+                onChange={this.textChange}>
+            </textarea>
+        );
     }
 }
 export default TextAreaComponent;
