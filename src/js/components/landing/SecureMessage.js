@@ -58,7 +58,7 @@ class SecureMessage extends React.Component {
                         <div className={titleClass}>
                             <h2 className={subjectClass}>
                                 {this.props.hasOnClick
-                                    ? <a href="/" onClick={this.handleClick}>Change of address enquiries</a>
+                                    ? <a href="/" onClick={this.handleClick}>{message.getSubject()}</a>
                                     : message.getSubject()
                                 }
                             </h2>
