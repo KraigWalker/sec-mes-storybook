@@ -6,6 +6,7 @@ import { Dropdown, ButtonToolbar, MenuItem } from 'react-bootstrap/lib';
 import _ from 'lodash';
 import DropDownComponent from '../common/DropDownComponent.js';
 import TextAreaComponent from '../common/TextAreaComponent.js';
+import StepHeader from '../common/StepHeader';
 import SendMessageRequestEntity from '../../entities/SendMessageRequestEntity.js'
 import RegexUtils from '../utils/RegexUtils.js';
 let messageEntity = new SendMessageRequestEntity();
@@ -55,21 +56,47 @@ class NewSecureMessage extends React.Component {
         } else return '';
     }
     render() {
-        return (<div>
-            <Link to='/securemessages'> Back To Homepage</Link><br />
-            <h2>New message</h2><br />
-            <h3>Subject</h3>
-            <DropDownComponent subjects={this.props.subjects} selectSubject={this.selectSubject} id='subjects' />
-            <h3>Accounts</h3><br />
-            <DropDownComponent accounts={this.props.accounts} selectSubject={this.selectSubject} id='accounts' />
-            <TextAreaComponent textData={this.textChange} pastedData={this.checkPastedData} /> <br /><br />
-            {this.renderRemainingChar()}
+        return (<div className="container">
+            <div className="row">
+                <div className="col-md1-18">
+                    <StepHeader showheaderCrumbs={true} onClick={() => {}} headerCrumbsMessage="Back" headerTitle="New message" />
+                </div>
+            </div>
+            {/*<Link to='/securemessages'> Back To Homepage</Link><br />*/}
+
+            <div className="c-field">
+                <label className="c-field__label c-field__label--block" htmlFor="subjects">
+                    Subject
+                </label>
+                <div className="c-field__controls">
+                    <DropDownComponent subjects={this.props.subjects} selectSubject={this.selectSubject} name='subjects' id='subjects' />
+                </div>
+            </div>
+
+            <div className="c-field">
+                <label className="c-field__label c-field__label--block" htmlFor="subjects">
+                    Accounts
+                </label>
+                <div className="c-field__controls">
+                    <DropDownComponent accounts={this.props.accounts} selectSubject={this.selectSubject} name='accounts' id='accounts' />
+                </div>
+            </div>
+            
+
+            <div className="c-field">
+                <label className="c-field__label c-field__label--block" htmlFor="subjects">
+                    Message
+                </label>
+                <div className="c-field__controls">
+                    <TextAreaComponent textData={this.textChange} />
+                </div>
+            </div>
 
             <Link to='/securemessages'>
-                <input type='button' name='cancel' value='Back' />
-            </Link>
-            <input type='button' name='Save Draft' value='Save Draft' />
-            <input type='button' name='Send' value='Send' onClick={this.sendData} />
+                <input type='button' name='cancel' value='Back' className="c-btn c-btn--secondary"/>
+            </Link>&nbsp;
+            <button name='Save Draft' className="c-btn c-btn--secondary">Save Draft</button>&nbsp;
+            <button name='Send' className="c-btn c-btn--default" onClick={this.sendData}>Send</button>
         </div>);
     }
 }

@@ -8,16 +8,20 @@ class SecureMessageList extends React.Component {
     showMessages() {
         const { messages } = this.props;
         const allMessages = [];
+        const hasOnClick = true;
+        const listFlag = true;
         _.map(messages, (message, index) => {
-            allMessages.push(<SecureMessageSummary message= { message } key={index}/>)
+            allMessages.push(<li className="c-messagelist__wrapper"><SecureMessageSummary message= { message } key={index} hasOnClick={hasOnClick} listFlag={listFlag}/></li>)
         })
         return allMessages;
     }
     render() {
         return (
-            <div>
-                {this.showMessages()}
-            </div>
+            <section>
+                <ol className="c-messagelist">
+                    {this.showMessages()}
+                </ol>
+            </section>
         );  
     }
 }
