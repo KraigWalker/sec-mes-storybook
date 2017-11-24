@@ -38,10 +38,11 @@ $btn-border-radius: 5px;
 
 .c-btn--default {
     // @extend .btn-default;
-    @include common-theme(color, white, base);
+    // @include common-theme(color, white, base);
     @include general-theme(border-color, blue, account);
     @include general-theme(background-color, blue, account);
 
+    color: bow-palette(white, base);
     min-width: 136px;
 
     @include media-breakpoint-up(lg1) {
@@ -131,10 +132,6 @@ $btn-border-radius: 5px;
     &:hover {
         @include general-theme(color, blue, account);
         text-decoration: none;
-    }
-
-     &.zero-padding {
-        padding: 0;
     }
 
 }

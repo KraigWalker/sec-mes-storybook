@@ -1,0 +1,91 @@
+%u-bold,
+.u-bold {
+    font-weight: bold !important;
+}
+
+%u-visually-hidden,
+.u-visually-hidden {
+    position: absolute !important;
+    clip: rect(1px, 1px, 1px, 1px);
+    padding:0 !important;
+    border:0 !important;
+    height: 1px !important;
+    width: 1px !important;
+    overflow: hidden;
+
+}
+
+%u-hidden\@xsmall,
+.u-hidden\@xsmall {
+    @include media-breakpoint-up(sm1) {
+        display: none !important;
+    }
+}
+
+%u-hidden\@small,
+.u-hidden\@small {
+    @include media-breakpoint-up(md1) {
+        display: none !important;
+    }
+}
+
+.off-screen {
+    position: absolute;
+    left: -200px;
+    top: -40px;
+}
+.e-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.u-pointer-disable {
+    pointer-events: none;
+}
+
+%u-text-center,
+.u-text-center {
+	text-align: center !important;
+}
+
+%u-no-padding,
+.u-no-padding {
+	padding: 0 !important;
+}
+
+%u-no-margin,
+.u-no-margin {
+	margin: 0 !important;
+}
+
+%u-no-underline,
+.u-no-underline {
+    text-decoration: none !important;
+}
+
+%u-overflow-hidden,
+.u-overflow-hidden {
+    overflow: hidden !important;
+}
+
+%u-full-width,
+.u-full-width {
+    width: 100% !important;
+}
+
+%u-mtauto,
+.u-mtauto {
+    margin-top: auto !important;
+}
+
+%u-inline-block,
+.u-inline-block {
+    display: inline-block !important;
+}
+
+%u-position-relative,
+.u-position-relative {
+    position: relative !important;
+}
+
+

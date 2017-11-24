@@ -6,8 +6,14 @@ import MessageEntity from '../../entities/MessageEntity';
 
 class SecureMessage extends React.Component {
     constructor(props){
-        console.log(PropTypes);
         super(props);
+    }
+
+    handleClick () {
+        alert("clicked");
+    }
+    handlebttn () {
+        alert("bttn clicked");
     }
     render() {
         const { message } = this.props;
@@ -15,7 +21,7 @@ class SecureMessage extends React.Component {
             'c-message': true,
 			'c-message--stacked': this.props.listFlag,
             'c-message--read': this.props.readFlag,
-            'u-cursor-pointer': true,
+            'u-position-relative': this.props.hasOnClick,
 		});
 
         let summaryClass = cx({
@@ -33,6 +39,11 @@ class SecureMessage extends React.Component {
             'c-message__summary__head__title__subject--read': this.props.readFlag,
         });
 
+        let actionsClass = cx({
+            'c-message__summary__head__actions': true,
+            'u-position-relative': this.props.hasOnClick,
+        });
+
         let iconId = this.props.readFlag ? 'icon-message-open' : 'icon-envelope';
         return (
             <div className={messageClass}>
@@ -42,27 +53,32 @@ class SecureMessage extends React.Component {
                     : <span className="c-message__icon"><SvgIcon id={iconId} width="24px" height="24px"/></span>
                 }
                 
-                <div className={summaryClass}>
+                <div className={summaryClass} >
                     <div className="c-message__summary__head">
                         <div className={titleClass}>
-                            <h2 className={subjectClass}>{message.getSubject()}</h2>
+                            <h2 className={subjectClass}>
+                                {this.props.hasOnClick
+                                    ? <a href="/" className="c-message__summary__head__title__subject__link" onClick={this.handleClick}>{message.getSubject()}</a>
+                                    : message.getSubject()
+                                }
+                            </h2>
                             <p className="c-message__summary__head__title__ref">(Reference number)</p>
                         </div>
-                        <div className="c-message__summary__head__actions">
+                        <div className={actionsClass}>
                             {
                                 this.props.draftFlag
                                 ? null
                                 :
-                                <button className="c-btn c-btn--link zero-padding c-message__summary__head__actions__reply">
+                                <button className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding" onClick={this.handlebttn}>
                                     <span className="c-message__summary__head__actions__reply__txt">Reply</span>
                                     <span className="c-message__summary__head__actions__reply__icon">
                                         <SvgIcon id="icon-reply" width="24px" height="24px"/>
                                     </span>
                                 </button>
                             }
-                            <button className="c-btn c-btn--link zero-padding c-message__summary__head__actions__delete">
-                                <span className="c-message__summary__head__actions__reply__txt">Delete</span>
-                                <span className="c-message__summary__head__actions__reply__icon">
+                            <button className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding" onClick={this.handlebttn}>
+                                <span className="c-message__summary__head__actions__delete__txt">Delete</span>
+                                <span className="c-message__summary__head__actions__delete__icon">
                                     <SvgIcon id="icon-delete" width="24px" height="24px"/>
                                 </span>
                             </button>
@@ -80,12 +96,14 @@ SecureMessage.propTypes = {
     listFlag: PropTypes.bool,
     draftFlag: PropTypes.bool,
     readFlag: PropTypes.bool,
+    hasOnClick: PropTypes.bool,
     message: PropTypes.instanceOf(MessageEntity),
 };
 SecureMessage.defaultProps = {
 	listFlag: false,
     draftFlag: false,
     readFlag: false,
+    hasOnClick: false,
 };
 
 export default SecureMessage;

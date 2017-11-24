@@ -43,17 +43,15 @@ class AppRouter {
       static init () {
         return (
             <BrowserRouter>
-                <div>
-                    <Main>
-                    <Switch>
-                        {this.getRoutes()}
-                        {/* <Route path = '/securemessages' render={(props) => 
-                            (<Header title="Secure Messages"><LandingPage/></Header>)}/>
-                        <Route path = '/securemessages:inbox' component = { Inbox }/>
-                        <Redirect from = '/' to = '/securemessages'/>  */}
-                    </Switch>
-                    </Main>
-                </div>
+                <Main>
+                <Switch>
+                    {this.getRoutes()}
+                    {/* <Route path = '/securemessages' render={(props) => 
+                        (<Header title="Secure Messages"><LandingPage/></Header>)}/>
+                    <Route path = '/securemessages:inbox' component = { Inbox }/>
+                    <Redirect from = '/' to = '/securemessages'/>  */}
+                </Switch>
+                </Main>
             </BrowserRouter>
         );
     }
