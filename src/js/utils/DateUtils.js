@@ -1,28 +1,22 @@
  /**
  * @class DateUtils
  */
+import moment from 'moment';
 
-// const config = require('../config');
-const moment = require('moment');
-
-const DateUtils = {
 
 	/**
 	 * Converts timestamp to Date as per the API requirement format
 	 * @param  {String} dateStr e.g. format - 'YYYY-MM-DD'
 	 */
-	getISODateString(dateStr) {
+	export function getISODateString(dateStr) {
 		return moment(dateStr).format("DD-MM-YYYY")
-	},
+	};
 
 	/**
 	 * sort array by date ascending
 	 * @param  {Array} arrayData
 	 */
-	sortArrayByDate(arrayData){
+	export function sortArrayByDate(arrayData){
 		return arrayData.sort((a, b) =>b.getDateCreated().split('/').reverse().join().localeCompare(a.getDateCreated().split('/').reverse().join())); 
-	}
+	};
 
-};
-
-module.exports = DateUtils;
