@@ -12,7 +12,7 @@ const DateUtils = {
 	 * @param  {String} dateStr e.g. format - 'YYYY-MM-DD'
 	 */
 	getISODateString(dateStr) {
-		return moment(dateStr).format("YYYY-MM-DD")
+		return moment(dateStr).format("DD-MM-YYYY")
 	},
 
 	/**
