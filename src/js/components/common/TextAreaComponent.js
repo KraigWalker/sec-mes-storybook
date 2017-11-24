@@ -26,7 +26,7 @@ class TextAreaComponent extends React.Component{
                             Message
                         </label>
                         <div className="c-field__controls">
-                            <textarea className="c-field__input c-field__input--txtarea" name="ta1" id="ta1" rows="10" cols="20" onChange={this.textChange} onPaste = {this.check} maxLength = '20'></textarea>
+                            <textarea className="c-field__input c-field__input--txtarea" name="ta1" id="ta1" rows="10" cols="20" onChange={this.textChange} onPaste = {this.check} maxLength = '23'></textarea>
                         </div> 
                     </div>
         );

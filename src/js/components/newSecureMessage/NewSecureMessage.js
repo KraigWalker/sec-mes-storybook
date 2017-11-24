@@ -18,7 +18,7 @@ class NewSecureMessage extends React.Component {
         this.checkPastedData = this.checkPastedData.bind(this);
         this.renderRemainingChar = this.renderRemainingChar.bind(this);
         this.state = {
-            chars_left: 20,
+            chars_left: 23,
         };
     };
     componentWillMount() {
@@ -34,7 +34,7 @@ class NewSecureMessage extends React.Component {
         }
     }
     textChange(e) {
-        this.setState({ chars_left: 20 - e.length });
+        this.setState({ chars_left: 23 - e.length });
         let extractedString = RegexUtils.matchString(e);
         if (extractedString !== null) {
             let lastFour = RegexUtils.getLastFourDigits(extractedString);
