@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import { Link } from 'react-router-dom';
-import SecureMessage from './SecureMessage';
+import SecureMessageSummary from '../common/SecureMessageSummary';
 
 
 class SecureMessageList extends React.Component {
@@ -11,7 +11,7 @@ class SecureMessageList extends React.Component {
         const hasOnClick = true;
         const listFlag = true;
         _.map(messages, (message, index) => {
-            allMessages.push(<li className="c-messagelist__wrapper"><SecureMessage message= { message } key={index} hasOnClick={hasOnClick} listFlag={listFlag}/></li>)
+            allMessages.push(<li className="c-messagelist__wrapper"><SecureMessageSummary message= { message } key={index} hasOnClick={hasOnClick} listFlag={listFlag}/></li>)
         })
         return allMessages;
     }

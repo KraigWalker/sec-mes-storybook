@@ -9,7 +9,7 @@ class SecureMessageTabs extends React.Component {
 	}
 
 	render() {
-        const { messages } = this.props.messages;
+        const { messages } = this.props;
 		return (messages?
 				<Tabs activeKey={this.props.activeTab} onSelect={this.props.onClick} id="secure_tabs" className="c-scroll-tabs">
 					<Tab eventKey={'inbox'} title={titleName[0]}>

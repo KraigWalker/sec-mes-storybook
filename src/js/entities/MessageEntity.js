@@ -1,9 +1,11 @@
+import AccountEntity from './AccountEntity';
+
 /**
  * @class MessageEntity  Class for getter setter changes
  */
 class MessageEntity {
     constructor() {
-        this.account = null;
+        this.account = new AccountEntity();
         this.reference = null;
         this.dateCreated = null;
         this.status = null;
@@ -15,19 +17,19 @@ class MessageEntity {
      * @returns account mapped to message
      */
     getAccount() {
-        return account;
+        return this.account;
     }
     /**
      * @returns message reference
      */
     getReference() {
-        return reference;
+        return this.reference;
     }
     /**
      * @return Date Of message
      */
     getDateCreated() {
-        return dateCreated;
+        return this.dateCreated;
     }
     /**
      * @return status
@@ -39,7 +41,7 @@ class MessageEntity {
      * @return threadID
      */
     getThreadID() {
-        return threadID;
+        return this.threadID;
     }
     /**
      * @return subject of the message
@@ -58,7 +60,8 @@ class MessageEntity {
      * @param {Object} Account Entity related to the message
      */
     setAccount(account) {
-        this.account = account;
+        this.account.setId(account.id);
+        this.account.setAccountNumber(account.number);
     }
     /**
      * 
