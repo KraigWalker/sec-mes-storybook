@@ -12,7 +12,7 @@ class TextAreaComponent extends React.Component{
         }
     }
     textChange(e) {
-        autosize(document.getElementById('ta1'));
+        autosize(document.getElementById('message'));
         this.props.textData(e.target.value);
     }
     check(e) {
@@ -21,14 +21,15 @@ class TextAreaComponent extends React.Component{
     }
     render() {
         return (
-            <div className="c-field">
-                        <label className="c-field__label c-field__label--block" htmlFor="ta1">
-                            Message
-                        </label>
-                        <div className="c-field__controls">
-                            <textarea className="c-field__input c-field__input--txtarea" name="ta1" id="ta1" rows="10" cols="20" onChange={this.textChange} onPaste = {this.check} maxLength = '23'></textarea>
-                        </div> 
-                    </div>
+            <textarea className="c-field__input c-field__input--txtarea" 
+                name="message" 
+                id="message" 
+                rows="10" 
+                cols="20" 
+                onChange={this.textChange}
+                onPaste = {this.check}
+                maxLength = '20'>
+            </textarea>
         );
     }
 }

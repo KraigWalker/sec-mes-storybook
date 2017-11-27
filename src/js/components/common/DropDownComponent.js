@@ -24,11 +24,11 @@ class DropDownComponent extends React.Component {
        
     }
     render() {
-        return( <div>
+        return( 
         <select onChange = {this.props.selectSubject} name = "select" id={this.props.id}>
         {this.returnMenuItem()}
-    </select><br/><br/><br/>
-    </div>);
+        </select>
+    );
     }
 }
 export default DropDownComponent;

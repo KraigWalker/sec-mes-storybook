@@ -1,10 +1,11 @@
 import { Switch, BrowserRouter, Route, Redirect } from 'react-router-dom';
 import React from 'react';
 import _ from 'lodash';
-import LandingPage from '../components/landing/LandingPage';
+import LandingPage from '../components/secureMessageLanding/LandingPage';
 import Main from '../components/Main';
 import NewSecureMessage from '../components/newSecureMessage/NewSecureMessage';
 import RouteContent from '../content/routeContent';
+import ViewMessage from '../components/viewMessage/ViewMessage'
 
 /** 
  * @class AppRouter Class to initiate and route the application 
@@ -20,6 +21,8 @@ class AppRouter {
             switch(route.component){
                 case 'securemessages':
                 return <LandingPage {...props} headerDetails={route.headerDetails}/>;
+                case 'newmessage':
+                return <ViewMessage {...props} headerDetails={route.headerDetails}/>;
                 case 'newsecuremessage' : 
                 return <NewSecureMessage {...props} headerDetails={route.headerDetails}/>
             }
@@ -40,17 +43,15 @@ class AppRouter {
       static init () {
         return (
             <BrowserRouter>
-                <div>
-                    <Main>
-                    <Switch>
-                        {this.getRoutes()}
-                        {/* <Route path = '/securemessages' render={(props) => 
-                            (<Header title="Secure Messages"><LandingPage/></Header>)}/>
-                        <Route path = '/securemessages:inbox' component = { Inbox }/>
-                        <Redirect from = '/' to = '/securemessages'/>  */}
-                    </Switch>
-                    </Main>
-                </div>
+                <Main>
+                <Switch>
+                    {this.getRoutes()}
+                    {/* <Route path = '/securemessages' render={(props) => 
+                        (<Header title="Secure Messages"><LandingPage/></Header>)}/>
+                    <Route path = '/securemessages:inbox' component = { Inbox }/>
+                    <Redirect from = '/' to = '/securemessages'/>  */}
+                </Switch>
+                </Main>
             </BrowserRouter>
         );
     }

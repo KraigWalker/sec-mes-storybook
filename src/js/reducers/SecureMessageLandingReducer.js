@@ -22,7 +22,9 @@ export default function reducer(state={
       return {...state, fetching : false, fetched: true, messages: action.payload}
     }
     case AppConstants.REQUEST_TAB_ACTIVE: {
-      return {...state, activeTab: action.payload.activeTab}
+      const newState=Object.assign({},state);
+      newState.activeTab=action.payload;
+      return newState;
     }
    default:
     return state;

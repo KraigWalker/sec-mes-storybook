@@ -26,11 +26,9 @@
 @import "vendor/bootstrap/mixins/text-overflow";
 @import "vendor/bootstrap/mixins/clearfix";
 @import "vendor/bootstrap/bootswatch-variables";
-@import "vendor/bootstrap/mixins/reset-filter";
-
-@import "vendor/bootstrap/button-groups";
-@import "vendor/bootstrap/dropdowns";
 @import "vendor/bootstrap/modals";
 @import "vendor/bootstrap/navs";
 
 @import "5-Components/components.all";
+
+@import "7-Utilities/utilities";
