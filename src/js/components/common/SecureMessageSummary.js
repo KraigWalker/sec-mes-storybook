@@ -47,7 +47,7 @@ class SecureMessageSummary extends React.Component {
             let iconId = this.props.readFlag ? 'icon-message-open' : 'icon-envelope';
         return (
             <div className={messageClass}>
-            {this.props.draftFlag ? null : <span className="c-message__icon"><GetIcon id={iconId} width="24px" height="24px"/></span>}
+            {!this.props.draftFlag && <span className="c-message__icon"><GetIcon id={iconId} width="24px" height="24px"/></span>}
             <div className={summaryClass} >
                 <div className="c-message__summary__head">
                     <div className={titleClass}>
@@ -61,8 +61,7 @@ class SecureMessageSummary extends React.Component {
                     </div>
                     <div className={actionsClass}>
                         {
-                            this.props.draftFlag ? null
-                            :
+                            !this.props.draftFlag &&
                             <button className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding" onClick={this.handlebttn}>
                                 <span className="c-message__summary__head__actions__reply__txt">Reply</span>
                                 <span className="c-message__summary__head__actions__reply__icon">
