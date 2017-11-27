@@ -59,7 +59,7 @@ class NewSecureMessage extends React.Component {
         return (<div className="container">
             <div className="row">
                 <div className="col-md1-18">
-                    <StepHeader showheaderCrumbs={true} onClick={() => {}} headerCrumbsMessage="Back" headerTitle="New message" />
+                    <StepHeader showheaderCrumbs={true} onClick={() => {}} headerCrumbsMessage="Back" headerTitle="New message" headerCrumbsPath={{ pathname : '/securemessage'}}/>
                 </div>
             </div>
             {/*<Link to='/securemessages'> Back To Homepage</Link><br />*/}

@@ -1,4 +1,5 @@
 import AccountEntity from './AccountEntity';
+import {getISODateString} from '../utils/DateUtils';
 
 /**
  * @class MessageEntity  Class for getter setter changes
@@ -75,7 +76,7 @@ class MessageEntity {
      * @param {*} date 
      */
     setDateCreated(date) {
-        this.dateCreated = date;
+        this.dateCreated = getISODateString(date);
     }
     /**
      * 
