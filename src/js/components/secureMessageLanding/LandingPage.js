@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { getSecureMessages, getActiveTab } from '../../actions/AppActions';
+import { fetchSecureMessages, getActiveTab } from '../../actions/AppActions';
 import { connect } from 'react-redux';
 import SecureMessageTabs from './SecureMessageTabs';
 import StepHeader from '../common/StepHeader';
@@ -15,7 +15,7 @@ class LandingPage extends React.PureComponent {
         super(props);
     }
     componentWillMount() {
-        !this.props.messages.fetched && this.props.dispatch(getSecureMessages());
+        !this.props.messages.fetched && this.props.dispatch(fetchSecureMessages());
     }
     linkClick = (activeTab) => {
         this.props.dispatch(getActiveTab(activeTab));

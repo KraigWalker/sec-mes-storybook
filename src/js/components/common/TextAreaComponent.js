@@ -28,7 +28,10 @@ class TextAreaComponent extends React.Component{
                 cols="20" 
                 onChange={this.textChange}
                 onPaste = {this.check}
+                value={this.props.messageBody}
+                disabled={this.props.disableText}
                 maxLength = '20'>
+                
             </textarea>
         );
     }

@@ -15,14 +15,17 @@ export default function reducer(state={
 }, action) {
 
   switch (action.type) {
-    case AppConstants.REQUEST_DATA: {
+    case AppConstants.REQUEST_SECURE_MESSAGES: {
       return {...state, fetching: true }
     }
-    case AppConstants.REQUEST_DATA_SUCCESS: {
+    case AppConstants.REQUEST_SECURE_MESSAGES_SUCCESS: {
       return {...state, fetching : false, fetched: true, messages: action.payload}
     }
     case AppConstants.REQUEST_TAB_ACTIVE: {
       return {...state, activeTab: action.payload}
+    }
+    case AppConstants.GET_SECURE_MESSAGES: {
+      return {...state}
     }
    default:
     return state;
