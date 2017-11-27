@@ -13,7 +13,7 @@ module.exports = {
   output: {
       path:__dirname+ '/src/compiled/',
       filename: "[name].bundle.js",
-      publicPath: '/'
+      publicPath: '/compiled/'
   },
   module: {
       rules: [
@@ -58,7 +58,7 @@ module.exports = {
             test: /\.(otf|ttf|eot|svg)$/,
             exclude: /node_modules/,
             include: path.resolve(__dirname, "src/fonts/"),
-            loader: 'url-loader?limit=1024&name=compiled/fonts/[name].[ext]'
+            loader: 'url-loader?limit=1024&name=fonts/[name].[ext]'
           }
 
       ]
