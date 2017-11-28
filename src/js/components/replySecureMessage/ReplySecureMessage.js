@@ -7,14 +7,14 @@ import DropDownComponent from '../common/DropDownComponent'
 
 
 class ReplySecureMessage extends React.Component {
-   
+    
     render() {
-        // const { ThreadDetail } = this.props;
+        const { backPath } = this.props.location;
         return (
             <div className="container">
             <div className="row">
                 <div className="col-md1-18">
-                    <StepHeader showheaderCrumbs={true} onClick={() => {}} headerCrumbsMessage="Back" headerTitle="Reply" headerCrumbsPath={{ pathname : '/securemessage'}}/>
+                    <StepHeader showheaderCrumbs={true} onClick={() => {}} headerCrumbsMessage="Back" headerTitle="Reply" headerCrumbsPath={{ pathname : backPath}}/>
                 </div>
             </div>
             <div className="c-field">

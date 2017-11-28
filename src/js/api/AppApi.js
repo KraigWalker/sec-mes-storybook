@@ -19,6 +19,10 @@ class AppApi {
     console.log('SEND MESSAGE DATA:',requestData);
    // ApiUtils.makeRequest({ url: _sendMessageURL, method: 'POST' ,requestData : SendMessageRequestEntity.getMessageRequestData()}, success, error);
   }
+  static updateMessage(requestData,success,error){
+    console.log('UPDATE MESSAGE DATA', requestData)
+    // ApiUtils.makeRequest({ url: _sendMessageURL, method: 'POST' ,requestData : SendMessageRequestEntity.getMessageRequestData()}, success, error);
+  }
   
 }
 

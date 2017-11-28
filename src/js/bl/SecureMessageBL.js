@@ -38,5 +38,7 @@ export function SecureMessageBL(response) {
      * @param {object} currentMessage //current message.
      */
     export function getThreadsBL(messages, currentMessage) {
-        return messages.filter(message => message.threadID === currentMessage.threadID && moment(currentMessage.dateCreated).isSameOrAfter(message.dateCreated));
+        // Enable it for LOG. ---- messages.filter(message => console.log("old date: "+message.dateCreated+" current date: "+currentMessage.dateCreated+" Condition: "+moment(moment(message.dateCreated, "DD-MM-YYYY")).isBefore(moment(currentMessage.dateCreated, "DD-MM-YYYY"))) );
+        return messages.filter(message => message.threadID === currentMessage.threadID && moment(message.dateCreated, "DD-MM-YYYY").isBefore(moment(currentMessage.dateCreated, "DD-MM-YYYY")));
+        
     }

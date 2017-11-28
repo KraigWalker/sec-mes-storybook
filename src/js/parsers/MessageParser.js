@@ -11,6 +11,7 @@ export function parseMessages(response) {
     const sortedMessages = sortArrayByDate(response.securemessages);
     _.forEach(sortedMessages, message => {
         const messageEntity = new MessageEntity();
+        messageEntity.setId(message.id);
         messageEntity.setDateCreated(message.date_created);
         // messageEntity.setAccount(message.account); // Account Entity to be hooked 
         messageEntity.setThreadId(message.thread_id);

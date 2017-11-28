@@ -13,3 +13,8 @@ export function getMessageType(type){
         return 'inbox';
     }
 }
+
+export function updateMessageStatus(message, status){
+    message.status = status;
+    return message;
+}

@@ -91,3 +91,48 @@ export function getSecureMessages() {
   }
 }
 
+export function setViewMessageDetail(messageDetail) {
+  return function(dispatch) {
+      const payload = {
+        payload: messageDetail,
+        type: AppConstants.SET_VIEW_MESSAGE_DETAIL,
+    }
+    dispatch(payload);
+  }
+}
+
+export function getViewMessageDetail() {
+  return function(dispatch) {
+      const payload = {
+        type: AppConstants.GET_VIEW_MESSAGE_DETAIL,
+    }
+    dispatch(payload);
+  }
+}
+
+export function updateMessage(requestData, messages) {
+  return function(dispatch) {
+    /**
+     * Temporary dispach added - UPDATE_SECURE_MESSAGE_SUCCESS need to be called from success. (after actual service integration.)
+     */
+    console.log(message);
+      const payload = {
+        payload : {messages, requestData},
+        type: AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS,
+    }
+    dispatch(payload);
+    const success = (response) => {
+      // const parseData = parseMessages(response);
+      // const payload = {
+        // type: AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS,
+        // payload: response
+      // }
+      // dispatch(payload);
+      console.log(response);
+    }
+    const error = (error) => {
+      console.log(error);
+    }
+    AppApi.updateMessage(requestData,success, error);
+  }
+}

@@ -27,6 +27,9 @@ export default function reducer(state={
     case AppConstants.GET_SECURE_MESSAGES: {
       return {...state}
     }
+    case AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS: {
+      return {...state, messages: action.payload.messages}
+    }
    default:
     return state;
   }
