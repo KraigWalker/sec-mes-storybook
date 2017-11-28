@@ -17,12 +17,12 @@ class StepHeader extends React.Component {
 	render() {
 		return (
 		<div className="c-step-header" id={this.props.id ? this.props.id : ""}>
-		{/* {this.props.showheaderCrumbs ?	<p className="c-step-header__crumbs">
+		{this.props.showheaderCrumbs ?	<p className="c-step-header__crumbs">
 			<Link to = {this.props.headerCrumbsPath} className="c-step-header__link">
 				<SvgIcon id="icon-left" width="16px" height="16px"/>
 				<span className="c-step-header__linktext">{this.props.headerCrumbsMessage}</span>
 			</Link>
-			</p> : null} */}
+			</p> : null}
 			<h1 className="c-step-header__title">{this.props.headerTitle}</h1>
             {this.props.headerSubtitle ? <p className="c-step-header__subtitle">{this.props.headerSubtitle}</p> : null}
 			{this.props.headerSubtext ? this.getSubtext() : null}

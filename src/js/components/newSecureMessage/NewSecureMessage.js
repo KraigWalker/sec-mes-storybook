@@ -8,7 +8,7 @@ import DropDownComponent from '../common/DropDownComponent.js';
 import TextAreaComponent from '../common/TextAreaComponent.js';
 import StepHeader from '../common/StepHeader';
 import SendMessageRequestEntity from '../../entities/SendMessageRequestEntity.js'
-import PatternLibModalComponent from '../common/PatternLibModalComponent';
+import ModalComponent from '../common/ModalComponent';
 import RegexUtils from '../utils/RegexUtils.js';
 let messageEntity = new SendMessageRequestEntity();
 class NewSecureMessage extends React.Component {
@@ -75,7 +75,7 @@ class NewSecureMessage extends React.Component {
             <p className="review-modal__submsg"></p></div>;
         let footerButtons = <div className="review-modal__options"><Link to='/securemessages'><button type="button" onClick={this.leavePage} className="c-btn c-btn--secondary c-modal__button">Leave page</button></Link>
             <button type="button" onClick={this.stayOnPage} className="c-btn c-btn--default c-modal__button">Return to message</button></div>;
-        return (<PatternLibModalComponent show
+        return (<ModalComponent show
             onHide={this.stayOnPage}
             customClass={"c-modal review-modal"}
             bsSize={'medium'}
@@ -89,7 +89,7 @@ class NewSecureMessage extends React.Component {
         return (<div className="container">
             <div className="row">
                 <div className="col-md1-18">
-                    <StepHeader showheaderCrumbs={true} onClick={() => { }} headerCrumbsMessage="Back" headerTitle="New message" />
+                    <StepHeader showheaderCrumbs={true} onClick={() => {}} headerCrumbsMessage="Back" headerTitle="New message" headerCrumbsPath={{ pathname : '/securemessage'}}/>
                 </div>
             </div>
             {/*<Link to='/securemessages'> Back To Homepage</Link><br />*/}
@@ -120,6 +120,7 @@ class NewSecureMessage extends React.Component {
                 <div className="c-field__controls">
                     <TextAreaComponent textData={this.textChange} />
                 </div>
+                {this.renderRemainingChar()}
             </div>
 
             {this.state.showPopup ? this.returnModalComponent() : ''}

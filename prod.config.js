@@ -13,7 +13,7 @@ module.exports = {
   output: {
       path:__dirname+ '/src/compiled/',
       filename: "[name].bundle.js",
-      publicPath: '/'
+      publicPath: '/compiled/'
   },
   module: {
       rules: [
@@ -51,11 +51,13 @@ module.exports = {
           {
             test: /\.(jpg|jpeg|gif|png|svg)$/,
             exclude: /node_modules/,
+            include: path.resolve(__dirname, "src/images/"),
             loader:'url-loader?limit=1024&name=images/[name].[ext]'
           },
           {
-            test: /\.(otf|ttf|eot)$/,
+            test: /\.(otf|ttf|eot|svg)$/,
             exclude: /node_modules/,
+            include: path.resolve(__dirname, "src/fonts/"),
             loader: 'url-loader?limit=1024&name=fonts/[name].[ext]'
           }
 

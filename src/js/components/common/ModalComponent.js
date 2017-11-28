@@ -4,7 +4,7 @@ import { ModalFooter, ModalHeader, ModalBody, ModalTitle } from 'react-bootstrap
 import Modal from 'react-bootstrap/lib/Modal';
 
 
-class PatternLibModalComponent extends React.Component {
+class ModalComponent extends React.Component {
 
     componentWillMount() {
         // mounted before rendering
@@ -39,8 +39,7 @@ class PatternLibModalComponent extends React.Component {
     render() {
         return (
             <div>
-            {this.props.customClass == "c-update-modal" ?
-            (<Modal
+            <Modal
                 show={this.props.show}
                 className={this.props.customClass}
                 onHide={this.props.onHide}
@@ -61,40 +60,14 @@ class PatternLibModalComponent extends React.Component {
                 <Modal.Footer className="c-update-modal__footer">
                     {this.props.modalFooter}
                 </Modal.Footer>
-            </Modal>)
-            :(
-                <Modal
-                show={this.props.show}
-                className={this.props.customClass}
-                onHide={this.props.onHide}
-                bsSize={this.props.bsSize}
-                modalHeading={this.props.modalHeading}
-                modalFooter={this.props.modalFooter}
-                container={this.props.scope}
-                backdrop={this.props.backdrop}
-                >
-                <Modal.Header className="c-modal__header" closeButton={this.props.closeButton}>
-                    <Modal.Title componentClass="h2" className="c-modal__title" id="contained-modal-title-lg">{this.props.modalHeading}</Modal.Title>
-
-                </Modal.Header>
-                
-                <Modal.Body className={this.props.modalHeading == "" && this.props.modalFooter == "" ? "c-modal__body" : "c-modal__body c-modal__body--padding"} >
-                    {this.props.modalBody}
-                </Modal.Body>
-               
-                    
-                <Modal.Footer className="c-modal__footer">
-                    {this.props.modalFooter}
-                </Modal.Footer>
             </Modal>
-            )}
             </div>
         );
     }
 }
 
 
-// PatternLibModalComponent.propTypes = {
+// ModalComponent.propTypes = {
 //     show: React.PropTypes.bool,
 //     onHide: React.PropTypes.func,
 //     bsSize: React.PropTypes.string,
@@ -105,7 +78,7 @@ class PatternLibModalComponent extends React.Component {
 //     closeButton: React.PropTypes.bool,
 // };
 
-// PatternLibModalComponent.defaultProps = {
+// ModalComponent.defaultProps = {
 //     show: false,
 //     onHide: function () { return null; },
 //     bsSize: 'medium',
@@ -118,5 +91,5 @@ class PatternLibModalComponent extends React.Component {
 //     scope: this
 // };
 
-module.exports = PatternLibModalComponent;
+module.exports = ModalComponent;
 

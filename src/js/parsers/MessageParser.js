@@ -1,5 +1,6 @@
 import _ from  'lodash';
 import MessageEntity from '../entities/MessageEntity';
+import {sortArrayByDate} from '../utils/DateUtils';
 
 /**
  * 
@@ -20,6 +21,6 @@ export function parseMessages(response) {
         // messageEntity.setMessageBody(message.payload.body.data);
         messages.push(messageEntity);
     });
-    return messages;
+    return sortArrayByDate(messages);
 
 }
