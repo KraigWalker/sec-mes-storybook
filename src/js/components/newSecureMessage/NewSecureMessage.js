@@ -89,7 +89,7 @@ class NewSecureMessage extends React.Component {
         return (<div className="container">
             <div className="row">
                 <div className="col-md1-18">
-                    <StepHeader showheaderCrumbs={true} onClick={() => {}} headerCrumbsMessage="Back" headerTitle="New message" headerCrumbsPath={{ pathname : '/securemessage'}}/>
+                    <StepHeader showheaderCrumbs={true} onClick={() => { }} headerCrumbsMessage="Back" headerTitle="New message" headerCrumbsPath={{ pathname: '/securemessage' }} />
                 </div>
             </div>
             {/*<Link to='/securemessages'> Back To Homepage</Link><br />*/}
@@ -105,7 +105,7 @@ class NewSecureMessage extends React.Component {
 
             <div className="c-field">
                 <label className="c-field__label c-field__label--block" htmlFor="subjects">
-                    Accounts
+                    Message relates to
                 </label>
                 <div className="c-field__controls">
                     <DropDownComponent accounts={this.props.accounts} selectSubject={this.selectSubject} name='accounts' id='accounts' />
