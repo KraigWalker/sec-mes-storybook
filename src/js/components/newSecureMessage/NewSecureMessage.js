@@ -34,12 +34,12 @@ class NewSecureMessage extends React.Component {
         }
 
     }
-    selectSubject(e) {
-        if (e.target.id === 'accounts') {
-            messageEntity.setAccount(e.target.value);
+    selectSubject(value,id) {
+        if (id === 'accounts') {
+            messageEntity.setAccount(value);
         }
-        if (e.target.id === 'subjects') {
-            messageEntity.setSubject(e.target.value);
+        if (id === 'subjects') {
+            messageEntity.setSubject(value);
         }
     }
     textChange(e) {
