@@ -8,6 +8,7 @@ import DropDownComponent from '../common/DropDownComponent.js';
 import TextAreaComponent from '../common/TextAreaComponent.js';
 import StepHeader from '../common/StepHeader';
 import SendMessageRequestEntity from '../../entities/SendMessageRequestEntity.js'
+import ModalComponent from '../common/ModalComponent';
 import RegexUtils from '../utils/RegexUtils.js';
 let messageEntity = new SendMessageRequestEntity();
 class NewSecureMessage extends React.Component {
@@ -18,13 +19,20 @@ class NewSecureMessage extends React.Component {
         this.textChange = this.textChange.bind(this);
         this.checkPastedData = this.checkPastedData.bind(this);
         this.renderRemainingChar = this.renderRemainingChar.bind(this);
+        this.leavePage = this.leavePage.bind(this);
+        this.stayOnPage = this.stayOnPage.bind(this);
+        this.returnModalComponent = this.returnModalComponent.bind(this);
         this.state = {
-            chars_left: 20,
+            chars_left: 23,
+            showPopup: false,
         };
     };
     componentWillMount() {
-        this.props.dispatch(getMessageSubjects());
-        this.props.dispatch(getAccounts());
+        if (!this.props.subjects.fetched && !this.props.accounts.fetched) {
+            this.props.dispatch(getMessageSubjects());
+            this.props.dispatch(getAccounts());
+        }
+
     }
     selectSubject(e) {
         if (e.target.id === 'accounts') {
@@ -35,7 +43,7 @@ class NewSecureMessage extends React.Component {
         }
     }
     textChange(e) {
-        this.setState({ chars_left: 20 - e.length });
+        this.setState({ chars_left: 23 - e.length });
         let extractedString = RegexUtils.matchString(e);
         if (extractedString !== null) {
             let lastFour = RegexUtils.getLastFourDigits(extractedString);
@@ -48,12 +56,34 @@ class NewSecureMessage extends React.Component {
         this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData()));
     }
     checkPastedData(data) {
-      //  console.log(RegexUtils.isValidPastedData(data));
+        //  console.log(RegexUtils.isValidPastedData(data));
     }
     renderRemainingChar() {
         if (this.state.chars_left <= 3) {
             return <p>Characters Left: {this.state.chars_left}</p>;
         } else return '';
+    }
+    leavePage() {
+        console.log('LEAVE PAGE');
+        this.setState({ showPopup: true });
+    }
+    stayOnPage() {
+        this.setState({ showPopup: false });
+    }
+    returnModalComponent() {
+        let bodyContent = <div><div className="callout callout__error">If you leave the message now it won’t be saved.</div>
+            <p className="review-modal__submsg"></p></div>;
+        let footerButtons = <div className="review-modal__options"><Link to='/securemessages'><button type="button" onClick={this.leavePage} className="c-btn c-btn--secondary c-modal__button">Leave page</button></Link>
+            <button type="button" onClick={this.stayOnPage} className="c-btn c-btn--default c-modal__button">Return to message</button></div>;
+        return (<ModalComponent show
+            onHide={this.stayOnPage}
+            customClass={"c-modal review-modal"}
+            bsSize={'medium'}
+            modalHeading={'Your message hasn’t been sent yet'}
+            modalBody={bodyContent}
+            modalFooter={footerButtons}
+            modalInContainer={false}
+            closeButton />);
     }
     render() {
         return (<div className="container">
@@ -81,7 +111,7 @@ class NewSecureMessage extends React.Component {
                     <DropDownComponent accounts={this.props.accounts} selectSubject={this.selectSubject} name='accounts' id='accounts' />
                 </div>
             </div>
-            
+
 
             <div className="c-field">
                 <label className="c-field__label c-field__label--block" htmlFor="subjects">
@@ -90,13 +120,17 @@ class NewSecureMessage extends React.Component {
                 <div className="c-field__controls">
                     <TextAreaComponent textData={this.textChange} />
                 </div>
+                {this.renderRemainingChar()}
             </div>
 
+            {this.state.showPopup ? this.returnModalComponent() : ''}
             <Link to='/securemessages'>
-                <input type='button' name='cancel' value='Back' className="c-btn c-btn--secondary"/>
+                <input type='button' name='cancel' value='Back' className="c-btn c-btn--secondary" />
             </Link>&nbsp;
+
             <button name='Save Draft' className="c-btn c-btn--secondary">Save Draft</button>&nbsp;
             <button name='Send' className="c-btn c-btn--default" onClick={this.sendData}>Send</button>
+            <button name='LeavePage' className="c-btn c-btn--default" onClick={this.leavePage}>LeavePage</button>
         </div>);
     }
 }

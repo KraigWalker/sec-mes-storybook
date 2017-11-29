@@ -12,7 +12,7 @@ class TextAreaComponent extends React.Component{
         }
     }
     textChange(e) {
-        autosize(document.getElementById('ta1'));
+        autosize(document.getElementById('message'));
         this.props.textData(e.target.value);
     }
     check(e) {
@@ -28,10 +28,7 @@ class TextAreaComponent extends React.Component{
                 cols="20" 
                 onChange={this.textChange}
                 onPaste = {this.check}
-                value={this.props.messageBody}
-                disabled={this.props.disableText}
-                maxLength = '20'>
-                
+                maxLength = '23'>
             </textarea>
         );
     }

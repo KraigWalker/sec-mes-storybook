@@ -7,7 +7,9 @@ import AppConstants from '../constants/AppConstants';
  */
 
 export default function reducer(state={
-    accounts: []
+    accounts: [],
+    fetching:false,
+    fetched:false,
 }, action) {
 
   switch (action.type) {
@@ -15,7 +17,7 @@ export default function reducer(state={
       return {...state, fetching: true }
     }
     case AppConstants.REQUEST_ACCOUNTS_SUCCESS: {
-      return {...state, accounts: action.payload}
+      return {...state, accounts: action.payload,fetched:true}
     }
    default:
     return state;
