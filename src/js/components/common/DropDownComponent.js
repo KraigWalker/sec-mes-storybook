@@ -67,7 +67,7 @@ class DropDownComponent extends React.Component {
                     <div className="c-field__controls pos-r">
                         <button className="c-field__input c-field__input--select text-left c-dropdown" onClick={this.showList}>{this.state.Text}</button>
                         {this.state.list ? <div ref="overlay" className={overlayClassName} onClick={this.overlayclick} ></div> : ''}
-                        <ul className="c-dropdown__list u-cursor-pointer custom-dropdown">{this.state.list ? this.returnMenuItem() : ''}</ul>
+                        {this.state.list && <ul className="c-dropdown__list u-cursor-pointer">{this.returnMenuItem()}</ul>}
                     </div>
                 </div>
 
