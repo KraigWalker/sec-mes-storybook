@@ -59,6 +59,39 @@ $text-color: bow-palette(grey, text);
 		@extend %type--jura;
 	}
 
+	.c-dropdown {
+		z-index: 2 !important;
+
+		&__list {
+			background-color: bow-palette(white, base);
+			position: absolute;
+			border: 1px solid;
+			border-radius: 5px;
+			list-style: none;
+			padding : 0px;
+			z-index: 2;
+			width: 100%;
+		}
+
+		&__value {
+			padding: 3px 12px;
+
+			&:first-child {
+				border-top-left-radius: 5px;
+				border-top-right-radius: 5px;
+			}
+
+			&:last-child {
+				border-bottom-left-radius: 5px;
+				border-bottom-right-radius: 5px;
+			}
+	
+			&:hover {
+				background-color: bow-palette(gray,light);
+			}
+		}
+	}
+
 	.c-field__controls,
 	.c-field__message,
 	.c-preview__controls,
@@ -70,6 +103,8 @@ $text-color: bow-palette(grey, text);
 		input,
 		select,
 		textarea,
+		.c-dropdown,
+		.c-dropdown__list,
 		//.custom-dropdown,
 		.input-group.date {
 			max-width: 343px;
