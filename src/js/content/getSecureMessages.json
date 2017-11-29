@@ -11,8 +11,8 @@
       },
     "securemessages": [
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
+        "id": "1",
+        "thread_id": "24569088-5cf1-43ea-873f-c",
         "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
@@ -21,15 +21,15 @@
         },
         "payload": {
             "body": {
-                "data": "A message sent by a customer to the bank"
+                "data": "Hi, \nI am so so..."
             }
         },
         "date_created": "2017-10-17T10:56:43",
         "status": "PENDING"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
+        "id": "2",
+        "thread_id": "24569088-5cf1-43ea-873f-c",
         "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
@@ -45,8 +45,8 @@
         "status": "DRAFT"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
+        "id": "3",
+        "thread_id": "24569088-5cf1-43ea-873f-c",
         "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
@@ -62,8 +62,8 @@
         "status": "SENT"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
+        "id": "4",
+        "thread_id": "24569088-5cf1-43ea-873f-c",
         "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
@@ -79,8 +79,8 @@
         "status": "NEW"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
+        "id": "5",
+        "thread_id": "24569088-5cf1-43ea-873f-c",
         "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
@@ -96,8 +96,8 @@
         "status": "SENT"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
+        "id": "6",
+        "thread_id": "24569088-5cf1-43ea-873f-c",
         "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
@@ -113,8 +113,8 @@
         "status": "NEW"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
+        "id": "7",
+        "thread_id": "24569088-5cf1-43ea-873f-c",
         "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
@@ -130,8 +130,8 @@
         "status": "SENT"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
+        "id": "8",
+        "thread_id": "24569088-5cf1-c75ff61c2b4b",
         "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
@@ -147,8 +147,8 @@
         "status": "SENT"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
+        "id": "9",
+        "thread_id": "24569088-5cf1-c75ff61c2b4b",
         "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
@@ -164,8 +164,8 @@
         "status": "SENT"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
+        "id": "10",
+        "thread_id": "24569088-5cf1-c75ff61c2b4b",
         "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
@@ -181,8 +181,8 @@
         "status": "PENDING"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
+        "id": "11",
+        "thread_id": "24569088-5cf1-c75ff61c2b4b",
         "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
@@ -198,8 +198,8 @@
         "status": "SENT"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
+        "id": "12",
+        "thread_id": "24569088-5cf1-c75ff61c2b4b",
         "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
@@ -215,8 +215,8 @@
         "status": "SENT"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
+        "id": "13",
+        "thread_id": "24569088-5cf1-c75ff61c2b4b",
         "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
@@ -232,8 +232,8 @@
         "status": "SENT"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
+        "id": "14",
+        "thread_id": "24569088-c75ff61c2b4b",
         "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
@@ -249,8 +249,8 @@
         "status": "PENDING"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
+        "id": "15",
+        "thread_id": "24569088-c75ff61c2b4b",
         "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
@@ -266,8 +266,8 @@
         "status": "SENT"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
+        "id": "16",
+        "thread_id": "24569088-c75ff61c2b4b",
         "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
@@ -283,8 +283,8 @@
         "status": "READ"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
+        "id": "17",
+        "thread_id": "24569088-c75ff61c2b4b",
         "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
@@ -300,8 +300,8 @@
         "status": "SENT"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
+        "id": "18",
+        "thread_id": "24569088-c75ff61c2b4b",
         "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {

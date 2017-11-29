@@ -94,4 +94,4 @@ GetTabs.defaultProps = {
 	IconFlag: true,
 };
 
-module.exports = GetTabs;
+export default GetTabs;
