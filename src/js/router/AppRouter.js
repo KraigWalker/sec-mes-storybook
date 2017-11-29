@@ -6,6 +6,7 @@ import Main from '../components/Main';
 import NewSecureMessage from '../components/newSecureMessage/NewSecureMessage';
 import RouteContent from '../content/routeContent';
 import ViewMessage from '../components/viewMessage/ViewMessage'
+import ReplySecuremessage from '../components/replySecureMessage/ReplySecureMessage'
 
 /** 
  * @class AppRouter Class to initiate and route the application 
@@ -25,6 +26,9 @@ class AppRouter {
                 return <ViewMessage {...props} headerDetails={route.headerDetails}/>;
                 case 'newsecuremessage' : 
                 return <NewSecureMessage {...props} headerDetails={route.headerDetails}/>
+                case 'replysecuremessage' : 
+                return <ReplySecuremessage {...props} headerDetails={route.headerDetails}/>
+                
             }
         };
 

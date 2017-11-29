@@ -11,4 +11,4 @@ class CommonGetIcon extends React.Component {
         );
     }
 };
-module.exports = CommonGetIcon;
+export default CommonGetIcon;

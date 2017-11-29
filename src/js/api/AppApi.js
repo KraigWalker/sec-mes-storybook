@@ -6,7 +6,7 @@ const _getMessageURL = 'http://localhost:8000/js/content/getSecureMessages.json'
 const _getMessageSubjectsURL = 'http://localhost:8000/js/content/messageSubjectsResponse.json';
 const _getAccountsURL = 'http://localhost:8000/js/content/getAccounts.json';
 class AppApi {
-  static getSecureMessages(success, error) {
+  static fetchSecureMessages(success, error) {
     ApiUtils.makeRequest({ url: _getMessageURL, method: 'GET' }, success, error);
   }
   static getSubjects(success, error) {
@@ -18,6 +18,10 @@ class AppApi {
   static sendMessageData(requestData,success,error) {
     console.log('SEND MESSAGE DATA:',requestData);
    // ApiUtils.makeRequest({ url: _sendMessageURL, method: 'POST' ,requestData : SendMessageRequestEntity.getMessageRequestData()}, success, error);
+  }
+  static updateMessage(requestData,success,error){
+    console.log('UPDATE MESSAGE DATA', requestData)
+    // ApiUtils.makeRequest({ url: _sendMessageURL, method: 'POST' ,requestData : SendMessageRequestEntity.getMessageRequestData()}, success, error);
   }
   
 }

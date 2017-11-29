@@ -6,6 +6,7 @@ import {getISODateString} from '../utils/DateUtils';
  */
 class MessageEntity {
     constructor() {
+        this.id = null;
         this.account = new AccountEntity();
         this.reference = null;
         this.dateCreated = null;
@@ -13,6 +14,12 @@ class MessageEntity {
         this.threadID = null;
         this.subject = null;
         this.messageBody = null;
+    }
+    /**
+     * @returns account mapped to message
+     */
+    getId() {
+        return this.id;
     }
     /**
      * @returns account mapped to message
@@ -55,6 +62,13 @@ class MessageEntity {
      */ 
     getMessageBody() {
         return this.messageBody;
+    }
+    /**
+     * 
+     * @param {String} reference of the secure message
+     */
+    setId(id) {
+        this.id = id; 
     }
     /**
      * 
