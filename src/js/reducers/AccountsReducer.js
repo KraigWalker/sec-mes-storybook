@@ -13,7 +13,7 @@ export default function reducer(state={
 }, action) {
 
   switch (action.type) {
-    case AppConstants.REQUEST_DATA: {
+    case AppConstants.REQUEST_SECURE_MESSAGES: {
       return {...state, fetching: true }
     }
     case AppConstants.REQUEST_ACCOUNTS_SUCCESS: {
