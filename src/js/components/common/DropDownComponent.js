@@ -17,7 +17,7 @@ class DropDownComponent extends React.Component {
         if (this.props.id === 'accounts') {
             let items = [];
             _.map(this.props.accounts.accounts, (account) => {
-                items.push( <li className="c-dropdown__value" key = {account} value={account} onClick={this.setDropDrownValue}>{account}</li>
+                items.push(<li className="c-dropdown__value" key={account} value={account} onClick={this.setDropDrownValue}>{account}</li>
                 );
             })
             return items;
@@ -25,7 +25,7 @@ class DropDownComponent extends React.Component {
         } else {
             let items = [];
             _.map(this.props.subjects.subjects, (subject) => {
-                items.push(<li className="c-dropdown__value" key = {subject.key} value={subject.value} onClick={this.setDropDrownValue}>{subject.value}</li>);
+                items.push(<li className="c-dropdown__value" key={subject.key} value={subject.value} onClick={this.setDropDrownValue}>{subject.value}</li>);
             }, false);
             return items;
         }
@@ -52,6 +52,11 @@ class DropDownComponent extends React.Component {
         });
     }
     render() {
+        const overlayClassName = cx({
+            'c-overlay overlay__custom--zindex': true,
+            'overlay__show': this.state.list,
+
+        });
         return (
             // <select onChange = {this.props.selectSubject} name = "select" id={this.props.id}>
             // {this.returnMenuItem()}
@@ -61,7 +66,7 @@ class DropDownComponent extends React.Component {
                 <div className="c-field">
                     <div className="c-field__controls pos-r">
                         <button className="c-field__input c-field__input--select text-left c-dropdown" onClick={this.showList}>{this.state.Text}</button>
-                        {this.state.list ? <div ref="overlay" onClick={this.overlayclick} ></div> : ''}
+                        {this.state.list ? <div ref="overlay" className={overlayClassName} onClick={this.overlayclick} ></div> : ''}
                         <ul className="c-dropdown__list u-cursor-pointer custom-dropdown">{this.state.list ? this.returnMenuItem() : ''}</ul>
                     </div>
                 </div>
