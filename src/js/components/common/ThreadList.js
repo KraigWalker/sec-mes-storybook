@@ -14,11 +14,9 @@ class ThreadList extends React.Component {
     }
     render() {
         return (
-            <section>
-                <ol className="c-messagelist">
-                    {this.getThreadList()}
-                </ol>
-            </section>
+            <div>
+                {this.getThreadList()}
+            </div>
         );  
     }
 };

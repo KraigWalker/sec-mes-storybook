@@ -35,8 +35,7 @@
             .c-step-header__link {
                 @extend %type--jura; 
                 @include brand-theme(color);
-                text-decoration: none;
-                @include brand-text;
+                // @include brand-text;
 
             &:focus {
                 @include on-focus();
@@ -47,6 +46,7 @@
             }
             .c-step-header__linkicon {
                 margin-right: 5px;
+                svg { @include brand-theme(fill);}
             }
             .back-link {
                 text-decoration: underline;

@@ -58,19 +58,10 @@ class DropDownComponent extends React.Component {
 
         });
         return (
-            // <select onChange = {this.props.selectSubject} name = "select" id={this.props.id}>
-            // {this.returnMenuItem()}
-            // </select>
-
-            <div className="pattern-body">
-                <div className="c-field">
-                    <div className="c-field__controls pos-r">
-                        <button className="c-field__input c-field__input--select text-left c-dropdown" onClick={this.showList}>{this.state.Text}</button>
-                        {this.state.list ? <div ref="overlay" className={overlayClassName} onClick={this.overlayclick} ></div> : ''}
-                        {this.state.list && <ul className="c-dropdown__list u-cursor-pointer">{this.returnMenuItem()}</ul>}
-                    </div>
-                </div>
-
+            <div>
+                <button className="c-field__input c-field__input--select c-dropdown u-cursor-pointer" onClick={this.showList}>{this.state.Text}</button>
+                {this.state.list ? <div ref="overlay" className={overlayClassName} onClick={this.overlayclick} ></div> : ''}
+                {this.state.list && <ul className="c-dropdown__list u-cursor-pointer">{this.returnMenuItem()}</ul>}
             </div>
         );
     }

@@ -60,7 +60,8 @@ $text-color: bow-palette(grey, text);
 	}
 
 	.c-dropdown {
-		z-index: 2 !important;
+		text-align: left;
+		// z-index: 2 !important;
 
 		&__list {
 			background-color: bow-palette(white, base);
