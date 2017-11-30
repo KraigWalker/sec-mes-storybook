@@ -123,7 +123,7 @@
 
 	// For Development environment
 	//---------------------------
-	@else if (config(prod) == dev) {
+	@else if (config(env) == prod) {
 
 		@if (config(brand) == dyb) {
 			@if $style == bold {

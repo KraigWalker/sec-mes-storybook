@@ -35,7 +35,7 @@
             .c-step-header__link {
                 @extend %type--jura; 
                 @include brand-theme(color);
-                // @include brand-text;
+                @include brand-text;
 
             &:focus {
                 @include on-focus();
