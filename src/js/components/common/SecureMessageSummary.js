@@ -15,7 +15,7 @@ class SecureMessageSummary extends React.Component {
     };
     getSummaryIcon = () => {
         let iconId = (this.props.readFlag || this.props.sentFlag)? 'icon-message-open' : 'icon-envelope';
-        return ((!this.props.draftFlag && !this.props.threadFlag) && <span className="c-message__icon"><GetIcon id={iconId} width="24px" height="24px"/></span>);
+        return ((!this.props.draftFlag && !this.props.threadFlag && !this.props.sentFlag) && <span className="c-message__icon"><GetIcon id={iconId} width="24px" height="24px"/></span>);
     }
     hasOnClick = (message) => {
         let path = (this.props.draftFlag)? '/draftsecuremessage' : '/viewmessage';
