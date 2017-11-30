@@ -5,6 +5,7 @@ class AccountEntity {
     constructor() {
         this.id = null;
         this.accountNumber = null;
+        this.name = null;
     }
     /**
      * @returns account mapped to message
@@ -31,6 +32,12 @@ class AccountEntity {
      */
     setAccountNumber(accountNumber) {
         this.accountNumber = accountNumber;
+    }
+    setAccountName(name) {
+        this.name =name;
+    }
+    getAccountName() {
+        return this.name;
     }
 }
 

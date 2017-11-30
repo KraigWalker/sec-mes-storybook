@@ -18,15 +18,15 @@ class SecureMessageSummary extends React.Component {
         return ((!this.props.draftFlag && !this.props.threadFlag) && <span className="c-message__icon"><GetIcon id={iconId} width="24px" height="24px"/></span>);
     }
     hasOnClick = (message) => {
-        let path = (this.props.draftFlag)? '/newsecuremessage' : '/viewmessage';
+        let path = (this.props.draftFlag)? '/draftsecuremessage' : '/viewmessage';
         if(this.props.hasOnClick){
             return (<Link to = {{ pathname : path , messageDetail : message }} className="c-message__summary__head__title__subject__link">{message.getSubject()}</Link>);
         } else 
             return message.getSubject()
     }
-    getReplyButton = () => {
+    getReplyButton = (message) => {
         return (!this.props.draftFlag && !this.props.threadFlag && !this.props.sentFlag) &&
-        (<Link  to = {{ pathname : '/replysecuremessage', backPath : this.props.viewMessageFlag?'/viewmessage':'/securemessages'}} className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding">
+        (<Link  to = {{ pathname : '/replysecuremessage', backPath : this.props.viewMessageFlag?'/viewmessage':'/securemessages',messageDetail : message}} className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding">
             <span className="c-message__summary__head__actions__reply__txt">Reply</span>
             <span className="c-message__summary__head__actions__reply__icon">
                 <GetIcon id="icon-reply" width="24px" height="24px"/>
@@ -82,7 +82,7 @@ class SecureMessageSummary extends React.Component {
                         <p className="c-message__summary__head__title__ref">{message.getReference()}</p>
                     </div>
                     <div className={actionsClass}>
-                        {this.getReplyButton()}
+                        {this.getReplyButton(message)}
                         {this.getDeleteButton()}
                     </div>
                 </div>
