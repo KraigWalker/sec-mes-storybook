@@ -50,6 +50,7 @@ class DropDownComponent extends React.Component {
             Text: e.target.textContent,
             list: false,
         });
+        this.props.selectSubject(e.target.textContent,this.props.id);
     }
     render() {
         const overlayClassName = cx({
