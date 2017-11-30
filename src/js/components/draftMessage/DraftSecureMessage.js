@@ -64,7 +64,7 @@ class DraftSecureMessage extends React.Component{
                 Subject
             </label>
             <div className="c-field__controls">
-                <DropDownComponent subjects={this.props.location.messageDetail.subject} name='subjects' id='subjects' selectSubject={this.selectSubject} isFromDraft = {true} selectedValue = {this.props.location.messageDetail.subject}/>
+                <DropDownComponent subjects={this.props.location.messageDetail.subject} name='subjects' id='subjects' selectSubject={this.selectSubject} isFromDraftOrReply = {true} selectedValue = {this.props.location.messageDetail.subject}/>
             </div>
         </div>
 
@@ -73,7 +73,7 @@ class DraftSecureMessage extends React.Component{
                 Message relates to
             </label>
             <div className="c-field__controls">
-                <DropDownComponent accounts={this.props.location.messageDetail.account.accountNumber} selectSubject={this.selectSubject} name='accounts' id='accounts' isFromDraft = {true} selectedValue = {this.props.location.messageDetail.account.accountNumber}/>
+                <DropDownComponent accounts={this.props.location.messageDetail.account.accountNumber} selectSubject={this.selectSubject} name='accounts' id='accounts' isFromDraftOrReply = {true} selectedValue = {this.props.location.messageDetail.account.accountNumber}/>
             </div>
         </div>
 
@@ -83,7 +83,7 @@ class DraftSecureMessage extends React.Component{
                 Message
             </label>
             <div className="c-field__controls">
-                <TextAreaComponent textData={this.textChange} draftData = {this.props.location.messageDetail.messageBody} isFromDraft = {true}/>
+                <TextAreaComponent textData={this.textChange} draftData = {this.props.location.messageDetail.messageBody} isFromDraftOrReply = {true}/>
             </div>
             {this.renderRemainingChar()}
         </div>

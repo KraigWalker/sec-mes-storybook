@@ -14,6 +14,7 @@ class DropDownComponent extends React.Component {
         this.state = {
             list: false,
             Text: this.props.selectedValue,
+            isDropDownDisabled: false,
         }
     };
     componentWillMount() {
@@ -21,9 +22,12 @@ class DropDownComponent extends React.Component {
             this.props.dispatch(getMessageSubjects());
             this.props.dispatch(getAccounts());
         }
+        if(this.props.isFromDraftOrReply) {
+            this.props.selectSubject(this.props.selectedValue, this.props.id);
+        }
     }
     returnMenuItem() {
-        if (!this.props.isFromDraft && this.props.id === 'accounts') {
+        if (!this.props.isFromDraftOrReply && this.props.id === 'accounts') {
             let items = [];
             items.push(<li className="c-dropdown__value" key='No specific account' value='No specific account' onClick={this.setDropDrownValue}>No specific account</li>);
             _.map(this.props.accounts.accounts, (account) => {
@@ -32,14 +36,14 @@ class DropDownComponent extends React.Component {
             })
             return items;
 
-        } if (!this.props.isFromDraft && this.props.id === 'subjects') {
+        } if (!this.props.isFromDraftOrReply && this.props.id === 'subjects') {
             let items = [];
             _.map(this.props.subjects.subjects, (subject) => {
                 items.push(<li className="c-dropdown__value" key={subject.key} value={subject.value} onClick={this.setDropDrownValue}>{subject.value}</li>);
             }, false);
             return items;
         }
-        if (this.props.isFromDraft && this.props.id === 'accounts') {
+        if (this.props.isFromDraftOrReply && this.props.id === 'accounts') {
             let items = [];
             items.push(<li className="c-dropdown__value" key='No specific account' value='No specific account' onClick={this.setDropDrownValue}>No specific account</li>);
             _.map(this.props.messageaccounts.accounts, (account) => {
@@ -48,7 +52,7 @@ class DropDownComponent extends React.Component {
             })
             return items;
         }
-        if (this.props.isFromDraft && this.props.id === 'subjects') {
+        if (this.props.isFromDraftOrReply && this.props.id === 'subjects') {
             let items = [];
             _.map(this.props.messagesubjects.subjects, (subject) => {
                 items.push(<li className="c-dropdown__value" key={subject.key} value={subject.value} onClick={this.setDropDrownValue}>{subject.value}</li>
@@ -79,7 +83,8 @@ class DropDownComponent extends React.Component {
         this.props.selectSubject(e.target.textContent, this.props.id);
     }
     onBlur() {
-        this.setState({list: false,
+        this.setState({
+            list: false,
         });
     }
     render() {
@@ -94,7 +99,7 @@ class DropDownComponent extends React.Component {
                     <div className="c-field__controls pos-r">
                         <button className="c-field__input c-field__input--select text-left c-dropdown" onClick={this.showList}>{this.state.Text}</button>
                         {this.state.list ? <div ref="overlay" className={overlayClassName} onClick={this.overlayclick} ></div> : ''}
-                        {this.state.list && <ul className="c-dropdown__list u-cursor-pointer"onBlur={this.onBlur}>{this.returnMenuItem()}</ul>}
+                        {this.state.list && <ul className="c-dropdown__list u-cursor-pointer" onBlur={this.onBlur}>{this.returnMenuItem()}</ul>}
                     </div>
                 </div>
 
