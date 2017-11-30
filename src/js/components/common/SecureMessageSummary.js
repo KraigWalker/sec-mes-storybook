@@ -18,7 +18,7 @@ class SecureMessageSummary extends React.Component {
         return ((!this.props.draftFlag && !this.props.threadFlag) && <span className="c-message__icon"><GetIcon id={iconId} width="24px" height="24px"/></span>);
     }
     hasOnClick = (message) => {
-        let path = (this.props.draftFlag)? '/newsecuremessage' : '/viewmessage';
+        let path = (this.props.draftFlag)? '/draftsecuremessage' : '/viewmessage';
         if(this.props.hasOnClick){
             return (<Link to = {{ pathname : path , messageDetail : message }} className="c-message__summary__head__title__subject__link">{message.getSubject()}</Link>);
         } else 
