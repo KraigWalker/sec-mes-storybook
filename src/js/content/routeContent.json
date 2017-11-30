@@ -29,6 +29,13 @@
         },
         "path": "/replysecuremessage",
         "component" : "replysecuremessage"
+    },
+    {
+        "headerDetails" : {
+            "title": "Draft"
+        },
+        "path": "/draftsecuremessage",
+        "component" : "draftsecuremessage"
     }
 
 ]

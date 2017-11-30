@@ -9,10 +9,17 @@ class SecureMessageTabs extends React.Component {
 	}
 
 	render() {
-        const { messages } = this.props;
+		const { messages } = this.props;
+		let newMessageCount = 0;
+		_.map(messages.inboxMessages,message => {
+			if(message.status === 'NEW') {
+				newMessageCount++;
+			}
+		});
+		let inboxTitle = titleName[0] + '('+ newMessageCount + ')';
 		return (messages?
 				<Tabs activeKey={this.props.activeTab} onSelect={this.props.onClick} id="secure_tabs" className="c-scroll-tabs">
-					<Tab eventKey={'inbox'} title={titleName[0]}>
+					<Tab eventKey={'inbox'} title={inboxTitle}>
                         <SecureMessageList messages={messages? messages.inboxMessages : null}/>
 					</Tab>
 					<Tab eventKey={'drafts'} title={titleName[1]}>
