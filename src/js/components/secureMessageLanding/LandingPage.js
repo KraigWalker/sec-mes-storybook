@@ -31,7 +31,7 @@ class LandingPage extends React.PureComponent {
                         <StepHeader showheaderCrumbs={false} headerTitle={this.props.content.landingPageTitle} headerSubtext={this.props.content.landingPageMessage}/>
                     </div>
                 </div>
-                <Link className="c-btn c-btn--default" to = {{ pathname : '/newsecuremessage' }}>New secure message</Link>
+                <Link className="c-btn c-btn--default u-margin-bottom-c" to = {{ pathname : '/newsecuremessage' }}>New secure message</Link>
                 <SecureMessageTabs location={this.props.location} onClick={this.linkClick}  messages={this.mapMessages(this.props.messages)} activeTab={this.props.activeTab}/>
             </div>
         );

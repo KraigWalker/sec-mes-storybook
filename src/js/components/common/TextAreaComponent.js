@@ -11,13 +11,18 @@ class TextAreaComponent extends React.Component {
             textLength: 0,
         }
     }
+    componentDidMount(){
+        if(this.props.isFromDraftOrReply) {
+            this.refs.txtarea.value = this.props.draftData;
+            this.props.textData(this.props.draftData);
+        } else this.refs.txtarea.value = '';
+    }
     textChange(e) {
         autosize(document.getElementById('message'));
         this.props.textData(e.target.value);
     }
     check(e) {
-        this.props.pastedData(e.clipboardData.getData('Text'));
-        //console.log('paste:',e.clipboardData.getData('Text'))
+        // this.props.pastedData(e.clipboardData.getData('Text'));
     }
     render() {
         return (
@@ -30,7 +35,8 @@ class TextAreaComponent extends React.Component {
                 onPaste={this.check}
                 value={this.props.messageBody}
                 disabled={this.props.disableText}
-                maxLength='23'>
+                maxLength='43'
+                ref="txtarea">
             </textarea>
         );
     }

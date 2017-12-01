@@ -1,5 +1,5 @@
 import _ from  'lodash';
-// import MessageSubjectEntity from '../entities/MessageSubjectEntity';
+import MessageSubjectEntity from '../entities/MessageSubjectEntity';
 
 /**
  * 
@@ -8,9 +8,9 @@ import _ from  'lodash';
 export function parseSubjects(response) {
     console.log(response);
     const subjects = [];
+    const messageSubjectEntity = new MessageSubjectEntity();
     _.forEach(response.subjects, subject => {
-        //const messageSubjectEntity = new MessageSubjectEntity();
-       // messageSubjectEntity.setSubjects(subject.value);
+       messageSubjectEntity.setSubjects(subject.value);
         subjects.push(subject);
     });
     return subjects;

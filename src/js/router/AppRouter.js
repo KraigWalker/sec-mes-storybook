@@ -6,6 +6,7 @@ import NewSecureMessage from '../components/newSecureMessage/NewSecureMessage';
 import ViewMessage from '../components/viewMessage/ViewMessage';
 import ReplySecuremessage from '../components/replySecureMessage/ReplySecureMessage';
 import { withSubscription } from '../components/wrappers/GenericWrapper';
+import DraftSecureMessage from '../components/draftMessage/DraftSecureMessage'
 
 /** 
  * @class AppRouter Class to initiate and route the application 

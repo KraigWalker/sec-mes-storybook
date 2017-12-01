@@ -23,7 +23,7 @@ class NewSecureMessage extends React.Component {
         this.stayOnPage = this.stayOnPage.bind(this);
         this.returnModalComponent = this.returnModalComponent.bind(this);
         this.state = {
-            chars_left: 23,
+            chars_left: 43,
             showPopup: false,
         };
     };
@@ -43,7 +43,7 @@ class NewSecureMessage extends React.Component {
         }
     }
     textChange(e) {
-        this.setState({ chars_left: 23 - e.length });
+        this.setState({ chars_left: 43 - e.length });
         let extractedString = RegexUtils.matchString(e);
         if (extractedString !== null) {
             let lastFour = RegexUtils.getLastFourDigits(extractedString);
@@ -99,7 +99,7 @@ class NewSecureMessage extends React.Component {
                     Subject
                 </label>
                 <div className="c-field__controls">
-                    <DropDownComponent subjects={this.props.subjects} selectSubject={this.selectSubject} name='subjects' id='subjects' />
+                    <DropDownComponent subjects={this.props.subjects} selectSubject={this.selectSubject} name='subjects' id='subjects' isFromDraft ={false} selectedValue = 'Please select'/>
                 </div>
             </div>
 
@@ -108,7 +108,7 @@ class NewSecureMessage extends React.Component {
                     Message relates to
                 </label>
                 <div className="c-field__controls">
-                    <DropDownComponent accounts={this.props.accounts} selectSubject={this.selectSubject} name='accounts' id='accounts' />
+                    <DropDownComponent accounts={this.props.accounts} selectSubject={this.selectSubject} name='accounts' id='accounts' isFromDraft ={false} selectedValue = 'Please select'/>
                 </div>
             </div>
 
@@ -124,13 +124,14 @@ class NewSecureMessage extends React.Component {
             </div>
 
             {this.state.showPopup ? this.returnModalComponent() : ''}
-            <Link to='/securemessages'>
-                <input type='button' name='cancel' value='Back' className="c-btn c-btn--secondary" />
-            </Link>&nbsp;
-
-            <button name='Save Draft' className="c-btn c-btn--secondary">Save Draft</button>&nbsp;
-            <button name='Send' className="c-btn c-btn--default" onClick={this.sendData}>Send</button>
-            <button name='LeavePage' className="c-btn c-btn--default" onClick={this.leavePage}>LeavePage</button>
+            <div className="c-btn--group">
+                <Link to='/securemessages'>
+                    <input type='button' name='cancel' value='Back' className="c-btn c-btn--secondary" />
+                </Link>
+                <button name='Save Draft' className="c-btn c-btn--secondary">Save Draft</button>
+                <button name='Send' className="c-btn c-btn--default" onClick={this.sendData}>Send</button>
+                <button name='LeavePage' className="c-btn c-btn--default" onClick={this.leavePage}>LeavePage</button>
+            </div>
         </div>);
     }
 }

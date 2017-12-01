@@ -40,9 +40,12 @@ class ViewMessage extends React.Component {
                     </div>
                 </div>
                     <SecureMessageSummary message= { messageDetail } viewMessageFlag={true} readFlag={messageDetail.status === "READ"} sentFlag={getMessageType(messageDetail.status) === "sent"}/>
-                    <div className="c-field">
+                    <p>
+                        {messageDetail.messageBody}
+                    </p>
+                    {/*<div className="c-field">
                         <TextArea messageBody={messageDetail.messageBody} disableText={true}/>
-                    </div>
+                    </div>*/}
                     {this.getThreads(this.props.messages, messageDetail)}
                 
             </div>

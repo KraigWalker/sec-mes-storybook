@@ -115,7 +115,6 @@ export function updateMessage(requestData, messages) {
     /**
      * Temporary dispach added - UPDATE_SECURE_MESSAGE_SUCCESS need to be called from success. (after actual service integration.)
      */
-    console.log(message);
       const payload = {
         payload : {messages, requestData},
         type: AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS,

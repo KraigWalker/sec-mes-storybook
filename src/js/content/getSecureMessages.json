@@ -34,7 +34,8 @@
         "subject": "Payment Enquiries",
         "account": {
             "id": "$UUID",
-            "number": "222222-22222222"
+            "number": "222222-22222222",
+            "name": "B Current"
         },
         "payload": {
             "body": {
