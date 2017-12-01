@@ -1,59 +1,31 @@
 import { Switch, BrowserRouter, Route, Redirect } from 'react-router-dom';
 import React from 'react';
-import _ from 'lodash';
 import LandingPage from '../components/secureMessageLanding/LandingPage';
 import Main from '../components/Main';
 import NewSecureMessage from '../components/newSecureMessage/NewSecureMessage';
-import RouteContent from '../content/routeContent';
-import ViewMessage from '../components/viewMessage/ViewMessage'
-import ReplySecuremessage from '../components/replySecureMessage/ReplySecureMessage'
+import ViewMessage from '../components/viewMessage/ViewMessage';
+import ReplySecuremessage from '../components/replySecureMessage/ReplySecureMessage';
+import { withSubscription } from '../components/wrappers/GenericWrapper';
 
 /** 
  * @class AppRouter Class to initiate and route the application 
  */
 
-class AppRouter {
-
+class AppRouter extends React.Component {
     /**
- * Initiates the application in BrowserRouter. Please refer to react-router v4 docs.
- * @return {ReactComponent} Displays the components wrapped around BrowserRouter and Routes the application.
- */
-        static getComponents (route, props){
-            switch(route.component){
-                case 'securemessages':
-                return <LandingPage {...props} headerDetails={route.headerDetails}/>;
-                case 'newmessage':
-                return <ViewMessage {...props} headerDetails={route.headerDetails}/>;
-                case 'newsecuremessage' : 
-                return <NewSecureMessage {...props} headerDetails={route.headerDetails}/>
-                case 'replysecuremessage' : 
-                return <ReplySecuremessage {...props} headerDetails={route.headerDetails}/>
-                
-            }
-        };
-
-        static getRoutes () {
-            const allRoutes = [];
-            console.log(this.props);
-            _.map(RouteContent, (route, index) => {
-                allRoutes.push(<Route path = {route.path} render={(props) => (
-                        this.getComponents(route, props)
-                )} key={index}/>);
-            });
-            allRoutes.push(<Redirect from = '/' to = '/securemessages' key='redirect'/>);
-            return allRoutes;
-        }
- 
-      static init () {
+    * Initiates the application in BrowserRouter. Please refer to react-router v4 docs.
+    * @return {ReactComponent} Displays the components wrapped around BrowserRouter and Routes the application.
+    */ 
+      render() {
         return (
             <BrowserRouter>
                 <Main>
                 <Switch>
-                    {this.getRoutes()}
-                    {/* <Route path = '/securemessages' render={(props) => 
-                        (<Header title="Secure Messages"><LandingPage/></Header>)}/>
-                    <Route path = '/securemessages:inbox' component = { Inbox }/>
-                    <Redirect from = '/' to = '/securemessages'/>  */}
+                   <Route path = '/securemessages' render = { () => { return <LandingPage {...this.props} />}} />
+                   <Route path = '/viewmessage' render = {() => { return <ViewMessage {...this.props}/>}}/>
+                   <Route path = '/newsecuremessage' render = {() => { return <NewSecureMessage {...this.props}/>}}/>
+                   <Route path = '/replysecuremessage' render = {() => { return <ReplySecuremessage {...this.props}/>}}/>
+                   <Redirect from = '/' to = '/securemessages' key='redirect'/>;    
                 </Switch>
                 </Main>
             </BrowserRouter>
@@ -61,4 +33,4 @@ class AppRouter {
     }
 }
 
-export default AppRouter;
+export default withSubscription(AppRouter);
