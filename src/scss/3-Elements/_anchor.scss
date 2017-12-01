@@ -1,0 +1,8 @@
+/*
+    Removes default underline from anchor tag
+*/
+
+a {
+    @include brand-theme(color);
+    text-decoration: none;
+}

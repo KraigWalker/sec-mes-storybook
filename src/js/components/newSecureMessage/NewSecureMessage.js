@@ -124,13 +124,14 @@ class NewSecureMessage extends React.Component {
             </div>
 
             {this.state.showPopup ? this.returnModalComponent() : ''}
-            <Link to='/securemessages'>
-                <input type='button' name='cancel' value='Back' className="c-btn c-btn--secondary" />
-            </Link>&nbsp;
-
-            <button name='Save Draft' className="c-btn c-btn--secondary">Save Draft</button>&nbsp;
-            <button name='Send' className="c-btn c-btn--default" onClick={this.sendData}>Send</button>
-            <button name='LeavePage' className="c-btn c-btn--default" onClick={this.leavePage}>LeavePage</button>
+            <div className="c-btn--group">
+                <Link to='/securemessages'>
+                    <input type='button' name='cancel' value='Back' className="c-btn c-btn--secondary" />
+                </Link>
+                <button name='Save Draft' className="c-btn c-btn--secondary">Save Draft</button>
+                <button name='Send' className="c-btn c-btn--default" onClick={this.sendData}>Send</button>
+                <button name='LeavePage' className="c-btn c-btn--default" onClick={this.leavePage}>LeavePage</button>
+            </div>
         </div>);
     }
 }

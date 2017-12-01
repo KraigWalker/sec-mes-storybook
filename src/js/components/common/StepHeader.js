@@ -19,7 +19,7 @@ class StepHeader extends React.Component {
 		<div className="c-step-header" id={this.props.id ? this.props.id : ""}>
 		{this.props.showheaderCrumbs ?	<p className="c-step-header__crumbs">
 			<Link to = {this.props.headerCrumbsPath} className="c-step-header__link">
-				<SvgIcon id="icon-left" width="16px" height="16px"/>
+				<span className="c-step-header__linkicon"><SvgIcon id="icon-left" width="16px" height="16px"/></span>
 				<span className="c-step-header__linktext">{this.props.headerCrumbsMessage}</span>
 			</Link>
 			</p> : null}
