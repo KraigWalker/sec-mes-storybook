@@ -1,5 +1,5 @@
 import React from 'react';
-import { PropTypes } from 'react';
+import PropTypes from 'prop-types';
 import { ModalFooter, ModalHeader, ModalBody, ModalTitle } from 'react-bootstrap/lib/Modal';
 import Modal from 'react-bootstrap/lib/Modal';
 
@@ -67,29 +67,29 @@ class ModalComponent extends React.Component {
 }
 
 
-// ModalComponent.propTypes = {
-//     show: React.PropTypes.bool,
-//     onHide: React.PropTypes.func,
-//     bsSize: React.PropTypes.string,
-//     modalHeading: React.PropTypes.string,
-//     modalBody: React.PropTypes.string,
-//     modalFooter: React.PropTypes.string,
-//     customClass: React.PropTypes.string,
-//     closeButton: React.PropTypes.bool,
-// };
+ModalComponent.propTypes = {
+    show: PropTypes.bool,
+    onHide: PropTypes.func,
+    bsSize: PropTypes.string,
+    modalHeading: PropTypes.string,
+    modalBody: PropTypes.string,
+    modalFooter: PropTypes.string,
+    customClass: PropTypes.string,
+    closeButton: PropTypes.bool,
+};
 
-// ModalComponent.defaultProps = {
-//     show: false,
-//     onHide: function () { return null; },
-//     bsSize: 'medium',
-//     modalHeading: '',
-//     modalBody: '',
-//     modalFooter: '',
-//     closeButton: true,
-//     modalInContainer: false,
-//     backdrop: true,
-//     scope: this
-// };
+ModalComponent.defaultProps = {
+    show: false,
+    onHide: function () { return null; },
+    bsSize: 'medium',
+    modalHeading: '',
+    modalBody: '',
+    modalFooter: '',
+    closeButton: true,
+    modalInContainer: false,
+    backdrop: true,
+    scope: this
+};
 
 module.exports = ModalComponent;
 

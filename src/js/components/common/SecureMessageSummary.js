@@ -4,8 +4,16 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import MessageEntity from '../../entities/MessageEntity';
-
+import ModalComponent from '../common/ModalComponent';
 class SecureMessageSummary extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleDelete = this.handleDelete.bind(this);
+        this.state  = {
+            showDeleteConfirmModal : false,
+        };
+        this.returnModalComponent = this.returnModalComponent.bind(this);
+    }
 
     handleClick () {
         alert("clicked");
@@ -34,7 +42,7 @@ class SecureMessageSummary extends React.Component {
         </Link>)
     }
 
-    getDeleteButton = () => {
+    getDeleteButton = (message) => {
         
         return !this.props.threadFlag && (<button className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding" onClick={this.handleDelete}>
         <span className="c-message__summary__head__actions__delete__txt">Delete</span>
@@ -42,6 +50,24 @@ class SecureMessageSummary extends React.Component {
             <GetIcon id="icon-delete" width="24px" height="24px"/>
         </span>
         </button>)
+    }
+    handleDelete(data) {
+        this.setState({showDeleteConfirmModal : true});
+    }
+    returnModalComponent() {
+        let bodyContent = <div><div className="callout callout__error">You won’t be able to recover this message if you delete it.</div>
+            <p className="review-modal__submsg"></p></div>;
+        let footerButtons = <div className="review-modal__options"><Link to='/securemessages'><button type="button" onClick={this.leavePage} className="c-btn c-btn--secondary c-modal__button">Close</button></Link>
+            <button type="button" onClick={this.stayOnPage} className="c-btn c-btn--default c-modal__button">Delete message</button></div>;
+        return (<ModalComponent show
+            onHide={this.stayOnPage}
+            customClass={"c-modal review-modal"}
+            bsSize={'medium'}
+            modalHeading={'Delete this message?'}
+            modalBody={bodyContent}
+            modalFooter={footerButtons}
+            modalInContainer={false}
+            closeButton = {false} />);
     }
     render() {
         const { message } = this.props;
@@ -83,12 +109,13 @@ class SecureMessageSummary extends React.Component {
                     </div>
                     <div className={actionsClass}>
                         {this.getReplyButton(message)}
-                        {this.getDeleteButton()}
+                        {this.getDeleteButton(message)}
                     </div>
                 </div>
                 <p className="c-message__summary__account">{message.getMessageBody()}</p>
                 <p className="c-message__summary__date">{message.getDateCreated()}</p>
             </div>
+            {this.state.showDeleteConfirmModal ? this.returnModalComponent() : ''}
         </div>
         );
     }
