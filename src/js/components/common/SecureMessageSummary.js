@@ -76,10 +76,10 @@ class SecureMessageSummary extends React.Component {
             <p className="review-modal__submsg"></p></div>;
         let footerButtons = <div className="review-modal__options"><button type="button" onClick={this.closeSuccessModal} className="c-btn c-btn--secondary c-modal__button">OK</button></div>;
         return (<ModalComponent show
-            onHide={this.stayOnPage}
+            onHide={this.closeSuccessModal}
             customClass={"c-modal review-modal"}
             bsSize={'medium'}
-            modalHeading={'Delete this message?'}
+            modalHeading={''}
             modalBody={bodyContent}
             modalFooter={footerButtons}
             modalInContainer={false}
@@ -91,7 +91,7 @@ class SecureMessageSummary extends React.Component {
         let footerButtons = <div className="review-modal__options"><button type="button" onClick={this.closeModal} className="c-btn c-btn--secondary c-modal__button">Close</button>
             <button type="button" onClick={this.deleteClick} className="c-btn c-btn--default c-modal__button">Delete message</button></div>;
         return (<ModalComponent show
-            onHide={this.stayOnPage}
+            onHide={this.closeModal}
             customClass={"c-modal review-modal"}
             bsSize={'medium'}
             modalHeading={'Delete this message?'}
