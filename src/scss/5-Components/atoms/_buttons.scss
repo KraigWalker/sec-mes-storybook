@@ -207,3 +207,26 @@ $btn-border-radius: 5px;
         width: 16px;
     }
 }
+
+/*
+    When multiple buttons are aligned together horizontally or vertically,
+    provide spaces to right and bottom accordingly
+*/
+
+.c-btn--group {
+    display: flex;
+    flex-flow: row;
+    .c-btn,
+    .c-btn + .c-btn {
+        margin-right: get-px(a);
+    }
+
+    @include media-breakpoint-down(xs2) {
+        flex-flow: column;
+        flex-direction: column-reverse;
+        .c-btn {
+            margin-bottom: get-px(b);
+            width: 100%;
+        }
+    }
+}

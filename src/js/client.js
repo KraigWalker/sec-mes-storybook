@@ -16,7 +16,7 @@ const app = document.getElementById('app');
  */
 const startApp = () => {
   ReactDOM.render(<Provider store={store}>
-   {AppRouter.init()}
+  <AppRouter/>
   </Provider>, app);
 }
 

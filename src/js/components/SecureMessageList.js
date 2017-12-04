@@ -1,8 +1,8 @@
 import React from 'react';
 import _ from 'lodash';
 import { Link } from 'react-router-dom';
-import SecureMessageSummary from '../common/SecureMessageSummary';
-import {getMessageType} from '../../utils/SecureMessageUtils';
+import SecureMessageSummary from './common/SecureMessageSummary';
+import {getMessageType} from '../utils/SecureMessageUtils';
 
 class SecureMessageList extends React.Component {
     showMessages() {
