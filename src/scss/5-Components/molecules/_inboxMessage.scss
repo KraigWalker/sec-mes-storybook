@@ -1,6 +1,6 @@
 .c-message {
     display: flex;
-    margin-top: get-px(b);
+    // margin-top: get-px(b);
     border: 1px solid bow-palette(grey, base, base);
     max-width: 640px;
     margin-bottom: get-px(c);
@@ -11,6 +11,10 @@
     }
     &.c-message--noborder {
         border: 0;
+
+        .c-message__summary {
+            margin: 0;
+        }
     }
 
     &:focus {

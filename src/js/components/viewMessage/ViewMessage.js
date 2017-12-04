@@ -37,17 +37,15 @@ class ViewMessage extends React.Component {
                     <div className="col-md1-18">
                         <StepHeader showheaderCrumbs={true} headerCrumbsPath={{ pathname : '/securemessages'}} headerCrumbsMessage="Back" 
                         headerTitle={(getMessageType(messageDetail.status)== 'sent')?this.props.headerDetails.senttitle:this.props.headerDetails.inboxtitle}/>
+                    
+                        <SecureMessageSummary message= { messageDetail } viewMessageFlag={true} readFlag={messageDetail.status === "READ"} sentFlag={getMessageType(messageDetail.status) === "sent"}/>
+                        <p>
+                            {messageDetail.messageBody}
+                        </p>
+                        
+                        {this.getThreads(this.props.messages, messageDetail)}
                     </div>
                 </div>
-                    <SecureMessageSummary message= { messageDetail } viewMessageFlag={true} readFlag={messageDetail.status === "READ"} sentFlag={getMessageType(messageDetail.status) === "sent"}/>
-                    <p>
-                        {messageDetail.messageBody}
-                    </p>
-                    {/*<div className="c-field">
-                        <TextArea messageBody={messageDetail.messageBody} disableText={true}/>
-                    </div>*/}
-                    {this.getThreads(this.props.messages, messageDetail)}
-                
             </div>
         );
     }
