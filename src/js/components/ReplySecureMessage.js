@@ -1,17 +1,17 @@
 
 import React from 'react';
-import SecureMessageSummary from '../common/SecureMessageSummary';
-import StepHeader from '../common/StepHeader';
-import TextAreaComponent from '../common/TextAreaComponent';
-import DropDownComponent from '../common/DropDownComponent'
+import SecureMessageSummary from './common/SecureMessageSummary';
+import StepHeader from './common/StepHeader';
+import TextAreaComponent from './common/TextAreaComponent';
+import DropDownComponent from './common/DropDownComponent'
 import { Link } from 'react-router-dom';
 import RegexUtils from '../utils/RegexUtils.js';
-import SendMessageRequestEntity from '../../entities/SendMessageRequestEntity.js'
+import SendMessageRequestEntity from '../entities/SendMessageRequestEntity.js'
 import { connect } from 'react-redux';
-import { getMessageSubjects, getAccounts, sendMessageData } from '../../actions/AppActions';
+import { getMessageSubjects, getAccounts, sendMessageData } from '../actions/AppActions';
 let messageEntity = new SendMessageRequestEntity();
-import { getThreadsBL } from '../../bl/SecureMessageBL'
-import Threads from '../common/ThreadList'
+import { getThreadsBL } from '../bl/SecureMessageBL'
+import Threads from './common/ThreadList'
 class ReplySecureMessage extends React.Component {
     constructor(props) {
         super(props);

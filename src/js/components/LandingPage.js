@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { fetchSecureMessages, getActiveTab } from '../../actions/AppActions';
+import { fetchSecureMessages, getActiveTab } from '../actions/AppActions';
 import { connect } from 'react-redux';
 import SecureMessageTabs from './SecureMessageTabs';
-import StepHeader from '../common/StepHeader';
-import {SecureMessageBL} from '../../bl/SecureMessageBL'
+import StepHeader from './common/StepHeader';
+import {SecureMessageBL} from '../bl/SecureMessageBL'
 /**
  * @class Landing Page 
  * Landing Page of the application

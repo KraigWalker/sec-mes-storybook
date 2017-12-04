@@ -1,12 +1,12 @@
 import { Switch, BrowserRouter, Route, Redirect } from 'react-router-dom';
 import React from 'react';
-import LandingPage from '../components/secureMessageLanding/LandingPage';
+import LandingPage from '../components/LandingPage';
 import Main from '../components/Main';
-import NewSecureMessage from '../components/newSecureMessage/NewSecureMessage';
-import ViewMessage from '../components/viewMessage/ViewMessage';
-import ReplySecuremessage from '../components/replySecureMessage/ReplySecureMessage';
+import NewSecureMessage from '../components/NewSecureMessage';
+import ViewMessage from '../components/ViewMessage';
+import ReplySecuremessage from '../components/ReplySecureMessage';
 import { withSubscription } from '../components/wrappers/GenericWrapper';
-import DraftSecureMessage from '../components/draftMessage/DraftSecureMessage'
+import DraftSecureMessage from '../components/DraftSecureMessage'
 
 /** 
  * @class AppRouter Class to initiate and route the application 
@@ -22,10 +22,11 @@ class AppRouter extends React.Component {
             <BrowserRouter>
                 <Main>
                 <Switch>
-                   <Route path = '/securemessages' render = { () => { return <LandingPage {...this.props} />}} />
-                   <Route path = '/viewmessage' render = {() => { return <ViewMessage {...this.props}/>}}/>
-                   <Route path = '/newsecuremessage' render = {() => { return <NewSecureMessage {...this.props}/>}}/>
-                   <Route path = '/replysecuremessage' render = {() => { return <ReplySecuremessage {...this.props}/>}}/>
+                   <Route path = '/securemessages' render = { (props) => (<LandingPage {...this.props} {...props} />)} />
+                   <Route path = '/viewmessage' render = {(props) => (<ViewMessage {...this.props} {...props}/>)}/>
+                   <Route path = '/newsecuremessage' render = {(props) => (<NewSecureMessage {...this.props} {...props}/>)}/>
+                   <Route path = '/replysecuremessage' render = {(props) => (<ReplySecuremessage {...this.props} {...props}/>)}/>
+                   <Route path = '/draftsecuremessage' render = {(props) => (<DraftSecureMessage {...this.props} {...props}/>)}/>
                    <Redirect from = '/' to = '/securemessages' key='redirect'/>;    
                 </Switch>
                 </Main>

@@ -1,13 +1,13 @@
 import React from 'react';
-import StepHeader from '../common/StepHeader';
-import SecureMessageSummary from '../common/SecureMessageSummary';
-import TextArea from '../common/TextAreaComponent';
-import Threads from '../common/ThreadList'
+import StepHeader from './common/StepHeader';
+import SecureMessageSummary from './common/SecureMessageSummary';
+import TextArea from './common/TextAreaComponent';
+import Threads from './common/ThreadList'
 import _ from 'lodash';
 import { connect } from 'react-redux';
-import { getSecureMessages, setViewMessageDetail, updateMessage } from '../../actions/AppActions';
-import {getThreadsBL} from '../../bl/SecureMessageBL'
-import {getMessageType, updateMessageStatus} from '../../utils/SecureMessageUtils';
+import { getSecureMessages, setViewMessageDetail, updateMessage } from '../actions/AppActions';
+import {getThreadsBL} from '../bl/SecureMessageBL'
+import {getMessageType, updateMessageStatus} from '../utils/SecureMessageUtils';
 
 class ViewMessage extends React.Component {
     componentWillMount(){
@@ -30,7 +30,7 @@ class ViewMessage extends React.Component {
     }
 
     render() {
-        const { messageDetail} = this.props.location.messageDetail?this.props.location:this.props;
+        const { messageDetail} = this.props.location.messageDetail ? this.props.location : this.props;
         return (
             <div className="container">
                 <div className="row">

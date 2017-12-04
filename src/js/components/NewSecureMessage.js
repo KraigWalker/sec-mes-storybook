@@ -1,14 +1,14 @@
 import React from 'react';
-import { getMessageSubjects, getAccounts, sendMessageData } from '../../actions/AppActions';
+import { getMessageSubjects, getAccounts, sendMessageData } from '../actions/AppActions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Dropdown, ButtonToolbar, MenuItem } from 'react-bootstrap/lib';
 import _ from 'lodash';
-import DropDownComponent from '../common/DropDownComponent.js';
-import TextAreaComponent from '../common/TextAreaComponent.js';
-import StepHeader from '../common/StepHeader';
-import SendMessageRequestEntity from '../../entities/SendMessageRequestEntity.js'
-import ModalComponent from '../common/ModalComponent';
+import DropDownComponent from './common/DropDownComponent.js';
+import TextAreaComponent from './common/TextAreaComponent.js';
+import StepHeader from './common/StepHeader';
+import SendMessageRequestEntity from '../entities/SendMessageRequestEntity.js'
+import ModalComponent from './common/ModalComponent';
 import RegexUtils from '../utils/RegexUtils.js';
 let messageEntity = new SendMessageRequestEntity();
 class NewSecureMessage extends React.Component {
