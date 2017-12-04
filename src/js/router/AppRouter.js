@@ -1,62 +1,33 @@
 import { Switch, BrowserRouter, Route, Redirect } from 'react-router-dom';
 import React from 'react';
-import _ from 'lodash';
-import LandingPage from '../components/secureMessageLanding/LandingPage';
+import LandingPage from '../components/LandingPage';
 import Main from '../components/Main';
-import NewSecureMessage from '../components/newSecureMessage/NewSecureMessage';
-import RouteContent from '../content/routeContent';
-import ViewMessage from '../components/viewMessage/ViewMessage'
-import ReplySecuremessage from '../components/replySecureMessage/ReplySecureMessage'
-import DraftSecureMessage from '../components/draftMessage/DraftSecureMessage'
+import NewSecureMessage from '../components/NewSecureMessage';
+import ViewMessage from '../components/ViewMessage';
+import ReplySecuremessage from '../components/ReplySecureMessage';
+import { withSubscription } from '../components/wrappers/GenericWrapper';
+import DraftSecureMessage from '../components/DraftSecureMessage'
 
 /** 
  * @class AppRouter Class to initiate and route the application 
  */
 
-class AppRouter {
-
+class AppRouter extends React.Component {
     /**
- * Initiates the application in BrowserRouter. Please refer to react-router v4 docs.
- * @return {ReactComponent} Displays the components wrapped around BrowserRouter and Routes the application.
- */
-        static getComponents (route, props){
-            switch(route.component){
-                case 'securemessages':
-                return <LandingPage {...props} headerDetails={route.headerDetails}/>;
-                case 'newmessage':
-                return <ViewMessage {...props} headerDetails={route.headerDetails}/>;
-                case 'newsecuremessage' : 
-                return <NewSecureMessage {...props} headerDetails={route.headerDetails}/>
-                case 'replysecuremessage' : 
-                return <ReplySecuremessage {...props} headerDetails={route.headerDetails}/>
-                case 'draftsecuremessage' : 
-                return <DraftSecureMessage {...props} headerDetails={route.headerDetails}/>
-                
-            }
-        };
-
-        static getRoutes () {
-            const allRoutes = [];
-            console.log(this.props);
-            _.map(RouteContent, (route, index) => {
-                allRoutes.push(<Route path = {route.path} render={(props) => (
-                        this.getComponents(route, props)
-                )} key={index}/>);
-            });
-            allRoutes.push(<Redirect from = '/' to = '/securemessages' key='redirect'/>);
-            return allRoutes;
-        }
- 
-      static init () {
+    * Initiates the application in BrowserRouter. Please refer to react-router v4 docs.
+    * @return {ReactComponent} Displays the components wrapped around BrowserRouter and Routes the application.
+    */ 
+      render() {
         return (
             <BrowserRouter>
                 <Main>
                 <Switch>
-                    {this.getRoutes()}
-                    {/* <Route path = '/securemessages' render={(props) => 
-                        (<Header title="Secure Messages"><LandingPage/></Header>)}/>
-                    <Route path = '/securemessages:inbox' component = { Inbox }/>
-                    <Redirect from = '/' to = '/securemessages'/>  */}
+                   <Route path = '/securemessages' render = { (props) => (<LandingPage {...this.props} {...props} />)} />
+                   <Route path = '/viewmessage' render = {(props) => (<ViewMessage {...this.props} {...props}/>)}/>
+                   <Route path = '/newsecuremessage' render = {(props) => (<NewSecureMessage {...this.props} {...props}/>)}/>
+                   <Route path = '/replysecuremessage' render = {(props) => (<ReplySecuremessage {...this.props} {...props}/>)}/>
+                   <Route path = '/draftsecuremessage' render = {(props) => (<DraftSecureMessage {...this.props} {...props}/>)}/>
+                   <Redirect from = '/' to = '/securemessages' key='redirect'/>;    
                 </Switch>
                 </Main>
             </BrowserRouter>
@@ -64,4 +35,4 @@ class AppRouter {
     }
 }
 
-export default AppRouter;
+export default withSubscription(AppRouter);

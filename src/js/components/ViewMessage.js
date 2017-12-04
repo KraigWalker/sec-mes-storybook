@@ -1,13 +1,13 @@
 import React from 'react';
-import StepHeader from '../common/StepHeader';
-import SecureMessageSummary from '../common/SecureMessageSummary';
-import TextArea from '../common/TextAreaComponent';
-import Threads from '../common/ThreadList'
+import StepHeader from './common/StepHeader';
+import SecureMessageSummary from './common/SecureMessageSummary';
+import TextArea from './common/TextAreaComponent';
+import Threads from './common/ThreadList'
 import _ from 'lodash';
 import { connect } from 'react-redux';
-import { getSecureMessages, setViewMessageDetail, updateMessage } from '../../actions/AppActions';
-import {getThreadsBL} from '../../bl/SecureMessageBL'
-import {getMessageType, updateMessageStatus} from '../../utils/SecureMessageUtils';
+import { getSecureMessages, setViewMessageDetail, updateMessage } from '../actions/AppActions';
+import {getThreadsBL} from '../bl/SecureMessageBL'
+import {getMessageType, updateMessageStatus} from '../utils/SecureMessageUtils';
 
 class ViewMessage extends React.Component {
     componentWillMount(){
@@ -30,13 +30,13 @@ class ViewMessage extends React.Component {
     }
 
     render() {
-        const { messageDetail} = this.props.location.messageDetail?this.props.location:this.props;
+        const { messageDetail} = this.props.location.messageDetail ? this.props.location : this.props;
         return (
             <div className="container">
                 <div className="row">
                     <div className="col-md1-18">
                         <StepHeader showheaderCrumbs={true} headerCrumbsPath={{ pathname : '/securemessages'}} headerCrumbsMessage="Back" 
-                        headerTitle={(getMessageType(messageDetail.status)== 'sent')?this.props.headerDetails.senttitle:this.props.headerDetails.inboxtitle}/>
+                        headerTitle={(getMessageType(messageDetail.status)== 'sent')?this.props.content.sentPageTitle:this.props.content.inboxPageTitle}/>
                     
                         <SecureMessageSummary message= { messageDetail } viewMessageFlag={true} readFlag={messageDetail.status === "READ"} sentFlag={getMessageType(messageDetail.status) === "sent"}/>
                         <p>

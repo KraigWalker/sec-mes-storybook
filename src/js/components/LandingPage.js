@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { fetchSecureMessages, getActiveTab } from '../../actions/AppActions';
+import { fetchSecureMessages, getActiveTab } from '../actions/AppActions';
 import { connect } from 'react-redux';
 import SecureMessageTabs from './SecureMessageTabs';
-import StepHeader from '../common/StepHeader';
-import {SecureMessageBL} from '../../bl/SecureMessageBL'
+import StepHeader from './common/StepHeader';
+import {SecureMessageBL} from '../bl/SecureMessageBL'
 /**
  * @class Landing Page 
  * Landing Page of the application
@@ -21,7 +21,6 @@ class LandingPage extends React.PureComponent {
         this.props.dispatch(getActiveTab(activeTab));
     }
     mapMessages(messages){
-        console.log(SecureMessageBL(messages));
         return SecureMessageBL(messages);
     }
     render() {
@@ -29,7 +28,7 @@ class LandingPage extends React.PureComponent {
             <div className="container">
                 <div className="row">
                     <div className="col-md1-18">
-                        <StepHeader showheaderCrumbs={false} headerTitle={this.props.headerDetails.title} headerSubtext={this.props.headerDetails.subtext}/>
+                        <StepHeader showheaderCrumbs={false} headerTitle={this.props.content.landingPageTitle} headerSubtext={this.props.content.landingPageMessage}/>
                     </div>
                 </div>
                 <Link className="c-btn c-btn--default u-margin-bottom-c" to = {{ pathname : '/newsecuremessage' }}>New secure message</Link>
