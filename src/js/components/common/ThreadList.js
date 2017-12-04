@@ -17,9 +17,9 @@ class ThreadList extends React.Component {
     }
     render() {
         return (
-            <div>
+            <ol>
                 {this.getThreadList()}
-            </div>
+            </ol>
         );  
     }
 };
