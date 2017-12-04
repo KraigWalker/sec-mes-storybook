@@ -43,8 +43,8 @@ class ModalComponent extends React.Component {
                 className={this.props.customClass}
                 onHide={this.props.onHide}
                 bsSize={this.props.bsSize}
-                modalHeading={this.props.modalHeading}
-                modalFooter={this.props.modalFooter}
+                modalheading={this.props.modalHeading}
+                modalfooter={this.props.modalFooter}
                 container={this.props.scope}
                 backdrop={this.props.backdrop}
                 >
