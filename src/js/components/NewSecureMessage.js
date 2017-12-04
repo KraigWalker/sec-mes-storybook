@@ -22,6 +22,7 @@ class NewSecureMessage extends React.Component {
         this.leavePage = this.leavePage.bind(this);
         this.stayOnPage = this.stayOnPage.bind(this);
         this.returnModalComponent = this.returnModalComponent.bind(this);
+        this.saveDraftData = this.saveDraftData.bind(this);
         this.state = {
             chars_left: 43,
             showPopup: false,
@@ -85,6 +86,9 @@ class NewSecureMessage extends React.Component {
             modalInContainer={false}
             closeButton />);
     }
+    saveDraftData(){
+        
+    }
     render() {
         return (<div className="container">
             <div className="row">
@@ -128,7 +132,7 @@ class NewSecureMessage extends React.Component {
                 <Link to='/securemessages'>
                     <input type='button' name='cancel' value='Back' className="c-btn c-btn--secondary" />
                 </Link>
-                <button name='Save Draft' className="c-btn c-btn--secondary">Save Draft</button>
+                <button name='Save Draft' className="c-btn c-btn--secondary" onClick={this.saveDraftData}>Save Draft</button>
                 <button name='Send' className="c-btn c-btn--default" onClick={this.sendData}>Send</button>
                 <button name='LeavePage' className="c-btn c-btn--default" onClick={this.leavePage}>LeavePage</button>
             </div>
