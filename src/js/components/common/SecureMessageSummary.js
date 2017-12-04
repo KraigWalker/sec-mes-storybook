@@ -4,44 +4,101 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import MessageEntity from '../../entities/MessageEntity';
-
+import ModalComponent from '../common/ModalComponent';
+import {sendDeleteData} from '../../actions/AppActions';
+import { connect } from 'react-redux';
 class SecureMessageSummary extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleDelete = this.handleDelete.bind(this);
+        this.state = {
+            showDeleteConfirmModal: false,
+            showDeleteSuccessModal: false,
+        };
+        this.returnModalComponent = this.returnModalComponent.bind(this);
+        this.closeModal = this.closeModal.bind(this);
+        this.deleteClick = this.deleteClick.bind(this);
+        this.returnDeleteSuccessModalComponent = this.returnDeleteSuccessModalComponent.bind(this);
+        this.closeSuccessModal = this.closeSuccessModal.bind(this);
+    }
 
-    handleClick () {
+    handleClick() {
         alert("clicked");
     };
-    handlebttn () {
+    handlebttn() {
         alert("bttn clicked");
     };
     getSummaryIcon = () => {
-        let iconId = (this.props.readFlag || this.props.sentFlag)? 'icon-message-open' : 'icon-envelope';
-        return ((!this.props.draftFlag && !this.props.threadFlag) && <span className="c-message__icon"><GetIcon id={iconId} width="24px" height="24px"/></span>);
+        let iconId = (this.props.readFlag || this.props.sentFlag) ? 'icon-message-open' : 'icon-envelope';
+        return ((!this.props.draftFlag && !this.props.threadFlag && !this.props.sentFlag) && <span className="c-message__icon"><GetIcon id={iconId} width="24px" height="24px" /></span>);
     }
     hasOnClick = (message) => {
-        let path = (this.props.draftFlag)? '/draftsecuremessage' : '/viewmessage';
-        if(this.props.hasOnClick){
-            return (<Link to = {{ pathname : path , messageDetail : message }} className="c-message__summary__head__title__subject__link">{message.getSubject()}</Link>);
-        } else 
+        let path = (this.props.draftFlag) ? '/draftsecuremessage' : '/viewmessage';
+        if (this.props.hasOnClick) {
+            return (<Link to={{ pathname: path, messageDetail: message }} className="c-message__summary__head__title__subject__link">{message.getSubject()}</Link>);
+        } else
             return message.getSubject()
     }
     getReplyButton = (message) => {
         return (!this.props.draftFlag && !this.props.threadFlag && !this.props.sentFlag) &&
-        (<Link  to = {{ pathname : '/replysecuremessage', backPath : this.props.viewMessageFlag?'/viewmessage':'/securemessages',messageDetail : message}} className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding">
-            <span className="c-message__summary__head__actions__reply__txt">Reply</span>
-            <span className="c-message__summary__head__actions__reply__icon">
-                <GetIcon id="icon-reply" width="24px" height="24px"/>
-            </span>
-        </Link>)
+            (<Link to={{ pathname: '/replysecuremessage', backPath: this.props.viewMessageFlag ? '/viewmessage' : '/securemessages', messageDetail: message }} className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding">
+                <span className="c-message__summary__head__actions__reply__txt">Reply</span>
+                <span className="c-message__summary__head__actions__reply__icon">
+                    <GetIcon id="icon-reply" width="24px" height="24px" />
+                </span>
+            </Link>)
     }
 
-    getDeleteButton = () => {
-        
+    getDeleteButton = (message) => {
+
         return !this.props.threadFlag && (<button className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding" onClick={this.handleDelete}>
-        <span className="c-message__summary__head__actions__delete__txt">Delete</span>
-        <span className="c-message__summary__head__actions__delete__icon">
-            <GetIcon id="icon-delete" width="24px" height="24px"/>
-        </span>
+            <span className="c-message__summary__head__actions__delete__txt">Delete</span>
+            <span className="c-message__summary__head__actions__delete__icon">
+                <GetIcon id="icon-delete" width="24px" height="24px" />
+            </span>
         </button>)
+    }
+    handleDelete(data) {
+        this.setState({ showDeleteConfirmModal: true });
+    }
+    closeModal() {
+        this.setState({ showDeleteConfirmModal: false });
+    }
+    deleteClick() {
+        this.setState({ showDeleteSuccessModal: true, showDeleteConfirmModal: false });
+        this.props.dispatch(sendDeleteData(this.props.message));
+    }
+    closeSuccessModal(){
+        this.setState({ showDeleteSuccessModal: false });
+    }
+    returnDeleteSuccessModalComponent() {
+        let bodyContent = <div><div className="callout callout__error">Message Deleted</div>
+            <p className="review-modal__submsg"></p></div>;
+        let footerButtons = <div className="review-modal__options"><button type="button" onClick={this.closeSuccessModal} className="c-btn c-btn--secondary c-modal__button">OK</button></div>;
+        return (<ModalComponent show
+            onHide={this.stayOnPage}
+            customClass={"c-modal review-modal"}
+            bsSize={'medium'}
+            modalHeading={'Delete this message?'}
+            modalBody={bodyContent}
+            modalFooter={footerButtons}
+            modalInContainer={false}
+            closeButton={false} />);
+    }
+    returnModalComponent() {
+        let bodyContent = <div><div className="callout callout__error">You won’t be able to recover this message if you delete it.</div>
+            <p className="review-modal__submsg"></p></div>;
+        let footerButtons = <div className="review-modal__options"><button type="button" onClick={this.closeModal} className="c-btn c-btn--secondary c-modal__button">Close</button>
+            <button type="button" onClick={this.deleteClick} className="c-btn c-btn--default c-modal__button">Delete message</button></div>;
+        return (<ModalComponent show
+            onHide={this.stayOnPage}
+            customClass={"c-modal review-modal"}
+            bsSize={'medium'}
+            modalHeading={'Delete this message?'}
+            modalBody={bodyContent}
+            modalFooter={footerButtons}
+            modalInContainer={false}
+            closeButton={false} />);
     }
     render() {
         const { message } = this.props;
@@ -68,28 +125,30 @@ class SecureMessageSummary extends React.Component {
             'c-message__summary__head__actions': true,
             'u-position-relative': this.props.hasOnClick,
         });
-        
+
 
         return (
             <div className={messageClass}>
-            {this.getSummaryIcon()}
-            <div className={summaryClass} >
-                <div className="c-message__summary__head">
-                    <div className={titleClass}>
-                        <h2 className={subjectClass}>
-                            {this.hasOnClick(message)}
-                        </h2>
-                        <p className="c-message__summary__head__title__ref">{message.getReference()}</p>
+                {this.getSummaryIcon()}
+                <div className={summaryClass} >
+                    <div className="c-message__summary__head">
+                        <div className={titleClass}>
+                            <h2 className={subjectClass}>
+                                {this.hasOnClick(message)}
+                            </h2>
+                            <p className="c-message__summary__head__title__ref">{message.getReference()}</p>
+                        </div>
+                        <div className={actionsClass}>
+                            {this.getReplyButton(message)}
+                            {this.getDeleteButton(message)}
+                        </div>
                     </div>
-                    <div className={actionsClass}>
-                        {this.getReplyButton(message)}
-                        {this.getDeleteButton()}
-                    </div>
+                    <p className="c-message__summary__account">{message.getMessageBody()}</p>
+                    <p className="c-message__summary__date">{message.getDateCreated()}</p>
                 </div>
-                <p className="c-message__summary__account">{message.getMessageBody()}</p>
-                <p className="c-message__summary__date">{message.getDateCreated()}</p>
+                {this.state.showDeleteConfirmModal && this.returnModalComponent()}
+                {this.state.showDeleteSuccessModal && this.returnDeleteSuccessModalComponent()}
             </div>
-        </div>
         );
     }
 }
@@ -104,12 +163,21 @@ SecureMessageSummary.propTypes = {
     message: PropTypes.instanceOf(MessageEntity),
 };
 SecureMessageSummary.defaultProps = {
-	listFlag: false,
+    listFlag: false,
     draftFlag: false,
     readFlag: false,
     hasOnClick: false,
     threadFlag: false,
     sentFlag: false,
 };
-
-export default SecureMessageSummary;
+/**
+ * Maps the state of the component to the state of the redux store
+ * @param {object} state. State of the application
+ */
+const mapState = (state) => {
+    return {
+        messagesubjects: state.subjects,
+        messageaccounts: state.accounts,
+    }
+};
+export default connect(mapState)(SecureMessageSummary);

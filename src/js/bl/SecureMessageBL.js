@@ -29,7 +29,6 @@ export function SecureMessageBL(response) {
             
         }
     });
-    console.log(sentMessages);
     return {inboxMessages,sentMessages,draftMessages};
 }
     /**
