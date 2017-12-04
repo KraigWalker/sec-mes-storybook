@@ -47,9 +47,11 @@ class ViewMessage extends React.Component {
         return <Threads Threads={threads} />
     }
     getReplyButton = (message) => {
-        return (<Link to={{ pathname: '/replysecuremessage', backPath: '/viewmessage', messageDetail: message }} className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding">
+        if(getMessageType(message.status) !== "sent") {
+            return (<Link to={{ pathname: '/replysecuremessage', backPath: '/viewmessage', messageDetail: message }} className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding">
             <span className="c-btn c-btn--default">Reply</span>
         </Link>)
+        } else return '';
     }
 
     getDeleteButton = (message) => {
@@ -118,9 +120,11 @@ class ViewMessage extends React.Component {
                         <p>
                             {messageDetail.messageBody}
                         </p>
+                        <div className = "c-btn--group">
                         {this.getBackButton()}
                         {this.getDeleteButton(messageDetail)}
                         {this.getReplyButton(messageDetail)}
+                        </div>
                         {this.state.showDeleteConfirmModal && this.returnModalComponent()}
                         {this.state.showDeleteSuccessModal && this.returnDeleteSuccessModalComponent()}
                         {this.getThreads(this.props.messages, messageDetail)}
