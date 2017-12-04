@@ -39,9 +39,9 @@ class ViewMessage extends React.Component {
                         headerTitle={(getMessageType(messageDetail.status)== 'sent')?this.props.content.sentPageTitle:this.props.content.inboxPageTitle}/>
                     
                         <SecureMessageSummary message= { messageDetail } viewMessageFlag={true} readFlag={messageDetail.status === "READ"} sentFlag={getMessageType(messageDetail.status) === "sent"}/>
-                        <p>
+                        <pre>
                             {messageDetail.messageBody}
-                        </p>
+                        </pre>
                         
                         {this.getThreads(this.props.messages, messageDetail)}
                     </div>

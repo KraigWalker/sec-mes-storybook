@@ -1,0 +1,94 @@
+$modelsizes: "smmodel",
+"mdmodel",
+"lgmodel"; //variable to handle each loop for 3 different model sizes
+//***widths/padding/corss-height defined for all 3(small, medium, large) modals in each view.
+$modelwidths:( xs1:( smmodel:( width:292px, padding:24px, crossheight:16px), mdmodel:( width:348px, padding:32px, crossheight:16px), lgmodel:( width:596px, padding:32px, crossheight:16px)), sm1:( smmodel:( width:292px, padding:24px, crossheight:16px), mdmodel:( width:348px, padding:32px, crossheight:16px), lgmodel:( width:596px, padding:32px, crossheight:16px)), md1:( smmodel:( width:292px, padding:24px, crossheight:16px), mdmodel:( width:472px, padding:32px, crossheight:16px), lgmodel:( width:724px, padding:32px, crossheight:16px)), lg1:( smmodel:( width:292px, padding:24px, crossheight:16px), mdmodel:( width:668px, padding:40px, crossheight:24px), lgmodel:( width:1022px, padding:40px, crossheight:24px)), xl1:( smmodel:( width:428px, padding:48px, crossheight:32px), mdmodel:( width:904px, padding:48px, crossheight:32px), lgmodel:( width:1380px, padding:48px, crossheight:32px)));
+//*** Mixin to handle respective widths for each size of modal
+@mixin modalwidths($map, $key, $subkey) {
+    width: map-get(map-get(map-get($map, $key), $subkey), width);
+    $padding: map-get(map-get(map-get($map, $key), $subkey), padding);
+    $cross: map-get(map-get(map-get($map, $key), $subkey), crossheight);
+    $crossfontsize: 1.9722 * $cross;
+    .modal-header {
+        height: $padding;
+    }
+    .modal-body {
+        padding: 0px $padding;
+    }
+    .modal-footer {
+        height: $padding;
+    }
+    .modal-header {
+        .close {
+            span {
+                font-size: $crossfontsize;
+                line-height: $cross;
+            }
+        }
+    }
+}
+
+//*** Below media tag is only written for Pattern Library.
+//***START
+.bow {
+    @media (max-width: 599px) {
+        #modalm, #modall {
+            display: none;
+        }
+    }
+}
+
+//***END
+//CSS for MODAL
+.modal {
+    @each $breakpoint in $breakpoint-groups {
+        $key: nth($breakpoint, 1);
+        @each $modelsize in $modelsizes {
+            $subkey: nth($modelsize, 1);
+            @if $subkey=="smmodel" {
+                &-sm.modal-dialog {
+                    @include media-breakpoint-up($key) {
+                        @include modalwidths($modelwidths, $key, $subkey);
+                    }
+                }
+            }
+            @if $subkey=="mdmodel" {
+                &-md.modal-dialog {
+                    @include media-breakpoint-up($key) {
+                        @include modalwidths($modelwidths, $key, $subkey);
+                    }
+                }
+            }
+            @if $subkey=="lgmodel" {
+                &-lg.modal-dialog {
+                    @include media-breakpoint-up($key) {
+                        @include modalwidths($modelwidths, $key, $subkey);
+                    }
+                }
+            }
+        }
+    }
+    //*** Non-dynamic properties define below
+    &-header {
+        border-bottom: 0px !important;
+        padding: 0px;
+        .close {
+            margin: 8px;
+            display: inline-flex;
+            span {
+                display: inline-block;
+            }
+        }
+    }
+    &-footer {
+        border-top: 0px !important;
+        padding: 8px;
+    }
+    &-lg.modal-dialog {
+        height: auto;
+    }
+    &-title {
+        margin: 8px 0px 0px 8px;
+        display: inline-block;
+    }
+}

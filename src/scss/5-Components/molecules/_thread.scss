@@ -3,4 +3,9 @@
     border: 1px solid bow-palette(grey, base, base);
     padding: get-px(b) get-px(b) get-px(b) get-px(c);
     margin-bottom: get-px(b);
+    white-space: pre-wrap;
+
+    .c-thread__body {
+        margin: 0;
+    }
 }

@@ -92,9 +92,14 @@ class ReplySecureMessage extends React.Component {
                         <TextAreaComponent textData={this.textChange} />
                     </div>
                     {this.renderRemainingChar()}
-                    {this.getThreads(this.props.messages, messageDetail)}
                 </div>
 
+                <div className="row">
+                    <div className="col-md1-18">
+                        {this.getThreads(this.props.messages, messageDetail)}
+                    </div>
+                </div>
+                
                 {/* {this.state.showPopup ? this.returnModalComponent() : ''} */}
                 <div className="c-btn--group">
                     <Link to='/securemessages'>
