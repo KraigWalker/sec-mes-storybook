@@ -38,7 +38,6 @@ class ModalComponent extends React.Component {
     }
     render() {
         return (
-            <div>
             <Modal
                 show={this.props.show}
                 className={this.props.customClass}
@@ -61,7 +60,6 @@ class ModalComponent extends React.Component {
                     {this.props.modalFooter}
                 </Modal.Footer>
             </Modal>
-            </div>
         );
     }
 }
@@ -72,8 +70,8 @@ ModalComponent.propTypes = {
     onHide: PropTypes.func,
     bsSize: PropTypes.string,
     modalHeading: PropTypes.string,
-    modalBody: PropTypes.string,
-    modalFooter: PropTypes.string,
+    modalBody: PropTypes.object,
+    modalFooter: PropTypes.object,
     customClass: PropTypes.string,
     closeButton: PropTypes.bool,
 };
