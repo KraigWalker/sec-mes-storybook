@@ -88,4 +88,27 @@
     position: relative !important;
 }
 
+%u-cursor-pointer,
+.u-cursor-pointer {
+	cursor: pointer !important;
+}
 
+/*
+    Spacing utilities
+*/
+
+.u-margin-bottom {
+    @each $key, $value in $get-px {
+        &-#{$key} {
+            margin-bottom: get-px($key);
+        }
+    }
+}
+
+.u-margin-top {
+    @each $key, $value in $get-px {
+        &-#{$key} {
+            margin-top: get-px($key);
+        }
+    }
+}

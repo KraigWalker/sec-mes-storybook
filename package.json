@@ -53,7 +53,7 @@
     "cb": "brand=cb webpack --config ./prod.config.js",
     "yb": "brand=yb webpack --config ./prod.config.js",
     "dyb": "brand=dyb webpack --config ./prod.config.js",
-    "start": "npm run cb && npm run yb && npm run dyb && webpack-dev-server --config ./dev.config.js",
+    "start": "npm run dyb && webpack-dev-server --config ./dev.config.js && webpack --watch",
     "release": "npm run cb && npm run yb && npm run dyb && npm run nocss",
     "tests": "echo \"Error: no test specified\" && exit 1"
   },

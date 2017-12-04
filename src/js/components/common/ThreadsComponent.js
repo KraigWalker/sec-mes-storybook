@@ -10,9 +10,13 @@ class ThreadsComponent extends React.Component {
         return (
            <div>
                <SecureMessageSummary message= { ThreadDetail } threadFlag={true} hasOnClick={false}/>
-               <div className="c-field">
+               <section>
+                  {ThreadDetail.messageBody} 
+               </section>
+               
+               {/*<div className="c-field">
                 <TextArea messageBody={ThreadDetail.messageBody} disableText={true} threadFlag={true}/>
-               </div>
+               </div>*/}
            </div>
         );
     }
