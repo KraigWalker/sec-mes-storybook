@@ -1,94 +1,196 @@
-$modelsizes: "smmodel",
-"mdmodel",
-"lgmodel"; //variable to handle each loop for 3 different model sizes
-//***widths/padding/corss-height defined for all 3(small, medium, large) modals in each view.
-$modelwidths:( xs1:( smmodel:( width:292px, padding:24px, crossheight:16px), mdmodel:( width:348px, padding:32px, crossheight:16px), lgmodel:( width:596px, padding:32px, crossheight:16px)), sm1:( smmodel:( width:292px, padding:24px, crossheight:16px), mdmodel:( width:348px, padding:32px, crossheight:16px), lgmodel:( width:596px, padding:32px, crossheight:16px)), md1:( smmodel:( width:292px, padding:24px, crossheight:16px), mdmodel:( width:472px, padding:32px, crossheight:16px), lgmodel:( width:724px, padding:32px, crossheight:16px)), lg1:( smmodel:( width:292px, padding:24px, crossheight:16px), mdmodel:( width:668px, padding:40px, crossheight:24px), lgmodel:( width:1022px, padding:40px, crossheight:24px)), xl1:( smmodel:( width:428px, padding:48px, crossheight:32px), mdmodel:( width:904px, padding:48px, crossheight:32px), lgmodel:( width:1380px, padding:48px, crossheight:32px)));
-//*** Mixin to handle respective widths for each size of modal
-@mixin modalwidths($map, $key, $subkey) {
-    width: map-get(map-get(map-get($map, $key), $subkey), width);
-    $padding: map-get(map-get(map-get($map, $key), $subkey), padding);
-    $cross: map-get(map-get(map-get($map, $key), $subkey), crossheight);
-    $crossfontsize: 1.9722 * $cross;
-    .modal-header {
-        height: $padding;
-    }
-    .modal-body {
-        padding: 0px $padding;
-    }
-    .modal-footer {
-        height: $padding;
-    }
-    .modal-header {
-        .close {
-            span {
-                font-size: $crossfontsize;
-                line-height: $cross;
-            }
-        }
-    }
+@import '../../vendor/bootstrap/modals';
+
+.c-modal {
+	color: bow-palette(grey,text);
+	@extend .modal;
+	&::before{
+		display: inline-block;
+		vertical-align: middle;
+		content: " ";
+		height: 100%;
+	}
+
+	.modal-title {
+		@extend .type--mull; 
+		@include brand-heading(bold);
+	}
+	.c-modal__header,
+	.c-modal__footer {
+		border: 0;
+		height: auto;
+		padding: 0;
+		min-height: auto;
+	}
+	.c-modal__footer {
+		.c-modal__footer__center{
+			text-align: center;
+		}
+	}
+	 .c-modal__body{
+		@extend .type--jura;
+		padding: 0;	
+		@include brand-text();
+		&--padding{
+			padding: 16px 0px;
+		}
+	}
+	.c-modal__button{
+		@include media-breakpoint-down(sm1) {
+			margin-top: 5px;
+		}
+		
+	}
+
+	.modal-content {
+		border-radius: 5px;
+		min-width: 280px;
+	}
+
+	.close:focus {
+		//color: $accessibility;
+		@include on-focus();
+	}
+	
+	.c-modal__header{
+		// .close{
+		// 	right: 0;
+		// 	top: 0;
+		// 	position: absolute;
+		// 	padding: 8px;
+		// 	color: bow-palette(grey,dark);
+		// 	font-family: inherit;
+		// 	background: none;
+		// 	opacity: 1;
+		// 	margin-top: 0;
+		// 	&:hover{
+		// 		color: bow-palette(grey,x-dark);
+		// 	}
+		// }
+		span{
+			display: none;
+		}
+		.close{
+			color: bow-palette(grey,dark);
+			opacity: 1;
+			padding: 0;
+			margin: 8px;
+			position: absolute;
+			top: 0;
+			right: 0;
+			&::before{
+				content: "\5d";
+				font-family: "webfonts";
+			}
+			&:hover{
+				color: bow-palette(grey,x-dark);
+			}
+		}
+		svg.account-success {
+		@include general-theme(fill, green, light);
+	}
+	}
+
+	.modal-sm{
+		.modal-content{
+			padding: 24px;
+			@include media-breakpoint-up(xl1) {
+				padding: 48px;
+			}
+		}
+		.c-modal__header{
+			.close{
+				font-size: 16px;
+				line-height: 16px;
+				height: 16px;
+				@include media-breakpoint-up(xl1) {
+					font-size: 32px;
+					line-height: 32px;
+					height: 32px;
+				}
+			}
+		}
+	}
+	
+	.modal-lg, .modal-md{
+		.modal-content{
+			padding: 24px;
+			@include media-breakpoint-up(sm1) {
+				padding: 32px;
+			}
+			@include media-breakpoint-up(lg1) {
+				padding: 40px;
+			}
+			@include media-breakpoint-up(xl1) {
+				padding: 48px;
+			}
+		}
+		.c-modal__header{
+			.close{
+				font-size: 16px;
+				line-height: 16px;
+				height: 16px;
+				@include media-breakpoint-up(lg1) {
+					font-size: 24px;
+					line-height: 24px;
+					height: 24px;
+				}
+				@include media-breakpoint-up(xl1) {
+					font-size: 32px;
+					line-height: 32px;
+					height: 32px;
+				}
+			}
+		}
+	}
 }
 
-//*** Below media tag is only written for Pattern Library.
-//***START
-.bow {
-    @media (max-width: 599px) {
-        #modalm, #modall {
-            display: none;
-        }
-    }
+.c-modal--center{
+	.c-modal__header,
+	.c-modal__footer,
+	.c-modal__body{
+		@extend .u-text-center;
+	} 
 }
 
-//***END
-//CSS for MODAL
-.modal {
-    @each $breakpoint in $breakpoint-groups {
-        $key: nth($breakpoint, 1);
-        @each $modelsize in $modelsizes {
-            $subkey: nth($modelsize, 1);
-            @if $subkey=="smmodel" {
-                &-sm.modal-dialog {
-                    @include media-breakpoint-up($key) {
-                        @include modalwidths($modelwidths, $key, $subkey);
-                    }
-                }
-            }
-            @if $subkey=="mdmodel" {
-                &-md.modal-dialog {
-                    @include media-breakpoint-up($key) {
-                        @include modalwidths($modelwidths, $key, $subkey);
-                    }
-                }
-            }
-            @if $subkey=="lgmodel" {
-                &-lg.modal-dialog {
-                    @include media-breakpoint-up($key) {
-                        @include modalwidths($modelwidths, $key, $subkey);
-                    }
-                }
-            }
-        }
-    }
-    //*** Non-dynamic properties define below
-    &-header {
-        border-bottom: 0px !important;
-        padding: 0px;
-        .close {
-            margin: 8px;
-            display: inline-flex;
-            span {
-                display: inline-block;
-            }
-        }
-    }
-    &-footer {
-        border-top: 0px !important;
-        padding: 8px;
-    }
-    &-lg.modal-dialog {
-        height: auto;
-    }
-    &-title {
-        margin: 8px 0px 0px 8px;
-        display: inline-block;
-    }
+.c-modal--iframe{
+	.modal-dialog, 
+	.modal-content{
+		@include media-breakpoint-down(xs1) {
+			height: 100%;
+		}
+	}
+	.c-modal__body{
+		@include media-breakpoint-down(xs1) {
+			overflow: auto;
+			height: 100%;
+		}
+		iframe#statements{
+			@include media-breakpoint-down(xs1) {
+				height: 100%;
+			}
+		}
+		
+		
+	} 
+}
+
+
+
+.modal-backdrop {
+    position: fixed;
+    bottom: 0;
+    height: auto !important;
+	z-index: 150;
+	border: 1px solid rgba(0, 0, 0, .5);
+}
+
+ 
+.p-products__modalimage{
+    margin: 0 auto;
+}
+
+.c-modal--spinner {
+	.c-modal__body {
+		min-height: 290px;
+	}
 }
