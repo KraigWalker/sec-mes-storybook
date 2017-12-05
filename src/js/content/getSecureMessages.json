@@ -316,6 +316,164 @@
         },
         "date_created": "2017-01-23T10:56:43.511Z",
         "status": "PENDING"
+    },
+    {
+        "id": "19",
+        "thread_id": "24569088-5cf1-43ea-873f-c",
+        "reference": "L09SDF09SDFSD",
+        "subject": "Payment Enquiries",
+        "account": {
+            "id": "$UUID",
+            "number": "444444-44444444"
+        },
+        "payload": {
+            "body": {
+                "data": "A message sent by a customer to the bank"
+            }
+        },
+        "date_created": "2017-09-17T10:56:43.511Z",
+        "status": "NEW"
+    },
+    {
+        "id": "20",
+        "thread_id": "24569088-5cf1-43ea-873f-c",
+        "reference": "L09SDF09SDFSD",
+        "subject": "Payment Enquiries",
+        "account": {
+            "id": "$UUID",
+            "number": "444444-44444444"
+        },
+        "payload": {
+            "body": {
+                "data": "A message sent by a customer to the bank"
+            }
+        },
+        "date_created": "2017-09-17T10:56:43.511Z",
+        "status": "NEW"
+    },
+    {
+        "id": "21",
+        "thread_id": "24569088-5cf1-43ea-873f-c",
+        "reference": "L09SDF09SDFSD",
+        "subject": "Payment Enquiries",
+        "account": {
+            "id": "$UUID",
+            "number": "444444-44444444"
+        },
+        "payload": {
+            "body": {
+                "data": "A message sent by a customer to the bank"
+            }
+        },
+        "date_created": "2017-09-17T10:56:43.511Z",
+        "status": "NEW"
+    },
+    {
+        "id": "22",
+        "thread_id": "24569088-5cf1-43ea-873f-c",
+        "reference": "L09SDF09SDFSD",
+        "subject": "Payment Enquiries",
+        "account": {
+            "id": "$UUID",
+            "number": "444444-44444444"
+        },
+        "payload": {
+            "body": {
+                "data": "A message sent by a customer to the bank"
+            }
+        },
+        "date_created": "2017-09-17T10:56:43.511Z",
+        "status": "NEW"
+    },
+    {
+        "id": "23",
+        "thread_id": "24569088-5cf1-43ea-873f-c",
+        "reference": "L09SDF09SDFSD",
+        "subject": "Payment Enquiries",
+        "account": {
+            "id": "$UUID",
+            "number": "222222-22222222",
+            "name": "B Current"
+        },
+        "payload": {
+            "body": {
+                "data": "A message sent by a customer to the bank"
+            }
+        },
+        "date_created": "2017-10-19T10:56:43.511Z",
+        "status": "DRAFT"
+    },
+    {
+        "id": "24",
+        "thread_id": "24569088-5cf1-43ea-873f-c",
+        "reference": "L09SDF09SDFSD",
+        "subject": "Payment Enquiries",
+        "account": {
+            "id": "$UUID",
+            "number": "222222-22222222",
+            "name": "B Current"
+        },
+        "payload": {
+            "body": {
+                "data": "A message sent by a customer to the bank"
+            }
+        },
+        "date_created": "2017-10-19T10:56:43.511Z",
+        "status": "DRAFT"
+    },
+    {
+        "id": "25",
+        "thread_id": "24569088-5cf1-43ea-873f-c",
+        "reference": "L09SDF09SDFSD",
+        "subject": "Payment Enquiries",
+        "account": {
+            "id": "$UUID",
+            "number": "222222-22222222",
+            "name": "B Current"
+        },
+        "payload": {
+            "body": {
+                "data": "A message sent by a customer to the bank"
+            }
+        },
+        "date_created": "2017-10-19T10:56:43.511Z",
+        "status": "DRAFT"
+    },
+    {
+        "id": "26",
+        "thread_id": "24569088-5cf1-43ea-873f-c",
+        "reference": "L09SDF09SDFSD",
+        "subject": "Payment Enquiries",
+        "account": {
+            "id": "$UUID",
+            "number": "222222-22222222",
+            "name": "B Current"
+        },
+        "payload": {
+            "body": {
+                "data": "A message sent by a customer to the bank"
+            }
+        },
+        "date_created": "2017-10-19T10:56:43.511Z",
+        "status": "DRAFT"
+    },
+    {
+        "id": "27",
+        "thread_id": "24569088-5cf1-43ea-873f-c",
+        "reference": "L09SDF09SDFSD",
+        "subject": "Payment Enquiries",
+        "account": {
+            "id": "$UUID",
+            "number": "222222-22222222",
+            "name": "B Current"
+        },
+        "payload": {
+            "body": {
+                "data": "A message sent by a customer to the bank"
+            }
+        },
+        "date_created": "2017-10-19T10:56:43.511Z",
+        "status": "DRAFT"
     }
 ]
 }
