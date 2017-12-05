@@ -20,13 +20,13 @@ class SecureMessageTabs extends React.Component {
 		return (messages?
 				<Tabs activeKey={this.props.activeTab} onSelect={this.props.onClick} id="secure_tabs" className="c-scroll-tabs">
 					<Tab eventKey={'inbox'} title={inboxTitle}>
-                        <SecureMessageList messages={messages? messages.inboxMessages : null}/>
+                        <SecureMessageList messages={messages? messages.inboxMessages : null} activeTab = {this.props.activeTab}/>
 					</Tab>
 					<Tab eventKey={'drafts'} title={titleName[1]}>
-                        <SecureMessageList messages={messages? messages.draftMessages : null}/>
+                        <SecureMessageList messages={messages? messages.draftMessages : null} activeTab = {this.props.activeTab}/>
 					</Tab>
 					<Tab eventKey={'sent'} title={titleName[2]}>
-                        <SecureMessageList messages={messages? messages.sentMessages : null}/>
+                        <SecureMessageList messages={messages? messages.sentMessages : null} activeTab = {this.props.activeTab}/>
 					</Tab>
 				</Tabs>
 			 : <p>Loading...</p> 

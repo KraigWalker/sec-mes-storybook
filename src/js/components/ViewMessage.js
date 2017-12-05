@@ -6,43 +6,127 @@ import Threads from './common/ThreadList'
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import { getSecureMessages, setViewMessageDetail, updateMessage } from '../actions/AppActions';
-import {getThreadsBL} from '../bl/SecureMessageBL'
-import {getMessageType, updateMessageStatus} from '../utils/SecureMessageUtils';
-
+import { getThreadsBL } from '../bl/SecureMessageBL'
+import { getMessageType, updateMessageStatus } from '../utils/SecureMessageUtils';
+import { Link } from 'react-router-dom';
+import GetIcon from './common/GetIcon';
+import ModalComponent from './common/ModalComponent';
+import {sendDeleteData} from '../actions/AppActions';
 class ViewMessage extends React.Component {
-    componentWillMount(){
+    constructor(props) {
+        super(props);
+        this.getReplyButton = this.getReplyButton.bind(this);
+        this.getDeleteButton = this.getDeleteButton.bind(this);
+        this.state = {
+            showDeleteConfirmModal: false,
+            showDeleteSuccessModal: false,
+        };
+        this.closeModal = this.closeModal.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
+        this.deleteClick = this.deleteClick.bind(this);
+        this.returnDeleteSuccessModalComponent = this.returnDeleteSuccessModalComponent.bind(this);
+        this.returnModalComponent = this.returnModalComponent.bind(this);
+        this.closeSuccessModal = this.closeSuccessModal.bind(this);
+    }
+    componentWillMount() {
         this.props.dispatch(getSecureMessages());
     }
-    componentDidMount(){
-        const { messageDetail} = this.props.location;
+    componentDidMount() {
+        const { messageDetail } = this.props.location;
         messageDetail && this.props.dispatch(setViewMessageDetail(this.props.location.messageDetail)); //to set current viewing message
         // Below is to update New message to Read message status.
-        if(messageDetail && this.props.location.messageDetail.status === "NEW"){
+        if (messageDetail && this.props.location.messageDetail.status === "NEW") {
             let UpdatedMessageList = this.props.messages;
-            let updatedMessage= updateMessageStatus(this.props.location.messageDetail, 'READ');
-            _.forEach(UpdatedMessageList, message => {message.id === updatedMessage.id && message.status === updatedMessage.status });
-            this.props.dispatch(updateMessage(updatedMessage,UpdatedMessageList));
+            let updatedMessage = updateMessageStatus(this.props.location.messageDetail, 'READ');
+            _.forEach(UpdatedMessageList, message => { message.id === updatedMessage.id && message.status === updatedMessage.status });
+            this.props.dispatch(updateMessage(updatedMessage, UpdatedMessageList));
         }
     }
-    getThreads(messages, currentMessage){
-        const threads =  getThreadsBL(messages, currentMessage);
+    getThreads(messages, currentMessage) {
+        const threads = getThreadsBL(messages, currentMessage);
         return <Threads Threads={threads} />
     }
+    getReplyButton = (message) => {
+        if(getMessageType(message.status) !== "sent") {
+            return (<Link to={{ pathname: '/replysecuremessage', backPath: '/viewmessage', messageDetail: message }} className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding">
+            <span className="c-btn c-btn--default">Reply</span>
+        </Link>)
+        } else return '';
+    }
 
+    getDeleteButton = (message) => {
+
+        return (<button className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding" onClick={this.handleDelete}>
+            <span className="c-btn c-btn--secondary">Delete</span>
+        </button>)
+    }
+    handleDelete(data) {
+        this.setState({ showDeleteConfirmModal: true });
+    }
+    closeModal() {
+        this.setState({ showDeleteConfirmModal: false });
+    }
+    deleteClick() {
+        this.setState({ showDeleteSuccessModal: true, showDeleteConfirmModal: false });
+        this.props.dispatch(sendDeleteData(this.props.location.messageDetail));
+    }
+    getBackButton() {
+        return (<Link to={{ pathname: '/securemessage' }} className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding">
+            <span className="c-btn c-btn--secondary">Back</span>
+        </Link>)
+    }
+    returnModalComponent() {
+        let bodyContent = <div><div className="callout callout__error">You won’t be able to recover this message if you delete it.</div>
+            <p className="review-modal__submsg"></p></div>;
+        let footerButtons = <div className="review-modal__options"><button type="button" onClick={this.closeModal} className="c-btn c-btn--secondary c-modal__button">Close</button>
+            <button type="button" onClick={this.deleteClick} className="c-btn c-btn--default c-modal__button">Delete message</button></div>;
+        return (<ModalComponent show
+            onHide={this.closeModal}
+            customClass={"c-modal review-modal"}
+            bsSize={'medium'}
+            modalHeading={'Delete this message?'}
+            modalBody={bodyContent}
+            modalFooter={footerButtons}
+            modalInContainer={false}
+            closeButton={false} />);
+    }
+    returnDeleteSuccessModalComponent() {
+        let bodyContent = <div><div className="callout callout__error">Message Deleted</div>
+            <p className="review-modal__submsg"></p></div>;
+        let footerButtons = <div className="review-modal__options"><button type="button" onClick={this.closeSuccessModal} className="c-btn c-btn--secondary c-modal__button">OK</button></div>;
+        return (<ModalComponent show
+            onHide={this.closeSuccessModal}
+            customClass={"c-modal review-modal"}
+            bsSize={'medium'}
+            modalHeading={''}
+            modalBody={bodyContent}
+            modalFooter={footerButtons}
+            modalInContainer={false}
+            closeButton={false} />);
+    }
+    closeSuccessModal(){
+        this.setState({ showDeleteSuccessModal: false });
+    }
     render() {
-        const { messageDetail} = this.props.location.messageDetail ? this.props.location : this.props;
+        const { messageDetail } = this.props.location.messageDetail ? this.props.location : this.props;
         return (
             <div className="container">
                 <div className="row">
                     <div className="col-md1-18">
-                        <StepHeader showheaderCrumbs={true} headerCrumbsPath={{ pathname : '/securemessages'}} headerCrumbsMessage="Back" 
-                        headerTitle={(getMessageType(messageDetail.status)== 'sent')?this.props.content.sentPageTitle:this.props.content.inboxPageTitle}/>
-                    
-                        <SecureMessageSummary message= { messageDetail } viewMessageFlag={true} readFlag={messageDetail.status === "READ"} sentFlag={getMessageType(messageDetail.status) === "sent"}/>
+                        <StepHeader showheaderCrumbs={true} headerCrumbsPath={{ pathname: '/securemessages' }} headerCrumbsMessage="Back"
+                            headerTitle={(getMessageType(messageDetail.status) == 'sent') ? this.props.content.sentPageTitle : this.props.content.inboxPageTitle} />
+
+                        <SecureMessageSummary message={messageDetail} viewMessageFlag={true} readFlag={messageDetail.status === "READ"} sentFlag={getMessageType(messageDetail.status) === "sent"} />
                         <p>
                             {messageDetail.messageBody}
                         </p>
-                        
+                        <div className = "c-btn--group">
+                        {this.getBackButton()}
+                        {this.getDeleteButton(messageDetail)}
+                        {this.getReplyButton(messageDetail)}
+                        </div>
+                        {this.state.showDeleteConfirmModal && this.returnModalComponent()}
+                        {this.state.showDeleteSuccessModal && this.returnDeleteSuccessModalComponent()}
                         {this.getThreads(this.props.messages, messageDetail)}
                     </div>
                 </div>
@@ -52,7 +136,7 @@ class ViewMessage extends React.Component {
 }
 
 
-const mapState = (state) => { 
+const mapState = (state) => {
     return {
         messages: state.messages.messages,
         messageDetail: state.viewMessage.messageDetail
