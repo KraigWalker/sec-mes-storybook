@@ -26,6 +26,9 @@ class AppApi {
   static sendDeleteMessageData(deleteData,success,error){
     console.log('DELETE DATA',deleteData);
   }
+  static sendDraftMessageData(draftData,success,error){
+    console.log('Draft DATA',draftData);
+  }
   
 }
 

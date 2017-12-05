@@ -1,5 +1,5 @@
 import React from 'react';
-import { getMessageSubjects, getAccounts, sendMessageData } from '../actions/AppActions';
+import { getMessageSubjects, getAccounts, sendMessageData,sendDraftMessageData } from '../actions/AppActions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Dropdown, ButtonToolbar, MenuItem } from 'react-bootstrap/lib';
@@ -23,9 +23,15 @@ class NewSecureMessage extends React.Component {
         this.stayOnPage = this.stayOnPage.bind(this);
         this.returnModalComponent = this.returnModalComponent.bind(this);
         this.saveDraftData = this.saveDraftData.bind(this);
+        this.draftOkClicked = this.draftOkClicked.bind(this);
+        this.returnDraftModal = this.returnDraftModal.bind(this);
+        this.returnSentMessageModal = this.returnSentMessageModal.bind(this);
+        this.sentOkClicked = this.sentOkClicked.bind(this);
         this.state = {
             chars_left: 43,
             showPopup: false,
+            showDraftSuccessModal:false,
+            showSentMessageModal:false,
         };
     };
     componentWillMount() {
@@ -55,6 +61,7 @@ class NewSecureMessage extends React.Component {
     }
     sendData() {
         this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData()));
+        this.setState({showSentMessageModal : true})
     }
     checkPastedData(data) {
         //  console.log(RegexUtils.isValidPastedData(data));
@@ -85,8 +92,44 @@ class NewSecureMessage extends React.Component {
             modalInContainer={false}
             closeButton = {true} />);
     }
+    returnDraftModal(){
+        let bodyContent = <div><div className="callout callout__error">Message saved as a draft</div>
+        <p className="review-modal__submsg"></p></div>;
+    let footerButtons = <div className="review-modal__options"><button type="button" onClick={this.draftOkClicked} className="c-btn c-btn--default c-modal__button">Ok</button></div>;
+    return (<ModalComponent show
+        onHide={this.draftOkClicked}
+        customClass={"c-modal review-modal"}
+        bsSize={'medium'}
+        modalHeading={''}
+        modalBody={bodyContent}
+        modalFooter={footerButtons}
+        modalInContainer={false}
+        closeButton = {false} />);
+    }
+    draftOkClicked(){
+        this.setState({showDraftSuccessModal :false});
+    }
     saveDraftData(){
-        
+        this.props.dispatch(sendDraftMessageData(messageEntity.getMessageRequestData()));
+        this.setState({showDraftSuccessModal : true});
+
+    }
+    sentOkClicked(){
+        this.setState({showSentMessageModal : false});
+    }
+    returnSentMessageModal(){
+        let bodyContent = <div><div className="callout callout__error">Message sent</div>
+        <p className="review-modal__submsg"></p></div>;
+    let footerButtons = <div className="review-modal__options"><button type="button" onClick={this.sentOkClicked} className="c-btn c-btn--default c-modal__button">Ok</button></div>;
+    return (<ModalComponent show
+        onHide={this.sentOkClicked}
+        customClass={"c-modal review-modal"}
+        bsSize={'medium'}
+        modalHeading={''}
+        modalBody={bodyContent}
+        modalFooter={footerButtons}
+        modalInContainer={false}
+        closeButton = {false} />);
     }
     render() {
         return (<div className="container">
@@ -126,7 +169,9 @@ class NewSecureMessage extends React.Component {
                 {this.renderRemainingChar()}
             </div>
 
-            {this.state.showPopup ? this.returnModalComponent() : ''}
+            {this.state.showPopup && this.returnModalComponent()}
+            {this.state.showDraftSuccessModal && this.returnDraftModal()}
+            {this.state.showSentMessageModal && this.returnSentMessageModal()}
             <div className="c-btn--group">
                 <Link to='/securemessages'>
                     <input type='button' name='cancel' value='Back' className="c-btn c-btn--secondary" />
