@@ -143,7 +143,8 @@ class SecureMessageSummary extends React.Component {
                             {this.getDeleteButton(message)}
                         </div>
                     </div>
-                    <p className="c-message__summary__account">{message.getMessageBody()}</p>
+                    {!this.props.viewMessageFlag && <p className="c-message__summary__account">{message.getMessageBody()}</p>}
+                    {this.props.viewMessageFlag && <p className="c-message__summary__account">Account : {this.props.message.account.accountNumber}</p>}
                     <p className="c-message__summary__date">{message.getDateCreated()}</p>
                 </div>
                 {this.state.showDeleteConfirmModal && this.returnModalComponent()}
