@@ -10,9 +10,9 @@ class ThreadsComponent extends React.Component {
         return (
            <li className="c-thread">
                <SecureMessageSummary message= { ThreadDetail } threadFlag={true} hasOnClick={false}/>
-               <section>
+               <pre className="c-thread__body">
                   {ThreadDetail.messageBody} 
-               </section>
+               </pre>
            </li>
         );
     }
