@@ -1,5 +1,5 @@
 /node_modules/
-/dist
+/src/compiled
 npm-debug.log
 package-lock.json
 

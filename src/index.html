@@ -3,9 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>React-Redux-App</title>
+    <script>
+        if (window.location.pathname.indexOf('/CB') > 0){
+          document.write('<link rel="stylesheet" type="text/css" href="http://localhost:8000/cb.main.css">');
+        } else if(window.location.pathname.indexOf('/YB') > 0){
+          document.write('<link rel="stylesheet" type="text/css" href="http://localhost:8000/yb.main.css">');
+        } else if(window.location.pathname.indexOf('/DYB') > 0){
+          document.write('<link rel="stylesheet" type="text/css" href="http://localhost:8000/dyb.main.css">');
+        }
+    </script>
 </head>
 <body>
     <div id="app"></div>
-    <script src="/app.js"></script>
+    <script src="/app.bundle.js"></script>
+
 </body>
 </html>

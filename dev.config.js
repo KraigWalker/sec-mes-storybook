@@ -2,21 +2,26 @@ const webpack = require('webpack');
 const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
 const brand = process.env.npm_config_bank;
 console.log("in dev config --- "+brand);
+
+
 module.exports = {
     entry: {
 		app: [ "babel-polyfill", resolve(__dirname,'src/js/client')],
-
+		maincss: resolve(__dirname, 'src/scss/main')
 	},
 	devtool: 'source-map',
 	output: {
-		path: resolve(__dirname,'src'),
-		publicPath: '/',
-		filename: '[name].js'
+		path:__dirname+ '/src/compiled/local/',
+		filename: "[name].bundle.js",
+		publicPath: '/'
 	},
 	plugins: [    
 		new webpack.HotModuleReplacementPlugin(),
+		new ExtractTextPlugin("dyb.main.css")
 	],
 	module: {
 		rules: [
@@ -30,31 +35,39 @@ module.exports = {
 				}
 			},
 			{
-				test: /\.html$/,
-				loader: 'html-loader',
-			},
-			{
 				test: /\.scss$/,
 				include: resolve(__dirname, 'src'),
-				use: [
-					{
-						loader: "style-loader", 
+				use: ExtractTextPlugin.extract({
+					fallback: "style-loader",
+					use:[{
+							loader: "css-loader"
+						},
+						{
+						loader:"sass-loader",
 						options: {
-							sourceMap: true
-						} // creates style nodes from JS strings
-					}, {
-						loader: "css-loader", 
-						options: {
-							sourceMap: true
-						} // translates CSS into CommonJS
-					}, {
-						loader: "sass-loader", 
-						options: {
-							sourceMap: true,
-							data: "$brand: brand;$env: dev;"
-						},// compiles Sass to CSS
-					}
-				]
+                            data: "$brand: dyb;$env: prod;"
+                        }
+					}]
+				}),
+				// use: [
+				// 	{
+				// 		loader: "style-loader", 
+				// 		options: {
+				// 			sourceMap: true
+				// 		} // creates style nodes from JS strings
+				// 	}, {
+				// 		loader: "css-loader", 
+				// 		options: {
+				// 			sourceMap: true
+				// 		} // translates CSS into CommonJS
+				// 	}, {
+				// 		loader: "sass-loader", 
+				// 		options: {
+				// 			sourceMap: true,
+				// 			data: "$brand: brand;$env: dev;"
+				// 		},// compiles Sass to CSS
+				// 	}
+				// ]
 			},
 			{
 				test: /\.(png|woff|woff2|eot|ttf|svg|otf|gif)$/, 
@@ -70,16 +83,18 @@ module.exports = {
 			
 		]
 	},
-
+	
 	devServer: {
-		contentBase: resolve(__dirname, 'src'),
+		contentBase: __dirname +"/src/",
+		open: true, // Open browser after compilation
+		historyApiFallback: true, // Allow changes from history
 		host: 'localhost',
-        port: 8000
+		port: 8000,
 	},
 	
 	resolve: {
         modules: [`${__dirname}/src`, 'node_modules'],
-        extensions: ['.js', '.json'],
+        extensions: ['.js', '.json', '.scss'],
     },
 }
 
