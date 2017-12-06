@@ -1,16 +1,18 @@
 const webpack = require('webpack');
 const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const brand = process.env.npm_config_bank;
+console.log("in dev config --- "+brand);
 module.exports = {
     entry: {
-		app: [ "babel-polyfill", resolve(__dirname,'src/js/client')]
+		app: [ "babel-polyfill", resolve(__dirname,'src/js/client')],
 
 	},
 	devtool: 'source-map',
 	output: {
-		path: resolve(__dirname,'dist'),
-		publicPath: '/dist',
+		path: resolve(__dirname,'src'),
+		publicPath: '/',
 		filename: '[name].js'
 	},
 	plugins: [    
@@ -49,11 +51,23 @@ module.exports = {
 						loader: "sass-loader", 
 						options: {
 							sourceMap: true,
-							data: "$brand: dyb;$env: dev;"
+							data: "$brand: brand;$env: dev;"
 						},// compiles Sass to CSS
 					}
 				]
 			},
+			{
+				test: /\.(png|woff|woff2|eot|ttf|svg|otf|gif)$/, 
+				loader: 'url-loader' 
+			},
+			{
+				test: /\.(html)$/,
+				exclude:/node_modules/,
+				use: {
+					loader: 'html-loader'
+				}
+			}
+			
 		]
 	},
 
