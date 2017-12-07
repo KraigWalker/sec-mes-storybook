@@ -99,11 +99,11 @@ class NewSecureMessage extends React.Component {
         onHide={this.draftOkClicked}
         customClass={"c-modal"}
         bsSize={'medium'}
-        modalHeading={''}
-        modalBody={bodyContent}
-        modalFooter={footerButtons}
+        modalheading={''}
+        modalbody={bodyContent}
+        modalfooter={footerButtons}
         modalInContainer={false}
-        closeButton = {false} />);
+        closeButton/>);
     }
     draftOkClicked(){
         this.setState({showDraftSuccessModal :false});
@@ -123,11 +123,11 @@ class NewSecureMessage extends React.Component {
         onHide={this.sentOkClicked}
         customClass={"c-modal"}
         bsSize={'medium'}
-        modalHeading={''}
-        modalBody={bodyContent}
-        modalFooter={footerButtons}
+        modalheading={''}
+        modalbody={bodyContent}
+        modalfooter={footerButtons}
         modalInContainer={false}
-        closeButton = {false} />);
+        closeButton/>);
     }
     render() {
         return (<div className="container">

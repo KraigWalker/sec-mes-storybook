@@ -86,9 +86,9 @@ class ViewMessage extends React.Component {
             onHide={this.closeModal}
             customClass={"c-modal"}
             bsSize={'medium'}
-            modalHeading={'Delete this message?'}
-            modalBody={bodyContent}
-            modalFooter={footerButtons}
+            modalheading={'Delete this message?'}
+            modalbody={bodyContent}
+            modalfooter={footerButtons}
             modalInContainer={false}
             closeButton={false} />);
     }
@@ -99,9 +99,9 @@ class ViewMessage extends React.Component {
             onHide={this.closeSuccessModal}
             customClass={"c-modal"}
             bsSize={'medium'}
-            modalHeading={''}
-            modalBody={bodyContent}
-            modalFooter={footerButtons}
+            modalheading={''}
+            modalbody={bodyContent}
+            modalfooter={footerButtons}
             modalInContainer={false}
             closeButton={false} />);
     }
