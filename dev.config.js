@@ -4,18 +4,18 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-const brand = process.env.npm_config_bank;
+const brand = process.env.npm_config_brand || 'DYB';
+
 console.log("in dev config --- "+brand);
 
 
 module.exports = {
     entry: {
-		app: [ "babel-polyfill", resolve(__dirname,'src/js/client')],
-		maincss: resolve(__dirname, 'src/scss/main')
+		app: [ "babel-polyfill", resolve(__dirname,'src/js/client'),resolve(__dirname, 'src/scss/main')]
 	},
 	devtool: 'source-map',
 	output: {
-		path:__dirname+ '/src/compiled/local/',
+		path:__dirname+ '/src/compiled/',
 		filename: "[name].bundle.js",
 		publicPath: '/'
 	},
@@ -79,6 +79,22 @@ module.exports = {
 				use: {
 					loader: 'html-loader'
 				}
+			},
+			{
+			  test: /\.json$/,
+			  loader: 'json-loader'
+			},
+			{
+			  test: /\.(jpg|jpeg|gif|png|svg)$/,
+			  exclude: /node_modules/,
+			  include: resolve(__dirname, "src/images/"),
+			  loader:'url-loader?limit=1024&name=images/[name].[ext]'
+			},
+			{
+			  test: /\.(otf|ttf|eot|svg)$/,
+			  exclude: /node_modules/,
+			  include: resolve(__dirname, "src/fonts/"),
+			  loader: 'url-loader?limit=1024&name=fonts/[name].[ext]'
 			}
 			
 		]
