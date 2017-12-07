@@ -56,7 +56,7 @@ class DraftSecureMessage extends React.Component{
         this.setState({showPopup : true});
     }
     returnModalComponent() {
-        let bodyContent = <div className="callout callout__error">Message sent</div>;
+        let bodyContent = <div className="">Message sent</div>;
         let footerButtons = <button type="button" onClick={this.sentOkClicked} className="c-btn c-btn--default c-modal__button">Ok</button>;
         return (<ModalComponent show
             onHide={this.sentOkClicked}
@@ -72,7 +72,7 @@ class DraftSecureMessage extends React.Component{
         this.setState({showPopup : false});
     }
     returnDraftModal(){
-        let bodyContent = <div className="callout callout__error">Message saved as a draft</div>;
+        let bodyContent = <div className="">Message saved as a draft</div>;
         let footerButtons = <button type="button" onClick={this.draftOkClicked} className="c-btn c-btn--default c-modal__button">Ok</button>;
         return (<ModalComponent show
             onHide={this.draftOkClicked}

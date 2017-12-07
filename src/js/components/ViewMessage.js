@@ -93,7 +93,7 @@ class ViewMessage extends React.Component {
             closeButton={false} />);
     }
     returnDeleteSuccessModalComponent() {
-        let bodyContent = <div className="callout callout__error">Message Deleted</div>;
+        let bodyContent = <div className="">Message Deleted</div>;
         let footerButtons = <button type="button" onClick={this.closeSuccessModal} className="c-btn c-btn--secondary c-modal__button">OK</button>;
         return (<ModalComponent show
             onHide={this.closeSuccessModal}
