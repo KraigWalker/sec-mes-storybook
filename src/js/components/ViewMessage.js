@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 import GetIcon from './common/GetIcon';
 import ModalComponent from './common/ModalComponent';
 import { sendDeleteData } from '../actions/AppActions';
+
 class ViewMessage extends React.Component {
     constructor(props) {
         super(props);
@@ -48,17 +49,17 @@ class ViewMessage extends React.Component {
     }
     getReplyButton = (message) => {
         if (getMessageType(message.status) !== "sent") {
-            return (<Link to={{ pathname: '/replysecuremessage', backPath: '/viewmessage', messageDetail: message }} className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding">
-                <span className="c-btn c-btn--default">Reply</span>
-            </Link>)
+            return (<Link to={{ pathname: '/replysecuremessage', backPath: '/viewmessage', messageDetail: message }}>
+                <input type='button' name='reply' value='Reply' className="c-btn c-btn--secondary" />
+            </Link>
+            )
         } else return '';
     }
 
     getDeleteButton = (message) => {
-
-        return (<button className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding" onClick={this.handleDelete}>
-            <span className="c-btn c-btn--secondary">Delete</span>
-        </button>)
+        return (
+            <button className="c-btn c-btn--secondary" onClick={this.handleDelete}>Delete</button>
+        )
     }
     handleDelete(data) {
         this.setState({ showDeleteConfirmModal: true });
@@ -71,18 +72,19 @@ class ViewMessage extends React.Component {
         this.props.dispatch(sendDeleteData(this.props.location.messageDetail));
     }
     getBackButton() {
-        return (<Link to={{ pathname: '/securemessage' }} className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding">
-            <span className="c-btn c-btn--secondary">Back</span>
-        </Link>)
+        return (
+            <Link to={{ pathname: '/securemessage' }}>
+                <input type='button' name='back' value='Back' className="c-btn c-btn--secondary" />
+            </Link>
+        )
     }
     returnModalComponent() {
-        let bodyContent = <div><div className="callout callout__error">You won’t be able to recover this message if you delete it.</div>
-            <p className="review-modal__submsg"></p></div>;
-        let footerButtons = <div className="review-modal__options"><button type="button" onClick={this.closeModal} className="c-btn c-btn--secondary c-modal__button">Close</button>
+        let bodyContent = <div className="callout callout__error">You won’t be able to recover this message if you delete it.</div>;
+        let footerButtons = <div><button type="button" onClick={this.closeModal} className="c-btn c-btn--secondary c-modal__button">Close</button>
             <button type="button" onClick={this.deleteClick} className="c-btn c-btn--default c-modal__button">Delete message</button></div>;
         return (<ModalComponent show
             onHide={this.closeModal}
-            customClass={"c-modal review-modal"}
+            customClass={"c-modal"}
             bsSize={'medium'}
             modalHeading={'Delete this message?'}
             modalBody={bodyContent}
@@ -91,12 +93,11 @@ class ViewMessage extends React.Component {
             closeButton={false} />);
     }
     returnDeleteSuccessModalComponent() {
-        let bodyContent = <div><div className="callout callout__error">Message Deleted</div>
-            <p className="review-modal__submsg"></p></div>;
-        let footerButtons = <div className="review-modal__options"><button type="button" onClick={this.closeSuccessModal} className="c-btn c-btn--secondary c-modal__button">OK</button></div>;
+        let bodyContent = <div className="callout callout__error">Message Deleted</div>;
+        let footerButtons = <button type="button" onClick={this.closeSuccessModal} className="c-btn c-btn--secondary c-modal__button">OK</button>;
         return (<ModalComponent show
             onHide={this.closeSuccessModal}
-            customClass={"c-modal review-modal"}
+            customClass={"c-modal"}
             bsSize={'medium'}
             modalHeading={''}
             modalBody={bodyContent}

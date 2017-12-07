@@ -82,7 +82,7 @@ class SecureMessageSummary extends React.Component {
             modalbody={bodyContent}
             modalfooter={footerButtons}
             modalInContainer={false}
-            closeButton={true} />);
+            closeButton />);
     }
     returnModalComponent() {
         let bodyContent = <div className="callout callout__error">You won’t be able to recover this message if you delete it.</div>;
@@ -96,7 +96,7 @@ class SecureMessageSummary extends React.Component {
             modalbody={bodyContent}
             modalfooter={footerButtons}
             modalInContainer={false}
-            closeButton={true} />);
+            closeButton />);
     }
     render() {
         const { message } = this.props;
@@ -109,7 +109,7 @@ class SecureMessageSummary extends React.Component {
         });
         let summaryClass = cx({
             'c-message__summary': true,
-            'c-message__summary--no-icon': this.props.draftFlag,
+            'c-message__summary--no-icon': this.props.draftFlag || this.props.sentFlag,
         });
         let titleClass = cx({
             'c-message__summary__head__title': true,
