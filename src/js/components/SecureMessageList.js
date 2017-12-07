@@ -43,7 +43,7 @@ class SecureMessageList extends React.Component {
             buttonText = 'Show more drafts';
         }
         if (this.state.showMoreLimit < this.props.messages.length && (this.props.activeTab === 'sent' || this.props.activeTab === 'inbox' || this.props.activeTab === 'drafts')) {
-            return (<button type="button" onClick={this.showMoreClicked} className="c-btn c-btn--default c-modal__button">{buttonText}</button>);
+            return (<button type="button" onClick={this.showMoreClicked} className="c-btn c-btn--default c-modal__button u-margin-bottom-c">{buttonText}</button>);
         }
 
     }
@@ -72,7 +72,7 @@ class SecureMessageList extends React.Component {
                     {this.props.count === 0 && this.renderNoMessagesText()}
                 </ol>
                 {this.renderShowMoreButton()}
-                {this.state.showThatsAllMessage && <p>{this.renderThatsAllText()}</p>}
+                {this.state.showThatsAllMessage && <p className="u-margin-bottom-c">{this.renderThatsAllText()}</p>}
             </section>
         );
     }
