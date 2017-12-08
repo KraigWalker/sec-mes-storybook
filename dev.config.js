@@ -4,14 +4,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-const brand = process.env.npm_config_brand || 'DYB';
+const brand = process.env.brand || 'dyb';
 
 console.log("in dev config --- "+brand);
 
 
 module.exports = {
     entry: {
-		app: [ "babel-polyfill", resolve(__dirname,'src/js/client'),resolve(__dirname, 'src/scss/main')]
+		app: [ "babel-polyfill", resolve(__dirname,'src/js/client')],
+		main: resolve(__dirname, 'src/scss/main')
 	},
 	devtool: 'source-map',
 	output: {
@@ -21,7 +22,7 @@ module.exports = {
 	},
 	plugins: [    
 		new webpack.HotModuleReplacementPlugin(),
-		new ExtractTextPlugin("dyb.main.css")
+		new ExtractTextPlugin(`${brand}.main.css`, { allChunks: true })
 	],
 	module: {
 		rules: [
@@ -45,7 +46,7 @@ module.exports = {
 						{
 						loader:"sass-loader",
 						options: {
-                            data: "$brand: dyb;$env: prod;"
+                            data: `$brand: ${brand};$env: prod;`
                         }
 					}]
 				}),
