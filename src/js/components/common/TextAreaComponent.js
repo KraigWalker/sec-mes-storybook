@@ -36,7 +36,8 @@ class TextAreaComponent extends React.Component {
                 value={this.props.messageBody}
                 disabled={this.props.disableText}
                 maxLength='43'
-                ref="txtarea">
+                ref="txtarea"
+                aria-labelledby={`${this.props.accessID}`}>
             </textarea>
         );
     }

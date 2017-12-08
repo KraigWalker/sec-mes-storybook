@@ -141,30 +141,30 @@ class NewSecureMessage extends React.Component {
             {/*<Link to='/securemessages'> Back To Homepage</Link><br />*/}
 
             <div className="c-field">
-                <label className="c-field__label c-field__label--block" htmlFor="subjects">
+                <label id="subjectTitle" className="c-field__label c-field__label--block" htmlFor="subjects">
                     Subject
                 </label>
                 <div className="c-field__controls">
-                    <DropDownComponent subjects={this.props.subjects} selectSubject={this.selectSubject} name='subjects' id='subjects' isFromDraft ={false} selectedValue = 'Please select'/>
+                    <DropDownComponent accessID="subjectTitle" subjects={this.props.subjects} selectSubject={this.selectSubject} name='subjects' id='subjects' isFromDraft ={false} selectedValue = 'Please select'/>
                 </div>
             </div>
 
             <div className="c-field">
-                <label className="c-field__label c-field__label--block" htmlFor="subjects">
+                <label id="relatesTitle" className="c-field__label c-field__label--block" htmlFor="accounts">
                     Message relates to
                 </label>
                 <div className="c-field__controls">
-                    <DropDownComponent accounts={this.props.accounts} selectSubject={this.selectSubject} name='accounts' id='accounts' isFromDraft ={false} selectedValue = 'Please select'/>
+                    <DropDownComponent accessID="relatesTitle" accounts={this.props.accounts} selectSubject={this.selectSubject} name='accounts' id='accounts' isFromDraft ={false} selectedValue = 'Please select'/>
                 </div>
             </div>
 
 
             <div className="c-field">
-                <label className="c-field__label c-field__label--block" htmlFor="subjects">
+                <label id="messageTitle" className="c-field__label c-field__label--block" htmlFor="message">
                     Message
                 </label>
                 <div className="c-field__controls">
-                    <TextAreaComponent textData={this.textChange} />
+                    <TextAreaComponent accessID="messageTitle" textData={this.textChange} id="message"/>
                 </div>
                 {this.renderRemainingChar()}
             </div>

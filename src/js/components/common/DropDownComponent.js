@@ -95,7 +95,7 @@ class DropDownComponent extends React.Component {
         });
         return (
             <div>
-                <button className="c-field__input c-field__input--select c-dropdown u-cursor-pointer" onClick={this.showList}>{this.state.Text}</button>
+                <button id="ddlText" aria-labelledby={`${this.props.accessID} ddlText`} className="c-field__input c-field__input--select c-dropdown u-cursor-pointer" onClick={this.showList}>{this.state.Text}</button>
                 {this.state.list && <div ref="overlay" className={overlayClassName} onClick={this.overlayclick} ></div>}
                 {this.state.list && <ul className="c-dropdown__list u-cursor-pointer" onBlur={this.onBlur}>{this.returnMenuItem()}</ul>}
             </div>

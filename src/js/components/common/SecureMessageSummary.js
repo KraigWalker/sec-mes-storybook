@@ -34,15 +34,32 @@ class SecureMessageSummary extends React.Component {
     }
     hasOnClick = (message) => {
         let path = (this.props.draftFlag) ? '/draftsecuremessage' : '/viewmessage';
-        if (this.props.hasOnClick) {
+        // console.log("this.props.readFlag " + this.props.readFlag);
+        console.log("message.getSubject() -----------> " + message.getSubject());
+        let unreadmessage = `Unread ` + message.getSubject();
+        if (this.props.readFlag && this.props.hasOnClick) {
+            // console.log("this.props.readFlag inside if -----> " + this.props.readFlag);
             return (<Link to={{ pathname: path, messageDetail: message }} className="c-message__summary__head__title__subject__link">{message.getSubject()}</Link>);
+        } else if (this.props.hasOnClick) {
+            return (<Link aria-label={`${unreadmessage}`} to={{ pathname: path, messageDetail: message }} className="c-message__summary__head__title__subject__link">{message.getSubject()}</Link>);
         } else
             return message.getSubject()
+
+        // if (this.props.hasOnClick) {
+        //     return (<Link aria-label="Unread payment enquiries" to={{ pathname: path, messageDetail: message }} className="c-message__summary__head__title__subject__link">{message.getSubject()}</Link>);
+        // } else
+        //     return message.getSubject()
     }
     getReplyButton = (message) => {
-        return (!this.props.draftFlag && !this.props.threadFlag && !this.props.sentFlag) &&
+        let replymessage = ``;
+        if (this.props.readFlag) {
+            replymessage = `Reply ` + message.getSubject();
+        } else {
+            replymessage = `Reply Unread ` + message.getSubject();        
+        }
+        return (!this.props.draftFlag && !this.props.threadFlag && !this.props.sentFlag) && 
             (<Link to={{ pathname: '/replysecuremessage', backPath: this.props.viewMessageFlag ? '/viewmessage' : '/securemessages', messageDetail: message }} className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding">
-                <span className="c-message__summary__head__actions__reply__txt">Reply</span>
+                <span id="replyMsg" className="c-message__summary__head__actions__reply__txt" aria-label={`${replymessage}`}>Reply</span>
                 <span className="c-message__summary__head__actions__reply__icon">
                     <GetIcon id="icon-reply" width="24px" height="24px" />
                 </span>
@@ -50,9 +67,14 @@ class SecureMessageSummary extends React.Component {
     }
 
     getDeleteButton = (message) => {
-
+        let deletemessage = ``;
+        if (this.props.readFlag) {
+            deletemessage = `Delete ` + message.getSubject();
+        } else {
+            deletemessage = `Delete Unread ` + message.getSubject();        
+        }
         return !this.props.threadFlag && (<button className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding" onClick={this.handleDelete}>
-            <span className="c-message__summary__head__actions__delete__txt">Delete</span>
+            <span id="deleteMsg" className="c-message__summary__head__actions__delete__txt" aria-label={`${deletemessage}`}>Delete</span>
             <span className="c-message__summary__head__actions__delete__icon">
                 <GetIcon id="icon-delete" width="24px" height="24px" />
             </span>
@@ -131,7 +153,7 @@ class SecureMessageSummary extends React.Component {
                 <div className={summaryClass} >
                     <div className="c-message__summary__head">
                         <div className={titleClass}>
-                            <h2 className={subjectClass}>
+                            <h2 id="subjectMsg" className={subjectClass}>
                                 {this.hasOnClick(message)}
                             </h2>
                             <p className="c-message__summary__head__title__ref">{message.getReference()}</p>
