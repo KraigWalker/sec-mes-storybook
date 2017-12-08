@@ -93,17 +93,17 @@ class NewSecureMessage extends React.Component {
             closeButton />);
     }
     returnDraftModal(){
-        let bodyContent = <div className="callout callout__error">Message saved as a draft</div>;
+        let bodyContent = <div className="">Message saved as a draft</div>;
     let footerButtons = <button type="button" onClick={this.draftOkClicked} className="c-btn c-btn--default c-modal__button">Ok</button>;
     return (<ModalComponent show
         onHide={this.draftOkClicked}
         customClass={"c-modal"}
         bsSize={'medium'}
-        modalHeading={''}
-        modalBody={bodyContent}
-        modalFooter={footerButtons}
+        modalheading={''}
+        modalbody={bodyContent}
+        modalfooter={footerButtons}
         modalInContainer={false}
-        closeButton = {false} />);
+        closeButton/>);
     }
     draftOkClicked(){
         this.setState({showDraftSuccessModal :false});
@@ -117,17 +117,17 @@ class NewSecureMessage extends React.Component {
         this.setState({showSentMessageModal : false});
     }
     returnSentMessageModal(){
-        let bodyContent = <div className="callout callout__error">Message sent</div>;
+        let bodyContent = <div className="">Message sent</div>;
     let footerButtons = <button type="button" onClick={this.sentOkClicked} className="c-btn c-btn--default c-modal__button">Ok</button>;
     return (<ModalComponent show
         onHide={this.sentOkClicked}
         customClass={"c-modal"}
         bsSize={'medium'}
-        modalHeading={''}
-        modalBody={bodyContent}
-        modalFooter={footerButtons}
+        modalheading={''}
+        modalbody={bodyContent}
+        modalfooter={footerButtons}
         modalInContainer={false}
-        closeButton = {false} />);
+        closeButton/>);
     }
     render() {
         return (<div className="container">

@@ -72,7 +72,7 @@ class SecureMessageSummary extends React.Component {
         this.setState({ showDeleteSuccessModal: false });
     }
     returnDeleteSuccessModalComponent() {
-        let bodyContent = <div className="callout callout__error">Message Deleted</div>;
+        let bodyContent = <div className="">Message Deleted</div>;
         let footerButtons = <div><button type="button" onClick={this.closeSuccessModal} className="c-btn c-btn--secondary c-modal__button">OK</button></div>;
         return (<ModalComponent show
             onHide={this.closeSuccessModal}
@@ -141,7 +141,8 @@ class SecureMessageSummary extends React.Component {
                             {this.getDeleteButton(message)}
                         </div>
                     </div>
-                    <p className="c-message__summary__account">{message.getMessageBody()}</p>
+                    {!this.props.viewMessageFlag && <p className="c-message__summary__account">{message.getMessageBody()}</p>}
+                    {this.props.viewMessageFlag && <p className="c-message__summary__account">Account : {this.props.message.account.accountNumber}</p>}
                     <p className="c-message__summary__date">{message.getDateCreated()}</p>
                 </div>
                 {this.state.showDeleteConfirmModal && this.returnModalComponent()}
