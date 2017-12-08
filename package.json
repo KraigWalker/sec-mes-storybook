@@ -49,10 +49,10 @@
   },
   "scripts": {
     "nocss": "brand= webpack --config ./prod.config.js",
-    "cb": "brand=cb webpack --config ./prod.config.js",
-    "yb": "brand=yb webpack --config ./prod.config.js",
-    "dyb": "brand=dyb webpack --config ./prod.config.js",
-	"start": "npm run cb && npm run yb && webpack-dev-server --config ./dev.config.js",
+    "cb": "brand=cb webpack --config ./dev.config.js",
+    "yb": "brand=yb webpack --config ./dev.config.js",
+    "dyb": "brand=dyb webpack --config ./dev.config.js",
+	"start": "npm run dyb && npm run cb && npm run yb && webpack-dev-server --config ./dev.config.js",
 	"dev": "webpack --config ./dev.config.js",
     "release": "npm run cb && npm run yb && npm run dyb && npm run nocss",
 	"test": "echo \"Error: no test specified\" && exit 1"
