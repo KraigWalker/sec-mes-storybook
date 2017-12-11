@@ -3,14 +3,12 @@ const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 console.log("**********************************************");
-const brand = process.env.brand || 'dyb';
+const brand = process.env.brand;
 console.log("Compiling for - "+brand+" Brand");
-
+const JSEntry = ["babel-polyfill","./src/js/client.js","./src/scss/main.scss"];
+const SCSSEntry = ["babel-polyfill","./src/scss/main.scss"];
 module.exports = {
-    entry: {
-		app: [ "babel-polyfill", resolve(__dirname,'src/js/client')],
-		main: resolve(__dirname, 'src/scss/main')
-	},
+    entry: brand? SCSSEntry : JSEntry,
 	devtool: 'source-map',
 	output: {
 		path:__dirname+ '/src/compiled/',
