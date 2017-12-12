@@ -132,8 +132,8 @@ class DraftSecureMessage extends React.Component{
         {this.state.showPopup ? this.returnModalComponent() : ''}
         {this.state.showDraftSuccessModal && this.returnDraftModal()}
         <div className="c-btn--group">
-            <Link to='/securemessages'>
-                <input type='button' name='cancel' value='Back' className="c-btn c-btn--secondary" />
+            <Link to='/securemessages' className="c-btn c-btn--secondary">
+                Back
             </Link>
             <button name='Save Draft' className="c-btn c-btn--secondary" onClick = {this.saveDraftData}>Save Draft</button>
             <button name='Send' className="c-btn c-btn--default" onClick={this.sendData}>Send</button>

@@ -49,8 +49,8 @@ class ViewMessage extends React.Component {
     }
     getReplyButton = (message) => {
         if (getMessageType(message.status) !== "sent") {
-            return (<Link to={{ pathname: '/replysecuremessage', backPath: '/viewmessage', messageDetail: message }}>
-                <input type='button' name='reply' value='Reply' className="c-btn c-btn--primary" />
+            return (<Link to={{ pathname: '/replysecuremessage', backPath: '/viewmessage', messageDetail: message }} className="c-btn c-btn--primary">
+                Reply
             </Link>
             )
         } else return '';
@@ -73,8 +73,8 @@ class ViewMessage extends React.Component {
     }
     getBackButton() {
         return (
-            <Link to={{ pathname: '/securemessage' }}>
-                <input type='button' name='back' value='Back' className="c-btn c-btn--secondary" />
+            <Link to={{ pathname: '/securemessage' }} className="c-btn c-btn--secondary">
+                Back
             </Link>
         )
     }
