@@ -50,7 +50,7 @@ class ViewMessage extends React.Component {
     getReplyButton = (message) => {
         if (getMessageType(message.status) !== "sent") {
             return (<Link to={{ pathname: '/replysecuremessage', backPath: '/viewmessage', messageDetail: message }}>
-                <input type='button' name='reply' value='Reply' className="c-btn c-btn--secondary" />
+                <input type='button' name='reply' value='Reply' className="c-btn c-btn--primary" />
             </Link>
             )
         } else return '';
@@ -93,11 +93,11 @@ class ViewMessage extends React.Component {
             closeButton={false} />);
     }
     returnDeleteSuccessModalComponent() {
-        let bodyContent = <div className="">Message Deleted</div>;
-        let footerButtons = <button type="button" onClick={this.closeSuccessModal} className="c-btn c-btn--secondary c-modal__button">OK</button>;
+        let bodyContent = <div>Message Deleted</div>;
+        let footerButtons = <button type="button" onClick={this.closeSuccessModal} className="c-btn c-btn--primary c-modal__button">OK</button>;
         return (<ModalComponent show
             onHide={this.closeSuccessModal}
-            customClass={"c-modal"}
+            customClass={"c-modal c-modal-center"}
             bsSize={'medium'}
             modalheading={''}
             modalbody={bodyContent}

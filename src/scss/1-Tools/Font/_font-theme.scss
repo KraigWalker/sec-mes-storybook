@@ -14,7 +14,7 @@
 
 		.dyb & {
 			@if $style == bold {
-				font-family: $dyb-semibold;
+				font-family: $dyb-bold;
 			}
 			@else {
 				font-family: $dyb-regular;
@@ -38,7 +38,7 @@
 	@else if (config(env) == prod) {
 		@if (config(brand) == dyb) {
 			@if $style == bold {
-				font-family: $dyb-semibold;
+				font-family: $dyb-bold;
 			}
 			@else {
 				font-family: $dyb-regular;
