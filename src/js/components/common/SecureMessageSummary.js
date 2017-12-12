@@ -35,13 +35,18 @@ class SecureMessageSummary extends React.Component {
     hasOnClick = (message) => {
         let path = (this.props.draftFlag) ? '/draftsecuremessage' : '/viewmessage';
         // console.log("this.props.readFlag " + this.props.readFlag);
-        console.log("message.getSubject() -----------> " + message.getSubject());
-        let unreadmessage = `Unread ` + message.getSubject();
+        // console.log("message.getSubject() -----------> " + message.getSubject());
+        let messageTitle ='';
+        if (!this.props.sentFlag && !this.props.draftFlag) {
+            messageTitle = `Unread ` + message.getSubject();
+        } else {            
+            messageTitle = message.getSubject();
+        }
         if (this.props.readFlag && this.props.hasOnClick) {
             // console.log("this.props.readFlag inside if -----> " + this.props.readFlag);
             return (<Link to={{ pathname: path, messageDetail: message }} className="c-message__summary__head__title__subject__link">{message.getSubject()}</Link>);
         } else if (this.props.hasOnClick) {
-            return (<Link aria-label={`${unreadmessage}`} to={{ pathname: path, messageDetail: message }} className="c-message__summary__head__title__subject__link">{message.getSubject()}</Link>);
+            return (<Link aria-label={`${messageTitle}`} to={{ pathname: path, messageDetail: message }} className="c-message__summary__head__title__subject__link">{message.getSubject()}</Link>);
         } else
             return message.getSubject()
 
@@ -68,10 +73,14 @@ class SecureMessageSummary extends React.Component {
 
     getDeleteButton = (message) => {
         let deletemessage = ``;
-        if (this.props.readFlag) {
-            deletemessage = `Delete ` + message.getSubject();
+        if (!this.props.sentFlag && !this.props.draftFlag) {
+            if (this.props.readFlag) {
+                deletemessage = `Delete ` + message.getSubject();
+            } else {
+                deletemessage = `Delete Unread ` + message.getSubject();   
+            }
         } else {
-            deletemessage = `Delete Unread ` + message.getSubject();        
+            deletemessage = `Delete ` + message.getSubject();            
         }
         return !this.props.threadFlag && (<button className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding" onClick={this.handleDelete}>
             <span id="deleteMsg" className="c-message__summary__head__actions__delete__txt" aria-label={`${deletemessage}`}>Delete</span>
