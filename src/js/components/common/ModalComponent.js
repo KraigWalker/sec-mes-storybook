@@ -61,28 +61,6 @@ class ModalComponent extends React.Component {
                 </Modal.Footer>
             </Modal>
 
-            // <Modal
-            //     show={this.props.show}
-            //     className={this.props.customClass}
-            //     onHide={this.props.onHide}
-            //     bsSize={this.props.bsSize}
-            //     modalHeading={this.props.modalHeading}
-            //     modalFooter={this.props.modalFooter}
-            //     container={this.props.scope}
-            //     backdrop={this.props.backdrop}
-            //     >
-            //     <Modal.Header className="c-update-modal__header" closeButton={this.props.closeButton}>
-            //         <Modal.Title className="c-update-modal__title" id="contained-modal-title-lg"> {this.props.modalHeading} </Modal.Title>
-
-            //     </Modal.Header>
-            //     <Modal.Body className="c-update-modal__body" > 
-            //         <div > {this.props.modalBody} </div>
-            //     </Modal.Body>
-                    
-            //     <Modal.Footer className="c-update-modal__footer">
-            //         {this.props.modalFooter}
-            //     </Modal.Footer>
-            // </Modal>
         );
     }
 }
@@ -102,7 +80,7 @@ ModalComponent.propTypes = {
 ModalComponent.defaultProps = {
     show: false,
     onHide: function () { return null; },
-    bsSize: "medium",
+    bsSize: 'medium',
     modalheading: '',
     modalbody: '',
     modalfooter: '',

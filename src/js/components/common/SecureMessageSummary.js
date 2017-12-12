@@ -103,7 +103,7 @@ class SecureMessageSummary extends React.Component {
         this.setState({ showDeleteSuccessModal: false });
     }
     returnDeleteSuccessModalComponent() {
-        let bodyContent = <div className="callout callout__error">Message Deleted</div>;
+        let bodyContent = <div className="">Message Deleted</div>;
         let footerButtons = <div><button type="button" onClick={this.closeSuccessModal} className="c-btn c-btn--secondary c-modal__button">OK</button></div>;
         return (<ModalComponent show
             onHide={this.closeSuccessModal}
@@ -113,7 +113,7 @@ class SecureMessageSummary extends React.Component {
             modalbody={bodyContent}
             modalfooter={footerButtons}
             modalInContainer={false}
-            closeButton={true} />);
+            closeButton />);
     }
     returnModalComponent() {
         let bodyContent = <div className="callout callout__error">You won’t be able to recover this message if you delete it.</div>;
@@ -127,7 +127,7 @@ class SecureMessageSummary extends React.Component {
             modalbody={bodyContent}
             modalfooter={footerButtons}
             modalInContainer={false}
-            closeButton={true} />);
+            closeButton />);
     }
     render() {
         const { message } = this.props;
@@ -140,7 +140,7 @@ class SecureMessageSummary extends React.Component {
         });
         let summaryClass = cx({
             'c-message__summary': true,
-            'c-message__summary--no-icon': this.props.draftFlag,
+            'c-message__summary--no-icon': this.props.draftFlag || this.props.sentFlag,
         });
         let titleClass = cx({
             'c-message__summary__head__title': true,
@@ -172,7 +172,8 @@ class SecureMessageSummary extends React.Component {
                             {this.getDeleteButton(message)}
                         </div>
                     </div>
-                    <p className="c-message__summary__account">{message.getMessageBody()}</p>
+                    {!this.props.viewMessageFlag && <p className="c-message__summary__account">{message.getMessageBody()}</p>}
+                    {this.props.viewMessageFlag && <p className="c-message__summary__account">Account : {this.props.message.account.accountNumber}</p>}
                     <p className="c-message__summary__date">{message.getDateCreated()}</p>
                 </div>
                 {this.state.showDeleteConfirmModal && this.returnModalComponent()}
