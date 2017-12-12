@@ -175,6 +175,7 @@ $text-color: bow-palette(grey, text);
 	.c-field__input--txtarea {
 		min-height: 364px;
 		padding: get-px(b);
+		resize: none;
 	}
 
 	.c-field__input--select {
