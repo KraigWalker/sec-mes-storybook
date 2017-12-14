@@ -1,5 +1,5 @@
 import React from 'react';
-import { getMessageSubjects, getAccounts, sendMessageData,sendDraftMessageData } from '../actions/AppActions';
+import { getMessageSubjects, getAccounts, sendMessageData,sendDraftMessageData,sendMessageForAccessibiltiy } from '../actions/AppActions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Dropdown, ButtonToolbar, MenuItem } from 'react-bootstrap/lib';
@@ -68,6 +68,9 @@ class NewSecureMessage extends React.Component {
     }
     renderRemainingChar() {
         if (this.state.chars_left <= 3) {
+            if(this.state.chars_left === 3)   this.props.dispatch(sendMessageForAccessibiltiy('Three characters left'));
+            if(this.state.chars_left === 1)   this.props.dispatch(sendMessageForAccessibiltiy('One character left'));
+            if(this.state.chars_left === 0)   this.props.dispatch(sendMessageForAccessibiltiy('Maximum characters limit reached'));
             return <p>Characters Left: {this.state.chars_left}</p>;
         } else return '';
     }
@@ -79,33 +82,31 @@ class NewSecureMessage extends React.Component {
         this.setState({ showPopup: false });
     }
     returnModalComponent() {
-        let bodyContent = <div><div className="callout callout__error">If you leave the message now it won’t be saved.</div>
-            <p className="review-modal__submsg"></p></div>;
-        let footerButtons = <div className="review-modal__options"><Link to='/securemessages'><button type="button" onClick={this.leavePage} className="c-btn c-btn--secondary c-modal__button">Leave page</button></Link>
+        let bodyContent = <div className="callout callout__error">If you leave the message now it won’t be saved.</div>;
+        let footerButtons = <div><Link to='/securemessages'><button type="button" onClick={this.leavePage} className="c-btn c-btn--secondary c-modal__button">Leave page</button></Link>&nbsp;
             <button type="button" onClick={this.stayOnPage} className="c-btn c-btn--default c-modal__button">Return to message</button></div>;
         return (<ModalComponent show
             onHide={this.stayOnPage}
-            customClass={"c-modal review-modal"}
-            bsSize={'medium'}
-            modalHeading={'Your message hasn’t been sent yet'}
-            modalBody={bodyContent}
-            modalFooter={footerButtons}
+            customClass={"c-modal"}
+            bsSize='medium'
+            modalheading={'Your message hasn’t been sent yet'}
+            modalbody={bodyContent}
+            modalfooter={footerButtons}
             modalInContainer={false}
             closeButton />);
     }
     returnDraftModal(){
-        let bodyContent = <div><div className="callout callout__error">Message saved as a draft</div>
-        <p className="review-modal__submsg"></p></div>;
-    let footerButtons = <div className="review-modal__options"><button type="button" onClick={this.draftOkClicked} className="c-btn c-btn--default c-modal__button">Ok</button></div>;
+        let bodyContent = <div className="">Message saved as a draft</div>;
+    let footerButtons = <button type="button" onClick={this.draftOkClicked} className="c-btn c-btn--default c-modal__button">Ok</button>;
     return (<ModalComponent show
         onHide={this.draftOkClicked}
-        customClass={"c-modal review-modal"}
+        customClass={"c-modal"}
         bsSize={'medium'}
-        modalHeading={''}
-        modalBody={bodyContent}
-        modalFooter={footerButtons}
+        modalheading={''}
+        modalbody={bodyContent}
+        modalfooter={footerButtons}
         modalInContainer={false}
-        closeButton = {false} />);
+        closeButton/>);
     }
     draftOkClicked(){
         this.setState({showDraftSuccessModal :false});
@@ -119,18 +120,17 @@ class NewSecureMessage extends React.Component {
         this.setState({showSentMessageModal : false});
     }
     returnSentMessageModal(){
-        let bodyContent = <div><div className="callout callout__error">Message sent</div>
-        <p className="review-modal__submsg"></p></div>;
-    let footerButtons = <div className="review-modal__options"><button type="button" onClick={this.sentOkClicked} className="c-btn c-btn--default c-modal__button">Ok</button></div>;
+        let bodyContent = <div className="">Message sent</div>;
+    let footerButtons = <button type="button" onClick={this.sentOkClicked} className="c-btn c-btn--default c-modal__button">Ok</button>;
     return (<ModalComponent show
         onHide={this.sentOkClicked}
-        customClass={"c-modal review-modal"}
+        customClass={"c-modal"}
         bsSize={'medium'}
-        modalHeading={''}
-        modalBody={bodyContent}
-        modalFooter={footerButtons}
+        modalheading={''}
+        modalbody={bodyContent}
+        modalfooter={footerButtons}
         modalInContainer={false}
-        closeButton = {false} />);
+        closeButton/>);
     }
     render() {
         return (<div className="container">
@@ -165,7 +165,8 @@ class NewSecureMessage extends React.Component {
                     Message
                 </label>
                 <div className="c-field__controls">
-                    <TextAreaComponent textData={this.textChange} />
+                    <div className="u-visually-hidden off-screen" id="textAreaMaxMsg">Maximum character limit is three thousand</div>
+                    <TextAreaComponent textData={this.textChange} ariaId="textAreaMaxMsg" />
                 </div>
                 {this.renderRemainingChar()}
             </div>

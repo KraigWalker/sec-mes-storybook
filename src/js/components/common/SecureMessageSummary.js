@@ -29,7 +29,7 @@ class SecureMessageSummary extends React.Component {
         alert("bttn clicked");
     };
     getSummaryIcon = () => {
-        let iconId = (this.props.readFlag || this.props.sentFlag) ? 'icon-message-open' : 'icon-envelope';
+        let iconId = (this.props.readFlag) ? 'icon-message-open' : 'icon-envelope';
         return ((!this.props.draftFlag && !this.props.threadFlag && !this.props.sentFlag) && <span className="c-message__icon"><GetIcon id={iconId} width="24px" height="24px" /></span>);
     }
     hasOnClick = (message) => {
@@ -62,6 +62,9 @@ class SecureMessageSummary extends React.Component {
         this.setState({ showDeleteConfirmModal: true });
     }
     closeModal() {
+        setTimeout(() => {
+            document.getElementById('headingTag').focus();
+        }, 20);
         this.setState({ showDeleteConfirmModal: false });
     }
     deleteClick() {
@@ -69,36 +72,35 @@ class SecureMessageSummary extends React.Component {
         this.props.dispatch(sendDeleteData(this.props.message));
     }
     closeSuccessModal(){
+       // document.getElementById('headingTag').focus();
         this.setState({ showDeleteSuccessModal: false });
     }
     returnDeleteSuccessModalComponent() {
-        let bodyContent = <div><div className="callout callout__error">Message Deleted</div>
-            <p className="review-modal__submsg"></p></div>;
-        let footerButtons = <div className="review-modal__options"><button type="button" onClick={this.closeSuccessModal} className="c-btn c-btn--secondary c-modal__button">OK</button></div>;
+        let bodyContent = <div className="">Message Deleted</div>;
+        let footerButtons = <div><button type="button" onClick={this.closeSuccessModal} className="c-btn c-btn--secondary c-modal__button">OK</button></div>;
         return (<ModalComponent show
             onHide={this.closeSuccessModal}
-            customClass={"c-modal review-modal"}
-            bsSize={'medium'}
-            modalHeading={''}
-            modalBody={bodyContent}
-            modalFooter={footerButtons}
+            customClass={"c-modal"}
+            bsSize="medium"
+            modalheading={''}
+            modalbody={bodyContent}
+            modalfooter={footerButtons}
             modalInContainer={false}
-            closeButton={false} />);
+            closeButton />);
     }
     returnModalComponent() {
-        let bodyContent = <div><div className="callout callout__error">You won’t be able to recover this message if you delete it.</div>
-            <p className="review-modal__submsg"></p></div>;
-        let footerButtons = <div className="review-modal__options"><button type="button" onClick={this.closeModal} className="c-btn c-btn--secondary c-modal__button">Close</button>
+        let bodyContent = <div className="callout callout__error">You won’t be able to recover this message if you delete it.</div>;
+        let footerButtons = <div><button type="button" onClick={this.closeModal} className="c-btn c-btn--secondary c-modal__button">Close</button>
             <button type="button" onClick={this.deleteClick} className="c-btn c-btn--default c-modal__button">Delete message</button></div>;
         return (<ModalComponent show
             onHide={this.closeModal}
-            customClass={"c-modal review-modal"}
-            bsSize={'medium'}
-            modalHeading={'Delete this message?'}
-            modalBody={bodyContent}
-            modalFooter={footerButtons}
+            customClass={"c-modal"}
+            bsSize="medium"
+            modalheading={'Delete this message?'}
+            modalbody={bodyContent}
+            modalfooter={footerButtons}
             modalInContainer={false}
-            closeButton={false} />);
+            closeButton />);
     }
     render() {
         const { message } = this.props;
@@ -111,7 +113,7 @@ class SecureMessageSummary extends React.Component {
         });
         let summaryClass = cx({
             'c-message__summary': true,
-            'c-message__summary--no-icon': this.props.draftFlag,
+            'c-message__summary--no-icon': this.props.draftFlag || this.props.sentFlag,
         });
         let titleClass = cx({
             'c-message__summary__head__title': true,

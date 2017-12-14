@@ -168,3 +168,12 @@ export function sendDraftMessageData(draftData){
     AppApi.sendDraftMessageData(draftData,success,error);
   }
 }
+export function sendMessageForAccessibiltiy(message) {
+  return function(dispatch) {
+      const payload = {
+        payload: message,
+        type: AppConstants.SEND_MESSAGE_FOR_ACCESSIBILITY,
+    }
+    dispatch(payload);
+  }
+}

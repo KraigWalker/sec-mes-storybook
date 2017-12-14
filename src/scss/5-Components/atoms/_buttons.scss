@@ -216,6 +216,7 @@ $btn-border-radius: 5px;
 .c-btn--group {
     display: flex;
     flex-flow: row;
+    margin-bottom: get-px(c);
     .c-btn,
     .c-btn + .c-btn {
         margin-right: get-px(a);

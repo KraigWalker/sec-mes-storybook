@@ -10,8 +10,9 @@ import SendMessageRequestEntity from '../entities/SendMessageRequestEntity.js'
 import { connect } from 'react-redux';
 import { getMessageSubjects, getAccounts, sendMessageData } from '../actions/AppActions';
 let messageEntity = new SendMessageRequestEntity();
-import { getThreadsBL } from '../bl/SecureMessageBL'
-import Threads from './common/ThreadList'
+import { getThreadsBL } from '../bl/SecureMessageBL';
+import Threads from './common/ThreadList';
+import ModalComponent from './common/ModalComponent';
 class ReplySecureMessage extends React.Component {
     constructor(props) {
         super(props);
@@ -19,9 +20,15 @@ class ReplySecureMessage extends React.Component {
         this.selectSubject = this.selectSubject.bind(this);
         this.sendData = this.sendData.bind(this);
         this.getThreads = this.getThreads.bind(this);
+        this.returnModalComponent = this.returnModalComponent.bind(this);
+        this.sentOkClicked = this.sentOkClicked.bind(this);
+        this.returnDraftModal = this.returnDraftModal.bind(this);
+        this.draftOkClicked = this.draftOkClicked.bind(this);
+        this.saveDraftData = this.saveDraftData.bind(this);
         this.state = {
             chars_left: 43,
             showPopup: false,
+            showDraftSuccessModal:false,
         };
     }
     selectSubject(value, id) {
@@ -49,10 +56,46 @@ class ReplySecureMessage extends React.Component {
     }
     sendData() {
         this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData()));
+        this.setState({showPopup : true});
     }
     getThreads(messages, currentMessage) {
         const threads = getThreadsBL(messages, currentMessage);
         return <Threads Threads={threads} currentMessage={currentMessage} isFromReplyMessage={true} />
+    }
+    returnModalComponent() {
+        let bodyContent = <div className="">Message sent</div>;
+        let footerButtons = <button type="button" onClick={this.sentOkClicked} className="c-btn c-btn--default c-modal__button">Ok</button>;
+        return (<ModalComponent show
+            onHide={this.sentOkClicked}
+            customClass={"c-modal"}
+            bsSize={'medium'}
+            modalheading={''}
+            modalbody={bodyContent}
+            modalfooter={footerButtons}
+            modalInContainer={false}
+            closeButton/>);
+    }
+    sentOkClicked(){
+        this.setState({showPopup : false});
+    }
+    returnDraftModal(){
+        let bodyContent = <div className="">Message saved as a draft</div>;
+        let footerButtons = <button type="button" onClick={this.draftOkClicked} className="c-btn c-btn--default c-modal__button">Ok</button>;
+        return (<ModalComponent show
+            onHide={this.draftOkClicked}
+            customClass={"c-modal"}
+            bsSize={'medium'}
+            modalheading={''}
+            modalbody={bodyContent}
+            modalfooter={footerButtons}
+            modalInContainer={false}
+            closeButton/>);
+    }
+    saveDraftData(){
+        this.setState({showDraftSuccessModal : true});
+    }
+    draftOkClicked(){
+        this.setState({showDraftSuccessModal : false});
     }
     render() {
         const { backPath } = this.props.location;
@@ -92,17 +135,23 @@ class ReplySecureMessage extends React.Component {
                         <TextAreaComponent textData={this.textChange} />
                     </div>
                     {this.renderRemainingChar()}
-                    {this.getThreads(this.props.messages, messageDetail)}
                 </div>
-
-                {/* {this.state.showPopup ? this.returnModalComponent() : ''} */}
                 <div className="c-btn--group">
                     <Link to='/securemessages'>
                         <input type='button' name='cancel' value='Back' className="c-btn c-btn--secondary" />
                     </Link>
-                    <button name='Save Draft' className="c-btn c-btn--secondary">Save Draft</button>
+                    <button name='Save Draft' className="c-btn c-btn--secondary" onClick={this.saveDraftData}>Save Draft</button>
                     <button name='Send' className="c-btn c-btn--default" onClick={this.sendData}>Send</button>
                 </div>
+                 { this.state.showPopup ? this.returnModalComponent() : ''} 
+                 {this.state.showDraftSuccessModal && this.returnDraftModal()}
+
+                <div className="row">
+                    <div className="col-md1-18">
+                        {this.getThreads(this.props.messages, messageDetail)}
+                    </div>
+                </div>
+                
             </div>
         );
     }

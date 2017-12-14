@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ModalFooter, ModalHeader, ModalBody, ModalTitle } from 'react-bootstrap/lib/Modal';
+// import { ModalFooter, ModalHeader, ModalBody, ModalTitle } from 'react-bootstrap/lib/Modal';
 import Modal from 'react-bootstrap/lib/Modal';
 
 
@@ -43,23 +43,24 @@ class ModalComponent extends React.Component {
                 className={this.props.customClass}
                 onHide={this.props.onHide}
                 bsSize={this.props.bsSize}
-                modalheading={this.props.modalHeading}
-                modalfooter={this.props.modalFooter}
+                modalheading={this.props.modalheading}
+                modalfooter={this.props.modalfooter}
                 container={this.props.scope}
                 backdrop={this.props.backdrop}
                 >
-                <Modal.Header className="c-update-modal__header" closeButton={this.props.closeButton}>
-                    <Modal.Title className="c-update-modal__title" id="contained-modal-title-lg"> {this.props.modalHeading} </Modal.Title>
-
+                <Modal.Header className="c-modal__header" closeButton={this.props.closeButton}>
+                    <Modal.Title componentClass="h2" className="c-modal__title" id="contained-modal-title-lg">{this.props.modalheading}</Modal.Title>
                 </Modal.Header>
-                <Modal.Body className="c-update-modal__body" > 
-                    <div > {this.props.modalBody} </div>
+                
+                <Modal.Body className={this.props.modalheading == "" && this.props.modalfooter == "" ? "c-modal__body" : "c-modal__body c-modal__body--padding"} >
+                    {this.props.modalbody}
                 </Modal.Body>
-                    
-                <Modal.Footer className="c-update-modal__footer">
-                    {this.props.modalFooter}
+               
+                <Modal.Footer className="c-modal__footer">
+                    {this.props.modalfooter}
                 </Modal.Footer>
             </Modal>
+
         );
     }
 }
@@ -69,9 +70,9 @@ ModalComponent.propTypes = {
     show: PropTypes.bool,
     onHide: PropTypes.func,
     bsSize: PropTypes.string,
-    modalHeading: PropTypes.string,
-    modalBody: PropTypes.object,
-    modalFooter: PropTypes.object,
+    modalheading: PropTypes.string,
+    modalbody: PropTypes.object,
+    modalfooter: PropTypes.object,
     customClass: PropTypes.string,
     closeButton: PropTypes.bool,
 };
@@ -80,9 +81,9 @@ ModalComponent.defaultProps = {
     show: false,
     onHide: function () { return null; },
     bsSize: 'medium',
-    modalHeading: '',
-    modalBody: '',
-    modalFooter: '',
+    modalheading: '',
+    modalbody: '',
+    modalfooter: '',
     closeButton: true,
     modalInContainer: false,
     backdrop: true,

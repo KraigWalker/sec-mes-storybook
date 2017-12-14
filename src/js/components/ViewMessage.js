@@ -11,7 +11,8 @@ import { getMessageType, updateMessageStatus } from '../utils/SecureMessageUtils
 import { Link } from 'react-router-dom';
 import GetIcon from './common/GetIcon';
 import ModalComponent from './common/ModalComponent';
-import {sendDeleteData} from '../actions/AppActions';
+import { sendDeleteData } from '../actions/AppActions';
+
 class ViewMessage extends React.Component {
     constructor(props) {
         super(props);
@@ -47,18 +48,18 @@ class ViewMessage extends React.Component {
         return <Threads Threads={threads} />
     }
     getReplyButton = (message) => {
-        if(getMessageType(message.status) !== "sent") {
-            return (<Link to={{ pathname: '/replysecuremessage', backPath: '/viewmessage', messageDetail: message }} className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding">
-            <span className="c-btn c-btn--default">Reply</span>
-        </Link>)
+        if (getMessageType(message.status) !== "sent") {
+            return (<Link to={{ pathname: '/replysecuremessage', backPath: '/viewmessage', messageDetail: message }}>
+                <input type='button' name='reply' value='Reply' className="c-btn c-btn--default" />
+            </Link>
+            )
         } else return '';
     }
 
     getDeleteButton = (message) => {
-
-        return (<button className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding" onClick={this.handleDelete}>
-            <span className="c-btn c-btn--secondary">Delete</span>
-        </button>)
+        return (
+            <button className="c-btn c-btn--secondary" onClick={this.handleDelete}>Delete</button>
+        )
     }
     handleDelete(data) {
         this.setState({ showDeleteConfirmModal: true });
@@ -71,40 +72,40 @@ class ViewMessage extends React.Component {
         this.props.dispatch(sendDeleteData(this.props.location.messageDetail));
     }
     getBackButton() {
-        return (<Link to={{ pathname: '/securemessage' }} className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding">
-            <span className="c-btn c-btn--secondary">Back</span>
-        </Link>)
+        return (
+            <Link to={{ pathname: '/securemessage' }}>
+                <input type='button' name='back' value='Back' className="c-btn c-btn--secondary" />
+            </Link>
+        )
     }
     returnModalComponent() {
-        let bodyContent = <div><div className="callout callout__error">You won’t be able to recover this message if you delete it.</div>
-            <p className="review-modal__submsg"></p></div>;
-        let footerButtons = <div className="review-modal__options"><button type="button" onClick={this.closeModal} className="c-btn c-btn--secondary c-modal__button">Close</button>
+        let bodyContent = <div className="callout callout__error">You won’t be able to recover this message if you delete it.</div>;
+        let footerButtons = <div><button type="button" onClick={this.closeModal} className="c-btn c-btn--secondary c-modal__button">Close</button>
             <button type="button" onClick={this.deleteClick} className="c-btn c-btn--default c-modal__button">Delete message</button></div>;
         return (<ModalComponent show
             onHide={this.closeModal}
-            customClass={"c-modal review-modal"}
+            customClass={"c-modal"}
             bsSize={'medium'}
-            modalHeading={'Delete this message?'}
-            modalBody={bodyContent}
-            modalFooter={footerButtons}
+            modalheading={'Delete this message?'}
+            modalbody={bodyContent}
+            modalfooter={footerButtons}
             modalInContainer={false}
-            closeButton={false} />);
+            closeButton/>);
     }
     returnDeleteSuccessModalComponent() {
-        let bodyContent = <div><div className="callout callout__error">Message Deleted</div>
-            <p className="review-modal__submsg"></p></div>;
-        let footerButtons = <div className="review-modal__options"><button type="button" onClick={this.closeSuccessModal} className="c-btn c-btn--secondary c-modal__button">OK</button></div>;
+        let bodyContent = <div className="">Message Deleted</div>;
+        let footerButtons = <button type="button" onClick={this.closeSuccessModal} className="c-btn c-btn--secondary c-modal__button">OK</button>;
         return (<ModalComponent show
             onHide={this.closeSuccessModal}
-            customClass={"c-modal review-modal"}
+            customClass={"c-modal"}
             bsSize={'medium'}
-            modalHeading={''}
-            modalBody={bodyContent}
-            modalFooter={footerButtons}
+            modalheading={''}
+            modalbody={bodyContent}
+            modalfooter={footerButtons}
             modalInContainer={false}
-            closeButton={false} />);
+            closeButton />);
     }
-    closeSuccessModal(){
+    closeSuccessModal() {
         this.setState({ showDeleteSuccessModal: false });
     }
     render() {
@@ -117,13 +118,13 @@ class ViewMessage extends React.Component {
                             headerTitle={(getMessageType(messageDetail.status) == 'sent') ? this.props.content.sentPageTitle : this.props.content.inboxPageTitle} />
 
                         <SecureMessageSummary message={messageDetail} viewMessageFlag={true} readFlag={messageDetail.status === "READ"} sentFlag={getMessageType(messageDetail.status) === "sent"} />
-                        <p>
+                        <pre>
                             {messageDetail.messageBody}
-                        </p>
-                        <div className = "c-btn--group">
-                        {this.getBackButton()}
-                        {this.getDeleteButton(messageDetail)}
-                        {this.getReplyButton(messageDetail)}
+                        </pre>
+                        <div className="c-btn--group">
+                            {this.getBackButton()}
+                            {this.getDeleteButton(messageDetail)}
+                            {this.getReplyButton(messageDetail)}
                         </div>
                         {this.state.showDeleteConfirmModal && this.returnModalComponent()}
                         {this.state.showDeleteSuccessModal && this.returnDeleteSuccessModalComponent()}
