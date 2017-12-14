@@ -50,7 +50,7 @@ class ViewMessage extends React.Component {
     getReplyButton = (message) => {
         if (getMessageType(message.status) !== "sent") {
             return (<Link to={{ pathname: '/replysecuremessage', backPath: '/viewmessage', messageDetail: message }}>
-                <input type='button' name='reply' value='Reply' className="c-btn c-btn--secondary" />
+                <input type='button' name='reply' value='Reply' className="c-btn c-btn--default" />
             </Link>
             )
         } else return '';
@@ -90,7 +90,7 @@ class ViewMessage extends React.Component {
             modalbody={bodyContent}
             modalfooter={footerButtons}
             modalInContainer={false}
-            closeButton={false} />);
+            closeButton/>);
     }
     returnDeleteSuccessModalComponent() {
         let bodyContent = <div className="">Message Deleted</div>;
@@ -103,7 +103,7 @@ class ViewMessage extends React.Component {
             modalbody={bodyContent}
             modalfooter={footerButtons}
             modalInContainer={false}
-            closeButton={false} />);
+            closeButton />);
     }
     closeSuccessModal() {
         this.setState({ showDeleteSuccessModal: false });

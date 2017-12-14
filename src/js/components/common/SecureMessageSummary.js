@@ -62,6 +62,9 @@ class SecureMessageSummary extends React.Component {
         this.setState({ showDeleteConfirmModal: true });
     }
     closeModal() {
+        setTimeout(() => {
+            document.getElementById('headingTag').focus();
+        }, 20);
         this.setState({ showDeleteConfirmModal: false });
     }
     deleteClick() {
@@ -69,6 +72,7 @@ class SecureMessageSummary extends React.Component {
         this.props.dispatch(sendDeleteData(this.props.message));
     }
     closeSuccessModal(){
+       // document.getElementById('headingTag').focus();
         this.setState({ showDeleteSuccessModal: false });
     }
     returnDeleteSuccessModalComponent() {

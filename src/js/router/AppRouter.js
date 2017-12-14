@@ -5,8 +5,9 @@ import Main from '../components/Main';
 import NewSecureMessage from '../components/NewSecureMessage';
 import ViewMessage from '../components/ViewMessage';
 import ReplySecuremessage from '../components/ReplySecureMessage';
-import { withSubscription } from '../components/wrappers/GenericWrapper';
-import DraftSecureMessage from '../components/DraftSecureMessage'
+import { withSubscription,accessibilityWrapper } from '../components/wrappers/GenericWrapper';
+import DraftSecureMessage from '../components/DraftSecureMessage';
+import AccessibilityMessage from '../components/common/AccessibilityMessage'
 
 /** 
  * @class AppRouter Class to initiate and route the application 
@@ -29,10 +30,14 @@ class AppRouter extends React.Component {
                    <Route path = '/draftsecuremessage' render = {(props) => (<DraftSecureMessage {...this.props} {...props}/>)}/>
                    <Redirect from = '/' to = '/securemessages' key='redirect'/>;    
                 </Switch>
+                <AccessibilityMessage/>
                 </Main>
             </BrowserRouter>
         );
     }
 }
 
+//export default accessibilityWrapper(withSubscription(AppRouter));
 export default withSubscription(AppRouter);
+
+
