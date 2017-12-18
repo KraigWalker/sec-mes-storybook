@@ -109,30 +109,30 @@ class ReplySecureMessage extends React.Component {
                 </div>
 
                 <div className="c-field">
-                    <label className="c-field__label c-field__label--block" htmlFor="subjects">
+                    <label id="subjectTitle" className="c-field__label c-field__label--block" htmlFor="subjects">
                         Subject
                     </label>
                     <div className="c-field__controls">
-                        <DropDownComponent subjects={this.props.location.messageDetail.subject} name='subjects' id='subjects' selectSubject={this.selectSubject} isFromDraftOrReply={true} selectedValue={this.props.location.messageDetail.subject} isFromReply={true} />
+                        <DropDownComponent accessID="Subject" subjects={this.props.location.messageDetail.subject} name='subjects' id='subjects' selectSubject={this.selectSubject} isFromDraftOrReply={true} selectedValue={this.props.location.messageDetail.subject} isFromReply={true} />
                     </div>
                 </div>
 
                 <div className="c-field">
-                    <label className="c-field__label c-field__label--block" htmlFor="subjects">
+                    <label id="relatesTitle" className="c-field__label c-field__label--block" htmlFor="subjects">
                         Message relates to
                     </label>
                     <div className="c-field__controls">
-                        <DropDownComponent accounts={this.props.location.messageDetail.account.accountNumber} selectSubject={this.selectSubject} name='accounts' id='accounts' isFromDraftOrReply={true} selectedValue={this.props.location.messageDetail.account.accountNumber} isFromReply={true} />
+                        <DropDownComponent accessID="Message relates to" accounts={this.props.location.messageDetail.account.accountNumber} selectSubject={this.selectSubject} name='accounts' id='accounts' isFromDraftOrReply={true} selectedValue={this.props.location.messageDetail.account.accountNumber} isFromReply={true} />
                     </div>
                 </div>
 
 
                 <div className="c-field">
-                    <label className="c-field__label c-field__label--block" htmlFor="subjects">
+                    <label id="messageTitle" className="c-field__label c-field__label--block" htmlFor="subjects">
                         Message
                     </label>
                     <div className="c-field__controls">
-                        <TextAreaComponent textData={this.textChange} />
+                        <TextAreaComponent textData={this.textChange} id="message" accessID="messageTitle" id="message"/>
                     </div>
                     {this.renderRemainingChar()}
                 </div>

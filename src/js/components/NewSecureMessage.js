@@ -146,7 +146,7 @@ class NewSecureMessage extends React.Component {
                     Subject
                 </label>
                 <div className="c-field__controls">
-                    <DropDownComponent accessID="subjectTitle" subjects={this.props.subjects} selectSubject={this.selectSubject} name='subjects' id='subjects' isFromDraft ={false} selectedValue = 'Please select'/>
+                    <DropDownComponent accessID="Subject" subjects={this.props.subjects} selectSubject={this.selectSubject} name='subjects' id='subjects' isFromDraft ={false} selectedValue = 'Please select'/>
                 </div>
             </div>
 
@@ -155,7 +155,7 @@ class NewSecureMessage extends React.Component {
                     Message relates to
                 </label>
                 <div className="c-field__controls">
-                    <DropDownComponent accessID="relatesTitle" accounts={this.props.accounts} selectSubject={this.selectSubject} name='accounts' id='accounts' isFromDraft ={false} selectedValue = 'Please select'/>
+                    <DropDownComponent accessID="Message relates to" accounts={this.props.accounts} selectSubject={this.selectSubject} name='accounts' id='accounts' isFromDraft ={false} selectedValue = 'Please select'/>
                 </div>
             </div>
 
