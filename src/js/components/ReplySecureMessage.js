@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import RegexUtils from '../utils/RegexUtils.js';
 import SendMessageRequestEntity from '../entities/SendMessageRequestEntity.js'
 import { connect } from 'react-redux';
-import { getMessageSubjects, getAccounts, sendMessageData } from '../actions/AppActions';
+import { getMessageSubjects, getAccounts, sendMessageData, sendMessageForAccessibiltiy } from '../actions/AppActions';
 let messageEntity = new SendMessageRequestEntity();
 import { getThreadsBL } from '../bl/SecureMessageBL';
 import Threads from './common/ThreadList';
@@ -51,6 +51,9 @@ class ReplySecureMessage extends React.Component {
     }
     renderRemainingChar() {
         if (this.state.chars_left <= 3) {
+            if(this.state.chars_left === 3)   this.props.dispatch(sendMessageForAccessibiltiy('Three characters left'));
+            if(this.state.chars_left === 1)   this.props.dispatch(sendMessageForAccessibiltiy('One character left'));
+            if(this.state.chars_left === 0)   this.props.dispatch(sendMessageForAccessibiltiy('Maximum characters limit reached'));
             return <p>Characters Left: {this.state.chars_left}</p>;
         } else return '';
     }
@@ -132,7 +135,8 @@ class ReplySecureMessage extends React.Component {
                         Message
                     </label>
                     <div className="c-field__controls">
-                        <TextAreaComponent textData={this.textChange} id="message" accessID="messageTitle" id="message"/>
+                    <div className="u-visually-hidden off-screen" id="textAreaMaxMsg">Maximum character limit is three thousand</div>
+                        <TextAreaComponent textData={this.textChange} ariaId="textAreaMaxMsg" id="message" accessID="messageTitle"/>
                     </div>
                     {this.renderRemainingChar()}
                 </div>
