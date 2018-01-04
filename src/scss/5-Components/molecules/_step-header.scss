@@ -8,10 +8,9 @@
      &__title {
         margin-top: 32px;
         margin-bottom: 16px;
-        font-weight: bold;
         @extend %type--mull; 
         outline-width: 0;
-        @include brand-heading;
+        @include brand-heading(bold);
     }
 
     &__subtitle {

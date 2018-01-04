@@ -142,7 +142,7 @@ class NewSecureMessage extends React.Component {
                 <label className="c-field__label c-field__label--block" htmlFor="subjects">
                     Subject
                 </label>
-                <div className="c-field__controls">
+                <div className="c-field__controls u-position-relative">
                     <DropDownComponent subjects={this.props.subjects} selectSubject={this.selectSubject} name='subjects' id='subjects' isFromDraft ={false} selectedValue = 'Please select'/>
                 </div>
             </div>
@@ -151,7 +151,7 @@ class NewSecureMessage extends React.Component {
                 <label className="c-field__label c-field__label--block" htmlFor="subjects">
                     Message relates to
                 </label>
-                <div className="c-field__controls">
+                <div className="c-field__controls u-position-relative">
                     <DropDownComponent accounts={this.props.accounts} selectSubject={this.selectSubject} name='accounts' id='accounts' isFromDraft ={false} selectedValue = 'Please select'/>
                 </div>
             </div>
@@ -171,8 +171,8 @@ class NewSecureMessage extends React.Component {
             {this.state.showDraftSuccessModal && this.returnDraftModal()}
             {this.state.showSentMessageModal && this.returnSentMessageModal()}
             <div className="c-btn--group">
-                <Link to='/securemessages'>
-                    <input type='button' name='cancel' value='Back' className="c-btn c-btn--secondary" />
+                <Link to='/securemessages' className="c-btn c-btn--secondary">
+                    Back
                 </Link>
                 <button name='Save Draft' className="c-btn c-btn--secondary" onClick={this.saveDraftData}>Save Draft</button>
                 <button name='Send' className="c-btn c-btn--default" onClick={this.sendData}>Send</button>
