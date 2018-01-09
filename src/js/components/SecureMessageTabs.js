@@ -16,7 +16,7 @@ class SecureMessageTabs extends React.Component {
 				newMessageCount++;
 			}
 		});
-		let inboxTitle =  titleName[0] + '('+ newMessageCount + ')';
+		let inboxTitle = titleName[0] + ' ('+ newMessageCount + ')';
 		return (messages?
 				<Tabs activeKey={this.props.activeTab} onSelect={this.props.onClick} id="secure_tabs" className="c-scroll-tabs">
 					<Tab eventKey={'inbox'} title={inboxTitle}  aria-label={`${inboxTitle} unread messages`}>

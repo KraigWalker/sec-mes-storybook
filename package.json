@@ -1,19 +1,18 @@
 {
   "name": "secure-message-webapp",
-  "version": "0.0.0",
-  "description": "",
-  "main": "webpack.config.js",
+  "version": "1.0.0",
+  "description": "Secure Message Web application",
+  "main": "index.js",
   "dependencies": {
     "key-mirror": "^1.0.1",
     "react": "^16.1.0",
-    "react-dom": "^16.1.0",
-    "webpack": "^3.8.1"
+    "react-dom": "^16.1.0"
   },
   "devDependencies": {
     "autosize": "^4.0.0",
     "axios": "^0.12.0",
     "babel-core": "^6.18.2",
-    "babel-loader": "^6.2.0",
+    "babel-loader": "^7.1.0",
     "babel-plugin-add-module-exports": "^0.1.2",
     "babel-plugin-react-html-attrs": "^2.0.0",
     "babel-plugin-transform-class-properties": "^6.3.13",
@@ -46,17 +45,18 @@
     "style-loader": "^0.19.0",
     "uglifyjs-webpack-plugin": "^1.0.0-beta.3",
     "url-loader": "^0.6.2",
-    "webpack": "^3.8.0",
+    "webpack": "^3.8.1",
     "webpack-dev-server": "^2.9.1"
   },
   "scripts": {
     "nocss": "cross-env brand= webpack --config ./prod.config.js",
-    "cb": "cross-env brand=cb webpack --config ./prod.config.js",
-    "yb": "cross-env brand=yb webpack --config ./prod.config.js",
-    "dyb": "cross-env brand=dyb webpack --config ./prod.config.js",
-    "start": "cross-env npm run dyb && webpack-dev-server --config ./dev.config.js && webpack --watch",
+    "cb": "cross-env brand=cb webpack --config ./dev.config.js",
+    "yb": "cross-env brand=yb webpack --config ./dev.config.js",
+    "dyb": "cross-env brand=dyb webpack --config ./dev.config.js",
+	"start": "cross-env npm run dyb && npm run cb && npm run yb && webpack-dev-server --config ./dev.config.js",
+	"dev": "webpack --config ./dev.config.js",
     "release": "npm run cb && npm run yb && npm run dyb && npm run nocss",
-    "tests": "echo \"Error: no test specified\" && exit 1"
+	"test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",

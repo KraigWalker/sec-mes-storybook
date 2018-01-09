@@ -7,7 +7,7 @@ import { Provider } from "react-redux";
 import AppRouter from './router/AppRouter';
 import store from './stores/AppStore';
 // import '../scss/main.scss';
-
+console.log('test...');
 const app = document.getElementById('app');
 
  /**
