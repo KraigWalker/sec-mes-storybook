@@ -135,3 +135,36 @@ export function updateMessage(requestData, messages) {
     AppApi.updateMessage(requestData,success, error);
   }
 }
+export function sendDeleteData(deleteData) {
+  return function(dispach) {
+    const success = (response) => {
+      // const parseData = parseAccounts(response);
+      const payload = {
+        type: AppConstants.SEND_DELETE_MESSAGE_DATA,
+        payload: response
+      }
+      //dispatch(payload);
+    }
+    const error = (error) => {
+      console.log(error);
+    }
+    AppApi.sendDeleteMessageData(deleteData,success,error);
+  }
+  
+}
+export function sendDraftMessageData(draftData){
+  return function(dispach) {
+    const success = (response) => {
+      // const parseData = parseAccounts(response);
+      const payload = {
+        type: AppConstants.SEND_DELETE_MESSAGE_DATA,
+        payload: response
+      }
+      //dispatch(payload);
+    }
+    const error = (error) => {
+      console.log(error);
+    }
+    AppApi.sendDraftMessageData(draftData,success,error);
+  }
+}

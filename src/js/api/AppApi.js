@@ -23,6 +23,12 @@ class AppApi {
     console.log('UPDATE MESSAGE DATA', requestData)
     // ApiUtils.makeRequest({ url: _sendMessageURL, method: 'POST' ,requestData : SendMessageRequestEntity.getMessageRequestData()}, success, error);
   }
+  static sendDeleteMessageData(deleteData,success,error){
+    console.log('DELETE DATA',deleteData);
+  }
+  static sendDraftMessageData(draftData,success,error){
+    console.log('Draft DATA',draftData);
+  }
   
 }
 

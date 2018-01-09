@@ -18,6 +18,11 @@ class DraftSecureMessage extends React.Component{
         this.selectSubject = this.selectSubject.bind(this);
         this.textChange = this.textChange.bind(this);
         this.sendData = this.sendData.bind(this);
+        this.returnModalComponent = this.returnModalComponent.bind(this);
+        this.sentOkClicked = this.sentOkClicked.bind(this);
+        this.returnDraftModal = this.returnDraftModal.bind(this);
+        this.draftOkClicked = this.draftOkClicked.bind(this);
+        this.saveDraftData = this.saveDraftData.bind(this);
         this.state = {
             chars_left: 43,
             showPopup: false,
@@ -48,6 +53,42 @@ class DraftSecureMessage extends React.Component{
     }
     sendData() {
         this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData()));
+        this.setState({showPopup : true});
+    }
+    returnModalComponent() {
+        let bodyContent = <div className="">Message sent</div>;
+        let footerButtons = <button type="button" onClick={this.sentOkClicked} className="c-btn c-btn--default c-modal__button">Ok</button>;
+        return (<ModalComponent show
+            onHide={this.sentOkClicked}
+            customClass={"c-modal"}
+            bsSize={'medium'}
+            modalheading={''}
+            modalbody={bodyContent}
+            modalfooter={footerButtons}
+            modalInContainer={false}
+            closeButton/>);
+    }
+    sentOkClicked(){
+        this.setState({showPopup : false});
+    }
+    returnDraftModal(){
+        let bodyContent = <div className="">Message saved as a draft</div>;
+        let footerButtons = <button type="button" onClick={this.draftOkClicked} className="c-btn c-btn--default c-modal__button">Ok</button>;
+        return (<ModalComponent show
+            onHide={this.draftOkClicked}
+            customClass={"c-modal"}
+            bsSize={'medium'}
+            modalheading={''}
+            modalbody={bodyContent}
+            modalfooter={footerButtons}
+            modalInContainer={false}
+            closeButton/>);
+    }
+    saveDraftData(){
+        this.setState({showDraftSuccessModal : true});
+    }
+    draftOkClicked(){
+        this.setState({showDraftSuccessModal : false});
     }
     render() {
         console.log('messageDetail:',this.props.location.messageDetail);
@@ -63,7 +104,7 @@ class DraftSecureMessage extends React.Component{
             <label className="c-field__label c-field__label--block" htmlFor="subjects">
                 Subject
             </label>
-            <div className="c-field__controls">
+            <div className="c-field__controls u-position-relative">
                 <DropDownComponent subjects={this.props.location.messageDetail.subject} name='subjects' id='subjects' selectSubject={this.selectSubject} isFromDraftOrReply = {true} selectedValue = {this.props.location.messageDetail.subject}/>
             </div>
         </div>
@@ -72,7 +113,7 @@ class DraftSecureMessage extends React.Component{
             <label className="c-field__label c-field__label--block" htmlFor="subjects">
                 Message relates to
             </label>
-            <div className="c-field__controls">
+            <div className="c-field__controls u-position-relative">
                 <DropDownComponent accounts={this.props.location.messageDetail.account.accountNumber} selectSubject={this.selectSubject} name='accounts' id='accounts' isFromDraftOrReply = {true} selectedValue = {this.props.location.messageDetail.account.accountNumber}/>
             </div>
         </div>
@@ -89,12 +130,14 @@ class DraftSecureMessage extends React.Component{
         </div>
 
         {this.state.showPopup ? this.returnModalComponent() : ''}
-        <Link to='/securemessages'>
-            <input type='button' name='cancel' value='Back' className="c-btn c-btn--secondary" />
-        </Link>&nbsp;
-
-        <button name='Save Draft' className="c-btn c-btn--secondary">Save Draft</button>&nbsp;
-        <button name='Send' className="c-btn c-btn--default" onClick={this.sendData}>Send</button>
+        {this.state.showDraftSuccessModal && this.returnDraftModal()}
+        <div className="c-btn--group">
+            <Link to='/securemessages' className="c-btn c-btn--secondary">
+                Back
+            </Link>
+            <button name='Save Draft' className="c-btn c-btn--secondary" onClick = {this.saveDraftData}>Save Draft</button>
+            <button name='Send' className="c-btn c-btn--default" onClick={this.sendData}>Send</button>
+        </div>
     </div>);
     }
 }
