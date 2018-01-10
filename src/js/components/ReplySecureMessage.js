@@ -115,7 +115,7 @@ class ReplySecureMessage extends React.Component {
                     <label id="subjectTitle" className="c-field__label c-field__label--block" htmlFor="subjects">
                         Subject
                     </label>
-                    <div className="c-field__controls">
+                    <div className="c-field__controls u-position-relative">
                         <DropDownComponent accessID="Subject" subjects={this.props.location.messageDetail.subject} name='subjects' id='subjects' selectSubject={this.selectSubject} isFromDraftOrReply={true} selectedValue={this.props.location.messageDetail.subject} isFromReply={true} />
                     </div>
                 </div>
@@ -124,7 +124,7 @@ class ReplySecureMessage extends React.Component {
                     <label id="relatesTitle" className="c-field__label c-field__label--block" htmlFor="subjects">
                         Message relates to
                     </label>
-                    <div className="c-field__controls">
+                    <div className="c-field__controls u-position-relative">
                         <DropDownComponent accessID="Message relates to" accounts={this.props.location.messageDetail.account.accountNumber} selectSubject={this.selectSubject} name='accounts' id='accounts' isFromDraftOrReply={true} selectedValue={this.props.location.messageDetail.account.accountNumber} isFromReply={true} />
                     </div>
                 </div>
