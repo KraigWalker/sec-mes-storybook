@@ -1,5 +1,5 @@
 import React from 'react';
-import { getMessageSubjects, getAccounts, sendMessageData,sendDraftMessageData } from '../actions/AppActions';
+import { getMessageSubjects, getAccounts, sendMessageData,sendDraftMessageData,sendMessageForAccessibiltiy } from '../actions/AppActions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Dropdown, ButtonToolbar, MenuItem } from 'react-bootstrap/lib';
@@ -68,8 +68,11 @@ class NewSecureMessage extends React.Component {
     }
     renderRemainingChar() {
         if (this.state.chars_left <= 3) {
+            (this.state.chars_left === 3) && this.props.dispatch(sendMessageForAccessibiltiy('Three characters left'));
+            (this.state.chars_left === 1) && this.props.dispatch(sendMessageForAccessibiltiy('One character left'));
+            (this.state.chars_left === 0) && this.props.dispatch(sendMessageForAccessibiltiy('Maximum characters limit reached'));
             return <p>Characters Left: {this.state.chars_left}</p>;
-        } else return '';
+        }
     }
     leavePage() {
         console.log('LEAVE PAGE');
@@ -139,30 +142,31 @@ class NewSecureMessage extends React.Component {
             {/*<Link to='/securemessages'> Back To Homepage</Link><br />*/}
 
             <div className="c-field">
-                <label className="c-field__label c-field__label--block" htmlFor="subjects">
+                <label id="subjectTitle" className="c-field__label c-field__label--block" htmlFor="subjects">
                     Subject
                 </label>
                 <div className="c-field__controls u-position-relative">
-                    <DropDownComponent subjects={this.props.subjects} selectSubject={this.selectSubject} name='subjects' id='subjects' isFromDraft ={false} selectedValue = 'Please select'/>
+                    <DropDownComponent accessID="Subject" subjects={this.props.subjects} selectSubject={this.selectSubject} name='subjects' id='subjects' isFromDraft ={false} selectedValue = 'Please select'/>
                 </div>
             </div>
 
             <div className="c-field">
-                <label className="c-field__label c-field__label--block" htmlFor="subjects">
+                <label id="relatesTitle" className="c-field__label c-field__label--block" htmlFor="accounts">
                     Message relates to
                 </label>
                 <div className="c-field__controls u-position-relative">
-                    <DropDownComponent accounts={this.props.accounts} selectSubject={this.selectSubject} name='accounts' id='accounts' isFromDraft ={false} selectedValue = 'Please select'/>
+                    <DropDownComponent accessID="Message relates to" accounts={this.props.accounts} selectSubject={this.selectSubject} name='accounts' id='accounts' isFromDraft ={false} selectedValue = 'Please select'/>
                 </div>
             </div>
 
 
             <div className="c-field">
-                <label className="c-field__label c-field__label--block" htmlFor="subjects">
+                <label id="messageTitle" className="c-field__label c-field__label--block" htmlFor="message">
                     Message
                 </label>
                 <div className="c-field__controls">
-                    <TextAreaComponent textData={this.textChange} />
+                    <div className="u-visually-hidden off-screen" id="textAreaMaxMsg">Maximum character limit is three thousand</div>
+                    <TextAreaComponent textData={this.textChange} ariaId="textAreaMaxMsg" accessID="messageTitle" id="message"/>
                 </div>
                 {this.renderRemainingChar()}
             </div>

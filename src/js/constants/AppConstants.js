@@ -12,4 +12,5 @@ export default keyMirror({
     SET_VIEW_MESSAGE_DETAIL: null,
     UPDATE_SECURE_MESSAGE: null,
     UPDATE_SECURE_MESSAGE_SUCCESS: null,
+    SEND_MESSAGE_FOR_ACCESSIBILITY:null,
 })
