@@ -72,7 +72,7 @@ class NewSecureMessage extends React.Component {
             (this.state.chars_left === 1) && this.props.dispatch(sendMessageForAccessibiltiy('One character left'));
             (this.state.chars_left === 0) && this.props.dispatch(sendMessageForAccessibiltiy('Maximum characters limit reached'));
             return <p>Characters Left: {this.state.chars_left}</p>;
-        } else return '';
+        }
     }
     leavePage() {
         console.log('LEAVE PAGE');
