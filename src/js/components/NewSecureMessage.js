@@ -32,6 +32,7 @@ class NewSecureMessage extends React.Component {
             showPopup: false,
             showDraftSuccessModal:false,
             showSentMessageModal:false,
+            disabled: true,
         };
     };
     componentWillMount() {
@@ -50,6 +51,11 @@ class NewSecureMessage extends React.Component {
         }
     }
     textChange(e) {
+        if(e === '') {
+            this.setState({ disabled: true})
+        } else {
+            this.setState({ disabled : false})
+        }
         this.setState({ chars_left: 43 - e.length });
         let extractedString = RegexUtils.matchString(e);
         if (extractedString !== null) {
@@ -178,8 +184,8 @@ class NewSecureMessage extends React.Component {
                 <Link to='/securemessages' className="c-btn c-btn--secondary">
                     Back
                 </Link>
-                <button name='Save Draft' className="c-btn c-btn--secondary" onClick={this.saveDraftData}>Save Draft</button>
-                <button name='Send' className="c-btn c-btn--default" onClick={this.sendData}>Send</button>
+                <button name='Save Draft' className="c-btn c-btn--secondary" onClick={this.saveDraftData} disabled={this.state.disabled}>Save Draft</button>
+                <button name='Send' className="c-btn c-btn--default" onClick={this.sendData} disabled={this.state.disabled}>Send</button>
                 <button name='LeavePage' className="c-btn c-btn--default" onClick={this.leavePage}>LeavePage</button>
             </div>
         </div>);
