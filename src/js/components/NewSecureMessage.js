@@ -163,6 +163,7 @@ class NewSecureMessage extends React.Component {
     saveDraftData() {
         this.props.dispatch(sendDraftMessageData(messageEntity.getMessageRequestData()));
         this.setState({ showDraftSuccessModal: true });
+        this.setState({ showPopup: false });
     }
     sentOkClicked() {
         this.setState({ showSentMessageModal: false });
