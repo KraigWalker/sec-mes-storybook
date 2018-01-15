@@ -132,6 +132,7 @@ class NewSecureMessage extends React.Component {
     returnModalComponent() {
         let bodyContent = <div className="callout callout__error">If you leave the message now it won’t be saved.</div>;
         let footerButtons = <div><Link to='/securemessages'><button type="button" onClick={this.leavePage} className="c-btn c-btn--secondary c-modal__button">Leave page</button></Link>&nbsp;
+            <button type="button" className="c-btn c-btn--secondary c-modal__button" onClick={this.saveDraftData} disabled={this.state.disabled}>Save Draft</button>
             <button type="button" onClick={this.stayOnPage} className="c-btn c-btn--default c-modal__button">Return to message</button></div>;
         return (<ModalComponent show
             onHide={this.stayOnPage}
