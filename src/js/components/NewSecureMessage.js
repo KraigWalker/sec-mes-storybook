@@ -97,21 +97,21 @@ class NewSecureMessage extends React.Component {
     }
     returnDraftModal(){
         let bodyContent = <div className="">Message saved as a draft</div>;
-    let footerButtons = <button type="button" onClick={this.draftOkClicked} className="c-btn c-btn--default c-modal__button">Ok</button>;
-    return (<ModalComponent show
-        onHide={this.draftOkClicked}
-        customClass={"c-modal"}
-        bsSize={'medium'}
-        modalheading={''}
-        modalbody={bodyContent}
-        modalfooter={footerButtons}
-        modalInContainer={false}
-        closeButton/>);
+        let footerButtons = <div><Link to='/securemessages'><button type="button" onClick={this.draftOkClicked} className="c-btn c-btn--default c-modal__button">Ok</button></Link></div>;
+        return (<ModalComponent show
+            onHide={this.draftOkClicked}
+            customClass={"c-modal"}
+            bsSize={'medium'}
+            modalheading={''}
+            modalbody={bodyContent}
+            modalfooter={footerButtons}
+            modalInContainer={false}
+            closeButton />);
     }
-    draftOkClicked(){
-        this.setState({showDraftSuccessModal :false});
+    draftOkClicked() {
+        this.setState({ showDraftSuccessModal: false });
     }
-    saveDraftData(){
+    saveDraftData() {
         this.props.dispatch(sendDraftMessageData(messageEntity.getMessageRequestData()));
         this.setState({showDraftSuccessModal : true});
 
@@ -121,16 +121,16 @@ class NewSecureMessage extends React.Component {
     }
     returnSentMessageModal(){
         let bodyContent = <div className="">Message sent</div>;
-    let footerButtons = <button type="button" onClick={this.sentOkClicked} className="c-btn c-btn--default c-modal__button">Ok</button>;
-    return (<ModalComponent show
-        onHide={this.sentOkClicked}
-        customClass={"c-modal"}
-        bsSize={'medium'}
-        modalheading={''}
-        modalbody={bodyContent}
-        modalfooter={footerButtons}
-        modalInContainer={false}
-        closeButton/>);
+        let footerButtons = <div><Link to='/securemessages'><button type="button" onClick={this.sentOkClicked} className="c-btn c-btn--default c-modal__button">Ok</button></Link></div>;
+        return (<ModalComponent show
+            onHide={this.sentOkClicked}
+            customClass={"c-modal"}
+            bsSize={'medium'}
+            modalheading={''}
+            modalbody={bodyContent}
+            modalfooter={footerButtons}
+            modalInContainer={false}
+            closeButton />);
     }
     render() {
         return (<div className="container">
