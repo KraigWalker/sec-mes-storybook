@@ -95,6 +95,10 @@ $text-color: bow-palette(grey, text);
 		}
 	}
 
+	.char__error {
+		color: red;
+	}
+
 	.c-field__controls,
 	.c-field__message,
 	.c-preview__controls,
