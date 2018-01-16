@@ -95,6 +95,10 @@ $text-color: bow-palette(grey, text);
 		}
 	}
 
+	.char__error {
+		color: red;
+	}
+
 	.c-field__controls,
 	.c-field__message,
 	.c-preview__controls,
@@ -140,6 +144,22 @@ $text-color: bow-palette(grey, text);
 	.c-preview__controls {
 		display: block;
 		clear: both;
+		.callout.callout__error {
+			margin-top: 5px;
+			margin-bottom: 0;
+			max-width: 343px;
+			@include media-breakpoint-up(md1) {
+			    max-width: 304px;
+			}
+
+			@include media-breakpoint-up(lg1) {
+			    max-width: 374px;
+			}
+
+			@include media-breakpoint-up(xl1) {
+			    max-width: 428px;
+			}
+		}
 	}
 
 	.c-field__controls label {
