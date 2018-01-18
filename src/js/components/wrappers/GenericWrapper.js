@@ -1,5 +1,6 @@
 import React from 'react';
 import content from '../../content';
+import config from '../../config';
 import { connect } from 'react-redux';
 export function withSubscription(WrappedComponent) {
     return class extends React.Component {
@@ -7,6 +8,7 @@ export function withSubscription(WrappedComponent) {
             super();
             this.state = {
                 content: content,
+                config: config,
             }
         }
         render() {
