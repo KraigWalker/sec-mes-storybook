@@ -24,7 +24,7 @@ class DraftSecureMessage extends React.Component{
         this.draftOkClicked = this.draftOkClicked.bind(this);
         this.saveDraftData = this.saveDraftData.bind(this);
         this.state = {
-            chars_left: 43,
+            chars_left: 3000,
             showPopup: false,
         };
     };
@@ -37,12 +37,12 @@ class DraftSecureMessage extends React.Component{
         }
     }
     renderRemainingChar() {
-        if (this.state.chars_left <= 3) {
+        if (this.state.chars_left <= 300) {
             return <p>Characters Left: {this.state.chars_left}</p>;
         } else return '';
     }
     textChange(e) {
-        this.setState({ chars_left: 43 - e.length });
+        this.setState({ chars_left: 3000 - e.length });
         let extractedString = RegexUtils.matchString(e);
         if (extractedString !== null) {
             let lastFour = RegexUtils.getLastFourDigits(extractedString);
