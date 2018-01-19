@@ -20,10 +20,10 @@ class DropDownComponent extends React.Component {
         }
     };
     componentWillMount() {
-        if (!this.props.messagesubjects.fetched && !this.props.messageaccounts.fetched) {
-            this.props.dispatch(getMessageSubjects());
-            this.props.dispatch(getAccounts());
-        }
+       // if (!this.props.messagesubjects.fetched && !this.props.messageaccounts.fetched) {
+           // this.props.dispatch(getMessageSubjects());
+           // this.props.dispatch(getAccounts());
+       // }
         if(this.props.isFromDraftOrReply) {
             this.props.selectSubject(this.props.selectedValue, this.props.id);
         }

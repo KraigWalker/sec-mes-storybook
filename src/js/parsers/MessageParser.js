@@ -8,7 +8,7 @@ import {sortArrayByDate} from '../utils/DateUtils';
  */
 export function parseMessages(response) {
     const messages = [];
-    const sortedMessages = sortArrayByDate(response.securemessages);
+    const sortedMessages = sortArrayByDate(response.secure_messages);
     _.forEach(sortedMessages, message => {
         const messageEntity = new MessageEntity();
         messageEntity.setId(message.id);
