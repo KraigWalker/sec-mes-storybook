@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import RegexUtils from '../utils/RegexUtils.js';
 import SendMessageRequestEntity from '../entities/SendMessageRequestEntity.js'
 import { connect } from 'react-redux';
-import { getMessageSubjects, getAccounts, sendMessageData } from '../actions/AppActions';
+import { getMessageSubjects, getAccounts, sendMessageData, sendMessageForAccessibiltiy } from '../actions/AppActions';
 let messageEntity = new SendMessageRequestEntity();
 import { getThreadsBL } from '../bl/SecureMessageBL';
 import Threads from './common/ThreadList';
@@ -51,8 +51,11 @@ class ReplySecureMessage extends React.Component {
     }
     renderRemainingChar() {
         if (this.state.chars_left <= 3) {
+            (this.state.chars_left === 3) && this.props.dispatch(sendMessageForAccessibiltiy('Three characters left'));
+            (this.state.chars_left === 1) && this.props.dispatch(sendMessageForAccessibiltiy('One character left'));
+            (this.state.chars_left === 0) && this.props.dispatch(sendMessageForAccessibiltiy('Maximum characters limit reached'));
             return <p>Characters Left: {this.state.chars_left}</p>;
-        } else return '';
+        }
     }
     sendData() {
         this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData()));
@@ -109,30 +112,31 @@ class ReplySecureMessage extends React.Component {
                 </div>
 
                 <div className="c-field">
-                    <label className="c-field__label c-field__label--block" htmlFor="subjects">
+                    <label id="subjectTitle" className="c-field__label c-field__label--block" htmlFor="subjects">
                         Subject
                     </label>
                     <div className="c-field__controls u-position-relative">
-                        <DropDownComponent subjects={this.props.location.messageDetail.subject} name='subjects' id='subjects' selectSubject={this.selectSubject} isFromDraftOrReply={true} selectedValue={this.props.location.messageDetail.subject} isFromReply={true} />
+                        <DropDownComponent accessID="Subject" subjects={this.props.location.messageDetail.subject} name='subjects' id='subjects' selectSubject={this.selectSubject} isFromDraftOrReply={true} selectedValue={this.props.location.messageDetail.subject} isFromReply={true} />
                     </div>
                 </div>
 
                 <div className="c-field">
-                    <label className="c-field__label c-field__label--block" htmlFor="subjects">
+                    <label id="relatesTitle" className="c-field__label c-field__label--block" htmlFor="subjects">
                         Message relates to
                     </label>
                     <div className="c-field__controls u-position-relative">
-                        <DropDownComponent accounts={this.props.location.messageDetail.account.accountNumber} selectSubject={this.selectSubject} name='accounts' id='accounts' isFromDraftOrReply={true} selectedValue={this.props.location.messageDetail.account.accountNumber} isFromReply={true} />
+                        <DropDownComponent accessID="Message relates to" accounts={this.props.location.messageDetail.account.accountNumber} selectSubject={this.selectSubject} name='accounts' id='accounts' isFromDraftOrReply={true} selectedValue={this.props.location.messageDetail.account.accountNumber} isFromReply={true} />
                     </div>
                 </div>
 
 
                 <div className="c-field">
-                    <label className="c-field__label c-field__label--block" htmlFor="subjects">
+                    <label id="messageTitle" className="c-field__label c-field__label--block" htmlFor="subjects">
                         Message
                     </label>
                     <div className="c-field__controls">
-                        <TextAreaComponent textData={this.textChange} />
+                    <div className="u-visually-hidden off-screen" id="textAreaMaxMsg">Maximum character limit is three thousand</div>
+                        <TextAreaComponent textData={this.textChange} ariaId="textAreaMaxMsg" id="message" accessID="messageTitle"/>
                     </div>
                     {this.renderRemainingChar()}
                 </div>

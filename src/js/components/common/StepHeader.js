@@ -15,7 +15,7 @@ class StepHeader extends React.Component {
 				<span className="c-step-header__linktext">{this.props.headerCrumbsMessage}</span>
 			</Link>
 			</p> : null}
-			<h1 className="c-step-header__title">{this.props.headerTitle}</h1>
+			<h1 className="c-step-header__title" id = "headingTag" tabIndex = "-1">{this.props.headerTitle}</h1>
             {this.props.headerSubtitle ? <p className="c-step-header__subtitle">{this.props.headerSubtitle}</p> : null}
 			<p className="c-step-header__subtext">{this.props.headerSubtext}</p>
 		</div>

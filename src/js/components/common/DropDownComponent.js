@@ -1,8 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
 import MessageSubjectEntity from '../../entities/MessageSubjectEntity';
 import { connect } from 'react-redux';
 import { getMessageSubjects, getAccounts, sendMessageData } from '../../actions/AppActions';
+import CalloutComponent from './CalloutComponent';
 class DropDownComponent extends React.Component {
     constructor(props) {
         super(props);
@@ -95,13 +97,18 @@ class DropDownComponent extends React.Component {
         });
         return (
             <div>
-                <button className="c-field__input c-field__input--select c-dropdown u-cursor-pointer" onClick={this.showList}>{this.state.Text}</button>
+            <div>
+                <button id="ddlText" aria-label={`${this.props.accessID} ${this.state.Text}`} className="c-field__input c-field__input--select c-dropdown u-cursor-pointer" onClick={this.showList}>{this.state.Text}</button>
                 {this.state.list && <div ref="overlay" className={overlayClassName} onClick={this.overlayclick} ></div>}
                 {this.state.list && <ul className="c-dropdown__list u-cursor-pointer" onBlur={this.onBlur}>{this.returnMenuItem()}</ul>}
+            </div>
+            {this.props.showAccountError ? <CalloutComponent dClass = 'callout callout__error' paraText = 'Please select a subject for your message'/> : ''}
+            {this.props.showSubjectError ? <CalloutComponent dClass = 'callout callout__error' paraText = 'Pleae select an option for which account your enquiry relates to. If it’s a general enquiry, choose `General enquiry`'/> : ''}
             </div>
         );
     }
 }
+
 /**
  * Maps the state of the component to the state of the redux store
  * @param {object} state. State of the application
@@ -112,4 +119,5 @@ const mapState = (state) => {
         messageaccounts: state.accounts,
     }
 };
+
 export default connect(mapState)(DropDownComponent);

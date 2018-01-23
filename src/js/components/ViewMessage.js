@@ -90,7 +90,7 @@ class ViewMessage extends React.Component {
             modalbody={bodyContent}
             modalfooter={footerButtons}
             modalInContainer={false}
-            closeButton={false} />);
+            closeButton/>);
     }
     returnDeleteSuccessModalComponent() {
         let bodyContent = <div>Message Deleted</div>;
@@ -103,7 +103,7 @@ class ViewMessage extends React.Component {
             modalbody={bodyContent}
             modalfooter={footerButtons}
             modalInContainer={false}
-            closeButton={false} />);
+            closeButton />);
     }
     closeSuccessModal() {
         this.setState({ showDeleteSuccessModal: false });
