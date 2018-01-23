@@ -12,10 +12,10 @@ export function SecureMessageBL(response) {
     const inboxMessages = [];
     const sentMessages = [];
     const draftMessages = [];
-    console.log(response);
     _.map(response.messages, message => {
         switch (message.status){
             case "NEW":
+            break;
             case "READ":
                 inboxMessages.push(message);
             break;
@@ -23,6 +23,7 @@ export function SecureMessageBL(response) {
                 draftMessages.push(message);
             break;
             case "PENDING":
+            break;
             case "SENT":
                 sentMessages.push(message);
             break;

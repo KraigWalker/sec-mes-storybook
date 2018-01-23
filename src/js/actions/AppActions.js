@@ -71,7 +71,7 @@ export function sendMessageData(requestData) {
       // const parseData = parseAccounts(response);
       const payload = {
         type: AppConstants.SEND_MESSAGE_DATA_SUCCESS,
-        payload: response
+        payload: {response: response, requestData: requestData}
       }
       //dispatch(payload);
     }

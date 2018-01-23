@@ -5,8 +5,10 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import MessageEntity from '../../entities/MessageEntity';
 import ModalComponent from '../common/ModalComponent';
-import {sendDeleteData} from '../../actions/AppActions';
+import {sendDeleteData, sendMessageData} from '../../actions/AppActions';
+import SendMessageRequestEntity from '../../entities/SendMessageRequestEntity.js'
 import { connect } from 'react-redux';
+let messageEntity = new SendMessageRequestEntity();
 class SecureMessageSummary extends React.Component {
     constructor(props) {
         super(props);
@@ -101,6 +103,7 @@ class SecureMessageSummary extends React.Component {
     deleteClick() {
         this.setState({ showDeleteSuccessModal: true, showDeleteConfirmModal: false });
         this.props.dispatch(sendDeleteData(this.props.message));
+      // this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData()));
     }
     closeSuccessModal(){
        // document.getElementById('headingTag').focus();

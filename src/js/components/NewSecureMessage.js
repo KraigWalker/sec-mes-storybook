@@ -107,6 +107,7 @@ class NewSecureMessage extends React.Component {
     }
     sendData() {
         if (this.checkValidation()) {
+            messageEntity.setStatus('SENT');
             this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData()));
             this.setState({ showSentMessageModal: true });
         }
@@ -161,7 +162,8 @@ class NewSecureMessage extends React.Component {
         this.setState({ showDraftSuccessModal: false });
     }
     saveDraftData() {
-        this.props.dispatch(sendDraftMessageData(messageEntity.getMessageRequestData()));
+        messageEntity.setStatus('DRAFT');
+        this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData()));
         this.setState({ showDraftSuccessModal: true });
         this.setState({ showPopup: false });
     }

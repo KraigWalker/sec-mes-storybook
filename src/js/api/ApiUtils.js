@@ -15,7 +15,16 @@ class ApiUtils {
                     .then(response => { onSuccess(response.data); })
                     .catch(error => { onFail(error); });
             case 'POST':
-                return axios.post(apiData.url, apiData.requestData)
+                return axios.post(apiData.url, apiData.requestData, {headers: requestHeaders})
+                    .then(response => { 
+                        onSuccess(response); })
+                    .catch(error =>{ onFail(error); });
+            case 'PUT':
+                return axios.put(apiData.url, apiData.requestData, {headers: requestHeaders})
+                    .then(response => { onSuccess(response.data); })
+                    .catch(error =>{ onFail(error); });
+            case 'DELETE':
+                return axios.delete(apiData.url, apiData.requestData, {headers: requestHeaders})
                     .then(response => { onSuccess(response.data); })
                     .catch(error =>{ onFail(error); });
         }
