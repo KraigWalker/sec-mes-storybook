@@ -31,6 +31,10 @@ $iconsize:(
 			text-align: center;
 			margin-bottom: 0px;
 			height: 36px;
+			width: 33%;
+			@include media-breakpoint-up(xs2) {
+				width: auto;
+			}
 
 			&.active{
 				@include brand-text(bold);
@@ -49,10 +53,11 @@ $iconsize:(
 				width: 100%;
 				color: #4a4a4a;
 				text-decoration: none;
-				@media (min-width: $md1){
+
+				@include media-breakpoint-up(xs2){
 					min-width: 136px;
 				}
-				@media (min-width: $xl1){
+				@include media-breakpoint-up(xl1){
 					min-width: 152px;
 				}
 				&:hover{
