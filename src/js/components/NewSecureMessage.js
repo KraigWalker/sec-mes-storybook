@@ -1,5 +1,5 @@
 import React from 'react';
-import { getMessageSubjects, getAccounts, sendMessageData,sendDraftMessageData,sendMessageForAccessibiltiy } from '../actions/AppActions';
+import { getMessageSubjects, getAccounts, sendMessageData, sendDraftMessageData, sendMessageForAccessibiltiy } from '../actions/AppActions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Dropdown, ButtonToolbar, MenuItem } from 'react-bootstrap/lib';
@@ -30,9 +30,13 @@ class NewSecureMessage extends React.Component {
         this.state = {
             chars_left: 43,
             showPopup: false,
-            showDraftSuccessModal:false,
-            showSentMessageModal:false,
+            showDraftSuccessModal: false,
+            showSentMessageModal: false,
             disabled: true,
+            validationSubjectMsg: false,
+            validationAccountMsg: false,
+            selectAccount: false,
+            selectSubject: false,
         };
     };
     componentWillMount() {
@@ -42,19 +46,29 @@ class NewSecureMessage extends React.Component {
         }
 
     }
-    selectSubject(value,id) {
-        if (id === 'accounts') {
-            messageEntity.setAccount(value);
-        }
-        if (id === 'subjects') {
-            messageEntity.setSubject(value);
-        }
+    selectSubject(value, id) {
+        switch (id) {
+            case 'accounts':
+                messageEntity.setAccount(value);
+                this.setState({
+                    selectAccount: true,
+                    validationAccountMsg: false,
+                });
+                break;
+            case 'subjects':
+                messageEntity.setSubject(value);
+                this.setState({
+                    selectSubject: true,
+                    validationSubjectMsg: false,
+                });
+                break;
+            }
     }
     textChange(e) {
-        if(e === '') {
-            this.setState({ disabled: true})
+        if (e === '') {
+            this.setState({ disabled: true })
         } else {
-            this.setState({ disabled : false})
+            this.setState({ disabled: false })
         }
         this.setState({ chars_left: 43 - e.length });
         let extractedString = RegexUtils.matchString(e);
@@ -63,11 +77,39 @@ class NewSecureMessage extends React.Component {
             messageEntity.setMessage(e.replace(new RegExp(extractedString, 'g'), '************' + lastFour));
         } else messageEntity.setMessage(e);
 
+    }
+    checkValidation() {
+        if(this.state.selectAccount === true) {
+            this.setState({
+                validationAccountMsg: false,
+            });
+        }else {
+            this.setState({
+                validationAccountMsg: true,
+            });
+        }
 
+        if(this.state.selectSubject === true) {
+            this.setState({
+                validationSubjectMsg: false,
+            });
+        }else {
+            this.setState({
+                validationSubjectMsg: true,
+            });
+        }
+
+        if(this.state.selectSubject === true && this.state.selectAccount === true) {
+            return true;
+        }else {
+            return false;
+        }
     }
     sendData() {
-        this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData()));
-        this.setState({showSentMessageModal : true})
+        if (this.checkValidation()) {
+            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData()));
+            this.setState({ showSentMessageModal: true });
+        }
     }
     checkPastedData(data) {
         //  console.log(RegexUtils.isValidPastedData(data));
@@ -77,7 +119,7 @@ class NewSecureMessage extends React.Component {
             (this.state.chars_left === 3) && this.props.dispatch(sendMessageForAccessibiltiy('Three characters left'));
             (this.state.chars_left === 1) && this.props.dispatch(sendMessageForAccessibiltiy('One character left'));
             (this.state.chars_left === 0) && this.props.dispatch(sendMessageForAccessibiltiy('Maximum characters limit reached'));
-            return <p>Characters Left: {this.state.chars_left}</p>;
+            return <p className="char__error">Characters Left: {this.state.chars_left}</p>;
         }
     }
     leavePage() {
@@ -90,6 +132,7 @@ class NewSecureMessage extends React.Component {
     returnModalComponent() {
         let bodyContent = <div className="callout callout__error">If you leave the message now it won’t be saved.</div>;
         let footerButtons = <div><Link to='/securemessages'><button type="button" onClick={this.leavePage} className="c-btn c-btn--secondary c-modal__button">Leave page</button></Link>&nbsp;
+            <button type="button" className="c-btn c-btn--secondary c-modal__button" onClick={this.saveDraftData} disabled={this.state.disabled}>Save Draft</button>
             <button type="button" onClick={this.stayOnPage} className="c-btn c-btn--default c-modal__button">Return to message</button></div>;
         return (<ModalComponent show
             onHide={this.stayOnPage}
@@ -101,44 +144,45 @@ class NewSecureMessage extends React.Component {
             modalInContainer={false}
             closeButton />);
     }
-    returnDraftModal(){
+    returnDraftModal() {
         let bodyContent = <div className="">Message saved as a draft</div>;
-    let footerButtons = <button type="button" onClick={this.draftOkClicked} className="c-btn c-btn--default c-modal__button">Ok</button>;
-    return (<ModalComponent show
-        onHide={this.draftOkClicked}
-        customClass={"c-modal"}
-        bsSize={'medium'}
-        modalheading={''}
-        modalbody={bodyContent}
-        modalfooter={footerButtons}
-        modalInContainer={false}
-        closeButton/>);
+        let footerButtons = <button type="button" onClick={this.draftOkClicked} className="c-btn c-btn--default c-modal__button">Ok</button>;
+        return (<ModalComponent show
+            onHide={this.draftOkClicked}
+            customClass={"c-modal"}
+            bsSize={'medium'}
+            modalheading={''}
+            modalbody={bodyContent}
+            modalfooter={footerButtons}
+            modalInContainer={false}
+            closeButton />);
     }
-    draftOkClicked(){
-        this.setState({showDraftSuccessModal :false});
+    draftOkClicked() {
+        this.setState({ showDraftSuccessModal: false });
     }
-    saveDraftData(){
+    saveDraftData() {
         this.props.dispatch(sendDraftMessageData(messageEntity.getMessageRequestData()));
-        this.setState({showDraftSuccessModal : true});
-
+        this.setState({ showDraftSuccessModal: true });
+        this.setState({ showPopup: false });
     }
-    sentOkClicked(){
-        this.setState({showSentMessageModal : false});
+    sentOkClicked() {
+        this.setState({ showSentMessageModal: false });
     }
-    returnSentMessageModal(){
+    returnSentMessageModal() {
         let bodyContent = <div className="">Message sent</div>;
-    let footerButtons = <button type="button" onClick={this.sentOkClicked} className="c-btn c-btn--default c-modal__button">Ok</button>;
-    return (<ModalComponent show
-        onHide={this.sentOkClicked}
-        customClass={"c-modal"}
-        bsSize={'medium'}
-        modalheading={''}
-        modalbody={bodyContent}
-        modalfooter={footerButtons}
-        modalInContainer={false}
-        closeButton/>);
+        let footerButtons = <button type="button" onClick={this.sentOkClicked} className="c-btn c-btn--default c-modal__button">Ok</button>;
+        return (<ModalComponent show
+            onHide={this.sentOkClicked}
+            customClass={"c-modal"}
+            bsSize={'medium'}
+            modalheading={''}
+            modalbody={bodyContent}
+            modalfooter={footerButtons}
+            modalInContainer={false}
+            closeButton />);
     }
     render() {
+
         return (<div className="container">
             <div className="row">
                 <div className="col-md1-18">
@@ -152,7 +196,7 @@ class NewSecureMessage extends React.Component {
                     Subject
                 </label>
                 <div className="c-field__controls u-position-relative">
-                    <DropDownComponent accessID="Subject" subjects={this.props.subjects} selectSubject={this.selectSubject} name='subjects' id='subjects' isFromDraft ={false} selectedValue = 'Please select'/>
+                    <DropDownComponent accessID="Subject" subjects={this.props.subjects} selectSubject={this.selectSubject} showSubjectError={this.state.validationSubjectMsg} name='subjects' id='subjects' isFromDraft={false} selectedValue='Please select' />
                 </div>
             </div>
 
@@ -161,7 +205,7 @@ class NewSecureMessage extends React.Component {
                     Message relates to
                 </label>
                 <div className="c-field__controls u-position-relative">
-                    <DropDownComponent accessID="Message relates to" accounts={this.props.accounts} selectSubject={this.selectSubject} name='accounts' id='accounts' isFromDraft ={false} selectedValue = 'Please select'/>
+                    <DropDownComponent accessID="Message relates to" accounts={this.props.accounts} selectSubject={this.selectSubject} showAccountError={this.state.validationAccountMsg} name='accounts' id='accounts' isFromDraft={false} selectedValue='Please select' />
                 </div>
             </div>
 
@@ -172,7 +216,7 @@ class NewSecureMessage extends React.Component {
                 </label>
                 <div className="c-field__controls">
                     <div className="u-visually-hidden off-screen" id="textAreaMaxMsg">Maximum character limit is three thousand</div>
-                    <TextAreaComponent textData={this.textChange} ariaId="textAreaMaxMsg" accessID="messageTitle" id="message"/>
+                    <TextAreaComponent textData={this.textChange} ariaId="textAreaMaxMsg" accessID="messageTitle" id="message" />
                 </div>
                 {this.renderRemainingChar()}
             </div>
@@ -184,8 +228,8 @@ class NewSecureMessage extends React.Component {
                 <Link to='/securemessages' className="c-btn c-btn--secondary">
                     Back
                 </Link>
-                <button name='Save Draft' className="c-btn c-btn--secondary" onClick={this.saveDraftData} disabled={this.state.disabled}>Save Draft</button>
-                <button name='Send' className="c-btn c-btn--default" onClick={this.sendData} disabled={this.state.disabled}>Send</button>
+                <button name='Save Draft' className="c-btn c-btn--secondary" onClick={this.saveDraftData} disabled = {this.state.disabled}>Save Draft</button>
+                <button name='Send' className="c-btn c-btn--default" onClick={this.sendData} disabled = {this.state.disabled}>Send</button>
                 <button name='LeavePage' className="c-btn c-btn--default" onClick={this.leavePage}>LeavePage</button>
             </div>
         </div>);
