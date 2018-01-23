@@ -146,7 +146,7 @@ class NewSecureMessage extends React.Component {
     }
     returnDraftModal() {
         let bodyContent = <div className="">Message saved as a draft</div>;
-        let footerButtons = <div><Link to='/securemessages'><button type="button" onClick={this.draftOkClicked} className="c-btn c-btn--default c-modal__button">Ok</button></Link></div>;
+        let footerButtons = <div><Link to='/securemessages' onClick={this.draftOkClicked} className="c-btn c-btn--default c-modal__button">Ok</Link></div>;
         return (<ModalComponent show
             onHide={this.draftOkClicked}
             customClass={"c-modal"}
@@ -170,7 +170,7 @@ class NewSecureMessage extends React.Component {
     }
     returnSentMessageModal() {
         let bodyContent = <div className="">Message sent</div>;
-        let footerButtons = <div><Link to='/securemessages'><button type="button" onClick={this.sentOkClicked} className="c-btn c-btn--default c-modal__button">Ok</button></Link></div>;
+        let footerButtons = <div><Link to='/securemessages' onClick={this.sentOkClicked} className="c-btn c-btn--default c-modal__button">Ok</Link></div>;
         return (<ModalComponent show
             onHide={this.sentOkClicked}
             customClass={"c-modal"}
