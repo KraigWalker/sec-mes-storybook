@@ -175,3 +175,11 @@
         }
     }
 }
+
+.new-message-btn{
+    display: inline-flex;
+    svg{
+        margin-right: 5px;
+        fill: white;
+    }
+}
