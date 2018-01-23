@@ -26,7 +26,7 @@ class ReplySecureMessage extends React.Component {
         this.draftOkClicked = this.draftOkClicked.bind(this);
         this.saveDraftData = this.saveDraftData.bind(this);
         this.state = {
-            chars_left: 43,
+            chars_left: 3000,
             showPopup: false,
             showDraftSuccessModal:false,
         };
@@ -40,7 +40,7 @@ class ReplySecureMessage extends React.Component {
         }
     }
     textChange(e) {
-        this.setState({ chars_left: 43 - e.length });
+        this.setState({ chars_left: 3000 - e.length });
         let extractedString = RegexUtils.matchString(e);
         if (extractedString !== null) {
             let lastFour = RegexUtils.getLastFourDigits(extractedString);
@@ -50,7 +50,7 @@ class ReplySecureMessage extends React.Component {
 
     }
     renderRemainingChar() {
-        if (this.state.chars_left <= 3) {
+        if (this.state.chars_left <= 300) {
             (this.state.chars_left === 3) && this.props.dispatch(sendMessageForAccessibiltiy('Three characters left'));
             (this.state.chars_left === 1) && this.props.dispatch(sendMessageForAccessibiltiy('One character left'));
             (this.state.chars_left === 0) && this.props.dispatch(sendMessageForAccessibiltiy('Maximum characters limit reached'));

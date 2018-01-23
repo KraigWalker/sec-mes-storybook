@@ -28,7 +28,7 @@ class NewSecureMessage extends React.Component {
         this.returnSentMessageModal = this.returnSentMessageModal.bind(this);
         this.sentOkClicked = this.sentOkClicked.bind(this);
         this.state = {
-            chars_left: 43,
+            chars_left: 3000,
             showPopup: false,
             showDraftSuccessModal: false,
             showSentMessageModal: false,
@@ -70,7 +70,7 @@ class NewSecureMessage extends React.Component {
         } else {
             this.setState({ disabled: false })
         }
-        this.setState({ chars_left: 43 - e.length });
+        this.setState({ chars_left: 3000 - e.length });
         let extractedString = RegexUtils.matchString(e);
         if (extractedString !== null) {
             let lastFour = RegexUtils.getLastFourDigits(extractedString);
@@ -115,7 +115,7 @@ class NewSecureMessage extends React.Component {
         //  console.log(RegexUtils.isValidPastedData(data));
     }
     renderRemainingChar() {
-        if (this.state.chars_left <= 3) {
+        if (this.state.chars_left <= 300) {
             (this.state.chars_left === 3) && this.props.dispatch(sendMessageForAccessibiltiy('Three characters left'));
             (this.state.chars_left === 1) && this.props.dispatch(sendMessageForAccessibiltiy('One character left'));
             (this.state.chars_left === 0) && this.props.dispatch(sendMessageForAccessibiltiy('Maximum characters limit reached'));
@@ -146,7 +146,7 @@ class NewSecureMessage extends React.Component {
     }
     returnDraftModal() {
         let bodyContent = <div className="">Message saved as a draft</div>;
-        let footerButtons = <button type="button" onClick={this.draftOkClicked} className="c-btn c-btn--default c-modal__button">Ok</button>;
+        let footerButtons = <div><Link to='/securemessages' onClick={this.draftOkClicked} className="c-btn c-btn--default c-modal__button">Ok</Link></div>;
         return (<ModalComponent show
             onHide={this.draftOkClicked}
             customClass={"c-modal"}
@@ -170,7 +170,7 @@ class NewSecureMessage extends React.Component {
     }
     returnSentMessageModal() {
         let bodyContent = <div className="">Message sent</div>;
-        let footerButtons = <button type="button" onClick={this.sentOkClicked} className="c-btn c-btn--default c-modal__button">Ok</button>;
+        let footerButtons = <div><Link to='/securemessages' onClick={this.sentOkClicked} className="c-btn c-btn--default c-modal__button">Ok</Link></div>;
         return (<ModalComponent show
             onHide={this.sentOkClicked}
             customClass={"c-modal"}
