@@ -1,9 +1,10 @@
 {
-  "name": "secure-message-webapp",
+  "name": "secure-messaging",
   "version": "1.0.0",
   "description": "Secure Message Web application",
   "main": "index.js",
   "dependencies": {
+    "cross-env": "^5.1.3",
     "key-mirror": "^1.0.1",
     "react": "^16.1.0",
     "react-dom": "^16.1.0"
