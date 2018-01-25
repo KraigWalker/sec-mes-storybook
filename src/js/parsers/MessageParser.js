@@ -45,34 +45,12 @@ export function parseDraft(data) {
     return requestData;
 }
 
-export function deleteMessage() {
-    const requestData = {
-        secure_message: {
-            subject: 'Payment Enquiries',
-            account: {
-                id: 'ddec9b5e-d6d8-430a-9c3a-19a281318fe6',
-                number: '822000-12341234'
-            },
-            payload: {
-                headers: [
-                    {
-                        name: "In-Reply-To",
-                        value: "adfsas"
-                    }
-                ],
-                body: {
-                    data: "Dear Advsior, thank you for contacting me about my account. blah blah blah ..."
-                }
-            },
-            status: "DELETED"
-        }
-    }
-}
 
-export function updateMessage() {
+export function updateMessage(data, id) {
+    console.log(data);
     const requestData = {
             secure_message: {
-                subject: 'Payment Enquiries',
+                subject: data.subject,
                 account: {
                     id: 'ddec9b5e-d6d8-430a-9c3a-19a281318fe6',
                     number: '822000-12341234'
@@ -81,15 +59,37 @@ export function updateMessage() {
                     headers: [
                         {
                             name: "In-Reply-To",
-                            value: "asd"
+                            value: id,
                         }
                     ],
                     body: {
-                        data: "Dear Advsior, thank you for contacting me about my account. blah blah blah ..."
+                        data: data.message,
                     }
                 },
-                status: "PENDING"
+                status: data.status,
             }
     }
+    return requestData;
 }
 
+// {
+//     "secure_message": {
+//       "subject": "Payment Enquiries",
+//       "account": {
+//         "id": "$UUID",
+//         "number": "$SORT_CODE-$ACCOUNT_NUMBER"
+//       },
+//       "payload": {
+//         "headers": [
+//           {
+//             "name": "In-Reply-To",
+//             "value": "$UUID"
+//           }
+//         ],
+//         "body": {
+//           "data": "Dear Advsior, thank you for contacting me about my account. blah blah blah ..."
+//         }
+//       },
+//       "status": "PENDING"
+//     }
+//   }

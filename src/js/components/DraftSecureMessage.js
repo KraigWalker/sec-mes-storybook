@@ -1,5 +1,5 @@
 import React from 'react';
-import { getMessageSubjects, getAccounts, sendMessageData } from '../actions/AppActions';
+import { getMessageSubjects, getAccounts, sendMessageData, updateMessageData } from '../actions/AppActions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Dropdown, ButtonToolbar, MenuItem } from 'react-bootstrap/lib';
@@ -38,7 +38,7 @@ class DraftSecureMessage extends React.Component{
     }
     renderRemainingChar() {
         if (this.state.chars_left <= 300) {
-            return <p>Characters Left: {this.state.chars_left}</p>;
+            return <p>{this.props.content.charLeft} {this.state.chars_left}</p>;
         } else return '';
     }
     textChange(e) {
@@ -48,16 +48,25 @@ class DraftSecureMessage extends React.Component{
             let lastFour = RegexUtils.getLastFourDigits(extractedString);
             messageEntity.setMessage(e.replace(new RegExp(extractedString, 'g'), '************' + lastFour));
         } else messageEntity.setMessage(e);
-
-
     }
+    // uuidv4(num) {
+    //     num = ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+    //       (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+    //     )
+    //     return num;
+    //   }
+      
     sendData() {
-        this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData()));
-        this.setState({showPopup : true});
+     //   console.log(this.uuidv4());
+      //  messageEntity.setUniqueID(this.uuidv4());
+        messageEntity.setStatus('PENDING');
+        console.log('function:', this.props.location.messageDetail.id);
+        this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id));
+       // this.setState({showPopup : true});
     }
     returnModalComponent() {
-        let bodyContent = <div className="">Message sent</div>;
-        let footerButtons = <button type="button" onClick={this.sentOkClicked} className="c-btn c-btn--default c-modal__button">Ok</button>;
+        let bodyContent = <div className="">{this.props.content.messageSent}</div>;
+        let footerButtons = <button type="button" onClick={this.sentOkClicked} className="c-btn c-btn--default c-modal__button">{this.props.content.ok}</button>;
         return (<ModalComponent show
             onHide={this.sentOkClicked}
             customClass={"c-modal"}
@@ -72,8 +81,8 @@ class DraftSecureMessage extends React.Component{
         this.setState({showPopup : false});
     }
     returnDraftModal(){
-        let bodyContent = <div className="">Message saved as a draft</div>;
-        let footerButtons = <button type="button" onClick={this.draftOkClicked} className="c-btn c-btn--default c-modal__button">Ok</button>;
+        let bodyContent = <div className="">{this.props.content.draftBody}</div>;
+        let footerButtons = <button type="button" onClick={this.draftOkClicked} className="c-btn c-btn--default c-modal__button">{this.props.content.ok}</button>;
         return (<ModalComponent show
             onHide={this.draftOkClicked}
             customClass={"c-modal"}
@@ -92,6 +101,7 @@ class DraftSecureMessage extends React.Component{
     }
     render() {
         console.log('messageDetail:',this.props.location.messageDetail);
+        console.log('meaasageId:', this.props.location.messageDetail.id);
         return (<div className="container">
         <div className="row">
             <div className="col-md1-18">
@@ -102,7 +112,7 @@ class DraftSecureMessage extends React.Component{
 
         <div className="c-field">
             <label className="c-field__label c-field__label--block" htmlFor="subjects">
-                Subject
+                {this.props.content.subject}
             </label>
             <div className="c-field__controls u-position-relative">
                 <DropDownComponent subjects={this.props.location.messageDetail.subject} name='subjects' id='subjects' selectSubject={this.selectSubject} isFromDraftOrReply = {true} selectedValue = {this.props.location.messageDetail.subject}/>
@@ -111,7 +121,7 @@ class DraftSecureMessage extends React.Component{
 
         <div className="c-field">
             <label className="c-field__label c-field__label--block" htmlFor="subjects">
-                Message relates to
+               {this.props.content.messageRelatesTo}
             </label>
             <div className="c-field__controls u-position-relative">
                 <DropDownComponent accounts={this.props.location.messageDetail.account.accountNumber} selectSubject={this.selectSubject} name='accounts' id='accounts' isFromDraftOrReply = {true} selectedValue = {this.props.location.messageDetail.account.accountNumber}/>
@@ -121,7 +131,7 @@ class DraftSecureMessage extends React.Component{
 
         <div className="c-field">
             <label className="c-field__label c-field__label--block" htmlFor="subjects">
-                Message
+                {this.props.content.message}
             </label>
             <div className="c-field__controls">
                 <TextAreaComponent textData={this.textChange} draftData = {this.props.location.messageDetail.messageBody} isFromDraftOrReply = {true}/>
@@ -133,10 +143,10 @@ class DraftSecureMessage extends React.Component{
         {this.state.showDraftSuccessModal && this.returnDraftModal()}
         <div className="c-btn--group">
             <Link to='/securemessages' className="c-btn c-btn--secondary">
-                Back
+                {this.props.content.back}
             </Link>
-            <button name='Save Draft' className="c-btn c-btn--secondary" onClick = {this.saveDraftData}>Save Draft</button>
-            <button name='Send' className="c-btn c-btn--default" onClick={this.sendData}>Send</button>
+            <button name='Save Draft' className="c-btn c-btn--secondary" onClick = {this.saveDraftData}>{this.props.content.saveDraft}</button>
+            <button name='Send' className="c-btn c-btn--default" onClick={this.sendData}>{this.props.content.send}</button>
         </div>
     </div>);
     }
