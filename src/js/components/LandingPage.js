@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import SecureMessageTabs from './SecureMessageTabs';
 import StepHeader from './common/StepHeader';
 import {SecureMessageBL} from '../bl/SecureMessageBL'
+import GetIcon from './common/GetIcon';
 /**
  * @class Landing Page 
  * Landing Page of the application
@@ -31,7 +32,9 @@ class LandingPage extends React.PureComponent {
                         <StepHeader showheaderCrumbs={false} headerTitle={this.props.content.landingPageTitle} headerSubtext={this.props.content.landingPageMessage}/>
                     </div>
                 </div>
-                <Link className="c-btn c-btn--default u-margin-bottom-c" to = {{ pathname : '/newsecuremessage' }}>New secure message</Link>
+                <Link className="c-btn c-btn--default u-margin-bottom-c new-message-btn" to = {{ pathname : '/newsecuremessage' }}>
+                    <GetIcon id="icon-pencil" width="16px" height="16px" />New secure message
+                </Link>
                 <SecureMessageTabs location={this.props.location} onClick={this.linkClick}  messages={this.mapMessages(this.props.messages)} activeTab={this.props.activeTab}/>
             </div>
         );
