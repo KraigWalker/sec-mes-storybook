@@ -1,8 +1,10 @@
-import { combineReducers } from "redux"
-
-import SecureMessages from "./SecureMessagesReducer"
-
+import { combineReducers } from "redux";
+import messages from "./SecureMessageLandingReducer";
+import subjects from "./MessageSubjectReducer";
+import accounts from "./AccountsReducer";
+import viewMessage from "./ViewMessageReducer";
+import accessibilityReducer from "./AccessibilityReducer";
 
 export default combineReducers({
-  SecureMessages
+  messages,subjects,accounts,viewMessage,accessibilityReducer
 })

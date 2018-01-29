@@ -1,0 +1,11 @@
+/*
+    To overwrite user agent styling and default HTML styling of ul and ol
+*/
+
+ul, 
+ol {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}

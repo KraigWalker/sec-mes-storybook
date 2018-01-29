@@ -1,376 +1,479 @@
 {
-    "securemessages": [{
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
-        "reference": "Alphanumeric reference",
+    "meta": {
+        "total_no": 26,
+        "count_by_status": {
+          "NEW": 3,
+          "DRAFT": 0,
+          "READ": 10,
+          "SENT": 13,
+          "DELETED": 2
+        }
+      },
+    "securemessages": [
+    {
+        "id": "1",
+        "thread_id": "24569088-5cf1-43ea-873f-c",
+        "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
             "id": "$UUID",
-            "nummber": "$SORT_CODE-$ACCOUNT_NUMBER"
+            "number": "111111-11111111"
         },
         "payload": {
             "body": {
-                "data": "A message sent by a customer to the bank"
+                "data": "Hi, \nI am so so..."
             }
         },
-        "date_created": "A date in ISO 8601 format e.g. 2017-10-17T10:56:43.511Z",
+        "date_created": "2017-10-17T10:56:43",
         "status": "PENDING"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
-        "reference": "Alphanumeric reference",
+        "id": "2",
+        "thread_id": "24569088-5cf1-43ea-873f-c",
+        "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
             "id": "$UUID",
-            "nummber": "$SORT_CODE-$ACCOUNT_NUMBER"
+            "number": "222222-22222222",
+            "name": "B Current"
         },
         "payload": {
             "body": {
                 "data": "A message sent by a customer to the bank"
             }
         },
-        "date_created": "A date in ISO 8601 format e.g. 2017-10-17T10:56:43.511Z",
+        "date_created": "2017-10-19T10:56:43.511Z",
         "status": "DRAFT"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
-        "reference": "Alphanumeric reference",
+        "id": "3",
+        "thread_id": "24569088-5cf1-43ea-873f-c",
+        "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
             "id": "$UUID",
-            "nummber": "$SORT_CODE-$ACCOUNT_NUMBER"
+            "number": "333333-33333333"
         },
         "payload": {
             "body": {
                 "data": "A message sent by a customer to the bank"
             }
         },
-        "date_created": "A date in ISO 8601 format e.g. 2017-10-17T10:56:43.511Z",
+        "date_created": "2017-01-17T10:56:43.511Z",
         "status": "SENT"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
-        "reference": "Alphanumeric reference",
+        "id": "4",
+        "thread_id": "24569088-5cf1-43ea-873f-c",
+        "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
             "id": "$UUID",
-            "nummber": "$SORT_CODE-$ACCOUNT_NUMBER"
+            "number": "444444-44444444"
         },
         "payload": {
             "body": {
                 "data": "A message sent by a customer to the bank"
             }
         },
-        "date_created": "A date in ISO 8601 format e.g. 2017-10-17T10:56:43.511Z",
+        "date_created": "2017-09-17T10:56:43.511Z",
         "status": "NEW"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
-        "reference": "Alphanumeric reference",
+        "id": "5",
+        "thread_id": "24569088-5cf1-43ea-873f-c",
+        "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
             "id": "$UUID",
-            "nummber": "$SORT_CODE-$ACCOUNT_NUMBER"
+            "number": "555555-55555555"
         },
         "payload": {
             "body": {
                 "data": "A message sent by a customer to the bank"
             }
         },
-        "date_created": "A date in ISO 8601 format e.g. 2017-10-17T10:56:43.511Z",
+        "date_created": "2017-10-01T10:56:43.511Z",
         "status": "SENT"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
-        "reference": "Alphanumeric reference",
+        "id": "6",
+        "thread_id": "24569088-5cf1-43ea-873f-c",
+        "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
             "id": "$UUID",
-            "nummber": "$SORT_CODE-$ACCOUNT_NUMBER"
+            "number": "666666-66666666"
         },
         "payload": {
             "body": {
                 "data": "A message sent by a customer to the bank"
             }
         },
-        "date_created": "A date in ISO 8601 format e.g. 2017-10-17T10:56:43.511Z",
+        "date_created": "2017-10-20T10:56:43.511Z",
         "status": "NEW"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
-        "reference": "Alphanumeric reference",
+        "id": "7",
+        "thread_id": "24569088-5cf1-43ea-873f-c",
+        "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
             "id": "$UUID",
-            "nummber": "$SORT_CODE-$ACCOUNT_NUMBER"
+            "number": "777777-77777777"
         },
         "payload": {
             "body": {
                 "data": "A message sent by a customer to the bank"
             }
         },
-        "date_created": "A date in ISO 8601 format e.g. 2017-10-17T10:56:43.511Z",
+        "date_created": "2017-10-01T10:56:43.511Z",
         "status": "SENT"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
-        "reference": "Alphanumeric reference",
+        "id": "8",
+        "thread_id": "24569088-5cf1-c75ff61c2b4b",
+        "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
             "id": "$UUID",
-            "nummber": "$SORT_CODE-$ACCOUNT_NUMBER"
+            "number": "888888-88888888"
         },
         "payload": {
             "body": {
                 "data": "A message sent by a customer to the bank"
             }
         },
-        "date_created": "A date in ISO 8601 format e.g. 2017-10-17T10:56:43.511Z",
+        "date_created": "2017-10-17T10:56:43.511Z",
         "status": "SENT"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
-        "reference": "Alphanumeric reference",
+        "id": "9",
+        "thread_id": "24569088-5cf1-c75ff61c2b4b",
+        "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
             "id": "$UUID",
-            "nummber": "$SORT_CODE-$ACCOUNT_NUMBER"
+            "number": "999999-99999999"
         },
         "payload": {
             "body": {
                 "data": "A message sent by a customer to the bank"
             }
         },
-        "date_created": "A date in ISO 8601 format e.g. 2017-10-17T10:56:43.511Z",
+        "date_created": "2017-10-02T10:56:43.511Z",
         "status": "SENT"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
-        "reference": "Alphanumeric reference",
+        "id": "10",
+        "thread_id": "24569088-5cf1-c75ff61c2b4b",
+        "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
             "id": "$UUID",
-            "nummber": "$SORT_CODE-$ACCOUNT_NUMBER"
+            "number": "000000-00000000"
         },
         "payload": {
             "body": {
                 "data": "A message sent by a customer to the bank"
             }
         },
-        "date_created": "A date in ISO 8601 format e.g. 2017-10-17T10:56:43.511Z",
+        "date_created": "2016-10-09T10:56:43.511Z",
         "status": "PENDING"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
-        "reference": "Alphanumeric reference",
+        "id": "11",
+        "thread_id": "24569088-5cf1-c75ff61c2b4b",
+        "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
             "id": "$UUID",
-            "nummber": "$SORT_CODE-$ACCOUNT_NUMBER"
+            "number": "000001-00000001"
         },
         "payload": {
             "body": {
                 "data": "A message sent by a customer to the bank"
             }
         },
-        "date_created": "A date in ISO 8601 format e.g. 2017-10-17T10:56:43.511Z",
+        "date_created": "2017-10-15T10:56:43.511Z",
         "status": "SENT"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
-        "reference": "Alphanumeric reference",
+        "id": "12",
+        "thread_id": "24569088-5cf1-c75ff61c2b4b",
+        "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
             "id": "$UUID",
-            "nummber": "$SORT_CODE-$ACCOUNT_NUMBER"
+            "number": "000002-00000002"
         },
         "payload": {
             "body": {
                 "data": "A message sent by a customer to the bank"
             }
         },
-        "date_created": "A date in ISO 8601 format e.g. 2017-10-17T10:56:43.511Z",
+        "date_created": "2017-10-05T10:56:43.511Z",
         "status": "SENT"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
-        "reference": "Alphanumeric reference",
+        "id": "13",
+        "thread_id": "24569088-5cf1-c75ff61c2b4b",
+        "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
             "id": "$UUID",
-            "nummber": "$SORT_CODE-$ACCOUNT_NUMBER"
+            "number": "000003-00000003"
         },
         "payload": {
             "body": {
                 "data": "A message sent by a customer to the bank"
             }
         },
-        "date_created": "A date in ISO 8601 format e.g. 2017-10-17T10:56:43.511Z",
+        "date_created": "2017-04-09T10:56:43.511Z",
         "status": "SENT"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
-        "reference": "Alphanumeric reference",
+        "id": "14",
+        "thread_id": "24569088-c75ff61c2b4b",
+        "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
             "id": "$UUID",
-            "nummber": "$SORT_CODE-$ACCOUNT_NUMBER"
+            "number": "000004-00000004"
         },
         "payload": {
             "body": {
                 "data": "A message sent by a customer to the bank"
             }
         },
-        "date_created": "A date in ISO 8601 format e.g. 2017-10-17T10:56:43.511Z",
+        "date_created": "2017-05-17T10:56:43.511Z",
         "status": "PENDING"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
-        "reference": "Alphanumeric reference",
+        "id": "15",
+        "thread_id": "24569088-c75ff61c2b4b",
+        "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
             "id": "$UUID",
-            "nummber": "$SORT_CODE-$ACCOUNT_NUMBER"
+            "number": "000005-00000005"
         },
         "payload": {
             "body": {
                 "data": "A message sent by a customer to the bank"
             }
         },
-        "date_created": "A date in ISO 8601 format e.g. 2017-10-17T10:56:43.511Z",
+        "date_created": "2017-08-17T10:56:43.511Z",
         "status": "SENT"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
-        "reference": "Alphanumeric reference",
+        "id": "16",
+        "thread_id": "24569088-c75ff61c2b4b",
+        "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
             "id": "$UUID",
-            "nummber": "$SORT_CODE-$ACCOUNT_NUMBER"
+            "number": "000006-00000006"
         },
         "payload": {
             "body": {
                 "data": "A message sent by a customer to the bank"
             }
         },
-        "date_created": "A date in ISO 8601 format e.g. 2017-10-17T10:56:43.511Z",
+        "date_created": "2017-09-01T10:56:43.511Z",
         "status": "READ"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
-        "reference": "Alphanumeric reference",
+        "id": "17",
+        "thread_id": "24569088-c75ff61c2b4b",
+        "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
             "id": "$UUID",
-            "nummber": "$SORT_CODE-$ACCOUNT_NUMBER"
+            "number": "000007-00000007"
         },
         "payload": {
             "body": {
                 "data": "A message sent by a customer to the bank"
             }
         },
-        "date_created": "A date in ISO 8601 format e.g. 2017-10-17T10:56:43.511Z",
+        "date_created": "2017-08-01T10:56:43.511Z",
         "status": "SENT"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
-        "reference": "Alphanumeric reference",
+        "id": "18",
+        "thread_id": "24569088-c75ff61c2b4b",
+        "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
             "id": "$UUID",
-            "nummber": "$SORT_CODE-$ACCOUNT_NUMBER"
+            "number": "000008-00000008"
         },
         "payload": {
             "body": {
                 "data": "A message sent by a customer to the bank"
             }
         },
-        "date_created": "A date in ISO 8601 format e.g. 2017-10-17T10:56:43.511Z",
+        "date_created": "2017-01-23T10:56:43.511Z",
         "status": "PENDING"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
-        "reference": "Alphanumeric reference",
+        "id": "19",
+        "thread_id": "24569088-5cf1-43ea-873f-c",
+        "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
             "id": "$UUID",
-            "nummber": "$SORT_CODE-$ACCOUNT_NUMBER"
+            "number": "444444-44444444"
         },
         "payload": {
             "body": {
                 "data": "A message sent by a customer to the bank"
             }
         },
-        "date_created": "A date in ISO 8601 format e.g. 2017-10-17T10:56:43.511Z",
-        "status": "READ"
+        "date_created": "2017-09-17T10:56:43.511Z",
+        "status": "NEW"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
-        "reference": "Alphanumeric reference",
+        "id": "20",
+        "thread_id": "24569088-5cf1-43ea-873f-c",
+        "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
             "id": "$UUID",
-            "nummber": "$SORT_CODE-$ACCOUNT_NUMBER"
+            "number": "444444-44444444"
         },
         "payload": {
             "body": {
                 "data": "A message sent by a customer to the bank"
             }
         },
-        "date_created": "A date in ISO 8601 format e.g. 2017-10-17T10:56:43.511Z",
-        "status": "SENT"
+        "date_created": "2017-09-17T10:56:43.511Z",
+        "status": "NEW"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
-        "reference": "Alphanumeric reference",
+        "id": "21",
+        "thread_id": "24569088-5cf1-43ea-873f-c",
+        "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
             "id": "$UUID",
-            "nummber": "$SORT_CODE-$ACCOUNT_NUMBER"
+            "number": "444444-44444444"
         },
         "payload": {
             "body": {
                 "data": "A message sent by a customer to the bank"
             }
         },
-        "date_created": "A date in ISO 8601 format e.g. 2017-10-17T10:56:43.511Z",
-        "status": "SENT"
+        "date_created": "2017-09-17T10:56:43.511Z",
+        "status": "NEW"
     },
     {
-        "id": "f7094e0f-bd03-465e-95f0-c89dd168c121",
-        "thread_id": "24569088-5cf1-43ea-873f-c75ff61c2b4b",
-        "reference": "Alphanumeric reference",
+        "id": "22",
+        "thread_id": "24569088-5cf1-43ea-873f-c",
+        "reference": "L09SDF09SDFSD",
         "subject": "Payment Enquiries",
         "account": {
             "id": "$UUID",
-            "nummber": "$SORT_CODE-$ACCOUNT_NUMBER"
+            "number": "444444-44444444"
         },
         "payload": {
             "body": {
                 "data": "A message sent by a customer to the bank"
             }
         },
-        "date_created": "A date in ISO 8601 format e.g. 2017-10-17T10:56:43.511Z",
-        "status": "PENDING"
-    }]
+        "date_created": "2017-09-17T10:56:43.511Z",
+        "status": "NEW"
+    },
+    {
+        "id": "23",
+        "thread_id": "24569088-5cf1-43ea-873f-c",
+        "reference": "L09SDF09SDFSD",
+        "subject": "Payment Enquiries",
+        "account": {
+            "id": "$UUID",
+            "number": "222222-22222222",
+            "name": "B Current"
+        },
+        "payload": {
+            "body": {
+                "data": "A message sent by a customer to the bank"
+            }
+        },
+        "date_created": "2017-10-19T10:56:43.511Z",
+        "status": "DRAFT"
+    },
+    {
+        "id": "24",
+        "thread_id": "24569088-5cf1-43ea-873f-c",
+        "reference": "L09SDF09SDFSD",
+        "subject": "Payment Enquiries",
+        "account": {
+            "id": "$UUID",
+            "number": "222222-22222222",
+            "name": "B Current"
+        },
+        "payload": {
+            "body": {
+                "data": "A message sent by a customer to the bank"
+            }
+        },
+        "date_created": "2017-10-19T10:56:43.511Z",
+        "status": "DRAFT"
+    },
+    {
+        "id": "25",
+        "thread_id": "24569088-5cf1-43ea-873f-c",
+        "reference": "L09SDF09SDFSD",
+        "subject": "Payment Enquiries",
+        "account": {
+            "id": "$UUID",
+            "number": "222222-22222222",
+            "name": "B Current"
+        },
+        "payload": {
+            "body": {
+                "data": "A message sent by a customer to the bank"
+            }
+        },
+        "date_created": "2017-10-19T10:56:43.511Z",
+        "status": "DRAFT"
+    },
+    {
+        "id": "26",
+        "thread_id": "24569088-5cf1-43ea-873f-c",
+        "reference": "L09SDF09SDFSD",
+        "subject": "Payment Enquiries",
+        "account": {
+            "id": "$UUID",
+            "number": "222222-22222222",
+            "name": "B Current"
+        },
+        "payload": {
+            "body": {
+                "data": "A message sent by a customer to the bank"
+            }
+        },
+        "date_created": "2017-10-19T10:56:43.511Z",
+        "status": "DRAFT"
+    },
+    {
+        "id": "27",
+        "thread_id": "24569088-5cf1-43ea-873f-c",
+        "reference": "L09SDF09SDFSD",
+        "subject": "Payment Enquiries",
+        "account": {
+            "id": "$UUID",
+            "number": "222222-22222222",
+            "name": "B Current"
+        },
+        "payload": {
+            "body": {
+                "data": "A message sent by a customer to the bank"
+            }
+        },
+        "date_created": "2017-10-19T10:56:43.511Z",
+        "status": "DRAFT"
+    }
+]
 }

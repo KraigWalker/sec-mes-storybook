@@ -1,17 +1,19 @@
 const webpack = require('webpack');
-// const ExtractTextPlugin = require('extract-text-webpack-plugin');
-// var path = require('path');
-// const merge = require('webpack-merge');
-// const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-// const baseConfig = require('./base.config.js');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const path = require('path');
 
+const brand = process.env.brand;
+const brandEntry = ["babel-polyfill","./src/scss/main.scss"];
+const noBrandEntry = ["babel-polyfill","./src/js/client.js"];
+
+console.log(brand);
 
 module.exports = {
-  entry: ["babel-polyfill","./src/js/client.js"],
+  entry: brand?brandEntry:noBrandEntry,
   output: {
       path:__dirname+ '/src/compiled/',
       filename: "[name].bundle.js",
-      publicPath: '/'
+      publicPath: '/compiled/'
   },
   module: {
       rules: [
@@ -27,13 +29,20 @@ module.exports = {
           {
             test: /\.scss$/,
             exclude: /node_modules/,
-            use: [{
-              loader: "style-loader" // creates style nodes from JS strings
-          }, {
-              loader: "css-loader" // translates CSS into CommonJS
-          }, {
-              loader: "sass-loader" // compiles Sass to CSS
-          }]
+            loader: ExtractTextPlugin.extract({
+                fallback: 'style-loader',
+                use: [
+                    {
+                        loader: 'css-loader',
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            data: "$brand: "+brand+";$env: prod;"
+                        }
+                    }
+                ]
+            }),
           },
           {
             test: /\.json$/,
@@ -42,68 +51,20 @@ module.exports = {
           {
             test: /\.(jpg|jpeg|gif|png|svg)$/,
             exclude: /node_modules/,
+            include: path.resolve(__dirname, "src/images/"),
             loader:'url-loader?limit=1024&name=images/[name].[ext]'
           },
           {
-            test: /\.(otf|ttf|eot)$/,
+            test: /\.(otf|ttf|eot|svg)$/,
             exclude: /node_modules/,
+            include: path.resolve(__dirname, "src/fonts/"),
             loader: 'url-loader?limit=1024&name=fonts/[name].[ext]'
           }
 
       ]
-  }
+  },
+    plugins: [
+        new ExtractTextPlugin(brand+'.[name].css', { allChunks: true })
+    ],
 
 };
-
-
-
-// module.exports = {
-//   resolve: {
-//     modules: [
-//           path.join(__dirname, "src"),
-//         "node_modules"
-//       ]
-//     },
-//     entry: "./js/client.js",
-//     resolve: {
-//       extensions: ['', '.js', '.jsx']
-//     },
-//   output: {
-//     path: __dirname + "/src/compiled/",
-//     filename: '[name].bundle.[chunkhash].js'
-//   },
-
-//   module: {
-//     rules: [
-//         {
-//             test: /\.jsx?$/,
-//             exclude: /node_modules/,
-//             loader: "babel-loader",
-//             query: {
-//               presets: ['react', 'es2015', 'stage-0'],
-//               plugins: ['react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy'],
-//             }
-//           },
-//       {
-//         test: /\.css$/,
-//         use: ExtractTextPlugin.extract({
-//           use: [
-//             'css-loader', 'scss-loader'
-//           ],
-//         }),
-//       },
-//     ],
-//   },
-
-//   plugins: [
-//     // Extract imported CSS into own file
-//     new ExtractTextPlugin('[name].bundle.[chunkhash].css'),
-//     // Minify JS
-//     new webpack.optimize.UglifyJsPlugin({ warnings: false,sourceMap: true,
-//         compress: true, }),
-//     // Minify CSS
-//     // new webpack.LoaderOptionsPlugin({
-//     //   minimize: true,
-//     // }),
-//   ],
-// };

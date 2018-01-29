@@ -1,0 +1,8 @@
+/*
+    Set font-family of pre according to brand
+*/
+
+pre {
+    @include brand-heading();
+    white-space: pre-wrap;
+}

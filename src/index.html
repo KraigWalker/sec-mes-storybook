@@ -1,23 +1,21 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>PSD2</title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React-Redux-App</title>
     <script>
-
-var setMeoData = { 'staff_id': 'R901160', 'bank_id': "CB", 'system_code': "MEO", 'custNo':'10000002', 'custName':'Test User' };
-localStorage.setItem('setMeoData', JSON.stringify(setMeoData));
-
-
-
-      //window.localStorage
+        if (window.location.pathname.indexOf('/CB') > 0){
+          document.write('<link rel="stylesheet" type="text/css" href="http://localhost:8000/compiled/cb.main.css">');
+        } else if(window.location.pathname.indexOf('/YB') > 0){
+          document.write('<link rel="stylesheet" type="text/css" href="http://localhost:8000/compiled/yb.main.css">');
+        } else if(window.location.pathname.indexOf('/DYB') > 0){
+          document.write('<link rel="stylesheet" type="text/css" href="http://localhost:8000/compiled/dyb.main.css">');
+        }
     </script>
-    <!-- change this up! http://www.bootstrapcdn.com/bootswatch/ -->
-    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/cosmo/bootstrap.min.css" type="text/css" rel="stylesheet"/> -->
-  </head>
-
-  <body>
+</head>
+<body>
     <div id="app"></div>
-    <script src="http://localhost:8000/main.bundle.js"></script>
-  </body>
+    <script src="/main.bundle.js"></script>
+
+</body>
 </html>

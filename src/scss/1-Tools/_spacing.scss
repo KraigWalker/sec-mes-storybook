@@ -1,0 +1,23 @@
+///*----------------------------------*\
+//  #BLOCK FUNCTION
+//\*----------------------------------*/
+
+$get-px: (
+	a:  8px,
+	b:  16px,
+	c:  24px,
+	d:  32px,
+	e:  40px,
+	f:  48px,
+	g:  56px
+);
+
+// Calculates multiples of #base-unit + 8;
+@function get-px($key) {
+    @return map-get($get-px, $key);
+}
+
+// // Calculates multiples of 5
+// @function get($num) {
+//       @return $num * 5 + 0px;
+// }
