@@ -5,14 +5,15 @@ import TextArea from './common/TextAreaComponent';
 import Threads from './common/ThreadList'
 import _ from 'lodash';
 import { connect } from 'react-redux';
-import { getSecureMessages, setViewMessageDetail, updateMessage } from '../actions/AppActions';
+import { getSecureMessages, setViewMessageDetail, updateMessage,updateMessageData } from '../actions/AppActions';
 import { getThreadsBL } from '../bl/SecureMessageBL'
 import { getMessageType, updateMessageStatus } from '../utils/SecureMessageUtils';
 import { Link } from 'react-router-dom';
 import GetIcon from './common/GetIcon';
+import SendMessageRequestEntity from '../entities/SendMessageRequestEntity.js';
 import ModalComponent from './common/ModalComponent';
 import { sendDeleteData } from '../actions/AppActions';
-
+let messageEntity = new SendMessageRequestEntity();
 class ViewMessage extends React.Component {
     constructor(props) {
         super(props);
@@ -52,7 +53,7 @@ class ViewMessage extends React.Component {
             return (<Link to={{ pathname: '/replysecuremessage', backPath: '/viewmessage', messageDetail: message }} className="c-btn c-btn--primary">
                 Reply
             </Link>
-            )
+        )
         } else return '';
     }
 
@@ -67,9 +68,11 @@ class ViewMessage extends React.Component {
     closeModal() {
         this.setState({ showDeleteConfirmModal: false });
     }
+   
     deleteClick() {
         this.setState({ showDeleteSuccessModal: true, showDeleteConfirmModal: false });
-        this.props.dispatch(sendDeleteData(this.props.location.messageDetail));
+        this.props.dispatch(updateMessageData(this.props.location.messageDetail, this.props.location.messageDetail.id, 'DELETED'));
+
     }
     getBackButton() {
         return (
@@ -119,7 +122,7 @@ class ViewMessage extends React.Component {
 
                         <SecureMessageSummary message={messageDetail} viewMessageFlag={true} readFlag={messageDetail.status === "READ"} sentFlag={getMessageType(messageDetail.status) === "sent"} />
                         <pre>
-                            {messageDetail.messageBody}
+                            {messageDetail.message}
                         </pre>
                         <div className="c-btn--group">
                             {this.getBackButton()}

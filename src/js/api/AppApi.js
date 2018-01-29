@@ -28,14 +28,14 @@ class AppApi {
     ApiUtils.makeRequest({ url: config.apiBaseUrl + _getMessageURLEndpoint, method: 'POST', requestData: reqData }, success, error);
   }
 
-  static updateMessageData(requestData, id, success, error) {
+  static updateMessageData(requestData, id, status, success, error) {
     console.log('UPDATE MESSAGE DATA', requestData);
-    let reqData = updateMessage(requestData, id);
+    let reqData = updateMessage(requestData, id, status);
     let updateUrl = config.apiBaseUrl + _sendMessageURL;
     let url = updateUrl.replace('{message_id}', id);
     ApiUtils.makeRequest({ url: url, method: 'PUT', requestData: reqData }, success, error);
   }
-
+  
   static updateMessage(requestData, success, error) {
     console.log('UPDATE MESSAGE DATA', requestData);
     ApiUtils.makeRequest({ url: config.apiBaseUrl + _sendMessageURL, method: 'POST', requestData: updateMessage() }, success, error);

@@ -10,6 +10,7 @@ export function fetchSecureMessages() {
     };
     dispatch(payload);
     const success = (response) => {
+      console.log(response);
       const parseData = parseMessages(response);
       const payload = {
         type: AppConstants.REQUEST_SECURE_MESSAGES_SUCCESS,
@@ -84,7 +85,7 @@ export function sendMessageData(requestData) {
   }
 }
 
-export function updateMessageData(requestData, id) {
+export function updateMessageData(requestData, id, status) {
   console.log(requestData);
   //console.log(id);
   return function(dispatch) {
@@ -101,7 +102,7 @@ export function updateMessageData(requestData, id) {
     const error = (error) => {
       console.log(error);
     }
-    AppApi.updateMessageData(requestData,id,success,error);
+    AppApi.updateMessageData(requestData,id,status,success,error);
   }
 }
 

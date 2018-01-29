@@ -102,8 +102,7 @@ class SecureMessageSummary extends React.Component {
     }
     deleteClick() {
         this.setState({ showDeleteSuccessModal: true, showDeleteConfirmModal: false });
-        this.props.dispatch(sendDeleteData(this.props.message));
-      // this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData()));
+        this.props.dispatch(updateMessageData(this.props.message, this.props.message.id, "DELETED"));
     }
     closeSuccessModal(){
        // document.getElementById('headingTag').focus();

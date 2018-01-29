@@ -45,9 +45,7 @@ export function parseDraft(data) {
     return requestData;
 }
 
-
-export function updateMessage(data, id) {
-    console.log(data);
+export function updateMessage(data, id, status) {
     const requestData = {
             secure_message: {
                 subject: data.subject,
@@ -66,30 +64,8 @@ export function updateMessage(data, id) {
                         data: data.message,
                     }
                 },
-                status: data.status,
+                status: status,
             }
     }
     return requestData;
 }
-
-// {
-//     "secure_message": {
-//       "subject": "Payment Enquiries",
-//       "account": {
-//         "id": "$UUID",
-//         "number": "$SORT_CODE-$ACCOUNT_NUMBER"
-//       },
-//       "payload": {
-//         "headers": [
-//           {
-//             "name": "In-Reply-To",
-//             "value": "$UUID"
-//           }
-//         ],
-//         "body": {
-//           "data": "Dear Advsior, thank you for contacting me about my account. blah blah blah ..."
-//         }
-//       },
-//       "status": "PENDING"
-//     }
-//   }
