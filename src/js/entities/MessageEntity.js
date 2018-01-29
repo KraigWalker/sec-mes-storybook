@@ -13,7 +13,7 @@ class MessageEntity {
         this.status = null;
         this.threadID = null;
         this.subject = null;
-        this.messageBody = null;
+        this.message = null;
     }
     /**
      * @returns account mapped to message
@@ -61,7 +61,7 @@ class MessageEntity {
      * @return message body
      */ 
     getMessageBody() {
-        return this.messageBody;
+        return this.message;
     }
     /**
      * 
@@ -118,7 +118,7 @@ class MessageEntity {
      * @param {*} message body
      */
     setMessageBody(message) {
-        this.messageBody = message
+        this.message = message
     }
 
 }

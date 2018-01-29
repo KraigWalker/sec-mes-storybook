@@ -7,7 +7,7 @@ import _ from 'lodash';
 import DropDownComponent from './common/DropDownComponent.js';
 import TextAreaComponent from './common/TextAreaComponent.js';
 import StepHeader from './common/StepHeader';
-import SendMessageRequestEntity from '../entities/SendMessageRequestEntity.js'
+import SendMessageRequestEntity from '../entities/SendMessageRequestEntity.js';
 import ModalComponent from './common/ModalComponent';
 import RegexUtils from '../utils/RegexUtils.js';
 let messageEntity = new SendMessageRequestEntity();
@@ -49,20 +49,10 @@ class DraftSecureMessage extends React.Component{
             messageEntity.setMessage(e.replace(new RegExp(extractedString, 'g'), '************' + lastFour));
         } else messageEntity.setMessage(e);
     }
-    // uuidv4(num) {
-    //     num = ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
-    //       (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
-    //     )
-    //     return num;
-    //   }
       
     sendData() {
-     //   console.log(this.uuidv4());
-      //  messageEntity.setUniqueID(this.uuidv4());
-        messageEntity.setStatus('PENDING');
-        console.log('function:', this.props.location.messageDetail.id);
-        this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id));
-       // this.setState({showPopup : true});
+        this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, "PENDING"));
+        this.setState({showPopup : true});
     }
     returnModalComponent() {
         let bodyContent = <div className="">{this.props.content.messageSent}</div>;
@@ -134,7 +124,7 @@ class DraftSecureMessage extends React.Component{
                 {this.props.content.message}
             </label>
             <div className="c-field__controls">
-                <TextAreaComponent textData={this.textChange} draftData = {this.props.location.messageDetail.messageBody} isFromDraftOrReply = {true}/>
+                <TextAreaComponent textData={this.textChange} draftData = {this.props.location.messageDetail.message} isFromDraftOrReply = {true}/>
             </div>
             {this.renderRemainingChar()}
         </div>

@@ -84,7 +84,7 @@ export function sendMessageData(requestData) {
   }
 }
 
-export function updateMessageData(requestData, id) {
+export function updateMessageData(requestData, id, status) {
   console.log(requestData);
   //console.log(id);
   return function(dispatch) {
@@ -101,7 +101,7 @@ export function updateMessageData(requestData, id) {
     const error = (error) => {
       console.log(error);
     }
-    AppApi.updateMessageData(requestData,id,success,error);
+    AppApi.updateMessageData(requestData,id,status,success,error);
   }
 }
 
