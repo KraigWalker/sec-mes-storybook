@@ -131,7 +131,7 @@ class ViewMessage extends React.Component {
                         </div>
                         {this.state.showDeleteConfirmModal && this.returnModalComponent()}
                         {this.state.showDeleteSuccessModal && this.returnDeleteSuccessModalComponent()}
-                        {this.getThreads(this.props.messages, messageDetail)}
+                        {messageDetail.threadID !== null && this.getThreads(this.props.messages, messageDetail)}
                     </div>
                 </div>
             </div>
