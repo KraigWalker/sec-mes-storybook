@@ -29,7 +29,8 @@ class SecureMessageSummary extends React.Component {
         let iconId = message.status === 'READ' ? 'icon-message-open' : 'icon-envelope';
         return (<span className="c-message__icon"><GetIcon id={iconId} width="24px" height="24px" /></span>);
     }
-    hasOnClick = (message) => {
+    hasOnClick = () => {
+        const { message } = this.props;
         let path = message.status === 'DRAFT' ? '/draftsecuremessage' : '/viewmessage';
         let messageTitle =''    ;
         if (message.status === 'NEW') {
@@ -47,7 +48,8 @@ class SecureMessageSummary extends React.Component {
             return message.getSubject();
         }
     }
-    getReplyButton = (message) => {
+    getReplyButton = () => {
+        const { message } = this.props;
         let replymessage = ``;
         if (message.status === 'READ') {
             replymessage = `Reply ` + message.getSubject();
@@ -63,23 +65,20 @@ class SecureMessageSummary extends React.Component {
             </Link>)
     }
 
-    getDeleteButton = (message) => {
+    getDeleteButton = () => {
+        const { message } = this.props;
         let deletemessage = ``;
-        if (!this.props.sentFlag && !this.props.draftFlag) {
-            if (this.props.readFlag) {
-                deletemessage = `Delete ` + message.getSubject();
-            } else {
-                deletemessage = `Delete Unread ` + message.getSubject();   
-            }
+       if (!message.status !== 'NEW' ) {
+            deletemessage = `Delete ` + message.getSubject();
         } else {
-            deletemessage = `Delete ` + message.getSubject();            
+            deletemessage = `Delete Unread ` + message.getSubject();   
         }
-        return !this.props.threadFlag && (<button className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding" onClick={this.handleDelete}>
+        return (<button className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding" onClick={this.handleDelete}>
             <span id="deleteMsg" className="c-message__summary__head__actions__delete__txt" aria-label={`${deletemessage}`}>Delete</span>
             <span className="c-message__summary__head__actions__delete__icon">
                 <GetIcon id="icon-delete" width="24px" height="24px" />
             </span>
-        </button>)
+        </button>);
     }
     handleDelete(data) {
         this.setState({ showDeleteConfirmModal: true });
@@ -159,13 +158,13 @@ class SecureMessageSummary extends React.Component {
                     <div className="c-message__summary__head">
                         <div className={titleClass}>
                             <h2 id="subjectMsg" className={subjectClass}>
-                                {this.hasOnClick(message)}
+                                {this.hasOnClick()}
                             </h2>
                             <p className="c-message__summary__head__title__ref">{message.getReference()}</p>
                         </div>
                         <div className={actionsClass}>
                             {(message.status === 'NEW' || message.status === 'READ') && this.getReplyButton(message)}
-                            {this.getDeleteButton(message)}
+                            {!this.props.threadFlag && this.getDeleteButton()}
                         </div>
                     </div>
                     {!this.props.viewMessageFlag && <p className="c-message__summary__account">{message.getMessageBody()}</p>}
