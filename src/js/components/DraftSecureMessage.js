@@ -100,7 +100,6 @@ class DraftSecureMessage extends React.Component{
         return accVal;
     }
     render() {
-        console.log('messageDetail:',this.props.location.messageDetail);
         {this.props.location.messageDetail.account.accountNumber === undefined ? 'No specific account' : this.props.location.messageDetail.account.accountNumber}
         return (<div className="container">
         <div className="row">

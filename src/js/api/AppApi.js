@@ -29,30 +29,11 @@ class AppApi {
   }
 
   static updateMessageData(requestData, id, status, success, error) {
-    console.log('UPDATE MESSAGE DATA', requestData);
     let reqData = updateMessage(requestData, id, status);
     let updateUrl = config.apiBaseUrl + _sendMessageURL;
     let url = updateUrl.replace('{message_id}', id);
     ApiUtils.makeRequest({ url: url, method: 'PUT', requestData: reqData }, success, error);
   }
-  
-  static updateMessage(requestData, success, error) {
-    console.log('UPDATE MESSAGE DATA', requestData);
-    ApiUtils.makeRequest({ url: config.apiBaseUrl + _sendMessageURL, method: 'POST', requestData: updateMessage() }, success, error);
-  }
-
-  static sendDeleteMessageData(deleteData, success, error) {
-    console.log('DELETE DATA', deleteData);
-    ApiUtils.makeRequest({ url: config.apiBaseUrl + _sendMessageURL, method: 'DELETE', deleteData: deleteMessage() }, success, error);
-  }
-
-  // static sendDraftMessageData(draftData,success,error){
-  //   console.log('Draft DATA',draftData);
-  //   let updateUrl = config.apiBaseUrl + _sendMessageURL;
-  //   let url = updateUrl.replace('{message_id}', "822000-12341234");
-  //   console.log(url);
-  //    ApiUtils.makeRequest({ url: url, method: 'PUT' ,requestData : SendMessageRequestEntity.getMessageRequestData()}, success, error);
-  //   }
 }
 
 export default AppApi;

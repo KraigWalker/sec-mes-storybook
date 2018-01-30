@@ -12,7 +12,6 @@ export default function reducer(state={
 
   switch (action.type) {
     case AppConstants.SEND_MESSAGE_FOR_ACCESSIBILITY: {
-        console.log('REDUCER');
       return {...state, accessibilityMessage:action.payload}
     }
    default:

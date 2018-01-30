@@ -16,7 +16,6 @@ class SecureMessageList extends React.Component {
     }
     componentWillReceiveProps(props) {
         this.setState({ showMoreLimit: 5, showThatsAllMessage: '' });
-        console.log('PROPS',this.props);
         if (this.props.activeTab === 'sent' && this.props.messagesFetched) {
            this.props.dispatch(sendMessageForAccessibiltiy('You don’t have any sent messages'));
         } else if (this.props.activeTab === 'drafts' && this.props.messagesFetched) {

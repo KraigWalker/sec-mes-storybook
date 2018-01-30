@@ -112,9 +112,6 @@ class NewSecureMessage extends React.Component {
             this.setState({ showSentMessageModal: true });
         }
     }
-    checkPastedData(data) {
-        //  console.log(RegexUtils.isValidPastedData(data));
-    }
     renderRemainingChar() {
         if (this.state.chars_left <= 300) {
             (this.state.chars_left === 3) && this.props.dispatch(sendMessageForAccessibiltiy('Three characters left'));
@@ -124,7 +121,6 @@ class NewSecureMessage extends React.Component {
         }
     }
     leavePage() {
-        console.log('LEAVE PAGE');
         this.setState({ showPopup: true });
     }
     stayOnPage() {

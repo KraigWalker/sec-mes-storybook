@@ -5,7 +5,7 @@ import TextArea from './common/TextAreaComponent';
 import Threads from './common/ThreadList'
 import _ from 'lodash';
 import { connect } from 'react-redux';
-import { getSecureMessages, setViewMessageDetail, updateMessage,updateMessageData } from '../actions/AppActions';
+import { setViewMessageDetail, updateMessage,updateMessageData } from '../actions/AppActions';
 import { getThreadsBL } from '../bl/SecureMessageBL'
 import { getMessageType, updateMessageStatus } from '../utils/SecureMessageUtils';
 import { Link } from 'react-router-dom';
@@ -30,18 +30,13 @@ class ViewMessage extends React.Component {
         this.returnModalComponent = this.returnModalComponent.bind(this);
         this.closeSuccessModal = this.closeSuccessModal.bind(this);
     }
-    componentWillMount() {
-        this.props.dispatch(getSecureMessages());
-    }
+
     componentDidMount() {
         const { messageDetail } = this.props.location;
         messageDetail && this.props.dispatch(setViewMessageDetail(this.props.location.messageDetail)); //to set current viewing message
         // Below is to update New message to Read message status.
         if (messageDetail && this.props.location.messageDetail.status === "NEW") {
-            let UpdatedMessageList = this.props.messages;
-            let updatedMessage = updateMessageStatus(this.props.location.messageDetail, 'READ');
-            _.forEach(UpdatedMessageList, message => { message.id === updatedMessage.id && message.status === updatedMessage.status });
-            this.props.dispatch(updateMessage(updatedMessage, UpdatedMessageList));
+          //  this.props.dispatch(updateMessage(updateMessageStatus(this.props.location.messageDetail, "READ")));
         }
     }
     getThreads(messages, currentMessage) {

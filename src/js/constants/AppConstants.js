@@ -7,7 +7,6 @@ export default keyMirror({
     REQUEST_SUBJECTS_SUCCESS:null,
     REQUEST_ACCOUNTS_SUCCESS:null,
     REQUEST_TAB_ACTIVE: null,
-    GET_SECURE_MESSAGES: null,
     GET_VIEW_MESSAGE_DETAIL: null,
     SET_VIEW_MESSAGE_DETAIL: null,
     UPDATE_SECURE_MESSAGE: null,
