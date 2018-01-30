@@ -88,7 +88,6 @@ class ViewMessage extends React.Component {
         return (<ModalComponent show
             onHide={this.closeModal}
             customClass={"c-modal"}
-            bsSize={'medium'}
             modalheading={'Delete this message?'}
             modalbody={bodyContent}
             modalfooter={footerButtons}
@@ -101,7 +100,6 @@ class ViewMessage extends React.Component {
         return (<ModalComponent show
             onHide={this.closeSuccessModal}
             customClass={"c-modal c-modal-center"}
-            bsSize={'medium'}
             modalheading={''}
             modalbody={bodyContent}
             modalfooter={footerButtons}

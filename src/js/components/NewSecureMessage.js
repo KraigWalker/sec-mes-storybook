@@ -138,7 +138,6 @@ class NewSecureMessage extends React.Component {
         return (<ModalComponent show
             onHide={this.stayOnPage}
             customClass={"c-modal"}
-            bsSize='medium'
             modalheading={this.props.content.leaveMessageHeading}
             modalbody={bodyContent}
             modalfooter={footerButtons}
@@ -151,7 +150,6 @@ class NewSecureMessage extends React.Component {
         return (<ModalComponent show
             onHide={this.draftOkClicked}
             customClass={"c-modal"}
-            bsSize={'medium'}
             modalheading={''}
             modalbody={bodyContent}
             modalfooter={footerButtons}
@@ -176,7 +174,6 @@ class NewSecureMessage extends React.Component {
         return (<ModalComponent show
             onHide={this.sentOkClicked}
             customClass={"c-modal"}
-            bsSize={'medium'}
             modalheading={''}
             modalbody={bodyContent}
             modalfooter={footerButtons}
