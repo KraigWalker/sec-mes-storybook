@@ -83,8 +83,7 @@ class SecureMessageList extends React.Component {
             return (
                 <section>
                     <ol className="c-messagelist">
-                        {this.showMessages()}
-                        {this.props.count === 0 && this.props.messagesFetched && this.renderNoMessagesText()}
+                        {this.props.messages.length === 0 ? this.renderNoMessagesText() : this.showMessages()}
                     </ol>
                     {this.renderShowMoreButton()}
                     {this.state.showThatsAllMessage && <p className="u-margin-bottom-c">{this.renderThatsAllText()}</p>}

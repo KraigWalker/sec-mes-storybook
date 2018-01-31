@@ -83,12 +83,15 @@ export function sendMessageData(requestData) {
 export function updateMessageData(requestData, id, status) {
   return function(dispatch) {
     const success = () => {
-      fetchSecureMessages();
+      const payload = {
+        type: AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS
+      }
+      dispatch(payload);
     }
     const error = (error) => {
       console.log(error);
     }
-    AppApi.updateMessageData(requestData,id,status,success,error);
+    AppApi.updateMessageData(requestData,id,status,success,success);
   }
 }
 export function setViewMessageDetail(messageDetail) {

@@ -49,10 +49,6 @@ export function updateMessage(data, id, status) {
     const requestData = {
             secure_message: {
                 subject: data.subject,
-                account: {
-                    id: 'ddec9b5e-d6d8-430a-9c3a-19a281318fe6',
-                    number: '822000-12341234'
-                },
                 payload: {
                     headers: [
                         {

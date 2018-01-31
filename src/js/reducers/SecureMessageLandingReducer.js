@@ -25,7 +25,7 @@ export default function reducer(state={
       return {...state, activeTab: action.payload}
     }
     case AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS: {
-      return {...state, messages: action.payload.messages}
+      return {...state, fetched: false }
     }
    default:
     return state;
