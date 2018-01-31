@@ -9,6 +9,7 @@ import TextAreaComponent from './common/TextAreaComponent.js';
 import StepHeader from './common/StepHeader';
 import SendMessageRequestEntity from '../entities/SendMessageRequestEntity.js'
 import ModalComponent from './common/ModalComponent';
+import GetIcon from './common/GetIcon';
 import RegexUtils from '../utils/RegexUtils.js';
 let messageEntity = new SendMessageRequestEntity();
 class NewSecureMessage extends React.Component {
@@ -145,12 +146,12 @@ class NewSecureMessage extends React.Component {
             closeButton />);
     }
     returnDraftModal() {
-        let bodyContent = <div className="">Message saved as a draft</div>;
-        let footerButtons = <div><Link to='/securemessages' onClick={this.draftOkClicked} className="c-btn c-btn--default c-modal__button">Ok</Link></div>;
+        let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>Message saved as a draft</div>;
+        let footerButtons = <div><Link to='/securemessages' onClick={this.draftOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">Ok</Link></div>;
         return (<ModalComponent show
             onHide={this.draftOkClicked}
-            customClass={"c-modal"}
-            bsSize={'medium'}
+            customClass={"c-modal c-modal--center"}
+            bsSize={'small'}
             modalheading={''}
             modalbody={bodyContent}
             modalfooter={footerButtons}
@@ -169,12 +170,12 @@ class NewSecureMessage extends React.Component {
         this.setState({ showSentMessageModal: false });
     }
     returnSentMessageModal() {
-        let bodyContent = <div className="">Message sent</div>;
-        let footerButtons = <div><Link to='/securemessages' onClick={this.sentOkClicked} className="c-btn c-btn--default c-modal__button">Ok</Link></div>;
+        let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>Message sent</div>;
+        let footerButtons = <div><Link to='/securemessages' onClick={this.sentOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">Ok</Link></div>;
         return (<ModalComponent show
             onHide={this.sentOkClicked}
-            customClass={"c-modal"}
-            bsSize={'medium'}
+            customClass={"c-modal c-modal--center"}
+            bsSize={'small'}
             modalheading={''}
             modalbody={bodyContent}
             modalfooter={footerButtons}
