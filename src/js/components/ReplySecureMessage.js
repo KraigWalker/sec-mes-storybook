@@ -71,7 +71,6 @@ class ReplySecureMessage extends React.Component {
         return (<ModalComponent show
             onHide={this.sentOkClicked}
             customClass={"c-modal"}
-            bsSize={'medium'}
             modalheading={''}
             modalbody={bodyContent}
             modalfooter={footerButtons}
@@ -87,7 +86,6 @@ class ReplySecureMessage extends React.Component {
         return (<ModalComponent show
             onHide={this.draftOkClicked}
             customClass={"c-modal"}
-            bsSize={'medium'}
             modalheading={''}
             modalbody={bodyContent}
             modalfooter={footerButtons}
