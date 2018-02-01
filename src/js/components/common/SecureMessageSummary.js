@@ -5,8 +5,10 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import MessageEntity from '../../entities/MessageEntity';
 import ModalComponent from '../common/ModalComponent';
-import {sendDeleteData} from '../../actions/AppActions';
+import { updateMessageData} from '../../actions/AppActions';
+import SendMessageRequestEntity from '../../entities/SendMessageRequestEntity.js'
 import { connect } from 'react-redux';
+let messageEntity = new SendMessageRequestEntity();
 class SecureMessageSummary extends React.Component {
     constructor(props) {
         super(props);
@@ -21,48 +23,40 @@ class SecureMessageSummary extends React.Component {
         this.returnDeleteSuccessModalComponent = this.returnDeleteSuccessModalComponent.bind(this);
         this.closeSuccessModal = this.closeSuccessModal.bind(this);
     }
-
-    handleClick() {
-        alert("clicked");
-    };
-    handlebttn() {
-        alert("bttn clicked");
-    };
+    
     getSummaryIcon = () => {
-        let iconId = (this.props.readFlag) ? 'icon-message-open' : 'icon-envelope';
-        return ((!this.props.draftFlag && !this.props.threadFlag && !this.props.sentFlag) && <span className="c-message__icon"><GetIcon id={iconId} width="24px" height="24px" /></span>);
+        const { message } = this.props;
+        let iconId = message.status === 'READ' ? 'icon-message-open' : 'icon-envelope';
+        return (<span className="c-message__icon"><GetIcon id={iconId} width="24px" height="24px" /></span>);
     }
-    hasOnClick = (message) => {
-        let path = (this.props.draftFlag) ? '/draftsecuremessage' : '/viewmessage';
-        // console.log("this.props.readFlag " + this.props.readFlag);
-        // console.log("message.getSubject() -----------> " + message.getSubject());
-        let messageTitle ='';
-        if (!this.props.sentFlag && !this.props.draftFlag) {
+    hasOnClick = () => {
+        const { message } = this.props;
+        let path = message.status === 'DRAFT' ? '/draftsecuremessage' : '/viewmessage';
+        let messageTitle =''    ;
+        if (message.status === 'NEW') {
             messageTitle = `Unread ` + message.getSubject();
         } else {            
             messageTitle = message.getSubject();
         }
-        if (this.props.readFlag && this.props.hasOnClick) {
-            // console.log("this.props.readFlag inside if -----> " + this.props.readFlag);
-            return (<Link to={{ pathname: path, messageDetail: message }} className="c-message__summary__head__title__subject__link">{message.getSubject()}</Link>);
-        } else if (this.props.hasOnClick) {
-            return (<Link aria-label={`${messageTitle}`} to={{ pathname: path, messageDetail: message }} className="c-message__summary__head__title__subject__link">{message.getSubject()}</Link>);
-        } else
-            return message.getSubject()
-
-        // if (this.props.hasOnClick) {
-        //     return (<Link aria-label="Unread payment enquiries" to={{ pathname: path, messageDetail: message }} className="c-message__summary__head__title__subject__link">{message.getSubject()}</Link>);
-        // } else
-        //     return message.getSubject()
+        if (!this.props.threadFlag) {
+            if (message.status === 'READ') {
+                return (<Link to={{ pathname: path, messageDetail: message }} className="c-message__summary__head__title__subject__link">{message.getSubject()}</Link>);
+            } else {
+                return (<Link aria-label={`${messageTitle}`} to={{ pathname: path, messageDetail: message }} className="c-message__summary__head__title__subject__link">{message.getSubject()}</Link>);        
+            }
+        } else {
+            return message.getSubject();
+        }
     }
-    getReplyButton = (message) => {
+    getReplyButton = () => {
+        const { message } = this.props;
         let replymessage = ``;
-        if (this.props.readFlag) {
+        if (message.status === 'READ') {
             replymessage = `Reply ` + message.getSubject();
         } else {
             replymessage = `Reply Unread ` + message.getSubject();        
         }
-        return (!this.props.draftFlag && !this.props.threadFlag && !this.props.sentFlag) && 
+        return (!this.props.threadFlag) && 
             (<Link to={{ pathname: '/replysecuremessage', backPath: this.props.viewMessageFlag ? '/viewmessage' : '/securemessages', messageDetail: message }} className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding">
                 <span id="replyMsg" className="c-message__summary__head__actions__reply__txt" aria-label={`${replymessage}`}>Reply</span>
                 <span className="c-message__summary__head__actions__reply__icon">
@@ -71,23 +65,20 @@ class SecureMessageSummary extends React.Component {
             </Link>)
     }
 
-    getDeleteButton = (message) => {
+    getDeleteButton = () => {
+        const { message } = this.props;
         let deletemessage = ``;
-        if (!this.props.sentFlag && !this.props.draftFlag) {
-            if (this.props.readFlag) {
-                deletemessage = `Delete ` + message.getSubject();
-            } else {
-                deletemessage = `Delete Unread ` + message.getSubject();   
-            }
+       if (!message.status !== 'NEW' ) {
+            deletemessage = `Delete ` + message.getSubject();
         } else {
-            deletemessage = `Delete ` + message.getSubject();            
+            deletemessage = `Delete Unread ` + message.getSubject();   
         }
-        return !this.props.threadFlag && (<button className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding" onClick={this.handleDelete}>
+        return (<button className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding" onClick={this.handleDelete}>
             <span id="deleteMsg" className="c-message__summary__head__actions__delete__txt" aria-label={`${deletemessage}`}>Delete</span>
             <span className="c-message__summary__head__actions__delete__icon">
                 <GetIcon id="icon-delete" width="24px" height="24px" />
             </span>
-        </button>)
+        </button>);
     }
     handleDelete(data) {
         this.setState({ showDeleteConfirmModal: true });
@@ -100,7 +91,7 @@ class SecureMessageSummary extends React.Component {
     }
     deleteClick() {
         this.setState({ showDeleteSuccessModal: true, showDeleteConfirmModal: false });
-        this.props.dispatch(sendDeleteData(this.props.message));
+        this.props.dispatch(updateMessageData(this.props.message, this.props.message.id, "DELETED"));
     }
     closeSuccessModal(){
        // document.getElementById('headingTag').focus();
@@ -112,7 +103,6 @@ class SecureMessageSummary extends React.Component {
         return (<ModalComponent show
             onHide={this.closeSuccessModal}
             customClass={"c-modal c-modal--center"}
-            bsSize="medium"
             modalheading={''}
             modalbody={bodyContent}
             modalfooter={footerButtons}
@@ -126,7 +116,6 @@ class SecureMessageSummary extends React.Component {
         return (<ModalComponent show
             onHide={this.closeModal}
             customClass={"c-modal"}
-            bsSize="medium"
             modalheading={'Delete this message?'}
             modalbody={bodyContent}
             modalfooter={footerButtons}
@@ -138,42 +127,42 @@ class SecureMessageSummary extends React.Component {
         let messageClass = cx({
             'c-message': true,
             'c-message--stacked': this.props.listFlag,
-            'c-message--read': this.props.readFlag,
-            'u-position-relative': this.props.hasOnClick,
+            'c-message--read': message.status === 'READ',
+            'u-position-relative': !this.props.threadFlag,
             'c-message--noborder': this.props.threadFlag,
         });
         let summaryClass = cx({
             'c-message__summary': true,
-            'c-message__summary--no-icon': this.props.draftFlag || this.props.sentFlag,
+            'c-message__summary--no-icon': message.status === 'DRAFT' || message.status === 'SENT',
         });
         let titleClass = cx({
             'c-message__summary__head__title': true,
-            'c-message__summary__head__title--draft': this.props.draftFlag,
+            'c-message__summary__head__title--draft': message.status === 'DRAFT',
         });
         let subjectClass = cx({
             'c-message__summary__head__title__subject': true,
-            'c-message__summary__head__title__subject--read': this.props.readFlag,
+            'c-message__summary__head__title__subject--read': message.status !== 'NEW',
         });
         let actionsClass = cx({
             'c-message__summary__head__actions': true,
-            'u-position-relative': this.props.hasOnClick,
+            'u-position-relative': !this.props.threadFlag,
         });
 
 
         return (
             <div className={messageClass}>
-                {this.getSummaryIcon()}
+                {(message.status === 'READ' || message.status === 'NEW') && this.getSummaryIcon()}
                 <div className={summaryClass} >
                     <div className="c-message__summary__head">
                         <div className={titleClass}>
                             <h2 id="subjectMsg" className={subjectClass}>
-                                {this.hasOnClick(message)}
+                                {this.hasOnClick()}
                             </h2>
                             <p className="c-message__summary__head__title__ref">{message.getReference()}</p>
                         </div>
                         <div className={actionsClass}>
-                            {this.getReplyButton(message)}
-                            {this.getDeleteButton(message)}
+                            {(message.status === 'NEW' || message.status === 'READ') && this.getReplyButton(message)}
+                            {!this.props.threadFlag && this.getDeleteButton()}
                         </div>
                     </div>
                     {!this.props.viewMessageFlag && <p className="c-message__summary__account">{message.getMessageBody()}</p>}

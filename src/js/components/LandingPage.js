@@ -12,12 +12,6 @@ import GetIcon from './common/GetIcon';
 */
 
 class LandingPage extends React.PureComponent {
-    constructor(props) {
-        super(props);
-    }
-    componentWillMount() {
-        !this.props.messages.fetched && this.props.dispatch(fetchSecureMessages());
-    }
     linkClick = (activeTab) => {
         this.props.dispatch(getActiveTab(activeTab));
     }

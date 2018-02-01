@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>React-Redux-App</title>
     <script>
+        var path = document.URL.substr(0,document.URL.lastIndexOf('/'));
         if (window.location.pathname.indexOf('/CB') > 0){
           document.write('<link rel="stylesheet" type="text/css" href="http://localhost:8000/compiled/cb.main.css">');
         } else if(window.location.pathname.indexOf('/YB') > 0){

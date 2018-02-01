@@ -6,8 +6,13 @@ let titleName = ['Inbox', 'Drafts', 'Sent'];
 class SecureMessageTabs extends React.Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			tab: 'inbox',
+		}
 	}
-
+	onclick = (tab) => {
+		this.setState({ tab: tab });
+	}
 	render() {
 		const { messages } = this.props;
 		let newMessageCount = 0;
@@ -18,15 +23,15 @@ class SecureMessageTabs extends React.Component {
 		});
 		let inboxTitle = titleName[0] + ' ('+ newMessageCount + ')';
 		return (messages?
-				<Tabs activeKey={this.props.activeTab} onSelect={this.props.onClick} id="secure_tabs" className="c-scroll-tabs">
+				<Tabs activeKey={this.state.tab} onSelect = {this.onclick} id="secure_tabs" className="c-scroll-tabs">
 					<Tab eventKey={'inbox'} title={inboxTitle}  aria-label={`${inboxTitle} unread messages`}>
-                        <SecureMessageList messages={messages? messages.inboxMessages : null} activeTab = {this.props.activeTab} count = {messages.inboxMessages.length}/>
+                        <SecureMessageList messages={messages.inboxMessages} activeTab = {'inbox'} />
 					</Tab>
 					<Tab eventKey={'drafts'} title={titleName[1]}  aria-label={titleName[1]}>
-                        <SecureMessageList messages={messages? messages.draftMessages : null} activeTab = {this.props.activeTab} count = {messages.draftMessages.length}/>
+                        <SecureMessageList messages={messages.draftMessages} activeTab = {'drafts'} />
 					</Tab>
 					<Tab eventKey={'sent'} title={titleName[2]}  aria-label={titleName[2]}>
-                        <SecureMessageList messages={messages? messages.sentMessages : null} activeTab = {this.props.activeTab} count = {messages.sentMessages.length}/>
+                        <SecureMessageList messages={messages.sentMessages} activeTab = {'sent'} />
 					</Tab>
 				</Tabs>
 			 : <p>Loading...</p> 

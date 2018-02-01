@@ -1,6 +1,6 @@
-import _ from  'lodash';
+import _ from 'lodash';
 import MessageEntity from '../entities/MessageEntity';
-import {sortArrayByDate} from '../utils/DateUtils';
+import { sortArrayByDate } from '../utils/DateUtils';
 
 /**
  * 
@@ -8,7 +8,7 @@ import {sortArrayByDate} from '../utils/DateUtils';
  */
 export function parseMessages(response) {
     const messages = [];
-    const sortedMessages = sortArrayByDate(response.securemessages);
+    const sortedMessages = sortArrayByDate(response.secure_messages);
     _.forEach(sortedMessages, message => {
         const messageEntity = new MessageEntity();
         messageEntity.setId(message.id);
@@ -24,4 +24,44 @@ export function parseMessages(response) {
     });
     return messages;
 
+}
+
+export function parseDraft(data) {
+    const requestData = {
+        secure_message: {
+            subject: data.subject,
+            account: {
+                id: 'ddec9b5e-d6d8-430a-9c3a-19a281318fe6',
+                number: '822000-12341234',
+            },
+            payload: {
+                body: {
+                    data: data.message,
+                }
+            },
+            status: data.status,
+        }
+    }
+    return requestData;
+}
+
+export function updateMessage(data, id, status) {
+    const requestData = {
+            secure_message: {
+                subject: data.subject,
+                payload: {
+                    headers: [
+                        {
+                            name: "In-Reply-To",
+                            value: id,
+                        }
+                    ],
+                    body: {
+                        data: data.message,
+                    }
+                },
+                status: status,
+            }
+    }
+    return requestData;
 }

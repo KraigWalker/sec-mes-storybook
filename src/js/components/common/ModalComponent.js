@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { ModalFooter, ModalHeader, ModalBody, ModalTitle } from 'react-bootstrap/lib/Modal';
 import Modal from 'react-bootstrap/lib/Modal';
 
 
@@ -77,10 +76,12 @@ ModalComponent.propTypes = {
     closeButton: PropTypes.bool,
 };
 
+/* By default size of Bootstrap Modal component is "medium" 
+    and optional sizes are "large" and "small"
+*/
 ModalComponent.defaultProps = {
     show: false,
     onHide: function () { return null; },
-    bsSize: 'medium',
     modalheading: '',
     modalbody: '',
     modalfooter: '',

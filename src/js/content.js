@@ -6,6 +6,20 @@ const content = {
     sentPageTitle: 'Sent message',
     newMessagePageTitle: 'New message',
     replyMessageTitle: 'Reply',
+    back: 'Back',
+    send: 'Send',
+    maxCharLimit: 'Maximum character limit is three thousand',
+    message: 'Message',
+    messageRelatesTo: 'Message relates to',
+    subject: 'Subject',
+    messageSent: 'Message sent',
+    ok: 'Ok',
+    draftBody: 'Message saved as a draft',
+    leaveMessageHeading: 'Your message hasn’t been sent yet',
+    returnToMessage: 'Return to message',
+    saveDraft: 'Save Draft',
+    leaveMessageBody: 'If you leave the message now it won’t be saved.',
+    charLeft: 'Characters Left:',
 };
 
 export default content;
