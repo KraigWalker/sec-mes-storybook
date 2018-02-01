@@ -68,8 +68,8 @@ export function sendMessageData(requestData) {
   return function(dispatch) {
     const success = (response) => {
       const payload = {
-        type: AppConstants.SEND_MESSAGE_DATA_SUCCESS,
-        payload: {response: response, requestData: requestData}
+        type: AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS,
+   //     payload: {response: response, requestData: requestData} will remove after error scenarios
       }
       dispatch(payload);
     }
