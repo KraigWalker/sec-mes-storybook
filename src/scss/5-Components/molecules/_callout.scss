@@ -61,6 +61,23 @@ $calloutwidths: ( xs1 : 343px, xs2 : 343px, sm1 : 720px, sm2 : 720px, md1 : 723p
             width: auto;
         }
     }
+    &__inline-error {
+        @extend %type--jura;
+        margin-top: 5px;
+        margin-bottom: 0;
+        max-width: 343px;
+        @include media-breakpoint-up(md1) {
+            max-width: 304px;
+        }
+
+        @include media-breakpoint-up(lg1) {
+            max-width: 374px;
+        }
+
+        @include media-breakpoint-up(xl1) {
+            max-width: 428px;
+        }
+    }
 }
 
 .callout--product {

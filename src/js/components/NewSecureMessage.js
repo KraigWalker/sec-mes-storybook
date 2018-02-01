@@ -10,6 +10,7 @@ import StepHeader from './common/StepHeader';
 import SendMessageRequestEntity from '../entities/SendMessageRequestEntity.js'
 import ModalComponent from './common/ModalComponent';
 import RegexUtils from '../utils/RegexUtils.js';
+import CalloutComponent from './common/CalloutComponent.js';
 let messageEntity = new SendMessageRequestEntity();
 class NewSecureMessage extends React.Component {
     constructor(props) {
@@ -36,6 +37,7 @@ class NewSecureMessage extends React.Component {
             validationAccountMsg: false,
             selectAccount: false,
             selectSubject: false,
+            charError: false,
         };
     };
     componentWillMount() {
@@ -75,7 +77,9 @@ class NewSecureMessage extends React.Component {
             let lastFour = RegexUtils.getLastFourDigits(extractedString);
             messageEntity.setMessage(e.replace(new RegExp(extractedString, 'g'), '************' + lastFour));
         } else messageEntity.setMessage(e);
-
+        if (this.state.chars_left >= 0) {
+            this.setState({charError: false});
+        }
     }
     checkValidation() {
         if(this.state.selectAccount === true) {
@@ -105,18 +109,28 @@ class NewSecureMessage extends React.Component {
         }
     }
     sendData() {
-        if (this.checkValidation()) {
+        this.setState ({charError: true});
+        this.renderRemainingChar();
+        if (this.checkValidation() && this.state.chars_left >= 0) {
             messageEntity.setStatus('SENT');
             this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData()));
             this.setState({ showSentMessageModal: true });
         }
     }
     renderRemainingChar() {
+        if (this.state.chars_left < 0 && this.state.charError === true) {
+            return (
+            <div>
+            <p className="char__error">Characters Left: {this.state.chars_left}</p>
+            <CalloutComponent dClass = 'callout callout__error callout__inline-error' paraText = 'Oops. The maximum message size has been exceeded. Please reduce the length of your message.'/>
+    
+        </div>);
+        }
         if (this.state.chars_left <= 300) {
             (this.state.chars_left === 3) && this.props.dispatch(sendMessageForAccessibiltiy('Three characters left'));
             (this.state.chars_left === 1) && this.props.dispatch(sendMessageForAccessibiltiy('One character left'));
             (this.state.chars_left === 0) && this.props.dispatch(sendMessageForAccessibiltiy('Maximum characters limit reached'));
-            return <p className="char__error">{this.props.content.charLeft} {this.state.chars_left}</p>;
+            return <p className="char__error">Characters Left: {this.state.chars_left}</p>;
         }
     }
     leavePage() {
