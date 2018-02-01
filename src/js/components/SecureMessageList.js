@@ -16,7 +16,6 @@ class SecureMessageList extends React.Component {
     }
     componentWillReceiveProps(props) {
         this.setState({ showMoreLimit: 5, showThatsAllMessage: '' });
-        console.log('PROPS',this.props);
         if (this.props.activeTab === 'sent' && this.props.messagesFetched) {
            this.props.dispatch(sendMessageForAccessibiltiy('You don’t have any sent messages'));
         } else if (this.props.activeTab === 'drafts' && this.props.messagesFetched) {
@@ -32,8 +31,8 @@ class SecureMessageList extends React.Component {
             const hasOnClick = true;
             const listFlag = true;
             _.map(msgs, (message, index) => {
-                allMessages.push(<li key={index} className="c-messagelist__wrapper"><SecureMessageSummary message={message} hasOnClick={hasOnClick} listFlag={listFlag}
-                    draftFlag={message.status === "DRAFT"} sentFlag={getMessageType(message.status) === "sent"} readFlag={message.status === 'READ'} /></li>)
+                allMessages.push(
+                    <li key={index} className="c-messagelist__wrapper"><SecureMessageSummary message={message} listFlag={listFlag}/></li>)
             })
             return allMessages;
         }
@@ -84,8 +83,7 @@ class SecureMessageList extends React.Component {
             return (
                 <section>
                     <ol className="c-messagelist">
-                        {this.showMessages()}
-                        {this.props.count === 0 && this.props.messagesFetched && this.renderNoMessagesText()}
+                        {this.props.messages.length === 0 ? this.renderNoMessagesText() : this.showMessages()}
                     </ol>
                     {this.renderShowMoreButton()}
                     {this.state.showThatsAllMessage && <p className="u-margin-bottom-c">{this.renderThatsAllText()}</p>}

@@ -55,7 +55,7 @@ class ReplySecureMessage extends React.Component {
             (this.state.chars_left === 3) && this.props.dispatch(sendMessageForAccessibiltiy('Three characters left'));
             (this.state.chars_left === 1) && this.props.dispatch(sendMessageForAccessibiltiy('One character left'));
             (this.state.chars_left === 0) && this.props.dispatch(sendMessageForAccessibiltiy('Maximum characters limit reached'));
-            return <p>Characters Left: {this.state.chars_left}</p>;
+            return <p>{this.props.content.charLeft} {this.state.chars_left}</p>;
         }
     }
     sendData() {
@@ -72,7 +72,6 @@ class ReplySecureMessage extends React.Component {
         return (<ModalComponent show
             onHide={this.sentOkClicked}
             customClass={"c-modal c-modal--center"}
-            bsSize={'medium'}
             modalheading={''}
             modalbody={bodyContent}
             modalfooter={footerButtons}
@@ -88,7 +87,6 @@ class ReplySecureMessage extends React.Component {
         return (<ModalComponent show
             onHide={this.draftOkClicked}
             customClass={"c-modal c-modal--center"}
-            bsSize={'medium'}
             modalheading={''}
             modalbody={bodyContent}
             modalfooter={footerButtons}
@@ -114,7 +112,7 @@ class ReplySecureMessage extends React.Component {
 
                 <div className="c-field">
                     <label id="subjectTitle" className="c-field__label c-field__label--block" htmlFor="subjects">
-                        Subject
+                    {this.props.content.subject}
                     </label>
                     <div className="c-field__controls u-position-relative">
                         <DropDownComponent accessID="Subject" subjects={this.props.location.messageDetail.subject} name='subjects' id='subjects' selectSubject={this.selectSubject} isFromDraftOrReply={true} selectedValue={this.props.location.messageDetail.subject} isFromReply={true} />
@@ -123,7 +121,7 @@ class ReplySecureMessage extends React.Component {
 
                 <div className="c-field">
                     <label id="relatesTitle" className="c-field__label c-field__label--block" htmlFor="subjects">
-                        Message relates to
+                    {this.props.content.messageRelatesTo}
                     </label>
                     <div className="c-field__controls u-position-relative">
                         <DropDownComponent accessID="Message relates to" accounts={this.props.location.messageDetail.account.accountNumber} selectSubject={this.selectSubject} name='accounts' id='accounts' isFromDraftOrReply={true} selectedValue={this.props.location.messageDetail.account.accountNumber} isFromReply={true} />
@@ -133,10 +131,10 @@ class ReplySecureMessage extends React.Component {
 
                 <div className="c-field">
                     <label id="messageTitle" className="c-field__label c-field__label--block" htmlFor="subjects">
-                        Message
+                    {this.props.content.message}
                     </label>
                     <div className="c-field__controls">
-                    <div className="u-visually-hidden off-screen" id="textAreaMaxMsg">Maximum character limit is three thousand</div>
+                    <div className="u-visually-hidden off-screen" id="textAreaMaxMsg">{this.props.content.maxCharLimit}</div>
                         <TextAreaComponent textData={this.textChange} ariaId="textAreaMaxMsg" id="message" accessID="messageTitle"/>
                     </div>
                     {this.renderRemainingChar()}
@@ -145,8 +143,8 @@ class ReplySecureMessage extends React.Component {
                     <Link to='/securemessages' className="c-btn c-btn--secondary">
                         Back
                     </Link>
-                    <button name='Save Draft' className="c-btn c-btn--secondary" onClick={this.saveDraftData}>Save Draft</button>
-                    <button name='Send' className="c-btn c-btn--default" onClick={this.sendData}>Send</button>
+                    <button name='Save Draft' className="c-btn c-btn--secondary" onClick={this.saveDraftData}>{this.props.content.saveDraft}</button>
+                    <button name='Send' className="c-btn c-btn--default" onClick={this.sendData}>{this.props.content.send}</button>
                 </div>
                  { this.state.showPopup ? this.returnModalComponent() : ''} 
                  {this.state.showDraftSuccessModal && this.returnDraftModal()}

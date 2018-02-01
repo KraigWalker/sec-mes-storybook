@@ -7,6 +7,7 @@ class SendMessageRequestEntity {
             subject : '',
             account : '',
             message : '',
+            status : '',
         };
         
     }
@@ -18,6 +19,9 @@ class SendMessageRequestEntity {
     }
     setMessage(message) {
         this.messageRequestObject.message = message;
+    }
+    setStatus(status) {
+        this.messageRequestObject.status = status;
     }
     getMessageRequestData() {
         return this.messageRequestObject;

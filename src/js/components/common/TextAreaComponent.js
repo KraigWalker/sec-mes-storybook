@@ -33,7 +33,7 @@ class TextAreaComponent extends React.Component {
                 cols="20"
                 onChange={this.textChange}
                 onPaste={this.check}
-                value={this.props.messageBody}
+                value={this.props.message}
                 disabled={this.props.disableText}
                 maxLength='3000'
                 ref="txtarea"

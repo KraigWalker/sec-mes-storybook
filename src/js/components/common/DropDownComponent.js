@@ -20,17 +20,18 @@ class DropDownComponent extends React.Component {
         }
     };
     componentWillMount() {
-        if (!this.props.messagesubjects.fetched && !this.props.messageaccounts.fetched) {
-            this.props.dispatch(getMessageSubjects());
-            this.props.dispatch(getAccounts());
-        }
+       // if (!this.props.messagesubjects.fetched && !this.props.messageaccounts.fetched) {
+           // this.props.dispatch(getMessageSubjects());
+           // this.props.dispatch(getAccounts());
+       // }
         if(this.props.isFromDraftOrReply) {
             this.props.selectSubject(this.props.selectedValue, this.props.id);
         }
     }
     returnMenuItem() {
-        if (!this.props.isFromDraftOrReply && this.props.id === 'accounts') {
-            let items = [];
+        let items = [];
+        switch(true) {
+        case (!this.props.isFromDraftOrReply && this.props.id === 'accounts') :
             items.push(<li className="c-dropdown__value" key='No specific account' value='No specific account' onClick={this.setDropDrownValue}>No specific account</li>);
             _.map(this.props.accounts.accounts, (account) => {
                 items.push(<li className="c-dropdown__value" key={account} value={account} onClick={this.setDropDrownValue}>{account}</li>
@@ -38,24 +39,21 @@ class DropDownComponent extends React.Component {
             })
             return items;
 
-        } if (!this.props.isFromDraftOrReply && this.props.id === 'subjects') {
-            let items = [];
+        case (!this.props.isFromDraftOrReply && this.props.id === 'subjects') :
             _.map(this.props.subjects.subjects, (subject) => {
                 items.push(<li className="c-dropdown__value" key={subject.key} value={subject.value} onClick={this.setDropDrownValue}>{subject.value}</li>);
             }, false);
             return items;
-        }
-        if (this.props.isFromDraftOrReply && this.props.id === 'accounts') {
-            let items = [];
+        
+        case (this.props.isFromDraftOrReply && this.props.id === 'accounts') :
             items.push(<li className="c-dropdown__value" key='No specific account' value='No specific account' onClick={this.setDropDrownValue}>No specific account</li>);
             _.map(this.props.messageaccounts.accounts, (account) => {
                 items.push(<li className="c-dropdown__value" key={account} value={account} onClick={this.setDropDrownValue}>{account}</li>
                 );
             })
             return items;
-        }
-        if (this.props.isFromDraftOrReply && this.props.id === 'subjects') {
-            let items = [];
+        
+        case (this.props.isFromDraftOrReply && this.props.id === 'subjects') :
             _.map(this.props.messagesubjects.subjects, (subject) => {
                 items.push(<li className="c-dropdown__value" key={subject.key} value={subject.value} onClick={this.setDropDrownValue}>{subject.value}</li>
                 );
