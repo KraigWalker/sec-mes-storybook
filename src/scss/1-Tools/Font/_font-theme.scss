@@ -91,12 +91,12 @@
 			@if $style == bold {
 				font-family: $dyb-body-bold;
 			}
-			@else if $style == italic {
-				font-family: $dyb-body-italic;
-			}
-			@else if $style == bold-italic {
-				font-family: $dyb-body-bold-italic;
-			}
+			// @else if $style == italic {
+			// 	font-family: $dyb-body-italic;
+			// }
+			// @else if $style == bold-italic {
+			// 	font-family: $dyb-body-bold-italic;
+			// }
 			@else {
 				font-family: $dyb-body-regular;
 			}
@@ -108,12 +108,12 @@
 			@if $style == bold {
 				font-family: $cyb-body-bold;
 			}
-			@else if $style == italic {
-				font-family: $cyb-body-italic;
-			}
-			@else if $style == bold-italic {
-				font-family: $cyb-body-bold-italic;
-			}
+			// @else if $style == italic {
+			// 	font-family: $cyb-body-italic;
+			// }
+			// @else if $style == bold-italic {
+			// 	font-family: $cyb-body-bold-italic;
+			// }
 			@else {
 				font-family: $cyb-body-regular;
 			}
@@ -129,12 +129,12 @@
 			@if $style == bold {
 				font-family: $dyb-body-bold;
 			}
-			@else if $style == italic {
-				font-family: $dyb-body-italic;
-			}
-			@else if $style == bold-italic {
-				font-family: $dyb-body-bold-italic;
-			}
+			// @else if $style == italic {
+			// 	font-family: $dyb-body-italic;
+			// }
+			// @else if $style == bold-italic {
+			// 	font-family: $dyb-body-bold-italic;
+			// }
 			@else {
 				font-family: $dyb-body-regular;
 			}
@@ -143,12 +143,12 @@
 			@if $style == bold {
 				font-family: $cyb-body-bold;
 			}
-			@else if $style == italic {
-				font-family: $cyb-body-italic;
-			}
-			@else if $style == bold-italic {
-				font-family: $cyb-body-bold-italic;
-			}
+			// @else if $style == italic {
+			// 	font-family: $cyb-body-italic;
+			// }
+			// @else if $style == bold-italic {
+			// 	font-family: $cyb-body-bold-italic;
+			// }
 			@else {
 				font-family: $cyb-body-regular;
 			}
@@ -157,12 +157,12 @@
 			@if $style == bold {
 				font-family: $base-bold;
 			}
-			@else if $style == italic {
-				font-family: $base-italic;
-			}
-			@else if $style == bold-italic {
-				font-family: $base-bold-italic;
-			}
+			// @else if $style == italic {
+			// 	font-family: $base-italic;
+			// }
+			// @else if $style == bold-italic {
+			// 	font-family: $base-bold-italic;
+			// }
 			@else {
 				font-family: $base-regular;
 			}
@@ -176,12 +176,12 @@
 		@if $style == bold {
 			font-family: $base-bold;
 		}
-		@else if $style == italic {
-			font-family: $base-italic;
-		}
-		@else if $style == bold-italic {
-			font-family: $base-bold-italic;
-		}
+		// @else if $style == italic {
+		// 	font-family: $base-italic;
+		// }
+		// @else if $style == bold-italic {
+		// 	font-family: $base-bold-italic;
+		// }
 		@else {
 			font-family: $base-regular;
 		}
