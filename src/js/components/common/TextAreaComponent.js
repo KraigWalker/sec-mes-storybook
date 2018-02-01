@@ -35,7 +35,7 @@ class TextAreaComponent extends React.Component {
                 onPaste={this.check}
                 value={this.props.message}
                 disabled={this.props.disableText}
-                maxLength='3000'
+                maxLength='infinity'
                 ref="txtarea"
                 aria-labelledby={`${this.props.accessID}`}
                 aria-describedby={this.props.ariaId}

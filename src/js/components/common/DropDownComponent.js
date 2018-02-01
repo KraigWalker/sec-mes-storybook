@@ -100,8 +100,8 @@ class DropDownComponent extends React.Component {
                 {this.state.list && <div ref="overlay" className={overlayClassName} onClick={this.overlayclick} ></div>}
                 {this.state.list && <ul className="c-dropdown__list u-cursor-pointer" onBlur={this.onBlur}>{this.returnMenuItem()}</ul>}
             </div>
-            {this.props.showAccountError ? <CalloutComponent dClass = 'callout callout__error' paraText = 'Please select a subject for your message'/> : ''}
-            {this.props.showSubjectError ? <CalloutComponent dClass = 'callout callout__error' paraText = 'Pleae select an option for which account your enquiry relates to. If it’s a general enquiry, choose `General enquiry`'/> : ''}
+            {this.props.showAccountError ? <CalloutComponent dClass = 'callout callout__error callout__inline-error' paraText = 'Please select a subject for your message'/> : ''}
+            {this.props.showSubjectError ? <CalloutComponent dClass = 'callout callout__error callout__inline-error' paraText = 'Pleae select an option for which account your enquiry relates to. If it’s a general enquiry, choose `General enquiry`'/> : ''}
             </div>
         );
     }
