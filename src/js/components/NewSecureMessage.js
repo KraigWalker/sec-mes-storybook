@@ -17,7 +17,6 @@ class NewSecureMessage extends React.Component {
         this.selectSubject = this.selectSubject.bind(this);
         this.sendData = this.sendData.bind(this);
         this.textChange = this.textChange.bind(this);
-        this.checkPastedData = this.checkPastedData.bind(this);
         this.renderRemainingChar = this.renderRemainingChar.bind(this);
         this.leavePage = this.leavePage.bind(this);
         this.stayOnPage = this.stayOnPage.bind(this);
