@@ -92,6 +92,22 @@ $text-color: bow-palette(grey, text);
 			&:hover {
 				background-color: bow-palette(gray,light);
 			}
+
+			&__account {
+				display: inline-block;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				overflow: hidden;
+				vertical-align: middle;
+				width: 80%;
+			}
+
+			&__number {
+				display: inline-block;
+				text-align: right;
+				vertical-align: middle;
+				width: 20%;
+			}
 		}
 	}
 
