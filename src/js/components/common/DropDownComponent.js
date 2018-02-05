@@ -20,42 +20,46 @@ class DropDownComponent extends React.Component {
         }
     };
     componentWillMount() {
-        if (!this.props.messagesubjects.fetched && !this.props.messageaccounts.fetched) {
-            this.props.dispatch(getMessageSubjects());
-            this.props.dispatch(getAccounts());
-        }
+       // if (!this.props.messagesubjects.fetched && !this.props.messageaccounts.fetched) {
+           // this.props.dispatch(getMessageSubjects());
+           // this.props.dispatch(getAccounts());
+       // }
         if(this.props.isFromDraftOrReply) {
             this.props.selectSubject(this.props.selectedValue, this.props.id);
         }
     }
     returnMenuItem() {
-        if (!this.props.isFromDraftOrReply && this.props.id === 'accounts') {
-            let items = [];
+        let items = [];
+        switch(true) {
+        case (!this.props.isFromDraftOrReply && this.props.id === 'accounts') :
             items.push(<li className="c-dropdown__value" key='No specific account' value='No specific account' onClick={this.setDropDrownValue}>No specific account</li>);
             _.map(this.props.accounts.accounts, (account) => {
                 items.push(<li className="c-dropdown__value" key={account} value={account} onClick={this.setDropDrownValue}>{account}</li>
                 );
+                /* To display account name along with account number use the below pattern
+                    <li className="c-dropdown__value" key={account} value={account} onClick={this.setDropDrownValue}><span className="c-dropdown__value__account">{account}</span><span className="c-dropdown__value__number">1234</span></li>
+                */
             })
             return items;
 
-        } if (!this.props.isFromDraftOrReply && this.props.id === 'subjects') {
-            let items = [];
+        case (!this.props.isFromDraftOrReply && this.props.id === 'subjects') :
             _.map(this.props.subjects.subjects, (subject) => {
                 items.push(<li className="c-dropdown__value" key={subject.key} value={subject.value} onClick={this.setDropDrownValue}>{subject.value}</li>);
             }, false);
             return items;
-        }
-        if (this.props.isFromDraftOrReply && this.props.id === 'accounts') {
-            let items = [];
+        
+        case (this.props.isFromDraftOrReply && this.props.id === 'accounts') :
             items.push(<li className="c-dropdown__value" key='No specific account' value='No specific account' onClick={this.setDropDrownValue}>No specific account</li>);
             _.map(this.props.messageaccounts.accounts, (account) => {
                 items.push(<li className="c-dropdown__value" key={account} value={account} onClick={this.setDropDrownValue}>{account}</li>
                 );
+                /* To display account name along with account number use the below pattern
+                    <li className="c-dropdown__value" key={account} value={account} onClick={this.setDropDrownValue}><span className="c-dropdown__value__account">{account}</span><span className="c-dropdown__value__number">1234</span></li>
+                */
             })
             return items;
-        }
-        if (this.props.isFromDraftOrReply && this.props.id === 'subjects') {
-            let items = [];
+        
+        case (this.props.isFromDraftOrReply && this.props.id === 'subjects') :
             _.map(this.props.messagesubjects.subjects, (subject) => {
                 items.push(<li className="c-dropdown__value" key={subject.key} value={subject.value} onClick={this.setDropDrownValue}>{subject.value}</li>
                 );
@@ -102,8 +106,8 @@ class DropDownComponent extends React.Component {
                 {this.state.list && <div ref="overlay" className={overlayClassName} onClick={this.overlayclick} ></div>}
                 {this.state.list && <ul className="c-dropdown__list u-cursor-pointer" onBlur={this.onBlur}>{this.returnMenuItem()}</ul>}
             </div>
-            {this.props.showAccountError ? <CalloutComponent dClass = 'callout callout__error' paraText = 'Please select a subject for your message'/> : ''}
-            {this.props.showSubjectError ? <CalloutComponent dClass = 'callout callout__error' paraText = 'Pleae select an option for which account your enquiry relates to. If it’s a general enquiry, choose `General enquiry`'/> : ''}
+            {this.props.showAccountError ? <CalloutComponent dClass = 'callout callout__error callout__inline-error' paraText = 'Please select a subject for your message'/> : ''}
+            {this.props.showSubjectError ? <CalloutComponent dClass = 'callout callout__error callout__inline-error' paraText = 'Pleae select an option for which account your enquiry relates to. If it’s a general enquiry, choose `General enquiry`'/> : ''}
             </div>
         );
     }

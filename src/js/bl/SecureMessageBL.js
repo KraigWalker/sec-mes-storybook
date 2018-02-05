@@ -12,7 +12,6 @@ export function SecureMessageBL(response) {
     const inboxMessages = [];
     const sentMessages = [];
     const draftMessages = [];
-    console.log(response);
     _.map(response.messages, message => {
         switch (message.status){
             case "NEW":

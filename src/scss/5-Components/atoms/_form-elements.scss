@@ -92,11 +92,27 @@ $text-color: bow-palette(grey, text);
 			&:hover {
 				background-color: bow-palette(gray,light);
 			}
+
+			&__account {
+				display: inline-block;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				overflow: hidden;
+				vertical-align: middle;
+				width: 80%;
+			}
+
+			&__number {
+				display: inline-block;
+				text-align: right;
+				vertical-align: middle;
+				width: 20%;
+			}
 		}
 	}
 
 	.char__error {
-		color: red;
+		color: bow-palette(red, error);
 	}
 
 	.c-field__controls,
@@ -144,22 +160,6 @@ $text-color: bow-palette(grey, text);
 	.c-preview__controls {
 		display: block;
 		clear: both;
-		.callout.callout__error {
-			margin-top: 5px;
-			margin-bottom: 0;
-			max-width: 343px;
-			@include media-breakpoint-up(md1) {
-			    max-width: 304px;
-			}
-
-			@include media-breakpoint-up(lg1) {
-			    max-width: 374px;
-			}
-
-			@include media-breakpoint-up(xl1) {
-			    max-width: 428px;
-			}
-		}
 	}
 
 	.c-field__controls label {

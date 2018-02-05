@@ -2,15 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <title>React-Redux-App</title>
     <script>
+        var path = document.URL.substr(0,document.URL.lastIndexOf('securemessages'));
         if (window.location.pathname.indexOf('/CB') > 0){
-          document.write('<link rel="stylesheet" type="text/css" href="http://localhost:8000/compiled/cb.main.css">');
+          var element = document.createElement('link');
+					element.rel = 'stylesheet';
+					element.href = path + '/compiled/cb.main.css';
+          
         } else if(window.location.pathname.indexOf('/YB') > 0){
-          document.write('<link rel="stylesheet" type="text/css" href="http://localhost:8000/compiled/yb.main.css">');
-        } else if(window.location.pathname.indexOf('/DYB') > 0){
-          document.write('<link rel="stylesheet" type="text/css" href="http://localhost:8000/compiled/dyb.main.css">');
-        }
+          var element = document.createElement('link');
+					element.rel = 'stylesheet';
+					element.href = path + '/compiled/yb.main.css';
+          } else if(window.location.pathname.indexOf('/DYB') > 0){
+            var element = document.createElement('link');
+            element.rel = 'stylesheet';
+            element.href = path + '/compiled/dyb.main.css';
+          }
     </script>
 </head>
 <body>

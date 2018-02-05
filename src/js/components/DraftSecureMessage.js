@@ -1,5 +1,5 @@
 import React from 'react';
-import { getMessageSubjects, getAccounts, sendMessageData } from '../actions/AppActions';
+import { getMessageSubjects, getAccounts, sendMessageData, updateMessageData } from '../actions/AppActions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Dropdown, ButtonToolbar, MenuItem } from 'react-bootstrap/lib';
@@ -7,8 +7,9 @@ import _ from 'lodash';
 import DropDownComponent from './common/DropDownComponent.js';
 import TextAreaComponent from './common/TextAreaComponent.js';
 import StepHeader from './common/StepHeader';
-import SendMessageRequestEntity from '../entities/SendMessageRequestEntity.js'
+import SendMessageRequestEntity from '../entities/SendMessageRequestEntity.js';
 import ModalComponent from './common/ModalComponent';
+import GetIcon from './common/GetIcon';
 import RegexUtils from '../utils/RegexUtils.js';
 let messageEntity = new SendMessageRequestEntity();
 class DraftSecureMessage extends React.Component{
@@ -38,7 +39,7 @@ class DraftSecureMessage extends React.Component{
     }
     renderRemainingChar() {
         if (this.state.chars_left <= 300) {
-            return <p>Characters Left: {this.state.chars_left}</p>;
+            return <p>{this.props.content.charLeft} {this.state.chars_left}</p>;
         } else return '';
     }
     textChange(e) {
@@ -48,20 +49,19 @@ class DraftSecureMessage extends React.Component{
             let lastFour = RegexUtils.getLastFourDigits(extractedString);
             messageEntity.setMessage(e.replace(new RegExp(extractedString, 'g'), '************' + lastFour));
         } else messageEntity.setMessage(e);
-
-
     }
+      
     sendData() {
-        this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData()));
+        this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, "PENDING"));
         this.setState({showPopup : true});
     }
     returnModalComponent() {
-        let bodyContent = <div className="">Message sent</div>;
-        let footerButtons = <button type="button" onClick={this.sentOkClicked} className="c-btn c-btn--default c-modal__button">Ok</button>;
+        let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>Message sent</div>;
+        let footerButtons = <button type="button" onClick={this.sentOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">Ok</button>;
         return (<ModalComponent show
             onHide={this.sentOkClicked}
-            customClass={"c-modal"}
-            bsSize={'medium'}
+            customClass={"c-modal c-modal--center"}
+            bsSize={'small'}
             modalheading={''}
             modalbody={bodyContent}
             modalfooter={footerButtons}
@@ -72,12 +72,12 @@ class DraftSecureMessage extends React.Component{
         this.setState({showPopup : false});
     }
     returnDraftModal(){
-        let bodyContent = <div className="">Message saved as a draft</div>;
-        let footerButtons = <button type="button" onClick={this.draftOkClicked} className="c-btn c-btn--default c-modal__button">Ok</button>;
+        let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>Message saved as a draft</div>;
+        let footerButtons = <button type="button" onClick={this.draftOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">Ok</button>;
         return (<ModalComponent show
             onHide={this.draftOkClicked}
-            customClass={"c-modal"}
-            bsSize={'medium'}
+            customClass={"c-modal c-modal--center"}
+            bsSize={'small'}
             modalheading={''}
             modalbody={bodyContent}
             modalfooter={footerButtons}
@@ -85,13 +85,23 @@ class DraftSecureMessage extends React.Component{
             closeButton/>);
     }
     saveDraftData(){
+        this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, "DRAFT"));
         this.setState({showDraftSuccessModal : true});
     }
     draftOkClicked(){
         this.setState({showDraftSuccessModal : false});
     }
+    checkAccountValue() {
+        let accVal = '';
+        if(this.props.location.messageDetail.account.accountNumber === undefined) {
+            accVal = 'No specific account';
+        } else {
+            accVal = this.props.location.messageDetail.account.accountNumber;
+        }
+        return accVal;
+    }
     render() {
-        console.log('messageDetail:',this.props.location.messageDetail);
+        {this.props.location.messageDetail.account.accountNumber === undefined ? 'No specific account' : this.props.location.messageDetail.account.accountNumber}
         return (<div className="container">
         <div className="row">
             <div className="col-md1-18">
@@ -102,7 +112,7 @@ class DraftSecureMessage extends React.Component{
 
         <div className="c-field">
             <label className="c-field__label c-field__label--block" htmlFor="subjects">
-                Subject
+                {this.props.content.subject}
             </label>
             <div className="c-field__controls u-position-relative">
                 <DropDownComponent subjects={this.props.location.messageDetail.subject} name='subjects' id='subjects' selectSubject={this.selectSubject} isFromDraftOrReply = {true} selectedValue = {this.props.location.messageDetail.subject}/>
@@ -111,20 +121,20 @@ class DraftSecureMessage extends React.Component{
 
         <div className="c-field">
             <label className="c-field__label c-field__label--block" htmlFor="subjects">
-                Message relates to
+               {this.props.content.messageRelatesTo}
             </label>
             <div className="c-field__controls u-position-relative">
-                <DropDownComponent accounts={this.props.location.messageDetail.account.accountNumber} selectSubject={this.selectSubject} name='accounts' id='accounts' isFromDraftOrReply = {true} selectedValue = {this.props.location.messageDetail.account.accountNumber}/>
+                <DropDownComponent accounts={this.props.location.messageDetail.account.accountNumber} selectSubject={this.selectSubject} name='accounts' id='accounts' isFromDraftOrReply = {true} selectedValue = {this.checkAccountValue()}/>
             </div>
         </div>
 
 
         <div className="c-field">
             <label className="c-field__label c-field__label--block" htmlFor="subjects">
-                Message
+                {this.props.content.message}
             </label>
             <div className="c-field__controls">
-                <TextAreaComponent textData={this.textChange} draftData = {this.props.location.messageDetail.messageBody} isFromDraftOrReply = {true}/>
+                <TextAreaComponent textData={this.textChange} draftData = {this.props.location.messageDetail.message} isFromDraftOrReply = {true}/>
             </div>
             {this.renderRemainingChar()}
         </div>
@@ -133,10 +143,10 @@ class DraftSecureMessage extends React.Component{
         {this.state.showDraftSuccessModal && this.returnDraftModal()}
         <div className="c-btn--group">
             <Link to='/securemessages' className="c-btn c-btn--secondary">
-                Back
+                {this.props.content.back}
             </Link>
-            <button name='Save Draft' className="c-btn c-btn--secondary" onClick = {this.saveDraftData}>Save Draft</button>
-            <button name='Send' className="c-btn c-btn--default" onClick={this.sendData}>Send</button>
+            <button name='Save Draft' className="c-btn c-btn--secondary" onClick = {this.saveDraftData}>{this.props.content.saveDraft}</button>
+            <button name='Send' className="c-btn c-btn--default" onClick={this.sendData}>{this.props.content.send}</button>
         </div>
     </div>);
     }

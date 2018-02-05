@@ -13,6 +13,7 @@ let messageEntity = new SendMessageRequestEntity();
 import { getThreadsBL } from '../bl/SecureMessageBL';
 import Threads from './common/ThreadList';
 import ModalComponent from './common/ModalComponent';
+import GetIcon from './common/GetIcon';
 class ReplySecureMessage extends React.Component {
     constructor(props) {
         super(props);
@@ -54,7 +55,7 @@ class ReplySecureMessage extends React.Component {
             (this.state.chars_left === 3) && this.props.dispatch(sendMessageForAccessibiltiy('Three characters left'));
             (this.state.chars_left === 1) && this.props.dispatch(sendMessageForAccessibiltiy('One character left'));
             (this.state.chars_left === 0) && this.props.dispatch(sendMessageForAccessibiltiy('Maximum characters limit reached'));
-            return <p>Characters Left: {this.state.chars_left}</p>;
+            return <p>{this.props.content.charLeft} {this.state.chars_left}</p>;
         }
     }
     sendData() {
@@ -66,12 +67,11 @@ class ReplySecureMessage extends React.Component {
         return <Threads Threads={threads} currentMessage={currentMessage} isFromReplyMessage={true} />
     }
     returnModalComponent() {
-        let bodyContent = <div className="">Message sent</div>;
-        let footerButtons = <button type="button" onClick={this.sentOkClicked} className="c-btn c-btn--default c-modal__button">Ok</button>;
+        let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>Message sent</div>;
+        let footerButtons = <button type="button" onClick={this.sentOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">Ok</button>;
         return (<ModalComponent show
             onHide={this.sentOkClicked}
-            customClass={"c-modal"}
-            bsSize={'medium'}
+            customClass={"c-modal c-modal--center"}
             modalheading={''}
             modalbody={bodyContent}
             modalfooter={footerButtons}
@@ -82,12 +82,11 @@ class ReplySecureMessage extends React.Component {
         this.setState({showPopup : false});
     }
     returnDraftModal(){
-        let bodyContent = <div className="">Message saved as a draft</div>;
-        let footerButtons = <button type="button" onClick={this.draftOkClicked} className="c-btn c-btn--default c-modal__button">Ok</button>;
+        let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>Message saved as a draft</div>;
+        let footerButtons = <button type="button" onClick={this.draftOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">Ok</button>;
         return (<ModalComponent show
             onHide={this.draftOkClicked}
-            customClass={"c-modal"}
-            bsSize={'medium'}
+            customClass={"c-modal c-modal--center"}
             modalheading={''}
             modalbody={bodyContent}
             modalfooter={footerButtons}
@@ -113,7 +112,7 @@ class ReplySecureMessage extends React.Component {
 
                 <div className="c-field">
                     <label id="subjectTitle" className="c-field__label c-field__label--block" htmlFor="subjects">
-                        Subject
+                    {this.props.content.subject}
                     </label>
                     <div className="c-field__controls u-position-relative">
                         <DropDownComponent accessID="Subject" subjects={this.props.location.messageDetail.subject} name='subjects' id='subjects' selectSubject={this.selectSubject} isFromDraftOrReply={true} selectedValue={this.props.location.messageDetail.subject} isFromReply={true} />
@@ -122,7 +121,7 @@ class ReplySecureMessage extends React.Component {
 
                 <div className="c-field">
                     <label id="relatesTitle" className="c-field__label c-field__label--block" htmlFor="subjects">
-                        Message relates to
+                    {this.props.content.messageRelatesTo}
                     </label>
                     <div className="c-field__controls u-position-relative">
                         <DropDownComponent accessID="Message relates to" accounts={this.props.location.messageDetail.account.accountNumber} selectSubject={this.selectSubject} name='accounts' id='accounts' isFromDraftOrReply={true} selectedValue={this.props.location.messageDetail.account.accountNumber} isFromReply={true} />
@@ -132,10 +131,10 @@ class ReplySecureMessage extends React.Component {
 
                 <div className="c-field">
                     <label id="messageTitle" className="c-field__label c-field__label--block" htmlFor="subjects">
-                        Message
+                    {this.props.content.message}
                     </label>
                     <div className="c-field__controls">
-                    <div className="u-visually-hidden off-screen" id="textAreaMaxMsg">Maximum character limit is three thousand</div>
+                    <div className="u-visually-hidden off-screen" id="textAreaMaxMsg">{this.props.content.maxCharLimit}</div>
                         <TextAreaComponent textData={this.textChange} ariaId="textAreaMaxMsg" id="message" accessID="messageTitle"/>
                     </div>
                     {this.renderRemainingChar()}
@@ -144,8 +143,8 @@ class ReplySecureMessage extends React.Component {
                     <Link to='/securemessages' className="c-btn c-btn--secondary">
                         Back
                     </Link>
-                    <button name='Save Draft' className="c-btn c-btn--secondary" onClick={this.saveDraftData}>Save Draft</button>
-                    <button name='Send' className="c-btn c-btn--default" onClick={this.sendData}>Send</button>
+                    <button name='Save Draft' className="c-btn c-btn--secondary" onClick={this.saveDraftData}>{this.props.content.saveDraft}</button>
+                    <button name='Send' className="c-btn c-btn--default" onClick={this.sendData}>{this.props.content.send}</button>
                 </div>
                  { this.state.showPopup ? this.returnModalComponent() : ''} 
                  {this.state.showDraftSuccessModal && this.returnDraftModal()}

@@ -6,7 +6,6 @@ import MessageSubjectEntity from '../entities/MessageSubjectEntity';
  * @param {array of Messages} parses the service response 
  */
 export function parseSubjects(response) {
-    console.log(response);
     const subjects = [];
     const messageSubjectEntity = new MessageSubjectEntity();
     _.forEach(response.subjects, subject => {
@@ -17,7 +16,6 @@ export function parseSubjects(response) {
 
 }
 export function parseAccounts(response) {
-    console.log('Accounts',response);
     const accounts = [];
     _.forEach(response.accounts,account => {
         accounts.push(account.product.name);
