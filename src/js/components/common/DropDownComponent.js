@@ -36,6 +36,9 @@ class DropDownComponent extends React.Component {
             _.map(this.props.accounts.accounts, (account) => {
                 items.push(<li className="c-dropdown__value" key={account} value={account} onClick={this.setDropDrownValue}>{account}</li>
                 );
+                /* To display account name along with account number use the below pattern
+                    <li className="c-dropdown__value" key={account} value={account} onClick={this.setDropDrownValue}><span className="c-dropdown__value__account">{account}</span><span className="c-dropdown__value__number">1234</span></li>
+                */
             })
             return items;
 
@@ -50,6 +53,9 @@ class DropDownComponent extends React.Component {
             _.map(this.props.messageaccounts.accounts, (account) => {
                 items.push(<li className="c-dropdown__value" key={account} value={account} onClick={this.setDropDrownValue}>{account}</li>
                 );
+                /* To display account name along with account number use the below pattern
+                    <li className="c-dropdown__value" key={account} value={account} onClick={this.setDropDrownValue}><span className="c-dropdown__value__account">{account}</span><span className="c-dropdown__value__number">1234</span></li>
+                */
             })
             return items;
         

@@ -98,11 +98,12 @@ class SecureMessageSummary extends React.Component {
         this.setState({ showDeleteSuccessModal: false });
     }
     returnDeleteSuccessModalComponent() {
-        let bodyContent = <div>Message Deleted</div>;
-        let footerButtons = <div><button type="button" onClick={this.closeSuccessModal} className="c-btn c-btn--primary c-modal__button">OK</button></div>;
+        let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>Message Deleted</div>;
+        let footerButtons = <div><button type="button" onClick={this.closeSuccessModal} className="c-btn c-btn--primary c-btn--sm c-modal__button">OK</button></div>;
         return (<ModalComponent show
             onHide={this.closeSuccessModal}
             customClass={"c-modal c-modal--center"}
+            bsSize={'small'}
             modalheading={''}
             modalbody={bodyContent}
             modalfooter={footerButtons}
