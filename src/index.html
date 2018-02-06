@@ -4,32 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <title>React-Redux-App</title>
-    <script>
-        var path = document.URL.substr(0,document.URL.lastIndexOf('securemessages'));
-        var head = document.getElementsByTagName('head')[0];
-        if (window.location.pathname.indexOf('/CB') > 0){
-          var element = document.createElement('link');
-					element.rel = 'stylesheet';
-					element.href = path + 'compiled/cb.main.css';
-          head.appendChild(element);
-        } else if(window.location.pathname.indexOf('/YB') > 0){
-            var element = document.createElement('link');
-            element.rel = 'stylesheet';
-            element.href = path + 'compiled/yb.main.css';
-            head.appendChild(element);
-          } else if(window.location.pathname.indexOf('/DYB') > 0){
-            var element = document.createElement('link');
-            element.rel = 'stylesheet';
-            element.href = path + 'compiled/dyb.main.css';
-            head.appendChild(element);
-          }
-          var element = document.createElement('script');
-          element.src = path + 'compiled/main.bundle.js';
-          head.appendChild(element);
-    </script>
 </head>
 <body>
     <div id="app"></div>
-
+    <script>
+      var path = document.URL.substr(0,document.URL.lastIndexOf('securemessages'));
+      var head = document.getElementsByTagName('head')[0];
+      if (window.location.pathname.indexOf('/CB') > 0){
+        var element = document.createElement('link');
+        element.rel = 'stylesheet';
+        element.href = path + 'compiled/cb.main.css';
+        head.appendChild(element);
+      } else if(window.location.pathname.indexOf('/YB') > 0){
+          var element = document.createElement('link');
+          element.rel = 'stylesheet';
+          element.href = path + 'compiled/yb.main.css';
+          head.appendChild(element);
+        } else if(window.location.pathname.indexOf('/DYB') > 0){
+          var element = document.createElement('link');
+          element.rel = 'stylesheet';
+          element.href = path + 'compiled/dyb.main.css';
+          head.appendChild(element);
+        }
+        var element = document.createElement('script');
+        element.src = path + 'compiled/main.bundle.js';
+        head.appendChild(element);
+        var element1 = document.createElement('link');
+        element1.type = 'image/x-icon';
+        element1.rel = 'shortcut icon';
+        element1.href = path + 'images/favicon.ico';
+        head.appendChild(element);
+  </script>
 </body>
 </html>
