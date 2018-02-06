@@ -9,22 +9,23 @@
         if (window.location.pathname.indexOf('/CB') > 0){
           var element = document.createElement('link');
 					element.rel = 'stylesheet';
-					element.href = path + '/src/compiled/cb.main.css';
+					element.href = path + 'compiled/cb.main.css';
           
         } else if(window.location.pathname.indexOf('/YB') > 0){
           var element = document.createElement('link');
 					element.rel = 'stylesheet';
-					element.href = path + '/src/compiled/yb.main.css';
+					element.href = path + 'compiled/yb.main.css';
           } else if(window.location.pathname.indexOf('/DYB') > 0){
             var element = document.createElement('link');
             element.rel = 'stylesheet';
-            element.href = path + '/src/compiled/dyb.main.css';
+            element.href = path + 'compiled/dyb.main.css';
           }
+          var element = document.createElement('script');
+          element.src = path + 'compiled/main.bundle.js';
     </script>
 </head>
 <body>
     <div id="app"></div>
-    <script src="/src/compiled/main.bundle.js"></script>
 
 </body>
 </html>
