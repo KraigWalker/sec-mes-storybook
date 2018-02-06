@@ -50,10 +50,10 @@
     "webpack-dev-server": "^2.9.1"
   },
   "scripts": {
-  "nocss": "cross-env brand= webpack --config ./prod.config.js",
-  "cb": "cross-env brand=cb webpack --config ./prod.config.js",
-  "yb": "cross-env brand=yb webpack --config ./prod.config.js",
-  "dyb": "cross-env brand=dyb webpack --config ./prod.config.js",
+  "nocss": "cross-env brand= webpack --config ./dev.config.js",
+  "cb": "cross-env brand=cb webpack --config ./dev.config.js",
+  "yb": "cross-env brand=yb webpack --config ./dev.config.js",
+  "dyb": "cross-env brand=dyb webpack --config ./dev.config.js",
 	"start": "cross-env npm run dyb && npm run cb && npm run yb && webpack-dev-server --config ./dev.config.js",
 	"dev": "webpack --config ./dev.config.js",
   "pack": "npm run cb && npm run yb && npm run dyb && npm run nocss",
