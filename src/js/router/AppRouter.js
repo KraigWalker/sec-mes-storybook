@@ -7,7 +7,10 @@ import ViewMessage from '../components/ViewMessage';
 import ReplySecuremessage from '../components/ReplySecureMessage';
 import { withSubscription,accessibilityWrapper } from '../components/wrappers/GenericWrapper';
 import DraftSecureMessage from '../components/DraftSecureMessage';
-import AccessibilityMessage from '../components/common/AccessibilityMessage'
+import AccessibilityMessage from '../components/common/AccessibilityMessage';
+import ErrorPage from '../components/common/ErrorPage';
+
+
 
 /** 
  * @class AppRouter Class to initiate and route the application 
@@ -28,6 +31,7 @@ class AppRouter extends React.Component {
                    <Route path = '/newsecuremessage' render = {(props) => (<NewSecureMessage {...this.props} {...props}/>)}/>
                    <Route path = '/replysecuremessage' render = {(props) => (<ReplySecuremessage {...this.props} {...props}/>)}/>
                    <Route path = '/draftsecuremessage' render = {(props) => (<DraftSecureMessage {...this.props} {...props}/>)}/>
+                   <Route path = '/errormessage' render = {(props) => (<ErrorPage {...this.props} {...props}/>)}/>
                    <Redirect from = '/' to = '/securemessages' key='redirect'/>;    
                 </Switch>
                 <AccessibilityMessage/>

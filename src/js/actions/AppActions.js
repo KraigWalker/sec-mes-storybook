@@ -19,6 +19,10 @@ export function fetchSecureMessages() {
     }
     const error = (error) => {
       console.log(error);
+      const payload = {
+        type: AppConstants.REQUEST_SECURE_MESSAGES_FAILURE,
+      }
+      dispatch(payload);
     }
     AppApi.fetchSecureMessages(success, error);
   }
@@ -64,6 +68,7 @@ export function getActiveTab(activeTab) {
       dispatch(payload);
   }
 }
+
 export function sendMessageData(requestData) {
   return function(dispatch) {
     const success = (response) => {
