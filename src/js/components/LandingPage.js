@@ -21,7 +21,7 @@ class LandingPage extends React.PureComponent {
         return SecureMessageBL(messages);
     }
     checkError() {
-        if(this.props.messages.error) {
+        if(this.props.messages.error && this.props.messages.fetched) {
             this.props.history.push("/errormessage");
          } else {
              return (<div>
@@ -37,7 +37,6 @@ class LandingPage extends React.PureComponent {
          }
      }
     render() {
-        console.log('Props:', this.props);
         return(
             <div className="container">
               {this.checkError()}
@@ -54,7 +53,6 @@ const mapState = (state) => {
     return {
         messages: state.messages,
         activeTab: state.messages.activeTab,
-        error: state.error,
     }
 };
 

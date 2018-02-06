@@ -68,7 +68,14 @@ export function getActiveTab(activeTab) {
       dispatch(payload);
   }
 }
-
+export function fetchSecureMessagesAgain() {
+  return function(dispatch) {
+    const payload = {
+      type: AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS,
+    }
+    dispatch(payload);
+  }
+}
 export function sendMessageData(requestData) {
   return function(dispatch) {
     const success = (response) => {
