@@ -8,7 +8,7 @@ console.log("Compiling for - "+brand+" Brand");
 const JSEntry = ["babel-polyfill","./src/js/client.js","./src/scss/main.scss"];
 const SCSSEntry = ["babel-polyfill","./src/scss/main.scss"];
 module.exports = {
-    entry: brand? SCSSEntry : JSEntry,
+    entry: brand? JSEntry : SCSSEntry,
 	devtool: 'inline-source-map',
 	output: {
 		path:__dirname+ '/src/compiled/',
