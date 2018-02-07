@@ -9,7 +9,7 @@ const JSEntry = ["babel-polyfill","./src/js/client.js","./src/scss/main.scss"];
 const SCSSEntry = ["babel-polyfill","./src/scss/main.scss"];
 module.exports = {
     entry: brand? SCSSEntry : JSEntry,
-	devtool: 'source-map',
+	devtool: 'inline-source-map',
 	output: {
 		path:__dirname+ '/src/compiled/',
 		filename: "[name].bundle.js",
@@ -17,7 +17,10 @@ module.exports = {
 	},
 	plugins: [    
 		new webpack.HotModuleReplacementPlugin(),
-		new ExtractTextPlugin(`${brand}.main.css`, { allChunks: true })
+		new ExtractTextPlugin(`${brand}.main.css`, { allChunks: true }),
+		new HtmlWebpackPlugin({
+			template: __dirname + '/src/index.html'
+		}),
 	],
 	module: {
 		rules: [

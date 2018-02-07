@@ -56,7 +56,6 @@
   "dyb": "cross-env brand=dyb webpack --config ./dev.config.js",
 	"start": "cross-env npm run dyb && npm run cb && npm run yb && webpack-dev-server --config ./dev.config.js",
 	"dev": "webpack --config ./dev.config.js",
-  "pack": "npm run cb && npm run yb && npm run dyb && npm run nocss",
   "test": "echo \"Error: no test specified\" && exit 1",
   "postinstall": "npm run build",
   "prepack": "rm -f .tgz || exit 0",
