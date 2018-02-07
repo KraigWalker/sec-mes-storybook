@@ -11,7 +11,7 @@ module.exports = {
 	entry: brand? JSEntry : SCSSEntry,
 	devtool: 'inline-source-map',
 	output: {
-		path:__dirname+ '/src/',
+		path:__dirname+ '/src/compiled',
 		filename: "[name].bundle.js",
 		publicPath: '/'
 	},
