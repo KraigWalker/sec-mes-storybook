@@ -13,21 +13,21 @@
       if (window.location.pathname.indexOf('/CB') > 0){
         var element = document.createElement('link');
         element.rel = 'stylesheet';
-        element.href = path + 'compiled/cb.main.css';
+        element.href = path + 'cb.main.css';
         head.appendChild(element);
       } else if(window.location.pathname.indexOf('/YB') > 0){
           var element = document.createElement('link');
           element.rel = 'stylesheet';
-          element.href = path + 'compiled/yb.main.css';
+          element.href = path + 'yb.main.css';
           head.appendChild(element);
         } else if(window.location.pathname.indexOf('/DYB') > 0){
           var element = document.createElement('link');
           element.rel = 'stylesheet';
-          element.href = path + 'compiled/dyb.main.css';
+          element.href = path + 'dyb.main.css';
           head.appendChild(element);
         }
         var element = document.createElement('script');
-        element.src = path + 'compiled/main.bundle.js';
+        element.src = path + 'main.bundle.js';
         head.appendChild(element);
         var element1 = document.createElement('link');
         element1.type = 'image/x-icon';
