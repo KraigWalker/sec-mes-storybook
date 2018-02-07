@@ -12,7 +12,7 @@ module.exports = {
 	debug: true,
 	devtool: 'inline-source-map',
 	output: {
-		path:__dirname+ '/src/compiled/',
+		path:__dirname+ '/src/',
 		filename: "[name].bundle.js",
 		publicPath: '/'
 	},
