@@ -12,7 +12,7 @@ module.exports = {
 	entry: JSEntry,
 	devtool: 'inline-source-map',
 	output: {
-		path:__dirname+ '/compiled',
+		path:__dirname+ '/src/compiled',
 		filename: "[name].bundle.js",
 		publicPath: '/'
 	},
@@ -78,7 +78,7 @@ module.exports = {
 	},
 	
 	devServer: {
-		contentBase: __dirname +"/compiled/",
+		contentBase: __dirname +"/src/compiled/",
 		open: true, // Open browser after compilation
 		historyApiFallback: true, // Allow changes from history
 		host: 'localhost',
