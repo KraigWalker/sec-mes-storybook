@@ -61,7 +61,8 @@
     "postinstall": "npm run build",
     "clean": "rm -f compiled || exit 0",
     "prepack": "rm -f .tgz || exit 0",
-    "build": "cross-env npm run dyb && npm run cb && npm run yb",
+    "build": "cross-env npm run dyb && npm run cb && npm run yb && npm run release",
+    "release" : "tar -C src/ -czf secure-messaging-1.0.0.tgz compiled",
     "test:watch": "npm test -- --watch"
   },
   "author": "",
