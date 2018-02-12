@@ -3,4 +3,5 @@ npm-debug.log
 package-lock.json
 /src/.DS_Store
 .DS_Store
+/src/compiled/
 

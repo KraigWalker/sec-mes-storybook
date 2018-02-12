@@ -140,7 +140,7 @@ class ReplySecureMessage extends React.Component {
                     {this.renderRemainingChar()}
                 </div>
                 <div className="c-btn--group">
-                    <Link to='/securemessages' className="c-btn c-btn--secondary">
+                    <Link to={`${window.baseURl}/securemessages`} className="c-btn c-btn--secondary">
                         Back
                     </Link>
                     <button name='Save Draft' className="c-btn c-btn--secondary" onClick={this.saveDraftData}>{this.props.content.saveDraft}</button>
