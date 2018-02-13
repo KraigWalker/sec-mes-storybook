@@ -105,7 +105,7 @@ class DraftSecureMessage extends React.Component{
         return (<div className="container">
         <div className="row">
             <div className="col-md1-18">
-                <StepHeader showheaderCrumbs={true} onClick={() => { }} headerCrumbsMessage="Back" headerTitle="Draft message" headerCrumbsPath={{ pathname: '/securemessage' }} />
+                <StepHeader showheaderCrumbs={true} onClick={() => { }} headerCrumbsMessage="Back" headerTitle="Draft message" headerCrumbsPath={{ pathname: `${window.baseURl}/securemessages` }} />
             </div>
         </div>
         {/*<Link to='/securemessages'> Back To Homepage</Link><br />*/}
@@ -142,7 +142,7 @@ class DraftSecureMessage extends React.Component{
         {this.state.showPopup ? this.returnModalComponent() : ''}
         {this.state.showDraftSuccessModal && this.returnDraftModal()}
         <div className="c-btn--group">
-            <Link to='/securemessages' className="c-btn c-btn--secondary">
+            <Link to = {`${window.baseURl}/securemessages`} className="c-btn c-btn--secondary">
                 {this.props.content.back}
             </Link>
             <button name='Save Draft' className="c-btn c-btn--secondary" onClick = {this.saveDraftData}>{this.props.content.saveDraft}</button>

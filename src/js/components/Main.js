@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 class Main extends React.Component {
     render() {
@@ -8,4 +9,4 @@ class Main extends React.Component {
     }
 }
 
-export default Main;
+export default withRouter(Main);
