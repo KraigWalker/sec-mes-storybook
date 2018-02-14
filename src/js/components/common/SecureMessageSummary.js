@@ -124,6 +124,7 @@ class SecureMessageSummary extends React.Component {
     }
     render() {
         const { message } = this.props;
+        console.log(message.status);
         let messageClass = cx({
             'c-message': true,
             'c-message--stacked': this.props.listFlag,
@@ -133,7 +134,7 @@ class SecureMessageSummary extends React.Component {
         });
         let summaryClass = cx({
             'c-message__summary': true,
-            'c-message__summary--no-icon': message.status === 'DRAFT' || message.status === 'SENT',
+            'c-message__summary--no-icon': message.status === 'DRAFT' || message.status === 'SENT' || message.status === 'PENDING',
         });
         let titleClass = cx({
             'c-message__summary__head__title': true,
