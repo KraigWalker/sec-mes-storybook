@@ -1,6 +1,7 @@
 import React from 'react';
 import content from '../../content';
 import config from '../../config';
+import token from '../../token';
 import { connect } from 'react-redux';
 import { fetchSecureMessages } from '../../actions/AppActions';
 
@@ -16,6 +17,7 @@ export function withSubscription(WrappedComponent) {
             this.state = {
                 content: content,
                 config: config,
+                token: token.acccessToken(),
             }
         }
         componentWillMount() {
@@ -27,7 +29,7 @@ export function withSubscription(WrappedComponent) {
         
         render() {
             return (
-                <WrappedComponent content = {this.state.content} config = {this.state.config}/>
+                <WrappedComponent content = {this.state.content} config = {this.state.config} token={this.state.token}/>
             );
         }
     });

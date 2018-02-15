@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { getClientContext, getToken } from './ApiHeaders';
+import token from '../token.js';
 const requestHeaders = {
     'x-bpi-client-context' : JSON.stringify(getClientContext()),
     'x-bpi-version' : '1.2.0',
-    'Authorization' : getToken(),
+    'Authorization' : token.acccessToken(),
     'Content-Type' : 'application/json',
 };
 
