@@ -27,28 +27,50 @@ export function parseMessages(response) {
 }
 
 export function parseDraft(data) {
-    const requestData = {
-        secure_message: {
-            subject: data.subject,
-            account: {
-                id: 'ddec9b5e-d6d8-430a-9c3a-19a281318fe6',
-                number: '822000-12341234',
-            },
-            payload: {
-                body: {
-                    data: data.message,
-                }
-            },
-            status: data.status,
+    if (data.accountID === "No specific account" && data.accountNumber === undefined) {
+        const requestData = {
+            secure_message: {
+                subject: data.subject,
+                payload: {
+                    body: {
+                        data: data.message,
+                    }
+                },
+                status: data.status,
+            }
         }
+        return requestData;
+    } else {
+        const requestData = {
+            secure_message: {
+                subject: data.subject,
+                account: {
+                    id: data.accountID,
+                    number: data.accountNumber,
+                },
+                payload: {
+                    body: {
+                        data: data.message,
+                    }
+                },
+                status: data.status,
+            }
+        }
+
+        return requestData;
     }
-    return requestData;
 }
 
 export function updateMessage(data, id, status) {
-    const requestData = {
+    console.log('Update Data:', data);
+    if (data.accountID !== undefined && data.accountNumber !== undefined) {
+        const requestData = {
             secure_message: {
                 subject: data.subject,
+                account: {
+                    id: data.accountID,
+                    number: data.accountNumber,
+                },
                 payload: {
                     headers: [
                         {
@@ -62,6 +84,28 @@ export function updateMessage(data, id, status) {
                 },
                 status: status,
             }
+        }
+
+        return requestData;
+    } else {
+        const requestData = {
+            secure_message: {
+                subject: data.subject,
+
+                payload: {
+                    headers: [
+                        {
+                            name: "In-Reply-To",
+                            value: id,
+                        }
+                    ],
+                    body: {
+                        data: data.message,
+                    }
+                },
+                status: status,
+            }
+        }
+        return requestData;
     }
-    return requestData;
 }

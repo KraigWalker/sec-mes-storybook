@@ -8,7 +8,7 @@ import { updateMessage } from '../parsers/MessageParser';
 const _getMessageURLEndpoint = '/banks/CB/securemessages';
 const _getMessageSubjectsURL = '/banks/CB/securemessages/subjects';
 //const _getAccountsURL = 'http://localhost:8000/js/content/getAccounts.json';
-const _getAccountsURL = '/banks/CB/accounts';
+const _getAccountsURL = '/banks/CB/accounts/default';
 const _sendMessageURL = '/banks/CB/securemessages/{message_id}';
 class AppApi {
   static fetchSecureMessages(success, error) {

@@ -29,6 +29,7 @@ class DraftSecureMessage extends React.Component{
         };
     };
     selectSubject(value,id) {
+        console.log('dropdown:',value);
         if (id === 'accounts') {
             messageEntity.setAccount(value);
         }
@@ -98,7 +99,8 @@ class DraftSecureMessage extends React.Component{
         return accVal;
     }
     render() {
-        {this.props.location.messageDetail.account.accountNumber === undefined ? 'No specific account' : this.props.location.messageDetail.account.accountNumber}
+        console.log('Location:',this.props.location);
+        {this.props.location.messageDetail.account.accountNumber === undefined ? 'No specific account' : this.props.location.messageDetail.account}
         return (<div className="container">
         <div className="row">
             <div className="col-md1-18">

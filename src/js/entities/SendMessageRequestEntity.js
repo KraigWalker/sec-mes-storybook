@@ -3,19 +3,23 @@
  */
 class SendMessageRequestEntity {
     constructor() {
-        this.messageRequestObject = {
-            subject : '',
-            account : '',
-            message : '',
-            status : '',
-        };
-        
+        this.messageRequestObject = {};
     }
     setSubject(subject) {
         this.messageRequestObject.subject = subject;
     }
     setAccount(account) {
-        this.messageRequestObject.account = account;
+        let acc = account;
+        let accNumber = {};
+        let accId = {};
+        accNumber = acc.split('&')[1];
+        accId = acc.split('&')[0];
+        this.messageRequestObject.accountNumber = accNumber;
+        this.messageRequestObject.accountID = accId;
+    }
+    setUpdateAccount(account) {
+        this.messageRequestObject.accountNumber = account.accountNumber;
+        this.messageRequestObject.accountID = account.accountID;
     }
     setMessage(message) {
         this.messageRequestObject.message = message;

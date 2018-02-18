@@ -32,30 +32,30 @@ class DropDownComponent extends React.Component {
         let items = [];
         switch(true) {
         case (!this.props.isFromDraftOrReply && this.props.id === 'accounts') :
-            items.push(<li className="c-dropdown__value" key='No specific account' value='No specific account' onClick={this.setDropDrownValue}>No specific account</li>);
+            items.push(<li className="c-dropdown__value" id="No specific account" key='No specific account' value='No specific account' onClick={this.setDropDrownValue}>No specific account</li>);
             _.map(this.props.accounts.accounts, (account) => {
-                items.push(<li className="c-dropdown__value" key={account} value={account} onClick={this.setDropDrownValue}>{account}</li>
+                items.push(<li className="c-dropdown__value" id= {account.accountId+"&"+account.number} key={account.name} value={account.name} onClick={this.setDropDrownValue}>{account.name}</li>
                 );
             })
             return items;
 
         case (!this.props.isFromDraftOrReply && this.props.id === 'subjects') :
             _.map(this.props.subjects.subjects, (subject) => {
-                items.push(<li className="c-dropdown__value" key={subject.key} value={subject.value} onClick={this.setDropDrownValue}>{subject.value}</li>);
+                items.push(<li className="c-dropdown__value" key={subject.key} id={subject.value} onClick={this.setDropDrownValue}>{subject.value}</li>);
             }, false);
             return items;
         
         case (this.props.isFromDraftOrReply && this.props.id === 'accounts') :
-            items.push(<li className="c-dropdown__value" key='No specific account' value='No specific account' onClick={this.setDropDrownValue}>No specific account</li>);
+            items.push(<li className="c-dropdown__value" id="No specific account" key='No specific account' value='No specific account' onClick={this.setDropDrownValue}>No specific account</li>);
             _.map(this.props.messageaccounts.accounts, (account) => {
-                items.push(<li className="c-dropdown__value" key={account} value={account} onClick={this.setDropDrownValue}>{account}</li>
+                items.push(<li className="c-dropdown__value" id= {account.accountId+"&"+account.number} key={account.name} value={account.name} onClick={this.setDropDrownValue}>{account.name}</li>
                 );
             })
             return items;
         
         case (this.props.isFromDraftOrReply && this.props.id === 'subjects') :
             _.map(this.props.messagesubjects.subjects, (subject) => {
-                items.push(<li className="c-dropdown__value" key={subject.key} value={subject.value} onClick={this.setDropDrownValue}>{subject.value}</li>
+                items.push(<li className="c-dropdown__value" key={subject.key} id={subject.value} onClick={this.setDropDrownValue}>{subject.value}</li>
                 );
             })
             return items;
@@ -76,11 +76,14 @@ class DropDownComponent extends React.Component {
         }
     }
     setDropDrownValue(e) {
-        this.setState({
-            Text: e.target.textContent,
-            list: false,
-        });
-        this.props.selectSubject(e.target.textContent, this.props.id);
+         this.setState({
+             Text: e.target.textContent,
+             list: false,
+         });
+        this.props.selectSubject(e.target.id, this.props.id);
+        console.log(e.target);
+        console.log(e.target.id);
+
     }
     onBlur() {
         this.setState({
@@ -88,6 +91,8 @@ class DropDownComponent extends React.Component {
         });
     }
     render() {
+        console.log('PROPS:',this.props.subjects);
+        console.log(this.props.selectedValue);
         const overlayClassName = cx({
             'c-overlay overlay__custom--zindex': true,
             'overlay__show': this.state.list,

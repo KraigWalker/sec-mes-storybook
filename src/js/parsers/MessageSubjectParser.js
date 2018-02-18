@@ -18,7 +18,7 @@ export function parseSubjects(response) {
 export function parseAccounts(response) {
     const accounts = [];
     _.forEach(response.accounts,account => {
-        accounts.push(account.product.name);
-    })
+         accounts.push({"name":account.product.name,"number":account.number, "accountId": account.id});
+    });
     return accounts;
 }
