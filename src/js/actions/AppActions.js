@@ -47,6 +47,12 @@ export function getMessageSubjects() {
     dispatch(payload);
   }
   const error = (error) => {
+    const payload = {
+      type: AppConstants.REQUEST_SUBJECTS_FAILURE,
+      payload: error,
+      serviceType: 'subject-service'
+    }
+    dispatch(payload);
   }
   AppApi.getSubjects(success, error);
 }
@@ -62,7 +68,13 @@ export function getAccounts() {
       dispatch(payload);
     }
     const error = (error) => {
-      console.log(error);
+      const payload = {
+        type: AppConstants.REQUEST_SECURE_MESSAGES_FAILURE,
+        payload: error,
+        serviceType: 'account-service'
+      }
+      dispatch(payload);
+    //  console.log(error);
     }
     AppApi.getAccounts(success,error);
   }
@@ -85,6 +97,15 @@ export function fetchSecureMessagesAgain() {
     dispatch(payload);
   }
 }
+
+export function backButton() {
+  return function(dispatch) {
+    const payload = {
+      type: AppConstants.ERROR_BACK_BUTTON,
+    }
+    dispatch(payload);
+  }
+}
 export function sendMessageData(requestData) {
   return function(dispatch) {
     const success = (response) => {
@@ -95,7 +116,12 @@ export function sendMessageData(requestData) {
       dispatch(payload);
     }
     const error = (error) => {
-      console.log(error);
+      const payload = {
+        type: AppConstants.REQUEST_SECURE_MESSAGES_FAILURE,
+        payload: error,
+        serviceType: 'post-service'
+      }
+      dispatch(payload);
     }
     AppApi.sendMessageData(requestData,success,error);
   }
@@ -110,9 +136,14 @@ export function updateMessageData(requestData, id, status) {
       dispatch(payload);
     }
     const error = (error) => {
-      console.log(error);
+      const payload = {
+        type: AppConstants.REQUEST_SECURE_MESSAGES_FAILURE,
+        payload: error,
+        serviceType: 'put-service'
+      }
+      dispatch(payload);
     }
-    AppApi.updateMessageData(requestData,id,status,success,success);
+    AppApi.updateMessageData(requestData,id,status,success, error);
   }
 }
 export function setViewMessageDetail(messageDetail) {
@@ -130,6 +161,16 @@ export function sendMessageForAccessibiltiy(message) {
       const payload = {
         payload: message,
         type: AppConstants.SEND_MESSAGE_FOR_ACCESSIBILITY,
+    }
+    dispatch(payload);
+  }
+}
+
+export function setNavRef(ref) {
+  return function(dispatch) {
+    const payload = {
+      payload: ref,
+      type: AppConstants.NAVIGATION_REF
     }
     dispatch(payload);
   }

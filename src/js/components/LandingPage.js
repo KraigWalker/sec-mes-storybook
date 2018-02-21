@@ -52,6 +52,7 @@ class LandingPage extends React.PureComponent {
 const mapState = (state) => { 
     return {
         messages: state.messages,
+        accounts: state.accounts,
         activeTab: state.messages.activeTab,
     }
 };

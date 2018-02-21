@@ -27,7 +27,7 @@ export function parseMessages(response) {
 }
 
 export function parseDraft(data) {
-    if (data.accountID === "No specific account" && data.accountNumber === undefined) {
+    if (data.id === undefined && data.number === undefined && data.name) {
         const requestData = {
             secure_message: {
                 subject: data.subject,
@@ -45,8 +45,8 @@ export function parseDraft(data) {
             secure_message: {
                 subject: data.subject,
                 account: {
-                    id: data.accountID,
-                    number: data.accountNumber,
+                    id: data.id,
+                    number: data.number,
                 },
                 payload: {
                     body: {
@@ -62,14 +62,13 @@ export function parseDraft(data) {
 }
 
 export function updateMessage(data, id, status) {
-    console.log('Update Data:', data);
-    if (data.accountID !== undefined && data.accountNumber !== undefined) {
+    if (data.id !== undefined && data.number !== undefined) {
         const requestData = {
             secure_message: {
                 subject: data.subject,
                 account: {
-                    id: data.accountID,
-                    number: data.accountNumber,
+                    id: data.id,
+                    number: data.number,
                 },
                 payload: {
                     headers: [

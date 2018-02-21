@@ -124,7 +124,6 @@ class SecureMessageSummary extends React.Component {
     }
     render() {
         const { message } = this.props;
-        console.log(message.status);
         let messageClass = cx({
             'c-message': true,
             'c-message--stacked': this.props.listFlag,

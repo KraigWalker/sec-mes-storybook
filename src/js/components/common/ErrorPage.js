@@ -1,10 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchSecureMessagesAgain } from '../../actions/AppActions';
+import { fetchSecureMessagesAgain, backButton } from '../../actions/AppActions';
 class ErrorPage extends React.Component {
 
-
+    constructor(props) {
+        super(props);
+        this.handleBackButton = this.handleBackButton.bind(this);
+    }
+    handleBackButton = () => {
+        this.props.dispatch(backButton());
+        this.props.history.push(this.props.messages.navRef);
+    }
     retry = () => {
         this.props.dispatch(fetchSecureMessagesAgain());
     }
@@ -17,9 +24,8 @@ class ErrorPage extends React.Component {
                     <p>It looks like something has gone wrong in the background. Please try again.</p><br />
                     <p>If you’re still having problems, please get in touch.</p>
                     <div className="c-btn--group">
-
+                    <a className="c-btn c-btn--secondary" onClick={this.handleBackButton}>Back</a>
                         <button name='Retry' className="c-btn c-btn--default" onClick={this.retry}>Retry</button>
-
                     </div>
                 </div>
             </div>

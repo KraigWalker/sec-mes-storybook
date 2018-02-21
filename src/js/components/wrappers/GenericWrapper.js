@@ -3,7 +3,7 @@ import content from '../../content';
 import config from '../../config';
 import token from '../../token';
 import { connect } from 'react-redux';
-import { fetchSecureMessages } from '../../actions/AppActions';
+import { fetchSecureMessages, getAccounts} from '../../actions/AppActions';
 
 export function withSubscription(WrappedComponent) {
     const mapState = (state) => {
@@ -21,6 +21,8 @@ export function withSubscription(WrappedComponent) {
             }
         }
         componentWillMount() {
+            //Accounts Service will remove after proper ttesting
+            this.props.dispatch(getAccounts());
             !this.props.fetched && this.props.dispatch(fetchSecureMessages());
         }
         componentWillReceiveProps(nextProps) {

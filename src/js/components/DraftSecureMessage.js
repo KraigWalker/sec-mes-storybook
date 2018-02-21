@@ -1,5 +1,5 @@
 import React from 'react';
-import { getMessageSubjects, getAccounts, sendMessageData, updateMessageData } from '../actions/AppActions';
+import { getMessageSubjects, getAccounts, sendMessageData, updateMessageData, setNavRef } from '../actions/AppActions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Dropdown, ButtonToolbar, MenuItem } from 'react-bootstrap/lib';
@@ -10,6 +10,8 @@ import StepHeader from './common/StepHeader';
 import SendMessageRequestEntity from '../entities/SendMessageRequestEntity.js';
 import ModalComponent from './common/ModalComponent';
 import RegexUtils from '../utils/RegexUtils.js';
+import {getAccountName} from '../bl/SecureMessageBL';
+
 let messageEntity = new SendMessageRequestEntity();
 class DraftSecureMessage extends React.Component{
     constructor(props) {
@@ -28,13 +30,27 @@ class DraftSecureMessage extends React.Component{
             showPopup: false,
         };
     };
-    selectSubject(value,id) {
-        console.log('dropdown:',value);
+    componentWillMount() {
+        if(this.props.location.messageDetail.account.accountID !== undefined && this.props.location.messageDetail.subject) {
+            this.props.location.messageDetail.account['name'] = getAccountName(this.props.location.messageDetail.account.accountID, this.props.accounts)['name'];
+            messageEntity.setName(getAccountName(this.props.location.messageDetail.account.accountID, this.props.accounts)['name']);
+            messageEntity.setAccount(this.props.location.messageDetail.account);
+            messageEntity.setUpdateSubject(this.props.location.messageDetail.subject);
+        } else {
+            messageEntity.setAccount(this.props.location.messageDetail.account);
+            messageEntity.setUpdateSubject(this.props.location.messageDetail.subject);
+        }
+
+    }
+    componentDidMount() {
+        this.props.dispatch(setNavRef('/draftsecuremessage'));
+    }
+    selectSubject(value, id, data) {
         if (id === 'accounts') {
-            messageEntity.setAccount(value);
+            messageEntity.setAccount(data);
         }
         if (id === 'subjects') {
-            messageEntity.setSubject(value);
+            messageEntity.setSubject(data);
         }
     }
     renderRemainingChar() {
@@ -84,24 +100,29 @@ class DraftSecureMessage extends React.Component{
     }
     saveDraftData(){
         this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, "DRAFT"));
+        if(this.props.messages.successModal) {
         this.setState({showDraftSuccessModal : true});
+        }
     }
     draftOkClicked(){
         this.setState({showDraftSuccessModal : false});
     }
     checkAccountValue() {
-        let accVal = '';
+        let accVal;
         if(this.props.location.messageDetail.account.accountNumber === undefined) {
             accVal = 'No specific account';
         } else {
-            accVal = this.props.location.messageDetail.account.accountNumber;
+            accVal = this.props.location.messageDetail.account.name;
         }
         return accVal;
     }
-    render() {
-        console.log('Location:',this.props.location);
+    checkError() {
+      
+        if (this.props.messages.error) {
+        this.props.history.push("/errormessage");
+    } else {
         {this.props.location.messageDetail.account.accountNumber === undefined ? 'No specific account' : this.props.location.messageDetail.account}
-        return (<div className="container">
+        return (<div>
         <div className="row">
             <div className="col-md1-18">
                 <StepHeader showheaderCrumbs={true} onClick={() => { }} headerCrumbsMessage="Back" headerTitle="Draft message" headerCrumbsPath={{ pathname: '/securemessage' }} />
@@ -123,7 +144,7 @@ class DraftSecureMessage extends React.Component{
                {this.props.content.messageRelatesTo}
             </label>
             <div className="c-field__controls u-position-relative">
-                <DropDownComponent accounts={this.props.location.messageDetail.account.accountNumber} selectSubject={this.selectSubject} name='accounts' id='accounts' isFromDraftOrReply = {true} selectedValue = {this.checkAccountValue()}/>
+                <DropDownComponent accounts={this.props.location.messageDetail.account} selectSubject={this.selectSubject} name='accounts' id='accounts' isFromDraftOrReply = {true} selectedValue = {this.checkAccountValue()}/>
             </div>
         </div>
 
@@ -148,6 +169,13 @@ class DraftSecureMessage extends React.Component{
             <button name='Send' className="c-btn c-btn--default" onClick={this.sendData}>{this.props.content.send}</button>
         </div>
     </div>);
+    }
+}
+    render() {
+        return (
+            <div className="container">
+                {this.checkError()}
+            </div>);
     }
 }
 //export default DraftSecureMessage;

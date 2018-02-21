@@ -1,5 +1,5 @@
 import React from 'react';
-import { getMessageSubjects, getAccounts, sendMessageData, sendDraftMessageData, sendMessageForAccessibiltiy } from '../actions/AppActions';
+import { getMessageSubjects, getAccounts, sendMessageData, sendDraftMessageData, sendMessageForAccessibiltiy, setNavRef } from '../actions/AppActions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Dropdown, ButtonToolbar, MenuItem } from 'react-bootstrap/lib';
@@ -11,6 +11,7 @@ import SendMessageRequestEntity from '../entities/SendMessageRequestEntity.js'
 import ModalComponent from './common/ModalComponent';
 import RegexUtils from '../utils/RegexUtils.js';
 import CalloutComponent from './common/CalloutComponent.js';
+let page;
 let messageEntity = new SendMessageRequestEntity();
 class NewSecureMessage extends React.Component {
     constructor(props) {
@@ -41,29 +42,33 @@ class NewSecureMessage extends React.Component {
         };
     };
     componentWillMount() {
-        if (!this.props.subjects.fetched && !this.props.accounts.fetched) {
-            this.props.dispatch(getMessageSubjects());
-            this.props.dispatch(getAccounts());
-        }
-
+        // will remove after testing
+        // if (!this.props.subjects.fetched && !this.props.accounts.fetched) {
+            
+        // }
+        this.props.dispatch(getMessageSubjects());
+        this.props.dispatch(getAccounts());
     }
-    selectSubject(value, id) {
+    componentDidMount() {
+        this.props.dispatch(setNavRef('/newsecuremessage'));
+    }
+    selectSubject(value, id, data) {
         switch (id) {
             case 'accounts':
-                messageEntity.setAccount(value);
+                messageEntity.setAccount(data);
                 this.setState({
                     selectAccount: true,
                     validationAccountMsg: false,
                 });
                 break;
             case 'subjects':
-                messageEntity.setSubject(value);
+                messageEntity.setSubject(data);
                 this.setState({
                     selectSubject: true,
                     validationSubjectMsg: false,
                 });
                 break;
-            }
+        }
     }
     textChange(e) {
         if (e === '') {
@@ -78,38 +83,38 @@ class NewSecureMessage extends React.Component {
             messageEntity.setMessage(e.replace(new RegExp(extractedString, 'g'), '************' + lastFour));
         } else messageEntity.setMessage(e);
         if (this.state.chars_left >= 0) {
-            this.setState({charError: false});
+            this.setState({ charError: false });
         }
     }
     checkValidation() {
-        if(this.state.selectAccount === true) {
+        if (this.state.selectAccount === true) {
             this.setState({
                 validationAccountMsg: false,
             });
-        }else {
+        } else {
             this.setState({
                 validationAccountMsg: true,
             });
         }
 
-        if(this.state.selectSubject === true) {
+        if (this.state.selectSubject === true) {
             this.setState({
                 validationSubjectMsg: false,
             });
-        }else {
+        } else {
             this.setState({
                 validationSubjectMsg: true,
             });
         }
 
-        if(this.state.selectSubject === true && this.state.selectAccount === true) {
+        if (this.state.selectSubject === true && this.state.selectAccount === true) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }
     sendData() {
-        this.setState ({charError: true});
+        this.setState({ charError: true });
         this.renderRemainingChar();
         if (this.checkValidation() && this.state.chars_left >= 0) {
             messageEntity.setStatus('SENT');
@@ -120,11 +125,11 @@ class NewSecureMessage extends React.Component {
     renderRemainingChar() {
         if (this.state.chars_left < 0 && this.state.charError === true) {
             return (
-            <div>
-            <p className="char__error">Characters Left: {this.state.chars_left}</p>
-            <CalloutComponent dClass = 'callout callout__error callout__inline-error' paraText = 'Oops. The maximum message size has been exceeded. Please reduce the length of your message.'/>
-    
-        </div>);
+                <div>
+                    <p className="char__error">Characters Left: {this.state.chars_left}</p>
+                    <CalloutComponent dClass='callout callout__error callout__inline-error' paraText='Oops. The maximum message size has been exceeded. Please reduce the length of your message.' />
+
+                </div>);
         }
         if (this.state.chars_left <= 300) {
             (this.state.chars_left === 3) && this.props.dispatch(sendMessageForAccessibiltiy('Three characters left'));
@@ -171,8 +176,10 @@ class NewSecureMessage extends React.Component {
     saveDraftData() {
         messageEntity.setStatus('DRAFT');
         this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData()));
-        this.setState({ showDraftSuccessModal: true });
+        if(this.props.messages.successModal) {
+            this.setState({ showDraftSuccessModal: true });
         this.setState({ showPopup: false });
+        }
     }
     sentOkClicked() {
         this.setState({ showSentMessageModal: false });
@@ -189,58 +196,66 @@ class NewSecureMessage extends React.Component {
             modalInContainer={false}
             closeButton />);
     }
-    render() {
-
-        return (<div className="container">
-            <div className="row">
-                <div className="col-md1-18">
-                    <StepHeader showheaderCrumbs={true} onClick={() => { }} headerCrumbsMessage="Back" headerTitle="New message" headerCrumbsPath={{ pathname: '/securemessage' }} />
+    checkError() {
+        if (this.props.messages.error && this.props.messages.fetched) {
+            this.props.history.push("/errormessage");
+            page = <div></div>;
+        } else {
+            page = <div className="container">
+                <div className="row">
+                    <div className="col-md1-18">
+                        <StepHeader showheaderCrumbs={true} onClick={() => { }} headerCrumbsMessage="Back" headerTitle="New message" headerCrumbsPath={{ pathname: '/securemessage' }} />
+                    </div>
                 </div>
-            </div>
-            {/*<Link to='/securemessages'> Back To Homepage</Link><br />*/}
+                {/*<Link to='/securemessages'> Back To Homepage</Link><br />*/}
 
-            <div className="c-field">
-                <label id="subjectTitle" className="c-field__label c-field__label--block" htmlFor="subjects">
-                    {this.props.content.subject}
-                </label>
-                <div className="c-field__controls u-position-relative">
-                    <DropDownComponent accessID="Subject" subjects={this.props.subjects} selectSubject={this.selectSubject} showSubjectError={this.state.validationSubjectMsg} name='subjects' id='subjects' isFromDraft={false} selectedValue='Please select' />
+                <div className="c-field">
+                    <label id="subjectTitle" className="c-field__label c-field__label--block" htmlFor="subjects">
+                        {this.props.content.subject}
+                    </label>
+                    <div className="c-field__controls u-position-relative">
+                        <DropDownComponent accessID="Subject" subjects={this.props.subjects} selectSubject={this.selectSubject} showSubjectError={this.state.validationSubjectMsg} name='subjects' id='subjects' isFromDraft={false} selectedValue='Please select' />
+                    </div>
                 </div>
-            </div>
 
-            <div className="c-field">
-                <label id="relatesTitle" className="c-field__label c-field__label--block" htmlFor="accounts">
-                {this.props.content.messageRelatesTo}
-                </label>
-                <div className="c-field__controls u-position-relative">
-                    <DropDownComponent accessID="Message relates to" accounts={this.props.accounts} selectSubject={this.selectSubject} showAccountError={this.state.validationAccountMsg} name='accounts' id='accounts' isFromDraft={false} selectedValue='Please select' />
+                <div className="c-field">
+                    <label id="relatesTitle" className="c-field__label c-field__label--block" htmlFor="accounts">
+                        {this.props.content.messageRelatesTo}
+                    </label>
+                    <div className="c-field__controls u-position-relative">
+                        <DropDownComponent accessID="Message relates to" accounts={this.props.accounts} selectSubject={this.selectSubject} showAccountError={this.state.validationAccountMsg} name='accounts' id='accounts' isFromDraft={false} selectedValue='Please select' />
+                    </div>
                 </div>
-            </div>
 
 
-            <div className="c-field">
-                <label id="messageTitle" className="c-field__label c-field__label--block" htmlFor="message">
-                    {this.props.content.message}
-                </label>
-                <div className="c-field__controls">
-                    <div className="u-visually-hidden off-screen" id="textAreaMaxMsg">{this.props.content.maxCharLimit}</div>
-                    <TextAreaComponent textData={this.textChange} ariaId="textAreaMaxMsg" accessID="messageTitle" id="message" />
+                <div className="c-field">
+                    <label id="messageTitle" className="c-field__label c-field__label--block" htmlFor="message">
+                        {this.props.content.message}
+                    </label>
+                    <div className="c-field__controls">
+                        <div className="u-visually-hidden off-screen" id="textAreaMaxMsg">{this.props.content.maxCharLimit}</div>
+                        <TextAreaComponent textData={this.textChange} ariaId="textAreaMaxMsg" accessID="messageTitle" id="message" />
+                    </div>
+                    {this.renderRemainingChar()}
                 </div>
-                {this.renderRemainingChar()}
-            </div>
 
-            {this.state.showPopup && this.returnModalComponent()}
-            {this.state.showDraftSuccessModal && this.returnDraftModal()}
-            {this.state.showSentMessageModal && this.returnSentMessageModal()}
-            <div className="c-btn--group">
-                <Link to='/securemessages' className="c-btn c-btn--secondary">
-                    Back
+                {this.state.showPopup && this.returnModalComponent()}
+                {this.state.showDraftSuccessModal && this.returnDraftModal()}
+                {this.state.showSentMessageModal && this.returnSentMessageModal()}
+                <div className="c-btn--group">
+                    <Link to='/securemessages' className="c-btn c-btn--secondary">
+                        Back
                 </Link>
-                <button name='Save Draft' className="c-btn c-btn--secondary" onClick={this.saveDraftData} disabled = {this.state.disabled}>{this.props.content.saveDraft}</button>
-                <button name='Send' className="c-btn c-btn--default" onClick={this.sendData} disabled = {this.state.disabled}>{this.props.content.send}</button>
-                <button name='LeavePage' className="c-btn c-btn--default" onClick={this.leavePage}>LeavePage</button>
+                    <button name='Save Draft' className="c-btn c-btn--secondary" onClick={this.saveDraftData} disabled={this.state.disabled}>{this.props.content.saveDraft}</button>
+                    <button name='Send' className="c-btn c-btn--default" onClick={this.sendData} disabled={this.state.disabled}>{this.props.content.send}</button>
+                    <button name='LeavePage' className="c-btn c-btn--default" onClick={this.leavePage}>LeavePage</button>
+                </div>
             </div>
-        </div>);
+        }
+        return page;
+    }
+    render() {
+        return (this.checkError());
     }
 }
 /**

@@ -19,6 +19,9 @@ function reducer(state={
     case AppConstants.REQUEST_SUBJECTS_SUCCESS: {
       return {...state, fetching : false, fetched: true, subjects: action.payload}
     }
+    case AppConstants.REQUEST_SUBJECTS_FAILURE: {
+      return {...state, error : true, fetched: true}
+    }
    default:
     return state;
   }

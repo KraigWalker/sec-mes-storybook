@@ -11,7 +11,9 @@ export default function reducer(state={
     fetching: false,
     fetched: false,
     error: false,
+    successModal: false,
     activeTab: 'inbox',
+    navRef: '',
 }, action) {
 
   switch (action.type) {
@@ -28,9 +30,14 @@ export default function reducer(state={
       return {...state, activeTab: action.payload}
     }
     case AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS: {
-      return {...state, fetched: false }
+      return {...state, fetched: false, successModal: true }
     }
-
+    case AppConstants.ERROR_BACK_BUTTON: {
+      return {...state, error: false, fetched: false}
+    }
+    case AppConstants.NAVIGATION_REF: {
+     return {...state, error:false, fetched: true, navRef: action.payload} 
+    }
    default:
     return state;
   }

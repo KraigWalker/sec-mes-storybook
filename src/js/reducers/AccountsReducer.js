@@ -17,7 +17,7 @@ export default function reducer(state={
       return {...state, fetching: true }
     }
     case AppConstants.REQUEST_ACCOUNTS_SUCCESS: {
-      return {...state, accounts: action.payload,fetched:true}
+      return {...state, accounts: action.payload,fetched:true,fetching: false}
     }
    default:
     return state;

@@ -6,20 +6,16 @@ class SendMessageRequestEntity {
         this.messageRequestObject = {};
     }
     setSubject(subject) {
+        this.messageRequestObject.subject = subject.value;
+    }
+    setAccount(data) {
+        console.log('TESTED:::::::',data);
+        this.messageRequestObject.name = data.name;
+        this.messageRequestObject.number = data.number;
+        this.messageRequestObject.id = data.accountId;
+    }
+    setUpdateSubject(subject) {
         this.messageRequestObject.subject = subject;
-    }
-    setAccount(account) {
-        let acc = account;
-        let accNumber = {};
-        let accId = {};
-        accNumber = acc.split('&')[1];
-        accId = acc.split('&')[0];
-        this.messageRequestObject.accountNumber = accNumber;
-        this.messageRequestObject.accountID = accId;
-    }
-    setUpdateAccount(account) {
-        this.messageRequestObject.accountNumber = account.accountNumber;
-        this.messageRequestObject.accountID = account.accountID;
     }
     setMessage(message) {
         this.messageRequestObject.message = message;
@@ -29,6 +25,15 @@ class SendMessageRequestEntity {
     }
     getMessageRequestData() {
         return this.messageRequestObject;
+    }
+    setName(name) {
+        this.messageRequestObject.name = name;
+    }
+    setAccountNumber(number) {
+        this.messageRequestObject.number  = number;
+    }
+    setAccountId(id) {
+        this.messageRequestObject.id = id;
     }
 
 }

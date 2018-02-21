@@ -20,46 +20,46 @@ class DropDownComponent extends React.Component {
         }
     };
     componentWillMount() {
-       // if (!this.props.messagesubjects.fetched && !this.props.messageaccounts.fetched) {
-           // this.props.dispatch(getMessageSubjects());
-           // this.props.dispatch(getAccounts());
-       // }
-        if(this.props.isFromDraftOrReply) {
-            this.props.selectSubject(this.props.selectedValue, this.props.id);
-        }
+        //Will remove after service call testing of accounts
+        // if (!this.props.messagesubjects.fetched && !this.props.messageaccounts.fetched) {
+        // this.props.dispatch(getMessageSubjects());
+        // this.props.dispatch(getAccounts());
+        // }
+        // if (this.props.isFromDraftOrReply) {
+        //     this.props.selectSubject(this.props.selectedValue, this.props.id);
+        // }
     }
     returnMenuItem() {
+        let setDropDrownValue;
         let items = [];
-        switch(true) {
-        case (!this.props.isFromDraftOrReply && this.props.id === 'accounts') :
-            items.push(<li className="c-dropdown__value" id="No specific account" key='No specific account' value='No specific account' onClick={this.setDropDrownValue}>No specific account</li>);
-            _.map(this.props.accounts.accounts, (account) => {
-                items.push(<li className="c-dropdown__value" id= {account.accountId+"&"+account.number} key={account.name} value={account.name} onClick={this.setDropDrownValue}>{account.name}</li>
-                );
-            })
-            return items;
-
-        case (!this.props.isFromDraftOrReply && this.props.id === 'subjects') :
-            _.map(this.props.subjects.subjects, (subject) => {
-                items.push(<li className="c-dropdown__value" key={subject.key} id={subject.value} onClick={this.setDropDrownValue}>{subject.value}</li>);
-            }, false);
-            return items;
-        
-        case (this.props.isFromDraftOrReply && this.props.id === 'accounts') :
-            items.push(<li className="c-dropdown__value" id="No specific account" key='No specific account' value='No specific account' onClick={this.setDropDrownValue}>No specific account</li>);
-            _.map(this.props.messageaccounts.accounts, (account) => {
-                items.push(<li className="c-dropdown__value" id= {account.accountId+"&"+account.number} key={account.name} value={account.name} onClick={this.setDropDrownValue}>{account.name}</li>
-                );
-            })
-            return items;
-        
-        case (this.props.isFromDraftOrReply && this.props.id === 'subjects') :
-            _.map(this.props.messagesubjects.subjects, (subject) => {
-                items.push(<li className="c-dropdown__value" key={subject.key} id={subject.value} onClick={this.setDropDrownValue}>{subject.value}</li>
-                );
-            })
-            return items;
+        switch (true) {
+            case (!this.props.isFromDraftOrReply && this.props.id === 'accounts'):
+                items.push(<li className="c-dropdown__value" id="No specific account" key='No specific account' value='No specific account' onClick={e => this.setDropDrownValue(e, 'accounts')}>No specific account</li>);
+                _.map(this.props.accounts.accounts, (account) => {
+                    items.push(<li className="c-dropdown__value" id={account.name} key={account.name} value={account.name} onClick={e => this.setDropDrownValue(e, account)}>{account.name}</li>
+                    );
+                });
+                break;
+            case (!this.props.isFromDraftOrReply && this.props.id === 'subjects'):
+                _.map(this.props.subjects.subjects, (subject) => {
+                    items.push(<li className="c-dropdown__value" key={subject.key} id={subject.value} onClick={e => this.setDropDrownValue(e, subject)}>{subject.value}</li>);
+                }, false);
+                break;
+            case (this.props.isFromDraftOrReply && this.props.id === 'accounts'):
+                items.push(<li className="c-dropdown__value" id="No specific account" key='No specific account' value='No specific account' onClick={e => this.setDropDrownValue(e, 'accounts')}>No specific account</li>);
+                _.map(this.props.messageaccounts.accounts, (account) => {
+                    items.push(<li className="c-dropdown__value" id={account.name} key={account.name} value={account.name} onClick={e => this.setDropDrownValue(e, account)}>{account.name}</li>
+                    );
+                })
+                break;
+            case (this.props.isFromDraftOrReply && this.props.id === 'subjects'):
+                _.map(this.props.messagesubjects.subjects, (subject) => {
+                    items.push(<li className="c-dropdown__value" key={subject.key} id={subject.value} onClick={e => this.setDropDrownValue(e, subject)}>{subject.value}</li>
+                    );
+                })
+                break;
         }
+        return items;
     }
     overlayclick() {
         this.setState({
@@ -75,14 +75,12 @@ class DropDownComponent extends React.Component {
             this.setState({ list: false });
         }
     }
-    setDropDrownValue(e) {
-         this.setState({
-             Text: e.target.textContent,
-             list: false,
-         });
-        this.props.selectSubject(e.target.id, this.props.id);
-        console.log(e.target);
-        console.log(e.target.id);
+    setDropDrownValue(e, typeOfData) {
+        this.setState({
+            Text: e.target.textContent,
+            list: false,
+        });
+        this.props.selectSubject(e.target.textContent, this.props.id, typeOfData);
 
     }
     onBlur() {
@@ -91,8 +89,6 @@ class DropDownComponent extends React.Component {
         });
     }
     render() {
-        console.log('PROPS:',this.props.subjects);
-        console.log(this.props.selectedValue);
         const overlayClassName = cx({
             'c-overlay overlay__custom--zindex': true,
             'overlay__show': this.state.list,
@@ -100,13 +96,13 @@ class DropDownComponent extends React.Component {
         });
         return (
             <div>
-            <div>
-                <button id="ddlText" aria-label={`${this.props.accessID} ${this.state.Text}`} className="c-field__input c-field__input--select c-dropdown u-cursor-pointer" onClick={this.showList}>{this.state.Text}</button>
-                {this.state.list && <div ref="overlay" className={overlayClassName} onClick={this.overlayclick} ></div>}
-                {this.state.list && <ul className="c-dropdown__list u-cursor-pointer" onBlur={this.onBlur}>{this.returnMenuItem()}</ul>}
-            </div>
-            {this.props.showAccountError ? <CalloutComponent dClass = 'callout callout__error callout__inline-error' paraText = 'Please select a subject for your message'/> : ''}
-            {this.props.showSubjectError ? <CalloutComponent dClass = 'callout callout__error callout__inline-error' paraText = 'Pleae select an option for which account your enquiry relates to. If it’s a general enquiry, choose `General enquiry`'/> : ''}
+                <div>
+                    <button id="ddlText" aria-label={`${this.props.accessID} ${this.state.Text}`} className="c-field__input c-field__input--select c-dropdown u-cursor-pointer" onClick={this.showList}>{this.state.Text}</button>
+                    {this.state.list && <div ref="overlay" className={overlayClassName} onClick={this.overlayclick} ></div>}
+                    {this.state.list && <ul className="c-dropdown__list u-cursor-pointer" onBlur={this.onBlur}>{this.returnMenuItem()}</ul>}
+                </div>
+                {this.props.showAccountError ? <CalloutComponent dClass='callout callout__error callout__inline-error' paraText='Please select a subject for your message' /> : ''}
+                {this.props.showSubjectError ? <CalloutComponent dClass='callout callout__error callout__inline-error' paraText='Pleae select an option for which account your enquiry relates to. If it’s a general enquiry, choose `General enquiry`' /> : ''}
             </div>
         );
     }
