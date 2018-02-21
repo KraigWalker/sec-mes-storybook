@@ -13,6 +13,7 @@ let messageEntity = new SendMessageRequestEntity();
 import { getThreadsBL } from '../bl/SecureMessageBL';
 import Threads from './common/ThreadList';
 import ModalComponent from './common/ModalComponent';
+import GetIcon from './common/GetIcon';
 class ReplySecureMessage extends React.Component {
     constructor(props) {
         super(props);
@@ -66,11 +67,11 @@ class ReplySecureMessage extends React.Component {
         return <Threads Threads={threads} currentMessage={currentMessage} isFromReplyMessage={true} />
     }
     returnModalComponent() {
-        let bodyContent = <div className="">{this.props.content.messageSent}</div>;
-        let footerButtons = <button type="button" onClick={this.sentOkClicked} className="c-btn c-btn--default c-modal__button">{this.props.content.ok}</button>;
+        let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>Message sent</div>;
+        let footerButtons = <button type="button" onClick={this.sentOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">Ok</button>;
         return (<ModalComponent show
             onHide={this.sentOkClicked}
-            customClass={"c-modal"}
+            customClass={"c-modal c-modal--center"}
             modalheading={''}
             modalbody={bodyContent}
             modalfooter={footerButtons}
@@ -81,11 +82,11 @@ class ReplySecureMessage extends React.Component {
         this.setState({showPopup : false});
     }
     returnDraftModal(){
-        let bodyContent = <div className="">{this.props.content.draftBody}</div>;
-        let footerButtons = <button type="button" onClick={this.draftOkClicked} className="c-btn c-btn--default c-modal__button">{this.props.content.ok}</button>;
+        let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>Message saved as a draft</div>;
+        let footerButtons = <button type="button" onClick={this.draftOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">Ok</button>;
         return (<ModalComponent show
             onHide={this.draftOkClicked}
-            customClass={"c-modal"}
+            customClass={"c-modal c-modal--center"}
             modalheading={''}
             modalbody={bodyContent}
             modalfooter={footerButtons}
@@ -139,7 +140,7 @@ class ReplySecureMessage extends React.Component {
                     {this.renderRemainingChar()}
                 </div>
                 <div className="c-btn--group">
-                    <Link to='/securemessages' className="c-btn c-btn--secondary">
+                    <Link to={`${window.baseURl}/securemessages`} className="c-btn c-btn--secondary">
                         Back
                     </Link>
                     <button name='Save Draft' className="c-btn c-btn--secondary" onClick={this.saveDraftData}>{this.props.content.saveDraft}</button>
