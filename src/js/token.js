@@ -1,19 +1,56 @@
 const token = {
-    acccessToken() {
+    accessToken() {
         let accessToken = new window.URL(window.location.href);
+        let hashKeyValue = {};
+        let hashValue = {};
         let params;
-        let hasKeyValue = {};
         let bearer = 'Bearer ';
         let bearerToken = 'Bearer 7b676003-7794-4dea-975f-7ce97f4463b2';
         if (accessToken.hash.length > 0 && window.location.hash) {
             params = accessToken.hash.substr(1);
-            hasKeyValue.accessToken = params.split('=')[1];
+            hashKeyValue.accessToken = params.split('&')[0];
+            hashValue.accessToken = hashKeyValue.accessToken.split('=')[1];
+            if (hashValue.accessToken !== undefined) {
+                bearerToken = bearer + hashValue.accessToken;
+            }
+            return bearerToken;
+
         }
-        if (hasKeyValue.accessToken !== undefined) {
-            bearerToken = bearer + hasKeyValue.accessToken;
-        } 
-        return bearerToken
-    }
+    },
+    getBankId() {
+        let accessToken = new window.URL(window.location.href);
+        let hashKeyValue = {};
+        let hashValue = {};
+        let params;
+        let bankID = 'CB';
+        if (accessToken.hash.length > 0 && window.location.hash) {
+            params = accessToken.hash.substr(1);
+            hashKeyValue.bankId = params.split('&')[1];
+            hashValue.bankId = hashKeyValue.bankId.split('=')[1];
+            if(hashValue.bankId !== undefined){
+                bankID = hashValue.bankId;
+            };
+            console.log('BANKID::::::::',bankID);
+            return bankID;
+        }
+    },
+    getClientContext() {
+        let accessToken = new window.URL(window.location.href);
+        let hashKeyValue = {};
+        let hashValue = {};
+        let params;
+        if (accessToken.hash.length > 0 && window.location.hash) {
+            params = accessToken.hash.substr(1);
+            hashKeyValue.clientContext = params.split('&')[2];
+            hashValue.clientContext = hashKeyValue.clientContext.split('=')[1];
+            return {
+                client: {
+                    app_title: hashValue.clientContext
+                }
+            }
+        }
+    },
+
 };
 
 export default token;

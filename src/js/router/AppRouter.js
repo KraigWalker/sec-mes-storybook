@@ -17,6 +17,7 @@ import ErrorPage from '../components/common/ErrorPage';
  */
 
 class AppRouter extends React.Component {
+
     /**
     * Initiates the application in BrowserRouter. Please refer to react-router v4 docs.
     * @return {ReactComponent} Displays the components wrapped around BrowserRouter and Routes the application.
@@ -26,13 +27,13 @@ class AppRouter extends React.Component {
             <BrowserRouter>
                 <Main>
                 <Switch>
-                   <Route path = '/securemessages' render = { (props) => (<LandingPage {...this.props} {...props} />)} />
-                   <Route path = '/viewmessage' render = {(props) => (<ViewMessage {...this.props} {...props}/>)}/>
-                   <Route path = '/newsecuremessage' render = {(props) => (<NewSecureMessage {...this.props} {...props}/>)}/>
-                   <Route path = '/replysecuremessage' render = {(props) => (<ReplySecuremessage {...this.props} {...props}/>)}/>
-                   <Route path = '/draftsecuremessage' render = {(props) => (<DraftSecureMessage {...this.props} {...props}/>)}/>
+                   <Route path = {`${window.baseURl}/securemessages`} render = { (props) => (<LandingPage {...this.props} {...props} />)} />
+                   <Route path = {`${window.baseURl}/viewmessage`} render = {(props) => (<ViewMessage {...this.props} {...props}/>)}/>
+                   <Route path = {`${window.baseURl}/newsecuremessage`} render = {(props) => (<NewSecureMessage {...this.props} {...props}/>)}/>
+                   <Route path = {`${window.baseURl}/replysecuremessage`} render = {(props) => (<ReplySecuremessage {...this.props} {...props}/>)}/>
+                   <Route path = {`${window.baseURl}/draftsecuremessage`} render = {(props) => (<DraftSecureMessage {...this.props} {...props}/>)}/>
                    <Route path = '/errormessage' render = {(props) => (<ErrorPage {...this.props} {...props}/>)}/>
-                   <Redirect from = '/' to = '/securemessages' key='redirect'/>;    
+                   <Redirect from = '/' to = {`${window.baseURl}/securemessages`} key='redirect'/>;    
                 </Switch>
                 <AccessibilityMessage/>
                 </Main>

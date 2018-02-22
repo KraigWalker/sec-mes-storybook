@@ -27,7 +27,7 @@ export function parseMessages(response) {
 }
 
 export function parseDraft(data) {
-    if (data.id === undefined && data.number === undefined && data.name) {
+    if (data.id === undefined && data.number === undefined) {
         const requestData = {
             secure_message: {
                 subject: data.subject,

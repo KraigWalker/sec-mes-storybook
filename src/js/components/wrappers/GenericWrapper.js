@@ -3,7 +3,7 @@ import content from '../../content';
 import config from '../../config';
 import token from '../../token';
 import { connect } from 'react-redux';
-import { fetchSecureMessages, getAccounts} from '../../actions/AppActions';
+import { fetchSecureMessages, getAccounts,} from '../../actions/AppActions';
 
 export function withSubscription(WrappedComponent) {
     const mapState = (state) => {
@@ -17,7 +17,7 @@ export function withSubscription(WrappedComponent) {
             this.state = {
                 content: content,
                 config: config,
-                token: token.acccessToken(),
+                token: token,
             }
         }
         componentWillMount() {
@@ -28,7 +28,6 @@ export function withSubscription(WrappedComponent) {
         componentWillReceiveProps(nextProps) {
             !nextProps.fetched && this.props.dispatch(fetchSecureMessages());
         }
-        
         render() {
             return (
                 <WrappedComponent content = {this.state.content} config = {this.state.config} token={this.state.token}/>

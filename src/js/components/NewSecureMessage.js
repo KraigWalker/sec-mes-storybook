@@ -9,6 +9,7 @@ import TextAreaComponent from './common/TextAreaComponent.js';
 import StepHeader from './common/StepHeader';
 import SendMessageRequestEntity from '../entities/SendMessageRequestEntity.js'
 import ModalComponent from './common/ModalComponent';
+import GetIcon from './common/GetIcon';
 import RegexUtils from '../utils/RegexUtils.js';
 import CalloutComponent from './common/CalloutComponent.js';
 let page;
@@ -146,7 +147,7 @@ class NewSecureMessage extends React.Component {
     }
     returnModalComponent() {
         let bodyContent = <div className="callout callout__error">{this.props.content.leaveMessageBody}</div>;
-        let footerButtons = <div><Link to='/securemessages'><button type="button" onClick={this.leavePage} className="c-btn c-btn--secondary c-modal__button">Leave page</button></Link>&nbsp;
+        let footerButtons = <div><Link to= {`${window.baseURl}/securemessages`}><button type="button" onClick={this.leavePage} className="c-btn c-btn--secondary c-modal__button">Leave page</button></Link>&nbsp;
             <button type="button" className="c-btn c-btn--secondary c-modal__button" onClick={this.saveDraftData} disabled={this.state.disabled}>{this.props.content.saveDraft}</button>
             <button type="button" onClick={this.stayOnPage} className="c-btn c-btn--default c-modal__button">{this.props.content.returnToMessage}</button></div>;
         return (<ModalComponent show
@@ -159,11 +160,12 @@ class NewSecureMessage extends React.Component {
             closeButton />);
     }
     returnDraftModal() {
-        let bodyContent = <div className="">{this.props.content.draftBody}</div>;
-        let footerButtons = <div><Link to='/securemessages' onClick={this.draftOkClicked} className="c-btn c-btn--default c-modal__button">{this.props.content.ok}</Link></div>;
+        let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>Message saved as a draft</div>;
+        let footerButtons = <div><Link to = {`${window.baseURl}/securemessages`} onClick={this.draftOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">Ok</Link></div>;
         return (<ModalComponent show
             onHide={this.draftOkClicked}
-            customClass={"c-modal"}
+            customClass={"c-modal c-modal--center"}
+            bsSize={'small'}
             modalheading={''}
             modalbody={bodyContent}
             modalfooter={footerButtons}
@@ -176,20 +178,23 @@ class NewSecureMessage extends React.Component {
     saveDraftData() {
         messageEntity.setStatus('DRAFT');
         this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData()));
-        if(this.props.messages.successModal) {
+      //  if(this.props.messages.successModal) { wiil be used 
             this.setState({ showDraftSuccessModal: true });
         this.setState({ showPopup: false });
-        }
+     //   }
+     <Link to={`${window.baseURl}/securemessages`} className="c-btn c-btn--secondary">
+ </Link>
     }
     sentOkClicked() {
         this.setState({ showSentMessageModal: false });
     }
     returnSentMessageModal() {
-        let bodyContent = <div className="">{this.props.content.messageSent}</div>;
-        let footerButtons = <div><Link to='/securemessages' onClick={this.sentOkClicked} className="c-btn c-btn--default c-modal__button">{this.props.content.ok}</Link></div>;
+        let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>Message sent</div>;
+        let footerButtons = <div><Link to={`${window.baseURl}/securemessages`} onClick={this.sentOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">Ok</Link></div>;
         return (<ModalComponent show
             onHide={this.sentOkClicked}
-            customClass={"c-modal"}
+            customClass={"c-modal c-modal--center"}
+            bsSize={'small'}
             modalheading={''}
             modalbody={bodyContent}
             modalfooter={footerButtons}
@@ -204,7 +209,7 @@ class NewSecureMessage extends React.Component {
             page = <div className="container">
                 <div className="row">
                     <div className="col-md1-18">
-                        <StepHeader showheaderCrumbs={true} onClick={() => { }} headerCrumbsMessage="Back" headerTitle="New message" headerCrumbsPath={{ pathname: '/securemessage' }} />
+                        <StepHeader showheaderCrumbs={true} onClick={() => { }} headerCrumbsMessage="Back" headerTitle="New message" headerCrumbsPath={{ pathname: `${window.baseURl}/securemessage` }} />
                     </div>
                 </div>
                 {/*<Link to='/securemessages'> Back To Homepage</Link><br />*/}
@@ -239,12 +244,12 @@ class NewSecureMessage extends React.Component {
                     {this.renderRemainingChar()}
                 </div>
 
-                {this.state.showPopup && this.returnModalComponent()}
-                {this.state.showDraftSuccessModal && this.returnDraftModal()}
-                {this.state.showSentMessageModal && this.returnSentMessageModal()}
-                <div className="c-btn--group">
-                    <Link to='/securemessages' className="c-btn c-btn--secondary">
-                        Back
+            {this.state.showPopup && this.returnModalComponent()}
+            {this.state.showDraftSuccessModal && this.returnDraftModal()}
+            {this.state.showSentMessageModal && this.returnSentMessageModal()}
+            <div className="c-btn--group">
+                <Link to={`${window.baseURl}/securemessages`} className="c-btn c-btn--secondary">
+                    Back
                 </Link>
                     <button name='Save Draft' className="c-btn c-btn--secondary" onClick={this.saveDraftData} disabled={this.state.disabled}>{this.props.content.saveDraft}</button>
                     <button name='Send' className="c-btn c-btn--default" onClick={this.sendData} disabled={this.state.disabled}>{this.props.content.send}</button>

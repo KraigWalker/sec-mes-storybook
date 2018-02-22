@@ -131,7 +131,7 @@ export function updateMessageData(requestData, id, status) {
   return function(dispatch) {
     const success = () => {
       const payload = {
-        type: AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS
+        type: AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS,
       }
       dispatch(payload);
     }

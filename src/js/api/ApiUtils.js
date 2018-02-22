@@ -1,25 +1,33 @@
 import axios from 'axios';
-import { getClientContext, getClientContextCB } from './ApiHeaders';
+//import { getClientContext, getClientContextCB } from './ApiHeaders';
 import token from '../token.js';
+const apiParams  = {
+    "accessToken": token.accessToken(),
+    "clientContext": token.getClientContext(),
+    "bankId" :  token.getBankId()
+  };
+
 const requestHeaders = {
-    'x-bpi-client-context': JSON.stringify(getClientContext()),
+    'x-bpi-client-context': JSON.stringify(apiParams.clientContext),
     'x-bpi-version': '1.2.0',
-    'Authorization': token.acccessToken(),
+    'Authorization': apiParams.accessToken,
     'Content-Type': 'application/json',
 };
 
 const accountRequestHeader = {
-    'x-bpi-client-context': JSON.stringify(getClientContextCB()),
+    'x-bpi-client-context': JSON.stringify(apiParams.clientContext),
     'x-bpi-version': '0.8.0',
-    'Authorization': token.acccessToken(),
+    'Authorization': apiParams.accessToken,
     'Content-Type': 'application/json',
 }
 
+
 class ApiUtils {
     static makeRequest(apiData, onSuccess, onFail) {
+        apiData.url = (apiData.url).replace('{bank_id}', apiParams.bankId);
         switch (apiData.method) {
             case 'GET':
-                if (apiData.url !== 'https://my-dev.cybservices.co.uk/bpiInt3/banks/CB/accounts/default') {
+                if (apiData.url !== `https://my-dev.cybservices.co.uk/bpiInt3/banks/${apiParams.bankId}/accounts/default`) {
                     return axios.get(apiData.url, { headers: requestHeaders })
                         .then(response => { onSuccess(response.data); })
                         .catch(error => { onFail(error); });

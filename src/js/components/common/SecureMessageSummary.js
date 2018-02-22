@@ -31,7 +31,7 @@ class SecureMessageSummary extends React.Component {
     }
     hasOnClick = () => {
         const { message } = this.props;
-        let path = message.status === 'DRAFT' ? '/draftsecuremessage' : '/viewmessage';
+        let path = message.status === 'DRAFT' ? `${window.baseURl}/draftsecuremessage` : `${window.baseURl}/viewmessage`;
         let messageTitle =''    ;
         if (message.status === 'NEW') {
             messageTitle = `Unread ` + message.getSubject();
@@ -57,7 +57,7 @@ class SecureMessageSummary extends React.Component {
             replymessage = `Reply Unread ` + message.getSubject();        
         }
         return (!this.props.threadFlag) && 
-            (<Link to={{ pathname: '/replysecuremessage', backPath: this.props.viewMessageFlag ? '/viewmessage' : '/securemessages', messageDetail: message }} className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding">
+            (<Link to={{ pathname: `${window.baseURl}/replysecuremessage`, backPath: this.props.viewMessageFlag ? `${window.baseURl}/viewmessage` : `${window.baseURl}/securemessages`, messageDetail: message }} className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding">
                 <span id="replyMsg" className="c-message__summary__head__actions__reply__txt" aria-label={`${replymessage}`}>Reply</span>
                 <span className="c-message__summary__head__actions__reply__icon">
                     <GetIcon id="icon-reply" width="24px" height="24px" />
@@ -98,11 +98,12 @@ class SecureMessageSummary extends React.Component {
         this.setState({ showDeleteSuccessModal: false });
     }
     returnDeleteSuccessModalComponent() {
-        let bodyContent = <div>Message Deleted</div>;
-        let footerButtons = <div><button type="button" onClick={this.closeSuccessModal} className="c-btn c-btn--primary c-modal__button">OK</button></div>;
+        let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>Message Deleted</div>;
+        let footerButtons = <div><button type="button" onClick={this.closeSuccessModal} className="c-btn c-btn--primary c-btn--sm c-modal__button">OK</button></div>;
         return (<ModalComponent show
             onHide={this.closeSuccessModal}
             customClass={"c-modal c-modal--center"}
+            bsSize={'small'}
             modalheading={''}
             modalbody={bodyContent}
             modalfooter={footerButtons}

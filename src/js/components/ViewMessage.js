@@ -45,7 +45,7 @@ class ViewMessage extends React.Component {
     }
     getReplyButton = (message) => {
         if (getMessageType(message.status) !== "sent") {
-            return (<Link to={{ pathname: '/replysecuremessage', backPath: '/viewmessage', messageDetail: message }} className="c-btn c-btn--primary">
+            return (<Link to={{ pathname: `${window.baseURl}/replysecuremessage`, backPath: `${window.baseURl}/viewmessage`, messageDetail: message }} className="c-btn c-btn--primary">
                 Reply
             </Link>
         )
@@ -70,7 +70,7 @@ class ViewMessage extends React.Component {
         }
     getBackButton() {
         return (
-            <Link to={{ pathname: '/securemessage' }} className="c-btn c-btn--secondary">
+            <Link to={{ pathname: `${window.baseURl}/securemessage` }} className="c-btn c-btn--secondary">
                 Back
             </Link>
         )
@@ -89,11 +89,12 @@ class ViewMessage extends React.Component {
             closeButton/>);
     }
     returnDeleteSuccessModalComponent() {
-        let bodyContent = <div>Message Deleted</div>;
-        let footerButtons = <button type="button" onClick={this.closeSuccessModal} className="c-btn c-btn--primary c-modal__button">OK</button>;
+        let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>Message Deleted</div>;
+        let footerButtons = <button type="button" onClick={this.closeSuccessModal} className="c-btn c-btn--primary c-btn--sm c-modal__button">OK</button>;
         return (<ModalComponent show
             onHide={this.closeSuccessModal}
             customClass={"c-modal c-modal-center"}
+            bsSize={'small'}
             modalheading={''}
             modalbody={bodyContent}
             modalfooter={footerButtons}
@@ -109,7 +110,7 @@ class ViewMessage extends React.Component {
             <div className="container">
                 <div className="row">
                     <div className="col-md1-18">
-                        <StepHeader showheaderCrumbs={true} headerCrumbsPath={{ pathname: '/securemessages' }} headerCrumbsMessage="Back"
+                        <StepHeader showheaderCrumbs={true} headerCrumbsPath={{ pathname: `${window.baseURl}/securemessages` }} headerCrumbsMessage="Back"
                             headerTitle={(getMessageType(messageDetail.status) == 'sent') ? this.props.content.sentPageTitle : this.props.content.inboxPageTitle} />
 
                         <SecureMessageSummary message={messageDetail} viewMessageFlag={true} readFlag={messageDetail.status === "READ"} sentFlag={getMessageType(messageDetail.status) === "sent"} />
