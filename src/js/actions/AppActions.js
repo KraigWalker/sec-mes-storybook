@@ -117,8 +117,9 @@ export function sendMessageData(requestData) {
     }
     const error = (error) => {
       const payload = {
-        type: AppConstants.REQUEST_SECURE_MESSAGES_FAILURE,
+        type: AppConstants.UPDATE_SECURE_MESSAGE_FAILURE,
         payload: error,
+        tempData: requestData,
         serviceType: 'post-service'
       }
       dispatch(payload);
@@ -174,4 +175,12 @@ export function setNavRef(ref) {
     }
     dispatch(payload);
   }
+}
+  export function clearTempData() {
+    return function(dispatch) {
+      const payload = {
+        type: AppConstants.CLEAR_TEMP_DATA
+      }
+      dispatch(payload);
+    }
 }

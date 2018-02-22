@@ -20,7 +20,7 @@ class AppApi {
   }
 
   static getAccounts(success, error) {
-    ApiUtils.makeRequest({ url: config.apiBaseUrl + _getAccountsURL, method: 'GET' }, success, error);
+    // ApiUtils.makeRequest({ url: config.apiBaseUrl + _getAccountsURL, method: 'GET' }, success, error);
   }
 
   static sendMessageData(requestData, success, error) {

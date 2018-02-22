@@ -1,9 +1,9 @@
 import React from 'react';
-import { getMessageSubjects, getAccounts, sendMessageData, sendDraftMessageData, sendMessageForAccessibiltiy, setNavRef } from '../actions/AppActions';
+import { getMessageSubjects, getAccounts, sendMessageData, sendDraftMessageData, sendMessageForAccessibiltiy, setNavRef, clearTempData } from '../actions/AppActions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Dropdown, ButtonToolbar, MenuItem } from 'react-bootstrap/lib';
-import _ from 'lodash';
+import { isEmpty } from 'lodash';
 import DropDownComponent from './common/DropDownComponent.js';
 import TextAreaComponent from './common/TextAreaComponent.js';
 import StepHeader from './common/StepHeader';
@@ -43,12 +43,8 @@ class NewSecureMessage extends React.Component {
         };
     };
     componentWillMount() {
-        // will remove after testing
-        // if (!this.props.subjects.fetched && !this.props.accounts.fetched) {
-            
-        // }
-        this.props.dispatch(getMessageSubjects());
-        this.props.dispatch(getAccounts());
+        const { dispatch, subjects } = this.props;
+        !subjects.fetched && dispatch(getMessageSubjects());
     }
     componentDidMount() {
         this.props.dispatch(setNavRef('/newsecuremessage'));
@@ -200,13 +196,14 @@ class NewSecureMessage extends React.Component {
             closeButton />);
     }
     checkError() {
+        const { tempData, dispatch } = this.props;
         if (this.props.messages.error && this.props.messages.fetched) {
             this.props.history.push("/errormessage");
             page = <div></div>;
         } else {
             page = <div className="container">
                 <div className="row">
-                    <div className="col-md1-18">
+                    <div className="col-md1-18" onClick = { () => { !isEmpty(this.props.tempData) && dispatch(clearTempData());}}>
                         <StepHeader showheaderCrumbs={true} onClick={() => { }} headerCrumbsMessage="Back" headerTitle="New message" headerCrumbsPath={{ pathname: `${window.baseURl}/securemessage` }} />
                     </div>
                 </div>
@@ -217,7 +214,7 @@ class NewSecureMessage extends React.Component {
                         {this.props.content.subject}
                     </label>
                     <div className="c-field__controls u-position-relative">
-                        <DropDownComponent accessID="Subject" subjects={this.props.subjects} selectSubject={this.selectSubject} showSubjectError={this.state.validationSubjectMsg} name='subjects' id='subjects' isFromDraft={false} selectedValue='Please select' />
+                        <DropDownComponent accessID="Subject" subjects={this.props.subjects} selectSubject={this.selectSubject} showSubjectError={this.state.validationSubjectMsg} name='subjects' id='subjects' isFromDraft={false} selectedValue={ isEmpty(tempData) ? 'Please Select' : tempData.subject } />
                     </div>
                 </div>
 
@@ -237,7 +234,7 @@ class NewSecureMessage extends React.Component {
                     </label>
                     <div className="c-field__controls">
                         <div className="u-visually-hidden off-screen" id="textAreaMaxMsg">{this.props.content.maxCharLimit}</div>
-                        <TextAreaComponent textData={this.textChange} ariaId="textAreaMaxMsg" accessID="messageTitle" id="message" />
+                        <TextAreaComponent textData={this.textChange} ariaId="textAreaMaxMsg" accessID="messageTitle" id="message" draftData = { !isEmpty(tempData) && tempData.message} />
                     </div>
                     {this.renderRemainingChar()}
                 </div>
@@ -270,6 +267,7 @@ const mapState = (state) => {
         subjects: state.subjects,
         messages: state.messages,
         accounts: state.accounts,
+        tempData: state.messages.tempData,
     }
 };
 export default connect(mapState)(NewSecureMessage);
