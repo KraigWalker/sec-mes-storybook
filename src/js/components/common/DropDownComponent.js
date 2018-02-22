@@ -31,36 +31,37 @@ class DropDownComponent extends React.Component {
     }
     returnMenuItem() {
         let setDropDrownValue;
-        let items = [];
+        let items = []; 
+        let noSpecificAccount = "No specific account";
         switch (true) {
             case (!this.props.isFromDraftOrReply && this.props.id === 'accounts'):
-                items.push(<li className="c-dropdown__value" id="No specific account" key='No specific account' value='No specific account' onClick={e => this.setDropDrownValue(e, 'accounts')}>No specific account</li>);
+                items.push(<li className="c-dropdown__value" id={noSpecificAccount} key={noSpecificAccount} value={noSpecificAccount} onClick={e => this.setDropDrownValue(e, {}, noSpecificAccount)}>No specific account</li>);
                 _.map(this.props.accounts.accounts, (account) => {
-                    items.push(<li className="c-dropdown__value" id={account.name} key={account.name} value={account.name} onClick={e => this.setDropDrownValue(e, account)}>{account.name}</li>
+                    items.push(<li className="c-dropdown__value" id={account.name} key={account.id} value={account.name} onClick={e => this.setDropDrownValue(e, account, account.name)}><span className="c-dropdown__value__account">{account.name}</span><span className="c-dropdown__value__number">{account.number.slice(-4)}</span></li>
                     );
-                                   /* To display account name along with account number use the below pattern
-                    <li className="c-dropdown__value" key={account} value={account} onClick={this.setDropDrownValue}><span className="c-dropdown__value__account">{account}</span><span className="c-dropdown__value__number">1234</span></li>
-                */
+                    // To display account name along with account number use the below pattern
+                   // <li className="c-dropdown__value" key={account} value={account} onClick={this.setDropDrownValue}><span className="c-dropdown__value__account">{account.name}</span><span className="c-dropdown__value__number">1234</span></li>
+                
                 });
                 break;
             case (!this.props.isFromDraftOrReply && this.props.id === 'subjects'):
                 _.map(this.props.subjects.subjects, (subject) => {
-                    items.push(<li className="c-dropdown__value" key={subject.key} id={subject.value} onClick={e => this.setDropDrownValue(e, subject)}>{subject.value}</li>);
+                    items.push(<li className="c-dropdown__value" key={subject.key} id={subject.value} onClick={e => this.setDropDrownValue(e, subject, subject.value)}>{subject.value}</li>);
                 }, false);
                 break;
             case (this.props.isFromDraftOrReply && this.props.id === 'accounts'):
-                items.push(<li className="c-dropdown__value" id="No specific account" key='No specific account' value='No specific account' onClick={e => this.setDropDrownValue(e, 'accounts')}>No specific account</li>);
+                items.push(<li className="c-dropdown__value" id={noSpecificAccount} key={noSpecificAccount} value={noSpecificAccount} onClick={e => this.setDropDrownValue(e, {}, noSpecificAccount)}>No specific account</li>);
                 _.map(this.props.messageaccounts.accounts, (account) => {
-                    items.push(<li className="c-dropdown__value" id={account.name} key={account.name} value={account.name} onClick={e => this.setDropDrownValue(e, account)}>{account.name}</li>
+                    items.push(<li className="c-dropdown__value" id={account.name} key={account.id} value={account.name} onClick={e => this.setDropDrownValue(e, account, account.name)}><span span className="c-dropdown__value__account">{account.name}</span><span className="c-dropdown__value__number">{account.number.slice(-4)}</span></li>
                     );
-                               /* To display account name along with account number use the below pattern
-                    <li className="c-dropdown__value" key={account} value={account} onClick={this.setDropDrownValue}><span className="c-dropdown__value__account">{account}</span><span className="c-dropdown__value__number">1234</span></li>
-                */
+                 // To display account name along with account number use the below pattern
+                   // <li className="c-dropdown__value" key={account} value={account} onClick={this.setDropDrownValue}><span className="c-dropdown__value__account">{account}</span><span className="c-dropdown__value__number">1234</span></li>
+            
                 })
                 break;
             case (this.props.isFromDraftOrReply && this.props.id === 'subjects'):
                 _.map(this.props.messagesubjects.subjects, (subject) => {
-                    items.push(<li className="c-dropdown__value" key={subject.key} id={subject.value} onClick={e => this.setDropDrownValue(e, subject)}>{subject.value}</li>
+                    items.push(<li className="c-dropdown__value" key={subject.key} id={subject.value} onClick={e => this.setDropDrownValue(e, subject, subject.value)}>{subject.value}</li>
                     );
                 })
                 break;
@@ -81,9 +82,9 @@ class DropDownComponent extends React.Component {
             this.setState({ list: false });
         }
     }
-    setDropDrownValue(e, typeOfData) {
+    setDropDrownValue(e, typeOfData, name) {
         this.setState({
-            Text: e.target.textContent,
+            Text: name,
             list: false,
         });
         this.props.selectSubject(e.target.textContent, this.props.id, typeOfData);

@@ -174,10 +174,12 @@ class NewSecureMessage extends React.Component {
     saveDraftData() {
         messageEntity.setStatus('DRAFT');
         this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData()));
-        if(this.props.messages.successModal) {
+      //  if(this.props.messages.successModal) { wiil be used 
             this.setState({ showDraftSuccessModal: true });
         this.setState({ showPopup: false });
-        }
+     //   }
+     <Link to={`${window.baseURl}/securemessages`} className="c-btn c-btn--secondary">
+ </Link>
     }
     sentOkClicked() {
         this.setState({ showSentMessageModal: false });
