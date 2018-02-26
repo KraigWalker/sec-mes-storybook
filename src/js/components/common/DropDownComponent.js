@@ -22,8 +22,8 @@ class DropDownComponent extends React.Component {
     componentWillMount() {
         //Will remove after service call testing of accounts
         // if (!this.props.messagesubjects.fetched && !this.props.messageaccounts.fetched) {
-        // this.props.dispatch(getMessageSubjects());
-        // this.props.dispatch(getAccounts());
+         this.props.dispatch(getMessageSubjects());
+       //  this.props.dispatch(getAccounts());
         // }
         // if (this.props.isFromDraftOrReply) {
         //     this.props.selectSubject(this.props.selectedValue, this.props.id);

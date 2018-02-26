@@ -9,7 +9,6 @@ class SendMessageRequestEntity {
         this.messageRequestObject.subject = subject.value;
     }
     setAccount(data) {
-        console.log('TESTED:::::::',data);
         this.messageRequestObject.name = data.name;
         this.messageRequestObject.number = data.number;
         this.messageRequestObject.id = data.accountId;
@@ -20,9 +19,7 @@ class SendMessageRequestEntity {
     setMessage(message) {
         this.messageRequestObject.message = message;
     }
-    setStatus(status) {
-        this.messageRequestObject.status = status;
-    }
+
     getMessageRequestData() {
         return this.messageRequestObject;
     }
@@ -34,6 +31,9 @@ class SendMessageRequestEntity {
     }
     setAccountId(id) {
         this.messageRequestObject.id = id;
+    }
+    getAccountNumber() {
+        return this.messageRequestObject.number;
     }
 
 }

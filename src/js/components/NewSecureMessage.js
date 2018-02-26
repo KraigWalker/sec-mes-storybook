@@ -29,6 +29,8 @@ class NewSecureMessage extends React.Component {
         this.returnDraftModal = this.returnDraftModal.bind(this);
         this.returnSentMessageModal = this.returnSentMessageModal.bind(this);
         this.sentOkClicked = this.sentOkClicked.bind(this);
+        this.errorCloseClicked = this.errorCloseClicked.bind(this);
+        this.retryServiceCall = this.retryServiceCall.bind(this);
         this.state = {
             chars_left: 3000,
             showPopup: false,
@@ -40,15 +42,13 @@ class NewSecureMessage extends React.Component {
             selectAccount: false,
             selectSubject: false,
             charError: false,
+            showSaveServiceErrorModal: false,
+            showSendServiceErrorModal: false,
         };
     };
     componentWillMount() {
-        // will remove after testing
-        // if (!this.props.subjects.fetched && !this.props.accounts.fetched) {
-            
-        // }
         this.props.dispatch(getMessageSubjects());
-        this.props.dispatch(getAccounts());
+       // this.props.dispatch(getAccounts());
     }
     componentDidMount() {
         this.props.dispatch(setNavRef('/newsecuremessage'));
@@ -86,6 +86,7 @@ class NewSecureMessage extends React.Component {
         if (this.state.chars_left >= 0) {
             this.setState({ charError: false });
         }
+        console.log(this.props,'hello');
     }
     checkValidation() {
         if (this.state.selectAccount === true) {
@@ -118,9 +119,11 @@ class NewSecureMessage extends React.Component {
         this.setState({ charError: true });
         this.renderRemainingChar();
         if (this.checkValidation() && this.state.chars_left >= 0) {
-            messageEntity.setStatus('SENT');
-            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData()));
-            this.setState({ showSentMessageModal: true });
+            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), 'SENT'));
+            if(this.props.messages.successModal === true) {
+                this.setState({ showSentMessageModal: true });
+            }
+            else this.setState({showSendServiceErrorModal: true});
         }
     }
     renderRemainingChar() {
@@ -146,6 +149,7 @@ class NewSecureMessage extends React.Component {
         this.setState({ showPopup: false });
     }
     returnModalComponent() {
+        if(this.state.showPopup){
         let bodyContent = <div className="callout callout__error">{this.props.content.leaveMessageBody}</div>;
         let footerButtons = <div><Link to= {`${window.baseURl}/securemessages`}><button type="button" onClick={this.leavePage} className="c-btn c-btn--secondary c-modal__button">Leave page</button></Link>&nbsp;
             <button type="button" className="c-btn c-btn--secondary c-modal__button" onClick={this.saveDraftData} disabled={this.state.disabled}>{this.props.content.saveDraft}</button>
@@ -158,6 +162,7 @@ class NewSecureMessage extends React.Component {
             modalfooter={footerButtons}
             modalInContainer={false}
             closeButton />);
+        }
     }
     returnDraftModal() {
         let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>Message saved as a draft</div>;
@@ -176,14 +181,15 @@ class NewSecureMessage extends React.Component {
         this.setState({ showDraftSuccessModal: false });
     }
     saveDraftData() {
-        messageEntity.setStatus('DRAFT');
-        this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData()));
-      //  if(this.props.messages.successModal) { wiil be used 
+        this.setState({showSaveServiceErrorModal: true});
+        this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), 'DRAFT'));
+      if(this.props.messages.successModal) { 
             this.setState({ showDraftSuccessModal: true });
         this.setState({ showPopup: false });
-     //   }
-     <Link to={`${window.baseURl}/securemessages`} className="c-btn c-btn--secondary">
- </Link>
+        <Link to={`${window.baseURl}/securemessages`} className="c-btn c-btn--secondary">
+        </Link>
+        } else this.setState({showSaveServiceErrorModal: true});
+
     }
     sentOkClicked() {
         this.setState({ showSentMessageModal: false });
@@ -201,66 +207,92 @@ class NewSecureMessage extends React.Component {
             modalInContainer={false}
             closeButton />);
     }
-    checkError() {
-        if (this.props.messages.error && this.props.messages.fetched) {
-            this.props.history.push("/errormessage");
-            page = <div></div>;
-        } else {
-            page = <div className="container">
-                <div className="row">
-                    <div className="col-md1-18">
-                        <StepHeader showheaderCrumbs={true} onClick={() => { }} headerCrumbsMessage="Back" headerTitle="New message" headerCrumbsPath={{ pathname: `${window.baseURl}/securemessage` }} />
-                    </div>
-                </div>
-                {/*<Link to='/securemessages'> Back To Homepage</Link><br />*/}
-
-                <div className="c-field">
-                    <label id="subjectTitle" className="c-field__label c-field__label--block" htmlFor="subjects">
-                        {this.props.content.subject}
-                    </label>
-                    <div className="c-field__controls u-position-relative">
-                        <DropDownComponent accessID="Subject" subjects={this.props.subjects} selectSubject={this.selectSubject} showSubjectError={this.state.validationSubjectMsg} name='subjects' id='subjects' isFromDraft={false} selectedValue='Please select' />
-                    </div>
-                </div>
-
-                <div className="c-field">
-                    <label id="relatesTitle" className="c-field__label c-field__label--block" htmlFor="accounts">
-                        {this.props.content.messageRelatesTo}
-                    </label>
-                    <div className="c-field__controls u-position-relative">
-                        <DropDownComponent accessID="Message relates to" accounts={this.props.accounts} selectSubject={this.selectSubject} showAccountError={this.state.validationAccountMsg} name='accounts' id='accounts' isFromDraft={false} selectedValue='Please select' />
-                    </div>
-                </div>
-
-
-                <div className="c-field">
-                    <label id="messageTitle" className="c-field__label c-field__label--block" htmlFor="message">
-                        {this.props.content.message}
-                    </label>
-                    <div className="c-field__controls">
-                        <div className="u-visually-hidden off-screen" id="textAreaMaxMsg">{this.props.content.maxCharLimit}</div>
-                        <TextAreaComponent textData={this.textChange} ariaId="textAreaMaxMsg" accessID="messageTitle" id="message" />
-                    </div>
-                    {this.renderRemainingChar()}
-                </div>
-
-            {this.state.showPopup && this.returnModalComponent()}
-            {this.state.showDraftSuccessModal && this.returnDraftModal()}
-            {this.state.showSentMessageModal && this.returnSentMessageModal()}
-            <div className="c-btn--group">
-                <Link to={`${window.baseURl}/securemessages`} className="c-btn c-btn--secondary">
-                    Back
-                </Link>
-                    <button name='Save Draft' className="c-btn c-btn--secondary" onClick={this.saveDraftData} disabled={this.state.disabled}>{this.props.content.saveDraft}</button>
-                    <button name='Send' className="c-btn c-btn--default" onClick={this.sendData} disabled={this.state.disabled}>{this.props.content.send}</button>
-                    <button name='LeavePage' className="c-btn c-btn--default" onClick={this.leavePage}>LeavePage</button>
-                </div>
-            </div>
+    errorCloseClicked() {
+        this.setState({showSaveServiceErrorModal: false});
+        this.setState({showSendServiceErrorModal: false});
+    }
+    retryServiceCall() {
+        if (this.state.showSaveServiceErrorModal) {
+            console.log('save');
+            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), 'DRAFT'))
         }
-        return page;
+        if (this.state.showSendServiceErrorModal) {
+            console.log('send');
+            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), 'SENT'));
+        }
+
+    }
+    returnErrorModal() {
+             let bodyContent = <div><h3>Sorry, there’s been a technical problem</h3><br />
+            <p>It looks like something has gone wrong in the background. Please try again.</p><br />
+            <p>If you’re still having problems, please get in touch.</p></div>;
+            let footerButtons = <div><button type="button" className="c-btn c-btn--secondary c-modal__button" onClick={this.errorCloseClicked}>Back</button>
+            <button type="button" onClick={this.retryServiceCall} className="c-btn c-btn--default c-modal__button">Retry</button></div>
+            return (
+                <ModalComponent show
+                    onHide={this.errorCloseClicked}
+                    customClass={"c-modal c-modal--center"}
+                    bsSize={'medium'}
+                    modalheading={''}
+                    modalbody={bodyContent}
+                    modalfooter={footerButtons}
+                    modalInContainer={false}
+                    closeButton />
+                );
     }
     render() {
-        return (this.checkError());
+        return (<div className="container">
+        <div className="row">
+            <div className="col-md1-18">
+              <StepHeader showheaderCrumbs={true} onClick={() => { }} headerCrumbsMessage="Back" headerTitle="New message" headerCrumbsPath={{ pathname: `${window.baseURl}/securemessage` }} />
+            </div>
+        </div>
+        {/*<Link to='/securemessages'> Back To Homepage</Link><br />*/}
+
+        <div className="c-field">
+            <label id="subjectTitle" className="c-field__label c-field__label--block" htmlFor="subjects">
+                {this.props.content.subject}
+            </label>
+            <div className="c-field__controls u-position-relative">
+                <DropDownComponent accessID="Subject" subjects={this.props.subjects} selectSubject={this.selectSubject} showSubjectError={this.state.validationSubjectMsg} name='subjects' id='subjects' isFromDraft={false} selectedValue='Please select' />
+            </div>
+        </div>
+
+        <div className="c-field">
+            <label id="relatesTitle" className="c-field__label c-field__label--block" htmlFor="accounts">
+                {this.props.content.messageRelatesTo}
+            </label>
+            <div className="c-field__controls u-position-relative">
+                <DropDownComponent accessID="Message relates to" accounts={this.props.accounts} selectSubject={this.selectSubject} showAccountError={this.state.validationAccountMsg} name='accounts' id='accounts' isFromDraft={false} selectedValue='Please select' />
+            </div>
+        </div>
+
+
+        <div className="c-field">
+            <label id="messageTitle" className="c-field__label c-field__label--block" htmlFor="message">
+                {this.props.content.message}
+            </label>
+            <div className="c-field__controls">
+                <div className="u-visually-hidden off-screen" id="textAreaMaxMsg">{this.props.content.maxCharLimit}</div>
+                <TextAreaComponent textData={this.textChange} ariaId="textAreaMaxMsg" accessID="messageTitle" id="message" />
+            </div>
+            {this.renderRemainingChar()}
+        </div>
+
+    {this.state.showPopup && this.returnModalComponent()}
+    {this.state.showDraftSuccessModal && this.returnDraftModal()}
+    {this.state.showSentMessageModal && this.returnSentMessageModal()}
+    {this.props.messages.error && this.state.showSaveServiceErrorModal && this.returnErrorModal()}
+    {this.props.messages.error && this.state.showSendServiceErrorModal && this.returnErrorModal()}
+    <div className="c-btn--group">
+        <Link to={`${window.baseURl}/securemessages`} className="c-btn c-btn--secondary">
+            Back
+        </Link>
+            <button name='Save Draft' className="c-btn c-btn--secondary" onClick={this.saveDraftData} disabled={this.state.disabled}>{this.props.content.saveDraft}</button>
+            <button name='Send' className="c-btn c-btn--default" onClick={this.sendData} disabled={this.state.disabled}>{this.props.content.send}</button>
+            <button name='LeavePage' className="c-btn c-btn--default" onClick={this.leavePage}>LeavePage</button>
+        </div>
+    </div>);
     }
 }
 /**

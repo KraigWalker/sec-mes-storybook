@@ -30,7 +30,6 @@ const token = {
             if(hashValue.bankId !== undefined){
                 bankID = hashValue.bankId;
             };
-            console.log('BANKID::::::::',bankID);
             return bankID;
         }
     },

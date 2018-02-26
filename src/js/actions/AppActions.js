@@ -10,7 +10,6 @@ export function fetchSecureMessages() {
     };
     dispatch(payload);
     const success = (response) => {
-      console.log(response);
       if(response) {
       const parseData = parseMessages(response);
       const payload = {
@@ -106,7 +105,7 @@ export function backButton() {
     dispatch(payload);
   }
 }
-export function sendMessageData(requestData) {
+export function sendMessageData(requestData, status) {
   return function(dispatch) {
     const success = (response) => {
       const payload = {
@@ -123,7 +122,7 @@ export function sendMessageData(requestData) {
       }
       dispatch(payload);
     }
-    AppApi.sendMessageData(requestData,success,error);
+    AppApi.sendMessageData(requestData,status,success,error);
   }
 }
 

@@ -26,7 +26,7 @@ export function parseMessages(response) {
 
 }
 
-export function parseDraft(data) {
+export function parseDraft(data, status) {
     if (data.id === undefined && data.number === undefined) {
         const requestData = {
             secure_message: {
@@ -36,7 +36,7 @@ export function parseDraft(data) {
                         data: data.message,
                     }
                 },
-                status: data.status,
+                status: status,
             }
         }
         return requestData;
@@ -53,7 +53,7 @@ export function parseDraft(data) {
                         data: data.message,
                     }
                 },
-                status: data.status,
+                status: status,
             }
         }
 
@@ -62,8 +62,9 @@ export function parseDraft(data) {
 }
 
 export function updateMessage(data, id, status) {
-    if (data.id !== undefined && data.number !== undefined) {
-        const requestData = {
+    let requestData = {};
+    if (data.id !== undefined) {
+         requestData = {
             secure_message: {
                 subject: data.subject,
                 account: {
@@ -85,9 +86,8 @@ export function updateMessage(data, id, status) {
             }
         }
 
-        return requestData;
     } else {
-        const requestData = {
+      requestData = {
             secure_message: {
                 subject: data.subject,
 
@@ -105,6 +105,55 @@ export function updateMessage(data, id, status) {
                 status: status,
             }
         }
-        return requestData;
     }
+    return requestData;
+}
+
+export function deleteMessage(data, id, status) {
+    let requestData = {};
+    if (data.account.accountID !== undefined) {
+        console.log('with account data');
+         requestData = {
+            secure_message: {
+                subject: data.subject,
+                account: {
+                    id: data.account.accountID,
+                    number: data.account.accountNumber,
+                },
+                payload: {
+                    headers: [
+                        {
+                            name: "In-Reply-To",
+                            value: id,
+                        }
+                    ],
+                    body: {
+                        data: data.message,
+                    }
+                },
+                status: status,
+            }
+        }
+
+    } else {
+        console.log('without account data');
+      requestData = {
+            secure_message: {
+                subject: data.subject,
+                payload: {
+                    headers: [
+                        {
+                            name: "In-Reply-To",
+                            value: id,
+                        }
+                    ],
+                    body: {
+                        data: data.message,
+                    }
+                },
+                status: status,
+            }
+        }
+    }
+    return requestData;
 }
