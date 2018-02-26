@@ -26,27 +26,118 @@ export function parseMessages(response) {
 
 }
 
-export function parseDraft(data) {
-    const requestData = {
-        secure_message: {
-            subject: data.subject,
-            account: {
-                id: 'ddec9b5e-d6d8-430a-9c3a-19a281318fe6',
-                number: '822000-12341234',
-            },
-            payload: {
-                body: {
-                    data: data.message,
-                }
-            },
-            status: data.status,
+export function parseDraft(data, status) {
+    if (data.id === undefined && data.number === undefined) {
+        const requestData = {
+            secure_message: {
+                subject: data.subject,
+                payload: {
+                    body: {
+                        data: data.message,
+                    }
+                },
+                status: status,
+            }
+        }
+        return requestData;
+    } else {
+        const requestData = {
+            secure_message: {
+                subject: data.subject,
+                account: {
+                    id: data.id,
+                    number: data.number,
+                },
+                payload: {
+                    body: {
+                        data: data.message,
+                    }
+                },
+                status: status,
+            }
+        }
+
+        return requestData;
+    }
+}
+
+export function updateMessage(data, id, status) {
+    let requestData = {};
+    if (data.id !== undefined) {
+         requestData = {
+            secure_message: {
+                subject: data.subject,
+                account: {
+                    id: data.id,
+                    number: data.number,
+                },
+                payload: {
+                    headers: [
+                        {
+                            name: "In-Reply-To",
+                            value: id,
+                        }
+                    ],
+                    body: {
+                        data: data.message,
+                    }
+                },
+                status: status,
+            }
+        }
+
+    } else {
+      requestData = {
+            secure_message: {
+                subject: data.subject,
+
+                payload: {
+                    headers: [
+                        {
+                            name: "In-Reply-To",
+                            value: id,
+                        }
+                    ],
+                    body: {
+                        data: data.message,
+                    }
+                },
+                status: status,
+            }
         }
     }
     return requestData;
 }
 
-export function updateMessage(data, id, status) {
-    const requestData = {
+export function deleteMessage(data, id, status) {
+    let requestData = {};
+    if (data.account.accountID !== undefined) {
+        console.log('with account data');
+         requestData = {
+            secure_message: {
+                subject: data.subject,
+                account: {
+                    id: data.account.accountID,
+                    number: data.account.accountNumber,
+                },
+                payload: {
+                    headers: [
+                        {
+                            name: "In-Reply-To",
+                            value: id,
+                        }
+                    ],
+                    body: {
+                        data: data.message,
+                    }
+                },
+                status: status,
+            }
+        }
+
+    } else {
+        console.log('without account data');
+      requestData = {
             secure_message: {
                 subject: data.subject,
                 payload: {
@@ -62,6 +153,7 @@ export function updateMessage(data, id, status) {
                 },
                 status: status,
             }
+        }
     }
     return requestData;
 }

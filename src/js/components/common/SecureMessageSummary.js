@@ -32,8 +32,10 @@ class SecureMessageSummary extends React.Component {
     hasOnClick = () => {
         const { message } = this.props;
         let path = message.status === 'DRAFT' ? `${window.baseURl}/draftsecuremessage` : `${window.baseURl}/viewmessage`;
-        let messageTitle =''    ;
+        let messageTitle ='';
         if (message.status === 'NEW') {
+           // console.log('clicked',this.props.message);   Will be used once we get proper ID from service
+         //   this.props.dispatch(updateMessageData(message, message.id, "READ"));
             messageTitle = `Unread ` + message.getSubject();
         } else {            
             messageTitle = message.getSubject();
@@ -134,7 +136,7 @@ class SecureMessageSummary extends React.Component {
         });
         let summaryClass = cx({
             'c-message__summary': true,
-            'c-message__summary--no-icon': message.status === 'DRAFT' || message.status === 'SENT',
+            'c-message__summary--no-icon': message.status === 'DRAFT' || message.status === 'SENT' || message.status === 'PENDING',
         });
         let titleClass = cx({
             'c-message__summary__head__title': true,

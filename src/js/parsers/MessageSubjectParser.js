@@ -1,5 +1,6 @@
 import _ from  'lodash';
 import MessageSubjectEntity from '../entities/MessageSubjectEntity';
+import MessageAccountEntity from '../entities/MessageAccountEntity';
 
 /**
  * 
@@ -16,9 +17,9 @@ export function parseSubjects(response) {
 
 }
 export function parseAccounts(response) {
-    const accounts = [];
+    const messageAccountEntity = new MessageAccountEntity();
     _.forEach(response.accounts,account => {
-        accounts.push(account.product.name);
-    })
-    return accounts;
+        messageAccountEntity.setAccounts(account);
+    });
+    return messageAccountEntity.getAccounts();
 }

@@ -1,8 +1,9 @@
 import React from 'react';
 import content from '../../content';
 import config from '../../config';
+import token from '../../token';
 import { connect } from 'react-redux';
-import { fetchSecureMessages } from '../../actions/AppActions';
+import { fetchSecureMessages, getAccounts,} from '../../actions/AppActions';
 
 export function withSubscription(WrappedComponent) {
     const mapState = (state) => {
@@ -16,18 +17,20 @@ export function withSubscription(WrappedComponent) {
             this.state = {
                 content: content,
                 config: config,
+                token: token,
             }
         }
         componentWillMount() {
+            //Accounts Service will remove after proper ttesting
+            this.props.dispatch(getAccounts());
             !this.props.fetched && this.props.dispatch(fetchSecureMessages());
         }
         componentWillReceiveProps(nextProps) {
             !nextProps.fetched && this.props.dispatch(fetchSecureMessages());
         }
-        
         render() {
             return (
-                <WrappedComponent content = {this.state.content} config = {this.state.config}/>
+                <WrappedComponent content = {this.state.content} config = {this.state.config} token={this.state.token}/>
             );
         }
     });

@@ -3,7 +3,7 @@
  */
 class AccountEntity {
     constructor() {
-        this.id = null;
+        this.accountID = null;
         this.accountNumber = null;
         this.name = null;
     }
@@ -23,8 +23,8 @@ class AccountEntity {
      * 
      * @param {String} status of the message
      */
-    setId(id) {
-        this.id = id;
+    setId(accountID) {
+        this.accountID = accountID;
     }
     /**
      * 
