@@ -1,9 +1,9 @@
 import React from 'react';
-import { getMessageSubjects, getAccounts, sendMessageData, sendDraftMessageData, sendMessageForAccessibiltiy, setNavRef } from '../actions/AppActions';
+import { getMessageSubjects, getAccounts, sendMessageData, sendDraftMessageData, sendMessageForAccessibiltiy, setNavRef, clearTempData } from '../actions/AppActions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Dropdown, ButtonToolbar, MenuItem } from 'react-bootstrap/lib';
-import _ from 'lodash';
+import { isEmpty } from 'lodash';
 import DropDownComponent from './common/DropDownComponent.js';
 import TextAreaComponent from './common/TextAreaComponent.js';
 import StepHeader from './common/StepHeader';
@@ -304,6 +304,7 @@ const mapState = (state) => {
         subjects: state.subjects,
         messages: state.messages,
         accounts: state.accounts,
+        tempData: state.messages.tempData,
     }
 };
 export default connect(mapState)(NewSecureMessage);
