@@ -241,8 +241,8 @@ class DraftSecureMessage extends React.Component {
 
                 {this.state.showPopup ? this.returnModalComponent() : ''}
                 {this.state.showDraftSuccessModal && this.returnDraftModal()}
-                {this.props.messages.error && this.state.showSaveServiceErrorModal && this.returnErrorModal()}
-                {this.props.messages.error && this.state.showSendServiceErrorModal && this.returnErrorModal()}
+                {this.props.messages.draftError && this.state.showSaveServiceErrorModal && this.returnErrorModal()}
+                {this.props.messages.draftError && this.state.showSendServiceErrorModal && this.returnErrorModal()}
                 <div className="c-btn--group">
                     <Link to={`${window.baseURl}/securemessages`} className="c-btn c-btn--secondary">
                         {this.props.content.back}

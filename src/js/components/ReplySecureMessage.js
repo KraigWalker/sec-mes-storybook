@@ -15,6 +15,7 @@ import Threads from './common/ThreadList';
 import ModalComponent from './common/ModalComponent';
 import GetIcon from './common/GetIcon';
 import CalloutComponent from './common/CalloutComponent.js';
+import SvgIcon from './common/GetIcon.js';
 class ReplySecureMessage extends React.Component {
     constructor(props) {
         super(props);
@@ -22,21 +23,27 @@ class ReplySecureMessage extends React.Component {
         this.selectSubject = this.selectSubject.bind(this);
         this.sendData = this.sendData.bind(this);
         this.getThreads = this.getThreads.bind(this);
+        this.returnSentMessageModal = this.returnSentMessageModal.bind(this);
         this.returnModalComponent = this.returnModalComponent.bind(this);
+        this.leavePage = this.leavePage.bind(this);
+        this.stayOnPage = this.stayOnPage.bind(this);
         this.sentOkClicked = this.sentOkClicked.bind(this);
         this.returnDraftModal = this.returnDraftModal.bind(this);
         this.draftOkClicked = this.draftOkClicked.bind(this);
         this.saveDraftData = this.saveDraftData.bind(this);
         this.errorCloseClicked = this.errorCloseClicked.bind(this);
         this.retryServiceCall = this.retryServiceCall.bind(this);
+        this.callBackModal = this.callBackModal.bind(this);
         this.state = {
             chars_left: 3000,
             showPopup: false,
+            showSentMessageModal: false,
             showDraftSuccessModal: false,
             showSaveServiceErrorModal: false,
             showSendServiceErrorModal: false,
             disabled: true,
             charError: false,
+            showModalBack: false,
         };
     }
     componentWillMount() {
@@ -68,10 +75,13 @@ class ReplySecureMessage extends React.Component {
     }
 
     textChange(e) {
+        this.setState({
+            showModalBack: true
+        });
         if (e === '') {
-            this.setState({ disabled: true })
+            this.setState({ disabled: true });
         } else {
-            this.setState({ disabled: false })
+            this.setState({ disabled: false });
         }
         this.setState({ chars_left: 3000 - e.length });
         let extractedString = RegexUtils.matchString(e);
@@ -115,7 +125,7 @@ class ReplySecureMessage extends React.Component {
         const threads = getThreadsBL(messages, currentMessage);
         return <Threads Threads={threads} currentMessage={currentMessage} isFromReplyMessage={true} />
     }
-    returnModalComponent() {
+    returnSentMessageModal() {
         let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>Message sent</div>;
         let footerButtons = <button type="button" onClick={this.sentOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">Ok</button>;
         return (<ModalComponent show
@@ -128,7 +138,7 @@ class ReplySecureMessage extends React.Component {
             closeButton/>);
     }
     sentOkClicked(){
-        this.setState({showPopup : false});
+        this.setState({showSentMessageModal : false});
     }
     returnDraftModal(){
         let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>Message saved as a draft</div>;
@@ -146,6 +156,7 @@ class ReplySecureMessage extends React.Component {
         this.setState({showSaveServiceErrorModal: true});
         this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, "DRAFT"));
          if(this.props.messages.successModal === true) {
+            this.setState({ showPopup: false });
         this.setState({ showDraftSuccessModal: true });
          }
     }
@@ -167,15 +178,40 @@ class ReplySecureMessage extends React.Component {
     }
     retryServiceCall() {
         if (this.state.showSaveServiceErrorModal) {
-            console.log('save');
             this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, "DRAFT"));
         }
         if (this.state.showSendServiceErrorModal) {
-            console.log('send');
             this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, "PENDING"));
         }
-
     }
+    leavePage() {
+        this.setState({ showPopup: true });
+    }
+    stayOnPage() {
+        this.setState({ showPopup: false });
+    }
+    callBackModal() {
+        this.setState({
+            showPopup: true,
+        });
+    }
+    returnModalComponent() {
+        if (this.state.showPopup) {
+            let bodyContent = <div className="callout callout__error">{this.props.content.leaveMessageBody}</div>;
+            let footerButtons = <div><Link to={`${window.baseURl}/securemessages`}><button type="button" onClick={this.leavePage} className="c-btn c-btn--secondary c-modal__button">Leave page</button></Link>&nbsp;
+            <button type="button" className="c-btn c-btn--secondary c-modal__button" onClick={this.saveDraftData} disabled={this.state.disabled}>{this.props.content.saveDraft}</button>
+                <button type="button" onClick={this.stayOnPage} className="c-btn c-btn--default c-modal__button">{this.props.content.returnToMessage}</button></div>;
+            return (<ModalComponent show
+                onHide={this.stayOnPage}
+                customClass={"c-modal"}
+                modalheading={this.props.content.leaveMessageHeading}
+                modalbody={bodyContent}
+                modalfooter={footerButtons}
+                modalInContainer={false}
+                closeButton />);
+        }
+    }
+
     returnErrorModal() {
              let bodyContent = <div><h3>Sorry, there’s been a technical problem</h3><br />
             <p>It looks like something has gone wrong in the background. Please try again.</p><br />
@@ -194,17 +230,35 @@ class ReplySecureMessage extends React.Component {
                     closeButton />
                 );
     }
+    returnBackButton(backpath) {
+        const { backPath } = backpath;
+        if (this.state.showModalBack && this.state.disabled === false) {
+            return (
+                <div className="row">
+                    <div className="col-md1-18">
+                        <p className="c-step-header__crumbs">
+                            <a onClick={this.callBackModal} className="c-step-header__link">
+                                <span className="c-step-header__linkicon"><SvgIcon id="icon-left" width="16px" height="16px" /></span>
+                                <span className="c-step-header__linktext">Back</span>
+                            </a>
+                        </p>
+                        <h1 className="c-step-header__title" id="headingTag" tabIndex="-1">New message</h1>
+                    </div>
+                </div>
+            );
+        } else {
+            return (<div className="row">
+                <div className="col-md1-18">
+                    <StepHeader showheaderCrumbs={true} onClick={() => { }} headerCrumbsMessage="Back" headerTitle="New message" headerCrumbsPath={{ pathname: backpath }} />
+                </div>
+            </div>);
+        }
+    }
     render() {
-        const { backPath } = this.props.location;
         const { messageDetail } = this.props.location.messageDetail ? this.props.location : this.props;
         return (
             <div className="container">
-                <div className="row">
-                    <div className="col-md1-18">
-                        <StepHeader showheaderCrumbs={true} onClick={() => { }} headerCrumbsMessage="Back" headerTitle="Reply" headerCrumbsPath={{ pathname: backPath }} />
-                    </div>
-                </div>
-
+               {this.returnBackButton(this.props.location)}
                 <div className="c-field">
                     <label id="subjectTitle" className="c-field__label c-field__label--block" htmlFor="subjects">
                     {this.props.content.subject}
@@ -241,13 +295,14 @@ class ReplySecureMessage extends React.Component {
                     <button name='Save Draft' className="c-btn c-btn--secondary" onClick={this.saveDraftData} disabled={this.state.disabled}>{this.props.content.saveDraft}</button>
                     <button name='Send' className="c-btn c-btn--default" onClick={this.sendData} disabled={this.state.disabled}>{this.props.content.send}</button>
                 </div>
-                 { this.state.showPopup ? this.returnModalComponent() : ''} 
+                {this.state.showPopup && this.returnModalComponent()}
+                 { this.state.showSentMessageModal ? this.returnSentMessageModal() : ''} 
                  {this.state.showDraftSuccessModal && this.returnDraftModal()}
-                 {this.props.messages.error && this.state.showSaveServiceErrorModal && this.returnErrorModal()}
-                 {this.props.messages.error && this.state.showSendServiceErrorModal && this.returnErrorModal()}
+                 {this.props.messages.draftError && this.state.showSaveServiceErrorModal && this.returnErrorModal()}
+                 {this.props.messages.draftError && this.state.showSendServiceErrorModal && this.returnErrorModal()}
                 <div className="row">
                     <div className="col-md1-18">
-                        {this.getThreads(this.props.messages, messageDetail)}
+                        {this.getThreads(this.props.messages.messages, messageDetail)}
                     </div>
                 </div>
                 
@@ -258,7 +313,7 @@ class ReplySecureMessage extends React.Component {
 const mapState = (state) => {
     return {
         subjects: state.subjects,
-        messages: state.messages.messages,
+        messages: state.messages,
         accounts: state.accounts,
     }
 };
