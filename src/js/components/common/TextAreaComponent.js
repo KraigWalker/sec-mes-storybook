@@ -12,7 +12,7 @@ class TextAreaComponent extends React.Component {
         }
     }
     componentDidMount(){
-        if(this.props.isFromDraftOrReply) {
+        if(this.props.draftData) {
             this.refs.txtarea.value = this.props.draftData;
             this.props.textData(this.props.draftData);
         } else this.refs.txtarea.value = '';

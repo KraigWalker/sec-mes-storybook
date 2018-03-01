@@ -8,12 +8,13 @@ import { Link } from 'react-router-dom';
 import RegexUtils from '../utils/RegexUtils.js';
 import SendMessageRequestEntity from '../entities/SendMessageRequestEntity.js'
 import { connect } from 'react-redux';
-import { getMessageSubjects, getAccounts, sendMessageData, sendMessageForAccessibiltiy } from '../actions/AppActions';
+import { getMessageSubjects, getAccounts, sendMessageData, sendMessageForAccessibiltiy, updateMessageData } from '../actions/AppActions';
 let messageEntity = new SendMessageRequestEntity();
 import { getThreadsBL } from '../bl/SecureMessageBL';
 import Threads from './common/ThreadList';
 import ModalComponent from './common/ModalComponent';
 import GetIcon from './common/GetIcon';
+import CalloutComponent from './common/CalloutComponent.js';
 class ReplySecureMessage extends React.Component {
     constructor(props) {
         super(props);
@@ -26,42 +27,90 @@ class ReplySecureMessage extends React.Component {
         this.returnDraftModal = this.returnDraftModal.bind(this);
         this.draftOkClicked = this.draftOkClicked.bind(this);
         this.saveDraftData = this.saveDraftData.bind(this);
+        this.errorCloseClicked = this.errorCloseClicked.bind(this);
+        this.retryServiceCall = this.retryServiceCall.bind(this);
         this.state = {
             chars_left: 3000,
             showPopup: false,
-            showDraftSuccessModal:false,
+            showDraftSuccessModal: false,
+            showSaveServiceErrorModal: false,
+            showSendServiceErrorModal: false,
+            disabled: true,
+            charError: false,
         };
     }
-    selectSubject(value, id) {
-        if (id === 'accounts') {
-            messageEntity.setAccount(value);
+    componentWillMount() {
+        if (this.props.location.messageDetail.account.accountID !== undefined && this.props.location.messageDetail.subject) {
+            this.props.location.messageDetail.account['name'] = getAccountName(this.props.location.messageDetail.account.accountID, this.props.accounts)['name'];
+            this.props.location.messageDetail.account['id'] = this.props.location.messageDetail.account.accountID;
+            messageEntity.setName(getAccountName(this.props.location.messageDetail.account.accountID, this.props.accounts)['name']);
+            messageEntity.setUpdateSubject(this.props.location.messageDetail.subject);
+            messageEntity.setAccountId(this.props.location.messageDetail.account['id']);
+            this.props.location.messageDetail.account['number']=(getAccountName(this.props.location.messageDetail.account.accountID, this.props.accounts)["number"]);
+            messageEntity.setAccountNumber(this.props.location.messageDetail.account['number']);
+
         }
-        if (id === 'subjects') {
-            messageEntity.setSubject(value);
+        if (this.props.location.messageDetail.account.accountID === undefined) {
+            messageEntity.setAccount(this.props.location.messageDetail.account);
+            messageEntity.setUpdateSubject(this.props.location.messageDetail.subject);
         }
     }
+
+    selectSubject(value, id, data) {
+        switch (id) {
+            case 'accounts':
+                messageEntity.setAccount(data);
+                break;
+            case 'subjects':
+                messageEntity.setSubject(data);
+                break;
+        }
+    }
+
     textChange(e) {
+        if (e === '') {
+            this.setState({ disabled: true })
+        } else {
+            this.setState({ disabled: false })
+        }
         this.setState({ chars_left: 3000 - e.length });
         let extractedString = RegexUtils.matchString(e);
         if (extractedString !== null) {
             let lastFour = RegexUtils.getLastFourDigits(extractedString);
             messageEntity.setMessage(e.replace(new RegExp(extractedString, 'g'), '************' + lastFour));
         } else messageEntity.setMessage(e);
-
-
+        if (this.state.chars_left >= 0) {
+            this.setState({ charError: false });
+        }
     }
+
     renderRemainingChar() {
+        if (this.state.chars_left < 0 && this.state.charError === true) {
+            return (
+                <div>
+                    <p className="char__error">Characters Left: {this.state.chars_left}</p>
+                    <CalloutComponent dClass='callout callout__error callout__inline-error' paraText='Oops. The maximum message size has been exceeded. Please reduce the length of your message.' />
+                </div>);
+        }
         if (this.state.chars_left <= 300) {
             (this.state.chars_left === 3) && this.props.dispatch(sendMessageForAccessibiltiy('Three characters left'));
             (this.state.chars_left === 1) && this.props.dispatch(sendMessageForAccessibiltiy('One character left'));
             (this.state.chars_left === 0) && this.props.dispatch(sendMessageForAccessibiltiy('Maximum characters limit reached'));
-            return <p>{this.props.content.charLeft} {this.state.chars_left}</p>;
+            return <p className="char__error">Characters Left: {this.state.chars_left}</p>;
         }
     }
     sendData() {
-        this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData()));
-        this.setState({showPopup : true});
+        this.setState({ charError: true });
+        this.renderRemainingChar();
+        if (this.state.chars_left >= 0) {
+        this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, "SENT"));
+        if(this.props.messages.successModal === true) {
+            this.setState({ showDraftSuccessModal: true });
+            }
+        else this.setState({showSendServiceErrorModal: true});
+        }
     }
+
     getThreads(messages, currentMessage) {
         const threads = getThreadsBL(messages, currentMessage);
         return <Threads Threads={threads} currentMessage={currentMessage} isFromReplyMessage={true} />
@@ -94,10 +143,56 @@ class ReplySecureMessage extends React.Component {
             closeButton/>);
     }
     saveDraftData(){
-        this.setState({showDraftSuccessModal : true});
+        this.setState({showSaveServiceErrorModal: true});
+        this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, "DRAFT"));
+         if(this.props.messages.successModal === true) {
+        this.setState({ showDraftSuccessModal: true });
+         }
     }
     draftOkClicked(){
         this.setState({showDraftSuccessModal : false});
+    }
+    checkAccountValue() {
+        let accVal;
+        if (this.props.location.messageDetail.account.accountNumber === undefined) {
+            accVal = 'No specific account';
+        } else {
+            accVal = this.props.location.messageDetail.account.name;
+        }
+        return accVal;
+    }
+    errorCloseClicked() {
+        this.setState({showSaveServiceErrorModal: false});
+        this.setState({showSendServiceErrorModal: false});
+    }
+    retryServiceCall() {
+        if (this.state.showSaveServiceErrorModal) {
+            console.log('save');
+            this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, "DRAFT"));
+        }
+        if (this.state.showSendServiceErrorModal) {
+            console.log('send');
+            this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, "PENDING"));
+        }
+
+    }
+    returnErrorModal() {
+             let bodyContent = <div><h3>Sorry, there’s been a technical problem</h3><br />
+            <p>It looks like something has gone wrong in the background. Please try again.</p><br />
+            <p>If you’re still having problems, please get in touch.</p></div>;
+            let footerButtons = <div><button type="button" className="c-btn c-btn--secondary c-modal__button" onClick={this.errorCloseClicked}>Back</button>
+            <button type="button" onClick={this.retryServiceCall} className="c-btn c-btn--default c-modal__button">Retry</button></div>
+            return (
+                <ModalComponent show
+                    onHide={this.errorCloseClicked}
+                    customClass={"c-modal c-modal--center"}
+                    bsSize={'medium'}
+                    modalheading={''}
+                    modalbody={bodyContent}
+                    modalfooter={footerButtons}
+                    modalInContainer={false}
+                    closeButton />
+                );
     }
     render() {
         const { backPath } = this.props.location;
@@ -124,7 +219,7 @@ class ReplySecureMessage extends React.Component {
                     {this.props.content.messageRelatesTo}
                     </label>
                     <div className="c-field__controls u-position-relative">
-                        <DropDownComponent accessID="Message relates to" accounts={this.props.location.messageDetail.account.accountNumber} selectSubject={this.selectSubject} name='accounts' id='accounts' isFromDraftOrReply={true} selectedValue={this.props.location.messageDetail.account.accountNumber} isFromReply={true} />
+                        <DropDownComponent accessID="Message relates to" accounts={this.props.location.messageDetail.account.accountNumber} selectSubject={this.selectSubject} name='accounts' id='accounts' isFromDraftOrReply={true} selectedValue={this.checkAccountValue()} isFromReply={true} />
                     </div>
                 </div>
 
@@ -143,12 +238,13 @@ class ReplySecureMessage extends React.Component {
                     <Link to={`${window.baseURl}/securemessages`} className="c-btn c-btn--secondary">
                         Back
                     </Link>
-                    <button name='Save Draft' className="c-btn c-btn--secondary" onClick={this.saveDraftData}>{this.props.content.saveDraft}</button>
-                    <button name='Send' className="c-btn c-btn--default" onClick={this.sendData}>{this.props.content.send}</button>
+                    <button name='Save Draft' className="c-btn c-btn--secondary" onClick={this.saveDraftData} disabled={this.state.disabled}>{this.props.content.saveDraft}</button>
+                    <button name='Send' className="c-btn c-btn--default" onClick={this.sendData} disabled={this.state.disabled}>{this.props.content.send}</button>
                 </div>
                  { this.state.showPopup ? this.returnModalComponent() : ''} 
                  {this.state.showDraftSuccessModal && this.returnDraftModal()}
-
+                 {this.props.messages.error && this.state.showSaveServiceErrorModal && this.returnErrorModal()}
+                 {this.props.messages.error && this.state.showSendServiceErrorModal && this.returnErrorModal()}
                 <div className="row">
                     <div className="col-md1-18">
                         {this.getThreads(this.props.messages, messageDetail)}

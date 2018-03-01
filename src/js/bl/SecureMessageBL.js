@@ -40,3 +40,16 @@ export function SecureMessageBL(response) {
         return messages.filter(message => message.threadID === currentMessage.threadID && moment(message.dateCreated, "DD-MM-YYYY").isBefore(moment(currentMessage.dateCreated, "DD-MM-YYYY")));
         
     }
+
+ // Code for adding accounts name in draft
+    export function getAccountName(id, accountData) {
+        if(id === undefined){
+            return 'No specific account';
+        }
+        else
+        return _.find(accountData.accounts, function(accData) { 
+            if(accData.accountId === id) {
+                return accData.name;
+            }
+        });
+    }

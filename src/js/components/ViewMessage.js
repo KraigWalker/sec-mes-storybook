@@ -67,8 +67,7 @@ class ViewMessage extends React.Component {
     deleteClick() {
         this.setState({ showDeleteSuccessModal: true, showDeleteConfirmModal: false });
         this.props.dispatch(updateMessageData(this.props.location.messageDetail, this.props.location.messageDetail.id, 'DELETED'));
-
-    }
+        }
     getBackButton() {
         return (
             <Link to={{ pathname: `${window.baseURl}/securemessage` }} className="c-btn c-btn--secondary">
@@ -79,7 +78,7 @@ class ViewMessage extends React.Component {
     returnModalComponent() {
         let bodyContent = <div className="callout callout__error">You won’t be able to recover this message if you delete it.</div>;
         let footerButtons = <div><button type="button" onClick={this.closeModal} className="c-btn c-btn--secondary c-modal__button">Close</button>
-            <button type="button" onClick={this.deleteClick} className="c-btn c-btn--default c-modal__button">Delete message</button></div>;
+            <Link to={{pathname: '/securemessage'}} onClick={this.deleteClick} className="c-btn c-btn--default c-modal__button">Delete message</Link></div>;
         return (<ModalComponent show
             onHide={this.closeModal}
             customClass={"c-modal"}
