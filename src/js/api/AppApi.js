@@ -12,26 +12,25 @@ const _getAccountsURL = '/banks/{bank_id}/accounts/default';
 const _sendMessageURL = '/banks/{bank_id}/securemessages/{message_id}';
 
 
-
 class AppApi {
   static fetchSecureMessages(success, error) {
-    ApiUtils.makeRequest({ url: config.apiBaseUrl + _getMessageURLEndpoint, method: 'GET' }, success, error);
+    ApiUtils.makeRequest({ url: `${config.apiBaseUrl}${_getMessageURLEndpoint}`, method: 'GET' }, success, error);
   }
 
   static getSubjects(success, error) {
-    ApiUtils.makeRequest({ url: config.apiBaseUrl + _getMessageSubjectsURL, method: 'GET' }, success, error);
+    ApiUtils.makeRequest({ url: `${config.apiBaseUrl}${_getMessageSubjectsURL}`, method: 'GET' }, success, error);
   }
 
   static getAccounts(success, error) {
-     ApiUtils.makeRequest({ url: config.apiBaseUrl + _getAccountsURL, method: 'GET' }, success, error);
+     ApiUtils.makeRequest({ url:`${config.apiBaseUrl}${_getAccountsURL}`, method: 'GET' }, success, error);
   }
 
   static sendMessageData(requestData, status, success, error) {
     let reqData = parseDraft(requestData, status);
-    ApiUtils.makeRequest({ url: config.apiBaseUrl + _getMessageURLEndpoint, method: 'POST', requestData: reqData }, success, error);
+    ApiUtils.makeRequest({ url: `${config.apiBaseUrl}${_getMessageURLEndpoint}`, method: 'POST', requestData: reqData }, success, error);
   }
   static updateMessageData(requestData, id, status, success, error) {
-    let updateUrl = config.apiBaseUrl + _sendMessageURL;
+    let updateUrl = `${config.apiBaseUrl}${_sendMessageURL}`;
     let url = updateUrl.replace('{message_id}', id);
     let reqData;
     switch(status){

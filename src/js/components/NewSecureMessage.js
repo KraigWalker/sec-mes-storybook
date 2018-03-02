@@ -51,7 +51,6 @@ class NewSecureMessage extends React.Component {
     };
     componentWillMount() {
         this.props.dispatch(getMessageSubjects());
-        // this.props.dispatch(getAccounts());
     }
     componentDidMount() {
         this.props.dispatch(setNavRef('/newsecuremessage'));
@@ -75,9 +74,7 @@ class NewSecureMessage extends React.Component {
         }
     }
     textChange(e) {
-        this.setState({
-            showModalBack: true
-        });
+
         if (e === '') {
             this.setState({ disabled: true })
         } else {
@@ -92,6 +89,9 @@ class NewSecureMessage extends React.Component {
         if (this.state.chars_left >= 0) {
             this.setState({ charError: false });
         }
+        this.setState({
+            showModalBack: true
+        });
     }
     checkValidation() {
         if (this.state.selectAccount === true) {
@@ -125,7 +125,7 @@ class NewSecureMessage extends React.Component {
         this.renderRemainingChar();
         if (this.checkValidation() && this.state.chars_left >= 0) {
             this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), 'SENT'));
-            if (this.props.messages.successModal === true) {
+            if (this.props.messages.successModal) {
                 this.setState({ showSentMessageModal: true });
             }
             else this.setState({ showSendServiceErrorModal: true });
@@ -190,16 +190,17 @@ class NewSecureMessage extends React.Component {
     draftOkClicked() {
         this.setState({ showDraftSuccessModal: false });
     }
-    saveDraftData() {
+    saveDraftData() {      
+        if (this.checkValidation() && this.state.chars_left >= 0) {
+            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), 'DRAFT'));
+            if (this.props.messages.successModal) {
+                this.setState({ showDraftSuccessModal: true });
+                this.setState({ showPopup: false });
+                <Link to={`${window.baseURl}/securemessages`} className="c-btn c-btn--secondary">
+                </Link>
+            } else this.setState({ showSaveServiceErrorModal: true });
+        }
         this.setState({ showSaveServiceErrorModal: true });
-        this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), 'DRAFT'));
-        if (this.props.messages.successModal) {
-            this.setState({ showDraftSuccessModal: true });
-            this.setState({ showPopup: false });
-            <Link to={`${window.baseURl}/securemessages`} className="c-btn c-btn--secondary">
-            </Link>
-        } else this.setState({ showSaveServiceErrorModal: true });
-
     }
     sentOkClicked() {
         this.setState({ showSentMessageModal: false });
@@ -311,9 +312,7 @@ class NewSecureMessage extends React.Component {
             {this.props.messages.newMessageError && this.state.showSaveServiceErrorModal && this.returnErrorModal()}
             {this.props.messages.newMessageError && this.state.showSendServiceErrorModal && this.returnErrorModal()}
             <div className="c-btn--group">
-                <Link to={`${window.baseURl}/securemessages`} className="c-btn c-btn--secondary">
-                    Back
-        </Link>
+                <button name='Back' className="c-btn c-btn--secondary" onClick={this.callBackModal}>{this.props.content.back}</button>
                 <button name='Save Draft' className="c-btn c-btn--secondary" onClick={this.saveDraftData} disabled={this.state.disabled}>{this.props.content.saveDraft}</button>
                 <button name='Send' className="c-btn c-btn--default" onClick={this.sendData} disabled={this.state.disabled}>{this.props.content.send}</button>
             </div>

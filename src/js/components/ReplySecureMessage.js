@@ -289,9 +289,7 @@ class ReplySecureMessage extends React.Component {
                     {this.renderRemainingChar()}
                 </div>
                 <div className="c-btn--group">
-                    <Link to={`${window.baseURl}/securemessages`} className="c-btn c-btn--secondary">
-                        Back
-                    </Link>
+                <button name='Back' className="c-btn c-btn--secondary" onClick={this.callBackModal}>{this.props.content.back}</button>
                     <button name='Save Draft' className="c-btn c-btn--secondary" onClick={this.saveDraftData} disabled={this.state.disabled}>{this.props.content.saveDraft}</button>
                     <button name='Send' className="c-btn c-btn--default" onClick={this.sendData} disabled={this.state.disabled}>{this.props.content.send}</button>
                 </div>
