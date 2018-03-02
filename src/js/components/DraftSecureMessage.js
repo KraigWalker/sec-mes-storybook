@@ -49,7 +49,6 @@ class DraftSecureMessage extends React.Component {
             messageEntity.setAccountId(this.props.location.messageDetail.account['id']);
             this.props.location.messageDetail.account['number'] = (getAccountName(this.props.location.messageDetail.account.accountID, this.props.accounts)["number"]);
             messageEntity.setAccountNumber(this.props.location.messageDetail.account['number']);
-
         }
         if (this.props.location.messageDetail.account.accountID === undefined) {
             messageEntity.setAccount(this.props.location.messageDetail.account);
@@ -110,10 +109,8 @@ class DraftSecureMessage extends React.Component {
         this.renderRemainingChar();
         if (this.state.chars_left >= 0) {
                 this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, "PENDING"));
-                if(this.props.messages.successModal === true) {
                 this.setState({ showPopup: true });
-            }
-            else this.setState({showSendServiceErrorModal: true});
+                this.setState({showSendServiceErrorModal: true});
         }
     }
 
@@ -146,12 +143,10 @@ class DraftSecureMessage extends React.Component {
             modalInContainer={false}
             closeButton />);
     }
-    saveDraftData() {
-        this.setState({showSaveServiceErrorModal: true});
+    saveDraftData() { 
         this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, "DRAFT"));
-         if(this.props.messages.successModal === true) {
-        this.setState({ showDraftSuccessModal: true });
-         }
+        this.setState({showSaveServiceErrorModal: true});
+        this.setState({ showDraftSuccessModal: true });   
     }
     draftOkClicked() {
         this.setState({ showDraftSuccessModal: false });
@@ -239,8 +234,8 @@ class DraftSecureMessage extends React.Component {
                     {this.renderRemainingChar()}
                 </div>
 
-                {this.state.showPopup ? this.returnModalComponent() : ''}
-                {this.state.showDraftSuccessModal && this.returnDraftModal()}
+                {this.state.showPopup && this.props.messages.successModal ? this.returnModalComponent() : ''}
+                {this.state.showDraftSuccessModal && this.props.messages.successModal && this.returnDraftModal()}
                 {this.props.messages.draftError && this.state.showSaveServiceErrorModal && this.returnErrorModal()}
                 {this.props.messages.draftError && this.state.showSendServiceErrorModal && this.returnErrorModal()}
                 <div className="c-btn--group">

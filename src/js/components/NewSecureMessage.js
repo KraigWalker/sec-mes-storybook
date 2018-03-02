@@ -125,10 +125,8 @@ class NewSecureMessage extends React.Component {
         this.renderRemainingChar();
         if (this.checkValidation() && this.state.chars_left >= 0) {
             this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), 'SENT'));
-            if (this.props.messages.successModal) {
                 this.setState({ showSentMessageModal: true });
-            }
-            else this.setState({ showSendServiceErrorModal: true });
+                this.setState({ showSendServiceErrorModal: true });
         }
     }
     renderRemainingChar() {
@@ -190,17 +188,15 @@ class NewSecureMessage extends React.Component {
     draftOkClicked() {
         this.setState({ showDraftSuccessModal: false });
     }
+    
     saveDraftData() {      
         if (this.checkValidation() && this.state.chars_left >= 0) {
             this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), 'DRAFT'));
-            if (this.props.messages.successModal) {
                 this.setState({ showDraftSuccessModal: true });
                 this.setState({ showPopup: false });
-                <Link to={`${window.baseURl}/securemessages`} className="c-btn c-btn--secondary">
-                </Link>
-            } else this.setState({ showSaveServiceErrorModal: true });
+                this.setState({ showSaveServiceErrorModal: true });
         }
-        this.setState({ showSaveServiceErrorModal: true });
+       
     }
     sentOkClicked() {
         this.setState({ showSentMessageModal: false });
@@ -307,8 +303,8 @@ class NewSecureMessage extends React.Component {
             </div>
 
             {this.state.showPopup && this.returnModalComponent()}
-            {this.state.showDraftSuccessModal && this.returnDraftModal()}
-            {this.state.showSentMessageModal && this.returnSentMessageModal()}
+            {this.state.showDraftSuccessModal && this.props.messages.successModal && this.returnDraftModal()}
+            {this.state.showSentMessageModal && this.props.messages.successModal && this.returnSentMessageModal()}
             {this.props.messages.newMessageError && this.state.showSaveServiceErrorModal && this.returnErrorModal()}
             {this.props.messages.newMessageError && this.state.showSendServiceErrorModal && this.returnErrorModal()}
             <div className="c-btn--group">

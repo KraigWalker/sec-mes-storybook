@@ -114,10 +114,8 @@ class ReplySecureMessage extends React.Component {
         this.renderRemainingChar();
         if (this.state.chars_left >= 0) {
         this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, "SENT"));
-        if(this.props.messages.successModal === true) {
             this.setState({ showDraftSuccessModal: true });
-            }
-        else this.setState({showSendServiceErrorModal: true});
+            this.setState({showSendServiceErrorModal: true});
         }
     }
 
@@ -152,13 +150,11 @@ class ReplySecureMessage extends React.Component {
             modalInContainer={false}
             closeButton/>);
     }
-    saveDraftData(){
-        this.setState({showSaveServiceErrorModal: true});
+    saveDraftData(){    
         this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, "DRAFT"));
-         if(this.props.messages.successModal === true) {
-            this.setState({ showPopup: false });
+        this.setState({ showPopup: false });
         this.setState({ showDraftSuccessModal: true });
-         }
+        this.setState({showSaveServiceErrorModal: true});
     }
     draftOkClicked(){
         this.setState({showDraftSuccessModal : false});
@@ -294,8 +290,8 @@ class ReplySecureMessage extends React.Component {
                     <button name='Send' className="c-btn c-btn--default" onClick={this.sendData} disabled={this.state.disabled}>{this.props.content.send}</button>
                 </div>
                 {this.state.showPopup && this.returnModalComponent()}
-                 { this.state.showSentMessageModal ? this.returnSentMessageModal() : ''} 
-                 {this.state.showDraftSuccessModal && this.returnDraftModal()}
+                 { this.state.showSentMessageModal && this.props.messages.successModal? this.returnSentMessageModal() : ''} 
+                 {this.state.showDraftSuccessModal && this.props.messages.successModal && this.returnDraftModal()}
                  {this.props.messages.draftError && this.state.showSaveServiceErrorModal && this.returnErrorModal()}
                  {this.props.messages.draftError && this.state.showSendServiceErrorModal && this.returnErrorModal()}
                 <div className="row">
