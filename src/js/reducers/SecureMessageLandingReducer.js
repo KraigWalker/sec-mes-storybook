@@ -14,6 +14,8 @@ export default function reducer(state={
     successModal: false,
     activeTab: 'inbox',
     navRef: '',
+    newMessageError: false,
+    draftError: false,
     tempData: {},
 }, action) {
 
@@ -41,6 +43,15 @@ export default function reducer(state={
     }
     case AppConstants.UPDATE_SECURE_MESSAGE_FAILURE: {
       return {...state, error: true, fetched: true, tempData: action.tempData }
+    }
+    case AppConstants.UPDATE_SECURE_MESSAGE_REPLY_FAILURE: {
+      return {...state, replyError: true, fetched: true, tempData: action.tempData }
+    }
+    case AppConstants.UPDATE_SECURE_MESSAGE_DRAFT_FAILURE: {
+      return {...state, draftError: true, fetched: true, tempData: action.tempData }
+    }
+    case AppConstants.UPDATE_NEW_SECURE_MESSAGE_FAILURE: {
+      return {...state, newMessageError: true, fetched: true, tempData: action.tempData }
     }
     case AppConstants.CLEAR_TEMP_DATA: {
       return {...state, tempData: {} }
