@@ -116,7 +116,7 @@ export function sendMessageData(requestData, status) {
     }
     const error = (error) => {
       const payload = {
-        type: AppConstants.UPDATE_SECURE_MESSAGE_FAILURE,
+        type: AppConstants.UPDATE_NEW_SECURE_MESSAGE_FAILURE,
         payload: error,
         tempData: requestData,
         serviceType: 'post-service'
@@ -137,7 +137,7 @@ export function updateMessageData(requestData, id, status) {
     }
     const error = (error) => {
       const payload = {
-        type: AppConstants.REQUEST_SECURE_MESSAGES_FAILURE,
+        type: AppConstants.UPDATE_SECURE_MESSAGE_DRAFT_FAILURE,
         payload: error,
         serviceType: 'put-service'
       }
