@@ -62,18 +62,17 @@ module.exports = {
 			  loader: 'json-loader'
 			},
 			{
+			  test: /\.(otf|ttf|eot|svg)$/,
+			  exclude: ['/node_modules/','src/images/'],
+			  include: resolve(__dirname, "src/fonts/"),
+			  loader: 'url-loader?limit=1024&name=fonts/[name].[ext]'
+			},
+			{
 			  test: /\.(jpg|jpeg|gif|png|svg)$/,
 			  exclude: /node_modules/,
 			  include: resolve(__dirname, "src/images/"),
-			  loader:'url-loader?limit=1024&name=images/[name].[ext]'
-			},
-			{
-			  test: /\.(otf|ttf|eot|svg)$/,
-			  exclude: /node_modules/,
-			  include: resolve(__dirname, "src/fonts/"),
-			  loader: 'url-loader?limit=1024&name=fonts/[name].[ext]'
-			}
-			
+			  loader:'url-loader?limit=1024&name=/images/[name].[ext]'
+			}	
 		]
 	},
 	
