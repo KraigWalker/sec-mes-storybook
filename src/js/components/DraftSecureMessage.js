@@ -174,8 +174,6 @@ class DraftSecureMessage extends React.Component {
 
     }
     returnErrorModal() {
-       // console.log('modal called',this.props.messages.error);
-      //  console.log('modal called again',this.state.showSaveServiceErrorModal);
              let bodyContent = <div><h3>Sorry, there’s been a technical problem</h3><br />
             <p>It looks like something has gone wrong in the background. Please try again.</p><br />
             <p>If you’re still having problems, please get in touch.</p></div>;
@@ -239,7 +237,7 @@ class DraftSecureMessage extends React.Component {
                 {this.props.messages.draftError && this.state.showSaveServiceErrorModal && this.returnErrorModal()}
                 {this.props.messages.draftError && this.state.showSendServiceErrorModal && this.returnErrorModal()}
                 <div className="c-btn--group">
-                <button name='Back' className="c-btn c-btn--secondary" onClick={this.callBackModal}>{this.props.content.back}</button>
+                <Link to={`${window.baseURl}/securemessages`} className="c-btn c-btn--secondary">{this.props.content.back} </Link>
                     <button name='Save Draft' className="c-btn c-btn--secondary" onClick={this.saveDraftData} disabled={this.state.disabled}>{this.props.content.saveDraft}</button>
                     <button name='Send' className="c-btn c-btn--default" onClick={this.sendData} disabled={this.state.disabled}>{this.props.content.send}</button>
                 </div>         

@@ -125,8 +125,8 @@ class NewSecureMessage extends React.Component {
         this.renderRemainingChar();
         if (this.checkValidation() && this.state.chars_left >= 0) {
             this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), 'SENT'));
-                this.setState({ showSentMessageModal: true });
-                this.setState({ showSendServiceErrorModal: true });
+            this.setState({ showSentMessageModal: true });
+            this.setState({ showSendServiceErrorModal: true });
         }
     }
     renderRemainingChar() {
@@ -152,9 +152,7 @@ class NewSecureMessage extends React.Component {
         this.setState({ showPopup: false });
     }
     callBackModal() {
-        this.setState({
-            showPopup: true,
-        });
+        this.setState({ showPopup: true });
     }
     returnModalComponent() {
         if (this.state.showPopup) {
@@ -188,15 +186,15 @@ class NewSecureMessage extends React.Component {
     draftOkClicked() {
         this.setState({ showDraftSuccessModal: false });
     }
-    
-    saveDraftData() {      
+
+    saveDraftData() {
         if (this.checkValidation() && this.state.chars_left >= 0) {
             this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), 'DRAFT'));
-                this.setState({ showDraftSuccessModal: true });
-                this.setState({ showPopup: false });
-                this.setState({ showSaveServiceErrorModal: true });
+            this.setState({ showDraftSuccessModal: true });
+            this.setState({ showPopup: false });
+            this.setState({ showSaveServiceErrorModal: true });
         }
-       
+
     }
     sentOkClicked() {
         this.setState({ showSentMessageModal: false });
@@ -308,7 +306,8 @@ class NewSecureMessage extends React.Component {
             {this.props.messages.newMessageError && this.state.showSaveServiceErrorModal && this.returnErrorModal()}
             {this.props.messages.newMessageError && this.state.showSendServiceErrorModal && this.returnErrorModal()}
             <div className="c-btn--group">
-                <button name='Back' className="c-btn c-btn--secondary" onClick={this.callBackModal}>{this.props.content.back}</button>
+                {!this.state.disabled ? <button name='Back' className="c-btn c-btn--secondary" onClick={this.callBackModal}>{this.props.content.back}</button> :
+                    <Link to={`${window.baseURl}/securemessages`} className="c-btn c-btn--secondary">{this.props.content.back} </Link>}
                 <button name='Save Draft' className="c-btn c-btn--secondary" onClick={this.saveDraftData} disabled={this.state.disabled}>{this.props.content.saveDraft}</button>
                 <button name='Send' className="c-btn c-btn--default" onClick={this.sendData} disabled={this.state.disabled}>{this.props.content.send}</button>
             </div>
