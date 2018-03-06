@@ -20,4 +20,6 @@ export default keyMirror({
     REQUEST_SUBJECTS_FAILURE: null,
     ERROR_BACK_BUTTON: null,
     NAVIGATION_REF: null,
+    UPDATE_NEW_SECURE_MESSAGE_FAILURE: null,
+    UPDATE_SECURE_MESSAGE_DRAFT_FAILURE: null,
 })
