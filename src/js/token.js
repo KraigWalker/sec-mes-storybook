@@ -40,11 +40,14 @@ const token = {
         let params;
         if (accessToken.hash.length > 0 && window.location.hash) {
             params = accessToken.hash.substr(1);
-            hashKeyValue.clientContext = params.split('&')[2];
-            hashValue.clientContext = hashKeyValue.clientContext.split('=')[1];
+            hashKeyValue.appTitle = params.split('&')[2];
+            hashValue.appTitle = hashKeyValue.appTitle.split('=')[1];
+            hashKeyValue.userTrackingId = params.split('&')[3];
+            hashValue.userTrackingId = hashKeyValue.userTrackingId.split('=')[1];
             return {
                 client: {
-                    app_title: hashValue.clientContext
+                    app_title: hashValue.appTitle,
+                    user_tracking_id: hashValue.userTrackingId, 
                 }
             }
         }
