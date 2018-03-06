@@ -75,9 +75,7 @@ class ReplySecureMessage extends React.Component {
     }
 
     textChange(e) {
-        this.setState({
-            showModalBack: true
-        });
+ 
         if (e === '') {
             this.setState({ disabled: true });
         } else {
@@ -92,6 +90,9 @@ class ReplySecureMessage extends React.Component {
         if (this.state.chars_left >= 0) {
             this.setState({ charError: false });
         }
+        this.setState({
+            showModalBack: true
+        });
     }
 
     renderRemainingChar() {
@@ -238,14 +239,14 @@ class ReplySecureMessage extends React.Component {
                                 <span className="c-step-header__linktext">Back</span>
                             </a>
                         </p>
-                        <h1 className="c-step-header__title" id="headingTag" tabIndex="-1">New message</h1>
+                        <h1 className="c-step-header__title" id="headingTag" tabIndex="-1">Reply</h1>
                     </div>
                 </div>
             );
         } else {
             return (<div className="row">
                 <div className="col-md1-18">
-                    <StepHeader showheaderCrumbs={true} onClick={() => { }} headerCrumbsMessage="Back" headerTitle="New message" headerCrumbsPath={{ pathname: backpath }} />
+                    <StepHeader showheaderCrumbs={true} onClick={() => { }} headerCrumbsMessage="Back" headerTitle="Reply" headerCrumbsPath={{ pathname: backpath }} />
                 </div>
             </div>);
         }
@@ -285,7 +286,8 @@ class ReplySecureMessage extends React.Component {
                     {this.renderRemainingChar()}
                 </div>
                 <div className="c-btn--group">
-                <button name='Back' className="c-btn c-btn--secondary" onClick={this.callBackModal}>{this.props.content.back}</button>
+                {!this.state.disabled ? <button name='Back' className="c-btn c-btn--secondary" onClick={this.callBackModal}>{this.props.content.back}</button> : 
+                <Link to={`${window.baseURl}/securemessages`} className="c-btn c-btn--secondary">{this.props.content.back} </Link>}
                     <button name='Save Draft' className="c-btn c-btn--secondary" onClick={this.saveDraftData} disabled={this.state.disabled}>{this.props.content.saveDraft}</button>
                     <button name='Send' className="c-btn c-btn--default" onClick={this.sendData} disabled={this.state.disabled}>{this.props.content.send}</button>
                 </div>
