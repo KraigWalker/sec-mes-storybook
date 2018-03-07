@@ -69,22 +69,26 @@ class SecureMessageList extends React.Component {
         renderNoMessagesText() {
             if (this.props.activeTab === 'sent') {
               //  this.props.dispatch(sendMessageForAccessibiltiy('You don’t have any sent messages'));
-                return (<li className="c-messagelist__wrapper">You don’t have any sent messages.</li>);
+                return (<p className="callout callout--msgbottom callout__txt-center">You don’t have any sent messages.</p>);
             } else if (this.props.activeTab === 'drafts') {
                // this.props.dispatch(sendMessageForAccessibiltiy('You haven’t saved any drafts'));
-                return (<li className="c-messagelist__wrapper">You haven’t saved any drafts.</li>);
+                return (<p className="callout callout--msgbottom callout__txt-center">You haven’t saved any drafts.</p>);
             } else {
                // this.props.dispatch(sendMessageForAccessibiltiy('You don’t have any messages'));
-                return (<li className="c-messagelist__wrapper">You don’t have any messages.</li>);
+                return (<p className="callout callout--msgbottom callout__txt-center">You don’t have any messages.</p>);
             }
         }
         render() {
 
             return (
                 <section>
+                    {this.props.messages.length === 0 ?
+                    this.renderNoMessagesText()                    
+                    :
                     <ol className="c-messagelist">
-                        {this.props.messages.length === 0 ? this.renderNoMessagesText() : this.showMessages()}
+                        {this.showMessages()}
                     </ol>
+                    }
                     {this.renderShowMoreButton()}
                     {this.state.showThatsAllMessage && <p className="u-margin-bottom-c">{this.renderThatsAllText()}</p>}
                 </section>
