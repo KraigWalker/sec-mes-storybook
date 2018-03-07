@@ -54,6 +54,11 @@ class NewSecureMessage extends React.Component {
     }
     componentDidMount() {
         this.props.dispatch(setNavRef('/newsecuremessage'));
+        window.top.postMessage('newMessagePage','*');
+    }
+
+    componentWillUnmount() {
+        window.top.postMessage('clearNewMessagePage','*');
     }
     selectSubject(value, id, data) {
         switch (id) {

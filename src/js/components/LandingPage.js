@@ -17,6 +17,10 @@ class LandingPage extends React.PureComponent {
     linkClick = (activeTab) => {
         this.props.dispatch(getActiveTab(activeTab));
     }
+
+    handleBackClick = () => {
+        window.top.postMessage('goBackToAccount', "*");
+    }
     mapMessages(messages) {
         return SecureMessageBL(messages);
     }
@@ -41,7 +45,7 @@ class LandingPage extends React.PureComponent {
             <div className="container">
                 <div className="row">
                     <div className="col-md1-18">
-                        <StepHeader showheaderCrumbs={true} onClick={() => { }} headerCrumbsMessage="Back" headerTitle="New message" headerCrumbsPath={{ pathname: `${window.baseURl}/securemessage` }} />
+                        <button onClick={this.handleBackClick}>Back</button>
                     </div>
                 </div>
                 {this.checkError()}
