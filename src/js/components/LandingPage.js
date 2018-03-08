@@ -7,6 +7,7 @@ import StepHeader from './common/StepHeader';
 import { SecureMessageBL } from '../bl/SecureMessageBL'
 import GetIcon from './common/GetIcon';
 import ErrorPage from './common/ErrorPage';
+import SvgIcon from './common/GetIcon.js';
 
 /**
  * @class Landing Page 
@@ -30,8 +31,14 @@ class LandingPage extends React.PureComponent {
         } else {
             return (<div>
                 <div className="row">
-                    <div className="col-md1-18">
-                        <StepHeader showheaderCrumbs={false} headerTitle={this.props.content.landingPageTitle} headerSubtext={this.props.content.landingPageMessage} />
+                <div className="col-md1-18">
+                        <p className="c-step-header__crumbs">
+                            <a onClick={this.handleBackClick} className="c-step-header__link u-cursor-pointer">
+                                <span className="c-step-header__linkicon"><SvgIcon id="icon-left" width="16px" height="16px" /></span>
+                                <span className="c-step-header__linktext">Back</span>
+                            </a>
+                        </p>
+                        <h1 className="c-step-header__title" id="headingTag" tabIndex="-1">Messages</h1>
                     </div>
                 </div> <Link className="c-btn c-btn--default u-margin-bottom-c new-message-btn" to={{ pathname: `${window.baseURl}/newsecuremessage` }}>
                     <GetIcon id="icon-pencil" width="16px" height="16px" />New secure message
@@ -43,11 +50,6 @@ class LandingPage extends React.PureComponent {
     render() {
         return (
             <div className="container">
-                <div className="row">
-                    <div className="col-md1-18">
-                        <button onClick={this.handleBackClick}>Back</button>
-                    </div>
-                </div>
                 {this.checkError()}
             </div>
         );
