@@ -54,6 +54,11 @@ class NewSecureMessage extends React.Component {
     }
     componentDidMount() {
         this.props.dispatch(setNavRef('/newsecuremessage'));
+        window.top.postMessage('newMessagePage','*');
+    }
+
+    componentWillUnmount() {
+        window.top.postMessage('clearNewMessagePage','*');
     }
     selectSubject(value, id, data) {
         switch (id) {
@@ -249,7 +254,7 @@ class NewSecureMessage extends React.Component {
                 <div className="row">
                     <div className="col-md1-18">
                         <p className="c-step-header__crumbs">
-                            <a onClick={this.callBackModal} className="c-step-header__link">
+                            <a onClick={this.callBackModal} className="c-step-header__link u-cursor-pointer">
                                 <span className="c-step-header__linkicon"><SvgIcon id="icon-left" width="16px" height="16px" /></span>
                                 <span className="c-step-header__linktext">Back</span>
                             </a>
