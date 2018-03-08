@@ -1,6 +1,6 @@
 const token = {
     accessToken() {
-        let accessToken = new window.URL(window.location.href);
+        let accessToken = window.location;
         let hashKeyValue = {};
         let hashValue = {};
         let params;
@@ -18,7 +18,7 @@ const token = {
         }
     },
     getBankId() {
-        let accessToken = new window.URL(window.location.href);
+        let accessToken = window.location;
         let hashKeyValue = {};
         let hashValue = {};
         let params;
@@ -34,7 +34,7 @@ const token = {
         }
     },
     getClientContext() {
-        let accessToken = new window.URL(window.location.href);
+        let accessToken = window.location;
         let hashKeyValue = {};
         let hashValue = {};
         let params;
