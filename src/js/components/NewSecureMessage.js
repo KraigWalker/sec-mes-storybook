@@ -129,7 +129,7 @@ class NewSecureMessage extends React.Component {
         this.setState({ charError: true });
         this.renderRemainingChar();
         if (this.checkValidation() && this.state.chars_left >= 0) {
-            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), 'SENT'));
+            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), 'PENDING'));
             this.setState({ showSentMessageModal: true });
             this.setState({ showSendServiceErrorModal: true });
         }
@@ -226,7 +226,7 @@ class NewSecureMessage extends React.Component {
             this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), 'DRAFT'))
         }
         if (this.state.showSendServiceErrorModal) {
-            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), 'SENT'));
+            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), 'PENDING'));
         }
 
     }
@@ -306,7 +306,7 @@ class NewSecureMessage extends React.Component {
             </div>
 
             {this.state.showPopup && this.returnModalComponent()}
-            {this.state.showDraftSuccessModal && this.props.messages.successModal && this.returnDraftModal()}
+            {this.state.showDraftSuccessModal && this.props.messages.successDraftModal && this.returnDraftModal()}
             {this.state.showSentMessageModal && this.props.messages.successModal && this.returnSentMessageModal()}
             {this.props.messages.newMessageError && this.state.showSaveServiceErrorModal && this.returnErrorModal()}
             {this.props.messages.newMessageError && this.state.showSendServiceErrorModal && this.returnErrorModal()}

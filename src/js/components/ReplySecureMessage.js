@@ -114,7 +114,7 @@ class ReplySecureMessage extends React.Component {
         this.setState({ charError: true });
         this.renderRemainingChar();
         if (this.state.chars_left >= 0) {
-        this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, "SENT"));
+        this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, "PENDING"));
             this.setState({ showDraftSuccessModal: true });
             this.setState({showSendServiceErrorModal: true});
         }
