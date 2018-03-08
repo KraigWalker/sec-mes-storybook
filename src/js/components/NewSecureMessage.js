@@ -306,7 +306,7 @@ class NewSecureMessage extends React.Component {
             </div>
 
             {this.state.showPopup && this.returnModalComponent()}
-            {this.state.showDraftSuccessModal && this.props.messages.successDraftModal && this.returnDraftModal()}
+            {this.state.showDraftSuccessModal && this.props.messages.successModal && this.returnDraftModal()}
             {this.state.showSentMessageModal && this.props.messages.successModal && this.returnSentMessageModal()}
             {this.props.messages.newMessageError && this.state.showSaveServiceErrorModal && this.returnErrorModal()}
             {this.props.messages.newMessageError && this.state.showSendServiceErrorModal && this.returnErrorModal()}
