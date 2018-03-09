@@ -23,6 +23,10 @@ $btn-border-radius: 5px;
         @include general-theme(background-color, blue, account);
         box-shadow: none;
         outline: none;
+
+        svg {
+            @include common-theme(fill, white, base);
+        }
     }
 
     @include media-breakpoint-up(lg1) {

@@ -114,7 +114,7 @@ class ReplySecureMessage extends React.Component {
         this.setState({ charError: true });
         this.renderRemainingChar();
         if (this.state.chars_left >= 0) {
-        this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, "SENT"));
+        this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, "PENDING"));
             this.setState({ showDraftSuccessModal: true });
             this.setState({showSendServiceErrorModal: true});
         }
@@ -234,7 +234,7 @@ class ReplySecureMessage extends React.Component {
                 <div className="row">
                     <div className="col-md1-18">
                         <p className="c-step-header__crumbs">
-                            <a onClick={this.callBackModal} className="c-step-header__link">
+                            <a onClick={this.callBackModal} className="c-step-header__link u-cursor-pointer">
                                 <span className="c-step-header__linkicon"><SvgIcon id="icon-left" width="16px" height="16px" /></span>
                                 <span className="c-step-header__linktext">Back</span>
                             </a>

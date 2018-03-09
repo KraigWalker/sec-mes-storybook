@@ -18,6 +18,7 @@ $calloutwidths: ( xs1 : 343px, xs2 : 343px, sm1 : 720px, sm2 : 720px, md1 : 723p
             @include calloutsize($calloutwidths, $key);
         }
     }
+
     p:nth-child(2) {
         margin-bottom: 15px;
     }
@@ -78,6 +79,10 @@ $calloutwidths: ( xs1 : 343px, xs2 : 343px, sm1 : 720px, sm2 : 720px, md1 : 723p
             max-width: 428px;
         }
     }
+}
+
+.callout--msgbottom {
+    max-width: 640px;
 }
 
 .callout--product {

@@ -54,6 +54,11 @@ class NewSecureMessage extends React.Component {
     }
     componentDidMount() {
         this.props.dispatch(setNavRef('/newsecuremessage'));
+        window.top.postMessage('newMessagePage','*');
+    }
+
+    componentWillUnmount() {
+        window.top.postMessage('clearNewMessagePage','*');
     }
     selectSubject(value, id, data) {
         switch (id) {
@@ -124,7 +129,7 @@ class NewSecureMessage extends React.Component {
         this.setState({ charError: true });
         this.renderRemainingChar();
         if (this.checkValidation() && this.state.chars_left >= 0) {
-            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), 'SENT'));
+            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), 'PENDING'));
             this.setState({ showSentMessageModal: true });
             this.setState({ showSendServiceErrorModal: true });
         }
@@ -221,7 +226,7 @@ class NewSecureMessage extends React.Component {
             this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), 'DRAFT'))
         }
         if (this.state.showSendServiceErrorModal) {
-            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), 'SENT'));
+            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), 'PENDING'));
         }
 
     }
@@ -249,7 +254,7 @@ class NewSecureMessage extends React.Component {
                 <div className="row">
                     <div className="col-md1-18">
                         <p className="c-step-header__crumbs">
-                            <a onClick={this.callBackModal} className="c-step-header__link">
+                            <a onClick={this.callBackModal} className="c-step-header__link u-cursor-pointer">
                                 <span className="c-step-header__linkicon"><SvgIcon id="icon-left" width="16px" height="16px" /></span>
                                 <span className="c-step-header__linktext">Back</span>
                             </a>
