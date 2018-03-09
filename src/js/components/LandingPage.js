@@ -40,9 +40,10 @@ class LandingPage extends React.PureComponent {
                         </p>
                         <h1 className="c-step-header__title" id="headingTag" tabIndex="-1">Messages</h1>
                     </div>
-                </div> <Link className="c-btn c-btn--default u-margin-bottom-c new-message-btn" to={{ pathname: `${window.baseURl}/newsecuremessage` }}>
+                </div> 
+                <Link className="c-btn c-btn--default u-margin-bottom-c new-message-btn" to={{ pathname: `${window.baseURl}/newsecuremessage` }}>
                     <GetIcon id="icon-pencil" width="16px" height="16px" />New secure message
-         </Link>
+                </Link>
                 <SecureMessageTabs location={this.props.location} onClick={this.linkClick} messages={this.mapMessages(this.props.messages)} activeTab={this.props.activeTab} />
             </div>)
         }
