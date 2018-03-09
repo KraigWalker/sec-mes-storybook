@@ -1,6 +1,6 @@
 
 import React from 'react';
-import icons from '../../../images/icons.svg';
+import icons from '../images/icons.svg';
 
 class CommonGetIcon extends React.Component {
    
