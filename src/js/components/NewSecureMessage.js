@@ -129,7 +129,7 @@ class NewSecureMessage extends React.Component {
         this.setState({ charError: true });
         this.renderRemainingChar();
         if (this.checkValidation() && this.state.chars_left >= 0) {
-            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), 'SENT'));
+            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), 'PENDING'));
             this.setState({ showSentMessageModal: true });
             this.setState({ showSendServiceErrorModal: true });
         }
@@ -226,7 +226,7 @@ class NewSecureMessage extends React.Component {
             this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), 'DRAFT'))
         }
         if (this.state.showSendServiceErrorModal) {
-            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), 'SENT'));
+            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), 'PENDING'));
         }
 
     }
