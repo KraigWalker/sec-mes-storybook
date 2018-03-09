@@ -62,7 +62,7 @@ module.exports = {
 			  loader: 'json-loader'
 			},
 			{
-			  test: /\.(otf|ttf|eot|svg)$/,
+			  test: /\.(otf|ttf|eot)$/,
 			  exclude: ['/node_modules/','src/images/'],
 			  include: resolve(__dirname, "src/fonts/"),
 			  loader: 'url-loader?limit=1024&name=fonts/[name].[ext]'
