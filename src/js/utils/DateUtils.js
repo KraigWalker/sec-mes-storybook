@@ -1,6 +1,7 @@
  /**
  * @class DateUtils
  */
+import _ from  'lodash';
 import moment from 'moment';
 
 
@@ -17,10 +18,7 @@ import moment from 'moment';
 	 * @param  {Array} arrayData
 	 */
 	export function sortArrayByDate(arrayData){
-		// return arrayData.sort((a, b) =>b.getDateCreated().split('/').reverse().join().localeCompare(a.getDateCreated().split('/').reverse().join())); 
-		return arrayData.sort(function compare(a, b) {
-				return new Date(a.date_created) - new Date(b.date_created);
-		}).reverse();
+		return _.sortBy(arrayData, ['date_created']).reverse();
 	};
 
 		
