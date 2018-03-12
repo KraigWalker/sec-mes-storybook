@@ -19,7 +19,7 @@ class SecureMessageList extends React.Component {
             this.setState({ showThatsAllMessage: true });
         } else {
             this.setState({ showMoreLimit: 20, showThatsAllMessage: '' });
-        }
+       }
 
         if (this.props.activeTab === 'sent' && this.props.messagesFetched) {
             this.props.dispatch(sendMessageForAccessibiltiy('You don’t have any sent messages'));
@@ -69,6 +69,7 @@ class SecureMessageList extends React.Component {
         } else if (this.props.activeTab === 'drafts') {
             thatsallText = 'That’s all of them. Any new drafts you save will appear at the top of this list. We display messages up to 13 months in the past.';
         }
+        return thatsallText;
     }
     renderNoMessagesText() {
         if (this.props.activeTab === 'sent') {
