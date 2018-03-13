@@ -116,7 +116,7 @@ class DraftSecureMessage extends React.Component {
 
     returnModalComponent() {
         let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>Message sent</div>;
-        let footerButtons = <div><Link to={`${window.baseURl}/securemessages`} onClick={this.sentOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">Ok</Link></div>;
+        let footerButtons = <div><Link to={`${window.baseURl}/securemessages`} onClick={this.sentOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">{this.props.content.ok}</Link></div>;
         return (<ModalComponent show
             onHide={this.sentOkClicked}
             customClass={"c-modal c-modal--center"}
@@ -132,7 +132,7 @@ class DraftSecureMessage extends React.Component {
     }
     returnDraftModal() {
         let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>Message saved as a draft</div>;
-        let footerButtons = <div><Link to={`${window.baseURl}/securemessages`} onClick={this.draftOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">Ok</Link></div>;
+        let footerButtons = <div><Link to={`${window.baseURl}/securemessages`} onClick={this.draftOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">{this.props.content.ok}</Link></div>;
         return (<ModalComponent show
             onHide={this.draftOkClicked}
             customClass={"c-modal c-modal--center"}
@@ -193,6 +193,7 @@ class DraftSecureMessage extends React.Component {
     }
   
     render() {
+        console.log(this.props,'NEw secure page');
         { this.props.location.messageDetail.account.accountNumber === undefined ? 'No specific account' : this.props.location.messageDetail.account }
         return (
             <div className="container">

@@ -13,7 +13,7 @@ const content = {
     messageRelatesTo: 'Message relates to',
     subject: 'Subject',
     messageSent: 'Message sent',
-    ok: 'Ok',
+    ok: 'OK',
     draftBody: 'Message saved as a draft',
     leaveMessageHeading: 'Your message hasn’t been sent yet',
     returnToMessage: 'Return to message',

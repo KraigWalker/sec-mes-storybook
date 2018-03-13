@@ -127,6 +127,28 @@ export function sendMessageData(requestData, status) {
   }
 }
 
+export function replyMessageData(requestData,ids,status) {
+  return function(dispatch) {
+    const success = (response) => {
+      const payload = {
+        type: AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS,
+   //     payload: {response: response, requestData: requestData} will remove after error scenarios
+      }
+      dispatch(payload);
+    }
+    const error = (error) => {
+      const payload = {
+        type: AppConstants.UPDATE_NEW_SECURE_MESSAGE_FAILURE,
+        payload: error,
+        tempData: requestData,
+        serviceType: 'post-service'
+      }
+      dispatch(payload);
+    }
+    AppApi.replyMessageData(requestData,ids,status,success,error);
+  }
+}
+
 export function updateMessageData(requestData, id, status) {
   return function(dispatch) {
     const success = () => {

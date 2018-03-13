@@ -50,7 +50,6 @@ class NewSecureMessage extends React.Component {
         };
     };
     componentWillMount() {
-        this.props.dispatch(getMessageSubjects());
     }
     componentDidMount() {
         this.props.dispatch(setNavRef('/newsecuremessage'));
@@ -177,7 +176,7 @@ class NewSecureMessage extends React.Component {
     }
     returnDraftModal() {
         let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>Message saved as a draft</div>;
-        let footerButtons = <div><Link to={`${window.baseURl}/securemessages`} onClick={this.draftOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">Ok</Link></div>;
+        let footerButtons = <div><Link to={`${window.baseURl}/securemessages`} onClick={this.draftOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">{this.props.content.ok}</Link></div>;
         return (<ModalComponent show
             onHide={this.draftOkClicked}
             customClass={"c-modal c-modal--center"}
@@ -199,14 +198,13 @@ class NewSecureMessage extends React.Component {
             this.setState({ showPopup: false });
             this.setState({ showSaveServiceErrorModal: true });
         }
-
     }
     sentOkClicked() {
         this.setState({ showSentMessageModal: false });
     }
     returnSentMessageModal() {
         let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>Message sent</div>;
-        let footerButtons = <div><Link to={`${window.baseURl}/securemessages`} onClick={this.sentOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">Ok</Link></div>;
+        let footerButtons = <div><Link to={`${window.baseURl}/securemessages`} onClick={this.sentOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">{this.props.content.ok}</Link></div>;
         return (<ModalComponent show
             onHide={this.sentOkClicked}
             customClass={"c-modal c-modal--center"}

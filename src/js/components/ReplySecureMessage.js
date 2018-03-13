@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import RegexUtils from '../utils/RegexUtils.js';
 import SendMessageRequestEntity from '../entities/SendMessageRequestEntity.js'
 import { connect } from 'react-redux';
-import { getMessageSubjects, getAccounts, sendMessageData, sendMessageForAccessibiltiy, updateMessageData } from '../actions/AppActions';
+import { getMessageSubjects, getAccounts, replyMessageData, sendMessageForAccessibiltiy, updateMessageData } from '../actions/AppActions';
 let messageEntity = new SendMessageRequestEntity();
 import { getThreadsBL } from '../bl/SecureMessageBL';
 import Threads from './common/ThreadList';
@@ -114,8 +114,8 @@ class ReplySecureMessage extends React.Component {
         this.setState({ charError: true });
         this.renderRemainingChar();
         if (this.state.chars_left >= 0) {
-        this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, "PENDING"));
-            this.setState({ showDraftSuccessModal: true });
+        this.props.dispatch(replyMessageData(messageEntity.getMessageRequestData(),this.props.location.messageDetail, "PENDING"));
+            this.setState({ showSentMessageModal: true });
             this.setState({showSendServiceErrorModal: true});
         }
     }
@@ -126,7 +126,7 @@ class ReplySecureMessage extends React.Component {
     }
     returnSentMessageModal() {
         let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>Message sent</div>;
-        let footerButtons = <button type="button" onClick={this.sentOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">Ok</button>;
+        let footerButtons = <Link to={`${window.baseURl}/securemessages`} onClick={this.sentOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">{this.props.content.ok}</Link>;
         return (<ModalComponent show
             onHide={this.sentOkClicked}
             customClass={"c-modal c-modal--center"}
@@ -141,7 +141,7 @@ class ReplySecureMessage extends React.Component {
     }
     returnDraftModal(){
         let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>Message saved as a draft</div>;
-        let footerButtons = <button type="button" onClick={this.draftOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">Ok</button>;
+        let footerButtons = <Link to={`${window.baseURl}/securemessages`} onClick={this.draftOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">{this.props.content.ok}</Link>;
         return (<ModalComponent show
             onHide={this.draftOkClicked}
             customClass={"c-modal c-modal--center"}
@@ -152,7 +152,7 @@ class ReplySecureMessage extends React.Component {
             closeButton/>);
     }
     saveDraftData(){    
-        this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, "DRAFT"));
+        this.props.dispatch(replyMessageData(messageEntity.getMessageRequestData(),this.props.location.messageDetail, "DRAFT"));
         this.setState({ showPopup: false });
         this.setState({ showDraftSuccessModal: true });
         this.setState({showSaveServiceErrorModal: true});
@@ -175,10 +175,10 @@ class ReplySecureMessage extends React.Component {
     }
     retryServiceCall() {
         if (this.state.showSaveServiceErrorModal) {
-            this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, "DRAFT"));
+            this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail, "DRAFT"));
         }
         if (this.state.showSendServiceErrorModal) {
-            this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, "PENDING"));
+            this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail, "PENDING"));
         }
     }
     leavePage() {

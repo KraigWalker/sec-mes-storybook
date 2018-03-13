@@ -151,7 +151,7 @@ class SecureMessageSummary extends React.Component {
             'u-position-relative': !this.props.threadFlag,
         });
 
-
+        let accNo = this.props.message.account.accountNumber? this.props.message.account.accountNumber:'No specific account';
         return (
             <div className={messageClass}>
                 {(message.status === 'READ' || message.status === 'NEW') && this.getSummaryIcon()}
@@ -169,7 +169,7 @@ class SecureMessageSummary extends React.Component {
                         </div>
                     </div>
                     {!this.props.viewMessageFlag && <p className="c-message__summary__account">{message.getMessageBody()}</p>}
-                    {this.props.viewMessageFlag && <p className="c-message__summary__account">Account : {this.props.message.account.accountNumber}</p>}
+                    {this.props.viewMessageFlag && <p className="c-message__summary__account">Account : {accNo}</p>}
                     <p className="c-message__summary__date">{message.getDateCreated()}</p>
                 </div>
                 {this.state.showDeleteConfirmModal && this.returnModalComponent()}
