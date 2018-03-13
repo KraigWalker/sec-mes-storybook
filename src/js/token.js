@@ -42,6 +42,7 @@ const token = {
             params = accessToken.hash.substr(1);
             hashKeyValue.appTitle = params.split('&')[2];
             hashValue.appTitle = hashKeyValue.appTitle.split('=')[1];
+            hashValue.appTitle = hashValue.appTitle.replace("%20", " ");
             hashKeyValue.userTrackingId = params.split('&')[3];
             hashValue.userTrackingId = hashKeyValue.userTrackingId.split('=')[1];
             return {
