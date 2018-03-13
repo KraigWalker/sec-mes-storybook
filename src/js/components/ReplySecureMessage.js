@@ -107,7 +107,10 @@ class ReplySecureMessage extends React.Component {
             (this.state.chars_left === 3) && this.props.dispatch(sendMessageForAccessibiltiy('Three characters left'));
             (this.state.chars_left === 1) && this.props.dispatch(sendMessageForAccessibiltiy('One character left'));
             (this.state.chars_left === 0) && this.props.dispatch(sendMessageForAccessibiltiy('Maximum characters limit reached'));
-            return <p className="char__error">Characters Left: {this.state.chars_left}</p>;
+            if(this.state.chars_left <= 0) {
+                headerflagClass = "char__error";
+                }
+            return <p className={`${headerflagClass}`}>Characters Left: {this.state.chars_left}</p>;
         }
     }
     sendData() {
