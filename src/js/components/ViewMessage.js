@@ -92,14 +92,13 @@ class ViewMessage extends React.Component {
         let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>Message Deleted</div>;
         let footerButtons = <button type="button" onClick={this.closeSuccessModal} className="c-btn c-btn--primary c-btn--sm c-modal__button">OK</button>;
         return (<ModalComponent show
-            onHide={this.closeSuccessModal}
             customClass={"c-modal c-modal-center"}
             bsSize={'small'}
             modalheading={''}
             modalbody={bodyContent}
             modalfooter={footerButtons}
             modalInContainer={false}
-            closeButton />);
+            closeButton={false}/>);
     }
     closeSuccessModal() {
         this.setState({ showDeleteSuccessModal: false });

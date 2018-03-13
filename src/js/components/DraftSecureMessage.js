@@ -121,14 +121,13 @@ class DraftSecureMessage extends React.Component {
         let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>Message sent</div>;
         let footerButtons = <div><Link to={`${window.baseURl}/securemessages`} onClick={this.sentOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">{this.props.content.ok}</Link></div>;
         return (<ModalComponent show
-            onHide={this.sentOkClicked}
             customClass={"c-modal c-modal--center"}
             bsSize={'small'}
             modalheading={''}
             modalbody={bodyContent}
             modalfooter={footerButtons}
             modalInContainer={false}
-            closeButton />);
+            closeButton={false} />);
     }
     sentOkClicked() {
         this.setState({ showPopup: false });
@@ -137,14 +136,13 @@ class DraftSecureMessage extends React.Component {
         let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>Message saved as a draft</div>;
         let footerButtons = <div><Link to={`${window.baseURl}/securemessages`} onClick={this.draftOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">{this.props.content.ok}</Link></div>;
         return (<ModalComponent show
-            onHide={this.draftOkClicked}
             customClass={"c-modal c-modal--center"}
             bsSize={'small'}
             modalheading={''}
             modalbody={bodyContent}
             modalfooter={footerButtons}
             modalInContainer={false}
-            closeButton />);
+            closeButton={false} />);
     }
     saveDraftData() { 
         this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, "DRAFT"));
