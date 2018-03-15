@@ -15,6 +15,10 @@ import SvgIcon from './common/GetIcon.js';
 */
 
 class LandingPage extends React.PureComponent {
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
+
     linkClick = (activeTab) => {
         this.props.dispatch(getActiveTab(activeTab));
     }
@@ -26,6 +30,7 @@ class LandingPage extends React.PureComponent {
         return SecureMessageBL(messages);
     }
     checkError() {
+     
         if (this.props.messages.error && this.props.messages.fetched) {
             this.props.history.push("/errormessage");
         } else {
@@ -49,6 +54,8 @@ class LandingPage extends React.PureComponent {
         }
     }
     render() {
+        console.log(this.props);
+       // console.log(this.props);
         return (
             <div className="container">
                 {this.checkError()}

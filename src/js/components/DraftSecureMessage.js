@@ -14,7 +14,8 @@ import RegexUtils from '../utils/RegexUtils.js';
 import { getAccountName } from '../bl/SecureMessageBL';
 import CalloutComponent from './common/CalloutComponent.js';
 import token from '../token';
-
+const draft = "DRAFT";
+const pending = "PENDING";
 let messageEntity = new SendMessageRequestEntity();
 class DraftSecureMessage extends React.Component {
     constructor(props) {
@@ -58,6 +59,7 @@ class DraftSecureMessage extends React.Component {
     }
     componentDidMount() {
         this.props.dispatch(setNavRef('/draftsecuremessage'));
+        window.scrollTo(0, 0);
     }
 
     selectSubject(value, id, data) {
@@ -77,13 +79,13 @@ class DraftSecureMessage extends React.Component {
                 <div>
                     <p className="char__error">Characters Left: {this.state.chars_left}</p>
                     <CalloutComponent dClass='callout callout__error callout__inline-error' paraText='Oops. The maximum message size has been exceeded. Please reduce the length of your message.' />
-
                 </div>);
         }
         if (this.state.chars_left <= 300) {
             (this.state.chars_left === 3) && this.props.dispatch(sendMessageForAccessibiltiy('Three characters left'));
             (this.state.chars_left === 1) && this.props.dispatch(sendMessageForAccessibiltiy('One character left'));
             (this.state.chars_left === 0) && this.props.dispatch(sendMessageForAccessibiltiy('Maximum characters limit reached'));
+            let headerflagClass = '';
             if(this.state.chars_left <= 0) {
                 headerflagClass = "char__error";
                 }
@@ -111,7 +113,7 @@ class DraftSecureMessage extends React.Component {
         this.setState({ charError: true });
         this.renderRemainingChar();
         if (this.state.chars_left >= 0) {
-                this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, "PENDING"));
+                this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, pending));
                 this.setState({ showPopup: true });
                 this.setState({showSendServiceErrorModal: true});
         }
@@ -145,7 +147,7 @@ class DraftSecureMessage extends React.Component {
             closeButton={false} />);
     }
     saveDraftData() { 
-        this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, "DRAFT"));
+        this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, draft));
         this.setState({showSaveServiceErrorModal: true});
         this.setState({ showDraftSuccessModal: true });   
     }
@@ -167,10 +169,10 @@ class DraftSecureMessage extends React.Component {
     }
     retryServiceCall() {
         if (this.state.showSaveServiceErrorModal) {
-            this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, "DRAFT"));
+            this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, draft));
         }
         if (this.state.showSendServiceErrorModal) {
-            this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, "PENDING"));
+            this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, pending));
         }
 
     }
@@ -194,7 +196,6 @@ class DraftSecureMessage extends React.Component {
     }
   
     render() {
-        console.log(this.props,'NEw secure page');
         { this.props.location.messageDetail.account.accountNumber === undefined ? 'No specific account' : this.props.location.messageDetail.account }
         return (
             <div className="container">

@@ -38,6 +38,7 @@ class ViewMessage extends React.Component {
         if (messageDetail && this.props.location.messageDetail.status === "NEW") {
             this.props.dispatch(updateMessageData(this.props.location.messageDetail, this.props.location.messageDetail.id, 'READ'));
         }
+        window.scrollTo(0, 0);
     }
     getThreads(messages, currentMessage) {
         const threads = getThreadsBL(messages, currentMessage);

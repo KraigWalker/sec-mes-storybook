@@ -16,6 +16,8 @@ import ModalComponent from './common/ModalComponent';
 import GetIcon from './common/GetIcon';
 import CalloutComponent from './common/CalloutComponent.js';
 import SvgIcon from './common/GetIcon.js';
+const draft = "DRAFT";
+const pending = "PENDING";
 class ReplySecureMessage extends React.Component {
     constructor(props) {
         super(props);
@@ -63,6 +65,10 @@ class ReplySecureMessage extends React.Component {
         }
     }
 
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
+
     selectSubject(value, id, data) {
         switch (id) {
             case 'accounts':
@@ -87,6 +93,7 @@ class ReplySecureMessage extends React.Component {
             let lastFour = RegexUtils.getLastFourDigits(extractedString);
             messageEntity.setMessage(e.replace(new RegExp(extractedString, 'g'), '************' + lastFour));
         } else messageEntity.setMessage(e);
+        let headerflagClass = '';
         if (this.state.chars_left >= 0) {
             this.setState({ charError: false });
         }
@@ -117,7 +124,7 @@ class ReplySecureMessage extends React.Component {
         this.setState({ charError: true });
         this.renderRemainingChar();
         if (this.state.chars_left >= 0) {
-        this.props.dispatch(replyMessageData(messageEntity.getMessageRequestData(),this.props.location.messageDetail, "PENDING"));
+        this.props.dispatch(replyMessageData(messageEntity.getMessageRequestData(),this.props.location.messageDetail, pending));
             this.setState({ showSentMessageModal: true });
             this.setState({showSendServiceErrorModal: true});
         }
@@ -153,7 +160,7 @@ class ReplySecureMessage extends React.Component {
             closeButton={false}/>);
     }
     saveDraftData(){    
-        this.props.dispatch(replyMessageData(messageEntity.getMessageRequestData(),this.props.location.messageDetail, "DRAFT"));
+        this.props.dispatch(replyMessageData(messageEntity.getMessageRequestData(),this.props.location.messageDetail, draft));
         this.setState({ showPopup: false });
         this.setState({ showDraftSuccessModal: true });
         this.setState({showSaveServiceErrorModal: true});
@@ -176,10 +183,10 @@ class ReplySecureMessage extends React.Component {
     }
     retryServiceCall() {
         if (this.state.showSaveServiceErrorModal) {
-            this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail, "DRAFT"));
+            this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail, draft));
         }
         if (this.state.showSendServiceErrorModal) {
-            this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail, "PENDING"));
+            this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail, pending));
         }
     }
     leavePage() {

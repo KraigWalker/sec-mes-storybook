@@ -13,6 +13,8 @@ import GetIcon from './common/GetIcon';
 import RegexUtils from '../utils/RegexUtils.js';
 import CalloutComponent from './common/CalloutComponent.js';
 import SvgIcon from './common/GetIcon.js';
+const draft = "DRAFT";
+const pending = "PENDING";
 let page;
 let messageEntity = new SendMessageRequestEntity();
 class NewSecureMessage extends React.Component {
@@ -54,6 +56,7 @@ class NewSecureMessage extends React.Component {
     componentDidMount() {
         this.props.dispatch(setNavRef('/newsecuremessage'));
         window.top.postMessage('newMessagePage','*');
+        window.scrollTo(0,0);
     }
 
     componentWillUnmount() {
@@ -128,7 +131,7 @@ class NewSecureMessage extends React.Component {
         this.setState({ charError: true });
         this.renderRemainingChar();
         if (this.checkValidation() && this.state.chars_left >= 0) {
-            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), 'PENDING'));
+            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), pending));
             this.setState({ showSentMessageModal: true });
             this.setState({ showSendServiceErrorModal: true });
         }
@@ -196,7 +199,7 @@ class NewSecureMessage extends React.Component {
 
     saveDraftData() {
         if (this.checkValidation() && this.state.chars_left >= 0) {
-            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), 'DRAFT'));
+            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), draft));
             this.setState({ showDraftSuccessModal: true });
             this.setState({ showPopup: false });
             this.setState({ showSaveServiceErrorModal: true });
@@ -223,10 +226,10 @@ class NewSecureMessage extends React.Component {
     }
     retryServiceCall() {
         if (this.state.showSaveServiceErrorModal) {
-            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), 'DRAFT'))
+            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), draft))
         }
         if (this.state.showSendServiceErrorModal) {
-            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), 'PENDING'));
+            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), pending));
         }
 
     }
