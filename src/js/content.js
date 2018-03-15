@@ -25,6 +25,8 @@ const content = {
     getInTouch: 'If you’re still having problems, please get in touch.',
     retry: 'Retry',
     leavePage: 'Leave page',
+    accError: 'Please select an option for which account your enquiry relates to. If it’s a general enquiry, choose \'General enquiry\'',
+    subError: 'Please select a subject for your message',
 };
 
 export default content;

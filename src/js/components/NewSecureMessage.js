@@ -282,7 +282,7 @@ class NewSecureMessage extends React.Component {
                     {this.props.content.subject}
                 </label>
                 <div className="c-field__controls u-position-relative">
-                    <DropDownComponent accessID="Subject" subjects={this.props.subjects} selectSubject={this.selectSubject} showSubjectError={this.state.validationSubjectMsg} name='subjects' id='subjects' isFromDraft={false} selectedValue='Please select' />
+                    <DropDownComponent accessID="Subject" subjects={this.props.subjects} content={this.props.content} selectSubject={this.selectSubject} showSubjectError={this.state.validationSubjectMsg} name='subjects' id='subjects' isFromDraft={false} selectedValue='Please select' />
                 </div>
             </div>
 
@@ -291,7 +291,7 @@ class NewSecureMessage extends React.Component {
                     {this.props.content.messageRelatesTo}
                 </label>
                 <div className="c-field__controls u-position-relative">
-                    <DropDownComponent accessID="Message relates to" accounts={this.props.accounts} selectSubject={this.selectSubject} showAccountError={this.state.validationAccountMsg} name='accounts' id='accounts' isFromDraft={false} selectedValue='Please select' />
+                    <DropDownComponent accessID="Message relates to" accounts={this.props.accounts} content={this.props.content} selectSubject={this.selectSubject} showAccountError={this.state.validationAccountMsg} name='accounts' id='accounts' isFromDraft={false} selectedValue='Please select' />
                 </div>
             </div>
 
