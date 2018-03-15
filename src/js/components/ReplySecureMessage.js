@@ -16,8 +16,8 @@ import ModalComponent from './common/ModalComponent';
 import GetIcon from './common/GetIcon';
 import CalloutComponent from './common/CalloutComponent.js';
 import SvgIcon from './common/GetIcon.js';
-const draft = "DRAFT";
-const pending = "PENDING";
+import stringConstants from '../constants/stringConstants.js';
+
 class ReplySecureMessage extends React.Component {
     constructor(props) {
         super(props);
@@ -124,7 +124,7 @@ class ReplySecureMessage extends React.Component {
         this.setState({ charError: true });
         this.renderRemainingChar();
         if (this.state.chars_left >= 0) {
-        this.props.dispatch(replyMessageData(messageEntity.getMessageRequestData(),this.props.location.messageDetail, pending));
+        this.props.dispatch(replyMessageData(messageEntity.getMessageRequestData(),this.props.location.messageDetail, stringConstants.pending));
             this.setState({ showSentMessageModal: true });
             this.setState({showSendServiceErrorModal: true});
         }
@@ -160,7 +160,7 @@ class ReplySecureMessage extends React.Component {
             closeButton={false}/>);
     }
     saveDraftData(){    
-        this.props.dispatch(replyMessageData(messageEntity.getMessageRequestData(),this.props.location.messageDetail, draft));
+        this.props.dispatch(replyMessageData(messageEntity.getMessageRequestData(),this.props.location.messageDetail, stringConstants.draft));
         this.setState({ showPopup: false });
         this.setState({ showDraftSuccessModal: true });
         this.setState({showSaveServiceErrorModal: true});
@@ -183,10 +183,10 @@ class ReplySecureMessage extends React.Component {
     }
     retryServiceCall() {
         if (this.state.showSaveServiceErrorModal) {
-            this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail, draft));
+            this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail, stringConstants.draft));
         }
         if (this.state.showSendServiceErrorModal) {
-            this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail, pending));
+            this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail, stringConstants.pending));
         }
     }
     leavePage() {

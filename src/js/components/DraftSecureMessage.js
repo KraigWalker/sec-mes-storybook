@@ -13,9 +13,9 @@ import GetIcon from './common/GetIcon';
 import RegexUtils from '../utils/RegexUtils.js';
 import { getAccountName } from '../bl/SecureMessageBL';
 import CalloutComponent from './common/CalloutComponent.js';
+import stringConstants from '../constants/stringConstants.js';
 import token from '../token';
-const draft = "DRAFT";
-const pending = "PENDING";
+
 let messageEntity = new SendMessageRequestEntity();
 class DraftSecureMessage extends React.Component {
     constructor(props) {
@@ -113,7 +113,7 @@ class DraftSecureMessage extends React.Component {
         this.setState({ charError: true });
         this.renderRemainingChar();
         if (this.state.chars_left >= 0) {
-                this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, pending));
+                this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, stringConstants.pending));
                 this.setState({ showPopup: true });
                 this.setState({showSendServiceErrorModal: true});
         }
@@ -147,7 +147,7 @@ class DraftSecureMessage extends React.Component {
             closeButton={false} />);
     }
     saveDraftData() { 
-        this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, draft));
+        this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, stringConstants.draft));
         this.setState({showSaveServiceErrorModal: true});
         this.setState({ showDraftSuccessModal: true });   
     }
@@ -169,10 +169,10 @@ class DraftSecureMessage extends React.Component {
     }
     retryServiceCall() {
         if (this.state.showSaveServiceErrorModal) {
-            this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, draft));
+            this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, stringConstants.draft));
         }
         if (this.state.showSendServiceErrorModal) {
-            this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, pending));
+            this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, stringConstants.pending));
         }
 
     }
