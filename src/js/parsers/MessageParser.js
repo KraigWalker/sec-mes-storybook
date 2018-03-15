@@ -64,7 +64,7 @@ export function parseDraft(data, status) {
 export function updateMessage(data, id, status) {
     let requestData = {};
     if (data.id !== undefined) {
-         requestData = {
+        requestData = {
             secure_message: {
                 subject: data.subject,
                 account: {
@@ -87,7 +87,7 @@ export function updateMessage(data, id, status) {
         }
 
     } else {
-      requestData = {
+        requestData = {
             secure_message: {
                 subject: data.subject,
 
@@ -112,7 +112,7 @@ export function updateMessage(data, id, status) {
 export function deleteMessage(data, id, status) {
     let requestData = {};
     if (data.account.accountID !== undefined) {
-         requestData = {
+        requestData = {
             secure_message: {
                 subject: data.subject,
                 account: {
@@ -135,7 +135,7 @@ export function deleteMessage(data, id, status) {
         }
 
     } else {
-      requestData = {
+        requestData = {
             secure_message: {
                 subject: data.subject,
                 payload: {
@@ -153,5 +153,97 @@ export function deleteMessage(data, id, status) {
             }
         }
     }
+    return requestData;
+}
+
+export function replyMessage(data, ids, status) {
+    let requestData = {};
+        if (data.id !== undefined && ids.threadID !== null) {
+            requestData = {
+                secure_message: {
+                    subject: data.subject,
+                    threadID: ids.threadID,
+                    account: {
+                        id: data.id,
+                        number: data.number,
+                    },
+                    payload: {
+                        headers: [
+                            {
+                                name: "In-Reply-To",
+                                value: ids.id,
+                            }
+                        ],
+                        body: {
+                            data: data.message,
+                        }
+                    },
+                    status: status,
+                }
+            }
+        }
+
+       else if (data.id !== undefined && ids.threadID === null) {
+            requestData = {
+                secure_message: {
+                    subject: data.subject,
+                    account: {
+                        id: data.id,
+                        number: data.number,
+                    },
+                    payload: {
+                        headers: [
+                            {
+                                name: "In-Reply-To",
+                                value: ids.id,
+                            }
+                        ],
+                        body: {
+                            data: data.message,
+                        }
+                    },
+                    status: status,
+                }
+            }
+        }
+       else if (data.id === undefined && ids.threadID !== null) {
+            requestData = {
+                secure_message: {
+                    subject: data.subject,
+                    threadID: ids.threadID,
+                    payload: {
+                        headers: [
+                            {
+                                name: "In-Reply-To",
+                                value: ids.id,
+                            }
+                        ],
+                        body: {
+                            data: data.message,
+                        }
+                    },
+                    status: status,
+                }
+            }
+        }
+      else if (data.id === undefined && ids.threadID === null) {
+            requestData = {
+                secure_message: {
+                    subject: data.subject,
+                    payload: {
+                        headers: [
+                            {
+                                name: "In-Reply-To",
+                                value: ids.id,
+                            }
+                        ],
+                        body: {
+                            data: data.message,
+                        }
+                    },
+                    status: status,
+                }
+            }
+        }
     return requestData;
 }

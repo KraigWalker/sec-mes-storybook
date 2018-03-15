@@ -103,14 +103,13 @@ class SecureMessageSummary extends React.Component {
         let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>Message Deleted</div>;
         let footerButtons = <div><button type="button" onClick={this.closeSuccessModal} className="c-btn c-btn--primary c-btn--sm c-modal__button">OK</button></div>;
         return (<ModalComponent show
-            onHide={this.closeSuccessModal}
             customClass={"c-modal c-modal--center"}
             bsSize={'small'}
             modalheading={''}
             modalbody={bodyContent}
             modalfooter={footerButtons}
             modalInContainer={false}
-            closeButton />);
+            closeButton={false} />);
     }
     returnModalComponent() {
         let bodyContent = <div className="callout callout__error">You won’t be able to recover this message if you delete it.</div>;
@@ -151,7 +150,7 @@ class SecureMessageSummary extends React.Component {
             'u-position-relative': !this.props.threadFlag,
         });
 
-
+        let accNo = this.props.message.account.accountNumber? this.props.message.account.accountNumber:'No specific account';
         return (
             <div className={messageClass}>
                 {(message.status === 'READ' || message.status === 'NEW') && this.getSummaryIcon()}
@@ -169,7 +168,7 @@ class SecureMessageSummary extends React.Component {
                         </div>
                     </div>
                     {!this.props.viewMessageFlag && <p className="c-message__summary__account">{message.getMessageBody()}</p>}
-                    {this.props.viewMessageFlag && <p className="c-message__summary__account">Account : {this.props.message.account.accountNumber}</p>}
+                    {this.props.viewMessageFlag && <p className="c-message__summary__account">Account : {accNo}</p>}
                     <p className="c-message__summary__date">{message.getDateCreated()}</p>
                 </div>
                 {this.state.showDeleteConfirmModal && this.returnModalComponent()}

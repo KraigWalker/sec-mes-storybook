@@ -13,6 +13,7 @@ import GetIcon from './common/GetIcon';
 import RegexUtils from '../utils/RegexUtils.js';
 import CalloutComponent from './common/CalloutComponent.js';
 import SvgIcon from './common/GetIcon.js';
+import StringsConstants from '../constants/StringsConstants.js';
 let page;
 let messageEntity = new SendMessageRequestEntity();
 class NewSecureMessage extends React.Component {
@@ -50,11 +51,11 @@ class NewSecureMessage extends React.Component {
         };
     };
     componentWillMount() {
-        this.props.dispatch(getMessageSubjects());
     }
     componentDidMount() {
         this.props.dispatch(setNavRef('/newsecuremessage'));
         window.top.postMessage('newMessagePage','*');
+        window.scrollTo(0,0);
     }
 
     componentWillUnmount() {
@@ -129,7 +130,7 @@ class NewSecureMessage extends React.Component {
         this.setState({ charError: true });
         this.renderRemainingChar();
         if (this.checkValidation() && this.state.chars_left >= 0) {
-            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), 'PENDING'));
+            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), StringsConstants.PENDING));
             this.setState({ showSentMessageModal: true });
             this.setState({ showSendServiceErrorModal: true });
         }
@@ -147,7 +148,11 @@ class NewSecureMessage extends React.Component {
             (this.state.chars_left === 3) && this.props.dispatch(sendMessageForAccessibiltiy('Three characters left'));
             (this.state.chars_left === 1) && this.props.dispatch(sendMessageForAccessibiltiy('One character left'));
             (this.state.chars_left === 0) && this.props.dispatch(sendMessageForAccessibiltiy('Maximum characters limit reached'));
-            return <p className="char__error">Characters Left: {this.state.chars_left}</p>;
+            let headerflagClass = '';
+            if(this.state.chars_left <= 0) {
+            headerflagClass = "char__error";
+            }
+            return <p className={`${headerflagClass}`}>Characters Left: {this.state.chars_left}</p>;
         }
     }
     leavePage() {
@@ -162,7 +167,7 @@ class NewSecureMessage extends React.Component {
     returnModalComponent() {
         if (this.state.showPopup) {
             let bodyContent = <div className="callout callout__error">{this.props.content.leaveMessageBody}</div>;
-            let footerButtons = <div><Link to={`${window.baseURl}/securemessages`}><button type="button" onClick={this.leavePage} className="c-btn c-btn--secondary c-modal__button">Leave page</button></Link>&nbsp;
+            let footerButtons = <div><Link to={`${window.baseURl}/securemessages`}><button type="button" onClick={this.leavePage} className="c-btn c-btn--secondary c-modal__button">{this.props.content.leavePage}</button></Link>&nbsp;
             <button type="button" className="c-btn c-btn--secondary c-modal__button" onClick={this.saveDraftData} disabled={this.state.disabled}>{this.props.content.saveDraft}</button>
                 <button type="button" onClick={this.stayOnPage} className="c-btn c-btn--default c-modal__button">{this.props.content.returnToMessage}</button></div>;
             return (<ModalComponent show
@@ -176,17 +181,16 @@ class NewSecureMessage extends React.Component {
         }
     }
     returnDraftModal() {
-        let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>Message saved as a draft</div>;
-        let footerButtons = <div><Link to={`${window.baseURl}/securemessages`} onClick={this.draftOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">Ok</Link></div>;
+        let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>{this.props.content.draftBody}</div>;
+        let footerButtons = <div><Link to={`${window.baseURl}/securemessages`} onClick={this.draftOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">{this.props.content.ok}</Link></div>;
         return (<ModalComponent show
-            onHide={this.draftOkClicked}
             customClass={"c-modal c-modal--center"}
             bsSize={'small'}
             modalheading={''}
             modalbody={bodyContent}
             modalfooter={footerButtons}
             modalInContainer={false}
-            closeButton />);
+            closeButton = {false}/>);
     }
     draftOkClicked() {
         this.setState({ showDraftSuccessModal: false });
@@ -194,28 +198,26 @@ class NewSecureMessage extends React.Component {
 
     saveDraftData() {
         if (this.checkValidation() && this.state.chars_left >= 0) {
-            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), 'DRAFT'));
+            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), StringsConstants.DRAFT));
             this.setState({ showDraftSuccessModal: true });
             this.setState({ showPopup: false });
             this.setState({ showSaveServiceErrorModal: true });
         }
-
     }
     sentOkClicked() {
         this.setState({ showSentMessageModal: false });
     }
     returnSentMessageModal() {
-        let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>Message sent</div>;
-        let footerButtons = <div><Link to={`${window.baseURl}/securemessages`} onClick={this.sentOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">Ok</Link></div>;
+        let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>{this.props.content.messageSent}</div>;
+        let footerButtons = <div><Link to={`${window.baseURl}/securemessages`} onClick={this.sentOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">{this.props.content.ok}</Link></div>;
         return (<ModalComponent show
-            onHide={this.sentOkClicked}
             customClass={"c-modal c-modal--center"}
             bsSize={'small'}
             modalheading={''}
             modalbody={bodyContent}
             modalfooter={footerButtons}
             modalInContainer={false}
-            closeButton />);
+            closeButton = {false} />);
     }
     errorCloseClicked() {
         this.setState({ showSaveServiceErrorModal: false });
@@ -223,19 +225,19 @@ class NewSecureMessage extends React.Component {
     }
     retryServiceCall() {
         if (this.state.showSaveServiceErrorModal) {
-            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), 'DRAFT'))
+            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), StringsConstants.DRAFT))
         }
         if (this.state.showSendServiceErrorModal) {
-            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), 'PENDING'));
+            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), StringsConstants.PENDING));
         }
 
     }
     returnErrorModal() {
-        let bodyContent = <div><h3>Sorry, there’s been a technical problem</h3><br />
-            <p>It looks like something has gone wrong in the background. Please try again.</p><br />
-            <p>If you’re still having problems, please get in touch.</p></div>;
+        let bodyContent = <div><h3>{this.props.content.sorryHeader}</h3><br />
+            <p>{this.props.content.tryAgain}</p><br />
+            <p>{this.props.content.getInTouch}</p></div>;
         let footerButtons = <div><button type="button" className="c-btn c-btn--secondary c-modal__button" onClick={this.errorCloseClicked}>Back</button>
-            <button type="button" onClick={this.retryServiceCall} className="c-btn c-btn--default c-modal__button">Retry</button></div>
+            <button type="button" onClick={this.retryServiceCall} className="c-btn c-btn--default c-modal__button">{this.props.content.retry}</button></div>
         return (
             <ModalComponent show
                 onHide={this.errorCloseClicked}
@@ -256,10 +258,10 @@ class NewSecureMessage extends React.Component {
                         <p className="c-step-header__crumbs">
                             <a onClick={this.callBackModal} className="c-step-header__link u-cursor-pointer">
                                 <span className="c-step-header__linkicon"><SvgIcon id="icon-left" width="16px" height="16px" /></span>
-                                <span className="c-step-header__linktext">Back</span>
+                                <span className="c-step-header__linktext">{this.props.content.back}</span>
                             </a>
                         </p>
-                        <h1 className="c-step-header__title" id="headingTag" tabIndex="-1">New message</h1>
+                        <h1 className="c-step-header__title" id="headingTag" tabIndex="-1">{this.props.content.newMessagePageTitle}</h1>
                     </div>
                 </div>
             );
@@ -280,7 +282,7 @@ class NewSecureMessage extends React.Component {
                     {this.props.content.subject}
                 </label>
                 <div className="c-field__controls u-position-relative">
-                    <DropDownComponent accessID="Subject" subjects={this.props.subjects} selectSubject={this.selectSubject} showSubjectError={this.state.validationSubjectMsg} name='subjects' id='subjects' isFromDraft={false} selectedValue='Please select' />
+                    <DropDownComponent accessID="Subject" subjects={this.props.subjects} content={this.props.content} selectSubject={this.selectSubject} showSubjectError={this.state.validationSubjectMsg} name='subjects' id='subjects' isFromDraft={false} selectedValue='Please select' />
                 </div>
             </div>
 
@@ -289,7 +291,7 @@ class NewSecureMessage extends React.Component {
                     {this.props.content.messageRelatesTo}
                 </label>
                 <div className="c-field__controls u-position-relative">
-                    <DropDownComponent accessID="Message relates to" accounts={this.props.accounts} selectSubject={this.selectSubject} showAccountError={this.state.validationAccountMsg} name='accounts' id='accounts' isFromDraft={false} selectedValue='Please select' />
+                    <DropDownComponent accessID="Message relates to" accounts={this.props.accounts} content={this.props.content} selectSubject={this.selectSubject} showAccountError={this.state.validationAccountMsg} name='accounts' id='accounts' isFromDraft={false} selectedValue='Please select' />
                 </div>
             </div>
 
