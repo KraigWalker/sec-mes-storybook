@@ -93,7 +93,6 @@ class ReplySecureMessage extends React.Component {
             let lastFour = RegexUtils.getLastFourDigits(extractedString);
             messageEntity.setMessage(e.replace(new RegExp(extractedString, 'g'), '************' + lastFour));
         } else messageEntity.setMessage(e);
-        let headerflagClass = '';
         if (this.state.chars_left >= 0) {
             this.setState({ charError: false });
         }
@@ -114,6 +113,7 @@ class ReplySecureMessage extends React.Component {
             (this.state.chars_left === 3) && this.props.dispatch(sendMessageForAccessibiltiy('Three characters left'));
             (this.state.chars_left === 1) && this.props.dispatch(sendMessageForAccessibiltiy('One character left'));
             (this.state.chars_left === 0) && this.props.dispatch(sendMessageForAccessibiltiy('Maximum characters limit reached'));
+            let headerflagClass = '';
             if(this.state.chars_left <= 0) {
                 headerflagClass = "char__error";
                 }
