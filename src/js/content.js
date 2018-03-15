@@ -20,6 +20,11 @@ const content = {
     saveDraft: 'Save Draft',
     leaveMessageBody: 'If you leave the message now it won’t be saved.',
     charLeft: 'Characters Left:',
+    sorryHeader: 'Sorry, there’s been a technical problem',
+    tryAgain: 'It looks like something has gone wrong in the background. Please try again.',
+    getInTouch: 'If you’re still having problems, please get in touch.',
+    retry: 'Retry',
+    leavePage: 'Leave page',
 };
 
 export default content;

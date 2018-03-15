@@ -86,9 +86,9 @@ class DraftSecureMessage extends React.Component {
             (this.state.chars_left === 1) && this.props.dispatch(sendMessageForAccessibiltiy('One character left'));
             (this.state.chars_left === 0) && this.props.dispatch(sendMessageForAccessibiltiy('Maximum characters limit reached'));
             let headerflagClass = '';
-            if(this.state.chars_left <= 0) {
+            if (this.state.chars_left <= 0) {
                 headerflagClass = "char__error";
-                }
+            }
             return <p className={`${headerflagClass}`}>Characters Left: {this.state.chars_left}</p>;
         }
     }
@@ -113,14 +113,14 @@ class DraftSecureMessage extends React.Component {
         this.setState({ charError: true });
         this.renderRemainingChar();
         if (this.state.chars_left >= 0) {
-                this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, StringConstants.pending));
-                this.setState({ showPopup: true });
-                this.setState({showSendServiceErrorModal: true});
+            this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, StringConstants.pending));
+            this.setState({ showPopup: true });
+            this.setState({ showSendServiceErrorModal: true });
         }
     }
 
     returnModalComponent() {
-        let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>Message sent</div>;
+        let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>{this.props.content.messageSent}</div>;
         let footerButtons = <div><Link to={`${window.baseURl}/securemessages`} onClick={this.sentOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">{this.props.content.ok}</Link></div>;
         return (<ModalComponent show
             customClass={"c-modal c-modal--center"}
@@ -135,7 +135,7 @@ class DraftSecureMessage extends React.Component {
         this.setState({ showPopup: false });
     }
     returnDraftModal() {
-        let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>Message saved as a draft</div>;
+        let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>{this.props.content.draftBody}</div>;
         let footerButtons = <div><Link to={`${window.baseURl}/securemessages`} onClick={this.draftOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">{this.props.content.ok}</Link></div>;
         return (<ModalComponent show
             customClass={"c-modal c-modal--center"}
@@ -146,10 +146,10 @@ class DraftSecureMessage extends React.Component {
             modalInContainer={false}
             closeButton={false} />);
     }
-    saveDraftData() { 
+    saveDraftData() {
         this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, StringConstants.draft));
-        this.setState({showSaveServiceErrorModal: true});
-        this.setState({ showDraftSuccessModal: true });   
+        this.setState({ showSaveServiceErrorModal: true });
+        this.setState({ showDraftSuccessModal: true });
     }
     draftOkClicked() {
         this.setState({ showDraftSuccessModal: false });
@@ -164,8 +164,8 @@ class DraftSecureMessage extends React.Component {
         return accVal;
     }
     errorCloseClicked() {
-        this.setState({showSaveServiceErrorModal: false});
-        this.setState({showSendServiceErrorModal: false});
+        this.setState({ showSaveServiceErrorModal: false });
+        this.setState({ showSendServiceErrorModal: false });
     }
     retryServiceCall() {
         if (this.state.showSaveServiceErrorModal) {
@@ -177,24 +177,24 @@ class DraftSecureMessage extends React.Component {
 
     }
     returnErrorModal() {
-             let bodyContent = <div><h3>Sorry, there’s been a technical problem</h3><br />
-            <p>It looks like something has gone wrong in the background. Please try again.</p><br />
-            <p>If you’re still having problems, please get in touch.</p></div>;
-            let footerButtons = <div><button type="button" className="c-btn c-btn--secondary c-modal__button" onClick={this.errorCloseClicked}>Back</button>
-            <button type="button" onClick={this.retryServiceCall} className="c-btn c-btn--default c-modal__button">Retry</button></div>
-            return (
-                <ModalComponent show
-                    onHide={this.errorCloseClicked}
-                    customClass={"c-modal c-modal--center"}
-                    bsSize={'medium'}
-                    modalheading={''}
-                    modalbody={bodyContent}
-                    modalfooter={footerButtons}
-                    modalInContainer={false}
-                    closeButton />
-                );
+        let bodyContent = <div><h3>{this.props.content.sorryHeader}</h3><br />
+            <p>{this.props.content.tryAgain}</p><br />
+            <p>{this.props.content.getInTouch}</p></div>;
+        let footerButtons = <div><button type="button" className="c-btn c-btn--secondary c-modal__button" onClick={this.errorCloseClicked}>{this.props.content.back}</button>
+            <button type="button" onClick={this.retryServiceCall} className="c-btn c-btn--default c-modal__button">{this.props.content.retry}</button></div>
+        return (
+            <ModalComponent show
+                onHide={this.errorCloseClicked}
+                customClass={"c-modal c-modal--center"}
+                bsSize={'medium'}
+                modalheading={''}
+                modalbody={bodyContent}
+                modalfooter={footerButtons}
+                modalInContainer={false}
+                closeButton />
+        );
     }
-  
+
     render() {
         { this.props.location.messageDetail.account.accountNumber === undefined ? 'No specific account' : this.props.location.messageDetail.account }
         return (
@@ -240,10 +240,10 @@ class DraftSecureMessage extends React.Component {
                 {this.props.messages.draftError && this.state.showSaveServiceErrorModal && this.returnErrorModal()}
                 {this.props.messages.draftError && this.state.showSendServiceErrorModal && this.returnErrorModal()}
                 <div className="c-btn--group">
-                <Link to={`${window.baseURl}/securemessages`} className="c-btn c-btn--secondary">{this.props.content.back} </Link>
+                    <Link to={`${window.baseURl}/securemessages`} className="c-btn c-btn--secondary">{this.props.content.back} </Link>
                     <button name='Save Draft' className="c-btn c-btn--secondary" onClick={this.saveDraftData} disabled={this.state.disabled}>{this.props.content.saveDraft}</button>
                     <button name='Send' className="c-btn c-btn--default" onClick={this.sendData} disabled={this.state.disabled}>{this.props.content.send}</button>
-                </div>         
+                </div>
             </div>);
     }
 }

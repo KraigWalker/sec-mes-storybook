@@ -167,7 +167,7 @@ class NewSecureMessage extends React.Component {
     returnModalComponent() {
         if (this.state.showPopup) {
             let bodyContent = <div className="callout callout__error">{this.props.content.leaveMessageBody}</div>;
-            let footerButtons = <div><Link to={`${window.baseURl}/securemessages`}><button type="button" onClick={this.leavePage} className="c-btn c-btn--secondary c-modal__button">Leave page</button></Link>&nbsp;
+            let footerButtons = <div><Link to={`${window.baseURl}/securemessages`}><button type="button" onClick={this.leavePage} className="c-btn c-btn--secondary c-modal__button">{this.props.content.leavePage}</button></Link>&nbsp;
             <button type="button" className="c-btn c-btn--secondary c-modal__button" onClick={this.saveDraftData} disabled={this.state.disabled}>{this.props.content.saveDraft}</button>
                 <button type="button" onClick={this.stayOnPage} className="c-btn c-btn--default c-modal__button">{this.props.content.returnToMessage}</button></div>;
             return (<ModalComponent show
@@ -181,7 +181,7 @@ class NewSecureMessage extends React.Component {
         }
     }
     returnDraftModal() {
-        let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>Message saved as a draft</div>;
+        let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>{this.props.content.draftBody}</div>;
         let footerButtons = <div><Link to={`${window.baseURl}/securemessages`} onClick={this.draftOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">{this.props.content.ok}</Link></div>;
         return (<ModalComponent show
             customClass={"c-modal c-modal--center"}
@@ -208,7 +208,7 @@ class NewSecureMessage extends React.Component {
         this.setState({ showSentMessageModal: false });
     }
     returnSentMessageModal() {
-        let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>Message sent</div>;
+        let bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>{this.props.content.messageSent}</div>;
         let footerButtons = <div><Link to={`${window.baseURl}/securemessages`} onClick={this.sentOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">{this.props.content.ok}</Link></div>;
         return (<ModalComponent show
             customClass={"c-modal c-modal--center"}
@@ -219,7 +219,7 @@ class NewSecureMessage extends React.Component {
             modalInContainer={false}
             closeButton = {false} />);
     }
-    errorCloseClicked() {draft
+    errorCloseClicked() {
         this.setState({ showSaveServiceErrorModal: false });
         this.setState({ showSendServiceErrorModal: false });
     }
@@ -233,11 +233,11 @@ class NewSecureMessage extends React.Component {
 
     }
     returnErrorModal() {
-        let bodyContent = <div><h3>Sorry, there’s been a technical problem</h3><br />
-            <p>It looks like something has gone wrong in the background. Please try again.</p><br />
-            <p>If you’re still having problems, please get in touch.</p></div>;
+        let bodyContent = <div><h3>{this.props.content.sorryHeader}</h3><br />
+            <p>{this.props.content.tryAgain}</p><br />
+            <p>{this.props.content.getInTouch}</p></div>;
         let footerButtons = <div><button type="button" className="c-btn c-btn--secondary c-modal__button" onClick={this.errorCloseClicked}>Back</button>
-            <button type="button" onClick={this.retryServiceCall} className="c-btn c-btn--default c-modal__button">Retry</button></div>
+            <button type="button" onClick={this.retryServiceCall} className="c-btn c-btn--default c-modal__button">{this.props.content.retry}</button></div>
         return (
             <ModalComponent show
                 onHide={this.errorCloseClicked}
@@ -258,10 +258,10 @@ class NewSecureMessage extends React.Component {
                         <p className="c-step-header__crumbs">
                             <a onClick={this.callBackModal} className="c-step-header__link u-cursor-pointer">
                                 <span className="c-step-header__linkicon"><SvgIcon id="icon-left" width="16px" height="16px" /></span>
-                                <span className="c-step-header__linktext">Back</span>
+                                <span className="c-step-header__linktext">{this.props.content.back}</span>
                             </a>
                         </p>
-                        <h1 className="c-step-header__title" id="headingTag" tabIndex="-1">New message</h1>
+                        <h1 className="c-step-header__title" id="headingTag" tabIndex="-1">{this.props.content.newMessagePageTitle}</h1>
                     </div>
                 </div>
             );
