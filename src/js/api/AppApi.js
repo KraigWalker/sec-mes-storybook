@@ -9,6 +9,7 @@ const _getMessageSubjectsURL = '/banks/{bank_id}/securemessages/subjects';
 //const _getAccountsURL = 'http://localhost:8000/js/content/getAccounts.json';
 const _getAccountsURL = '/banks/{bank_id}/accounts/default';
 const _sendMessageURL = '/banks/{bank_id}/securemessages/{message_id}';
+import StringsConstants from '../constants/StringsConstants.js';
 
 
 class AppApi {
@@ -39,16 +40,16 @@ class AppApi {
     let url = updateUrl.replace('{message_id}', id);
     let reqData;
     switch(status){
-      case 'DELETED' :
+      case StringsConstants.DELETED :
        reqData = deleteMessage(requestData, id, status);
       break;
-      case  'DRAFT' :
+      case  StringsConstants.DRAFT :
         reqData = updateMessage(requestData, id, status);
       break;
-      case 'PENDING' :
+      case StringsConstants.PENDING :
         reqData = updateMessage(requestData, id, status);
       break;
-      case 'READ' :
+      case StringsConstants.READ :
         reqData = deleteMessage(requestData, id, status);
     }
    ApiUtils.makeRequest({ url: url, method: 'PUT', requestData: reqData }, success, error);
