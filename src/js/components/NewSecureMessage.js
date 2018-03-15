@@ -13,7 +13,7 @@ import GetIcon from './common/GetIcon';
 import RegexUtils from '../utils/RegexUtils.js';
 import CalloutComponent from './common/CalloutComponent.js';
 import SvgIcon from './common/GetIcon.js';
-import stringConstants from '../constants/stringConstants.js';
+import StringConstants from '../constants/StringConstants.js';
 let page;
 let messageEntity = new SendMessageRequestEntity();
 class NewSecureMessage extends React.Component {
@@ -130,7 +130,7 @@ class NewSecureMessage extends React.Component {
         this.setState({ charError: true });
         this.renderRemainingChar();
         if (this.checkValidation() && this.state.chars_left >= 0) {
-            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), stringConstants.pending));
+            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), StringConstants.pending));
             this.setState({ showSentMessageModal: true });
             this.setState({ showSendServiceErrorModal: true });
         }
@@ -198,7 +198,7 @@ class NewSecureMessage extends React.Component {
 
     saveDraftData() {
         if (this.checkValidation() && this.state.chars_left >= 0) {
-            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), stringConstants.draft));
+            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), StringConstants.draft));
             this.setState({ showDraftSuccessModal: true });
             this.setState({ showPopup: false });
             this.setState({ showSaveServiceErrorModal: true });
@@ -225,10 +225,10 @@ class NewSecureMessage extends React.Component {
     }
     retryServiceCall() {
         if (this.state.showSaveServiceErrorModal) {
-            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), stringConstants.draft))
+            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), StringConstants.draft))
         }
         if (this.state.showSendServiceErrorModal) {
-            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), stringConstants.pending));
+            this.props.dispatch(sendMessageData(messageEntity.getMessageRequestData(), StringConstants.pending));
         }
 
     }
