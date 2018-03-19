@@ -99,20 +99,33 @@ $text-color: bow-palette(grey, text);
 				white-space: nowrap;
 				overflow: hidden;
 				vertical-align: middle;
-				width: 80%;
+				width: 60%;
 			}
 
 			&__number {
 				display: inline-block;
 				text-align: right;
 				vertical-align: middle;
-				width: 20%;
+				width: 40%;
 			}
 		}
 	}
 
 	.char__error {
 		color: bow-palette(red, error);
+    	text-align: right;
+		max-width: 343px;
+		@include media-breakpoint-up(md1) {
+			max-width: 304px;
+		}
+
+		@include media-breakpoint-up(lg1) {
+			max-width: 374px;
+		}
+
+		@include media-breakpoint-up(xl1) {
+			max-width: 428px;
+		}
 	}
 
 	.error__right {
