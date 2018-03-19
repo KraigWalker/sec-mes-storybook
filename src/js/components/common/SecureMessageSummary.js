@@ -269,7 +269,6 @@ class SecureMessageSummary extends React.Component {
     let accNo = this.props.message.account.accountNumber
       ? this.props.message.account.accountNumber
       : "No specific account";
-    console.log("SecURE MESAAGE SUMMARy::::", this.props);
     return (
       <div className={messageClass}>
         {(message.status === "READ" || message.status === "NEW") &&

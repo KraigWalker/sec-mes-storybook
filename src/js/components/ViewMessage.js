@@ -59,12 +59,6 @@ class ViewMessage extends React.Component {
         )
       );
     }
-    if (
-      this.props.messages.showSendServiceErrorModal &&
-      this.props.messages.draftError
-    ) {
-      this.returnErrorModal();
-    }
     window.scrollTo(0, 0);
   }
   getThreads(messages, currentMessage) {
