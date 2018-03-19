@@ -28,7 +28,8 @@ class ViewMessage extends React.Component {
     this.getDeleteButton = this.getDeleteButton.bind(this);
     this.state = {
       showDeleteConfirmModal: false,
-      showDeleteSuccessModal: false
+      showDeleteSuccessModal: false,
+      showSendServiceErrorModal: false
     };
     this.closeModal = this.closeModal.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
@@ -38,6 +39,8 @@ class ViewMessage extends React.Component {
     );
     this.returnModalComponent = this.returnModalComponent.bind(this);
     this.closeSuccessModal = this.closeSuccessModal.bind(this);
+    this.errorCloseClicked = this.errorCloseClicked.bind(this);
+    this.retryServiceCall = this.retryServiceCall.bind(this);
   }
 
   componentDidMount() {
@@ -55,6 +58,12 @@ class ViewMessage extends React.Component {
           "READ"
         )
       );
+    }
+    if (
+      this.props.messages.showSendServiceErrorModal &&
+      this.props.messages.draftError
+    ) {
+      this.returnErrorModal();
     }
     window.scrollTo(0, 0);
   }
@@ -92,11 +101,25 @@ class ViewMessage extends React.Component {
   closeModal() {
     this.setState({ showDeleteConfirmModal: false });
   }
-
+  errorCloseClicked() {
+    this.setState({ showSendServiceErrorModal: false });
+  }
+  retryServiceCall() {
+    if (this.state.showSendServiceErrorModal) {
+      this.props.dispatch(
+        updateMessageData(
+          this.props.location.messageDetail,
+          this.props.location.messageDetail.id,
+          "DELETED"
+        )
+      );
+    }
+  }
   deleteClick() {
     this.setState({
       showDeleteSuccessModal: true,
-      showDeleteConfirmModal: false
+      showDeleteConfirmModal: false,
+      showSendServiceErrorModal: true
     });
     this.props.dispatch(
       updateMessageData(
@@ -187,6 +210,48 @@ class ViewMessage extends React.Component {
   closeSuccessModal() {
     this.setState({ showDeleteSuccessModal: false });
   }
+  returnErrorModal() {
+    let bodyContent = (
+      <div>
+        <h3>{this.props.content.sorryHeader}</h3>
+        <br />
+        <p>{this.props.content.tryAgain}</p>
+        <br />
+        <p>{this.props.content.getInTouch}</p>
+      </div>
+    );
+    let footerButtons = (
+      <div>
+        <button
+          type="button"
+          className="c-btn c-btn--secondary c-modal__button"
+          onClick={this.errorCloseClicked}
+        >
+          Back
+        </button>
+        <button
+          type="button"
+          onClick={this.retryServiceCall}
+          className="c-btn c-btn--default c-modal__button"
+        >
+          {this.props.content.retry}
+        </button>
+      </div>
+    );
+    return (
+      <ModalComponent
+        show
+        onHide={this.errorCloseClicked}
+        customClass={"c-modal c-modal--center"}
+        bsSize={"medium"}
+        modalheading={""}
+        modalbody={bodyContent}
+        modalfooter={footerButtons}
+        modalInContainer={false}
+        closeButton
+      />
+    );
+  }
   render() {
     const { messageDetail } = this.props.location.messageDetail
       ? this.props.location
@@ -222,9 +287,13 @@ class ViewMessage extends React.Component {
             </div>
             {this.state.showDeleteConfirmModal && this.returnModalComponent()}
             {this.state.showDeleteSuccessModal &&
+              this.props.messages.successModal &&
               this.returnDeleteSuccessModalComponent()}
+            {this.props.messages.draftError &&
+              this.state.showSendServiceErrorModal &&
+              this.returnErrorModal()}
             {messageDetail.threadID !== null &&
-              this.getThreads(this.props.messages, messageDetail)}
+              this.getThreads(this.props.messages.messages, messageDetail)}
           </div>
         </div>
       </div>
@@ -234,7 +303,7 @@ class ViewMessage extends React.Component {
 
 const mapState = state => {
   return {
-    messages: state.messages.messages,
+    messages: state.messages,
     messageDetail: state.viewMessage.messageDetail
   };
 };

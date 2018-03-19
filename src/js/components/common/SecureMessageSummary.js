@@ -44,7 +44,6 @@ class SecureMessageSummary extends React.Component {
         : `${window.baseURl}/viewmessage`;
     let messageTitle = "";
     if (message.status === "NEW") {
-      // console.log('clicked',this.props.message);   Will be used once we get proper ID from service
       //   this.props.dispatch(updateMessageData(message, message.id, "READ"));
       messageTitle = `Unread ` + message.getSubject();
     } else {
@@ -184,7 +183,7 @@ class SecureMessageSummary extends React.Component {
           onClick={this.closeSuccessModal}
           className="c-btn c-btn--primary c-btn--sm c-modal__button"
         >
-          OKES
+          OK
         </button>
       </div>
     );
@@ -270,6 +269,7 @@ class SecureMessageSummary extends React.Component {
     let accNo = this.props.message.account.accountNumber
       ? this.props.message.account.accountNumber
       : "No specific account";
+    console.log("SecURE MESAAGE SUMMARy::::", this.props);
     return (
       <div className={messageClass}>
         {(message.status === "READ" || message.status === "NEW") &&
@@ -331,6 +331,7 @@ SecureMessageSummary.defaultProps = {
  */
 const mapState = state => {
   return {
+    messages: state.messages,
     messagesubjects: state.subjects,
     messageaccounts: state.accounts
   };
