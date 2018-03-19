@@ -154,7 +154,7 @@ class NewSecureMessage extends React.Component {
     if (this.state.chars_left < 0 && this.state.charError === true) {
       return (
         <div>
-          <p className="char__error">
+          <p className="char__error error__right">
             Characters Left: {this.state.chars_left}
           </p>
           <CalloutComponent
@@ -175,9 +175,9 @@ class NewSecureMessage extends React.Component {
         this.props.dispatch(
           sendMessageForAccessibiltiy("Maximum characters limit reached")
         );
-      let headerflagClass = "";
+      let headerflagClass = "error__right";
       if (this.state.chars_left <= 0) {
-        headerflagClass = "char__error";
+        headerflagClass = "char__error error__right";
       }
       return (
         <p className={`${headerflagClass}`}>

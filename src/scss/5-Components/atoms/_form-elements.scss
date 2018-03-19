@@ -115,6 +115,22 @@ $text-color: bow-palette(grey, text);
 		color: bow-palette(red, error);
 	}
 
+	.error__right {
+		text-align: right;
+		max-width: 343px;
+			@include media-breakpoint-up(md1) {
+				max-width: 304px;
+			}
+	
+			@include media-breakpoint-up(lg1) {
+				max-width: 374px;
+			}
+	
+			@include media-breakpoint-up(xl1) {
+				max-width: 428px;
+			}
+	}
+
 	.c-field__controls,
 	.c-field__message,
 	.c-preview__controls,

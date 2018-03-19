@@ -77,7 +77,7 @@ class DraftSecureMessage extends React.Component {
         if (this.state.chars_left < 0 && this.state.charError === true) {
             return (
                 <div>
-                    <p className="char__error">Characters Left: {this.state.chars_left}</p>
+                    <p className="char__error error__right">Characters Left: {this.state.chars_left}</p>
                     <CalloutComponent dClass='callout callout__error callout__inline-error' paraText='Oops. The maximum message size has been exceeded. Please reduce the length of your message.' />
                 </div>);
         }
@@ -85,9 +85,9 @@ class DraftSecureMessage extends React.Component {
             (this.state.chars_left === 3) && this.props.dispatch(sendMessageForAccessibiltiy('Three characters left'));
             (this.state.chars_left === 1) && this.props.dispatch(sendMessageForAccessibiltiy('One character left'));
             (this.state.chars_left === 0) && this.props.dispatch(sendMessageForAccessibiltiy('Maximum characters limit reached'));
-            let headerflagClass = '';
+            let headerflagClass = 'error__right';
             if (this.state.chars_left <= 0) {
-                headerflagClass = "char__error";
+                headerflagClass = "char__error error__right";
             }
             return <p className={`${headerflagClass}`}>Characters Left: {this.state.chars_left}</p>;
         }
