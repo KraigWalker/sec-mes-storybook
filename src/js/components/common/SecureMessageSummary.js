@@ -27,6 +27,7 @@ class SecureMessageSummary extends React.Component {
   }
 
   getSummaryIcon = () => {
+    if(!this.props.threadFlag) {
     const { message } = this.props;
     let iconId =
       message.status === "READ" ? "icon-message-open" : "icon-envelope";
@@ -35,6 +36,7 @@ class SecureMessageSummary extends React.Component {
         <GetIcon id={iconId} width="24px" height="24px" />
       </span>
     );
+  }
   };
   hasOnClick = () => {
     const { message } = this.props;
