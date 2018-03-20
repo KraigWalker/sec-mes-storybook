@@ -21,6 +21,9 @@ module.exports = {
 		new ExtractTextPlugin(`${brand}.main.css`, { allChunks: true }),
 		new CopyWebpackPlugin([{
 			from: 'src/index.html'
+		  }, {
+			  from: 'src/images',
+			  to:'images'
 		  }])
 	],
 	module: {

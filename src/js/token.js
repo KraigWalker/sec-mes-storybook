@@ -13,9 +13,8 @@ const token = {
             if (hashValue.accessToken !== undefined) {
                 bearerToken = bearer + hashValue.accessToken;
             }
-            return bearerToken;
-
         }
+        return bearerToken;
     },
     getBankId() {
         let accessToken = window.location;
@@ -30,8 +29,8 @@ const token = {
             if(hashValue.bankId !== undefined){
                 bankID = hashValue.bankId;
             };
-            return bankID;
         }
+        return bankID;
     },
     getClientContext() {
         let accessToken = window.location;
@@ -45,11 +44,11 @@ const token = {
             hashValue.appTitle = hashValue.appTitle.replace("%20", " ");
             hashKeyValue.userTrackingId = params.split('&')[3];
             hashValue.userTrackingId = hashKeyValue.userTrackingId.split('=')[1];
-            return {
-                client: {
-                    app_title: hashValue.appTitle,
-                    user_tracking_id: hashValue.userTrackingId, 
-                }
+        }
+        return {
+            client: {
+                app_title: hashValue.appTitle | 'CB Web',
+                user_tracking_id: hashValue.userTrackingId | null 
             }
         }
     },
