@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchSecureMessagesAgain, backButton } from '../../actions/AppActions';
+import SvgIcon from './GetIcon.js';
 class ErrorPage extends React.Component {
 
     constructor(props) {
@@ -9,8 +10,9 @@ class ErrorPage extends React.Component {
         this.handleBackButton = this.handleBackButton.bind(this);
     }
     handleBackButton = () => {
-        this.props.dispatch(backButton());
-        this.props.history.push(this.props.messages.navRef);
+        window.top.postMessage('goBackToAccount', "*");
+       // this.props.dispatch(backButton());
+      //  this.props.history.push(this.props.messages.navRef);
     }
     retry = () => {
         this.props.dispatch(fetchSecureMessagesAgain());
@@ -18,14 +20,20 @@ class ErrorPage extends React.Component {
     render() {
         return (<div className="container">
             <div className="row">
-                <div className="col-md1-18">
-                    <h2>Messages</h2><br />
-                    <h3>Sorry, there’s been a technical problem</h3><br />
-                    <p>It looks like something has gone wrong in the background. Please try again.</p><br />
-                    <p>If you’re still having problems, please get in touch.</p>
+            <div className="col-md1-18">
+                    <p className="c-step-header__crumbs">
+                        <a onClick={this.handleBackButton} className="c-step-header__link u-cursor-pointer">
+                            <span className="c-step-header__linkicon"><SvgIcon id="icon-left" width="16px" height="16px" /></span>
+                            <span className="c-step-header__linktext">{this.props.content.back}</span>
+                        </a>
+                    </p>
+                    <h1 className="c-step-header__title" id="headingTag" tabIndex="-1">{this.props.content.messages}</h1>
+                    <h2>{this.props.content.sorryHeader}</h2><br />
+                    <p>{this.props.content.tryAgain}</p><br />
+                    <p>{this.props.content.getInTouch}</p>
                     <div className="c-btn--group">
-                    <a className="c-btn c-btn--secondary" onClick={this.handleBackButton}>Back</a>
-                        <button name='Retry' className="c-btn c-btn--default" onClick={this.retry}>Retry</button>
+                    <a className="c-btn c-btn--secondary" onClick={this.handleBackButton}>{this.props.content.back}</a>
+                        <button name='Retry' className="c-btn c-btn--default" onClick={this.retry}>{this.props.content.retry}</button>
                     </div>
                 </div>
             </div>
