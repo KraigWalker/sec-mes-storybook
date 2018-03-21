@@ -47,8 +47,8 @@ const token = {
         }
         return {
             client: {
-                app_title: hashValue.appTitle | 'CB Web',
-                user_tracking_id: hashValue.userTrackingId | null 
+                app_title: hashValue.appTitle,
+                user_tracking_id: hashValue.userTrackingId
             }
         }
     },
