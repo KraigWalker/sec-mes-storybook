@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import content from '../../content';
-import config from '../../config';
 import token from '../../token';
 
 import { fetchSecureMessages, getAccounts } from '../../actions/AppActions';
@@ -15,7 +14,6 @@ export function withSubscription(WrappedComponent) {
 			super();
 			this.state = {
 				content: this.getcontentBankID(),
-				config: config,
 				token: token,
 			};
 		}
@@ -39,7 +37,7 @@ export function withSubscription(WrappedComponent) {
 
 		render() {
 			return (
-				<WrappedComponent content={this.state.content} config={this.state.config} token={this.state.token} />
+				<WrappedComponent content={this.state.content} token={this.state.token} />
 			);
 		}
 	});

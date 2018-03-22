@@ -283,7 +283,7 @@ class ReplySecureMessage extends React.Component {
 	retryServiceCall() {
 		if (this.state.showSaveServiceErrorModal) {
 			this.props.dispatch(
-				updateMessageData(
+				replyMessageData(
 					messageEntity.getMessageRequestData(),
 					this.props.location.messageDetail,
 					StringsConstants.DRAFT
@@ -292,7 +292,7 @@ class ReplySecureMessage extends React.Component {
 		}
 		if (this.state.showSendServiceErrorModal) {
 			this.props.dispatch(
-				updateMessageData(
+				replyMessageData(
 					messageEntity.getMessageRequestData(),
 					this.props.location.messageDetail,
 					StringsConstants.PENDING

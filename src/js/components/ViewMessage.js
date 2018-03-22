@@ -277,7 +277,7 @@ class ViewMessage extends React.Component {
 			</div>
   					{this.state.showDeleteConfirmModal && this.returnModalComponent()}
   					{this.state.showDeleteSuccessModal &&
-              this.props.messages.successModal &&
+              this.props.messages.successDeleteModal &&
               this.returnDeleteSuccessModalComponent()}
   					{this.props.messages.draftError &&
               this.state.showSendServiceErrorModal &&
