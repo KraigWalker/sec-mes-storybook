@@ -188,6 +188,15 @@ export function sendMessageForAccessibiltiy(message) {
   }
 }
 
+export function popupState() {
+  return function(dispatch) {
+      const payload = {
+        type: AppConstants.SET_POPUP_STATE,
+    }
+    dispatch(payload);
+  }
+}
+
 export function setNavRef(ref) {
   return function(dispatch) {
     const payload = {

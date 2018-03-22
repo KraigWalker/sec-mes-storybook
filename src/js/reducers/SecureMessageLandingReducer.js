@@ -41,12 +41,6 @@ export default function reducer(state={
     case AppConstants.NAVIGATION_REF: {
      return {...state, error: false, fetched: true, navRef: action.payload} 
     }
-    case AppConstants.UPDATE_SECURE_MESSAGE_FAILURE: {
-      return {...state, error: true, fetched: true, tempData: action.tempData }
-    }
-    case AppConstants.UPDATE_SECURE_MESSAGE_REPLY_FAILURE: {
-      return {...state, replyError: true, fetched: true, tempData: action.tempData }
-    }
     case AppConstants.UPDATE_SECURE_MESSAGE_DRAFT_FAILURE: {
       return {...state, draftError: true, fetched: true, tempData: action.tempData }
     }
@@ -55,6 +49,9 @@ export default function reducer(state={
     }
     case AppConstants.CLEAR_TEMP_DATA: {
       return {...state, tempData: {} }
+    }
+    case AppConstants.SET_POPUP_STATE: {
+      return {...state,error: false,successModal: false,newMessageError: false,draftError: false}
     }
    default:
     return state;
