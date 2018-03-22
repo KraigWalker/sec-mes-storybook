@@ -37,7 +37,8 @@ class DropDownComponent extends React.Component {
             case (!this.props.isFromDraftOrReply && this.props.id === 'accounts'):
                 items.push(<li className="c-dropdown__value" id={noSpecificAccount} key={noSpecificAccount} value={noSpecificAccount} onClick={e => this.setDropDrownValue(e, {}, noSpecificAccount)}>No specific account</li>);
                 _.map(this.props.accounts.accounts, (account) => {
-                    items.push(<li className="c-dropdown__value" id={account.name} key={account.id} value={account.name} onClick={e => this.setDropDrownValue(e, account, account.name)}><span className="c-dropdown__value__account">{account.name}</span><span className="c-dropdown__value__number">{'ending '+account.number.slice(-4)}</span></li>
+                    let name = (account.display_name !== null)?account.display_name : account.name;
+                    items.push(<li className="c-dropdown__value" id={account.name} key={account.id} value={account.name} onClick={e => this.setDropDrownValue(e, account, account.name)}><span className="c-dropdown__value__account">{name}</span><span className="c-dropdown__value__number">{'ending '+account.number.slice(-4)}</span></li>
                     );
                     // To display account name along with account number use the below pattern
                    // <li className="c-dropdown__value" key={account} value={account} onClick={this.setDropDrownValue}><span className="c-dropdown__value__account">{account.name}</span><span className="c-dropdown__value__number">1234</span></li>
@@ -52,7 +53,8 @@ class DropDownComponent extends React.Component {
             case (this.props.isFromDraftOrReply && this.props.id === 'accounts'):
                 items.push(<li className="c-dropdown__value" id={noSpecificAccount} key={noSpecificAccount} value={noSpecificAccount} onClick={e => this.setDropDrownValue(e, {}, noSpecificAccount)}>No specific account</li>);
                 _.map(this.props.messageaccounts.accounts, (account) => {
-                    items.push(<li className="c-dropdown__value" id={account.name} key={account.id} value={account.name} onClick={e => this.setDropDrownValue(e, account, account.name)}><span span className="c-dropdown__value__account">{account.name}</span><span className="c-dropdown__value__number">{'ending '+account.number.slice(-4)}</span></li>
+                    let name = (account.display_name !== null)?account.display_name : account.name;
+                    items.push(<li className="c-dropdown__value" id={account.name} key={account.id} value={account.name} onClick={e => this.setDropDrownValue(e, account, account.name)}><span span className="c-dropdown__value__account">{name}</span><span className="c-dropdown__value__number">{'ending '+account.number.slice(-4)}</span></li>
                     );
                  // To display account name along with account number use the below pattern
                    // <li className="c-dropdown__value" key={account} value={account} onClick={this.setDropDrownValue}><span className="c-dropdown__value__account">{account}</span><span className="c-dropdown__value__number">1234</span></li>
