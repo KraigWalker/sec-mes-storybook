@@ -1,7 +1,7 @@
 
 import axios from "axios";
 import ApiUtils from './ApiUtils';
-import config from '../config';
+import config from '../../../config/env-config';
 import SendMessageRequestEntity from '../entities/SendMessageRequestEntity';
 import { parseDraft, deleteMessage, replyMessage, updateMessage } from '../parsers/MessageParser';
 const _getMessageURLEndpoint = '/banks/{bank_id}/securemessages';
