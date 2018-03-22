@@ -22,4 +22,5 @@ export default keyMirror({
     NAVIGATION_REF: null,
     UPDATE_NEW_SECURE_MESSAGE_FAILURE: null,
     UPDATE_SECURE_MESSAGE_DRAFT_FAILURE: null,
+    SET_POPUP_STATE: null,
 })

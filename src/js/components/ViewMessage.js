@@ -8,7 +8,8 @@ import { connect } from "react-redux";
 import {
   setViewMessageDetail,
   updateMessage,
-  updateMessageData
+  updateMessageData,
+  popupState
 } from "../actions/AppActions";
 import { getThreadsBL } from "../bl/SecureMessageBL";
 import {
@@ -60,6 +61,7 @@ class ViewMessage extends React.Component {
 				)
 			);
 		}
+		this.props.dispatch(popupState());
 		window.scrollTo(0, 0);
 	}
 	getThreads(messages, currentMessage) {

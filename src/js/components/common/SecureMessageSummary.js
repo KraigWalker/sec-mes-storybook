@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import MessageEntity from '../../entities/MessageEntity';
 import ModalComponent from '../common/ModalComponent';
-import { updateMessageData } from '../../actions/AppActions';
+import { updateMessageData, popupState } from '../../actions/AppActions';
 import SendMessageRequestEntity from '../../entities/SendMessageRequestEntity.js';
 import { connect } from 'react-redux';
 
@@ -29,7 +29,10 @@ class SecureMessageSummary extends React.Component {
     this.errorCloseClicked = this.errorCloseClicked.bind(this);
 		this.retryServiceCall = this.retryServiceCall.bind(this);
 	}
-
+    componentDidMount() {
+        window.scrollTo(0, 0);
+        this.props.dispatch(popupState());
+    }
   getSummaryIcon = () => {
   	if (!this.props.threadFlag) {
   		const { message } = this.props;
