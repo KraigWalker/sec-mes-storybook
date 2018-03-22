@@ -12,7 +12,8 @@ import {
   getAccounts,
   replyMessageData,
   sendMessageForAccessibiltiy,
-  updateMessageData
+  updateMessageData,
+  popupState
 } from "../actions/AppActions";
 import { getThreadsBL } from "../bl/SecureMessageBL";
 import Threads from "./common/ThreadList";
@@ -90,6 +91,7 @@ class ReplySecureMessage extends React.Component {
 
 	componentDidMount() {
 		window.scrollTo(0, 0);
+		this.props.dispatch(popupState());
 	}
 
 	selectSubject(value, id, data) {
@@ -143,9 +145,9 @@ class ReplySecureMessage extends React.Component {
 		}
 		if (this.state.chars_left <= 300) {
 			this.state.chars_left === 3 &&
-        this.props.dispatch(
-        	sendMessageForAccessibiltiy('Three characters left')
-        );
+			this.props.dispatch(
+				sendMessageForAccessibiltiy('Three characters left')
+			);
 			this.state.chars_left === 1 &&
         this.props.dispatch(sendMessageForAccessibiltiy('One character left'));
 			this.state.chars_left === 0 &&
@@ -556,10 +558,10 @@ class ReplySecureMessage extends React.Component {
 				{this.state.showDraftSuccessModal &&
           this.props.messages.successModal &&
           this.returnDraftModal()}
-				{this.props.messages.draftError &&
+				{this.props.messages.newMessageError &&
           this.state.showSaveServiceErrorModal &&
           this.returnErrorModal()}
-				{this.props.messages.draftError &&
+				{this.props.messages.newMessageError &&
           this.state.showSendServiceErrorModal &&
           this.returnErrorModal()}
 				<div className="row">

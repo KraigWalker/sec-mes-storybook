@@ -1,5 +1,5 @@
 import React from 'react';
-import { getMessageSubjects, getAccounts, sendMessageData, updateMessageData, sendMessageForAccessibiltiy, setNavRef } from '../actions/AppActions';
+import { getMessageSubjects, getAccounts, sendMessageData, updateMessageData, sendMessageForAccessibiltiy, setNavRef, popupState } from '../actions/AppActions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Dropdown, ButtonToolbar, MenuItem } from 'react-bootstrap/lib';
@@ -58,6 +58,7 @@ class DraftSecureMessage extends React.Component {
 	}
 	componentDidMount() {
 		this.props.dispatch(setNavRef('/draftsecuremessage'));
+		this.props.dispatch(popupState());
 		window.scrollTo(0, 0);
 	}
 
