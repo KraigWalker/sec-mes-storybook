@@ -42,6 +42,9 @@ const content = {
 		dontDelButton: 'No, don’t delete',
 		delButton: 'Yes, delete',
 		messageVal: 'Oops. The maximum message size has been exceeded. Please reduce the length of your message.',
+		showMore: 'Show more messages',
+		backToAccounts: 'Back to accounts',
+		faqLink: 'You’ll see all your secure messages from the last 13 months here. For more info about your message history, check out the FAQs in the help section.'
 	},
 
 	CB: {
@@ -86,6 +89,9 @@ const content = {
 		dontDelButton: 'No, don’t delete',
 		delButton: 'Yes, delete',
 		messageVal: 'Your message has exceeded the maximum character limit. Please reduce the length of your message then try and send it again.',
+		showMore: 'Show more messages',
+		backToAccounts: 'Back to accounts',
+		faqLink: 'You’ll see all your secure messages from the last 13 months here. For more information about your message history, please visit the FAQs in the help section.',
 	},
 };
 

@@ -16,6 +16,7 @@ import SvgIcon from './common/GetIcon.js';
 
 class LandingPage extends React.PureComponent {
     componentDidMount() {
+        window.top.postMessage('clearNewMessagePage', '*');
         window.scrollTo(0, 0);
     }
 
@@ -39,11 +40,12 @@ class LandingPage extends React.PureComponent {
                         <p className="c-step-header__crumbs">
                             <a onClick={this.handleBackClick} className="c-step-header__link u-cursor-pointer">
                                 <span className="c-step-header__linkicon"><SvgIcon id="icon-left" width="16px" height="16px" /></span>
-                                <span className="c-step-header__linktext">Back</span>
+                                <span className="c-step-header__linktext">{this.props.content.backToAccounts}</span>
                             </a>
                         </p>
                         <h1 className="c-step-header__title" id="headingTag" tabIndex="-1">{this.props.content.messages}</h1>
                         <p className="c-step-header__subtext">{this.props.content.landingPageMessage}</p>
+                        <p className="c-step-header__subtext">{this.props.content.faqLink}</p>
                     </div>
                 </div>
                 <Link className="c-btn c-btn--default u-margin-bottom-c new-message-btn" to={{ pathname: `${window.baseURl}/newsecuremessage` }}>

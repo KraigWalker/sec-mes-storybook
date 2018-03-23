@@ -246,6 +246,7 @@ class NewSecureMessage extends React.Component {
 		}
 	}
 	returnDraftModal() {
+		window.top.postMessage('clearNewMessagePage', '*');
 		const bodyContent = (
 			<div>
 				<div>
@@ -299,6 +300,7 @@ class NewSecureMessage extends React.Component {
 		this.setState({ showSentMessageModal: false });
 	}
 	returnSentMessageModal() {
+		window.top.postMessage('clearNewMessagePage', '*');
 		const bodyContent = (
 			<div>
 				<div>

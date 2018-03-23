@@ -157,13 +157,13 @@ class ViewMessage extends React.Component {
   	return (
   		<ModalComponent
 		show
-  			onHide={this.closeModal}
+		customClass="c-modal c-modal--center"
 		customClass="c-modal"
 		modalheading="Delete this message?"
-  			modalbody={bodyContent}
+  		modalbody={bodyContent}
 		modalfooter={footerButtons}
-  			modalInContainer={false}
-		closeButton
+  		modalInContainer={false}
+		closeButton={false}
 	/>
   	);
   }
@@ -279,7 +279,7 @@ class ViewMessage extends React.Component {
 			</div>
   					{this.state.showDeleteConfirmModal && this.returnModalComponent()}
   					{this.state.showDeleteSuccessModal &&
-              this.props.messages.successDeleteModal &&
+              this.props.messages.successModal &&
               this.returnDeleteSuccessModalComponent()}
   					{this.props.messages.draftError &&
               this.state.showSendServiceErrorModal &&
