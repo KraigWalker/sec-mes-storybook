@@ -44,13 +44,13 @@ const token = {
 			hashValue.appTitle = hashValue.appTitle.replace('%20', ' ');
 			hashKeyValue.userTrackingId = params.split('&')[3];
 			hashValue.userTrackingId = hashKeyValue.userTrackingId.split('=')[1];
-			return {
-				client: {
-					app_title: "B Web",
-				//	user_tracking_id: hashValue.userTrackingId,
-				},
-			};
 		}
+		return {
+			client: {
+				app_title: "B Web",
+				user_tracking_id: hashValue.userTrackingId,
+			},
+		};
 	},
 	getContentBankId() {
 		const accessToken = window.location;
