@@ -14,25 +14,25 @@ import StringsConstants from '../constants/StringsConstants.js';
 
 class AppApi {
   static fetchSecureMessages(success, error) {
-    ApiUtils.makeRequest({ url: `${config.apiBaseUrl}${_getMessageURLEndpoint}`, method: 'GET' }, success, error);
+    ApiUtils.makeRequest({ url: `${config.apiBaseUrl}${_getMessageURLEndpoint}`, method: 'GET', apiVersion: "1.2.0" }, success, error);
   }
 
   static getSubjects(success, error) {
-    ApiUtils.makeRequest({ url: `${config.apiBaseUrl}${_getMessageSubjectsURL}`, method: 'GET' }, success, error);
+    ApiUtils.makeRequest({ url: `${config.apiBaseUrl}${_getMessageSubjectsURL}`, method: 'GET', apiVersion: "1.2.0" }, success, error);
   }
 
   static getAccounts(success, error) {
-     ApiUtils.makeRequest({ url:`${config.apiBaseUrl}${_getAccountsURL}`, method: 'GET' }, success, error);
+     ApiUtils.makeRequest({ url:`${config.apiBaseUrl}${_getAccountsURL}`, method: 'GET', apiVersion: "0.8.0" }, success, error);
   }
 
   static sendMessageData(requestData, status, success, error) {
     let reqData = parseDraft(requestData, status);
-    ApiUtils.makeRequest({ url: `${config.apiBaseUrl}${_getMessageURLEndpoint}`, method: 'POST', requestData: reqData }, success, error);
+    ApiUtils.makeRequest({ url: `${config.apiBaseUrl}${_getMessageURLEndpoint}`, method: 'POST', apiVersion: "1.2.0", requestData: reqData }, success, error);
   }
 
   static replyMessageData(requestData, ids, status, success, error) {
     let reqData = replyMessage(requestData, ids, status);
-    ApiUtils.makeRequest({ url: `${config.apiBaseUrl}${_getMessageURLEndpoint}`, method: 'POST', requestData: reqData }, success, error);
+    ApiUtils.makeRequest({ url: `${config.apiBaseUrl}${_getMessageURLEndpoint}`, method: 'POST', apiVersion: "1.2.0", requestData: reqData }, success, error);
   }
 
   static updateMessageData(requestData, id, status, success, error) {
@@ -52,7 +52,7 @@ class AppApi {
       case StringsConstants.READ :
         reqData = deleteMessage(requestData, id, status);
     }
-   ApiUtils.makeRequest({ url: url, method: 'PUT', requestData: reqData }, success, error);
+   ApiUtils.makeRequest({ url: url, method: 'PUT', requestData: reqData, apiVersion: "1.2.0" }, success, error);
   }
  }
 
