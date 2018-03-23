@@ -24,7 +24,7 @@ class ErrorPage extends React.Component {
                     <p className="c-step-header__crumbs">
                         <a onClick={this.handleBackButton} className="c-step-header__link u-cursor-pointer">
                             <span className="c-step-header__linkicon"><SvgIcon id="icon-left" width="16px" height="16px" /></span>
-                            <span className="c-step-header__linktext">{this.props.content.back}</span>
+                            <span className="c-step-header__linktext">{this.props.content.backToAccounts}</span>
                         </a>
                     </p>
                     <h1 className="c-step-header__title" id="headingTag" tabIndex="-1">{this.props.content.messages}</h1>
