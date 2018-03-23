@@ -15,6 +15,13 @@ class SecureMessageList extends React.Component {
 		};
 	}
 	componentWillReceiveProps(props) {
+		if (this.props.messages.length <= 5) {
+            this.setState({ showThatsAllMessage: true });
+        }
+		if(this.props.messages.length == 0){
+			this.setState({ showThatsAllMessage: false });
+		}
+		
 		if (this.props.activeTab === 'sent' && this.props.messagesFetched) {
 			this.props.dispatch(
 				sendMessageForAccessibiltiy('You don’t have any sent messages')
@@ -45,23 +52,20 @@ class SecureMessageList extends React.Component {
 		});
 		return allMessages;
 	}
-	showMoreClicked() {
-		this.props.dispatch(
-			sendMessageForAccessibiltiy(
-				`Next 20 messages loaded ${this.props.activeTab}`
-			)
-		);
-		const limit = this.props.messages.length;
-		this.setState({
-			showMoreLimit: limit,
-		});
-	}
+    showMoreClicked() {
+		this.props.dispatch(sendMessageForAccessibiltiy(`Next 20 messages loaded ${this.props.activeTab}`));
+        let limit = this.props.messages.length;
+        this.setState({
+            showMoreLimit: limit,
+            showThatsAllMessage: true,
+        });
+    }
 	renderShowMoreButton() {
-		let buttonText = 'Show more messages';
+		let buttonText = this.props.content.showMore;
 		if (this.props.activeTab === 'sent') {
-			buttonText = 'Show more sent messages';
+			buttonText = this.props.content.showMore;
 		} else if (this.props.activeTab === 'drafts') {
-			buttonText = 'Show more drafts';
+			buttonText = this.props.content.showMore;
 		}
 		if (
 			this.state.showMoreLimit < this.props.messages.length &&
@@ -116,19 +120,16 @@ class SecureMessageList extends React.Component {
 		const limit = this.props.messages.length;
 		return (
 			<section>
-				{limit === 0 ? (
-					this.renderNoMessagesText()
-				) : (
-					<ol className="c-messagelist">{this.showMessages()}</ol>
-				)}
-
-				{limit > this.state.showMoreLimit ||
-        limit - this.state.showMoreLimit > 0 ? (
-						this.renderShowMoreButton()
-					) : (
-						<p className="u-margin-bottom-c">{this.renderThatsAllText()}</p>
-					)}
-			</section>
+			{this.props.messages.length === 0 ?
+				this.renderNoMessagesText()
+				:
+				<ol className="c-messagelist">
+					{this.showMessages()}
+				</ol>
+			}
+			{this.renderShowMoreButton()}
+			{this.state.showThatsAllMessage && <p className="u-margin-bottom-c">{this.renderThatsAllText()}</p>}
+		</section>
 		);
 	}
 }

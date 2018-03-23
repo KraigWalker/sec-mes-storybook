@@ -192,6 +192,7 @@ class ReplySecureMessage extends React.Component {
 		);
 	}
 	returnSentMessageModal() {
+		window.top.postMessage('clearNewMessagePage', '*');
 		const bodyContent = (
 			<div>
 				<div>
@@ -225,6 +226,7 @@ class ReplySecureMessage extends React.Component {
 		this.setState({ showSentMessageModal: false });
 	}
 	returnDraftModal() {
+		window.top.postMessage('clearNewMessagePage', '*');
 		const bodyContent = (
 			<div>
 				<div>
