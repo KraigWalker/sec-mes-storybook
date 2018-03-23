@@ -88,6 +88,7 @@ module.exports = {
 		historyApiFallback: true, // Allow changes from history
 		host: 'localhost',
 		port: 8000,
+		hot: true
 	},
 	
 	resolve: {

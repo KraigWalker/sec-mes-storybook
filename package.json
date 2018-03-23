@@ -46,21 +46,23 @@
     "redux-thunk": "^2.1.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.0",
-    "uglifyjs-webpack-plugin": "^1.0.0-beta.3",
+    "uglifyjs-webpack-plugin": "^1.2.4",
     "url-loader": "^0.6.2",
     "webpack": "^3.8.1",
     "webpack-dev-server": "^2.9.1"
-    //"eslint-config-web-ui": "git+ssh://git@bitbucket.org/about-here/eslint-config-web-ui.git#develop"
   },
   "scripts": {
     "nocss": "cross-env brand= webpack --config ./dev.config.js",
     "cb": "cross-env brand=cb webpack --config ./dev.config.js",
     "yb": "cross-env brand=yb webpack --config ./dev.config.js",
     "dyb": "cross-env brand=dyb webpack --config ./dev.config.js",
+    "cb-prod": "brand=cb webpack --config ./prod.config.js",
+    "dyb-prod": "brand=yb webpack --config ./prod.config.js",
+    "yb-prod": "brand=dyb webpack --config ./prod.config.js",
     "start": "cross-env npm run dyb && npm run cb && npm run yb && webpack-dev-server --config ./dev.config.js",
     "dev": "webpack --config ./dev.config.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run dyb && npm run cb && npm run yb && npm run release",
+    "build": "npm run dyb-prod && npm run cb-prod && npm run yb-prod && npm run release",
     "release": "tar -C src/ -czf secure-messaging-1.0.0.tgz compiled",
     "test:watch": "npm test -- --watch",
     "lint": "eslint './src'"

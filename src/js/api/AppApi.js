@@ -1,13 +1,13 @@
 
 import axios from "axios";
 import ApiUtils from './ApiUtils';
-import config from '../../../config/env-config';
 import SendMessageRequestEntity from '../entities/SendMessageRequestEntity';
 import { parseDraft, deleteMessage, replyMessage, updateMessage } from '../parsers/MessageParser';
 const _getMessageURLEndpoint = '/banks/{bank_id}/securemessages';
 const _getMessageSubjectsURL = '/banks/{bank_id}/securemessages/subjects';
 //const _getAccountsURL = 'http://localhost:8000/js/content/getAccounts.json';
 const _getAccountsURL = '/banks/{bank_id}/accounts/default';
+const config = window.config;
 const _sendMessageURL = '/banks/{bank_id}/securemessages/{message_id}';
 import StringsConstants from '../constants/StringsConstants.js';
 
