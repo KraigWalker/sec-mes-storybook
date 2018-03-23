@@ -10,14 +10,6 @@ const apiParams = {
 
 const requestHeaders = {
   "x-bpi-client-context": JSON.stringify(apiParams.clientContext),
-  "x-bpi-version": "1.2.0",
-  Authorization: apiParams.accessToken,
-  "Content-Type": "application/json"
-};
-
-const accountRequestHeader = {
-  "x-bpi-client-context": JSON.stringify(apiParams.clientContext),
-  "x-bpi-version": "0.8.0",
   Authorization: apiParams.accessToken,
   "Content-Type": "application/json"
 };
@@ -25,12 +17,9 @@ const accountRequestHeader = {
 class ApiUtils {
   static makeRequest(apiData, onSuccess, onFail) {
     apiData.url = apiData.url.replace("{bank_id}", apiParams.bankId);
+    requestHeaders["x-bpi-version"] = apiData.apiVersion;
     switch (apiData.method) {
       case "GET":
-        if (
-          apiData.url !==
-          `${config.apiBaseUrl}/banks/${apiParams.bankId}/accounts/default`
-        ) {
           return axios
             .get(apiData.url, { headers: requestHeaders })
             .then(response => {
@@ -39,16 +28,6 @@ class ApiUtils {
             .catch(error => {
               onFail(error);
             });
-        } else
-          return axios
-            .get(apiData.url, { headers: accountRequestHeader })
-            .then(response => {
-              onSuccess(response.data);
-            })
-            .catch(error => {
-              onFail(error);
-            });
-
       case "POST":
         return axios
           .post(apiData.url, apiData.requestData, { headers: requestHeaders })
