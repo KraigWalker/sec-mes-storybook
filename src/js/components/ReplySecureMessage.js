@@ -455,6 +455,7 @@ class ReplySecureMessage extends React.Component {
 							selectSubject={this.selectSubject}
 							isFromDraftOrReply
 							selectedValue={this.props.location.messageDetail.subject}
+							content = {this.props.content}
 							isFromReply
 						/>
 					</div>
@@ -477,6 +478,7 @@ class ReplySecureMessage extends React.Component {
 							id="accounts"
 							isFromDraftOrReply
 							selectedValue={this.checkAccountValue()}
+							content = {this.props.content}
 							isFromReply
 						/>
 					</div>

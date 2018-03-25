@@ -221,7 +221,7 @@ class DraftSecureMessage extends React.Component {
 						{this.props.content.subject}
 					</label>
 					<div className="c-field__controls u-position-relative">
-						<DropDownComponent subjects={this.props.location.messageDetail.subject} name="subjects" id="subjects" selectSubject={this.selectSubject} showSubjectError={this.state.validationSubjectMsg} isFromDraftOrReply selectedValue={this.props.location.messageDetail.subject} />
+						<DropDownComponent subjects={this.props.location.messageDetail.subject} name="subjects" id="subjects" selectSubject={this.selectSubject} showSubjectError={this.state.validationSubjectMsg} isFromDraftOrReply selectedValue={this.props.location.messageDetail.subject} content={this.props.content} />
 					</div>
 				</div>
 
@@ -230,7 +230,7 @@ class DraftSecureMessage extends React.Component {
 						{this.props.content.messageRelatesTo}
 					</label>
 					<div className="c-field__controls u-position-relative">
-						<DropDownComponent accounts={this.props.location.messageDetail.account} selectSubject={this.selectSubject} name="accounts" id="accounts" showAccountError={this.state.validationAccountMsg} isFromDraftOrReply selectedValue={this.checkAccountValue()} />
+						<DropDownComponent accounts={this.props.location.messageDetail.account} selectSubject={this.selectSubject} name="accounts" id="accounts" showAccountError={this.state.validationAccountMsg} isFromDraftOrReply selectedValue={this.checkAccountValue()} content={this.props.content}/>
 					</div>
 				</div>
 
