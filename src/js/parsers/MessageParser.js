@@ -111,13 +111,13 @@ export function updateMessage(data, id, status) {
 
 export function deleteMessage(data, id, status) {
     let requestData = {};
-    if (data.account.accountID !== undefined) {
+    if (data.account.accountId !== undefined) {
         requestData = {
             secure_message: {
                 subject: data.subject,
                 account: {
-                    id: data.account.accountID,
-                    number: data.account.accountNumber,
+                    id: data.account.accountId,
+                    number: data.account.number,
                 },
                 payload: {
                     headers: [

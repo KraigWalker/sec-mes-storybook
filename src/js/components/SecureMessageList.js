@@ -11,11 +11,11 @@ class SecureMessageList extends React.Component {
 		super(props);
 		this.showMoreClicked = this.showMoreClicked.bind(this);
 		this.state = {
-			showMoreLimit: 5,
+			showMoreLimit: 20,
 		};
 	}
 	componentWillReceiveProps(props) {
-		if (this.props.messages.length <= 5) {
+		if (this.props.messages.length <= 20) {
             this.setState({ showThatsAllMessage: true });
         }
 		if(this.props.messages.length == 0){
