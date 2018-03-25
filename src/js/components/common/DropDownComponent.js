@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import MessageSubjectEntity from '../../entities/MessageSubjectEntity';
 import { connect } from 'react-redux';
-import { getMessageSubjects, getAccounts, sendMessageData } from '../../actions/AppActions';
+import { getMessageSubjects, popupState  } from '../../actions/AppActions';
 import CalloutComponent from './CalloutComponent';
+import ModalComponent from "./ModalComponent";
 class DropDownComponent extends React.Component {
     constructor(props) {
         super(props);
@@ -13,21 +14,20 @@ class DropDownComponent extends React.Component {
         this.showList = this.showList.bind(this);
         this.setDropDrownValue = this.setDropDrownValue.bind(this);
         this.onBlur = this.onBlur.bind(this);
+        this.errorCloseClicked = this.errorCloseClicked.bind(this);
+        this.retryServiceCall = this.retryServiceCall.bind(this);
         this.state = {
             list: false,
             Text: this.props.selectedValue,
             isDropDownDisabled: false,
+            showErrorModal: false,
         }
     };
     componentWillMount() {
-        //Will remove after service call testing of accounts
-        // if (!this.props.messagesubjects.fetched && !this.props.messageaccounts.fetched) {
          this.props.dispatch(getMessageSubjects());
-       //  this.props.dispatch(getAccounts());
-        // }
-        // if (this.props.isFromDraftOrReply) {
-        //     this.props.selectSubject(this.props.selectedValue, this.props.id);
-        // }
+    }
+    componentDidMount() {
+        this.props.dispatch(popupState());
     }
     returnMenuItem() {
         let setDropDrownValue;
@@ -40,9 +40,6 @@ class DropDownComponent extends React.Component {
                     let name = (account.display_name !== null)?account.display_name : account.name;
                     items.push(<li className="c-dropdown__value" id={account.name} key={account.id} value={account.name} onClick={e => this.setDropDrownValue(e, account, name)}><span className="c-dropdown__value__account">{name}</span><span className="c-dropdown__value__number">{'ending '+account.number.slice(-4)}</span></li>
                     );
-                    // To display account name along with account number use the below pattern
-                   // <li className="c-dropdown__value" key={account} value={account} onClick={this.setDropDrownValue}><span className="c-dropdown__value__account">{account.name}</span><span className="c-dropdown__value__number">1234</span></li>
-                
                 });
                 break;
             case (!this.props.isFromDraftOrReply && this.props.id === 'subjects'):
@@ -56,9 +53,6 @@ class DropDownComponent extends React.Component {
                     let name = (account.display_name !== null)?account.display_name : account.name;
                     items.push(<li className="c-dropdown__value" id={account.name} key={account.id} value={account.name} onClick={e => this.setDropDrownValue(e, account, name)}><span span className="c-dropdown__value__account">{name}</span><span className="c-dropdown__value__number">{'ending '+account.number.slice(-4)}</span></li>
                     );
-                 // To display account name along with account number use the below pattern
-                   // <li className="c-dropdown__value" key={account} value={account} onClick={this.setDropDrownValue}><span className="c-dropdown__value__account">{account}</span><span className="c-dropdown__value__number">1234</span></li>
-            
                 })
                 break;
             case (this.props.isFromDraftOrReply && this.props.id === 'subjects'):
@@ -74,9 +68,41 @@ class DropDownComponent extends React.Component {
         this.setState({
             list: false,
         });
-
     }
+    errorCloseClicked() {
+		this.setState({showErrorModal: false });
+	}
+	retryServiceCall() {
+		this.props.dispatch(popupState());
+        this.showList();
+	}
+    returnErrorModal() {
+		const bodyContent = (<div><h3>{this.props.content.sorryHeader}</h3><br />
+			<p>{this.props.content.tryAgain}</p><br />
+			<p>{this.props.content.getInTouch}</p>
+		</div>);
+		const footerButtons = (<div><button type="button" className="c-btn c-btn--secondary c-modal__button" onClick={this.errorCloseClicked}>{this.props.content.back}</button>
+			<button type="button" onClick={this.retryServiceCall} className="c-btn c-btn--default c-modal__button">{this.props.content.retry}</button>
+		</div>);
+		return (
+			<ModalComponent
+				show
+				onHide={this.errorCloseClicked}
+				customClass="c-modal c-modal--center"
+				bsSize="medium"
+				modalheading=""
+				modalbody={bodyContent}
+				modalfooter={footerButtons}
+				modalInContainer={false}
+				closeButton
+			/>
+		);
+	}
     showList() {
+        if(this.props.messagesubjects.error) {
+            this.props.dispatch(getMessageSubjects());
+            this.setState({ showErrorModal: true });
+        }
         if (this.state.list === false) {
             this.setState({ list: true });
         }
@@ -112,6 +138,7 @@ class DropDownComponent extends React.Component {
                 </div>
                 {this.props.showAccountError ? <CalloutComponent dClass='callout callout__error callout__inline-error' paraText={this.props.content.accError} /> : ''}
                 {this.props.showSubjectError ? <CalloutComponent dClass='callout callout__error callout__inline-error' paraText={this.props.content.subError} /> : ''}
+                {this.props.messagesubjects.error && this.state.showErrorModal && this.props.accessID === 'Subject' ? this.returnErrorModal() : ''}            
             </div>
         );
     }

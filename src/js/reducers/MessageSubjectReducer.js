@@ -22,6 +22,9 @@ function reducer(state={
     case AppConstants.REQUEST_SUBJECTS_FAILURE: {
       return {...state, error : true, fetched: true}
     }
+    case AppConstants.SET_POPUP_STATE: {
+      return {...state,error: false}
+    }
    default:
     return state;
   }
