@@ -96,15 +96,8 @@ class ViewMessage extends React.Component {
   	this.setState({ showSendServiceErrorModal: false });
   }
   retryServiceCall() {
-  	if (this.state.showSendServiceErrorModal) {
-  		this.props.dispatch(
-  			updateMessageData(
-  				this.props.location.messageDetail,
-  				this.props.location.messageDetail.id,
-  				'DELETED'
-  			)
-  		);
-  	}
+	this.props.dispatch(popupState());
+	this.deleteClick();
   }
   deleteClick() {
   	this.setState({

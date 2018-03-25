@@ -172,11 +172,12 @@ class DraftSecureMessage extends React.Component {
 		this.setState({ showSendServiceErrorModal: false });
 	}
 	retryServiceCall() {
+		this.props.dispatch(popupState());
 		if (this.state.showSaveServiceErrorModal) {
-			this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, StringsConstants.DRAFT));
+			this.saveDraftData();
 		}
 		if (this.state.showSendServiceErrorModal) {
-			this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, StringsConstants.PENDING));
+			this.sendData();
 		}
 	}
 	returnErrorModal() {
