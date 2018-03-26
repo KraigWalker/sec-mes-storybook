@@ -111,7 +111,7 @@ export function updateMessage(data, id, status) {
 
 export function deleteMessage(data, id, status) {
     let requestData = {};
-    if (data.account.accountId !== undefined) {
+    if (data.account.accountId !== undefined || null) {
         requestData = {
             secure_message: {
                 subject: data.subject,
