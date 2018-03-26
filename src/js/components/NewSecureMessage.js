@@ -450,6 +450,7 @@ class NewSecureMessage extends React.Component {
 							name="subjects"
 							id="subjects"
 							isFromDraft={false}
+							content = {this.props.content}
 							selectedValue="Please select"
 						/>
 					</div>
@@ -473,6 +474,7 @@ class NewSecureMessage extends React.Component {
 							name="accounts"
 							id="accounts"
 							isFromDraft={false}
+							content = {this.props.content}
 							selectedValue="Please select"
 						/>
 					</div>
