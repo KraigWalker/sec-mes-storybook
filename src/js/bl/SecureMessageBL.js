@@ -49,7 +49,7 @@ export function SecureMessageBL(response) {
         else
         return _.find(accountData.accounts, function(accData) { 
             if(accData.accountId === id) {
-                const name = (accData.display_name !== null)?accData.display_name : accData.name;
+                const name = accData.display_name || accData.name;
                 return name;
             }
         });

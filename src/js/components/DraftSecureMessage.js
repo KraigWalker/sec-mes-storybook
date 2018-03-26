@@ -42,18 +42,16 @@ class DraftSecureMessage extends React.Component {
 		};
 	}
 	componentWillMount() {
-		console.log('this.props',this.props);
 		// If account service responding late then what to do...
-		 if (this.props.location.messageDetail.account.accountId !== undefined && this.props.location.messageDetail.subject) {
-			 this.props.location.messageDetail.account.name = (getAccountName(this.props.location.messageDetail.account.accountId, this.props.accounts).display_name !== null) ?
-			 getAccountName(this.props.location.messageDetail.account.accountId, this.props.accounts).display_name :
-			 getAccountName(this.props.location.messageDetail.account.accountId, this.props.accounts).name;
+		 const accName = (getAccountName(this.props.location.messageDetail.account.accountId, this.props.accounts));
+		 if (this.props.location.messageDetail.account.accountId !== undefined || null && this.props.location.messageDetail.subject) {
+			 this.props.location.messageDetail.account.name = (accName).display_name || (accName).name;
 			messageEntity.setName(this.props.location.messageDetail.account.name);
 			messageEntity.setAccountId(this.props.location.messageDetail.account.accountId);
 		 	messageEntity.setAccountNumber(this.props.location.messageDetail.account.number);
 			messageEntity.setUpdateSubject(this.props.location.messageDetail.subject);
 		 }
-		if (this.props.location.messageDetail.account.accountId === undefined) {
+		if (this.props.location.messageDetail.account.accountId === undefined || null) {
 			messageEntity.setAccount(this.props.location.messageDetail.account);
 			messageEntity.setUpdateSubject(this.props.location.messageDetail.subject);
 		}
@@ -162,7 +160,7 @@ class DraftSecureMessage extends React.Component {
 	}
 	checkAccountValue() {
 		let accVal;
-		if (this.props.location.messageDetail.account.number === undefined) {
+		if (this.props.location.messageDetail.account.number === undefined || null) {
 			accVal = 'No specific account';
 		} else {
 			accVal = this.props.location.messageDetail.account.name;
@@ -206,7 +204,7 @@ class DraftSecureMessage extends React.Component {
 
 	render() {
 		
-		 this.props.location.messageDetail.account.number === undefined ? 'No specific account' : this.props.location.messageDetail.account;
+		 this.props.location.messageDetail.account.number === undefined || null ? 'No specific account' : this.props.location.messageDetail.account;
 		return (
 			<div className="container">
 				<div className="row">

@@ -56,16 +56,15 @@ class ReplySecureMessage extends React.Component {
 		};
 	}
 	componentWillMount() {
-		if (this.props.location.messageDetail.account.accountId !== undefined && this.props.location.messageDetail.subject) {
-			this.props.location.messageDetail.account.name = (getAccountName(this.props.location.messageDetail.account.accountId, this.props.accounts).display_name !== null) ?
-			getAccountName(this.props.location.messageDetail.account.accountId, this.props.accounts).display_name :
-			getAccountName(this.props.location.messageDetail.account.accountId, this.props.accounts).name;
+		const accName = (getAccountName(this.props.location.messageDetail.account.accountId, this.props.accounts));
+		 if (this.props.location.messageDetail.account.accountId !== undefined || null && this.props.location.messageDetail.subject) {
+			 this.props.location.messageDetail.account.name = (accName).display_name || (accName).name;
 		   messageEntity.setName(this.props.location.messageDetail.account.name);
 		   messageEntity.setAccountId(this.props.location.messageDetail.account.accountId);
 			messageEntity.setAccountNumber(this.props.location.messageDetail.account.number);
 		   messageEntity.setUpdateSubject(this.props.location.messageDetail.subject);
 		}
-	   if (this.props.location.messageDetail.account.accountId === undefined) {
+	   if (this.props.location.messageDetail.account.accountId === undefined || null) {
 		   messageEntity.setAccount(this.props.location.messageDetail.account);
 		   messageEntity.setUpdateSubject(this.props.location.messageDetail.subject);
 	   }
@@ -257,7 +256,7 @@ class ReplySecureMessage extends React.Component {
 	}
 	checkAccountValue() {
 		let accVal;
-		if (this.props.location.messageDetail.account.number === undefined) {
+		if (this.props.location.messageDetail.account.number === undefined || null) {
 			accVal = 'No specific account';
 		} else {
 			accVal = this.props.location.messageDetail.account.name;

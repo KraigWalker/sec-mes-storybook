@@ -6,16 +6,17 @@ import { getMessageType } from "../utils/SecureMessageUtils";
 import { sendMessageForAccessibiltiy } from "../actions/AppActions";
 import { connect } from "react-redux";
 
+const MESSAGE_LIMIT = 20;
 class SecureMessageList extends React.Component {
 	constructor(props) {
 		super(props);
 		this.showMoreClicked = this.showMoreClicked.bind(this);
 		this.state = {
-			showMoreLimit: 20,
+			showMoreLimit: MESSAGE_LIMIT,
 		};
 	}
 	componentWillReceiveProps(props) {
-		if (this.props.messages.length <= 20) {
+		if (this.props.messages.length <= MESSAGE_LIMIT) {
             this.setState({ showThatsAllMessage: true });
         }
 		if(this.props.messages.length == 0){
