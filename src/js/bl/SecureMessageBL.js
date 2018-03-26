@@ -54,3 +54,4 @@ export function SecureMessageBL(response) {
             }
         });
     }
+
