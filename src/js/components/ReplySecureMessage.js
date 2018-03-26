@@ -8,14 +8,14 @@ import RegexUtils from "../utils/RegexUtils.js";
 import SendMessageRequestEntity from "../entities/SendMessageRequestEntity.js";
 import { connect } from "react-redux";
 import {
-  getMessageSubjects,
-  getAccounts,
-  replyMessageData,
-  sendMessageForAccessibiltiy,
-  updateMessageData,
-  popupState
+	getMessageSubjects,
+	getAccounts,
+	replyMessageData,
+	sendMessageForAccessibiltiy,
+	updateMessageData,
+	popupState
 } from "../actions/AppActions";
-import { getThreadsBL } from "../bl/SecureMessageBL";
+import { getThreadsBL, getAccountName } from "../bl/SecureMessageBL";
 import Threads from "./common/ThreadList";
 import ModalComponent from "./common/ModalComponent";
 import GetIcon from "./common/GetIcon";
@@ -56,37 +56,18 @@ class ReplySecureMessage extends React.Component {
 		};
 	}
 	componentWillMount() {
-		if (
-			this.props.location.messageDetail.account.accountID !== undefined &&
-      this.props.location.messageDetail.subject
-		) {
-			this.props.location.messageDetail.account.name = getAccountName(
-				this.props.location.messageDetail.account.accountID,
-				this.props.accounts
-			).name;
-			this.props.location.messageDetail.account.id = this.props.location.messageDetail.account.accountID;
-			messageEntity.setName(
-				getAccountName(
-					this.props.location.messageDetail.account.accountID,
-					this.props.accounts
-				).name
-			);
-			messageEntity.setUpdateSubject(this.props.location.messageDetail.subject);
-			messageEntity.setAccountId(
-				this.props.location.messageDetail.account.id
-			);
-			this.props.location.messageDetail.account.number = getAccountName(
-				this.props.location.messageDetail.account.accountID,
-				this.props.accounts
-			).number;
-			messageEntity.setAccountNumber(
-				this.props.location.messageDetail.account.number
-			);
+		const accName = (getAccountName(this.props.location.messageDetail.account.accountId, this.props.accounts));
+		 if (this.props.location.messageDetail.account.accountId !== undefined || null && this.props.location.messageDetail.subject) {
+			 this.props.location.messageDetail.account.name = (accName).display_name || (accName).name;
+		   messageEntity.setName(this.props.location.messageDetail.account.name);
+		   messageEntity.setAccountId(this.props.location.messageDetail.account.accountId);
+			messageEntity.setAccountNumber(this.props.location.messageDetail.account.number);
+		   messageEntity.setUpdateSubject(this.props.location.messageDetail.subject);
 		}
-		if (this.props.location.messageDetail.account.accountID === undefined) {
-			messageEntity.setAccount(this.props.location.messageDetail.account);
-			messageEntity.setUpdateSubject(this.props.location.messageDetail.subject);
-		}
+	   if (this.props.location.messageDetail.account.accountId === undefined || null) {
+		   messageEntity.setAccount(this.props.location.messageDetail.account);
+		   messageEntity.setUpdateSubject(this.props.location.messageDetail.subject);
+	   }
 	}
 
 	componentDidMount() {
@@ -134,7 +115,7 @@ class ReplySecureMessage extends React.Component {
 			return (
 				<div>
 					<p className="char__error error__right">
-            Characters Left: {this.state.chars_left}
+						Characters Left: {this.state.chars_left}
 					</p>
 					<CalloutComponent
 						dClass="callout callout__error callout__inline-error"
@@ -145,22 +126,22 @@ class ReplySecureMessage extends React.Component {
 		}
 		if (this.state.chars_left <= 300) {
 			this.state.chars_left === 3 &&
-			this.props.dispatch(
-				sendMessageForAccessibiltiy('Three characters left')
-			);
+				this.props.dispatch(
+					sendMessageForAccessibiltiy('Three characters left')
+				);
 			this.state.chars_left === 1 &&
-        this.props.dispatch(sendMessageForAccessibiltiy('One character left'));
+				this.props.dispatch(sendMessageForAccessibiltiy('One character left'));
 			this.state.chars_left === 0 &&
-        this.props.dispatch(
-        	sendMessageForAccessibiltiy('Maximum characters limit reached')
-        );
+				this.props.dispatch(
+					sendMessageForAccessibiltiy('Maximum characters limit reached')
+				);
 			let headerflagClass = 'error__right';
 			if (this.state.chars_left <= 0) {
 				headerflagClass = 'char__error error__right';
 			}
 			return (
 				<p className={`${headerflagClass}`}>
-          Characters Left: {this.state.chars_left}
+					Characters Left: {this.state.chars_left}
 				</p>
 			);
 		}
@@ -213,6 +194,7 @@ class ReplySecureMessage extends React.Component {
 		return (
 			<ModalComponent
 				show
+				bsSize="sm"
 				customClass="c-modal c-modal--center"
 				modalheading=""
 				modalbody={bodyContent}
@@ -247,6 +229,7 @@ class ReplySecureMessage extends React.Component {
 		return (
 			<ModalComponent
 				show
+				bsSize="sm"
 				customClass="c-modal c-modal--center"
 				modalheading=""
 				modalbody={bodyContent}
@@ -273,7 +256,7 @@ class ReplySecureMessage extends React.Component {
 	}
 	checkAccountValue() {
 		let accVal;
-		if (this.props.location.messageDetail.account.accountNumber === undefined) {
+		if (this.props.location.messageDetail.account.number === undefined || null) {
 			accVal = 'No specific account';
 		} else {
 			accVal = this.props.location.messageDetail.account.name;
@@ -419,11 +402,11 @@ class ReplySecureMessage extends React.Component {
 								className="c-step-header__link u-cursor-pointer"
 							>
 								<span className="c-step-header__linkicon">
-						<SvgIcon id="icon-left" width="16px" height="16px" />
-					</span>
+									<SvgIcon id="icon-left" width="16px" height="16px" />
+								</span>
 								<span className="c-step-header__linktext">
-						{this.props.content.back}
-					</span>
+									{this.props.content.back}
+								</span>
 							</a>
 						</p>
 						<h1 className="c-step-header__title" id="headingTag" tabIndex="-1">
@@ -471,6 +454,7 @@ class ReplySecureMessage extends React.Component {
 							selectSubject={this.selectSubject}
 							isFromDraftOrReply
 							selectedValue={this.props.location.messageDetail.subject}
+							content = {this.props.content}
 							isFromReply
 						/>
 					</div>
@@ -487,12 +471,13 @@ class ReplySecureMessage extends React.Component {
 					<div className="c-field__controls u-position-relative">
 						<DropDownComponent
 							accessID="Message relates to"
-							accounts={this.props.location.messageDetail.account.accountNumber}
+							accounts={this.props.location.messageDetail.account.number}
 							selectSubject={this.selectSubject}
 							name="accounts"
 							id="accounts"
 							isFromDraftOrReply
 							selectedValue={this.checkAccountValue()}
+							content = {this.props.content}
 							isFromReply
 						/>
 					</div>
@@ -529,13 +514,13 @@ class ReplySecureMessage extends React.Component {
 							{this.props.content.back}
 						</button>
 					) : (
-						<Link
-							to={`${window.baseURl}/securemessages`}
-							className="c-btn c-btn--secondary"
-						>
-							{this.props.content.back}{' '}
-						</Link>
-					)}
+							<Link
+								to={`${window.baseURl}/securemessages`}
+								className="c-btn c-btn--secondary"
+							>
+								{this.props.content.back}{' '}
+							</Link>
+						)}
 					<button
 						name="Save Draft"
 						className="c-btn c-btn--secondary"
@@ -558,14 +543,14 @@ class ReplySecureMessage extends React.Component {
 					? this.returnSentMessageModal()
 					: ''}
 				{this.state.showDraftSuccessModal &&
-          this.props.messages.successModal &&
-          this.returnDraftModal()}
+					this.props.messages.successModal &&
+					this.returnDraftModal()}
 				{this.props.messages.newMessageError &&
-          this.state.showSaveServiceErrorModal &&
-          this.returnErrorModal()}
+					this.state.showSaveServiceErrorModal &&
+					this.returnErrorModal()}
 				{this.props.messages.newMessageError &&
-          this.state.showSendServiceErrorModal &&
-          this.returnErrorModal()}
+					this.state.showSendServiceErrorModal &&
+					this.returnErrorModal()}
 				<div className="row">
 					<div className="col-md1-18">
 						{this.getThreads(this.props.messages.messages, messageDetail)}

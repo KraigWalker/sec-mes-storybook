@@ -42,16 +42,16 @@ class DraftSecureMessage extends React.Component {
 		};
 	}
 	componentWillMount() {
-		if (this.props.location.messageDetail.account.accountID !== undefined && this.props.location.messageDetail.subject) {
-			this.props.location.messageDetail.account.name = getAccountName(this.props.location.messageDetail.account.accountID, this.props.accounts).name;
-			this.props.location.messageDetail.account.id = this.props.location.messageDetail.account.accountID;
-			messageEntity.setName(getAccountName(this.props.location.messageDetail.account.accountID, this.props.accounts).name);
+		// If account service responding late then what to do...
+		 const accName = (getAccountName(this.props.location.messageDetail.account.accountId, this.props.accounts));
+		 if (this.props.location.messageDetail.account.accountId !== undefined || null && this.props.location.messageDetail.subject) {
+			 this.props.location.messageDetail.account.name = (accName).display_name || (accName).name;
+			messageEntity.setName(this.props.location.messageDetail.account.name);
+			messageEntity.setAccountId(this.props.location.messageDetail.account.accountId);
+		 	messageEntity.setAccountNumber(this.props.location.messageDetail.account.number);
 			messageEntity.setUpdateSubject(this.props.location.messageDetail.subject);
-			messageEntity.setAccountId(this.props.location.messageDetail.account.id);
-			this.props.location.messageDetail.account.number = (getAccountName(this.props.location.messageDetail.account.accountID, this.props.accounts).number);
-			messageEntity.setAccountNumber(this.props.location.messageDetail.account.number);
-		}
-		if (this.props.location.messageDetail.account.accountID === undefined) {
+		 }
+		if (this.props.location.messageDetail.account.accountId === undefined || null) {
 			messageEntity.setAccount(this.props.location.messageDetail.account);
 			messageEntity.setUpdateSubject(this.props.location.messageDetail.subject);
 		}
@@ -160,7 +160,7 @@ class DraftSecureMessage extends React.Component {
 	}
 	checkAccountValue() {
 		let accVal;
-		if (this.props.location.messageDetail.account.accountNumber === undefined) {
+		if (this.props.location.messageDetail.account.number === undefined || null) {
 			accVal = 'No specific account';
 		} else {
 			accVal = this.props.location.messageDetail.account.name;
@@ -203,7 +203,8 @@ class DraftSecureMessage extends React.Component {
 	}
 
 	render() {
-		 this.props.location.messageDetail.account.accountNumber === undefined ? 'No specific account' : this.props.location.messageDetail.account;
+		
+		 this.props.location.messageDetail.account.number === undefined || null ? 'No specific account' : this.props.location.messageDetail.account;
 		return (
 			<div className="container">
 				<div className="row">
@@ -218,7 +219,7 @@ class DraftSecureMessage extends React.Component {
 						{this.props.content.subject}
 					</label>
 					<div className="c-field__controls u-position-relative">
-						<DropDownComponent subjects={this.props.location.messageDetail.subject} name="subjects" id="subjects" selectSubject={this.selectSubject} showSubjectError={this.state.validationSubjectMsg} isFromDraftOrReply selectedValue={this.props.location.messageDetail.subject} />
+						<DropDownComponent subjects={this.props.location.messageDetail.subject} name="subjects" id="subjects" selectSubject={this.selectSubject} showSubjectError={this.state.validationSubjectMsg} isFromDraftOrReply selectedValue={this.props.location.messageDetail.subject} content={this.props.content} />
 					</div>
 				</div>
 
@@ -227,7 +228,7 @@ class DraftSecureMessage extends React.Component {
 						{this.props.content.messageRelatesTo}
 					</label>
 					<div className="c-field__controls u-position-relative">
-						<DropDownComponent accounts={this.props.location.messageDetail.account} selectSubject={this.selectSubject} name="accounts" id="accounts" showAccountError={this.state.validationAccountMsg} isFromDraftOrReply selectedValue={this.checkAccountValue()} />
+						<DropDownComponent accounts={this.props.location.messageDetail.account} selectSubject={this.selectSubject} name="accounts" id="accounts" showAccountError={this.state.validationAccountMsg} isFromDraftOrReply selectedValue={this.checkAccountValue()} content={this.props.content}/>
 					</div>
 				</div>
 
