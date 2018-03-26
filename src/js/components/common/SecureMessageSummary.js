@@ -150,7 +150,8 @@ class SecureMessageSummary extends React.Component {
   errorCloseClicked() {
   	this.setState({ showSendServiceErrorModal: false });
   }
-  retryServiceCall() {
+	retryServiceCall() {
+		this.props.dispatch(popupState());
   	this.deleteClick();
   }
   closeModal() {

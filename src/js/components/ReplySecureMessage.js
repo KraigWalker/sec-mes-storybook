@@ -268,23 +268,12 @@ class ReplySecureMessage extends React.Component {
 		this.setState({ showSendServiceErrorModal: false });
 	}
 	retryServiceCall() {
+		this.props.dispatch(popupState());
 		if (this.state.showSaveServiceErrorModal) {
-			this.props.dispatch(
-				replyMessageData(
-					messageEntity.getMessageRequestData(),
-					this.props.location.messageDetail,
-					StringsConstants.DRAFT
-				)
-			);
+			this.saveDraftData();
 		}
 		if (this.state.showSendServiceErrorModal) {
-			this.props.dispatch(
-				replyMessageData(
-					messageEntity.getMessageRequestData(),
-					this.props.location.messageDetail,
-					StringsConstants.PENDING
-				)
-			);
+			this.sendData();
 		}
 	}
 	leavePage() {
