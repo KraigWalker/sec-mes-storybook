@@ -1,3 +1,7 @@
 {
-    "extends": "web-ui"
+    "extends": "web-ui",
+    "settings": {
+        "import/resolver": "webpack"
+    }
+    
 }
