@@ -96,15 +96,8 @@ class ViewMessage extends React.Component {
   	this.setState({ showSendServiceErrorModal: false });
   }
   retryServiceCall() {
-  	if (this.state.showSendServiceErrorModal) {
-  		this.props.dispatch(
-  			updateMessageData(
-  				this.props.location.messageDetail,
-  				this.props.location.messageDetail.id,
-  				'DELETED'
-  			)
-  		);
-  	}
+	this.props.dispatch(popupState());
+	this.deleteClick();
   }
   deleteClick() {
   	this.setState({
@@ -133,7 +126,7 @@ class ViewMessage extends React.Component {
   returnModalComponent() {
   	const bodyContent = (
   		<div className="callout callout__error">
-        You won’t be able to recover this message if you delete it.
+        {this.props.content.deleteMessageBody}
  </div>
   	);
   	const footerButtons = (
@@ -143,27 +136,27 @@ class ViewMessage extends React.Component {
 	onClick={this.closeModal}
   				className="c-btn c-btn--secondary c-modal__button"
   			>
-          Close
+          {this.props.content.dontDelButton}
      </button>
 		<button
 	type="button"
   				onClick={this.deleteClick}
   				className="c-btn c-btn--default c-modal__button"
   			>
-          Delete message
+          {this.props.content.delButton}
   			</button>
 	</div>
   	);
   	return (
   		<ModalComponent
 		show
-		customClass="c-modal c-modal--center"
+		onHide = {this.closeModal}
 		customClass="c-modal"
-		modalheading="Delete this message?"
+		modalheading={this.props.content.deleteMessageHeading}
   		modalbody={bodyContent}
 		modalfooter={footerButtons}
   		modalInContainer={false}
-		closeButton={false}
+		closeButton
 	/>
   	);
   }
@@ -187,8 +180,8 @@ class ViewMessage extends React.Component {
 
   	return (
   		<ModalComponent
-  			show
-  			customClass="c-modal c-modal-center"
+  		show
+  		customClass="c-modal c-modal--center"
 		bsSize="small"
 		modalheading=""
 		modalbody={bodyContent}

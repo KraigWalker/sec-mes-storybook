@@ -150,16 +150,9 @@ class SecureMessageSummary extends React.Component {
   errorCloseClicked() {
   	this.setState({ showSendServiceErrorModal: false });
   }
-  retryServiceCall() {
-  	if (this.state.showSendServiceErrorModal) {
-  		this.props.dispatch(
-  			updateMessageData(
-  				this.props.message,
-  				this.props.message.id,
-  				'DELETED'
-  			)
-  		);
-  	}
+	retryServiceCall() {
+		this.props.dispatch(popupState());
+  	this.deleteClick();
   }
   closeModal() {
   	setTimeout(() => {
@@ -168,15 +161,21 @@ class SecureMessageSummary extends React.Component {
   	this.setState({ showDeleteConfirmModal: false });
   }
   deleteClick() {
+	if (this.props.message.status === "NEW") {
+	   this.props.dispatch(updateMessageData(this.props.message, this.props.message.id, "READ"));
+	   setTimeout(() => {
+		this.props.dispatch(
+			updateMessageData(this.props.message, this.props.message.id, 'DELETED')
+		)},500);
+	}
+	else this.props.dispatch(updateMessageData(this.props.message, this.props.message.id, "DELETED"));
   	this.setState({
   		showDeleteSuccessModal: true,
   		showDeleteConfirmModal: false,
   		showSendServiceErrorModal: true,
-  	});
-  	this.props.dispatch(
-  		updateMessageData(this.props.message, this.props.message.id, 'DELETED')
-  	);
-  }
+	  });
+	}
+	
   closeSuccessModal() {
   	// document.getElementById('headingTag').focus();
   	this.setState({ showDeleteSuccessModal: false });
@@ -241,7 +240,7 @@ class SecureMessageSummary extends React.Component {
   				className="c-btn c-btn--secondary c-modal__button"
   				onClick={this.errorCloseClicked}
   			>
-        Back
+		{this.props.content.back}
      </button>
 		<button
 		type="button"
@@ -332,8 +331,8 @@ class SecureMessageSummary extends React.Component {
   		'u-position-relative': !this.props.threadFlag,
   	});
 
-  	const accNo = this.props.message.account.accountNumber
-  		? this.props.message.account.accountNumber
+  	const accNo = this.props.message.account.number
+  		? this.props.message.account.number
   		: 'No specific account';
   	return (
   		<div className={messageClass}>
