@@ -66,7 +66,7 @@
     "yb-prod": "brand=dyb webpack --config ./prod.config.js",
     "start": "cross-env npm run dyb && npm run cb && npm run yb && webpack-dev-server --config ./dev.config.js",
     "dev": "webpack --config ./dev.config.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --watch --require testsetup.js './{,src/**/}*.spec.js'",
     "build": "npm run dyb-prod && npm run cb-prod && npm run yb-prod && npm run release",
     "release": "tar -C src/ -czf secure-messaging-1.0.0.tgz compiled",
     "test:watch": "npm test -- --watch",
