@@ -191,11 +191,10 @@ class SecureMessageSummary extends React.Component {
   		<div>
   			<Link
 	to={`${window.baseURl}/securemessages`}
-  				type="button"
   				onClick={this.closeSuccessModal}
 	className="c-btn c-btn--primary c-btn--sm c-modal__button"
   			>
-          OK
+          {this.props.content.ok}
   			</Link>
   		</div>
   	) : (
@@ -205,7 +204,7 @@ class SecureMessageSummary extends React.Component {
   				onClick={this.closeSuccessModal}
 	className="c-btn c-btn--primary c-btn--sm c-modal__button"
   			>
-          OK
+          {this.props.content.ok}
   			</button>
   		</div>
   	);
@@ -365,7 +364,7 @@ class SecureMessageSummary extends React.Component {
   			</div>
 	{this.state.showDeleteConfirmModal && this.returnModalComponent()}
   			{this.state.showDeleteSuccessModal &&
-        this.props.messages.successModal &&
+				this.props.messages.successModal &&
         this.returnDeleteSuccessModalComponent()}
   			{this.props.messages.draftError &&
         this.state.showSendServiceErrorModal &&
