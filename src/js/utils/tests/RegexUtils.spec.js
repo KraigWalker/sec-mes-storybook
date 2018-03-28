@@ -6,9 +6,7 @@ import TestData from '../../content/secureMessagesTestData.json'
 
 describe('Regex Utils Check:', () => {
   it('matchString - Should retrun matting PAN number from string PAN FORMAT: 1234 1234 1234 1234', () => {
-    // console.log(RegexUtils.matchString("dsfdskjfl dskfjdskj flkdsjfl kdsjflkds jflkdsfj 1234 1234 1234 1234"));
     const Test1 = RegexUtils.matchString("dsfdskjfl dskfjdskj flkdsjfl kdsjflkds jflkdsfj 1234 1234 1234 1234");
-    // console.log(Test1[0]);
     expect(Test1[0]).to.eql("1234 1234 1234 1234");
     
   });
