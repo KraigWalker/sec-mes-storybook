@@ -41,7 +41,7 @@ const content = {
 		deleteMessageBody: 'If you delete this message now, you won’t be able to get it back.',
 		dontDelButton: 'No, don’t delete',
 		delButton: 'Yes, delete',
-		messageVal: 'Oops. The maximum message size has been exceeded. Please reduce the length of your message.',
+		messageVal: 'Oops. Looks like your message has gone over the character limit. Try and cut it down a little then give it another go',
 		showMore: 'Show more messages',
 		backToAccounts: 'Back to accounts',
 		faqLink: 'You’ll see all your secure messages from the last 13 months here. For more info about your message history, check out the FAQs in the help section.'

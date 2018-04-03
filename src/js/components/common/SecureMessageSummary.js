@@ -192,11 +192,10 @@ class SecureMessageSummary extends React.Component {
   		<div>
   			<Link
 	to={`${window.baseURl}/securemessages`}
-  				type="button"
   				onClick={this.closeSuccessModal}
 	className="c-btn c-btn--primary c-btn--sm c-modal__button"
   			>
-          OK
+        {this.props.content.ok}
   			</Link>
   		</div>
   	) : (
@@ -206,7 +205,7 @@ class SecureMessageSummary extends React.Component {
   				onClick={this.closeSuccessModal}
 	className="c-btn c-btn--primary c-btn--sm c-modal__button"
   			>
-          OK
+        {this.props.content.ok}
   			</button>
   		</div>
   	);
