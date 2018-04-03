@@ -181,6 +181,7 @@ class SecureMessageSummary extends React.Component {
   	this.setState({ showDeleteSuccessModal: false });
   }
   returnDeleteSuccessModalComponent() {
+		const { content } = this.props;
   	const bodyContent = (
   		<div>
 	<div>
@@ -195,7 +196,7 @@ class SecureMessageSummary extends React.Component {
   				onClick={this.closeSuccessModal}
 	className="c-btn c-btn--primary c-btn--sm c-modal__button"
   			>
-        {this.props.content.ok}
+        {content.ok}
   			</Link>
   		</div>
   	) : (
@@ -205,7 +206,7 @@ class SecureMessageSummary extends React.Component {
   				onClick={this.closeSuccessModal}
 	className="c-btn c-btn--primary c-btn--sm c-modal__button"
   			>
-        {this.props.content.ok}
+        {content.ok}
   			</button>
   		</div>
   	);
