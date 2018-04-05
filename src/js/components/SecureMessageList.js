@@ -26,23 +26,25 @@ class SecureMessageList extends React.Component {
 		if (messages.length == 0) {
 			this.setState({ showThatsAllMessage: false });
 		}
-		switch (true) {
-			case (activeTab === StringsConstants.SENT && messagesFetched.fetched):
-				dispatch(
-					sendMessageForAccessibiltiy(content.noSentMessages)
-				);
-				break;
-			case (activeTab === StringsConstants.DRAFTS && messagesFetched.fetched):
-				dispatch(
-					sendMessageForAccessibiltiy(content.noDraftMessages)
-				);
-				break;
-			case (activeTab === StringsConstants.INBOX && messagesFetched.fetched):
-				dispatch(
-					sendMessageForAccessibiltiy(content.noInboxMessages)
-				);
-				break;
-			default:
+		if (messagesFetched.fetched) {
+			switch (activeTab) {
+				case (activeTab === StringsConstants.SENT):
+					dispatch(
+						sendMessageForAccessibiltiy(content.noSentMessages)
+					);
+					break;
+				case (activeTab === StringsConstants.DRAFTS):
+					dispatch(
+						sendMessageForAccessibiltiy(content.noDraftMessages)
+					);
+					break;
+				case (activeTab === StringsConstants.INBOX):
+					dispatch(
+						sendMessageForAccessibiltiy(content.noInboxMessages)
+					);
+					break;
+				default:
+			}
 		}
 	}
 	showMessages() {
