@@ -16,7 +16,6 @@ export default function reducer(state={
     navRef: '',
     newMessageError: false,
     draftError: false,
-    tempData: {},
 }, action) {
 
   switch (action.type) {
@@ -27,7 +26,7 @@ export default function reducer(state={
       return {...state, fetching : false, fetched: true, messages: action.payload}
     }
     case AppConstants.REQUEST_SECURE_MESSAGES_FAILURE: {
-      return {...state, error: true, fetched: true}
+      return {...state, error: true, fetched: true, fetching: false }
     }
     case AppConstants.REQUEST_TAB_ACTIVE: {
       return {...state, activeTab: action.payload}
@@ -46,9 +45,6 @@ export default function reducer(state={
     }
     case AppConstants.UPDATE_NEW_SECURE_MESSAGE_FAILURE: {
       return {...state, newMessageError: true, fetched: true, tempData: action.tempData }
-    }
-    case AppConstants.CLEAR_TEMP_DATA: {
-      return {...state, tempData: {} }
     }
     case AppConstants.SET_POPUP_STATE: {
       return {...state,error: false,successModal: false,newMessageError: false,draftError: false}

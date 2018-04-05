@@ -88,14 +88,6 @@ export function getActiveTab(activeTab) {
       dispatch(payload);
   }
 }
-export function fetchSecureMessagesAgain() {
-  return function(dispatch) {
-    const payload = {
-      type: AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS,
-    }
-    dispatch(payload);
-  }
-}
 
 export function backButton() {
   return function(dispatch) {
@@ -205,12 +197,4 @@ export function setNavRef(ref) {
     }
     dispatch(payload);
   }
-}
-  export function clearTempData() {
-    return function(dispatch) {
-      const payload = {
-        type: AppConstants.CLEAR_TEMP_DATA
-      }
-      dispatch(payload);
-    }
 }

@@ -25,3 +25,9 @@
     -o-animation: rotating 1s linear infinite;
     animation: rotating 1s linear infinite;
 }
+
+.page-loader {
+    position: fixed;
+    top: 35%;
+    left: 50%;
+}
