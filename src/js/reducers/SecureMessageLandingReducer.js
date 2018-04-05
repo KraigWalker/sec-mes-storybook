@@ -32,7 +32,7 @@ export default function reducer(state={
       return {...state, activeTab: action.payload}
     }
     case AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS: {
-      return {...state, fetched: false, successModal: true, tempData: {} }
+      return {...state, fetched: false, successModal: true }
     }
     case AppConstants.ERROR_BACK_BUTTON: {
       return {...state, error: false, fetched: false}
@@ -41,10 +41,10 @@ export default function reducer(state={
      return {...state, error: false, fetched: true, navRef: action.payload} 
     }
     case AppConstants.UPDATE_SECURE_MESSAGE_DRAFT_FAILURE: {
-      return {...state, draftError: true, fetched: true, tempData: action.tempData }
+      return {...state, draftError: true, fetched: true }
     }
     case AppConstants.UPDATE_NEW_SECURE_MESSAGE_FAILURE: {
-      return {...state, newMessageError: true, fetched: true, tempData: action.tempData }
+      return {...state, newMessageError: true, fetched: true }
     }
     case AppConstants.SET_POPUP_STATE: {
       return {...state,error: false,successModal: false,newMessageError: false,draftError: false}

@@ -5,7 +5,7 @@ import SecureMessageSummary from "./common/SecureMessageSummary";
 import { getMessageType } from "../utils/SecureMessageUtils";
 import { sendMessageForAccessibiltiy } from "../actions/AppActions";
 import { connect } from "react-redux";
-import SvgIcon from './common/GetIcon.js';
+import SvgIcon from './common/GetIcon';
 import StringsConstants from '../constants/StringsConstants';
 
 const MESSAGE_LIMIT = 20;
@@ -19,7 +19,7 @@ class SecureMessageList extends React.Component {
 		};
 	}
 	componentWillReceiveProps(props) {
-		const { messages, activeTab, messagesFetched, content } = this.props;
+		const { messages, activeTab, messagesFetched, content, dispatch } = this.props;
 		if (messages.length <= MESSAGE_LIMIT) {
 			this.setState({ showThatsAllMessage: true });
 		}
@@ -28,17 +28,17 @@ class SecureMessageList extends React.Component {
 		}
 		switch (true) {
 			case (activeTab === StringsConstants.SENT && messagesFetched.fetched):
-				this.props.dispatch(
+				dispatch(
 					sendMessageForAccessibiltiy(content.noSentMessages)
 				);
 				break;
 			case (activeTab === StringsConstants.DRAFTS && messagesFetched.fetched):
-				this.props.dispatch(
+				dispatch(
 					sendMessageForAccessibiltiy(content.noDraftMessages)
 				);
 				break;
 			case (activeTab === StringsConstants.INBOX && messagesFetched.fetched):
-				this.props.dispatch(
+				dispatch(
 					sendMessageForAccessibiltiy(content.noInboxMessages)
 				);
 				break;
@@ -46,23 +46,24 @@ class SecureMessageList extends React.Component {
 		}
 	}
 	showMessages() {
-		const msgs = this.props.messages.slice(0, this.state.showMoreLimit);
-		const { messages } = this.props;
+		const { messages, content } = this.props;
+		const msgs = messages.slice(0, this.state.showMoreLimit);
 		const allMessages = [];
 		const hasOnClick = true;
 		const listFlag = true;
 		_.map(msgs, (message, index) => {
 			allMessages.push(
 				<li key={index} className="c-messagelist__wrapper">
-					<SecureMessageSummary message={message} listFlag={listFlag} content={this.props.content} />
+					<SecureMessageSummary message={message} listFlag={listFlag} content={content} />
 				</li>
 			);
 		});
 		return allMessages;
 	}
 	showMoreClicked() {
-		this.props.dispatch(sendMessageForAccessibiltiy(`Next 20 messages loaded ${this.props.activeTab}`));
-		let limit = this.props.messages.length;
+		const { messages, dispatch, activeTab } = this.props;
+		dispatch(sendMessageForAccessibiltiy(`Next 20 messages loaded ${activeTab}`));
+		let limit = messages.length;
 		this.setState({
 			showMoreLimit: limit,
 			showThatsAllMessage: true,
@@ -83,37 +84,40 @@ class SecureMessageList extends React.Component {
 		}
 	}
 	renderThatsAllText() {
-		let thatsallText = this.props.content.thatsallTextInbox;
-		if (this.props.activeTab === StringsConstants.SENT) {
-			thatsallText = this.props.content.thatsallTextSend;
-		} else if (this.props.activeTab === StringsConstants.DRAFTS) {
-			thatsallText = this.props.content.thatsallTextDraft;
+		const { content, activeTab } = this.props;
+		let thatsallText = content.thatsallTextInbox;
+		if (activeTab === StringsConstants.SENT) {
+			thatsallText = content.thatsallTextSend;
+		} else if (activeTab === StringsConstants.DRAFTS) {
+			thatsallText = content.thatsallTextDraft;
 		}
 		return thatsallText;
 	}
 	renderNoMessagesText() {
 		const { content, activeTab, dispatch } = this.props;
-		if (this.props.activeTab === 'sent') {
-			dispatch(sendMessageForAccessibiltiy(content.noSentMessages));
-			return (
-				<p className="callout callout--msgbottom callout__txt-center">
-					{content.noSentMessages}
-				</p>
-			);
-		} else if (activeTab === 'drafts') {
-			dispatch(sendMessageForAccessibiltiy(content.noDraftMessages));
-			return (
-				<p className="callout callout--msgbottom callout__txt-center">
-					{content.noDraftMessages}
-				</p>
-			);
+		switch (activeTab) {
+			case (activeTab === StringsConstants.SENT):
+				dispatch(sendMessageForAccessibiltiy(content.noSentMessages));
+				return (
+					<p className="callout callout--msgbottom callout__txt-center">
+						{content.noSentMessages}
+					</p>
+				);
+			case (activeTab === StringsConstants.DRAFTS):
+				dispatch(sendMessageForAccessibiltiy(content.noDraftMessages));
+				return (
+					<p className="callout callout--msgbottom callout__txt-center">
+						{content.noDraftMessages}
+					</p>
+				);
+			default:
+				dispatch(sendMessageForAccessibiltiy(content.noInboxMessages));
+				return (
+					<p className="callout callout--msgbottom callout__txt-center">
+						{content.noInboxMessages}
+					</p>
+				);
 		}
-		dispatch(sendMessageForAccessibiltiy(content.noInboxMessages));
-		return (
-			<p className="callout callout--msgbottom callout__txt-center">
-				{content.noInboxMessages}
-			</p>
-		);
 	}
 	render() {
 		const { messagesFetched, messages } = this.props;
