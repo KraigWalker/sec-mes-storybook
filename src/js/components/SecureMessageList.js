@@ -6,8 +6,12 @@ import { getMessageType } from "../utils/SecureMessageUtils";
 import { sendMessageForAccessibiltiy } from "../actions/AppActions";
 import { connect } from "react-redux";
 import SvgIcon from './common/GetIcon.js';
+import StringsConstants from '../constants/StringsConstants.js';
 
 const MESSAGE_LIMIT = 20;
+const SENT = 'sent';
+const DRAFTS = 'drafts';
+const INBOX = 'inbox';
 class SecureMessageList extends React.Component {
 	constructor(props) {
 		super(props);
@@ -17,27 +21,30 @@ class SecureMessageList extends React.Component {
 		};
 	}
 	componentWillReceiveProps(props) {
-		const { messages, activeTab, messagesFetched } = this.props;
+		const { messages, activeTab, messagesFetched, content } = this.props;
 		if (messages.length <= MESSAGE_LIMIT) {
             this.setState({ showThatsAllMessage: true });
         }
 		if(messages.length == 0){
 			this.setState({ showThatsAllMessage: false });
 		}
-		
-		if (activeTab === 'sent' && messagesFetched.fetched) {
+		switch (true) {
+        case (activeTab === SENT && messagesFetched.fetched):
 			this.props.dispatch(
-				sendMessageForAccessibiltiy('You don’t have any sent messages')
+				sendMessageForAccessibiltiy(content.noSentMessages)
 			);
-		} else if (
-			activeTab === 'drafts' &&
-      		messagesFetched.fetched
-		) {
+		break;
+		case (activeTab === DRAFTS && messagesFetched.fetched):
 			this.props.dispatch(
-				sendMessageForAccessibiltiy('You haven’t saved any drafts')
+				sendMessageForAccessibiltiy(content.noDraftMessages)
 			);
-		} else if (activeTab === 'inbox' && messagesFetched.fetched) {
-			// this.props.dispatch(sendMessageForAccessibiltiy('You don’t have any messages'));
+		break;
+		case (activeTab === INBOX && messagesFetched.fetched):
+			this.props.dispatch(
+				sendMessageForAccessibiltiy(content.noInboxMessages)
+			);
+		break;
+		default :
 		}
 	}
 	showMessages() {
@@ -64,17 +71,18 @@ class SecureMessageList extends React.Component {
         });
     }
 	renderShowMoreButton() {
-		let buttonText = this.props.content.showMore;
-		if (this.props.activeTab === 'sent') {
-			buttonText = this.props.content.showMore;
-		} else if (this.props.activeTab === 'drafts') {
-			buttonText = this.props.content.showMore;
+		const { content, activeTab, messages} = this.props;
+		let buttonText = content.showMore;
+		if (activeTab === SENT) {
+			buttonText = content.showMore;
+		} else if (activeTab === DRAFTS) {
+			buttonText = content.showMore;
 		}
 		if (
-			this.state.showMoreLimit < this.props.messages.length &&
-      (this.props.activeTab === 'sent' ||
-        this.props.activeTab === 'inbox' ||
-        this.props.activeTab === 'drafts')
+			this.state.showMoreLimit < messages.length &&
+      (activeTab === SENT ||
+        activeTab === INBOX ||
+        activeTab === DRAFTS)
 		) {
 			return (
 				<button
@@ -89,9 +97,9 @@ class SecureMessageList extends React.Component {
 	}
 	renderThatsAllText() {
 		let thatsallText = this.props.content.thatsallTextInbox;
-		if (this.props.activeTab === 'sent') {
+		if (this.props.activeTab === SENT) {
 			thatsallText = this.props.content.thatsallTextSend;
-		} else if (this.props.activeTab === 'drafts') {
+		} else if (this.props.activeTab === DRAFTS) {
 			thatsallText = this.props.content.thatsallTextDraft;
 		}
 		return thatsallText;
