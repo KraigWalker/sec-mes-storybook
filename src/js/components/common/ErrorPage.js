@@ -13,7 +13,7 @@ class ErrorPage extends React.Component {
         window.top.postMessage('goBackToAccount', "*");
     }
     retry = () => {
-        const { fetch, dispatch, fetched } = this.props;
+        const { dispatch, fetched } = this.props;
         dispatch(getAccounts());
         !fetched && dispatch(fetchSecureMessages());
     }
