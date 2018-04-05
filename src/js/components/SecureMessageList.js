@@ -5,6 +5,7 @@ import SecureMessageSummary from "./common/SecureMessageSummary";
 import { getMessageType } from "../utils/SecureMessageUtils";
 import { sendMessageForAccessibiltiy } from "../actions/AppActions";
 import { connect } from "react-redux";
+import SvgIcon from './common/GetIcon.js';
 
 const MESSAGE_LIMIT = 20;
 class SecureMessageList extends React.Component {
@@ -16,25 +17,26 @@ class SecureMessageList extends React.Component {
 		};
 	}
 	componentWillReceiveProps(props) {
-		if (this.props.messages.length <= MESSAGE_LIMIT) {
+		const { messages, activeTab, messagesFetched } = this.props;
+		if (messages.length <= MESSAGE_LIMIT) {
             this.setState({ showThatsAllMessage: true });
         }
-		if(this.props.messages.length == 0){
+		if(messages.length == 0){
 			this.setState({ showThatsAllMessage: false });
 		}
 		
-		if (this.props.activeTab === 'sent' && this.props.messagesFetched) {
+		if (activeTab === 'sent' && messagesFetched.fetched) {
 			this.props.dispatch(
 				sendMessageForAccessibiltiy('You don’t have any sent messages')
 			);
 		} else if (
-			this.props.activeTab === 'drafts' &&
-      this.props.messagesFetched
+			activeTab === 'drafts' &&
+      		messagesFetched.fetched
 		) {
 			this.props.dispatch(
 				sendMessageForAccessibiltiy('You haven’t saved any drafts')
 			);
-		} else if (this.props.activeTab === 'inbox' && this.props.messagesFetched) {
+		} else if (activeTab === 'inbox' && messagesFetched.fetched) {
 			// this.props.dispatch(sendMessageForAccessibiltiy('You don’t have any messages'));
 		}
 	}
@@ -118,10 +120,11 @@ class SecureMessageList extends React.Component {
 		);
 	}
 	render() {
-		const limit = this.props.messages.length;
+		const { messagesFetched, messages } = this.props;
 		return (
+			messagesFetched.fetching ? <div><SvgIcon id="icon-refresh" width="32px" height="32px" className="spinner-loader"/></div> :
 			<section>
-			{this.props.messages.length === 0 ?
+			{messages.length === 0 ?
 				this.renderNoMessagesText()
 				:
 				<ol className="c-messagelist">
@@ -143,6 +146,6 @@ class SecureMessageList extends React.Component {
 const mapState = state => ({
 	messagesubjects: state.subjects,
 	messageaccounts: state.accounts,
-	messagesFetched: state.messages.fetched,
+	messagesFetched: state.messages,
 });
 export default connect(mapState)(SecureMessageList);
