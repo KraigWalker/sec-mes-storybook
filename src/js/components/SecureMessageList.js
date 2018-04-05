@@ -20,6 +20,7 @@ class SecureMessageList extends React.Component {
 	}
 	componentWillReceiveProps(props) {
 		const { messages, activeTab, messagesFetched, content, dispatch } = this.props;
+		const { SENT, INBOX, DRAFTS } = StringsConstants;
 		if (messages.length <= MESSAGE_LIMIT) {
 			this.setState({ showThatsAllMessage: true });
 		}
@@ -28,17 +29,17 @@ class SecureMessageList extends React.Component {
 		}
 		if (messagesFetched.fetched) {
 			switch (activeTab) {
-				case (activeTab === StringsConstants.SENT):
+				case (activeTab === SENT):
 					dispatch(
 						sendMessageForAccessibiltiy(content.noSentMessages)
 					);
 					break;
-				case (activeTab === StringsConstants.DRAFTS):
+				case (activeTab === DRAFTS):
 					dispatch(
 						sendMessageForAccessibiltiy(content.noDraftMessages)
 					);
 					break;
-				case (activeTab === StringsConstants.INBOX):
+				case (activeTab === INBOX):
 					dispatch(
 						sendMessageForAccessibiltiy(content.noInboxMessages)
 					);
@@ -73,7 +74,8 @@ class SecureMessageList extends React.Component {
 	}
 	renderShowMoreButton() {
 		const { content, activeTab, messages } = this.props;
-		if (this.state.showMoreLimit < messages.length && (activeTab === StringsConstants.SENT || activeTab === StringsConstants.INBOX || activeTab === StringsConstants.DRAFTS)) {
+		const { SENT, INBOX, DRAFTS } = StringsConstants;
+		if (this.state.showMoreLimit < messages.length && (activeTab === SENT || activeTab === INBOX || activeTab === DRAFTS)) {
 			return (
 				<button
 					type="button"
@@ -87,25 +89,27 @@ class SecureMessageList extends React.Component {
 	}
 	renderThatsAllText() {
 		const { content, activeTab } = this.props;
+		const { SENT, DRAFTS } = StringsConstants;
 		let thatsallText = content.thatsallTextInbox;
-		if (activeTab === StringsConstants.SENT) {
+		if (activeTab === SENT) {
 			thatsallText = content.thatsallTextSend;
-		} else if (activeTab === StringsConstants.DRAFTS) {
+		} else if (activeTab === DRAFTS) {
 			thatsallText = content.thatsallTextDraft;
 		}
 		return thatsallText;
 	}
 	renderNoMessagesText() {
 		const { content, activeTab, dispatch } = this.props;
+		const { SENT, DRAFTS } = StringsConstants;
 		switch (activeTab) {
-			case (activeTab === StringsConstants.SENT):
+			case (activeTab === SENT):
 				dispatch(sendMessageForAccessibiltiy(content.noSentMessages));
 				return (
 					<p className="callout callout--msgbottom callout__txt-center">
 						{content.noSentMessages}
 					</p>
 				);
-			case (activeTab === StringsConstants.DRAFTS):
+			case (activeTab === DRAFTS):
 				dispatch(sendMessageForAccessibiltiy(content.noDraftMessages));
 				return (
 					<p className="callout callout--msgbottom callout__txt-center">
