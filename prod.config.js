@@ -74,13 +74,13 @@ module.exports = {
 			  test: /\.(otf|ttf|eot|svg)$/,
 			  exclude: ['/node_modules/','src/images/'],
 			  include: resolve(__dirname, "src/fonts/"),
-			  loader: 'url-loader?limit=1024&name=fonts/[name].[ext]'
+			  loader: 'file-loader?name=fonts/[name].[ext]'
 			},
 			{
 			  test: /\.(jpg|jpeg|gif|png|svg)$/,
 			  exclude: ['/node_modules/','src/fonts/'],
 			  include: resolve(__dirname, "src/images/"),
-			  loader:'url-loader?limit=1024&name=images/[name].[ext]'
+			  loader:'file-loader?name=images/[name].[ext]'
 			}
 		]
 	},
