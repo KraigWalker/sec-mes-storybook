@@ -6,12 +6,10 @@ import { getMessageType } from "../utils/SecureMessageUtils";
 import { sendMessageForAccessibiltiy } from "../actions/AppActions";
 import { connect } from "react-redux";
 import SvgIcon from './common/GetIcon.js';
-import StringsConstants from '../constants/StringsConstants.js';
+import StringsConstants from '../constants/StringsConstants';
 
 const MESSAGE_LIMIT = 20;
-const SENT = 'sent';
-const DRAFTS = 'drafts';
-const INBOX = 'inbox';
+
 class SecureMessageList extends React.Component {
 	constructor(props) {
 		super(props);
@@ -23,28 +21,28 @@ class SecureMessageList extends React.Component {
 	componentWillReceiveProps(props) {
 		const { messages, activeTab, messagesFetched, content } = this.props;
 		if (messages.length <= MESSAGE_LIMIT) {
-            this.setState({ showThatsAllMessage: true });
-        }
-		if(messages.length == 0){
+			this.setState({ showThatsAllMessage: true });
+		}
+		if (messages.length == 0) {
 			this.setState({ showThatsAllMessage: false });
 		}
 		switch (true) {
-        case (activeTab === SENT && messagesFetched.fetched):
-			this.props.dispatch(
-				sendMessageForAccessibiltiy(content.noSentMessages)
-			);
-		break;
-		case (activeTab === DRAFTS && messagesFetched.fetched):
-			this.props.dispatch(
-				sendMessageForAccessibiltiy(content.noDraftMessages)
-			);
-		break;
-		case (activeTab === INBOX && messagesFetched.fetched):
-			this.props.dispatch(
-				sendMessageForAccessibiltiy(content.noInboxMessages)
-			);
-		break;
-		default :
+			case (activeTab === StringsConstants.SENT && messagesFetched.fetched):
+				this.props.dispatch(
+					sendMessageForAccessibiltiy(content.noSentMessages)
+				);
+				break;
+			case (activeTab === StringsConstants.DRAFTS && messagesFetched.fetched):
+				this.props.dispatch(
+					sendMessageForAccessibiltiy(content.noDraftMessages)
+				);
+				break;
+			case (activeTab === StringsConstants.INBOX && messagesFetched.fetched):
+				this.props.dispatch(
+					sendMessageForAccessibiltiy(content.noInboxMessages)
+				);
+				break;
+			default:
 		}
 	}
 	showMessages() {
@@ -62,86 +60,76 @@ class SecureMessageList extends React.Component {
 		});
 		return allMessages;
 	}
-    showMoreClicked() {
+	showMoreClicked() {
 		this.props.dispatch(sendMessageForAccessibiltiy(`Next 20 messages loaded ${this.props.activeTab}`));
-        let limit = this.props.messages.length;
-        this.setState({
-            showMoreLimit: limit,
-            showThatsAllMessage: true,
-        });
-    }
+		let limit = this.props.messages.length;
+		this.setState({
+			showMoreLimit: limit,
+			showThatsAllMessage: true,
+		});
+	}
 	renderShowMoreButton() {
-		const { content, activeTab, messages} = this.props;
-		let buttonText = content.showMore;
-		if (activeTab === SENT) {
-			buttonText = content.showMore;
-		} else if (activeTab === DRAFTS) {
-			buttonText = content.showMore;
-		}
-		if (
-			this.state.showMoreLimit < messages.length &&
-      (activeTab === SENT ||
-        activeTab === INBOX ||
-        activeTab === DRAFTS)
-		) {
+		const { content, activeTab, messages } = this.props;
+		if (this.state.showMoreLimit < messages.length && (activeTab === StringsConstants.SENT || activeTab === StringsConstants.INBOX || activeTab === StringsConstants.DRAFTS)) {
 			return (
 				<button
 					type="button"
 					onClick={this.showMoreClicked}
 					className="c-btn c-btn--default c-modal__button u-margin-bottom-c"
 				>
-					{buttonText}
+					{content.showMore}
 				</button>
 			);
 		}
 	}
 	renderThatsAllText() {
 		let thatsallText = this.props.content.thatsallTextInbox;
-		if (this.props.activeTab === SENT) {
+		if (this.props.activeTab === StringsConstants.SENT) {
 			thatsallText = this.props.content.thatsallTextSend;
-		} else if (this.props.activeTab === DRAFTS) {
+		} else if (this.props.activeTab === StringsConstants.DRAFTS) {
 			thatsallText = this.props.content.thatsallTextDraft;
 		}
 		return thatsallText;
 	}
 	renderNoMessagesText() {
+		const { content, activeTab, dispatch } = this.props;
 		if (this.props.activeTab === 'sent') {
-			//  this.props.dispatch(sendMessageForAccessibiltiy('You don’t have any sent messages'));
+			dispatch(sendMessageForAccessibiltiy(content.noSentMessages));
 			return (
 				<p className="callout callout--msgbottom callout__txt-center">
-					{this.props.content.noSentMessages}
+					{content.noSentMessages}
 				</p>
 			);
-		} else if (this.props.activeTab === 'drafts') {
-			// this.props.dispatch(sendMessageForAccessibiltiy('You haven’t saved any drafts'));
+		} else if (activeTab === 'drafts') {
+			dispatch(sendMessageForAccessibiltiy(content.noDraftMessages));
 			return (
 				<p className="callout callout--msgbottom callout__txt-center">
-					{this.props.content.noDraftMessages}
+					{content.noDraftMessages}
 				</p>
 			);
 		}
-		// this.props.dispatch(sendMessageForAccessibiltiy('You don’t have any messages'));
+		dispatch(sendMessageForAccessibiltiy(content.noInboxMessages));
 		return (
 			<p className="callout callout--msgbottom callout__txt-center">
-				{this.props.content.noInboxMessages}
+				{content.noInboxMessages}
 			</p>
 		);
 	}
 	render() {
 		const { messagesFetched, messages } = this.props;
 		return (
-			messagesFetched.fetching ? <div><SvgIcon id="icon-refresh" width="32px" height="32px" className="spinner-loader"/></div> :
-			<section>
-			{messages.length === 0 ?
-				this.renderNoMessagesText()
-				:
-				<ol className="c-messagelist">
-					{this.showMessages()}
-				</ol>
-			}
-			{this.renderShowMoreButton()}
-			{this.state.showThatsAllMessage && <p className="u-margin-bottom-c">{this.renderThatsAllText()}</p>}
-		</section>
+			messagesFetched.fetching ? <div><SvgIcon id="icon-refresh" width="32px" height="32px" className="spinner-loader" /></div> :
+				<section>
+					{messages.length === 0 ?
+						this.renderNoMessagesText()
+						:
+						<ol className="c-messagelist">
+							{this.showMessages()}
+						</ol>
+					}
+					{this.renderShowMoreButton()}
+					{this.state.showThatsAllMessage && <p className="u-margin-bottom-c">{this.renderThatsAllText()}</p>}
+				</section>
 		);
 	}
 }
