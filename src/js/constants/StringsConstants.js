@@ -1,9 +1,18 @@
-import keyMirror from 'key-mirror';
+// StringConstants.js
+/**
+ * @module StringConstants
+ *
+ */
 
-export default keyMirror({
-    PENDING: null,
-    DRAFT: null,
-    DELETED: null,
-    READ: null,
-    NEW: null,
-})
+const StringConstants = {
+    PENDING: 'PENDING',
+    DRAFT: 'DRAFT',
+    DELETED: 'DELETED',
+    READ: 'READ',
+    NEW: 'NEW',
+    SENT: 'sent',
+    DRAFTS: 'drafts',
+    INBOX: 'inbox',
+}
+
+module.exports = StringConstants;

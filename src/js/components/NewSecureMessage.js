@@ -6,7 +6,6 @@ import {
   sendDraftMessageData,
   sendMessageForAccessibiltiy,
   setNavRef,
-  clearTempData,
   popupState
 } from "../actions/AppActions";
 import { connect } from "react-redux";
