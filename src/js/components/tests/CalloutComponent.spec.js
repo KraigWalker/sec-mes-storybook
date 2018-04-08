@@ -1,5 +1,4 @@
 import React from 'react';
-import { expect } from 'chai';
 import content from '../../content';
 import { shallow, mount } from 'enzyme';
 import { createMockStore } from 'redux-test-utils';
@@ -18,13 +17,13 @@ describe('CalloutComponent Component Check', () => {
   const componentWrap = mount(<CalloutComponent dClass='callout' paraText='sampletext'/>);
 
   it("LandingPage component should mount", () =>{
-    expect(componentWrap).to.be.an('object');
+    expect(typeof componentWrap).toBe('object');
   });
   it("It should be visually hidden", () =>{
-    expect(componentWrap.html()).to.equal('<div class="callout"><p class="">sampletext</p></div>');
+    expect(componentWrap.html()).toBe('<div class="callout"><p class="">sampletext</p></div>');
   });
   it("Props Check", () =>{
-    expect(componentWrap.props().paraText).to.eql('sampletext');
-    expect(componentWrap.props().dClass).to.eql('callout');
+    expect(componentWrap.props().paraText).toEqual('sampletext');
+    expect(componentWrap.props().dClass).toEqual('callout');
   });
 });

@@ -1,5 +1,4 @@
 import React from 'react';
-import { expect } from 'chai';
 import { shallow, mount } from 'enzyme';
 import { createMockStore } from 'redux-test-utils';
 import ThreadsComponent from '../common/ThreadsComponent'
@@ -24,13 +23,13 @@ describe('ThreadsComponent Component Check', () => {
   const componentWrap = mountWithStore(<ThreadsComponent ThreadDetail={messageEntity}/>, store);
 
   it("ThreadsComponent component should mount", () =>{
-    expect(componentWrap).to.be.an('object');
+    expect(typeof componentWrap).toBe('object');
   });
   it("Props Check", () =>{
-    expect(componentWrap.children().props().ThreadDetail).to.eql(messageEntity);
+    expect(componentWrap.children().props().ThreadDetail).toEqual(messageEntity);
   });
   it("ThreadsComponent Check", () =>{
-    expect(componentWrap.find('SecureMessageSummary')).to.have.length(1);
+    expect(componentWrap.find('SecureMessageSummary')).toHaveLength(1);
   });
 
 });

@@ -1,5 +1,4 @@
 import React from 'react';
-import { expect } from 'chai';
 import { shallow, mount } from 'enzyme';
 import { createMockStore } from 'redux-test-utils';
 import ThreadList from '../common/ThreadList'
@@ -24,14 +23,14 @@ describe('ThreadList Component Check', () => {
   const componentWrap = mountWithStore(<ThreadList currentMessage={messageEntity} isFromReplyMessage={true}/>, store);
 
   it("ThreadList component should mount", () =>{
-    expect(componentWrap).to.be.an('object');
+    expect(typeof componentWrap).toBe('object');
   });
   it("Props Check", () =>{
-    expect(componentWrap.children().props().currentMessage).to.eql(messageEntity);
-    expect(componentWrap.children().props().isFromReplyMessage).to.eql(true);
+    expect(componentWrap.children().props().currentMessage).toEqual(messageEntity);
+    expect(componentWrap.children().props().isFromReplyMessage).toEqual(true);
   });
   it("It should have getThreadList method", () =>{
-    expect(ThreadList.prototype.getThreadList.calledOnce).to.equal(true);
+    expect(ThreadList.prototype.getThreadList.calledOnce).toBe(true);
   });
 
 });

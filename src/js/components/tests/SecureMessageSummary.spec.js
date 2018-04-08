@@ -1,5 +1,4 @@
 import React from 'react';
-import { expect } from 'chai';
 import { shallow, mount } from 'enzyme';
 import { createMockStore } from 'redux-test-utils';
 import { Provider } from "react-redux";
@@ -18,10 +17,10 @@ describe('SecureMessageSummary Component Check', () => {
   const componentWrap = shallowWithStore(<SecureMessageSummary threadFlag={true}/>, store);
 
   it("SecureMessageSummary component should mount", () =>{
-    expect(componentWrap).to.be.an('object');
+    expect(typeof componentWrap).toBe('object');
   });
   it("Props Check", () =>{
-    expect(componentWrap.props().threadFlag).to.eql(true);
+    expect(componentWrap.props().threadFlag).toEqual(true);
   });
 
 });

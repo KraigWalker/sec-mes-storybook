@@ -1,5 +1,4 @@
 import React from 'react';
-import { expect } from 'chai';
 import {Router} from 'react-router-dom';
 import { shallow, mount } from 'enzyme';
 import { createMockStore } from 'redux-test-utils';
@@ -32,7 +31,7 @@ describe('DropDownComponent Component Check', () => {
   const componentWrap = mountWithStore(<DropDownComponent isFromDraftOrReply={true} id="accounts" selectSubject={selectSubject}/>, store);
 
   it("DropDownComponent component should mount", () =>{
-    expect(componentWrap).to.be.an('object');
+    expect(typeof componentWrap).toBe('object');
   });
  
 

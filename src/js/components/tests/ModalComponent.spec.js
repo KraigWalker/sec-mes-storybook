@@ -1,5 +1,4 @@
 import React from 'react';
-import { expect } from 'chai';
 import { shallow, mount } from 'enzyme';
 import ModalComponent from '../common/ModalComponent'
 
@@ -14,17 +13,17 @@ describe('ModalComponent Component Check', () => {
                                               closeButton={false}/>);
 
   it("ModalComponent component should mount", () =>{
-    expect(componentWrap).to.be.an('object');
+    expect(typeof componentWrap).toBe('object');
   });
   it("Props Check", () =>{
-    expect(componentWrap.props().show).to.eql(true);
-    expect(componentWrap.props().onHide).to.eql(testFunc);
-    expect(componentWrap.props().bsSize).to.eql('testit');
-    expect(componentWrap.props().modalheading).to.eql('testheading');
-    expect(componentWrap.props().modalfooter).to.eql({'key2':'testfooter'});
+    expect(componentWrap.props().show).toEqual(true);
+    expect(componentWrap.props().onHide).toEqual(testFunc);
+    expect(componentWrap.props().bsSize).toEqual('testit');
+    expect(componentWrap.props().modalheading).toEqual('testheading');
+    expect(componentWrap.props().modalfooter).toEqual({'key2':'testfooter'});
   });
   it("Modal Check", () =>{
-    expect(componentWrap.find('Modal')).to.have.length(1);
+    expect(componentWrap.find('Modal')).toHaveLength(1);
   });
 
 });

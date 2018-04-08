@@ -1,5 +1,4 @@
 import React from 'react';
-import { expect } from 'chai';
 import { shallow, mount } from 'enzyme';
 import StepHeader from '../common/StepHeader'
 import {Router} from 'react-router-dom';
@@ -14,17 +13,17 @@ describe('StepHeader Component Check', () => {
                               headerTitle='title' showControl={false} showheaderCrumbs={true}/></Router>);
 
   it("StepHeader component should mount", () =>{
-    expect(componentWrap).to.be.an('object');
+    expect(typeof componentWrap).toBe('object');
   });
   it("Props Check", () =>{
-    expect(componentWrap.children().props().showheaderCrumbs).to.eql(true);
-    expect(componentWrap.children().props().showControl).to.eql(false);
+    expect(componentWrap.children().props().showheaderCrumbs).toEqual(true);
+    expect(componentWrap.children().props().showControl).toEqual(false);
   });
   it("StepHeader verification", () =>{
-    expect(componentWrap.find('.c-step-header')).to.have.length(1);
-    expect(componentWrap.find('.c-step-header__crumbs')).to.have.length(1);
-    expect(componentWrap.find('.c-step-header__title')).to.have.length(1);
-    expect(componentWrap.find('.c-step-header__subtext')).to.have.length(1);
-    expect(componentWrap.find('.c-step-header__title').text()).to.equal('title');
+    expect(componentWrap.find('.c-step-header')).toHaveLength(1);
+    expect(componentWrap.find('.c-step-header__crumbs')).toHaveLength(1);
+    expect(componentWrap.find('.c-step-header__title')).toHaveLength(1);
+    expect(componentWrap.find('.c-step-header__subtext')).toHaveLength(1);
+    expect(componentWrap.find('.c-step-header__title').text()).toBe('title');
   });
 });
