@@ -150,7 +150,8 @@ class SecureMessageSummary extends React.Component {
   errorCloseClicked() {
   	this.setState({ showSendServiceErrorModal: false });
   }
-  retryServiceCall() {
+	retryServiceCall() {
+		this.props.dispatch(popupState());
   	this.deleteClick();
   }
   closeModal() {
@@ -180,6 +181,7 @@ class SecureMessageSummary extends React.Component {
   	this.setState({ showDeleteSuccessModal: false });
   }
   returnDeleteSuccessModalComponent() {
+		const { content } = this.props;
   	const bodyContent = (
   		<div>
 	<div>

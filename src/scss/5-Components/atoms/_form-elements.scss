@@ -219,6 +219,8 @@ $text-color: bow-palette(grey, text);
 		-webkit-appearance: none;
 		-moz-appearance: none;
 		padding-right: 48px;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 	
 	.c-preview__input {
