@@ -1,27 +1,21 @@
-import React from "react";
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import {
-  getMessageSubjects,
-  getAccounts,
-  sendMessageData,
-  sendDraftMessageData,
-  sendMessageForAccessibiltiy,
-  setNavRef,
-  popupState
-} from "../actions/AppActions";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { Dropdown, ButtonToolbar, MenuItem } from "react-bootstrap/lib";
-import { isEmpty } from "lodash";
-import DropDownComponent from "./common/DropDownComponent.js";
-import TextAreaComponent from "./common/TextAreaComponent.js";
-import StepHeader from "./common/StepHeader";
-import SendMessageRequestEntity from "../entities/SendMessageRequestEntity.js";
-import ModalComponent from "./common/ModalComponent";
-import GetIcon from "./common/GetIcon";
-import RegexUtils from "../utils/RegexUtils.js";
-import CalloutComponent from "./common/CalloutComponent.js";
-import SvgIcon from "./common/GetIcon.js";
-import StringsConstants from "../constants/StringsConstants.js";
+	sendMessageData,
+	sendMessageForAccessibiltiy,
+	setNavRef,
+	popupState,
+} from '../actions/AppActions';
+import DropDownComponent from './common/DropDownComponent';
+import TextAreaComponent from './common/TextAreaComponent';
+import StepHeader from './common/StepHeader';
+import SendMessageRequestEntity from '../entities/SendMessageRequestEntity';
+import ModalComponent from './common/ModalComponent';
+import GetIcon from './common/GetIcon';
+import RegexUtils from '../utils/RegexUtils';
+import CalloutComponent from './common/CalloutComponent';
+import StringsConstants from '../constants/StringsConstants';
 
 
 const messageEntity = new SendMessageRequestEntity();
@@ -110,30 +104,30 @@ class NewSecureMessage extends React.Component {
 		});
 	}
 	checkValidation() {
-		if (this.state.selectAccount === true) {
+		const { selectAccount, selectSubject } = this.state;
+		if (selectAccount === true) {
 			this.setState({
 				validationAccountMsg: false,
 			});
 		} else {
+			document.getElementById('ddlText2').focus();
 			this.setState({
 				validationAccountMsg: true,
 			});
 		}
 
-		if (this.state.selectSubject === true) {
+		if (selectSubject === true) {
 			this.setState({
 				validationSubjectMsg: false,
 			});
 		} else {
+			document.getElementById('ddlText1').focus();
 			this.setState({
 				validationSubjectMsg: true,
 			});
 		}
 
-		if (
-			this.state.selectSubject === true &&
-			this.state.selectAccount === true
-		) {
+		if (selectSubject === true && selectAccount === true) {
 			return true;
 		}
 		return false;
@@ -388,7 +382,9 @@ class NewSecureMessage extends React.Component {
 		);
 	}
 	returnBackButton() {
-		if (this.state.showModalBack && this.state.disabled === false) {
+		const { content } = this.props;
+		const { showModalBack, disabled } = this.state;
+		if (showModalBack && disabled === false) {
 			return (
 				<div className="row">
 					<div className="col-md1-18">
@@ -398,15 +394,15 @@ class NewSecureMessage extends React.Component {
 								className="c-step-header__link u-cursor-pointer"
 							>
 								<span className="c-step-header__linkicon">
-									<SvgIcon id="icon-left" width="16px" height="16px" />
+									<GetIcon id="icon-left" width="16px" height="16px" />
 								</span>
 								<span className="c-step-header__linktext">
-									{this.props.content.back}
+									{content.back}
 								</span>
 							</a>
 						</p>
 						<h1 className="c-step-header__title" id="headingTag" tabIndex="-1">
-							{this.props.content.newMessagePageTitle}
+							{content.newMessagePageTitle}
 						</h1>
 					</div>
 				</div>
@@ -418,8 +414,8 @@ class NewSecureMessage extends React.Component {
 					<StepHeader
 						showheaderCrumbs
 						onClick={() => { }}
-						headerCrumbsMessage="Back"
-						headerTitle="New secure message"
+						headerCrumbsMessage={content.back}
+						headerTitle={content.newSecureMessage}
 						headerCrumbsPath={{ pathname: `${window.baseURl}/securemessage` }}
 					/>
 				</div>
@@ -427,30 +423,31 @@ class NewSecureMessage extends React.Component {
 		);
 	}
 	render() {
+		const { content, subjects, accounts, messages } = this.props;
+		const { validationSubjectMsg, validationAccountMsg, showPopup, showDraftSuccessModal, showSentMessageModal, showSaveServiceErrorModal, disabled } = this.state;
 		return (
 			<div className="container">
 				{this.returnBackButton()}
-				{/* <Link to='/securemessages'> Back To Homepage</Link><br /> */}
 				<div className="c-field">
 					<label
 						id="subjectTitle"
 						className="c-field__label c-field__label--block"
 						htmlFor="subjects"
 					>
-						{this.props.content.subject}
+						{content.subject}
 					</label>
 					<div className="c-field__controls u-position-relative">
 						<DropDownComponent
 							accessID="Subject"
-							subjects={this.props.subjects}
-							content={this.props.content}
+							subjects={subjects}
+							content={content}
 							selectSubject={this.selectSubject}
-							showSubjectError={this.state.validationSubjectMsg}
+							showSubjectError={validationSubjectMsg}
 							name="subjects"
 							id="subjects"
 							isFromDraft={false}
-							content = {this.props.content}
-							selectedValue="Please select"
+							selectedValue={content.pleaseSelect}
+							ddId="ddlText1"
 						/>
 					</div>
 				</div>
@@ -461,20 +458,20 @@ class NewSecureMessage extends React.Component {
 						className="c-field__label c-field__label--block"
 						htmlFor="accounts"
 					>
-						{this.props.content.messageRelatesTo}
+						{content.messageRelatesTo}
 					</label>
 					<div className="c-field__controls u-position-relative">
 						<DropDownComponent
 							accessID="Message relates to"
-							accounts={this.props.accounts}
-							content={this.props.content}
+							accounts={accounts}
+							content={content}
 							selectSubject={this.selectSubject}
-							showAccountError={this.state.validationAccountMsg}
+							showAccountError={validationAccountMsg}
 							name="accounts"
 							id="accounts"
 							isFromDraft={false}
-							content = {this.props.content}
-							selectedValue="Please select"
+							selectedValue={content.pleaseSelect}
+							ddId="ddlText2"
 						/>
 					</div>
 				</div>
@@ -485,11 +482,11 @@ class NewSecureMessage extends React.Component {
 						className="c-field__label c-field__label--block"
 						htmlFor="message"
 					>
-						{this.props.content.message}
+						{content.message}
 					</label>
 					<div className="c-field__controls">
 						<div className="u-visually-hidden off-screen" id="textAreaMaxMsg">
-							{this.props.content.maxCharLimit}
+							{content.maxCharLimit}
 						</div>
 						<TextAreaComponent
 							textData={this.textChange}
@@ -501,51 +498,51 @@ class NewSecureMessage extends React.Component {
 					{this.renderRemainingChar()}
 				</div>
 
-				{this.state.showPopup && this.returnModalComponent()}
-				{this.state.showDraftSuccessModal &&
-					this.props.messages.successModal &&
+				{showPopup && this.returnModalComponent()}
+				{showDraftSuccessModal &&
+					messages.successModal &&
 					this.returnDraftModal()}
-				{this.state.showSentMessageModal &&
-					this.props.messages.successModal &&
+				{showSentMessageModal &&
+					messages.successModal &&
 					this.returnSentMessageModal()}
-				{this.props.messages.newMessageError &&
-					this.state.showSaveServiceErrorModal &&
+				{messages.newMessageError &&
+					showSaveServiceErrorModal &&
 					this.returnErrorModal()}
-				{this.props.messages.newMessageError &&
-					this.state.showSendServiceErrorModal &&
+				{messages.newMessageError &&
+					showSendServiceErrorModal &&
 					this.returnErrorModal()}
 				<div className="c-btn--group">
-					{!this.state.disabled ? (
+					{!disabled ? (
 						<button
 							name="Back"
 							className="c-btn c-btn--secondary"
 							onClick={this.callBackModal}
 						>
-							{this.props.content.back}
+							{content.back}
 						</button>
 					) : (
-							<Link
-								to={`${window.baseURl}/securemessages`}
-								className="c-btn c-btn--secondary"
-							>
-								{this.props.content.back}{' '}
-							</Link>
-						)}
+						<Link
+							to={`${window.baseURl}/securemessages`}
+							className="c-btn c-btn--secondary"
+						>
+							{content.back}
+						</Link>
+					)}
 					<button
 						name="Save Draft"
 						className="c-btn c-btn--secondary"
 						onClick={this.saveDraftData}
-						disabled={this.state.disabled}
+						disabled={disabled}
 					>
-						{this.props.content.saveDraft}
+						{content.saveDraft}
 					</button>
 					<button
 						name="Send"
 						className="c-btn c-btn--default"
 						onClick={this.sendData}
-						disabled={this.state.disabled}
+						disabled={disabled}
 					>
-						{this.props.content.send}
+						{content.send}
 					</button>
 				</div>
 			</div>
@@ -560,6 +557,5 @@ const mapState = state => ({
 	subjects: state.subjects,
 	messages: state.messages,
 	accounts: state.accounts,
-	tempData: state.messages.tempData,
 });
 export default connect(mapState)(NewSecureMessage);
