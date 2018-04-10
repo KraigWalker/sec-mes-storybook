@@ -1,3 +1,3 @@
 window.config = {
-    apiBaseUrl: 'https://my-dev.cybservices.co.uk/bpiInt3', 
+    apiBaseUrl: 'https://my-dev.cybservices.co.uk/bpidev3', 
 }

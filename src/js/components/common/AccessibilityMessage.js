@@ -10,21 +10,12 @@ class AccessibilityMessage extends React.Component {
     componentWillMount() {
         //  AccessibilityStore.addChangeListener(this.onStoreChange);
     }
-    shouldComponentUpdate(nextProps, nextState) {
-        //return nextState.currentMessage ? true : false;
-        return true;
-    }
-    componentWillUpdate(nextProps, nextState) {
-        // We delay the setting and clearing of the accessible route transition text to
-        // ensure that the screen readers don't miss it.
-    }
     componentWillUnmount() {
         // AccessibilityStore.removeChangeListener(this.onStoreChange);
     }
     componentDidUpdate(prevProps, prevState) {
         if (currentMessage) {
             setTimeout(() => {
-               //currentMessage = '';
                 this.props.dispatch(sendMessageForAccessibiltiy(''));
             }, 500);
         }
@@ -39,7 +30,6 @@ class AccessibilityMessage extends React.Component {
         );
     }
 }
-// export default AccessibilityMessage;
 /**
  * Maps the state of the component to the state of the redux store
  * @param {object} state. State of the application

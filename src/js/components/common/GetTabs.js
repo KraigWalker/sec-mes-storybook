@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { Tabs, Tab, Grid, Row, Col } from 'react-bootstrap';
-// import Tab from 'react-bootstrap/lib/Tab';
 class GetTabs extends React.Component {
 	constructor(props) {
 		super(props);
@@ -11,36 +10,6 @@ class GetTabs extends React.Component {
 		this.getTab = this.getTab.bind(this);
 		this.state = { key1: 1, key2: 1 };
 	}
-
-	componentWillMount() {
-		// mounted before rendering
-	}
-	componentDidMount() {
-		// executed after first render
-		// ajax calls, action calls, should be called here.
-        /** other life cycle methods can be triggered by
-        setting the state here (applied to state full component)
-        */
-	}
-
-	componentWillReceiveProps(newProps) {
-		// when the props are updated, this method is invoked before the render of the component.
-	}
-	shouldComponentUpdate(newProps, newState) {
-		// returns boolean value.
-		// returns true by default.
-		// if there is no needed to re-render even after the state or props updated, then return false
-		return true;
-	}
-	componentWillUpdate(nextProps, nextState) {
-		// called before rendering
-	}
-	componentDidUpdate(prevProps, prevState) {
-	}
-	componentWillUnmount() {
-		// its an unmounting fron the dom
-	}
-
 	getTab(icon) {
 		let tabItem;
 		const tabsObject = [];
