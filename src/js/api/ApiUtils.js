@@ -1,7 +1,6 @@
 import axios from "axios";
 //import { getClientContext, getClientContextCB } from './ApiHeaders';
 import token from "../token.js";
-import config from '../../../config/env-config';
 const apiParams = {
   accessToken: token.accessToken(),
   clientContext: token.getClientContext(),
