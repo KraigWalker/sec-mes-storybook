@@ -89,12 +89,12 @@ class DropDownComponent extends React.Component {
 		});
 	}
 	returnMenuItem() {
-		const { content, isFromDraftOrReply, id, accounts, subjects, messageaccounts, messagesubjects } = this.props;
+		const { isFromDraftOrReply, id, accounts, subjects, messageaccounts, messagesubjects } = this.props;
+		const { noSpecificAccount } = this.props.content.noSpecificAccount;
 		const items = [];
-		const noSpecificAccount = 'No specific account';
 		switch (true) {
 			case (!isFromDraftOrReply && id === 'accounts'):
-				items.push(<li className="c-dropdown__value" id={noSpecificAccount} key={noSpecificAccount} value={noSpecificAccount} onClick={e => this.setDropDrownValue(e, {}, noSpecificAccount)}>{content.noSpecificAccount}</li>);
+				items.push(<li className="c-dropdown__value" id={noSpecificAccount} key={noSpecificAccount} value={noSpecificAccount} onClick={e => this.setDropDrownValue(e, {}, noSpecificAccount)}>{noSpecificAccount}</li>);
 				_.map(accounts.accounts, account => {
 					const name = (account.display_name !== null) ? account.display_name : account.name;
 					items.push(<li className="c-dropdown__value" id={account.name} key={account.id} value={account.name} onClick={e => this.setDropDrownValue(e, account, name)}><span className="c-dropdown__value__account">{name}</span><span className="c-dropdown__value__number">{`ending ${account.number.slice(-4)}`}</span></li>
@@ -107,7 +107,7 @@ class DropDownComponent extends React.Component {
 				}, false);
 				break;
 			case (isFromDraftOrReply && id === 'accounts'):
-				items.push(<li className="c-dropdown__value" id={noSpecificAccount} key={noSpecificAccount} value={noSpecificAccount} onClick={e => this.setDropDrownValue(e, {}, noSpecificAccount)}>{content.noSpecificAccount}</li>);
+				items.push(<li className="c-dropdown__value" id={noSpecificAccount} key={noSpecificAccount} value={noSpecificAccount} onClick={e => this.setDropDrownValue(e, {}, noSpecificAccount)}>{noSpecificAccount}</li>);
 				_.map(messageaccounts.accounts, account => {
 					const name = (account.display_name !== null) ? account.display_name : account.name;
 					items.push(<li className="c-dropdown__value" id={account.name} key={account.id} value={account.name} onClick={e => this.setDropDrownValue(e, account, name)}><span span className="c-dropdown__value__account">{name}</span><span className="c-dropdown__value__number">{`ending ${account.number.slice(-4)}`}</span></li>
