@@ -1,11 +1,12 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import TextAreaComponent from '../common/TextAreaComponent'
-import sinon from 'sinon';
+import TextAreaComponent from '../common/TextAreaComponent';
+import Enzyme from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
 
+Enzyme.configure({ adapter: new Adapter() });
 
 describe('TextAreaComponent Component Check', () => {
-  sinon.spy(TextAreaComponent.prototype, 'componentDidMount');
   const componentWrap = mount(<TextAreaComponent messageBody='text' disableText={true}/>);
 
   it("TextAreaComponent component should mount", () =>{
@@ -19,8 +20,12 @@ describe('TextAreaComponent Component Check', () => {
   it("Textarea Check", () =>{
     expect(componentWrap.find('textarea')).toHaveLength(1);
   });
-  it("It should have componentDidMount method", () =>{
-    expect(TextAreaComponent.prototype.componentDidMount.calledOnce).toBe(true);
-  });
+
+  it('should render correctly', () => {
+   const tree = shallow(
+     <TextAreaComponent name='message' />
+   );
+   expect(tree).toMatchSnapshot();
+ });
 
 });

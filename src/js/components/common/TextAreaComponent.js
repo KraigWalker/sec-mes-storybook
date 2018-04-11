@@ -12,10 +12,12 @@ class TextAreaComponent extends React.Component {
         }
     }
     componentDidMount(){
+        if(this.refs.txtarea) {
         if(this.props.draftData) {
             this.refs.txtarea.value = this.props.draftData;
             this.props.textData(this.props.draftData);
         } else this.refs.txtarea.value = '';
+        }
     }
     textChange(e) {
         autosize(document.getElementById('message'));

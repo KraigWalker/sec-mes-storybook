@@ -1,23 +1,30 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { createMockStore } from 'redux-test-utils';
-import GetIcon from '../common/GetIcon'
+import Enzyme from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
+import GetIcon from '../common/GetIcon';
 
-
+Enzyme.configure({ adapter: new Adapter() });
 
 describe('GetIcon Component Check', () => {
-    
+
   const componentWrap = shallow(<GetIcon className="sampletext" width="24px" height="24px" id="someid" />);
 
-  it("GetIcon component should mount", () =>{
+  it("GetIcon component should mount", () => {
     expect(typeof componentWrap).toBe('object');
   });
-  it("Props Check", () =>{
+  it("Props Check", () => {
     expect(componentWrap.props().className).toEqual('sampletext');
     expect(componentWrap.props().width).toEqual('24px');
     expect(componentWrap.props().height).toEqual('24px');
   });
-  it("SVG URL verification", () =>{
+  it("SVG URL verification", () => {
     expect(componentWrap.find("[xlinkHref='../../images/icons.svg#someid']")).toHaveLength(0);
+  });
+  it('should render correctly', () => {
+    const tree = shallow(
+      <GetIcon />
+    );
+    expect(tree).toMatchSnapshot();
   });
 });
