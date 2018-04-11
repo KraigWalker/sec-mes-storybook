@@ -47,6 +47,7 @@ const content = {
 		faqLink: 'You’ll see all your secure messages from the last 13 months here. For more info about your message history, check out the FAQs in the help section.',
 		pleaseSelect: 'Please select',
 		editSavedMessage: 'Edit saved message',
+		noSpecificAccount: 'No specific account',
 	},
 
 	CB: {
@@ -96,6 +97,7 @@ const content = {
 		faqLink: 'You’ll see all your secure messages from the last 13 months here. For more information about your message history, please visit the FAQs in the help section.',
 		pleaseSelect: 'Please select',
 		editSavedMessage: 'Edit saved message',
+		noSpecificAccount: 'No specific account',
 	},
 };
 

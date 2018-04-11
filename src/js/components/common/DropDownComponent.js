@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { getMessageSubjects, popupState } from '../../actions/AppActions';
@@ -28,45 +29,17 @@ class DropDownComponent extends React.Component {
 	componentDidMount() {
 		this.props.dispatch(popupState());
 	}
-	returnMenuItem() {
-		let setDropDrownValue;
-		const items = [];
-		const noSpecificAccount = 'No specific account';
-		switch (true) {
-			case (!this.props.isFromDraftOrReply && this.props.id === 'accounts'):
-				items.push(<li className="c-dropdown__value" id={noSpecificAccount} key={noSpecificAccount} value={noSpecificAccount} onClick={e => this.setDropDrownValue(e, {}, noSpecificAccount)}>No specific account</li>);
-				_.map(this.props.accounts.accounts, account => {
-					const name = (account.display_name !== null) ? account.display_name : account.name;
-					items.push(<li className="c-dropdown__value" id={account.name} key={account.id} value={account.name} onClick={e => this.setDropDrownValue(e, account, name)}><span className="c-dropdown__value__account">{name}</span><span className="c-dropdown__value__number">{`ending ${account.number.slice(-4)}`}</span></li>
-					);
-				});
-				break;
-			case (!this.props.isFromDraftOrReply && this.props.id === 'subjects'):
-				_.map(this.props.subjects.subjects, subject => {
-					items.push(<li className="c-dropdown__value" key={subject.key} id={subject.value} onClick={e => this.setDropDrownValue(e, subject, subject.value)}>{subject.value}</li>);
-				}, false);
-				break;
-			case (this.props.isFromDraftOrReply && this.props.id === 'accounts'):
-				items.push(<li className="c-dropdown__value" id={noSpecificAccount} key={noSpecificAccount} value={noSpecificAccount} onClick={e => this.setDropDrownValue(e, {}, noSpecificAccount)}>No specific account</li>);
-				_.map(this.props.messageaccounts.accounts, account => {
-					const name = (account.display_name !== null) ? account.display_name : account.name;
-					items.push(<li className="c-dropdown__value" id={account.name} key={account.id} value={account.name} onClick={e => this.setDropDrownValue(e, account, name)}><span span className="c-dropdown__value__account">{name}</span><span className="c-dropdown__value__number">{`ending ${account.number.slice(-4)}`}</span></li>
-					);
-				});
-				break;
-			case (this.props.isFromDraftOrReply && this.props.id === 'subjects'):
-				_.map(this.props.messagesubjects.subjects, subject => {
-					items.push(<li className="c-dropdown__value" key={subject.key} id={subject.value} onClick={e => this.setDropDrownValue(e, subject, subject.value)}>{subject.value}</li>
-					);
-				});
-				break;
-		}
-		return items;
-	}
-	overlayclick() {
+	onBlur() {
 		this.setState({
 			list: false,
 		});
+	}
+	setDropDrownValue(e, typeOfData, name) {
+		this.setState({
+			btnText: name,
+			list: false,
+		});
+		this.props.selectSubject(e.target.textContent, this.props.id, typeOfData);
 	}
 	errorCloseClicked() {
 		this.setState({ showErrorModal: false });
@@ -80,10 +53,10 @@ class DropDownComponent extends React.Component {
 		const bodyContent = (<div><h3>{content.sorryHeader}</h3><br />
 			<p>{content.tryAgain}</p><br />
 			<p>{content.getInTouch}</p>
-                       </div>);
+		</div>);
 		const footerButtons = (<div><button type="button" className="c-btn c-btn--secondary c-modal__button" onClick={this.errorCloseClicked}>{content.back}</button>
 			<button type="button" onClick={this.retryServiceCall} className="c-btn c-btn--default c-modal__button">{content.retry}</button>
-                         </div>);
+		</div>);
 		return (
 			<ModalComponent
 				show
@@ -110,17 +83,46 @@ class DropDownComponent extends React.Component {
 			this.setState({ list: false });
 		}
 	}
-	setDropDrownValue(e, typeOfData, name) {
+	overlayclick() {
 		this.setState({
-			btnText: name,
 			list: false,
 		});
-		this.props.selectSubject(e.target.textContent, this.props.id, typeOfData);
 	}
-	onBlur() {
-		this.setState({
-			list: false,
-		});
+	returnMenuItem() {
+		const { content, isFromDraftOrReply, id, accounts, subjects, messageaccounts, messagesubjects } = this.props;
+		const items = [];
+		const noSpecificAccount = 'No specific account';
+		switch (true) {
+			case (!isFromDraftOrReply && id === 'accounts'):
+				items.push(<li className="c-dropdown__value" id={noSpecificAccount} key={noSpecificAccount} value={noSpecificAccount} onClick={e => this.setDropDrownValue(e, {}, noSpecificAccount)}>{content.noSpecificAccount}</li>);
+				_.map(accounts.accounts, account => {
+					const name = (account.display_name !== null) ? account.display_name : account.name;
+					items.push(<li className="c-dropdown__value" id={account.name} key={account.id} value={account.name} onClick={e => this.setDropDrownValue(e, account, name)}><span className="c-dropdown__value__account">{name}</span><span className="c-dropdown__value__number">{`ending ${account.number.slice(-4)}`}</span></li>
+					);
+				});
+				break;
+			case (!isFromDraftOrReply && id === 'subjects'):
+				_.map(subjects.subjects, subject => {
+					items.push(<li className="c-dropdown__value" key={subject.key} id={subject.value} onClick={e => this.setDropDrownValue(e, subject, subject.value)}>{subject.value}</li>);
+				}, false);
+				break;
+			case (isFromDraftOrReply && id === 'accounts'):
+				items.push(<li className="c-dropdown__value" id={noSpecificAccount} key={noSpecificAccount} value={noSpecificAccount} onClick={e => this.setDropDrownValue(e, {}, noSpecificAccount)}>{content.noSpecificAccount}</li>);
+				_.map(messageaccounts.accounts, account => {
+					const name = (account.display_name !== null) ? account.display_name : account.name;
+					items.push(<li className="c-dropdown__value" id={account.name} key={account.id} value={account.name} onClick={e => this.setDropDrownValue(e, account, name)}><span span className="c-dropdown__value__account">{name}</span><span className="c-dropdown__value__number">{`ending ${account.number.slice(-4)}`}</span></li>
+					);
+				});
+				break;
+			case (isFromDraftOrReply && id === 'subjects'):
+				_.map(messagesubjects.subjects, subject => {
+					items.push(<li className="c-dropdown__value" key={subject.key} id={subject.value} onClick={e => this.setDropDrownValue(e, subject, subject.value)}>{subject.value}</li>
+					);
+				});
+				break;
+			default:
+		}
+		return items;
 	}
 	render() {
 		const { ddId, accessID, showAccountError, showSubjectError, messagesubjects, content } = this.props;
