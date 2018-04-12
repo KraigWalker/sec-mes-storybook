@@ -110,7 +110,7 @@ class NewSecureMessage extends React.Component {
 				validationAccountMsg: false,
 			});
 		} else {
-			document.getElementById('ddlText2').focus();
+			document.getElementById('ddlAccount').focus();
 			this.setState({
 				validationAccountMsg: true,
 			});
@@ -121,7 +121,7 @@ class NewSecureMessage extends React.Component {
 				validationSubjectMsg: false,
 			});
 		} else {
-			document.getElementById('ddlText1').focus();
+			document.getElementById('ddlSubject').focus();
 			this.setState({
 				validationSubjectMsg: true,
 			});
@@ -447,7 +447,7 @@ class NewSecureMessage extends React.Component {
 							id="subjects"
 							isFromDraft={false}
 							selectedValue={content.pleaseSelect}
-							ddId="ddlText1"
+							ddId="ddlSubject"
 						/>
 					</div>
 				</div>
@@ -471,7 +471,7 @@ class NewSecureMessage extends React.Component {
 							id="accounts"
 							isFromDraft={false}
 							selectedValue={content.pleaseSelect}
-							ddId="ddlText2"
+							ddId="ddlAccount"
 						/>
 					</div>
 				</div>
