@@ -128,7 +128,7 @@ class SecureMessageList extends React.Component {
 	render() {
 		const { messagesFetched, messages } = this.props;
 		return (
-			messagesFetched.fetching ? <div><SvgIcon id="icon-refresh" width="32px" height="32px" className="spinner-loader" /></div> :
+			messagesFetched.fetching && !messagesFetched.successModal ? <div><SvgIcon id="icon-refresh" width="32px" height="32px" className="spinner-loader" /></div> :
 				<section>
 					{messages.length === 0 ?
 						this.renderNoMessagesText()

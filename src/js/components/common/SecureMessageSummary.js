@@ -16,7 +16,7 @@ class SecureMessageSummary extends React.Component {
 		this.handleDelete = this.handleDelete.bind(this);
 		this.state = {
 			showDeleteConfirmModal: false,
-			showDeleteSuccessModal: false,
+		//	showDeleteSuccessModal: false,
 			showSendServiceErrorModal: false,
 		};
 		this.returnModalComponent = this.returnModalComponent.bind(this);
@@ -170,7 +170,7 @@ class SecureMessageSummary extends React.Component {
 	}
 	else this.props.dispatch(updateMessageData(this.props.message, this.props.message.id, "DELETED"));
   	this.setState({
-  		showDeleteSuccessModal: true,
+  	//	showDeleteSuccessModal: true,
   		showDeleteConfirmModal: false,
   		showSendServiceErrorModal: true,
 	  });
@@ -178,7 +178,8 @@ class SecureMessageSummary extends React.Component {
 	
   closeSuccessModal() {
   	// document.getElementById('headingTag').focus();
-  	this.setState({ showDeleteSuccessModal: false });
+  	//this.setState({ showDeleteSuccessModal: false });
+		this.props.dispatch(popupState());
   }
   returnDeleteSuccessModalComponent() {
 		const { content } = this.props;
@@ -365,7 +366,7 @@ class SecureMessageSummary extends React.Component {
   				<p className="c-message__summary__date">{message.getDateCreated()}</p>
   			</div>
 	{this.state.showDeleteConfirmModal && this.returnModalComponent()}
-  			{this.state.showDeleteSuccessModal &&
+  			{! this.props.threadFlag &&
         this.props.messages.successModal &&
         this.returnDeleteSuccessModalComponent()}
   			{this.props.messages.draftError &&
