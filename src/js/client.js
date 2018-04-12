@@ -17,11 +17,7 @@ const startApp = () => {
 }
 
 const initApp = () => {
-  if(window.pathValue) {
     ConfigUtils.getConfig(startApp);
-  } else {
-    setTimeout(initApp, 50);
-  }
 }
 
 setTimeout(initApp, 50);
