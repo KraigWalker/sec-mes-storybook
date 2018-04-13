@@ -476,7 +476,6 @@ class NewSecureMessage extends React.Component {
 							content={content}
 							selectSubject={this.selectSubject}
 							showAccountError={validationAccountMsg}
-							name="accounts"
 							id="accounts"
 							isFromDraft={false}
 							selectedValue={content.pleaseSelect}
