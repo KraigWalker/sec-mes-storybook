@@ -41,7 +41,7 @@ class DraftSecureMessage extends React.Component {
 	componentWillMount() {
 		// If account service responding late then what to do...
 		const { account, subject } = this.props.location.messageDetail;
-		const accName = (getAccountName(account.accountId, this.props.accounts));
+		const accName = getAccountName(account.accountId, this.props.accounts);
 		if ((account.accountId !== undefined || null) && subject) {
 			account.name = (accName).display_name || (accName).name;
 			messageEntity.setName(account.name);
@@ -72,25 +72,6 @@ class DraftSecureMessage extends React.Component {
 		}
 	}
 
-	renderRemainingChar() {
-		if (this.state.chars_left < 0 && this.state.charError === true) {
-			return (
-				<div>
-					<p className="char__error error__right">Characters Left: {this.state.chars_left}</p>
-					<CalloutComponent dClass="callout callout__error callout__inline-error" paraText={this.props.content.messageVal} />
-				</div>);
-		}
-		if (this.state.chars_left <= 300) {
-			(this.state.chars_left === 3) && this.props.dispatch(sendMessageForAccessibiltiy('Three characters left'));
-			(this.state.chars_left === 1) && this.props.dispatch(sendMessageForAccessibiltiy('One character left'));
-			(this.state.chars_left === 0) && this.props.dispatch(sendMessageForAccessibiltiy('Maximum characters limit reached'));
-			let headerflagClass = 'error__right';
-			if (this.state.chars_left <= 0) {
-				headerflagClass = 'char__error error__right';
-			}
-			return <p className={`${headerflagClass}`}>Characters Left: {this.state.chars_left}</p>;
-		}
-	}
 	textChange(e) {
 		if (e === '') {
 			this.setState({ disabled: true });
@@ -158,11 +139,12 @@ class DraftSecureMessage extends React.Component {
 		this.setState({ showDraftSuccessModal: false });
 	}
 	checkAccountValue() {
+		const { location, content } = this.props;
 		let accVal;
-		if (this.props.location.messageDetail.account.number === undefined || null) {
-			accVal = 'No specific account';
+		if (location.messageDetail.account.number === undefined || null) {
+			accVal = content.noSpecificAccount;
 		} else {
-			accVal = this.props.location.messageDetail.account.name;
+			accVal = location.messageDetail.account.name;
 		}
 		return accVal;
 	}
@@ -183,10 +165,10 @@ class DraftSecureMessage extends React.Component {
 		const bodyContent = (<div><h3>{this.props.content.sorryHeader}</h3><br />
 			<p>{this.props.content.tryAgain}</p><br />
 			<p>{this.props.content.getInTouch}</p>
-                       </div>);
+		</div>);
 		const footerButtons = (<div><button type="button" className="c-btn c-btn--secondary c-modal__button" onClick={this.errorCloseClicked}>{this.props.content.back}</button>
 			<button type="button" onClick={this.retryServiceCall} className="c-btn c-btn--default c-modal__button">{this.props.content.retry}</button>
-                         </div>);
+		</div>);
 		return (
 			<ModalComponent
 				show
@@ -202,11 +184,31 @@ class DraftSecureMessage extends React.Component {
 		);
 	}
 
+	renderRemainingChar() {
+		if (this.state.chars_left < 0 && this.state.charError === true) {
+			return (
+				<div>
+					<p className="char__error error__right">Characters Left: {this.state.chars_left}</p>
+					<CalloutComponent dClass="callout callout__error callout__inline-error" paraText={this.props.content.messageVal} />
+				</div>);
+		}
+		if (this.state.chars_left <= 300) {
+			(this.state.chars_left === 3) && this.props.dispatch(sendMessageForAccessibiltiy('Three characters left'));
+			(this.state.chars_left === 1) && this.props.dispatch(sendMessageForAccessibiltiy('One character left'));
+			(this.state.chars_left === 0) && this.props.dispatch(sendMessageForAccessibiltiy('Maximum characters limit reached'));
+			let headerflagClass = 'error__right';
+			if (this.state.chars_left <= 0) {
+				headerflagClass = 'char__error error__right';
+			}
+			return <p className={`${headerflagClass}`}>Characters Left: {this.state.chars_left}</p>;
+		}
+	}
+
 	render() {
 		const { content, messages } = this.props;
 		const { account, subject, message } = this.props.location.messageDetail;
 		const { validationSubjectMsg, validationAccountMsg, showPopup, showDraftSuccessModal, showSaveServiceErrorModal, showSendServiceErrorModal, disabled } = this.state;
-		account.number === undefined || null ? 'No specific account' : account;
+		account.number === undefined || null ? content.noSpecificAccount : account;
 		return (
 			<div className="container">
 				<div className="row">
@@ -219,7 +221,7 @@ class DraftSecureMessage extends React.Component {
 						{content.subject}
 					</label>
 					<div className="c-field__controls u-position-relative">
-						<DropDownComponent subjects={subject} name="subjects" id="subjects" selectSubject={this.selectSubject} showSubjectError={validationSubjectMsg} isFromDraftOrReply selectedValue={subject} content={content} />
+						<DropDownComponent subjects={subject} id="subjects" selectSubject={this.selectSubject} showSubjectError={validationSubjectMsg} isFromDraftOrReply selectedValue={subject} content={content} />
 					</div>
 				</div>
 
@@ -228,7 +230,7 @@ class DraftSecureMessage extends React.Component {
 						{content.messageRelatesTo}
 					</label>
 					<div className="c-field__controls u-position-relative">
-						<DropDownComponent accounts={account} selectSubject={this.selectSubject} name="accounts" id="accounts" showAccountError={validationAccountMsg} isFromDraftOrReply selectedValue={this.checkAccountValue()} content={content} />
+						<DropDownComponent accounts={account} selectSubject={this.selectSubject} id="accounts" showAccountError={validationAccountMsg} isFromDraftOrReply selectedValue={this.checkAccountValue()} content={content} />
 					</div>
 				</div>
 

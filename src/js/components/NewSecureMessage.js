@@ -55,8 +55,9 @@ class NewSecureMessage extends React.Component {
 	}
 	componentWillMount() { }
 	componentDidMount() {
-		this.props.dispatch(popupState());
-		this.props.dispatch(setNavRef('/newsecuremessage'));
+		const { dispatch } = this.props;
+		dispatch(popupState());
+		dispatch(setNavRef('/newsecuremessage'));
 		window.scrollTo(0, 0);
 	}
 
@@ -105,7 +106,7 @@ class NewSecureMessage extends React.Component {
 	}
 	checkValidation() {
 		const { selectAccount, selectSubject } = this.state;
-		if (selectAccount === true) {
+		if (selectAccount) {
 			this.setState({
 				validationAccountMsg: false,
 			});
@@ -116,7 +117,7 @@ class NewSecureMessage extends React.Component {
 			});
 		}
 
-		if (selectSubject === true) {
+		if (selectSubject) {
 			this.setState({
 				validationSubjectMsg: false,
 			});
@@ -127,7 +128,7 @@ class NewSecureMessage extends React.Component {
 			});
 		}
 
-		if (selectSubject === true && selectAccount === true) {
+		if (selectSubject && selectAccount) {
 			return true;
 		}
 		return false;
@@ -146,42 +147,7 @@ class NewSecureMessage extends React.Component {
 			this.setState({ showSendServiceErrorModal: true });
 		}
 	}
-	renderRemainingChar() {
-		if (this.state.chars_left < 0 && this.state.charError === true) {
-			return (
-				<div>
-					<p className="char__error error__right">
-						Characters Left: {this.state.chars_left}
-					</p>
-					<CalloutComponent
-						dClass="callout callout__error callout__inline-error"
-						paraText={this.props.content.messageVal}
-					/>
-				</div>
-			);
-		}
-		if (this.state.chars_left <= 300) {
-			this.state.chars_left === 3 &&
-				this.props.dispatch(
-					sendMessageForAccessibiltiy('Three characters left')
-				);
-			this.state.chars_left === 1 &&
-				this.props.dispatch(sendMessageForAccessibiltiy('One character left'));
-			this.state.chars_left === 0 &&
-				this.props.dispatch(
-					sendMessageForAccessibiltiy('Maximum characters limit reached')
-				);
-			let headerflagClass = 'error__right';
-			if (this.state.chars_left <= 0) {
-				headerflagClass = 'char__error error__right';
-			}
-			return (
-				<p className={`${headerflagClass}`}>
-					Characters Left: {this.state.chars_left}
-				</p>
-			);
-		}
-	}
+
 	leavePage() {
 		this.setState({ showPopup: true });
 	}
@@ -192,10 +158,12 @@ class NewSecureMessage extends React.Component {
 		this.setState({ showPopup: true });
 	}
 	returnModalComponent() {
-		if (this.state.showPopup) {
+		const { showPopup, disabled } = this.state;
+		const { content } = this.props;
+		if (showPopup) {
 			const bodyContent = (
 				<div className="callout callout__error">
-					{this.props.content.leaveMessageBody}
+					{content.leaveMessageBody}
 				</div>
 			);
 			const footerButtons = (
@@ -205,22 +173,22 @@ class NewSecureMessage extends React.Component {
 						onClick={this.leavePage}
 						className="c-btn c-btn--secondary c-modal__button"
 					>
-						{this.props.content.leavePage}
-					</Link>&nbsp;
+						{content.leavePage}
+					</Link>
 					<button
 						type="button"
 						className="c-btn c-btn--secondary c-modal__button"
 						onClick={this.saveDraftData}
-						disabled={this.state.disabled}
+						disabled={disabled}
 					>
-						{this.props.content.saveDraft}
+						{content.saveDraft}
 					</button>
 					<button
 						type="button"
 						onClick={this.stayOnPage}
 						className="c-btn c-btn--default c-modal__button"
 					>
-						{this.props.content.returnToMessage}
+						{content.returnToMessage}
 					</button>
 				</div>
 			);
@@ -229,7 +197,7 @@ class NewSecureMessage extends React.Component {
 					show
 					onHide={this.stayOnPage}
 					customClass="c-modal"
-					modalheading={this.props.content.leaveMessageHeading}
+					modalheading={content.leaveMessageHeading}
 					modalbody={bodyContent}
 					modalfooter={footerButtons}
 					modalInContainer={false}
@@ -239,13 +207,14 @@ class NewSecureMessage extends React.Component {
 		}
 	}
 	returnDraftModal() {
+		const { content } = this.props;
 		window.top.postMessage('clearNewMessagePage', '*');
 		const bodyContent = (
 			<div>
 				<div>
 					<GetIcon id="icon-success" width="68px" height="68px" />
 				</div>
-				{this.props.content.draftBody}
+				{content.draftBody}
 			</div>
 		);
 		const footerButtons = (
@@ -255,7 +224,7 @@ class NewSecureMessage extends React.Component {
 					onClick={this.draftOkClicked}
 					className="c-btn c-btn--default c-btn--sm c-modal__button"
 				>
-					{this.props.content.ok}
+					{content.ok}
 				</Link>
 			</div>
 		);
@@ -293,13 +262,14 @@ class NewSecureMessage extends React.Component {
 		this.setState({ showSentMessageModal: false });
 	}
 	returnSentMessageModal() {
+		const { content } = this.props;
 		window.top.postMessage('clearNewMessagePage', '*');
 		const bodyContent = (
 			<div>
 				<div>
 					<GetIcon id="icon-success" width="68px" height="68px" />
 				</div>
-				{this.props.content.messageSent}
+				{content.messageSent}
 			</div>
 		);
 		const footerButtons = (
@@ -309,7 +279,7 @@ class NewSecureMessage extends React.Component {
 					onClick={this.sentOkClicked}
 					className="c-btn c-btn--default c-btn--sm c-modal__button"
 				>
-					{this.props.content.ok}
+					{content.ok}
 				</Link>
 			</div>
 		);
@@ -331,22 +301,24 @@ class NewSecureMessage extends React.Component {
 		this.setState({ showSendServiceErrorModal: false });
 	}
 	retryServiceCall() {
+		const { showSaveServiceErrorModal, showSendServiceErrorModal } = this.state;
 		this.props.dispatch(popupState());
-		if (this.state.showSaveServiceErrorModal) {
+		if (showSaveServiceErrorModal) {
 			this.saveDraftData();
 		}
-		if (this.state.showSendServiceErrorModal) {
+		if (showSendServiceErrorModal) {
 			this.sendData();
 		}
 	}
 	returnErrorModal() {
+		const { content } = this.props;
 		const bodyContent = (
 			<div>
-				<h3>{this.props.content.sorryHeader}</h3>
+				<h3>{content.sorryHeader}</h3>
 				<br />
-				<p>{this.props.content.tryAgain}</p>
+				<p>{content.tryAgain}</p>
 				<br />
-				<p>{this.props.content.getInTouch}</p>
+				<p>{content.getInTouch}</p>
 			</div>
 		);
 		const footerButtons = (
@@ -356,14 +328,14 @@ class NewSecureMessage extends React.Component {
 					className="c-btn c-btn--secondary c-modal__button"
 					onClick={this.errorCloseClicked}
 				>
-					Back
+					{content.back}
 				</button>
 				<button
 					type="button"
 					onClick={this.retryServiceCall}
 					className="c-btn c-btn--default c-modal__button"
 				>
-					{this.props.content.retry}
+					{content.retry}
 				</button>
 			</div>
 		);
@@ -422,6 +394,44 @@ class NewSecureMessage extends React.Component {
 			</div>
 		);
 	}
+	renderRemainingChar() {
+		const { chars_left, charError } = this.state;
+		const { dispatch, content } = this.props;
+		if (chars_left < 0 && charError) {
+			return (
+				<div>
+					<p className="char__error error__right">
+						{content.charLeft} {chars_left}
+					</p>
+					<CalloutComponent
+						dClass="callout callout__error callout__inline-error"
+						paraText={content.messageVal}
+					/>
+				</div>
+			);
+		}
+		if (chars_left <= 300) {
+			chars_left === 3 &&
+				dispatch(
+					sendMessageForAccessibiltiy(content.threeCharLeft)
+				);
+			chars_left === 1 &&
+				dispatch(sendMessageForAccessibiltiy(content.oneCharLeft));
+			chars_left === 0 &&
+				dispatch(
+					sendMessageForAccessibiltiy(content.maxCharLeft)
+				);
+			let headerflagClass = 'error__right';
+			if (chars_left <= 0) {
+				headerflagClass = 'char__error error__right';
+			}
+			return (
+				<p className={`${headerflagClass}`}>
+					{content.charLeft} {this.state.chars_left}
+				</p>
+			);
+		}
+	}
 	render() {
 		const { content, subjects, accounts, messages } = this.props;
 		const { validationSubjectMsg, validationAccountMsg, showPopup, showDraftSuccessModal, showSentMessageModal, showSaveServiceErrorModal, disabled } = this.state;
@@ -443,7 +453,6 @@ class NewSecureMessage extends React.Component {
 							content={content}
 							selectSubject={this.selectSubject}
 							showSubjectError={validationSubjectMsg}
-							name="subjects"
 							id="subjects"
 							isFromDraft={false}
 							selectedValue={content.pleaseSelect}

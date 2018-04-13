@@ -48,6 +48,10 @@ const content = {
 		pleaseSelect: 'Please select',
 		editSavedMessage: 'Edit saved message',
 		noSpecificAccount: 'No specific account',
+		threeCharLeft: 'Three characters left',
+		oneCharLeft: 'One character left',
+		maxCharLeft: 'Maximum characters limit reached',
+
 	},
 
 	CB: {
@@ -98,6 +102,10 @@ const content = {
 		pleaseSelect: 'Please select',
 		editSavedMessage: 'Edit saved message',
 		noSpecificAccount: 'No specific account',
+		threeCharLeft: 'Three characters left',
+		oneCharLeft: 'One character left',
+		maxCharLeft: 'Maximum characters limit reached',
+
 	},
 };
 

@@ -90,7 +90,7 @@ class DropDownComponent extends React.Component {
 	}
 	returnMenuItem() {
 		const { isFromDraftOrReply, id, accounts, subjects, messageaccounts, messagesubjects } = this.props;
-		const { noSpecificAccount } = this.props.content.noSpecificAccount;
+		const { noSpecificAccount } = this.props.content;
 		const items = [];
 		switch (true) {
 			case (!isFromDraftOrReply && id === 'accounts'):
