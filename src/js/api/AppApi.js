@@ -7,22 +7,22 @@ const _getMessageURLEndpoint = '/banks/{bank_id}/securemessages';
 const _getMessageSubjectsURL = '/banks/{bank_id}/securemessages/subjects';
 //const _getAccountsURL = 'http://localhost:8000/js/content/getAccounts.json';
 const _getAccountsURL = '/banks/{bank_id}/accounts/default';
-const config = window.config;
 const _sendMessageURL = '/banks/{bank_id}/securemessages/{message_id}';
 import StringsConstants from '../constants/StringsConstants.js';
-
+import ConfigUtils  from '../utils/ConfigUtils';
 
 class AppApi {
+
   static fetchSecureMessages(success, error) {
-    ApiUtils.makeRequest({ url: `${config.apiBaseUrl}${_getMessageURLEndpoint}`, method: 'GET', apiVersion: "1.2.0" }, success, error);
+    ApiUtils.makeRequest({ url: `${ConfigUtils.config.apiBaseUrl}${_getMessageURLEndpoint}`, method: 'GET', apiVersion: "1.2.0" }, success, error);
   }
 
   static getSubjects(success, error) {
-    ApiUtils.makeRequest({ url: `${config.apiBaseUrl}${_getMessageSubjectsURL}`, method: 'GET', apiVersion: "1.2.0" }, success, error);
+    ApiUtils.makeRequest({ url: `${ConfigUtils.config.apiBaseUrl}${_getMessageSubjectsURL}`, method: 'GET', apiVersion: "1.2.0" }, success, error);
   }
 
   static getAccounts(success, error) {
-     ApiUtils.makeRequest({ url:`${config.apiBaseUrl}${_getAccountsURL}`, method: 'GET', apiVersion: "0.8.0" }, success, error);
+     ApiUtils.makeRequest({ url:`${ConfigUtils.config.apiBaseUrl}${_getAccountsURL}`, method: 'GET', apiVersion: "0.8.0" }, success, error);
   }
 
   static sendMessageData(requestData, status, success, error) {
