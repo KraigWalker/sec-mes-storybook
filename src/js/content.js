@@ -51,6 +51,7 @@ const content = {
 		threeCharLeft: 'Three characters left',
 		oneCharLeft: 'One character left',
 		maxCharLeft: 'Maximum characters limit reached',
+		delete: 'Delete',
 	},
 
 	CB: {
@@ -104,6 +105,7 @@ const content = {
 		threeCharLeft: 'Three characters left',
 		oneCharLeft: 'One character left',
 		maxCharLeft: 'Maximum characters limit reached',
+		delete: 'Delete',
 	},
 };
 

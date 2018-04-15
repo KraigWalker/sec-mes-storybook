@@ -5,7 +5,6 @@ import {
   sendMessageData,
   sendDraftMessageData,
   sendMessageForAccessibiltiy,
-  setNavRef,
   popupState
 } from "../actions/AppActions";
 import { connect } from "react-redux";
@@ -62,7 +61,6 @@ class NewSecureMessage extends React.Component {
 	componentWillMount() { }
 	componentDidMount() {
 		this.props.dispatch(popupState());
-		this.props.dispatch(setNavRef('/newsecuremessage'));
 		window.scrollTo(0, 0);
 	}
 
