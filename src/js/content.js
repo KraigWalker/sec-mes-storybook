@@ -44,7 +44,17 @@ const content = {
 		messageVal: 'Oops. Looks like your message has gone over the character limit. Try and cut it down a little then give it another go',
 		showMore: 'Show more messages',
 		backToAccounts: 'Back to accounts',
-		faqLink: 'You’ll see all your secure messages from the last 13 months here. For more info about your message history, check out the FAQs in the help section.'
+		faqLink: 'You’ll see all your secure messages from the last 13 months here. For more info about your message history, check out the FAQs in the help section.',
+		pleaseSelect: 'Please select',
+		editSavedMessage: 'Edit saved message',
+		noSpecificAccount: 'No specific account',
+		threeCharLeft: 'Three characters left',
+		oneCharLeft: 'One character left',
+		maxCharLeft: 'Maximum characters limit reached',
+		delete: 'Delete',
+		unread: 'Unread',
+		replyUnread: 'Reply Unread',
+		deleteUnread: 'Delete Unread',
 	},
 
 	CB: {
@@ -92,6 +102,16 @@ const content = {
 		showMore: 'Show more messages',
 		backToAccounts: 'Back to accounts',
 		faqLink: 'You’ll see all your secure messages from the last 13 months here. For more information about your message history, please visit the FAQs in the help section.',
+		pleaseSelect: 'Please select',
+		editSavedMessage: 'Edit saved message',
+		noSpecificAccount: 'No specific account',
+		threeCharLeft: 'Three characters left',
+		oneCharLeft: 'One character left',
+		maxCharLeft: 'Maximum characters limit reached',
+		delete: 'Delete',
+		unread: 'Unread',
+		replyUnread: 'Reply Unread',
+		deleteUnread: 'Delete Unread',
 	},
 };
 
