@@ -47,9 +47,9 @@ class SecureMessageSummary extends React.Component {
 		const { message, threadFlag, viewMessageFlag, content } = this.props;
 		let replymessage = '';
 		if (message.status === 'READ') {
-			replymessage = `Reply ${message.getSubject()}`;
+			replymessage = `${content.replyMessageTitle} ${message.getSubject()}`;
 		} else {
-			replymessage = `Reply Unread ${message.getSubject()}`;
+			replymessage = `${content.replyUnread} ${message.getSubject()}`;
 		}
 		return (
 			!threadFlag && (
@@ -82,9 +82,9 @@ class SecureMessageSummary extends React.Component {
 		const { message, content } = this.props;
 		let deletemessage = '';
 		if (!message.status !== 'NEW') {
-			deletemessage = `Delete ${message.getSubject()}`;
+			deletemessage = `${content.delete} ${message.getSubject()}`;
 		} else {
-			deletemessage = `Delete Unread ${message.getSubject()}`;
+			deletemessage = `${content.deleteUnread} ${message.getSubject()}`;
 		}
 		return (
 			<button
@@ -105,14 +105,14 @@ class SecureMessageSummary extends React.Component {
 		);
 	};
 	hasOnClick = () => {
-		const { message, threadFlag } = this.props;
+		const { message, threadFlag, content } = this.props;
 		const path =
 			message.status === 'DRAFT'
 				? `${window.baseURl}/draftsecuremessage`
 				: `${window.baseURl}/viewmessage`;
 		let messageTitle = '';
 		if (message.status === 'NEW') {
-			messageTitle = `Unread ${message.getSubject()}`;
+			messageTitle = `${content.unread} ${message.getSubject()}`;
 		} else {
 			messageTitle = message.getSubject();
 		}
