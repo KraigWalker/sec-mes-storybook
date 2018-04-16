@@ -7,6 +7,7 @@ import GetIcon from './GetIcon';
 import MessageEntity from '../../entities/MessageEntity';
 import ModalComponent from '../common/ModalComponent';
 import { updateMessageData, popupState, delMessageData, closeDelModal } from '../../actions/AppActions';
+import { NEW, READ, DRAFT, PENDING, SENT, DELETED } from '../../constants/StringsConstants';
 
 class SecureMessageSummary extends React.Component {
 	constructor(props) {
@@ -20,9 +21,7 @@ class SecureMessageSummary extends React.Component {
 		this.returnModalComponent = this.returnModalComponent.bind(this);
 		this.closeModal = this.closeModal.bind(this);
 		this.deleteClick = this.deleteClick.bind(this);
-		this.returnDeleteSuccessModalComponent = this.returnDeleteSuccessModalComponent.bind(
-			this
-		);
+		this.returnDeleteSuccessModalComponent = this.returnDeleteSuccessModalComponent.bind(this);
 		this.closeSuccessModal = this.closeSuccessModal.bind(this);
 		this.errorCloseClicked = this.errorCloseClicked.bind(this);
 		this.retryServiceCall = this.retryServiceCall.bind(this);
@@ -35,7 +34,7 @@ class SecureMessageSummary extends React.Component {
 		const { message, threadFlag } = this.props;
 		if (!threadFlag) {
 			const iconId =
-				message.status === 'READ' ? 'icon-message-open' : 'icon-envelope';
+				message.status === READ ? 'icon-message-open' : 'icon-envelope';
 			return (
 				<span className="c-message__icon">
 					<GetIcon id={iconId} width="24px" height="24px" />
@@ -81,7 +80,7 @@ class SecureMessageSummary extends React.Component {
 	getDeleteButton = () => {
 		const { message, content } = this.props;
 		let deletemessage = '';
-		if (!message.status !== 'NEW') {
+		if (!message.status !== NEW) {
 			deletemessage = `${content.delete} ${message.getSubject()}`;
 		} else {
 			deletemessage = `${content.deleteUnread} ${message.getSubject()}`;
@@ -107,7 +106,7 @@ class SecureMessageSummary extends React.Component {
 	hasOnClick = () => {
 		const { message, threadFlag, content } = this.props;
 		const path =
-			message.status === 'DRAFT'
+			message.status === DRAFT
 				? `${window.baseURl}/draftsecuremessage`
 				: `${window.baseURl}/viewmessage`;
 		let messageTitle = '';
@@ -117,7 +116,7 @@ class SecureMessageSummary extends React.Component {
 			messageTitle = message.getSubject();
 		}
 		if (!threadFlag) {
-			if (message.status === 'READ') {
+			if (message.status === READ) {
 				return (
 					<Link
 						to={{ pathname: path, messageDetail: message }}
@@ -157,14 +156,14 @@ class SecureMessageSummary extends React.Component {
 	}
 	deleteClick() {
 		const { message, dispatch } = this.props;
-		if (message.status === 'NEW') {
-			dispatch(updateMessageData(message, message.id, 'READ'));
+		if (message.status === NEW) {
+			dispatch(updateMessageData(message, message.id, READ));
 			setTimeout(() => {
 				dispatch(
-					delMessageData(message, message.id, 'DELETED')
+					delMessageData(message, message.id, DELETED)
 				);
 			}, 500);
-		} else dispatch(delMessageData(message, message.id, 'DELETED'));
+		} else dispatch(delMessageData(message, message.id, DELETED));
 		this.setState({
 			showDeleteSuccessModal: true,
 			showDeleteConfirmModal: false,
@@ -306,24 +305,24 @@ class SecureMessageSummary extends React.Component {
 		const messageClass = cx({
 			'c-message': true,
 			'c-message--stacked': listFlag,
-			'c-message--read': message.status === 'READ',
+			'c-message--read': message.status === READ,
 			'u-position-relative': !threadFlag,
 			'c-message--noborder': threadFlag,
 		});
 		const summaryClass = cx({
 			'c-message__summary': true,
 			'c-message__summary--no-icon':
-			message.status === 'DRAFT' ||
-			message.status === 'SENT' ||
-			message.status === 'PENDING',
+			message.status === DRAFT ||
+			message.status === SENT ||
+			message.status === PENDING,
 		});
 		const titleClass = cx({
 			'c-message__summary__head__title': true,
-			'c-message__summary__head__title--draft': message.status === 'DRAFT',
+			'c-message__summary__head__title--draft': message.status === DRAFT,
 		});
 		const subjectClass = cx({
 			'c-message__summary__head__title__subject': true,
-			'c-message__summary__head__title__subject--read': message.status !== 'NEW',
+			'c-message__summary__head__title__subject--read': message.status !== NEW,
 		});
 		const actionsClass = cx({
 			'c-message__summary__head__actions': true,
@@ -335,7 +334,7 @@ class SecureMessageSummary extends React.Component {
 			: content.noSpecificAccount;
 		return (
 			<div className={messageClass}>
-				{(message.status === 'READ' || message.status === 'NEW') &&
+				{(message.status === READ || message.status === NEW) &&
 					this.getSummaryIcon()}
 				<div className={summaryClass}>
 					<div className="c-message__summary__head">
@@ -348,7 +347,7 @@ class SecureMessageSummary extends React.Component {
 							</p>
 						</div>
 						<div className={actionsClass}>
-							{(message.status === 'NEW' || message.status === 'READ') &&
+							{(message.status === NEW || message.status === READ) &&
 								this.getReplyButton(message)}
 							{!threadFlag && this.getDeleteButton()}
 						</div>

@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import moment from 'moment';
+import { NEW, READ, DRAFT, PENDING, SENT } from '../constants/StringsConstants';
 
 /**
  *
@@ -12,15 +13,15 @@ export function SecureMessageBL(response) {
 	const draftMessages = [];
 	_.map(response.messages, message => {
 		switch (message.status) {
-			case 'NEW':
-			case 'READ':
+			case NEW:
+			case READ:
 				inboxMessages.push(message);
 				break;
-			case 'DRAFT':
+			case DRAFT:
 				draftMessages.push(message);
 				break;
-			case 'PENDING':
-			case 'SENT':
+			case PENDING:
+			case SENT:
 				sentMessages.push(message);
 				break;
 			default:
