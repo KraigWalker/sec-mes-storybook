@@ -72,7 +72,6 @@ export function getAccounts() {
 				serviceType: 'account-service',
 			};
 			dispatch(payload);
-			//  console.log(error);
 		};
 		AppApi.getAccounts(success, error);
 	};
