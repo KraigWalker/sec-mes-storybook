@@ -1,5 +1,4 @@
 import axios from "axios";
-//import { getClientContext, getClientContextCB } from './ApiHeaders';
 import token from "../token.js";
 const apiParams = {
   accessToken: token.accessToken(),
@@ -19,14 +18,14 @@ class ApiUtils {
     requestHeaders["x-bpi-version"] = apiData.apiVersion;
     switch (apiData.method) {
       case "GET":
-          return axios
-            .get(apiData.url, { headers: requestHeaders })
-            .then(response => {
-              onSuccess(response.data);
-            })
-            .catch(error => {
-              onFail(error);
-            });
+        return axios
+          .get(apiData.url, { headers: requestHeaders })
+          .then(response => {
+            onSuccess(response.data);
+          })
+          .catch(error => {
+            onFail(error);
+          });
       case "POST":
         return axios
           .post(apiData.url, apiData.requestData, { headers: requestHeaders })
