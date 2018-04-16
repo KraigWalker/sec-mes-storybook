@@ -558,6 +558,5 @@ const mapState = state => ({
 	subjects: state.subjects,
 	messages: state.messages,
 	accounts: state.accounts,
-	tempData: state.messages.tempData,
 });
 export default connect(mapState)(NewSecureMessage);
