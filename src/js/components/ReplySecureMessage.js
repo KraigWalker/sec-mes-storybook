@@ -54,9 +54,9 @@ class ReplySecureMessage extends React.Component {
 	componentWillMount() {
 		// If account service responding late then what to do...
 		const { account, subject } = this.props.location.messageDetail;
-		const accName = (getAccountName(account.accountId, this.props.accounts));
+		const accName = getAccountName(account.accountId, this.props.accounts);
 		if ((account.accountId !== undefined || null) && subject) {
-			account.name = (accName).display_name || (accName).name;
+			account.name = accName.display_name || accName.name;
 			messageEntity.setName(account.name);
 			messageEntity.setAccountId(account.accountId);
 			messageEntity.setAccountNumber(account.number);
