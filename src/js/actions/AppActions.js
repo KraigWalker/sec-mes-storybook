@@ -10,22 +10,14 @@ export function fetchSecureMessages() {
 		};
 		dispatch(payload);
 		const success = response => {
-			if (response) {
-				const parseData = parseMessages(response);
-				const payload = {
-					type: AppConstants.REQUEST_SECURE_MESSAGES_SUCCESS,
-					payload: parseData,
-				};
-				dispatch(payload);
-			} else {
-				const payload = {
-					type: AppConstants.REQUEST_SECURE_MESSAGES_SUCCESS,
-				};
-				dispatch(payload);
-			}
+			const parseData = response ? parseMessages(response) : [];
+			const payload = {
+				type: AppConstants.REQUEST_SECURE_MESSAGES_SUCCESS,
+				payload: parseData,
+			};
+			dispatch(payload);
 		};
 		const error = error => {
-			console.log(error);
 			const payload = {
 				type: AppConstants.REQUEST_SECURE_MESSAGES_FAILURE,
 			};
