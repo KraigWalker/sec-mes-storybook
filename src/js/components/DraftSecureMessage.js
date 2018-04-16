@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { updateMessageData, sendMessageForAccessibiltiy, setNavRef, popupState } from '../actions/AppActions';
+import { updateMessageData, sendMessageForAccessibiltiy, popupState } from '../actions/AppActions';
 import DropDownComponent from './common/DropDownComponent';
 import TextAreaComponent from './common/TextAreaComponent';
 import StepHeader from './common/StepHeader';
@@ -55,7 +55,6 @@ class DraftSecureMessage extends React.Component {
 		}
 	}
 	componentDidMount() {
-		this.props.dispatch(setNavRef('/draftsecuremessage'));
 		this.props.dispatch(popupState());
 		window.scrollTo(0, 0);
 	}

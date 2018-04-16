@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import {
 	sendMessageData,
 	sendMessageForAccessibiltiy,
-	setNavRef,
 	popupState,
 } from '../actions/AppActions';
 import DropDownComponent from './common/DropDownComponent';
@@ -55,9 +54,7 @@ class NewSecureMessage extends React.Component {
 	}
 	componentWillMount() { }
 	componentDidMount() {
-		const { dispatch } = this.props;
-		dispatch(popupState());
-		dispatch(setNavRef('/newsecuremessage'));
+		this.props.dispatch(popupState());
 		window.scrollTo(0, 0);
 	}
 
