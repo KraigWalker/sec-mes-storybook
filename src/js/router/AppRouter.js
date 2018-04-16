@@ -17,7 +17,6 @@ import ErrorPage from '../components/common/ErrorPage';
  */
 
 class AppRouter extends React.Component {
-
     /**
     * Initiates the application in BrowserRouter. Please refer to react-router v4 docs.
     * @return {ReactComponent} Displays the components wrapped around BrowserRouter and Routes the application.
