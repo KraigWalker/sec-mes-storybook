@@ -25,7 +25,7 @@
     "babel-preset-stage-0": "^6.3.13",
     "cross-env": "^5.1.1",
     "css-loader": "^0.28.7",
-    "eslint": "^4.19.0",
+    "eslint": "^4.12.1",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.11",
     "html-loader": "^0.5.1",
@@ -65,7 +65,8 @@
     "build": "npm run dyb-prod && npm run cb-prod && npm run yb-prod && npm run release",
     "release": "tar -C src/ -czf secure-messaging-1.0.0.tgz compiled",
     "test:watch": "npm test -- --watch",
-    "lint": "eslint './src'"
+    "lint": "eslint './src'",
+    "lint:fix": "eslint './src' --fix"
   },
   "author": "",
   "license": "ISC",
