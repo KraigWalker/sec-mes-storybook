@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import content from '../../content';
 import token from '../../token';
 
-import { fetchSecureMessages, getAccounts } from '../../actions/AppActions';
+import { fetchSecureMessages, getAccounts, closeDelModal, popupState } from '../../actions/AppActions';
 
 export function withSubscription(WrappedComponent) {
 	const mapState = state => ({
@@ -23,6 +23,10 @@ export function withSubscription(WrappedComponent) {
 		}
 		componentWillReceiveProps(nextProps) {
 			!nextProps.fetched && this.props.dispatch(fetchSecureMessages());
+		}
+		componentWillUnmount() {
+			this.props.dispatch(closeDelModal());
+			this.props.dispatch(popupState());
 		}
 		getcontentBankID() {
 			switch (token.getContentBankId()) {

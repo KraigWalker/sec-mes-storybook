@@ -30,6 +30,10 @@ class SecureMessageSummary extends React.Component {
 		window.scrollTo(0, 0);
 		this.props.dispatch(popupState());
 	}
+	componentWillUnmount() {
+		this.props.dispatch(closeDelModal());
+		this.props.dispatch(popupState());
+	}
 	getSummaryIcon = () => {
 		const { message, threadFlag } = this.props;
 		if (!threadFlag) {
