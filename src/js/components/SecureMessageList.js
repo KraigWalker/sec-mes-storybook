@@ -6,7 +6,7 @@ import { getMessageType } from "../utils/SecureMessageUtils";
 import { sendMessageForAccessibiltiy } from "../actions/AppActions";
 import { connect } from "react-redux";
 import SvgIcon from './common/GetIcon';
-import StringsConstants from '../constants/StringsConstants';
+import { SENT, INBOX, DRAFT } from '../constants/StringsConstants';
 
 const MESSAGE_LIMIT = 20;
 
@@ -20,7 +20,6 @@ class SecureMessageList extends React.Component {
 	}
 	componentWillReceiveProps(props) {
 		const { messages, activeTab, messagesFetched, content, dispatch } = this.props;
-		const { SENT, INBOX, DRAFTS } = StringsConstants;
 		if (messages.length <= MESSAGE_LIMIT) {
 			this.setState({ showThatsAllMessage: true });
 		}
@@ -34,7 +33,7 @@ class SecureMessageList extends React.Component {
 						sendMessageForAccessibiltiy(content.noSentMessages)
 					);
 					break;
-				case (activeTab === DRAFTS):
+				case (activeTab === DRAFT):
 					dispatch(
 						sendMessageForAccessibiltiy(content.noDraftMessages)
 					);
@@ -74,8 +73,7 @@ class SecureMessageList extends React.Component {
 	}
 	renderShowMoreButton() {
 		const { content, activeTab, messages } = this.props;
-		const { SENT, INBOX, DRAFTS } = StringsConstants;
-		if (this.state.showMoreLimit < messages.length && (activeTab === SENT || activeTab === INBOX || activeTab === DRAFTS)) {
+		if (this.state.showMoreLimit < messages.length && (activeTab === SENT || activeTab === INBOX || activeTab === DRAFT)) {
 			return (
 				<button
 					type="button"
@@ -89,18 +87,16 @@ class SecureMessageList extends React.Component {
 	}
 	renderThatsAllText() {
 		const { content, activeTab } = this.props;
-		const { SENT, DRAFTS } = StringsConstants;
 		let thatsallText = content.thatsallTextInbox;
 		if (activeTab === SENT) {
 			thatsallText = content.thatsallTextSend;
-		} else if (activeTab === DRAFTS) {
+		} else if (activeTab === DRAFT) {
 			thatsallText = content.thatsallTextDraft;
 		}
 		return thatsallText;
 	}
 	renderNoMessagesText() {
 		const { content, activeTab, dispatch } = this.props;
-		const { SENT, DRAFTS } = StringsConstants;
 		switch (activeTab) {
 			case (activeTab === SENT):
 				dispatch(sendMessageForAccessibiltiy(content.noSentMessages));
@@ -109,7 +105,7 @@ class SecureMessageList extends React.Component {
 						{content.noSentMessages}
 					</p>
 				);
-			case (activeTab === DRAFTS):
+			case (activeTab === DRAFT):
 				dispatch(sendMessageForAccessibiltiy(content.noDraftMessages));
 				return (
 					<p className="callout callout--msgbottom callout__txt-center">
@@ -128,7 +124,7 @@ class SecureMessageList extends React.Component {
 	render() {
 		const { messagesFetched, messages } = this.props;
 		return (
-			messagesFetched.fetching ? <div><SvgIcon id="icon-refresh" width="32px" height="32px" className="spinner-loader" /></div> :
+			messagesFetched.fetching && !messagesFetched.successModal ? <div><SvgIcon id="icon-refresh" width="32px" height="32px" className="spinner-loader" /></div> :
 				<section>
 					{messages.length === 0 ?
 						this.renderNoMessagesText()

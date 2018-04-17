@@ -25,8 +25,8 @@ module.exports = {
 			  from: 'src/images',
 			  to:'images'
 		  }, {
-			  from: 'config',
-			  to: 'config'
+			  from: '_config',
+			  to: '_config'
 		  }])
 	],
 	module: {

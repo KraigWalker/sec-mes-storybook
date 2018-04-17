@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from "react-redux";
 import AppRouter from './router/AppRouter';
 import store from './stores/AppStore';
+import ConfigUtils from './utils/ConfigUtils';
 // import '../scss/main.scss';
 const app = document.getElementById('app');
  /**
@@ -15,4 +16,8 @@ const startApp = () => {
   </Provider>, app);
 }
 
-setTimeout(startApp, 50);
+const initApp = () => {
+    ConfigUtils.getConfig(startApp);
+}
+
+setTimeout(initApp, 50);
