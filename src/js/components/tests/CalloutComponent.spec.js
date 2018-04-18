@@ -1,7 +1,6 @@
 import React from 'react';
 import content from '../../content';
 import { shallow, mount } from 'enzyme';
-import TestData from '../../content/secureMessagesTestData.json'
 import CalloutComponent from '../common/CalloutComponent'
 import Enzyme from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
