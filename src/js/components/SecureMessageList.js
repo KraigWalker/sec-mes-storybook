@@ -97,7 +97,7 @@ class SecureMessageList extends React.Component {
 	}
 	renderNoMessagesText() {
 		const { content, activeTab, dispatch } = this.props;
-		switch (activeTab) {
+		switch (true) {
 			case (activeTab === SENT):
 				dispatch(sendMessageForAccessibiltiy(content.noSentMessages));
 				return (
