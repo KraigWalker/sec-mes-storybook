@@ -178,7 +178,7 @@ class SecureMessageSummary extends React.Component {
 		})
 	}
 	returnDeleteSuccessModalComponent() {
-			const { content, viewMessageFlag } = this.props;
+		const { content, viewMessageFlag } = this.props;
 		const bodyContent = (
 			<div>
 				<div>
