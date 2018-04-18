@@ -172,7 +172,6 @@ class SecureMessageSummary extends React.Component {
 	}
 
 	closeSuccessModal() {
-		// document.getElementById('headingTag').focus(); kept for accessibility
 			this.setState({
 				showDeleteSuccessModal: false
 			})

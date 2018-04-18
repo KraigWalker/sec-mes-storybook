@@ -24,10 +24,6 @@ export function withSubscription(WrappedComponent) {
 		componentWillReceiveProps(nextProps) {
 			!nextProps.fetched && this.props.dispatch(fetchSecureMessages());
 		}
-		componentWillUnmount() {
-			this.props.dispatch(closeDelModal());
-			this.props.dispatch(popupState());
-		}
 		getcontentBankID() {
 			switch (token.getContentBankId()) {
 				case 'CB':
