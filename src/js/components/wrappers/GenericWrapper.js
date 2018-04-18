@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import content from '../../content';
 import token from '../../token';
 
-import { fetchSecureMessages, getAccounts, closeDelModal, popupState } from '../../actions/AppActions';
+import { fetchSecureMessages, getAccounts } from '../../actions/AppActions';
 
 export function withSubscription(WrappedComponent) {
 	const mapState = state => ({
