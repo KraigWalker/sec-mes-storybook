@@ -15,7 +15,7 @@ class SecureMessageSummary extends React.Component {
 		this.handleDelete = this.handleDelete.bind(this);
 		this.state = {
 			showDeleteConfirmModal: false,
-			showDeleteSuccessModal: false,
+			showDeleteSuccessModal: this.props.messageDetail.delSuccessModal,
 			showSendServiceErrorModal: false,
 		};
 		this.returnModalComponent = this.returnModalComponent.bind(this);
@@ -28,10 +28,6 @@ class SecureMessageSummary extends React.Component {
 	}
 	componentDidMount() {
 		window.scrollTo(0, 0);
-		this.props.dispatch(popupState());
-	}
-	componentWillUnmount() {
-		this.props.dispatch(closeDelModal());
 		this.props.dispatch(popupState());
 	}
 	getSummaryIcon = () => {
@@ -177,10 +173,13 @@ class SecureMessageSummary extends React.Component {
 
 	closeSuccessModal() {
 		// document.getElementById('headingTag').focus(); kept for accessibility
+			this.setState({
+				showDeleteSuccessModal: false
+			})
 		this.props.dispatch(closeDelModal());
 	}
 	returnDeleteSuccessModalComponent() {
-		const { content, viewMessageFlag } = this.props;
+			const { content, viewMessageFlag } = this.props;
 		const bodyContent = (
 			<div>
 				<div>
