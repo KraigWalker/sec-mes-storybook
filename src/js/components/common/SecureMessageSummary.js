@@ -15,7 +15,7 @@ class SecureMessageSummary extends React.Component {
 		this.handleDelete = this.handleDelete.bind(this);
 		this.state = {
 			showDeleteConfirmModal: false,
-			showDeleteSuccessModal: false,
+			showDeleteSuccessModal: this.props.messageDetail.delSuccessModal,
 			showSendServiceErrorModal: false,
 		};
 		this.returnModalComponent = this.returnModalComponent.bind(this);
@@ -172,8 +172,10 @@ class SecureMessageSummary extends React.Component {
 	}
 
 	closeSuccessModal() {
-		// document.getElementById('headingTag').focus(); kept for accessibility
 		this.props.dispatch(closeDelModal());
+		this.setState({
+			showDeleteSuccessModal: false
+		})
 	}
 	returnDeleteSuccessModalComponent() {
 		const { content, viewMessageFlag } = this.props;
