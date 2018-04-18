@@ -97,15 +97,15 @@ class SecureMessageList extends React.Component {
 	}
 	renderNoMessagesText() {
 		const { content, activeTab, dispatch } = this.props;
-		switch (true) {
-			case (activeTab === SENT):
+		switch (activeTab) {
+			case SENT:
 				dispatch(sendMessageForAccessibiltiy(content.noSentMessages));
 				return (
 					<p className="callout callout--msgbottom callout__txt-center">
 						{content.noSentMessages}
 					</p>
 				);
-			case (activeTab === DRAFT):
+			case DRAFT:
 				dispatch(sendMessageForAccessibiltiy(content.noDraftMessages));
 				return (
 					<p className="callout callout--msgbottom callout__txt-center">
