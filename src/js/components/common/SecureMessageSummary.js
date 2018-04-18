@@ -172,10 +172,10 @@ class SecureMessageSummary extends React.Component {
 	}
 
 	closeSuccessModal() {
-			this.setState({
-				showDeleteSuccessModal: false
-			})
 		this.props.dispatch(closeDelModal());
+		this.setState({
+			showDeleteSuccessModal: false
+		})
 	}
 	returnDeleteSuccessModalComponent() {
 			const { content, viewMessageFlag } = this.props;
