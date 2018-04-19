@@ -19,14 +19,13 @@ class LandingPage extends React.PureComponent {
         const { token, history } = this.props;
         const Fingerprint = require('fingerprintjs2');
         new Fingerprint().get(result => { // fingerprint response is mandatory for security check
-	    let fingerPrint= result;
-			if (this.props.token.getFingerPrints() !== fingerPrint) {
+			if (this.props.token.getFingerPrints() !== result) {
 				this.props.history.push('/errormessage');
 			}
         });
         window.top.postMessage('clearNewMessagePage', '*');
         window.scrollTo(0, 0);
-    }
+    }   
 
     linkClick = activeTab => {
         this.props.dispatch(getActiveTab(activeTab));
