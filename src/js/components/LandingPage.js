@@ -37,7 +37,7 @@ class LandingPage extends React.PureComponent {
     }
     mapMessages(messages) {
         return SecureMessageBL(messages);
-    }   
+    }
     checkError() {
         if (this.props.messages.error && this.props.messages.fetched) {
             this.props.history.push('/errormessage');
