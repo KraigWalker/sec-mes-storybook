@@ -16,6 +16,14 @@ import SvgIcon from './common/GetIcon.js';
 
 class LandingPage extends React.PureComponent {
     componentDidMount() {
+        const { token, history } = this.props;
+        const Fingerprint = require('fingerprintjs2');
+        new Fingerprint().get(result => { // fingerprint response is mandatory for security check
+	    let fingerPrint= result;
+			if (this.props.token.getFingerPrints() !== fingerPrint) {
+				this.props.history.push('/errormessage');
+			}
+        });
         window.top.postMessage('clearNewMessagePage', '*');
         window.scrollTo(0, 0);
     }
@@ -29,7 +37,7 @@ class LandingPage extends React.PureComponent {
     }
     mapMessages(messages) {
         return SecureMessageBL(messages);
-    }
+    }   
     checkError() {
         if (this.props.messages.error && this.props.messages.fetched) {
             this.props.history.push('/errormessage');
