@@ -1,27 +1,22 @@
-import React from "react";
-import SecureMessageSummary from "./common/SecureMessageSummary";
-import StepHeader from "./common/StepHeader";
-import TextAreaComponent from "./common/TextAreaComponent";
-import DropDownComponent from "./common/DropDownComponent";
-import { Link } from "react-router-dom";
-import RegexUtils from "../utils/RegexUtils.js";
-import SendMessageRequestEntity from "../entities/SendMessageRequestEntity.js";
-import { connect } from "react-redux";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import StepHeader from './common/StepHeader';
+import TextAreaComponent from './common/TextAreaComponent';
+import DropDownComponent from './common/DropDownComponent';
+import RegexUtils from '../utils/RegexUtils';
+import SendMessageRequestEntity from '../entities/SendMessageRequestEntity';
 import {
-	getMessageSubjects,
-	getAccounts,
 	replyMessageData,
 	sendMessageForAccessibiltiy,
-	updateMessageData,
-	popupState
-} from "../actions/AppActions";
-import { getThreadsBL, getAccountName } from "../bl/SecureMessageBL";
-import Threads from "./common/ThreadList";
-import ModalComponent from "./common/ModalComponent";
-import GetIcon from "./common/GetIcon";
-import CalloutComponent from "./common/CalloutComponent.js";
-import SvgIcon from "./common/GetIcon.js";
-import StringsConstants from "../constants/StringsConstants.js";
+	popupState,
+} from '../actions/AppActions';
+import { getThreadsBL, getAccountName } from '../bl/SecureMessageBL';
+import Threads from './common/ThreadList';
+import ModalComponent from './common/ModalComponent';
+import GetIcon from './common/GetIcon';
+import CalloutComponent from './common/CalloutComponent';
+import StringsConstants from '../constants/StringsConstants';
 
 const messageEntity = new SendMessageRequestEntity();
 
@@ -55,26 +50,38 @@ class ReplySecureMessage extends React.Component {
 			showModalBack: false,
 		};
 	}
-	componentWillMount() {
-		const accName = (getAccountName(this.props.location.messageDetail.account.accountId, this.props.accounts));
-		 if (this.props.location.messageDetail.account.accountId !== undefined || null && this.props.location.messageDetail.subject) {
-			 this.props.location.messageDetail.account.name = (accName).display_name || (accName).name;
-		   messageEntity.setName(this.props.location.messageDetail.account.name);
-		   messageEntity.setAccountId(this.props.location.messageDetail.account.accountId);
-			messageEntity.setAccountNumber(this.props.location.messageDetail.account.number);
-		   messageEntity.setUpdateSubject(this.props.location.messageDetail.subject);
-		}
-	   if (this.props.location.messageDetail.account.accountId === undefined || null) {
-		   messageEntity.setAccount(this.props.location.messageDetail.account);
-		   messageEntity.setUpdateSubject(this.props.location.messageDetail.subject);
-	   }
-	}
 
+	componentWillMount() {
+		// If account service responding late then what to do...
+		const { account, subject } = this.props.location.messageDetail;
+		const accName = getAccountName(account.accountId, this.props.accounts);
+		if ((account.accountId !== undefined || null) && subject) {
+			account.name = accName.display_name || accName.name;
+			messageEntity.setName(account.name);
+			messageEntity.setAccountId(account.accountId);
+			messageEntity.setAccountNumber(account.number);
+			messageEntity.setUpdateSubject(subject);
+		}
+		if (account.accountId === undefined || null) {
+			messageEntity.setAccount(account);
+			messageEntity.setUpdateSubject(subject);
+		}
+	}
 	componentDidMount() {
 		window.scrollTo(0, 0);
 		this.props.dispatch(popupState());
 	}
-
+	getThreads(messages, currentMessage) {
+		const threads = getThreadsBL(messages, currentMessage);
+		return (
+			<Threads
+				Threads={threads}
+				currentMessage={currentMessage}
+				isFromReplyMessage
+				content={this.props.content}
+			/>
+		);
+	}
 	selectSubject(value, id, data) {
 		switch (id) {
 			case 'accounts':
@@ -83,9 +90,9 @@ class ReplySecureMessage extends React.Component {
 			case 'subjects':
 				messageEntity.setSubject(data);
 				break;
+			default:
 		}
 	}
-
 	textChange(e) {
 		if (e === '') {
 			this.setState({ disabled: true });
@@ -109,51 +116,15 @@ class ReplySecureMessage extends React.Component {
 			showModalBack: true,
 		});
 	}
-
-	renderRemainingChar() {
-		if (this.state.chars_left < 0 && this.state.charError === true) {
-			return (
-				<div>
-					<p className="char__error error__right">
-						Characters Left: {this.state.chars_left}
-					</p>
-					<CalloutComponent
-						dClass="callout callout__error callout__inline-error"
-						paraText={this.props.content.messageVal}
-					/>
-				</div>
-			);
-		}
-		if (this.state.chars_left <= 300) {
-			this.state.chars_left === 3 &&
-				this.props.dispatch(
-					sendMessageForAccessibiltiy('Three characters left')
-				);
-			this.state.chars_left === 1 &&
-				this.props.dispatch(sendMessageForAccessibiltiy('One character left'));
-			this.state.chars_left === 0 &&
-				this.props.dispatch(
-					sendMessageForAccessibiltiy('Maximum characters limit reached')
-				);
-			let headerflagClass = 'error__right';
-			if (this.state.chars_left <= 0) {
-				headerflagClass = 'char__error error__right';
-			}
-			return (
-				<p className={`${headerflagClass}`}>
-					Characters Left: {this.state.chars_left}
-				</p>
-			);
-		}
-	}
 	sendData() {
+		const { dispatch, location } = this.props;
 		this.setState({ charError: true });
 		this.renderRemainingChar();
 		if (this.state.chars_left >= 0) {
-			this.props.dispatch(
+			dispatch(
 				replyMessageData(
 					messageEntity.getMessageRequestData(),
-					this.props.location.messageDetail,
+					location.messageDetail,
 					StringsConstants.PENDING
 				)
 			);
@@ -161,25 +132,15 @@ class ReplySecureMessage extends React.Component {
 			this.setState({ showSendServiceErrorModal: true });
 		}
 	}
-
-	getThreads(messages, currentMessage) {
-		const threads = getThreadsBL(messages, currentMessage);
-		return (
-			<Threads
-				Threads={threads}
-				currentMessage={currentMessage}
-				isFromReplyMessage
-			/>
-		);
-	}
 	returnSentMessageModal() {
+		const { content } = this.props;
 		window.top.postMessage('clearNewMessagePage', '*');
 		const bodyContent = (
 			<div>
 				<div>
 					<GetIcon id="icon-success" width="68px" height="68px" />
 				</div>
-				{this.props.content.messageSent}
+				{content.messageSent}
 			</div>
 		);
 		const footerButtons = (
@@ -188,7 +149,7 @@ class ReplySecureMessage extends React.Component {
 				onClick={this.sentOkClicked}
 				className="c-btn c-btn--default c-btn--sm c-modal__button"
 			>
-				{this.props.content.ok}
+				{content.ok}
 			</Link>
 		);
 		return (
@@ -208,13 +169,14 @@ class ReplySecureMessage extends React.Component {
 		this.setState({ showSentMessageModal: false });
 	}
 	returnDraftModal() {
+		const { content } = this.props;
 		window.top.postMessage('clearNewMessagePage', '*');
 		const bodyContent = (
 			<div>
 				<div>
 					<GetIcon id="icon-success" width="68px" height="68px" />
 				</div>
-				{this.props.content.draftBody}
+				{content.draftBody}
 			</div>
 		);
 		const footerButtons = (
@@ -223,7 +185,7 @@ class ReplySecureMessage extends React.Component {
 				onClick={this.draftOkClicked}
 				className="c-btn c-btn--default c-btn--sm c-modal__button"
 			>
-				{this.props.content.ok}
+				{content.ok}
 			</Link>
 		);
 		return (
@@ -240,10 +202,11 @@ class ReplySecureMessage extends React.Component {
 		);
 	}
 	saveDraftData() {
-		this.props.dispatch(
+		const { dispatch, location } = this.props;
+		dispatch(
 			replyMessageData(
 				messageEntity.getMessageRequestData(),
-				this.props.location.messageDetail,
+				location.messageDetail,
 				StringsConstants.DRAFT
 			)
 		);
@@ -255,11 +218,12 @@ class ReplySecureMessage extends React.Component {
 		this.setState({ showDraftSuccessModal: false });
 	}
 	checkAccountValue() {
+		const { content, location } = this.props;
 		let accVal;
-		if (this.props.location.messageDetail.account.number === undefined || null) {
-			accVal = 'No specific account';
+		if (location.messageDetail.account.number === undefined || null) {
+			accVal = content.noSpecificAccount;
 		} else {
-			accVal = this.props.location.messageDetail.account.name;
+			accVal = location.messageDetail.account.name;
 		}
 		return accVal;
 	}
@@ -268,11 +232,12 @@ class ReplySecureMessage extends React.Component {
 		this.setState({ showSendServiceErrorModal: false });
 	}
 	retryServiceCall() {
+		const { showSaveServiceErrorModal, showSendServiceErrorModal } = this.state;
 		this.props.dispatch(popupState());
-		if (this.state.showSaveServiceErrorModal) {
+		if (showSaveServiceErrorModal) {
 			this.saveDraftData();
 		}
-		if (this.state.showSendServiceErrorModal) {
+		if (showSendServiceErrorModal) {
 			this.sendData();
 		}
 	}
@@ -288,10 +253,11 @@ class ReplySecureMessage extends React.Component {
 		});
 	}
 	returnModalComponent() {
+		const { content } = this.props;
 		if (this.state.showPopup) {
 			const bodyContent = (
 				<div className="callout callout__error">
-					{this.props.content.leaveMessageBody}
+					{content.leaveMessageBody}
 				</div>
 			);
 			const footerButtons = (
@@ -302,7 +268,7 @@ class ReplySecureMessage extends React.Component {
 							onClick={this.leavePage}
 							className="c-btn c-btn--secondary c-modal__button"
 						>
-							{this.props.content.leavePage}
+							{content.leavePage}
 						</button>
 					</Link>&nbsp;
 					<button
@@ -311,14 +277,14 @@ class ReplySecureMessage extends React.Component {
 						onClick={this.saveDraftData}
 						disabled={this.state.disabled}
 					>
-						{this.props.content.saveDraft}
+						{content.saveDraft}
 					</button>
 					<button
 						type="button"
 						onClick={this.stayOnPage}
 						className="c-btn c-btn--default c-modal__button"
 					>
-						{this.props.content.returnToMessage}
+						{content.returnToMessage}
 					</button>
 				</div>
 			);
@@ -327,7 +293,7 @@ class ReplySecureMessage extends React.Component {
 					show
 					onHide={this.stayOnPage}
 					customClass="c-modal"
-					modalheading={this.props.content.leaveMessageHeading}
+					modalheading={content.leaveMessageHeading}
 					modalbody={bodyContent}
 					modalfooter={footerButtons}
 					modalInContainer={false}
@@ -338,13 +304,14 @@ class ReplySecureMessage extends React.Component {
 	}
 
 	returnErrorModal() {
+		const { content } = this.props;
 		const bodyContent = (
 			<div>
-				<h3>{this.props.content.sorryHeader}</h3>
+				<h3>{content.sorryHeader}</h3>
 				<br />
-				<p>{this.props.content.tryAgain}</p>
+				<p>{content.tryAgain}</p>
 				<br />
-				<p>{this.props.content.getInTouch}</p>
+				<p>{content.getInTouch}</p>
 			</div>
 		);
 		const footerButtons = (
@@ -354,14 +321,14 @@ class ReplySecureMessage extends React.Component {
 					className="c-btn c-btn--secondary c-modal__button"
 					onClick={this.errorCloseClicked}
 				>
-					{this.props.content.back}
+					{content.back}
 				</button>
 				<button
 					type="button"
 					onClick={this.retryServiceCall}
 					className="c-btn c-btn--default c-modal__button"
 				>
-					{this.props.content.retry}
+					{content.retry}
 				</button>
 			</div>
 		);
@@ -380,8 +347,9 @@ class ReplySecureMessage extends React.Component {
 		);
 	}
 	returnBackButton(backpath) {
-		const { backPath } = backpath;
-		if (this.state.showModalBack && this.state.disabled === false) {
+		const { content } = this.props;
+		const { showModalBack, disabled } = this.state;
+		if (showModalBack && disabled === false) {
 			return (
 				<div className="row">
 					<div className="col-md1-18">
@@ -391,15 +359,15 @@ class ReplySecureMessage extends React.Component {
 								className="c-step-header__link u-cursor-pointer"
 							>
 								<span className="c-step-header__linkicon">
-									<SvgIcon id="icon-left" width="16px" height="16px" />
+									<GetIcon id="icon-left" width="16px" height="16px" />
 								</span>
 								<span className="c-step-header__linktext">
-									{this.props.content.back}
+									{content.back}
 								</span>
 							</a>
 						</p>
 						<h1 className="c-step-header__title" id="headingTag" tabIndex="-1">
-							{this.props.content.replyMessageTitle}
+							{content.replyMessageTitle}
 						</h1>
 					</div>
 				</div>
@@ -419,31 +387,71 @@ class ReplySecureMessage extends React.Component {
 			</div>
 		);
 	}
+	renderRemainingChar() {
+		const { chars_left, charError } = this.state;
+		const { dispatch, content } = this.props;
+		if (chars_left < 0 && charError === true) {
+			return (
+				<div>
+					<p className="char__error error__right">
+						Characters Left: {chars_left}
+					</p>
+					<CalloutComponent
+						dClass="callout callout__error callout__inline-error"
+						paraText={content.messageVal}
+					/>
+				</div>
+			);
+		}
+		if (chars_left <= 300) {
+			chars_left === 3 &&
+				dispatch(
+					sendMessageForAccessibiltiy(content.threeCharLeft)
+				);
+			chars_left === 1 &&
+				dispatch(sendMessageForAccessibiltiy(content.oneCharLeft));
+			chars_left === 0 &&
+				dispatch(
+					sendMessageForAccessibiltiy(content.maxCharLimit)
+				);
+			let headerflagClass = 'error__right';
+			if (chars_left <= 0) {
+				headerflagClass = 'char__error error__right';
+			}
+			return (
+				<p className={`${headerflagClass}`}>
+					{content.charLeft} {chars_left}
+				</p>
+			);
+		}
+	}
 	render() {
-		const { messageDetail } = this.props.location.messageDetail
-			? this.props.location
+		const { content, messages, location } = this.props;
+		const { showSendServiceErrorModal, showSaveServiceErrorModal, showDraftSuccessModal, showSentMessageModal, showPopup, disabled } = this.state;
+		const { messageDetail } = location.messageDetail
+			? location
 			: this.props;
 		return (
 			<div className="container">
-				{this.returnBackButton(this.props.location)}
+				{this.returnBackButton(location)}
 				<div className="c-field">
 					<label
 						id="subjectTitle"
 						className="c-field__label c-field__label--block"
 						htmlFor="subjects"
 					>
-						{this.props.content.subject}
+						{content.subject}
 					</label>
 					<div className="c-field__controls u-position-relative">
 						<DropDownComponent
 							accessID="Subject"
-							subjects={this.props.location.messageDetail.subject}
+							subjects={messageDetail.subject}
 							name="subjects"
 							id="subjects"
 							selectSubject={this.selectSubject}
 							isFromDraftOrReply
-							selectedValue={this.props.location.messageDetail.subject}
-							content = {this.props.content}
+							selectedValue={messageDetail.subject}
+							content={content}
 							isFromReply
 						/>
 					</div>
@@ -455,18 +463,18 @@ class ReplySecureMessage extends React.Component {
 						className="c-field__label c-field__label--block"
 						htmlFor="subjects"
 					>
-						{this.props.content.messageRelatesTo}
+						{content.messageRelatesTo}
 					</label>
 					<div className="c-field__controls u-position-relative">
 						<DropDownComponent
 							accessID="Message relates to"
-							accounts={this.props.location.messageDetail.account.number}
+							accounts={messageDetail.account.number}
 							selectSubject={this.selectSubject}
 							name="accounts"
 							id="accounts"
 							isFromDraftOrReply
 							selectedValue={this.checkAccountValue()}
-							content = {this.props.content}
+							content={content}
 							isFromReply
 						/>
 					</div>
@@ -478,11 +486,11 @@ class ReplySecureMessage extends React.Component {
 						className="c-field__label c-field__label--block"
 						htmlFor="subjects"
 					>
-						{this.props.content.message}
+						{content.message}
 					</label>
 					<div className="c-field__controls">
 						<div className="u-visually-hidden off-screen" id="textAreaMaxMsg">
-							{this.props.content.maxCharLimit}
+							{content.maxCharLimit}
 						</div>
 						<TextAreaComponent
 							textData={this.textChange}
@@ -494,29 +502,29 @@ class ReplySecureMessage extends React.Component {
 					{this.renderRemainingChar()}
 				</div>
 				<div className="c-btn--group">
-					{!this.state.disabled ? (
+					{!disabled ? (
 						<button
 							name="Back"
 							className="c-btn c-btn--secondary"
 							onClick={this.callBackModal}
 						>
-							{this.props.content.back}
+							{content.back}
 						</button>
 					) : (
-							<Link
-								to={`${window.baseURl}/securemessages`}
-								className="c-btn c-btn--secondary"
-							>
-								{this.props.content.back}{' '}
-							</Link>
-						)}
+						<Link
+							to={`${window.baseURl}/securemessages`}
+							className="c-btn c-btn--secondary"
+						>
+							{content.back}{' '}
+						</Link>
+					)}
 					<button
 						name="Save Draft"
 						className="c-btn c-btn--secondary"
 						onClick={this.saveDraftData}
 						disabled={this.state.disabled}
 					>
-						{this.props.content.saveDraft}
+						{content.saveDraft}
 					</button>
 					<button
 						name="Send"
@@ -524,25 +532,25 @@ class ReplySecureMessage extends React.Component {
 						onClick={this.sendData}
 						disabled={this.state.disabled}
 					>
-						{this.props.content.send}
+						{content.send}
 					</button>
 				</div>
-				{this.state.showPopup && this.returnModalComponent()}
-				{this.state.showSentMessageModal && this.props.messages.successModal
+				{showPopup && this.returnModalComponent()}
+				{showSentMessageModal && messages.successModal
 					? this.returnSentMessageModal()
 					: ''}
-				{this.state.showDraftSuccessModal &&
-					this.props.messages.successModal &&
+				{showDraftSuccessModal &&
+					messages.successModal &&
 					this.returnDraftModal()}
-				{this.props.messages.newMessageError &&
-					this.state.showSaveServiceErrorModal &&
+				{messages.newMessageError &&
+					showSaveServiceErrorModal &&
 					this.returnErrorModal()}
-				{this.props.messages.newMessageError &&
-					this.state.showSendServiceErrorModal &&
+				{messages.newMessageError &&
+					showSendServiceErrorModal &&
 					this.returnErrorModal()}
 				<div className="row">
 					<div className="col-md1-18">
-						{this.getThreads(this.props.messages.messages, messageDetail)}
+						{this.getThreads(messages.messages, messageDetail)}
 					</div>
 				</div>
 			</div>
