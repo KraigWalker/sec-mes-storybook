@@ -76,6 +76,9 @@
     "test:watch": "npm test -- --watch",
     "lint": "eslint './src'"
   },
+    "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js"
+  },
   "author": "",
   "license": "ISC",
   "repository": {
