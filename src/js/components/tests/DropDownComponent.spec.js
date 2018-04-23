@@ -20,6 +20,7 @@ const mountWithStore = (component, store) => {
 };
 
 const selectSubject = (value, id) => {
+  
 };
 
 describe('DropDownComponent Component Check', () => {
