@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import GetIcon from '../common/GetIcon';
+import GetIcon from '../GetIcon';
 
 describe('GetIcon Component Check', () => {
 

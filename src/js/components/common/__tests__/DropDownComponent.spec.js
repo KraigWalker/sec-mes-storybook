@@ -4,9 +4,9 @@ import { shallow, mount } from 'enzyme';
 import { createMockStore } from 'redux-test-utils';
 import { Provider } from "react-redux";
 import createBrowserHistory from 'history/createBrowserHistory'
-import TestData from '../../content/secureMessagesTestData.json'
-import DropDownComponent from '../common/DropDownComponent'
-jest.mock("../common/DropDownComponent");
+import TestData from '../../../content/secureMessagesTestData.json'
+import DropDownComponent from '../DropDownComponent'
+jest.mock("../DropDownComponent");
 
 let props;
 const history = createBrowserHistory()

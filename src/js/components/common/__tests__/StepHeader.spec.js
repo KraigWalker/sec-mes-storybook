@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import StepHeader from '../common/StepHeader';
+import StepHeader from '../StepHeader';
 import { Router } from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
 

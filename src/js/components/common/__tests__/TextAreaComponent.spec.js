@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import TextAreaComponent from '../common/TextAreaComponent';
+import TextAreaComponent from '../TextAreaComponent';
 
 describe('TextAreaComponent Component Check', () => {
   const componentWrap = mount(<TextAreaComponent messageBody='text' disableText={true}/>);

@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { createMockStore } from 'redux-test-utils';
 import { Provider } from "react-redux";
-import SecureMessageSummary from '../common/SecureMessageSummary'
+import SecureMessageSummary from '../SecureMessageSummary'
 
 const shallowWithStore = (component, store) => {
   const context = {store,};

@@ -1,7 +1,6 @@
 import React from 'react';
-import content from '../../content';
 import { shallow, mount } from 'enzyme';
-import CalloutComponent from '../common/CalloutComponent'
+import CalloutComponent from '../CalloutComponent'
 
 describe('CalloutComponent Component Check', () => {
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import ModalComponent from '../common/ModalComponent';
+import ModalComponent from '../ModalComponent';
 
 describe('ModalComponent Component Check', () => {
   const testFunc = function () {

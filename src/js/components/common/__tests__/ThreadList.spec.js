@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { createMockStore } from 'redux-test-utils';
-import ThreadList from '../common/ThreadList';
+import ThreadList from '../ThreadList';
 import { Provider } from 'react-redux';
-import MessageEntity from '../../entities/MessageEntity';
-jest.mock("../common/ThreadsComponent");
+import MessageEntity from '../../../entities/MessageEntity';
+jest.mock("../ThreadsComponent");
 let props;
 const mountWithStore = (component, store) => {
 	const context = { store  };
