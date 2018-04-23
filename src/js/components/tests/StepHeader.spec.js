@@ -2,11 +2,7 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import StepHeader from '../common/StepHeader';
 import { Router } from 'react-router-dom';
-import Enzyme from 'enzyme';
-import Adapter from "enzyme-adapter-react-16";
 import createBrowserHistory from 'history/createBrowserHistory';
-
-Enzyme.configure({ adapter: new Adapter() });
 
 const history = createBrowserHistory()
 

@@ -1,10 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import TextAreaComponent from '../common/TextAreaComponent';
-import Enzyme from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
-
-Enzyme.configure({ adapter: new Adapter() });
 
 describe('TextAreaComponent Component Check', () => {
   const componentWrap = mount(<TextAreaComponent messageBody='text' disableText={true}/>);

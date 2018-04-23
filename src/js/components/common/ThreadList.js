@@ -5,6 +5,7 @@ import Thread from './ThreadsComponent';
 
 class ThreadList extends React.Component {
 	getThreadList() {
+		console.log('called',this.props);
 		const { Threads, currentMessage, content, isFromReplyMessage } = this.props;
 		const allThreads = [];
 		if (isFromReplyMessage) {

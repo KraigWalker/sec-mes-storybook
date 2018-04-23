@@ -1,10 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import Enzyme from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
 import GetIcon from '../common/GetIcon';
-
-Enzyme.configure({ adapter: new Adapter() });
 
 describe('GetIcon Component Check', () => {
 

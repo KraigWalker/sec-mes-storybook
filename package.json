@@ -38,6 +38,7 @@
     "file-loader": "^1.1.11",
     "html-loader": "^0.5.1",
     "html-webpack-plugin": "^2.30.1",
+    "jest": "^22.4.3",
     "json-loader": "^0.5.7",
     "lodash": "^4.17.4",
     "moment": "^2.19.2",
@@ -75,7 +76,8 @@
     "release": "tar -C src/ -czf secure-messaging-1.0.0.tgz compiled",
     "test:watch": "npm test -- --watch",
     "lint": "eslint './src'",
-    "lint:fix": "eslint './src' --fix"
+    "lint:fix": "eslint './src' --fix",
+    "test:coverage": "jest --coverage --u"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js"

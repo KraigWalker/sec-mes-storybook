@@ -2,14 +2,10 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { createMockStore } from 'redux-test-utils';
 import ThreadList from '../common/ThreadList';
-//import sinon from 'sinon';
 import { Provider } from 'react-redux';
 import MessageEntity from '../../entities/MessageEntity';
-import Enzyme from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
-
-Enzyme.configure({ adapter: new Adapter() });
-
+jest.mock("../common/ThreadsComponent");
+let props;
 const mountWithStore = (component, store) => {
 	const context = { store  };
 	return mount(<Provider store={store}>
@@ -22,7 +18,7 @@ describe('ThreadList Component Check', () => {
 	const messageEntity = new MessageEntity();
 	const testState = { messages: {} };
 	const store = createMockStore(testState);
-	const componentWrap = mountWithStore(<ThreadList currentMessage={messageEntity} isFromReplyMessage />, store);
+	const componentWrap = mountWithStore(<ThreadList currentMessage={messageEntity} isFromReplyMessage {...props}/>, store);
 
 	it('ThreadList component should mount', () => {
 		expect(typeof componentWrap).toBe('object');

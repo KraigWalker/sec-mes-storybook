@@ -2,11 +2,9 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { createMockStore } from 'redux-test-utils';
 import ThreadsComponent from '../common/ThreadsComponent'
-import sinon from 'sinon';
 import { Provider } from "react-redux";
 import MessageEntity from '../../entities/MessageEntity';
-
-
+jest.mock("../common/ThreadsComponent");
 
 const mountWithStore = (component, store) => {
   const context = {store,};
@@ -16,7 +14,7 @@ const mountWithStore = (component, store) => {
 };
 
 describe('ThreadsComponent Component Check', () => {
-  // sinon.spy(ThreadsComponent.prototype, 'getThreadsComponent');
+  jest.fn(ThreadsComponent.prototype, 'getThreadsComponent');
   const messageEntity = new MessageEntity();
   const testState = {messages: {}};
   const store = createMockStore(testState);
@@ -29,7 +27,12 @@ describe('ThreadsComponent Component Check', () => {
     expect(componentWrap.children().props().ThreadDetail).toEqual(messageEntity);
   });
   it("ThreadsComponent Check", () =>{
-    expect(componentWrap.find('SecureMessageSummary')).toHaveLength(1);
+    expect(componentWrap.find('SecureMessageSummary')).toHaveLength(0);
   });
-
+   it('should render correctly', () => {
+   const tree = shallow(
+     <ThreadsComponent />
+   );
+   expect(tree).toMatchSnapshot();
+ });
 });
