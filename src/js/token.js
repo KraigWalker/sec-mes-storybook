@@ -68,6 +68,22 @@ const token = {
 		}
 		return contentBankID;
 	},
+	getFingerPrints() {
+		const accessToken = window.location;
+		const hashKeyValue = {};
+		const hashValue = {};
+		let params;
+		let stateID;
+		if (accessToken.hash.length > 0 && window.location.hash) {
+			params = accessToken.hash.substr(1);
+			hashKeyValue.stateID = params.split('&')[5];
+			hashValue.stateID = hashKeyValue.stateID.split('=')[1];
+			if (hashValue.stateID !== undefined) {
+				stateID = hashValue.stateID;
+			}
+		}
+		return stateID;
+	},
 
 };
 
