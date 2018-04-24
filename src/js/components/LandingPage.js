@@ -16,9 +16,16 @@ import SvgIcon from './common/GetIcon.js';
 
 class LandingPage extends React.PureComponent {
     componentDidMount() {
+        const { token, history } = this.props;
+        const Fingerprint = require('fingerprintjs2');
+        new Fingerprint().get(result => { // fingerprint response is mandatory for security check
+			if (this.props.token.getFingerPrints() !== result) {
+				// this.props.history.push('/errormessage'); // Will be open in 9.2
+			}
+        });
         window.top.postMessage('clearNewMessagePage', '*');
         window.scrollTo(0, 0);
-    }
+    }   
 
     linkClick = activeTab => {
         this.props.dispatch(getActiveTab(activeTab));
