@@ -20,7 +20,7 @@ class LandingPage extends React.PureComponent {
         const Fingerprint = require('fingerprintjs2');
         new Fingerprint().get(result => { // fingerprint response is mandatory for security check
 			if (this.props.token.getFingerPrints() !== result) {
-				this.props.history.push('/errormessage');
+				// this.props.history.push('/errormessage'); // Will be open in 9.2
 			}
         });
         window.top.postMessage('clearNewMessagePage', '*');
