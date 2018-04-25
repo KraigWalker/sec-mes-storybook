@@ -4,6 +4,9 @@ import AccountsReducer from '../AccountsReducer';
 import renderer from 'react-test-renderer';
 
 describe('>>>R E D U C E R --- Test AccountsReducer', () => {
+    it('should return the initial state', () => {
+        expect(AccountsReducer(undefined, {})).toEqual({ accounts: [], fetching: false, fetched: false });
+    });
     it('+++ reducer for REQUEST_SECURE_MESSAGES', () => {
         let state = { accounts: [], fetching: false, fetched: false }
         state = AccountsReducer(state, { type: "REQUEST_SECURE_MESSAGES" })

@@ -4,6 +4,9 @@ import ViewMessageReducer from '../ViewMessageReducer';
 import renderer from 'react-test-renderer';
 
 describe('>>>R E D U C E R --- Test ViewMessageReducer', () => {
+    it('should return the initial state', () => {
+        expect(ViewMessageReducer(undefined, {})).toEqual({ messageDetail: {}, delSuccessModal: false });
+    });
     it('+++ reducer for SET_VIEW_MESSAGE_DETAIL', () => {
         let state = { messageDetail: {}, delSuccessModal: false };
         state = ViewMessageReducer(state, {

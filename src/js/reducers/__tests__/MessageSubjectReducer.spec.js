@@ -4,6 +4,9 @@ import MessageSubjectReducer from '../MessageSubjectReducer';
 import renderer from 'react-test-renderer';
 
 describe('>>>R E D U C E R --- Test MessageSubjectReducer', () => {
+    it('should return the initial state', () => {
+		expect(MessageSubjectReducer(undefined, {})).toEqual({ subjects: [], fetching: false, fetched: false, error: false });
+	});
     it('+++ reducer for REQUEST_SECURE_MESSAGES', () => {
         let state = { subjects: [], fetching: false, fetched: false, error: false };
         state = MessageSubjectReducer(state, { type: "REQUEST_SECURE_MESSAGES" });
