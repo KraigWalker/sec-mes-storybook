@@ -18,7 +18,7 @@ import StringsConstants from '../constants/StringsConstants';
 
 
 const messageEntity = new SendMessageRequestEntity();
-class NewSecureMessage extends React.Component {
+export class NewSecureMessage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.selectSubject = this.selectSubject.bind(this);
