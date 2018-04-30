@@ -23,7 +23,7 @@ import ModalComponent from "./common/ModalComponent";
 import { sendDeleteData } from "../actions/AppActions";
 let messageEntity = new SendMessageRequestEntity();
 
-class ViewMessage extends React.Component {
+export class ViewMessage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.getReplyButton = this.getReplyButton.bind(this);
@@ -78,7 +78,7 @@ class ViewMessage extends React.Component {
           Reply
 	</Link>
   		);
-  	} return '';
+  	};
   };
 
   getDeleteButton = message => (

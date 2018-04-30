@@ -1,10 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DropDownComponent Component Check should render correctly 1`] = `
+exports[`Dropdown snapshot should match to snapshot 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Connect(DropDownComponent) />,
+  Symbol(enzyme.__unrendered__): <DropDownComponent
+    content={
+      Object {
+        "back": "Back",
+      }
+    }
+    dispatch={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            [Function],
+          ],
+          Array [
+            [Function],
+          ],
+        ],
+      }
+    }
+    messages={
+      Object {
+        "messages": Array [],
+        "newMessageError": false,
+        "successModal": false,
+      }
+    }
+    messagesubjects={
+      Object {
+        "error": true,
+      }
+    }
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -12,9 +42,137 @@ ShallowWrapper {
     "simulateEvent": [Function],
     "unmount": [Function],
   },
-  Symbol(enzyme.__node__): null,
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <div>
+          <button
+            aria-label="undefined undefined"
+            className="c-field__input c-field__input--select c-dropdown u-cursor-pointer"
+            id={undefined}
+            onClick={[Function]}
+          />
+        </div>,
+        "",
+        "",
+        "",
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <button
+              aria-label="undefined undefined"
+              className="c-field__input c-field__input--select c-dropdown u-cursor-pointer"
+              id={undefined}
+              onClick={[Function]}
+            />,
+            false,
+            false,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "aria-label": "undefined undefined",
+              "children": undefined,
+              "className": "c-field__input c-field__input--select c-dropdown u-cursor-pointer",
+              "id": undefined,
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "button",
+          },
+          false,
+          false,
+        ],
+        "type": "div",
+      },
+      "",
+      "",
+      "",
+    ],
+    "type": "div",
+  },
   Symbol(enzyme.__nodes__): Array [
-    null,
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div>
+            <button
+              aria-label="undefined undefined"
+              className="c-field__input c-field__input--select c-dropdown u-cursor-pointer"
+              id={undefined}
+              onClick={[Function]}
+            />
+          </div>,
+          "",
+          "",
+          "",
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <button
+                aria-label="undefined undefined"
+                className="c-field__input c-field__input--select c-dropdown u-cursor-pointer"
+                id={undefined}
+                onClick={[Function]}
+              />,
+              false,
+              false,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "aria-label": "undefined undefined",
+                "children": undefined,
+                "className": "c-field__input c-field__input--select c-dropdown u-cursor-pointer",
+                "id": undefined,
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "button",
+            },
+            false,
+            false,
+          ],
+          "type": "div",
+        },
+        "",
+        "",
+        "",
+      ],
+      "type": "div",
+    },
   ],
   Symbol(enzyme.__options__): Object {
     "adapter": ReactFifteenFourAdapter {

@@ -5,36 +5,30 @@ import { createMockStore } from 'redux-test-utils';
 import { Provider } from "react-redux";
 import createBrowserHistory from 'history/createBrowserHistory'
 import TestData from '../../../content/secureMessagesTestData.json'
-import DropDownComponent from '../DropDownComponent'
-jest.mock("../DropDownComponent");
+import { DropDownComponent } from '../DropDownComponent'
 
+let component;
 let props;
-const history = createBrowserHistory()
-const mountWithStore = (component, store) => {
-  const context = { store, };
-  return mount(<Provider store={store}>
-    <Router history={history}>
-      {component}
-    </Router>
-  </Provider>, { context });
-};
 
-const selectSubject = (value, id) => {
-  
-};
-
-describe('DropDownComponent Component Check', () => {
-  const testState = { messages: {} };
-  const store = createMockStore(testState);
-  const componentWrap = mountWithStore(<DropDownComponent isFromDraftOrReply={true} id="accounts" selectSubject={selectSubject} />, store);
-
-  it("DropDownComponent component should mount", () => {
-    expect(typeof componentWrap).toBe('object');
-  });
-  it('should render correctly', () => {
-    const tree = shallow(
-      <DropDownComponent {...props}/>
-    );
-    expect(tree).toMatchSnapshot();
-  });
+describe("Dropdown snapshot", () => {
+    const dispatch = jest.fn();
+    let props = {
+        content: {
+            back: 'Back',
+        },
+        messages: {
+            successModal: false,
+            newMessageError: false,
+            messages: []
+        },
+        messagesubjects:{
+          error: true
+        },
+        dispatch: dispatch
+    };
+    let component = shallow(<DropDownComponent {...props} />);
+    component.setState({ showErrorModal: true });
+    it('should match to snapshot', () => {
+        expect(component).toMatchSnapshot();
+    });
 });

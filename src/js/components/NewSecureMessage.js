@@ -58,7 +58,6 @@ export class NewSecureMessage extends React.Component {
 		window.scrollTo(0, 0);
 	}
 
-	componentWillUnmount() { }
 	selectSubject(value, id, data) {
 		switch (id) {
 			case 'accounts':
@@ -87,13 +86,6 @@ export class NewSecureMessage extends React.Component {
 			window.top.postMessage('newMessagePage', '*');
 		}
 		this.setState({ chars_left: 3000 - e.length });
-		const extractedString = RegexUtils.matchString(e);
-		if (extractedString !== null) {
-			const lastFour = RegexUtils.getLastFourDigits(extractedString);
-			messageEntity.setMessage(
-				e.replace(new RegExp(extractedString, 'g'), `************${lastFour}`)
-			);
-		} else messageEntity.setMessage(e);
 		if (this.state.chars_left >= 0) {
 			this.setState({ charError: false });
 		}
@@ -431,7 +423,7 @@ export class NewSecureMessage extends React.Component {
 	}
 	render() {
 		const { content, subjects, accounts, messages } = this.props;
-		const { validationSubjectMsg, validationAccountMsg, showPopup, showDraftSuccessModal, showSentMessageModal, showSaveServiceErrorModal, disabled } = this.state;
+		const { validationSubjectMsg, validationAccountMsg, showPopup, showDraftSuccessModal, showSentMessageModal, showSaveServiceErrorModal, disabled, showSendServiceErrorModal } = this.state;
 		return (
 			<div className="container">
 				{this.returnBackButton()}

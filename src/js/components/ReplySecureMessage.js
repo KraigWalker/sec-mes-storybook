@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import StepHeader from './common/StepHeader';
 import TextAreaComponent from './common/TextAreaComponent';
 import DropDownComponent from './common/DropDownComponent';
-import RegexUtils from '../utils/RegexUtils';
 import SendMessageRequestEntity from '../entities/SendMessageRequestEntity';
 import {
 	replyMessageData,
@@ -20,7 +19,7 @@ import StringsConstants from '../constants/StringsConstants';
 
 const messageEntity = new SendMessageRequestEntity();
 
-class ReplySecureMessage extends React.Component {
+export class ReplySecureMessage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.textChange = this.textChange.bind(this);
@@ -102,13 +101,6 @@ class ReplySecureMessage extends React.Component {
 			window.top.postMessage('newMessagePage', '*');
 		}
 		this.setState({ chars_left: 3000 - e.length });
-		const extractedString = RegexUtils.matchString(e);
-		if (extractedString !== null) {
-			const lastFour = RegexUtils.getLastFourDigits(extractedString);
-			messageEntity.setMessage(
-				e.replace(new RegExp(extractedString, 'g'), `************${lastFour}`)
-			);
-		} else messageEntity.setMessage(e);
 		if (this.state.chars_left >= 0) {
 			this.setState({ charError: false });
 		}
