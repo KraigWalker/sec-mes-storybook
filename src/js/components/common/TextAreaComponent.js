@@ -6,25 +6,21 @@ class TextAreaComponent extends React.Component {
     constructor(props) {
         super(props);
         this.textChange = this.textChange.bind(this);
-        this.check = this.check.bind(this);
-        this.state = {
-            textLength: 0,
-        }
+        this.setTextInputRef = element => {
+            this.textInput = element;
+        };
     }
-    componentDidMount(){
-        if(this.refs.txtarea) {
-        if(this.props.draftData) {
-            this.refs.txtarea.value = this.props.draftData;
+    componentDidMount() {
+        if (this.props.draftData) {
+            this.textInput.value = this.props.draftData;
             this.props.textData(this.props.draftData);
-        } else this.refs.txtarea.value = '';
+        } else {
+            this.textInput.value = '';
         }
     }
     textChange(e) {
         autosize(document.getElementById('message'));
         this.props.textData(e.target.value);
-    }
-    check(e) {
-        // this.props.pastedData(e.clipboardData.getData('Text'));
     }
     render() {
         return (
@@ -38,7 +34,7 @@ class TextAreaComponent extends React.Component {
                 value={this.props.message}
                 disabled={this.props.disableText}
                 maxLength='infinity'
-                ref="txtarea"
+                ref={this.setTextInputRef}
                 aria-labelledby={`${this.props.accessID}`}
                 aria-describedby={this.props.ariaId}
             >
@@ -47,6 +43,6 @@ class TextAreaComponent extends React.Component {
     }
 }
 TextAreaComponent.defaultProps = {
-	ariaId : '',
+    ariaId: '',
 }
 export default TextAreaComponent;

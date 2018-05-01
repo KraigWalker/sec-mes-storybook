@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import StepHeader from './common/StepHeader';
 import TextAreaComponent from './common/TextAreaComponent';
 import DropDownComponent from './common/DropDownComponent';
+import RegexUtils from '../utils/RegexUtils';
 import SendMessageRequestEntity from '../entities/SendMessageRequestEntity';
 import {
 	replyMessageData,
@@ -101,6 +102,13 @@ export class ReplySecureMessage extends React.Component {
 			window.top.postMessage('newMessagePage', '*');
 		}
 		this.setState({ chars_left: 3000 - e.length });
+		const extractedString = RegexUtils.matchString(e);
+		if (extractedString !== null) {
+			const lastFour = RegexUtils.getLastFourDigits(extractedString);
+			messageEntity.setMessage(
+				e.replace(new RegExp(extractedString, 'g'), `************${lastFour}`)
+			);
+		} else messageEntity.setMessage(e);
 		if (this.state.chars_left >= 0) {
 			this.setState({ charError: false });
 		}
@@ -503,13 +511,13 @@ export class ReplySecureMessage extends React.Component {
 							{content.back}
 						</button>
 					) : (
-						<Link
-							to={`${window.baseURl}/securemessages`}
-							className="c-btn c-btn--secondary"
-						>
-							{content.back}{' '}
-						</Link>
-					)}
+							<Link
+								to={`${window.baseURl}/securemessages`}
+								className="c-btn c-btn--secondary"
+							>
+								{content.back}{' '}
+							</Link>
+						)}
 					<button
 						name="Save Draft"
 						className="c-btn c-btn--secondary"

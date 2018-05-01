@@ -8,6 +8,7 @@ import StepHeader from './common/StepHeader';
 import SendMessageRequestEntity from '../entities/SendMessageRequestEntity';
 import ModalComponent from './common/ModalComponent';
 import GetIcon from './common/GetIcon';
+import RegexUtils from '../utils/RegexUtils';
 import { getAccountName } from '../bl/SecureMessageBL';
 import CalloutComponent from './common/CalloutComponent';
 import StringsConstants from '../constants/StringsConstants';
@@ -77,6 +78,11 @@ export class DraftSecureMessage extends React.Component {
 			this.setState({ disabled: false });
 		}
 		this.setState({ chars_left: 3000 - e.length });
+		const extractedString = RegexUtils.matchString(e);
+		if (extractedString !== null) {
+			const lastFour = RegexUtils.getLastFourDigits(extractedString);
+			messageEntity.setMessage(e.replace(new RegExp(extractedString, 'g'), `************${lastFour}`));
+		} else messageEntity.setMessage(e);
 		if (this.state.chars_left >= 0) {
 			this.setState({ charError: false });
 		}
