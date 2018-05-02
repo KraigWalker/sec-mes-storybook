@@ -14,8 +14,6 @@ class TextAreaComponent extends React.Component {
         if (this.props.draftData) {
             this.textInput.value = this.props.draftData;
             this.props.textData(this.props.draftData);
-        } else {
-            this.textInput.value = '';
         }
     }
     textChange(e) {
