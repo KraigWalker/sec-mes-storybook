@@ -34,7 +34,7 @@ module.exports = {
 			{
 				test: /\.js?$/,
 				include: resolve(__dirname, 'src'), // Avoid use of exclude
-				loader: 'babel-loader',
+				loader: 'babel-loader'
 			},
 			{
 				test: /\.scss$/,
