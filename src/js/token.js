@@ -47,7 +47,7 @@ const token = {
 		}
 		return {
 			client: {
-				app_title: "B Web",
+				app_title: hashValue.appTitle,
 				user_tracking_id: hashValue.userTrackingId,
 			},
 		};
