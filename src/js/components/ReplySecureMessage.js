@@ -20,7 +20,7 @@ import StringsConstants from '../constants/StringsConstants';
 
 const messageEntity = new SendMessageRequestEntity();
 
-class ReplySecureMessage extends React.Component {
+export class ReplySecureMessage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.textChange = this.textChange.bind(this);
@@ -511,13 +511,13 @@ class ReplySecureMessage extends React.Component {
 							{content.back}
 						</button>
 					) : (
-						<Link
-							to={`${window.baseURl}/securemessages`}
-							className="c-btn c-btn--secondary"
-						>
-							{content.back}{' '}
-						</Link>
-					)}
+							<Link
+								to={`${window.baseURl}/securemessages`}
+								className="c-btn c-btn--secondary"
+							>
+								{content.back}{' '}
+							</Link>
+						)}
 					<button
 						name="Save Draft"
 						className="c-btn c-btn--secondary"

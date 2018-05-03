@@ -2,10 +2,10 @@ import React from 'react';
 import { Tabs, Tab, Grid, Row, Col } from 'react-bootstrap';
 import SecureMessageList from './SecureMessageList';
 import { DRAFT, SENT, INBOX, NEW } from '../constants/StringsConstants';
-
+import _ from 'lodash';
 const titleName = ['Inbox', 'Drafts', 'Sent'];
 
-class SecureMessageTabs extends React.Component {
+export class SecureMessageTabs extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {

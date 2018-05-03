@@ -14,7 +14,7 @@ import CalloutComponent from './common/CalloutComponent';
 import StringsConstants from '../constants/StringsConstants';
 
 const messageEntity = new SendMessageRequestEntity();
-class DraftSecureMessage extends React.Component {
+export class DraftSecureMessage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.renderRemainingChar = this.renderRemainingChar.bind(this);

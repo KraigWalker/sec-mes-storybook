@@ -7,7 +7,7 @@ import { getMessageSubjects, popupState } from '../../actions/AppActions';
 import CalloutComponent from './CalloutComponent';
 import ModalComponent from './ModalComponent';
 
-class DropDownComponent extends React.Component {
+export class DropDownComponent extends React.Component {
 	constructor(props) {
 		super(props);
 		this.returnMenuItem = this.returnMenuItem.bind(this);
@@ -126,7 +126,7 @@ class DropDownComponent extends React.Component {
 	}
 	render() {
 		const { ddId, accessID, showAccountError, showSubjectError, messagesubjects, content } = this.props;
-		const { btnText, list } = this.state;
+		const { btnText, list, showErrorModal } = this.state;
 		const overlayClassName = cx({
 			'c-overlay overlay__custom--zindex': true,
 			overlay__show: list,
