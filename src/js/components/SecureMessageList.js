@@ -10,7 +10,7 @@ import { SENT, INBOX, DRAFT } from '../constants/StringsConstants';
 
 const MESSAGE_LIMIT = 20;
 
-class SecureMessageList extends React.Component {
+export class SecureMessageList extends React.Component {
 	constructor(props) {
 		super(props);
 		this.showMoreClicked = this.showMoreClicked.bind(this);
@@ -25,26 +25,6 @@ class SecureMessageList extends React.Component {
 		}
 		if (messages.length == 0) {
 			this.setState({ showThatsAllMessage: false });
-		}
-		if (messagesFetched.fetched) {
-			switch (activeTab) {
-				case (activeTab === SENT):
-					dispatch(
-						sendMessageForAccessibiltiy(content.noSentMessages)
-					);
-					break;
-				case (activeTab === DRAFT):
-					dispatch(
-						sendMessageForAccessibiltiy(content.noDraftMessages)
-					);
-					break;
-				case (activeTab === INBOX):
-					dispatch(
-						sendMessageForAccessibiltiy(content.noInboxMessages)
-					);
-					break;
-				default:
-			}
 		}
 	}
 	showMessages() {

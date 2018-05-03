@@ -14,13 +14,14 @@ import SvgIcon from './common/GetIcon.js';
  * Landing Page of the application
 */
 
-class LandingPage extends React.PureComponent {
+export class LandingPage extends React.PureComponent {
     componentDidMount() {
         const { token, history } = this.props;
         const Fingerprint = require('fingerprintjs2');
         new Fingerprint().get(result => { // fingerprint response is mandatory for security check
 			if (this.props.token.getFingerPrints() !== result) {
-				this.props.history.push('/errormessage');
+				// TODOxCYBG
+               // this.props.history.push('/errormessage');
 			}
         });
         window.top.postMessage('clearNewMessagePage', '*');

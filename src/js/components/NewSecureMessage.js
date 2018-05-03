@@ -18,7 +18,7 @@ import StringsConstants from '../constants/StringsConstants';
 
 
 const messageEntity = new SendMessageRequestEntity();
-class NewSecureMessage extends React.Component {
+export class NewSecureMessage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.selectSubject = this.selectSubject.bind(this);
@@ -58,7 +58,6 @@ class NewSecureMessage extends React.Component {
 		window.scrollTo(0, 0);
 	}
 
-	componentWillUnmount() { }
 	selectSubject(value, id, data) {
 		switch (id) {
 			case 'accounts':
@@ -431,7 +430,7 @@ class NewSecureMessage extends React.Component {
 	}
 	render() {
 		const { content, subjects, accounts, messages } = this.props;
-		const { validationSubjectMsg, validationAccountMsg, showPopup, showDraftSuccessModal, showSentMessageModal, showSaveServiceErrorModal, disabled } = this.state;
+		const { validationSubjectMsg, validationAccountMsg, showPopup, showDraftSuccessModal, showSentMessageModal, showSaveServiceErrorModal, disabled, showSendServiceErrorModal } = this.state;
 		return (
 			<div className="container">
 				{this.returnBackButton()}
@@ -526,13 +525,13 @@ class NewSecureMessage extends React.Component {
 							{content.back}
 						</button>
 					) : (
-						<Link
-							to={`${window.baseURl}/securemessages`}
-							className="c-btn c-btn--secondary"
-						>
-							{content.back}
-						</Link>
-					)}
+							<Link
+								to={`${window.baseURl}/securemessages`}
+								className="c-btn c-btn--secondary"
+							>
+								{content.back}
+							</Link>
+						)}
 					<button
 						name="Save Draft"
 						className="c-btn c-btn--secondary"

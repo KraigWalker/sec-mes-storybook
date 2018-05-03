@@ -1,0 +1,1507 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`New Secure message snapshot should match to snapshot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ReplySecureMessage
+    content={
+      Object {
+        "back": "Back",
+      }
+    }
+    dispatch={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            [Function],
+          ],
+        ],
+      }
+    }
+    location={
+      Object {
+        "messageDetail": Object {
+          "account": Object {
+            "accountId": "343434222",
+            "number": "5666666",
+          },
+        },
+      }
+    }
+    messages={
+      Object {
+        "messages": Array [],
+        "newMessageError": false,
+        "successModal": false,
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <div
+          className="row"
+        >
+          <div
+            className="col-md1-18"
+          >
+            <StepHeader
+              headerCrumbsMessage="Back"
+              headerCrumbsPath={
+                Object {
+                  "pathname": Object {
+                    "messageDetail": Object {
+                      "account": Object {
+                        "accountId": "343434222",
+                        "number": "5666666",
+                      },
+                    },
+                  },
+                }
+              }
+              headerTitle="Reply"
+              onClick={[Function]}
+              showControl={false}
+              showheaderCrumbs={true}
+            />
+          </div>
+        </div>,
+        <div
+          className="c-field"
+        >
+          <label
+            className="c-field__label c-field__label--block"
+            htmlFor="subjects"
+            id="subjectTitle"
+          />
+          <div
+            className="c-field__controls u-position-relative"
+          >
+            <Connect(DropDownComponent)
+              accessID="Subject"
+              content={
+                Object {
+                  "back": "Back",
+                }
+              }
+              id="subjects"
+              isFromDraftOrReply={true}
+              isFromReply={true}
+              name="subjects"
+              selectSubject={[Function]}
+              selectedValue={undefined}
+              subjects={undefined}
+            />
+          </div>
+        </div>,
+        <div
+          className="c-field"
+        >
+          <label
+            className="c-field__label c-field__label--block"
+            htmlFor="subjects"
+            id="relatesTitle"
+          />
+          <div
+            className="c-field__controls u-position-relative"
+          >
+            <Connect(DropDownComponent)
+              accessID="Message relates to"
+              accounts="5666666"
+              content={
+                Object {
+                  "back": "Back",
+                }
+              }
+              id="accounts"
+              isFromDraftOrReply={true}
+              isFromReply={true}
+              name="accounts"
+              selectSubject={[Function]}
+              selectedValue={undefined}
+            />
+          </div>
+        </div>,
+        <div
+          className="c-field"
+        >
+          <label
+            className="c-field__label c-field__label--block"
+            htmlFor="subjects"
+            id="messageTitle"
+          />
+          <div
+            className="c-field__controls"
+          >
+            <div
+              className="u-visually-hidden off-screen"
+              id="textAreaMaxMsg"
+            />
+            <TextAreaComponent
+              accessID="messageTitle"
+              ariaId="textAreaMaxMsg"
+              id="message"
+              textData={[Function]}
+            />
+          </div>
+        </div>,
+        <div
+          className="c-btn--group"
+        >
+          <Link
+            className="c-btn c-btn--secondary"
+            replace={false}
+            to="undefined/securemessages"
+          >
+            Back
+             
+          </Link>
+          <button
+            className="c-btn c-btn--secondary"
+            disabled={true}
+            name="Save Draft"
+            onClick={[Function]}
+          />
+          <button
+            className="c-btn c-btn--default"
+            disabled={true}
+            name="Send"
+            onClick={[Function]}
+          />
+        </div>,
+        false,
+        "",
+        false,
+        false,
+        false,
+        <div
+          className="row"
+        >
+          <div
+            className="col-md1-18"
+          >
+            <ThreadList
+              Threads={undefined}
+              content={
+                Object {
+                  "back": "Back",
+                }
+              }
+              currentMessage={
+                Object {
+                  "account": Object {
+                    "accountId": "343434222",
+                    "number": "5666666",
+                  },
+                }
+              }
+              isFromReplyMessage={true}
+            />
+          </div>
+        </div>,
+      ],
+      "className": "container",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <div
+            className="col-md1-18"
+          >
+            <StepHeader
+              headerCrumbsMessage="Back"
+              headerCrumbsPath={
+                Object {
+                  "pathname": Object {
+                    "messageDetail": Object {
+                      "account": Object {
+                        "accountId": "343434222",
+                        "number": "5666666",
+                      },
+                    },
+                  },
+                }
+              }
+              headerTitle="Reply"
+              onClick={[Function]}
+              showControl={false}
+              showheaderCrumbs={true}
+            />
+          </div>,
+          "className": "row",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <StepHeader
+              headerCrumbsMessage="Back"
+              headerCrumbsPath={
+                Object {
+                  "pathname": Object {
+                    "messageDetail": Object {
+                      "account": Object {
+                        "accountId": "343434222",
+                        "number": "5666666",
+                      },
+                    },
+                  },
+                }
+              }
+              headerTitle="Reply"
+              onClick={[Function]}
+              showControl={false}
+              showheaderCrumbs={true}
+            />,
+            "className": "col-md1-18",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "headerCrumbsMessage": "Back",
+              "headerCrumbsPath": Object {
+                "pathname": Object {
+                  "messageDetail": Object {
+                    "account": Object {
+                      "accountId": "343434222",
+                      "number": "5666666",
+                    },
+                  },
+                },
+              },
+              "headerTitle": "Reply",
+              "onClick": [Function],
+              "showControl": false,
+              "showheaderCrumbs": true,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": "div",
+        },
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <label
+              className="c-field__label c-field__label--block"
+              htmlFor="subjects"
+              id="subjectTitle"
+            />,
+            <div
+              className="c-field__controls u-position-relative"
+            >
+              <Connect(DropDownComponent)
+                accessID="Subject"
+                content={
+                  Object {
+                    "back": "Back",
+                  }
+                }
+                id="subjects"
+                isFromDraftOrReply={true}
+                isFromReply={true}
+                name="subjects"
+                selectSubject={[Function]}
+                selectedValue={undefined}
+                subjects={undefined}
+              />
+            </div>,
+          ],
+          "className": "c-field",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": undefined,
+              "className": "c-field__label c-field__label--block",
+              "htmlFor": "subjects",
+              "id": "subjectTitle",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "label",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <Connect(DropDownComponent)
+                accessID="Subject"
+                content={
+                  Object {
+                    "back": "Back",
+                  }
+                }
+                id="subjects"
+                isFromDraftOrReply={true}
+                isFromReply={true}
+                name="subjects"
+                selectSubject={[Function]}
+                selectedValue={undefined}
+                subjects={undefined}
+              />,
+              "className": "c-field__controls u-position-relative",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "accessID": "Subject",
+                "content": Object {
+                  "back": "Back",
+                },
+                "id": "subjects",
+                "isFromDraftOrReply": true,
+                "isFromReply": true,
+                "name": "subjects",
+                "selectSubject": [Function],
+                "selectedValue": undefined,
+                "subjects": undefined,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <label
+              className="c-field__label c-field__label--block"
+              htmlFor="subjects"
+              id="relatesTitle"
+            />,
+            <div
+              className="c-field__controls u-position-relative"
+            >
+              <Connect(DropDownComponent)
+                accessID="Message relates to"
+                accounts="5666666"
+                content={
+                  Object {
+                    "back": "Back",
+                  }
+                }
+                id="accounts"
+                isFromDraftOrReply={true}
+                isFromReply={true}
+                name="accounts"
+                selectSubject={[Function]}
+                selectedValue={undefined}
+              />
+            </div>,
+          ],
+          "className": "c-field",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": undefined,
+              "className": "c-field__label c-field__label--block",
+              "htmlFor": "subjects",
+              "id": "relatesTitle",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "label",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <Connect(DropDownComponent)
+                accessID="Message relates to"
+                accounts="5666666"
+                content={
+                  Object {
+                    "back": "Back",
+                  }
+                }
+                id="accounts"
+                isFromDraftOrReply={true}
+                isFromReply={true}
+                name="accounts"
+                selectSubject={[Function]}
+                selectedValue={undefined}
+              />,
+              "className": "c-field__controls u-position-relative",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "accessID": "Message relates to",
+                "accounts": "5666666",
+                "content": Object {
+                  "back": "Back",
+                },
+                "id": "accounts",
+                "isFromDraftOrReply": true,
+                "isFromReply": true,
+                "name": "accounts",
+                "selectSubject": [Function],
+                "selectedValue": undefined,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <label
+              className="c-field__label c-field__label--block"
+              htmlFor="subjects"
+              id="messageTitle"
+            />,
+            <div
+              className="c-field__controls"
+            >
+              <div
+                className="u-visually-hidden off-screen"
+                id="textAreaMaxMsg"
+              />
+              <TextAreaComponent
+                accessID="messageTitle"
+                ariaId="textAreaMaxMsg"
+                id="message"
+                textData={[Function]}
+              />
+            </div>,
+            undefined,
+          ],
+          "className": "c-field",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": undefined,
+              "className": "c-field__label c-field__label--block",
+              "htmlFor": "subjects",
+              "id": "messageTitle",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "label",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <div
+                  className="u-visually-hidden off-screen"
+                  id="textAreaMaxMsg"
+                />,
+                <TextAreaComponent
+                  accessID="messageTitle"
+                  ariaId="textAreaMaxMsg"
+                  id="message"
+                  textData={[Function]}
+                />,
+              ],
+              "className": "c-field__controls",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": undefined,
+                  "className": "u-visually-hidden off-screen",
+                  "id": "textAreaMaxMsg",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "accessID": "messageTitle",
+                  "ariaId": "textAreaMaxMsg",
+                  "id": "message",
+                  "textData": [Function],
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": "div",
+          },
+          undefined,
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <Link
+              className="c-btn c-btn--secondary"
+              replace={false}
+              to="undefined/securemessages"
+            >
+              Back
+               
+            </Link>,
+            <button
+              className="c-btn c-btn--secondary"
+              disabled={true}
+              name="Save Draft"
+              onClick={[Function]}
+            />,
+            <button
+              className="c-btn c-btn--default"
+              disabled={true}
+              name="Send"
+              onClick={[Function]}
+            />,
+          ],
+          "className": "c-btn--group",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                "Back",
+                " ",
+              ],
+              "className": "c-btn c-btn--secondary",
+              "replace": false,
+              "to": "undefined/securemessages",
+            },
+            "ref": null,
+            "rendered": Array [
+              "Back",
+              " ",
+            ],
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": undefined,
+              "className": "c-btn c-btn--secondary",
+              "disabled": true,
+              "name": "Save Draft",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "button",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": undefined,
+              "className": "c-btn c-btn--default",
+              "disabled": true,
+              "name": "Send",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "button",
+          },
+        ],
+        "type": "div",
+      },
+      false,
+      "",
+      false,
+      false,
+      false,
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <div
+            className="col-md1-18"
+          >
+            <ThreadList
+              Threads={undefined}
+              content={
+                Object {
+                  "back": "Back",
+                }
+              }
+              currentMessage={
+                Object {
+                  "account": Object {
+                    "accountId": "343434222",
+                    "number": "5666666",
+                  },
+                }
+              }
+              isFromReplyMessage={true}
+            />
+          </div>,
+          "className": "row",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <ThreadList
+              Threads={undefined}
+              content={
+                Object {
+                  "back": "Back",
+                }
+              }
+              currentMessage={
+                Object {
+                  "account": Object {
+                    "accountId": "343434222",
+                    "number": "5666666",
+                  },
+                }
+              }
+              isFromReplyMessage={true}
+            />,
+            "className": "col-md1-18",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "Threads": undefined,
+              "content": Object {
+                "back": "Back",
+              },
+              "currentMessage": Object {
+                "account": Object {
+                  "accountId": "343434222",
+                  "number": "5666666",
+                },
+              },
+              "isFromReplyMessage": true,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": "div",
+        },
+        "type": "div",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div
+            className="row"
+          >
+            <div
+              className="col-md1-18"
+            >
+              <StepHeader
+                headerCrumbsMessage="Back"
+                headerCrumbsPath={
+                  Object {
+                    "pathname": Object {
+                      "messageDetail": Object {
+                        "account": Object {
+                          "accountId": "343434222",
+                          "number": "5666666",
+                        },
+                      },
+                    },
+                  }
+                }
+                headerTitle="Reply"
+                onClick={[Function]}
+                showControl={false}
+                showheaderCrumbs={true}
+              />
+            </div>
+          </div>,
+          <div
+            className="c-field"
+          >
+            <label
+              className="c-field__label c-field__label--block"
+              htmlFor="subjects"
+              id="subjectTitle"
+            />
+            <div
+              className="c-field__controls u-position-relative"
+            >
+              <Connect(DropDownComponent)
+                accessID="Subject"
+                content={
+                  Object {
+                    "back": "Back",
+                  }
+                }
+                id="subjects"
+                isFromDraftOrReply={true}
+                isFromReply={true}
+                name="subjects"
+                selectSubject={[Function]}
+                selectedValue={undefined}
+                subjects={undefined}
+              />
+            </div>
+          </div>,
+          <div
+            className="c-field"
+          >
+            <label
+              className="c-field__label c-field__label--block"
+              htmlFor="subjects"
+              id="relatesTitle"
+            />
+            <div
+              className="c-field__controls u-position-relative"
+            >
+              <Connect(DropDownComponent)
+                accessID="Message relates to"
+                accounts="5666666"
+                content={
+                  Object {
+                    "back": "Back",
+                  }
+                }
+                id="accounts"
+                isFromDraftOrReply={true}
+                isFromReply={true}
+                name="accounts"
+                selectSubject={[Function]}
+                selectedValue={undefined}
+              />
+            </div>
+          </div>,
+          <div
+            className="c-field"
+          >
+            <label
+              className="c-field__label c-field__label--block"
+              htmlFor="subjects"
+              id="messageTitle"
+            />
+            <div
+              className="c-field__controls"
+            >
+              <div
+                className="u-visually-hidden off-screen"
+                id="textAreaMaxMsg"
+              />
+              <TextAreaComponent
+                accessID="messageTitle"
+                ariaId="textAreaMaxMsg"
+                id="message"
+                textData={[Function]}
+              />
+            </div>
+          </div>,
+          <div
+            className="c-btn--group"
+          >
+            <Link
+              className="c-btn c-btn--secondary"
+              replace={false}
+              to="undefined/securemessages"
+            >
+              Back
+               
+            </Link>
+            <button
+              className="c-btn c-btn--secondary"
+              disabled={true}
+              name="Save Draft"
+              onClick={[Function]}
+            />
+            <button
+              className="c-btn c-btn--default"
+              disabled={true}
+              name="Send"
+              onClick={[Function]}
+            />
+          </div>,
+          false,
+          "",
+          false,
+          false,
+          false,
+          <div
+            className="row"
+          >
+            <div
+              className="col-md1-18"
+            >
+              <ThreadList
+                Threads={undefined}
+                content={
+                  Object {
+                    "back": "Back",
+                  }
+                }
+                currentMessage={
+                  Object {
+                    "account": Object {
+                      "accountId": "343434222",
+                      "number": "5666666",
+                    },
+                  }
+                }
+                isFromReplyMessage={true}
+              />
+            </div>
+          </div>,
+        ],
+        "className": "container",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <div
+              className="col-md1-18"
+            >
+              <StepHeader
+                headerCrumbsMessage="Back"
+                headerCrumbsPath={
+                  Object {
+                    "pathname": Object {
+                      "messageDetail": Object {
+                        "account": Object {
+                          "accountId": "343434222",
+                          "number": "5666666",
+                        },
+                      },
+                    },
+                  }
+                }
+                headerTitle="Reply"
+                onClick={[Function]}
+                showControl={false}
+                showheaderCrumbs={true}
+              />
+            </div>,
+            "className": "row",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <StepHeader
+                headerCrumbsMessage="Back"
+                headerCrumbsPath={
+                  Object {
+                    "pathname": Object {
+                      "messageDetail": Object {
+                        "account": Object {
+                          "accountId": "343434222",
+                          "number": "5666666",
+                        },
+                      },
+                    },
+                  }
+                }
+                headerTitle="Reply"
+                onClick={[Function]}
+                showControl={false}
+                showheaderCrumbs={true}
+              />,
+              "className": "col-md1-18",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "headerCrumbsMessage": "Back",
+                "headerCrumbsPath": Object {
+                  "pathname": Object {
+                    "messageDetail": Object {
+                      "account": Object {
+                        "accountId": "343434222",
+                        "number": "5666666",
+                      },
+                    },
+                  },
+                },
+                "headerTitle": "Reply",
+                "onClick": [Function],
+                "showControl": false,
+                "showheaderCrumbs": true,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": "div",
+          },
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <label
+                className="c-field__label c-field__label--block"
+                htmlFor="subjects"
+                id="subjectTitle"
+              />,
+              <div
+                className="c-field__controls u-position-relative"
+              >
+                <Connect(DropDownComponent)
+                  accessID="Subject"
+                  content={
+                    Object {
+                      "back": "Back",
+                    }
+                  }
+                  id="subjects"
+                  isFromDraftOrReply={true}
+                  isFromReply={true}
+                  name="subjects"
+                  selectSubject={[Function]}
+                  selectedValue={undefined}
+                  subjects={undefined}
+                />
+              </div>,
+            ],
+            "className": "c-field",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": undefined,
+                "className": "c-field__label c-field__label--block",
+                "htmlFor": "subjects",
+                "id": "subjectTitle",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "label",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <Connect(DropDownComponent)
+                  accessID="Subject"
+                  content={
+                    Object {
+                      "back": "Back",
+                    }
+                  }
+                  id="subjects"
+                  isFromDraftOrReply={true}
+                  isFromReply={true}
+                  name="subjects"
+                  selectSubject={[Function]}
+                  selectedValue={undefined}
+                  subjects={undefined}
+                />,
+                "className": "c-field__controls u-position-relative",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "accessID": "Subject",
+                  "content": Object {
+                    "back": "Back",
+                  },
+                  "id": "subjects",
+                  "isFromDraftOrReply": true,
+                  "isFromReply": true,
+                  "name": "subjects",
+                  "selectSubject": [Function],
+                  "selectedValue": undefined,
+                  "subjects": undefined,
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <label
+                className="c-field__label c-field__label--block"
+                htmlFor="subjects"
+                id="relatesTitle"
+              />,
+              <div
+                className="c-field__controls u-position-relative"
+              >
+                <Connect(DropDownComponent)
+                  accessID="Message relates to"
+                  accounts="5666666"
+                  content={
+                    Object {
+                      "back": "Back",
+                    }
+                  }
+                  id="accounts"
+                  isFromDraftOrReply={true}
+                  isFromReply={true}
+                  name="accounts"
+                  selectSubject={[Function]}
+                  selectedValue={undefined}
+                />
+              </div>,
+            ],
+            "className": "c-field",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": undefined,
+                "className": "c-field__label c-field__label--block",
+                "htmlFor": "subjects",
+                "id": "relatesTitle",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "label",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <Connect(DropDownComponent)
+                  accessID="Message relates to"
+                  accounts="5666666"
+                  content={
+                    Object {
+                      "back": "Back",
+                    }
+                  }
+                  id="accounts"
+                  isFromDraftOrReply={true}
+                  isFromReply={true}
+                  name="accounts"
+                  selectSubject={[Function]}
+                  selectedValue={undefined}
+                />,
+                "className": "c-field__controls u-position-relative",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "accessID": "Message relates to",
+                  "accounts": "5666666",
+                  "content": Object {
+                    "back": "Back",
+                  },
+                  "id": "accounts",
+                  "isFromDraftOrReply": true,
+                  "isFromReply": true,
+                  "name": "accounts",
+                  "selectSubject": [Function],
+                  "selectedValue": undefined,
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <label
+                className="c-field__label c-field__label--block"
+                htmlFor="subjects"
+                id="messageTitle"
+              />,
+              <div
+                className="c-field__controls"
+              >
+                <div
+                  className="u-visually-hidden off-screen"
+                  id="textAreaMaxMsg"
+                />
+                <TextAreaComponent
+                  accessID="messageTitle"
+                  ariaId="textAreaMaxMsg"
+                  id="message"
+                  textData={[Function]}
+                />
+              </div>,
+              undefined,
+            ],
+            "className": "c-field",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": undefined,
+                "className": "c-field__label c-field__label--block",
+                "htmlFor": "subjects",
+                "id": "messageTitle",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "label",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <div
+                    className="u-visually-hidden off-screen"
+                    id="textAreaMaxMsg"
+                  />,
+                  <TextAreaComponent
+                    accessID="messageTitle"
+                    ariaId="textAreaMaxMsg"
+                    id="message"
+                    textData={[Function]}
+                  />,
+                ],
+                "className": "c-field__controls",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": undefined,
+                    "className": "u-visually-hidden off-screen",
+                    "id": "textAreaMaxMsg",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "div",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "accessID": "messageTitle",
+                    "ariaId": "textAreaMaxMsg",
+                    "id": "message",
+                    "textData": [Function],
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": "div",
+            },
+            undefined,
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <Link
+                className="c-btn c-btn--secondary"
+                replace={false}
+                to="undefined/securemessages"
+              >
+                Back
+                 
+              </Link>,
+              <button
+                className="c-btn c-btn--secondary"
+                disabled={true}
+                name="Save Draft"
+                onClick={[Function]}
+              />,
+              <button
+                className="c-btn c-btn--default"
+                disabled={true}
+                name="Send"
+                onClick={[Function]}
+              />,
+            ],
+            "className": "c-btn--group",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  "Back",
+                  " ",
+                ],
+                "className": "c-btn c-btn--secondary",
+                "replace": false,
+                "to": "undefined/securemessages",
+              },
+              "ref": null,
+              "rendered": Array [
+                "Back",
+                " ",
+              ],
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": undefined,
+                "className": "c-btn c-btn--secondary",
+                "disabled": true,
+                "name": "Save Draft",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "button",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": undefined,
+                "className": "c-btn c-btn--default",
+                "disabled": true,
+                "name": "Send",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "button",
+            },
+          ],
+          "type": "div",
+        },
+        false,
+        "",
+        false,
+        false,
+        false,
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <div
+              className="col-md1-18"
+            >
+              <ThreadList
+                Threads={undefined}
+                content={
+                  Object {
+                    "back": "Back",
+                  }
+                }
+                currentMessage={
+                  Object {
+                    "account": Object {
+                      "accountId": "343434222",
+                      "number": "5666666",
+                    },
+                  }
+                }
+                isFromReplyMessage={true}
+              />
+            </div>,
+            "className": "row",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <ThreadList
+                Threads={undefined}
+                content={
+                  Object {
+                    "back": "Back",
+                  }
+                }
+                currentMessage={
+                  Object {
+                    "account": Object {
+                      "accountId": "343434222",
+                      "number": "5666666",
+                    },
+                  }
+                }
+                isFromReplyMessage={true}
+              />,
+              "className": "col-md1-18",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "Threads": undefined,
+                "content": Object {
+                  "back": "Back",
+                },
+                "currentMessage": Object {
+                  "account": Object {
+                    "accountId": "343434222",
+                    "number": "5666666",
+                  },
+                },
+                "isFromReplyMessage": true,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": "div",
+          },
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactFifteenFourAdapter {
+      "options": Object {
+        "supportPrevContextArgumentOfComponentDidUpdate": true,
+      },
+    },
+  },
+}
+`;

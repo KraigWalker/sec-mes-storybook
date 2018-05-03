@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchSecureMessages, getAccounts } from '../../actions/AppActions';
 import SvgIcon from './GetIcon.js';
-class ErrorPage extends React.Component {
+export class ErrorPage extends React.Component {
 
     constructor(props) {
         super(props);
