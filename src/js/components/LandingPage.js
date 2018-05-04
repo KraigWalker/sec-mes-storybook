@@ -26,7 +26,7 @@ export class LandingPage extends React.PureComponent {
         });
         window.top.postMessage('clearNewMessagePage', '*');
         window.scrollTo(0, 0);
-    }   
+    }
 
     linkClick = activeTab => {
         this.props.dispatch(getActiveTab(activeTab));

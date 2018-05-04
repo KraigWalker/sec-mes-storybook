@@ -34,11 +34,7 @@ module.exports = {
 			{
 				test: /\.js?$/,
 				include: resolve(__dirname, 'src'), // Avoid use of exclude
-				loader: 'babel-loader',
-				query: {
-					presets: ['react', 'es2015', 'stage-0'],
-					plugins: ['react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy'],
-				}
+				loader: 'babel-loader'
 			},
 			{
 				test: /\.scss$/,
