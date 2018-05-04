@@ -13,6 +13,7 @@ ShallowWrapper {
       }
     }
     dispatch={[MockFunction]}
+    fingerPrintID="2344323434523"
     messages={
       Object {
         "error": false,

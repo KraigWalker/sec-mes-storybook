@@ -9,7 +9,7 @@ import ModalComponent from '../common/ModalComponent';
 import { updateMessageData, popupState, delMessageData, closeDelModal } from '../../actions/AppActions';
 import { NEW, READ, DRAFT, PENDING, SENT, DELETED } from '../../constants/StringsConstants';
 
-class SecureMessageSummary extends React.Component {
+export class SecureMessageSummary extends React.Component {
 	constructor(props) {
 		super(props);
 		this.handleDelete = this.handleDelete.bind(this);

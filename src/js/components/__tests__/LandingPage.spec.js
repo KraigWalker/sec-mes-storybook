@@ -5,90 +5,75 @@ import TestUtils from 'react-addons-test-utils';
 import { createMockStore } from 'redux-test-utils';
 import { LandingPage } from '../LandingPage';
 import { Provider } from "react-redux";
+jest.mock('fingerprintjs2');
 
-let props;
-let state;
 describe("Landing Page else snapshot", () => {
     const dispatch = jest.fn();
     const linkClick = jest.fn();
     const postMessage = jest.fn();
+    const get = jest.fn();
     let props = {
         content: {
             back: 'Back',
             retry: 'Retry',
             backToAccounts: 'Back to accounts'
         },
+        fingerPrintID: '2344323434523',
         messages: {
             error: false,
             fetched: false
         },
         dispatch: dispatch
     };
-
     let component = shallow(<LandingPage {...props} />);
     it('should match to snapshot', () => {
         expect(component).toMatchSnapshot();
     });
-});
-describe("Landing Page if snapshot", () => {
-    const dispatch = jest.fn();
-    const push = jest.fn();
-    let props = {
-        content: {
-            back: 'Back',
-            retry: 'Retry',
-            backToAccounts: 'Back to accounts'
-        },
-        messages: {
-            error: true,
-            fetched: true
-        },
-        history: {
-            push: push
-        },
-        dispatch: dispatch
-    };
-    let component = shallow(<LandingPage {...props} />);
-    it('should match to snapshot', () => {
-        expect(push).toBeCalled();
-    });
-});
-describe("Landing Page if snapshot", () => {
-    it('should call link clicked method', () => {
+    describe("Landing Page if snapshot", () => {
         const dispatch = jest.fn();
+        const push = jest.fn();
         let props = {
             content: {
-
+                back: 'Back',
+                retry: 'Retry',
+                backToAccounts: 'Back to accounts'
             },
+            fingerPrintID: '2344323434523',
             messages: {
-                error: false,
-                fetched: false
+                error: true,
+                fetched: true
+            },
+            history: {
+                push: push
             },
             dispatch: dispatch
         };
-        const wrapper = shallow(
-            <LandingPage {...props} />
-        );
-        wrapper.find('SecureMessageTabs').simulate('click');
+        let component = shallow(<LandingPage {...props} />);
+        it('should match to snapshot', () => {
+            expect(push).toBeCalled();
+        });
+    });
+    describe("Landing Page if snapshot", () => {
+        it('should call link clicked method', () => {
+            const dispatch = jest.fn();
+            let props = {
+                content: {
+                },
+                fingerPrintID: '2344323434523',
+                messages: {
+                    error: false,
+                    fetched: false
+                },
+                dispatch: dispatch
+            };
+            const wrapper = shallow(
+                <LandingPage {...props} />
+            );
+            wrapper.find('SecureMessageTabs').simulate('click');
+            wrapper.find('a').simulate('click');
+            expect(dispatch).toBeCalled();
+        });
     });
 });
-describe("Landing Page if snapshot", () => {
-    it('should call handle back clicked method', () => {
-        const dispatch = jest.fn();
-        let props = {
-            content: {
 
-            },
-            messages: {
-                error: false,
-                fetched: false
-            },
-            dispatch: dispatch
-        };
-        const wrapper = shallow(
-            <LandingPage {...props} />
-        );
-        wrapper.find('a').simulate('click');
-       // expect(getActiveTab).toBeCalled();
-    });
-});
+
