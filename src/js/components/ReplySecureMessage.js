@@ -394,7 +394,7 @@ export class ReplySecureMessage extends React.Component {
 			return (
 				<div>
 					<p className="char__error error__right">
-						Characters Left: {chars_left}
+						{chars_left} {content.charLeft}
 					</p>
 					<CalloutComponent
 						dClass="callout callout__error callout__inline-error"
@@ -420,7 +420,7 @@ export class ReplySecureMessage extends React.Component {
 			}
 			return (
 				<p className={`${headerflagClass}`}>
-					{content.charLeft} {chars_left}
+					{chars_left} {content.charLeft} 
 				</p>
 			);
 		}

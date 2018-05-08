@@ -130,9 +130,12 @@ export class DraftSecureMessage extends React.Component {
 		/>);
 	}
 	saveDraftData() {
-		this.props.dispatch(updateMessageData(messageEntity.getMessageRequestData(), this.props.location.messageDetail.id, StringsConstants.DRAFT));
+		const { location, dispatch } = this.props;
+		if (this.state.chars_left >= 0) {
+		dispatch(updateMessageData(messageEntity.getMessageRequestData(), location.messageDetail.id, StringsConstants.DRAFT));
 		this.setState({ showSaveServiceErrorModal: true });
 		this.setState({ showDraftSuccessModal: true });
+		}
 	}
 	draftOkClicked() {
 		this.setState({ showDraftSuccessModal: false });
@@ -184,22 +187,24 @@ export class DraftSecureMessage extends React.Component {
 	}
 
 	renderRemainingChar() {
-		if (this.state.chars_left < 0 && this.state.charError === true) {
+		const { chars_left, charError } = this.state;
+		const { dispatch, content } = this.props;
+		if (chars_left < 0 && charError === true) {
 			return (
 				<div>
-					<p className="char__error error__right">Characters Left: {this.state.chars_left}</p>
-					<CalloutComponent dClass="callout callout__error callout__inline-error" paraText={this.props.content.messageVal} />
+					<p className="char__error error__right">{chars_left} {content.charLeft}</p>
+					<CalloutComponent dClass="callout callout__error callout__inline-error" paraText={content.messageVal} />
 				</div>);
 		}
-		if (this.state.chars_left <= 300) {
-			(this.state.chars_left === 3) && this.props.dispatch(sendMessageForAccessibiltiy('Three characters left'));
-			(this.state.chars_left === 1) && this.props.dispatch(sendMessageForAccessibiltiy('One character left'));
-			(this.state.chars_left === 0) && this.props.dispatch(sendMessageForAccessibiltiy('Maximum characters limit reached'));
+		if (chars_left <= 300) {
+			(chars_left === 3) && dispatch(sendMessageForAccessibiltiy('Three characters left'));
+			(chars_left === 1) && dispatch(sendMessageForAccessibiltiy('One character left'));
+			(chars_left === 0) && dispatch(sendMessageForAccessibiltiy('Maximum characters limit reached'));
 			let headerflagClass = 'error__right';
-			if (this.state.chars_left <= 0) {
+			if (chars_left <= 0) {
 				headerflagClass = 'char__error error__right';
 			}
-			return <p className={`${headerflagClass}`}>Characters Left: {this.state.chars_left}</p>;
+			return <p className={`${headerflagClass}`}>{chars_left} {content.charLeft}</p>;
 		}
 	}
 
