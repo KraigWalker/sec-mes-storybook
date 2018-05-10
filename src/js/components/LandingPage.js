@@ -8,6 +8,7 @@ import { SecureMessageBL } from '../bl/SecureMessageBL'
 import GetIcon from './common/GetIcon';
 import ErrorPage from './common/ErrorPage';
 import SvgIcon from './common/GetIcon.js';
+const Fingerprint = require('fingerprintjs2');
 
 /**
  * @class Landing Page
@@ -17,7 +18,6 @@ import SvgIcon from './common/GetIcon.js';
 export class LandingPage extends React.PureComponent {
     componentDidMount() {
         const { token, history } = this.props;
-        const Fingerprint = require('fingerprintjs2');
         const FPOptions = { excludePixelRatio: true, excludeScreenResolution: true };
         new Fingerprint(FPOptions).get(result => {
             if (this.props.fingerprintID !== result) {
