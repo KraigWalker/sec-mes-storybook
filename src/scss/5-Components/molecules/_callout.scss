@@ -79,6 +79,12 @@ $calloutwidths: ( xs1 : 343px, xs2 : 343px, sm1 : 720px, sm2 : 720px, md1 : 723p
             max-width: 428px;
         }
     }
+    &__inline-error-textarea {
+        @extend %type--jura;
+        margin-top: 5px;
+        margin-bottom: 0;
+        max-width: 600px;
+    }
 }
 
 .callout--msgbottom {

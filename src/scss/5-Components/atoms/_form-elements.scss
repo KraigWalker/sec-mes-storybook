@@ -117,7 +117,7 @@ $text-color: bow-palette(grey, text);
 
 	.error__right {
 		text-align: right;
-		max-width: 343px;
+		max-width: 600px !important;
 			@include media-breakpoint-up(md1) {
 				max-width: 304px;
 			}
@@ -212,6 +212,7 @@ $text-color: bow-palette(grey, text);
 		min-height: 364px;
 		padding: get-px(b);
 		resize: none;
+		max-width: 600px !important;
 	}
 
 	.c-field__input--select {
