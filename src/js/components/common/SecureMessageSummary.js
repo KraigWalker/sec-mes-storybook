@@ -27,7 +27,6 @@ export class SecureMessageSummary extends React.Component {
 		this.retryServiceCall = this.retryServiceCall.bind(this);
 	}
 	componentDidMount() {
-		window.scrollTo(0, 0);
 		this.props.dispatch(popupState());
 	}
 	getSummaryIcon = () => {
