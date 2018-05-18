@@ -32,10 +32,10 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": <div
-        className="row"
+        className="row centralised-container"
       >
         <div
-          className="col-md1-18"
+          className="col-md1-24 col-sm1-24 col-lg1-24"
         >
           <p
             className="c-step-header__crumbs"
@@ -98,7 +98,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": <div
-          className="col-md1-18"
+          className="col-md1-24 col-sm1-24 col-lg1-24"
         >
           <p
             className="c-step-header__crumbs"
@@ -151,7 +151,7 @@ ShallowWrapper {
             </button>
           </div>
         </div>,
-        "className": "row",
+        "className": "row centralised-container",
       },
       "ref": null,
       "rendered": Object {
@@ -211,7 +211,7 @@ ShallowWrapper {
               </button>
             </div>,
           ],
-          "className": "col-md1-18",
+          "className": "col-md1-24 col-sm1-24 col-lg1-24",
         },
         "ref": null,
         "rendered": Array [
@@ -446,10 +446,10 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": <div
-          className="row"
+          className="row centralised-container"
         >
           <div
-            className="col-md1-18"
+            className="col-md1-24 col-sm1-24 col-lg1-24"
           >
             <p
               className="c-step-header__crumbs"
@@ -512,7 +512,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": <div
-            className="col-md1-18"
+            className="col-md1-24 col-sm1-24 col-lg1-24"
           >
             <p
               className="c-step-header__crumbs"
@@ -565,7 +565,7 @@ ShallowWrapper {
               </button>
             </div>
           </div>,
-          "className": "row",
+          "className": "row centralised-container",
         },
         "ref": null,
         "rendered": Object {
@@ -625,7 +625,7 @@ ShallowWrapper {
                 </button>
               </div>,
             ],
-            "className": "col-md1-18",
+            "className": "col-md1-24 col-sm1-24 col-lg1-24",
           },
           "ref": null,
           "rendered": Array [

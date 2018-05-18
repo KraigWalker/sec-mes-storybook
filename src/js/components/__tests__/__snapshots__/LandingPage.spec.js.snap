@@ -33,135 +33,46 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": <div>
+      "children": <div
+        className="row centralised-container"
+      >
         <div
-          className="row"
+          className="col-md1-24 col-sm1-24 col-lg1-24"
         >
-          <div
-            className="col-md1-18"
+          <p
+            className="c-step-header__crumbs"
           >
-            <p
-              className="c-step-header__crumbs"
+            <a
+              className="c-step-header__link u-cursor-pointer"
+              onClick={[Function]}
             >
-              <a
-                className="c-step-header__link u-cursor-pointer"
-                onClick={[Function]}
+              <span
+                className="c-step-header__linkicon"
               >
-                <span
-                  className="c-step-header__linkicon"
-                >
-                  <CommonGetIcon
-                    height="16px"
-                    id="icon-left"
-                    width="16px"
-                  />
-                </span>
-                <span
-                  className="c-step-header__linktext"
-                >
-                  Back to accounts
-                </span>
-              </a>
-            </p>
-            <h1
-              className="c-step-header__title"
-              id="headingTag"
-              tabIndex="-1"
-            />
-            <p
-              className="c-step-header__subtext"
-            />
-            <p
-              className="c-step-header__subtext"
-            />
-          </div>
-        </div>
-        <Link
-          className="c-btn c-btn--default u-margin-bottom-c new-message-btn"
-          replace={false}
-          to={
-            Object {
-              "pathname": "undefined/newsecuremessage",
-            }
-          }
-        >
-          <CommonGetIcon
-            height="16px"
-            id="icon-pencil"
-            width="16px"
+                <CommonGetIcon
+                  height="16px"
+                  id="icon-left"
+                  width="16px"
+                />
+              </span>
+              <span
+                className="c-step-header__linktext"
+              >
+                Back to accounts
+              </span>
+            </a>
+          </p>
+          <h1
+            className="c-step-header__title"
+            id="headingTag"
+            tabIndex="-1"
           />
-        </Link>
-        <SecureMessageTabs
-          activeTab={undefined}
-          content={
-            Object {
-              "back": "Back",
-              "backToAccounts": "Back to accounts",
-              "retry": "Retry",
-            }
-          }
-          location={undefined}
-          messages={
-            Object {
-              "draftMessages": Array [],
-              "inboxMessages": Array [],
-              "sentMessages": Array [],
-            }
-          }
-          onClick={[Function]}
-        />
-      </div>,
-      "className": "container",
-    },
-    "ref": null,
-    "rendered": Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": Array [
-          <div
-            className="row"
-          >
-            <div
-              className="col-md1-18"
-            >
-              <p
-                className="c-step-header__crumbs"
-              >
-                <a
-                  className="c-step-header__link u-cursor-pointer"
-                  onClick={[Function]}
-                >
-                  <span
-                    className="c-step-header__linkicon"
-                  >
-                    <CommonGetIcon
-                      height="16px"
-                      id="icon-left"
-                      width="16px"
-                    />
-                  </span>
-                  <span
-                    className="c-step-header__linktext"
-                  >
-                    Back to accounts
-                  </span>
-                </a>
-              </p>
-              <h1
-                className="c-step-header__title"
-                id="headingTag"
-                tabIndex="-1"
-              />
-              <p
-                className="c-step-header__subtext"
-              />
-              <p
-                className="c-step-header__subtext"
-              />
-            </div>
-          </div>,
+          <p
+            className="c-step-header__subtext"
+          />
+          <p
+            className="c-step-header__subtext"
+          />
           <Link
             className="c-btn c-btn--default u-margin-bottom-c new-message-btn"
             replace={false}
@@ -176,7 +87,7 @@ ShallowWrapper {
               id="icon-pencil"
               width="16px"
             />
-          </Link>,
+          </Link>
           <SecureMessageTabs
             activeTab={undefined}
             content={
@@ -195,358 +106,54 @@ ShallowWrapper {
               }
             }
             onClick={[Function]}
-          />,
-        ],
-      },
-      "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": <div
-              className="col-md1-18"
-            >
-              <p
-                className="c-step-header__crumbs"
-              >
-                <a
-                  className="c-step-header__link u-cursor-pointer"
-                  onClick={[Function]}
-                >
-                  <span
-                    className="c-step-header__linkicon"
-                  >
-                    <CommonGetIcon
-                      height="16px"
-                      id="icon-left"
-                      width="16px"
-                    />
-                  </span>
-                  <span
-                    className="c-step-header__linktext"
-                  >
-                    Back to accounts
-                  </span>
-                </a>
-              </p>
-              <h1
-                className="c-step-header__title"
-                id="headingTag"
-                tabIndex="-1"
-              />
-              <p
-                className="c-step-header__subtext"
-              />
-              <p
-                className="c-step-header__subtext"
-              />
-            </div>,
-            "className": "row",
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <p
-                  className="c-step-header__crumbs"
-                >
-                  <a
-                    className="c-step-header__link u-cursor-pointer"
-                    onClick={[Function]}
-                  >
-                    <span
-                      className="c-step-header__linkicon"
-                    >
-                      <CommonGetIcon
-                        height="16px"
-                        id="icon-left"
-                        width="16px"
-                      />
-                    </span>
-                    <span
-                      className="c-step-header__linktext"
-                    >
-                      Back to accounts
-                    </span>
-                  </a>
-                </p>,
-                <h1
-                  className="c-step-header__title"
-                  id="headingTag"
-                  tabIndex="-1"
-                />,
-                <p
-                  className="c-step-header__subtext"
-                />,
-                <p
-                  className="c-step-header__subtext"
-                />,
-              ],
-              "className": "col-md1-18",
-            },
-            "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": <a
-                    className="c-step-header__link u-cursor-pointer"
-                    onClick={[Function]}
-                  >
-                    <span
-                      className="c-step-header__linkicon"
-                    >
-                      <CommonGetIcon
-                        height="16px"
-                        id="icon-left"
-                        width="16px"
-                      />
-                    </span>
-                    <span
-                      className="c-step-header__linktext"
-                    >
-                      Back to accounts
-                    </span>
-                  </a>,
-                  "className": "c-step-header__crumbs",
-                },
-                "ref": null,
-                "rendered": Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": Array [
-                      <span
-                        className="c-step-header__linkicon"
-                      >
-                        <CommonGetIcon
-                          height="16px"
-                          id="icon-left"
-                          width="16px"
-                        />
-                      </span>,
-                      <span
-                        className="c-step-header__linktext"
-                      >
-                        Back to accounts
-                      </span>,
-                    ],
-                    "className": "c-step-header__link u-cursor-pointer",
-                    "onClick": [Function],
-                  },
-                  "ref": null,
-                  "rendered": Array [
-                    Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "host",
-                      "props": Object {
-                        "children": <CommonGetIcon
-                          height="16px"
-                          id="icon-left"
-                          width="16px"
-                        />,
-                        "className": "c-step-header__linkicon",
-                      },
-                      "ref": null,
-                      "rendered": Object {
-                        "instance": null,
-                        "key": undefined,
-                        "nodeType": "class",
-                        "props": Object {
-                          "height": "16px",
-                          "id": "icon-left",
-                          "width": "16px",
-                        },
-                        "ref": null,
-                        "rendered": null,
-                        "type": [Function],
-                      },
-                      "type": "span",
-                    },
-                    Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "host",
-                      "props": Object {
-                        "children": "Back to accounts",
-                        "className": "c-step-header__linktext",
-                      },
-                      "ref": null,
-                      "rendered": "Back to accounts",
-                      "type": "span",
-                    },
-                  ],
-                  "type": "a",
-                },
-                "type": "p",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": undefined,
-                  "className": "c-step-header__title",
-                  "id": "headingTag",
-                  "tabIndex": "-1",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "h1",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": undefined,
-                  "className": "c-step-header__subtext",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "p",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": undefined,
-                  "className": "c-step-header__subtext",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "p",
-              },
-            ],
-            "type": "div",
-          },
-          "type": "div",
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "children": Array [
-              <CommonGetIcon
-                height="16px"
-                id="icon-pencil"
-                width="16px"
-              />,
-              undefined,
-            ],
-            "className": "c-btn c-btn--default u-margin-bottom-c new-message-btn",
-            "replace": false,
-            "to": Object {
-              "pathname": "undefined/newsecuremessage",
-            },
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "height": "16px",
-                "id": "icon-pencil",
-                "width": "16px",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            undefined,
-          ],
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "activeTab": undefined,
-            "content": Object {
-              "back": "Back",
-              "backToAccounts": "Back to accounts",
-              "retry": "Retry",
-            },
-            "location": undefined,
-            "messages": Object {
-              "draftMessages": Array [],
-              "inboxMessages": Array [],
-              "sentMessages": Array [],
-            },
-            "onClick": [Function],
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-      ],
-      "type": "div",
+          />
+        </div>
+      </div>,
+      "className": "container",
     },
-    "type": "div",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
+    "ref": null,
+    "rendered": Object {
       "instance": null,
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "children": <div>
-          <div
-            className="row"
+        "children": <div
+          className="col-md1-24 col-sm1-24 col-lg1-24"
+        >
+          <p
+            className="c-step-header__crumbs"
           >
-            <div
-              className="col-md1-18"
+            <a
+              className="c-step-header__link u-cursor-pointer"
+              onClick={[Function]}
             >
-              <p
-                className="c-step-header__crumbs"
+              <span
+                className="c-step-header__linkicon"
               >
-                <a
-                  className="c-step-header__link u-cursor-pointer"
-                  onClick={[Function]}
-                >
-                  <span
-                    className="c-step-header__linkicon"
-                  >
-                    <CommonGetIcon
-                      height="16px"
-                      id="icon-left"
-                      width="16px"
-                    />
-                  </span>
-                  <span
-                    className="c-step-header__linktext"
-                  >
-                    Back to accounts
-                  </span>
-                </a>
-              </p>
-              <h1
-                className="c-step-header__title"
-                id="headingTag"
-                tabIndex="-1"
-              />
-              <p
-                className="c-step-header__subtext"
-              />
-              <p
-                className="c-step-header__subtext"
-              />
-            </div>
-          </div>
+                <CommonGetIcon
+                  height="16px"
+                  id="icon-left"
+                  width="16px"
+                />
+              </span>
+              <span
+                className="c-step-header__linktext"
+              >
+                Back to accounts
+              </span>
+            </a>
+          </p>
+          <h1
+            className="c-step-header__title"
+            id="headingTag"
+            tabIndex="-1"
+          />
+          <p
+            className="c-step-header__subtext"
+          />
+          <p
+            className="c-step-header__subtext"
+          />
           <Link
             className="c-btn c-btn--default u-margin-bottom-c new-message-btn"
             replace={false}
@@ -582,7 +189,7 @@ ShallowWrapper {
             onClick={[Function]}
           />
         </div>,
-        "className": "container",
+        "className": "row centralised-container",
       },
       "ref": null,
       "rendered": Object {
@@ -591,48 +198,40 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": Array [
-            <div
-              className="row"
+            <p
+              className="c-step-header__crumbs"
             >
-              <div
-                className="col-md1-18"
+              <a
+                className="c-step-header__link u-cursor-pointer"
+                onClick={[Function]}
               >
-                <p
-                  className="c-step-header__crumbs"
+                <span
+                  className="c-step-header__linkicon"
                 >
-                  <a
-                    className="c-step-header__link u-cursor-pointer"
-                    onClick={[Function]}
-                  >
-                    <span
-                      className="c-step-header__linkicon"
-                    >
-                      <CommonGetIcon
-                        height="16px"
-                        id="icon-left"
-                        width="16px"
-                      />
-                    </span>
-                    <span
-                      className="c-step-header__linktext"
-                    >
-                      Back to accounts
-                    </span>
-                  </a>
-                </p>
-                <h1
-                  className="c-step-header__title"
-                  id="headingTag"
-                  tabIndex="-1"
-                />
-                <p
-                  className="c-step-header__subtext"
-                />
-                <p
-                  className="c-step-header__subtext"
-                />
-              </div>
-            </div>,
+                  <CommonGetIcon
+                    height="16px"
+                    id="icon-left"
+                    width="16px"
+                  />
+                </span>
+                <span
+                  className="c-step-header__linktext"
+                >
+                  Back to accounts
+                </span>
+              </a>
+            </p>,
+            <h1
+              className="c-step-header__title"
+              id="headingTag"
+              tabIndex="-1"
+            />,
+            <p
+              className="c-step-header__subtext"
+            />,
+            <p
+              className="c-step-header__subtext"
+            />,
             <Link
               className="c-btn c-btn--default u-margin-bottom-c new-message-btn"
               replace={false}
@@ -668,6 +267,7 @@ ShallowWrapper {
               onClick={[Function]}
             />,
           ],
+          "className": "col-md1-24 col-sm1-24 col-lg1-24",
         },
         "ref": null,
         "rendered": Array [
@@ -676,45 +276,26 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "host",
             "props": Object {
-              "children": <div
-                className="col-md1-18"
+              "children": <a
+                className="c-step-header__link u-cursor-pointer"
+                onClick={[Function]}
               >
-                <p
-                  className="c-step-header__crumbs"
+                <span
+                  className="c-step-header__linkicon"
                 >
-                  <a
-                    className="c-step-header__link u-cursor-pointer"
-                    onClick={[Function]}
-                  >
-                    <span
-                      className="c-step-header__linkicon"
-                    >
-                      <CommonGetIcon
-                        height="16px"
-                        id="icon-left"
-                        width="16px"
-                      />
-                    </span>
-                    <span
-                      className="c-step-header__linktext"
-                    >
-                      Back to accounts
-                    </span>
-                  </a>
-                </p>
-                <h1
-                  className="c-step-header__title"
-                  id="headingTag"
-                  tabIndex="-1"
-                />
-                <p
-                  className="c-step-header__subtext"
-                />
-                <p
-                  className="c-step-header__subtext"
-                />
-              </div>,
-              "className": "row",
+                  <CommonGetIcon
+                    height="16px"
+                    id="icon-left"
+                    width="16px"
+                  />
+                </span>
+                <span
+                  className="c-step-header__linktext"
+                >
+                  Back to accounts
+                </span>
+              </a>,
+              "className": "c-step-header__crumbs",
             },
             "ref": null,
             "rendered": Object {
@@ -723,42 +304,23 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": Array [
-                  <p
-                    className="c-step-header__crumbs"
+                  <span
+                    className="c-step-header__linkicon"
                   >
-                    <a
-                      className="c-step-header__link u-cursor-pointer"
-                      onClick={[Function]}
-                    >
-                      <span
-                        className="c-step-header__linkicon"
-                      >
-                        <CommonGetIcon
-                          height="16px"
-                          id="icon-left"
-                          width="16px"
-                        />
-                      </span>
-                      <span
-                        className="c-step-header__linktext"
-                      >
-                        Back to accounts
-                      </span>
-                    </a>
-                  </p>,
-                  <h1
-                    className="c-step-header__title"
-                    id="headingTag"
-                    tabIndex="-1"
-                  />,
-                  <p
-                    className="c-step-header__subtext"
-                  />,
-                  <p
-                    className="c-step-header__subtext"
-                  />,
+                    <CommonGetIcon
+                      height="16px"
+                      id="icon-left"
+                      width="16px"
+                    />
+                  </span>,
+                  <span
+                    className="c-step-header__linktext"
+                  >
+                    Back to accounts
+                  </span>,
                 ],
-                "className": "col-md1-18",
+                "className": "c-step-header__link u-cursor-pointer",
+                "onClick": [Function],
               },
               "ref": null,
               "rendered": Array [
@@ -767,141 +329,83 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "host",
                   "props": Object {
-                    "children": <a
-                      className="c-step-header__link u-cursor-pointer"
-                      onClick={[Function]}
-                    >
-                      <span
-                        className="c-step-header__linkicon"
-                      >
-                        <CommonGetIcon
-                          height="16px"
-                          id="icon-left"
-                          width="16px"
-                        />
-                      </span>
-                      <span
-                        className="c-step-header__linktext"
-                      >
-                        Back to accounts
-                      </span>
-                    </a>,
-                    "className": "c-step-header__crumbs",
+                    "children": <CommonGetIcon
+                      height="16px"
+                      id="icon-left"
+                      width="16px"
+                    />,
+                    "className": "c-step-header__linkicon",
                   },
                   "ref": null,
                   "rendered": Object {
                     "instance": null,
                     "key": undefined,
-                    "nodeType": "host",
+                    "nodeType": "class",
                     "props": Object {
-                      "children": Array [
-                        <span
-                          className="c-step-header__linkicon"
-                        >
-                          <CommonGetIcon
-                            height="16px"
-                            id="icon-left"
-                            width="16px"
-                          />
-                        </span>,
-                        <span
-                          className="c-step-header__linktext"
-                        >
-                          Back to accounts
-                        </span>,
-                      ],
-                      "className": "c-step-header__link u-cursor-pointer",
-                      "onClick": [Function],
+                      "height": "16px",
+                      "id": "icon-left",
+                      "width": "16px",
                     },
                     "ref": null,
-                    "rendered": Array [
-                      Object {
-                        "instance": null,
-                        "key": undefined,
-                        "nodeType": "host",
-                        "props": Object {
-                          "children": <CommonGetIcon
-                            height="16px"
-                            id="icon-left"
-                            width="16px"
-                          />,
-                          "className": "c-step-header__linkicon",
-                        },
-                        "ref": null,
-                        "rendered": Object {
-                          "instance": null,
-                          "key": undefined,
-                          "nodeType": "class",
-                          "props": Object {
-                            "height": "16px",
-                            "id": "icon-left",
-                            "width": "16px",
-                          },
-                          "ref": null,
-                          "rendered": null,
-                          "type": [Function],
-                        },
-                        "type": "span",
-                      },
-                      Object {
-                        "instance": null,
-                        "key": undefined,
-                        "nodeType": "host",
-                        "props": Object {
-                          "children": "Back to accounts",
-                          "className": "c-step-header__linktext",
-                        },
-                        "ref": null,
-                        "rendered": "Back to accounts",
-                        "type": "span",
-                      },
-                    ],
-                    "type": "a",
+                    "rendered": null,
+                    "type": [Function],
                   },
-                  "type": "p",
+                  "type": "span",
                 },
                 Object {
                   "instance": null,
                   "key": undefined,
                   "nodeType": "host",
                   "props": Object {
-                    "children": undefined,
-                    "className": "c-step-header__title",
-                    "id": "headingTag",
-                    "tabIndex": "-1",
+                    "children": "Back to accounts",
+                    "className": "c-step-header__linktext",
                   },
                   "ref": null,
-                  "rendered": null,
-                  "type": "h1",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": undefined,
-                    "className": "c-step-header__subtext",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "p",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": undefined,
-                    "className": "c-step-header__subtext",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "p",
+                  "rendered": "Back to accounts",
+                  "type": "span",
                 },
               ],
-              "type": "div",
+              "type": "a",
             },
-            "type": "div",
+            "type": "p",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": undefined,
+              "className": "c-step-header__title",
+              "id": "headingTag",
+              "tabIndex": "-1",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "h1",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": undefined,
+              "className": "c-step-header__subtext",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "p",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": undefined,
+              "className": "c-step-header__subtext",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "p",
           },
           Object {
             "instance": null,
@@ -965,6 +469,456 @@ ShallowWrapper {
             "type": [Function],
           },
         ],
+        "type": "div",
+      },
+      "type": "div",
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <div
+          className="row centralised-container"
+        >
+          <div
+            className="col-md1-24 col-sm1-24 col-lg1-24"
+          >
+            <p
+              className="c-step-header__crumbs"
+            >
+              <a
+                className="c-step-header__link u-cursor-pointer"
+                onClick={[Function]}
+              >
+                <span
+                  className="c-step-header__linkicon"
+                >
+                  <CommonGetIcon
+                    height="16px"
+                    id="icon-left"
+                    width="16px"
+                  />
+                </span>
+                <span
+                  className="c-step-header__linktext"
+                >
+                  Back to accounts
+                </span>
+              </a>
+            </p>
+            <h1
+              className="c-step-header__title"
+              id="headingTag"
+              tabIndex="-1"
+            />
+            <p
+              className="c-step-header__subtext"
+            />
+            <p
+              className="c-step-header__subtext"
+            />
+            <Link
+              className="c-btn c-btn--default u-margin-bottom-c new-message-btn"
+              replace={false}
+              to={
+                Object {
+                  "pathname": "undefined/newsecuremessage",
+                }
+              }
+            >
+              <CommonGetIcon
+                height="16px"
+                id="icon-pencil"
+                width="16px"
+              />
+            </Link>
+            <SecureMessageTabs
+              activeTab={undefined}
+              content={
+                Object {
+                  "back": "Back",
+                  "backToAccounts": "Back to accounts",
+                  "retry": "Retry",
+                }
+              }
+              location={undefined}
+              messages={
+                Object {
+                  "draftMessages": Array [],
+                  "inboxMessages": Array [],
+                  "sentMessages": Array [],
+                }
+              }
+              onClick={[Function]}
+            />
+          </div>
+        </div>,
+        "className": "container",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <div
+            className="col-md1-24 col-sm1-24 col-lg1-24"
+          >
+            <p
+              className="c-step-header__crumbs"
+            >
+              <a
+                className="c-step-header__link u-cursor-pointer"
+                onClick={[Function]}
+              >
+                <span
+                  className="c-step-header__linkicon"
+                >
+                  <CommonGetIcon
+                    height="16px"
+                    id="icon-left"
+                    width="16px"
+                  />
+                </span>
+                <span
+                  className="c-step-header__linktext"
+                >
+                  Back to accounts
+                </span>
+              </a>
+            </p>
+            <h1
+              className="c-step-header__title"
+              id="headingTag"
+              tabIndex="-1"
+            />
+            <p
+              className="c-step-header__subtext"
+            />
+            <p
+              className="c-step-header__subtext"
+            />
+            <Link
+              className="c-btn c-btn--default u-margin-bottom-c new-message-btn"
+              replace={false}
+              to={
+                Object {
+                  "pathname": "undefined/newsecuremessage",
+                }
+              }
+            >
+              <CommonGetIcon
+                height="16px"
+                id="icon-pencil"
+                width="16px"
+              />
+            </Link>
+            <SecureMessageTabs
+              activeTab={undefined}
+              content={
+                Object {
+                  "back": "Back",
+                  "backToAccounts": "Back to accounts",
+                  "retry": "Retry",
+                }
+              }
+              location={undefined}
+              messages={
+                Object {
+                  "draftMessages": Array [],
+                  "inboxMessages": Array [],
+                  "sentMessages": Array [],
+                }
+              }
+              onClick={[Function]}
+            />
+          </div>,
+          "className": "row centralised-container",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <p
+                className="c-step-header__crumbs"
+              >
+                <a
+                  className="c-step-header__link u-cursor-pointer"
+                  onClick={[Function]}
+                >
+                  <span
+                    className="c-step-header__linkicon"
+                  >
+                    <CommonGetIcon
+                      height="16px"
+                      id="icon-left"
+                      width="16px"
+                    />
+                  </span>
+                  <span
+                    className="c-step-header__linktext"
+                  >
+                    Back to accounts
+                  </span>
+                </a>
+              </p>,
+              <h1
+                className="c-step-header__title"
+                id="headingTag"
+                tabIndex="-1"
+              />,
+              <p
+                className="c-step-header__subtext"
+              />,
+              <p
+                className="c-step-header__subtext"
+              />,
+              <Link
+                className="c-btn c-btn--default u-margin-bottom-c new-message-btn"
+                replace={false}
+                to={
+                  Object {
+                    "pathname": "undefined/newsecuremessage",
+                  }
+                }
+              >
+                <CommonGetIcon
+                  height="16px"
+                  id="icon-pencil"
+                  width="16px"
+                />
+              </Link>,
+              <SecureMessageTabs
+                activeTab={undefined}
+                content={
+                  Object {
+                    "back": "Back",
+                    "backToAccounts": "Back to accounts",
+                    "retry": "Retry",
+                  }
+                }
+                location={undefined}
+                messages={
+                  Object {
+                    "draftMessages": Array [],
+                    "inboxMessages": Array [],
+                    "sentMessages": Array [],
+                  }
+                }
+                onClick={[Function]}
+              />,
+            ],
+            "className": "col-md1-24 col-sm1-24 col-lg1-24",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <a
+                  className="c-step-header__link u-cursor-pointer"
+                  onClick={[Function]}
+                >
+                  <span
+                    className="c-step-header__linkicon"
+                  >
+                    <CommonGetIcon
+                      height="16px"
+                      id="icon-left"
+                      width="16px"
+                    />
+                  </span>
+                  <span
+                    className="c-step-header__linktext"
+                  >
+                    Back to accounts
+                  </span>
+                </a>,
+                "className": "c-step-header__crumbs",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <span
+                      className="c-step-header__linkicon"
+                    >
+                      <CommonGetIcon
+                        height="16px"
+                        id="icon-left"
+                        width="16px"
+                      />
+                    </span>,
+                    <span
+                      className="c-step-header__linktext"
+                    >
+                      Back to accounts
+                    </span>,
+                  ],
+                  "className": "c-step-header__link u-cursor-pointer",
+                  "onClick": [Function],
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": <CommonGetIcon
+                        height="16px"
+                        id="icon-left"
+                        width="16px"
+                      />,
+                      "className": "c-step-header__linkicon",
+                    },
+                    "ref": null,
+                    "rendered": Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "height": "16px",
+                        "id": "icon-left",
+                        "width": "16px",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                    "type": "span",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "Back to accounts",
+                      "className": "c-step-header__linktext",
+                    },
+                    "ref": null,
+                    "rendered": "Back to accounts",
+                    "type": "span",
+                  },
+                ],
+                "type": "a",
+              },
+              "type": "p",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": undefined,
+                "className": "c-step-header__title",
+                "id": "headingTag",
+                "tabIndex": "-1",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "h1",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": undefined,
+                "className": "c-step-header__subtext",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "p",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": undefined,
+                "className": "c-step-header__subtext",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "p",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <CommonGetIcon
+                    height="16px"
+                    id="icon-pencil"
+                    width="16px"
+                  />,
+                  undefined,
+                ],
+                "className": "c-btn c-btn--default u-margin-bottom-c new-message-btn",
+                "replace": false,
+                "to": Object {
+                  "pathname": "undefined/newsecuremessage",
+                },
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "height": "16px",
+                    "id": "icon-pencil",
+                    "width": "16px",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                undefined,
+              ],
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "activeTab": undefined,
+                "content": Object {
+                  "back": "Back",
+                  "backToAccounts": "Back to accounts",
+                  "retry": "Retry",
+                },
+                "location": undefined,
+                "messages": Object {
+                  "draftMessages": Array [],
+                  "inboxMessages": Array [],
+                  "sentMessages": Array [],
+                },
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
         "type": "div",
       },
       "type": "div",
