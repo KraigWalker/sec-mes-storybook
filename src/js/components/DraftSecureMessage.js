@@ -132,9 +132,9 @@ export class DraftSecureMessage extends React.Component {
 	saveDraftData() {
 		const { location, dispatch } = this.props;
 		if (this.state.chars_left >= 0) {
-		dispatch(updateMessageData(messageEntity.getMessageRequestData(), location.messageDetail.id, StringsConstants.DRAFT));
-		this.setState({ showSaveServiceErrorModal: true });
-		this.setState({ showDraftSuccessModal: true });
+			dispatch(updateMessageData(messageEntity.getMessageRequestData(), location.messageDetail.id, StringsConstants.DRAFT));
+			this.setState({ showSaveServiceErrorModal: true });
+			this.setState({ showDraftSuccessModal: true });
 		}
 	}
 	draftOkClicked() {
@@ -193,7 +193,7 @@ export class DraftSecureMessage extends React.Component {
 			return (
 				<div>
 					<p className="char__error error__right">{chars_left} {content.charLeft}</p>
-					<CalloutComponent dClass="callout callout__error callout__inline-error" paraText={content.messageVal} />
+					<CalloutComponent dClass="callout callout__error callout__inline-error-textarea" paraText={content.messageVal} />
 				</div>);
 		}
 		if (chars_left <= 300) {
@@ -215,48 +215,48 @@ export class DraftSecureMessage extends React.Component {
 		account.number === undefined || null ? content.noSpecificAccount : account;
 		return (
 			<div className="container">
-				<div className="row">
-					<div className="col-md1-18">
+				<div className="row centralised-container">
+					<div className="col-md1-24 col-sm1-24 col-lg1-24">
 						<StepHeader showheaderCrumbs onClick={() => { }} headerCrumbsMessage={content.back} headerTitle={content.editSavedMessage} headerCrumbsPath={{ pathname: `${window.baseURl}/securemessages` }} />
-					</div>
-				</div>
-				<div className="c-field">
-					<label className="c-field__label c-field__label--block" htmlFor="subjects">
-						{content.subject}
-					</label>
-					<div className="c-field__controls u-position-relative">
-						<DropDownComponent subjects={subject} id="subjects" selectSubject={this.selectSubject} showSubjectError={validationSubjectMsg} isFromDraftOrReply selectedValue={subject} content={content} />
-					</div>
-				</div>
+						<div className="c-field">
+							<label className="c-field__label c-field__label--block" htmlFor="subjects">
+								{content.subject}
+							</label>
+							<div className="c-field__controls u-position-relative">
+								<DropDownComponent subjects={subject} id="subjects" selectSubject={this.selectSubject} showSubjectError={validationSubjectMsg} isFromDraftOrReply selectedValue={subject} content={content} />
+							</div>
+						</div>
 
-				<div className="c-field">
-					<label className="c-field__label c-field__label--block" htmlFor="subjects">
-						{content.messageRelatesTo}
-					</label>
-					<div className="c-field__controls u-position-relative">
-						<DropDownComponent accounts={account} selectSubject={this.selectSubject} id="accounts" showAccountError={validationAccountMsg} isFromDraftOrReply selectedValue={this.checkAccountValue()} content={content} />
-					</div>
-				</div>
+						<div className="c-field">
+							<label className="c-field__label c-field__label--block" htmlFor="subjects">
+								{content.messageRelatesTo}
+							</label>
+							<div className="c-field__controls u-position-relative">
+								<DropDownComponent accounts={account} selectSubject={this.selectSubject} id="accounts" showAccountError={validationAccountMsg} isFromDraftOrReply selectedValue={this.checkAccountValue()} content={content} />
+							</div>
+						</div>
 
 
-				<div className="c-field">
-					<label className="c-field__label c-field__label--block" htmlFor="subjects">
-						{content.message}
-					</label>
-					<div className="c-field__controls">
-						<TextAreaComponent textData={this.textChange} draftData={message} isFromDraftOrReply />
-					</div>
-					{this.renderRemainingChar()}
-				</div>
+						<div className="c-field">
+							<label className="c-field__label c-field__label--block" htmlFor="subjects">
+								{content.message}
+							</label>
+							<div className="c-field__controls">
+								<TextAreaComponent textData={this.textChange} draftData={message} isFromDraftOrReply />
+							</div>
+							{this.renderRemainingChar()}
+						</div>
 
-				{showPopup && messages.successModal ? this.returnModalComponent() : ''}
-				{showDraftSuccessModal && messages.successModal && this.returnDraftModal()}
-				{messages.draftError && showSaveServiceErrorModal && this.returnErrorModal()}
-				{messages.draftError && showSendServiceErrorModal && this.returnErrorModal()}
-				<div className="c-btn--group">
-					<Link to={`${window.baseURl}/securemessages`} className="c-btn c-btn--secondary">{content.back} </Link>
-					<button name="Save Draft" className="c-btn c-btn--secondary" onClick={this.saveDraftData} disabled={disabled}>{content.saveDraft}</button>
-					<button name="Send" className="c-btn c-btn--default" onClick={this.sendData} disabled={disabled}>{content.send}</button>
+						{showPopup && messages.successModal ? this.returnModalComponent() : ''}
+						{showDraftSuccessModal && messages.successModal && this.returnDraftModal()}
+						{messages.draftError && showSaveServiceErrorModal && this.returnErrorModal()}
+						{messages.draftError && showSendServiceErrorModal && this.returnErrorModal()}
+						<div className="c-btn--group">
+							<Link to={`${window.baseURl}/securemessages`} className="c-btn c-btn--secondary">{content.back} </Link>
+							<button name="Save Draft" className="c-btn c-btn--secondary" onClick={this.saveDraftData} disabled={disabled}>{content.saveDraft}</button>
+							<button name="Send" className="c-btn c-btn--default" onClick={this.sendData} disabled={disabled}>{content.send}</button>
+						</div>
+					</div>
 				</div>
 			</div>);
 	}

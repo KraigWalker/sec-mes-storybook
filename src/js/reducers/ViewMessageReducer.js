@@ -23,7 +23,7 @@ function reducer(state = {
 			return { ...state, delSuccessModal: false };
 		}
 		case AppConstants.SET_POPUP_STATE: {
-			return { ...state, error: false };
+			return { ...state, delSuccessModal: false };
 		}
 		default:
 			return state;
