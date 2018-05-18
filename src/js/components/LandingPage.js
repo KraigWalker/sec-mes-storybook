@@ -21,7 +21,7 @@ export class LandingPage extends React.PureComponent {
         const FPOptions = { excludePixelRatio: true, excludeScreenResolution: true };
         new Fingerprint(FPOptions).get(result => {
             if (this.props.fingerprintID !== result) {
-                //    this.props.history.push('/errormessage'); TODOxCYBG
+                this.props.history.push('/errormessage');
             }
         });
         window.top.postMessage('clearNewMessagePage', '*');
