@@ -27,7 +27,6 @@ export class SecureMessageSummary extends React.Component {
 		this.retryServiceCall = this.retryServiceCall.bind(this);
 	}
 	componentDidMount() {
-		window.scrollTo(0, 0);
 		this.props.dispatch(popupState());
 	}
 	getSummaryIcon = () => {
@@ -142,11 +141,25 @@ export class SecureMessageSummary extends React.Component {
 		this.setState({ showDeleteConfirmModal: true });
 	}
 	errorCloseClicked() {
+		this.props.dispatch(popupState());
 		this.setState({ showSendServiceErrorModal: false });
 	}
 	retryServiceCall() {
 		this.props.dispatch(popupState());
-		this.deleteClick();
+		const { message, dispatch } = this.props;
+		if (message.status === NEW) {
+			dispatch(updateMessageData(message, message.id, READ));
+			setTimeout(() => {
+				dispatch(
+					delMessageData(message, message.id, DELETED)
+				);
+			}, 500);
+		} else dispatch(delMessageData(message, message.id, DELETED));
+		this.setState({
+			showDeleteSuccessModal: true,
+			showDeleteConfirmModal: false,
+			showSendServiceErrorModal: true,
+		});
 	}
 	closeModal() {
 		setTimeout(() => {

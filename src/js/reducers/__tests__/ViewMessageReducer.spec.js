@@ -60,7 +60,7 @@ describe('>>>R E D U C E R --- Test ViewMessageReducer', () => {
     it('+++ reducer for SET_POPUP_STATE', () => {
         let state = { messageDetail: {}, delSuccessModal: false };
         state = ViewMessageReducer(state, { type: "SET_POPUP_STATE" });
-        expect(state).toEqual({ messageDetail: {}, delSuccessModal: false, error: false });
+        expect(state).toEqual({ messageDetail: {}, delSuccessModal: false });
     });
     it('+++ reducer for default', () => {
         let state = { messageDetail: {}, delSuccessModal: false };
