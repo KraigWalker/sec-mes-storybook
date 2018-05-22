@@ -57,10 +57,10 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": <div
-        className="row"
+        className="row centralised-container"
       >
         <div
-          className="col-md1-18"
+          className="col-md1-24 col-sm1-24 col-lg1-24"
         >
           <StepHeader
             headerCrumbsMessage="Back"
@@ -139,7 +139,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": <div
-          className="col-md1-18"
+          className="col-md1-24 col-sm1-24 col-lg1-24"
         >
           <StepHeader
             headerCrumbsMessage="Back"
@@ -208,7 +208,7 @@ ShallowWrapper {
             Threads={undefined}
           />
         </div>,
-        "className": "row",
+        "className": "row centralised-container",
       },
       "ref": null,
       "rendered": Object {
@@ -287,7 +287,7 @@ ShallowWrapper {
               Threads={undefined}
             />,
           ],
-          "className": "col-md1-18",
+          "className": "col-md1-24 col-sm1-24 col-lg1-24",
         },
         "ref": null,
         "rendered": Array [
@@ -461,10 +461,10 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": <div
-          className="row"
+          className="row centralised-container"
         >
           <div
-            className="col-md1-18"
+            className="col-md1-24 col-sm1-24 col-lg1-24"
           >
             <StepHeader
               headerCrumbsMessage="Back"
@@ -543,7 +543,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": <div
-            className="col-md1-18"
+            className="col-md1-24 col-sm1-24 col-lg1-24"
           >
             <StepHeader
               headerCrumbsMessage="Back"
@@ -612,7 +612,7 @@ ShallowWrapper {
               Threads={undefined}
             />
           </div>,
-          "className": "row",
+          "className": "row centralised-container",
         },
         "ref": null,
         "rendered": Object {
@@ -691,7 +691,7 @@ ShallowWrapper {
                 Threads={undefined}
               />,
             ],
-            "className": "col-md1-18",
+            "className": "col-md1-24 col-sm1-24 col-lg1-24",
           },
           "ref": null,
           "rendered": Array [
@@ -929,10 +929,10 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": <div
-        className="row"
+        className="row centralised-container"
       >
         <div
-          className="col-md1-18"
+          className="col-md1-24 col-sm1-24 col-lg1-24"
         >
           <StepHeader
             headerCrumbsMessage="Back"
@@ -1108,7 +1108,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": <div
-          className="col-md1-18"
+          className="col-md1-24 col-sm1-24 col-lg1-24"
         >
           <StepHeader
             headerCrumbsMessage="Back"
@@ -1274,7 +1274,7 @@ ShallowWrapper {
             Threads={undefined}
           />
         </div>,
-        "className": "row",
+        "className": "row centralised-container",
       },
       "ref": null,
       "rendered": Object {
@@ -1447,7 +1447,7 @@ ShallowWrapper {
               Threads={undefined}
             />,
           ],
-          "className": "col-md1-18",
+          "className": "col-md1-24 col-sm1-24 col-lg1-24",
         },
         "ref": null,
         "rendered": Array [
@@ -1727,10 +1727,10 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": <div
-          className="row"
+          className="row centralised-container"
         >
           <div
-            className="col-md1-18"
+            className="col-md1-24 col-sm1-24 col-lg1-24"
           >
             <StepHeader
               headerCrumbsMessage="Back"
@@ -1906,7 +1906,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": <div
-            className="col-md1-18"
+            className="col-md1-24 col-sm1-24 col-lg1-24"
           >
             <StepHeader
               headerCrumbsMessage="Back"
@@ -2072,7 +2072,7 @@ ShallowWrapper {
               Threads={undefined}
             />
           </div>,
-          "className": "row",
+          "className": "row centralised-container",
         },
         "ref": null,
         "rendered": Object {
@@ -2245,7 +2245,7 @@ ShallowWrapper {
                 Threads={undefined}
               />,
             ],
-            "className": "col-md1-18",
+            "className": "col-md1-24 col-sm1-24 col-lg1-24",
           },
           "ref": null,
           "rendered": Array [

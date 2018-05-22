@@ -16,6 +16,7 @@ export class SecureMessageList extends React.Component {
 		this.showMoreClicked = this.showMoreClicked.bind(this);
 		this.state = {
 			showMoreLimit: MESSAGE_LIMIT,
+			showThatsAllMessage: false,
 		};
 	}
 	componentWillReceiveProps(props) {

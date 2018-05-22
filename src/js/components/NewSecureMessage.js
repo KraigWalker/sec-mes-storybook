@@ -400,7 +400,7 @@ export class NewSecureMessage extends React.Component {
 						{chars_left} {content.charLeft}
 					</p>
 					<CalloutComponent
-						dClass="callout callout__error callout__inline-error"
+						dClass="callout callout__error callout__inline-error-textarea"
 						paraText={content.messageVal}
 					/>
 				</div>
@@ -433,122 +433,126 @@ export class NewSecureMessage extends React.Component {
 		const { validationSubjectMsg, validationAccountMsg, showPopup, showDraftSuccessModal, showSentMessageModal, showSaveServiceErrorModal, disabled, showSendServiceErrorModal } = this.state;
 		return (
 			<div className="container">
-				{this.returnBackButton()}
-				<div className="c-field">
-					<label
-						id="subjectTitle"
-						className="c-field__label c-field__label--block"
-						htmlFor="subjects"
-					>
-						{content.subject}
-					</label>
-					<div className="c-field__controls u-position-relative">
-						<DropDownComponent
-							accessID="Subject"
-							subjects={subjects}
-							content={content}
-							selectSubject={this.selectSubject}
-							showSubjectError={validationSubjectMsg}
-							id="subjects"
-							isFromDraft={false}
-							selectedValue={content.pleaseSelect}
-							ddId="ddlSubject"
-						/>
-					</div>
-				</div>
-
-				<div className="c-field">
-					<label
-						id="relatesTitle"
-						className="c-field__label c-field__label--block"
-						htmlFor="accounts"
-					>
-						{content.messageRelatesTo}
-					</label>
-					<div className="c-field__controls u-position-relative">
-						<DropDownComponent
-							accessID="Message relates to"
-							accounts={accounts}
-							content={content}
-							selectSubject={this.selectSubject}
-							showAccountError={validationAccountMsg}
-							id="accounts"
-							isFromDraft={false}
-							selectedValue={content.pleaseSelect}
-							ddId="ddlAccount"
-						/>
-					</div>
-				</div>
-
-				<div className="c-field">
-					<label
-						id="messageTitle"
-						className="c-field__label c-field__label--block"
-						htmlFor="message"
-					>
-						{content.message}
-					</label>
-					<div className="c-field__controls">
-						<div className="u-visually-hidden off-screen" id="textAreaMaxMsg">
-							{content.maxCharLimit}
-						</div>
-						<TextAreaComponent
-							textData={this.textChange}
-							ariaId="textAreaMaxMsg"
-							accessID="messageTitle"
-							id="message"
-						/>
-					</div>
-					{this.renderRemainingChar()}
-				</div>
-
-				{showPopup && this.returnModalComponent()}
-				{showDraftSuccessModal &&
-					messages.successModal &&
-					this.returnDraftModal()}
-				{showSentMessageModal &&
-					messages.successModal &&
-					this.returnSentMessageModal()}
-				{messages.newMessageError &&
-					showSaveServiceErrorModal &&
-					this.returnErrorModal()}
-				{messages.newMessageError &&
-					showSendServiceErrorModal &&
-					this.returnErrorModal()}
-				<div className="c-btn--group">
-					{!disabled ? (
-						<button
-							name="Back"
-							className="c-btn c-btn--secondary"
-							onClick={this.callBackModal}
-						>
-							{content.back}
-						</button>
-					) : (
-							<Link
-								to={`${window.baseURl}/securemessages`}
-								className="c-btn c-btn--secondary"
+				<div className="row centralised-container">
+					<div className="col-md1-24 col-sm1-24 col-lg1-24">
+						{this.returnBackButton()}
+						<div className="c-field">
+							<label
+								id="subjectTitle"
+								className="c-field__label c-field__label--block"
+								htmlFor="subjects"
 							>
-								{content.back}
-							</Link>
-						)}
-					<button
-						name="Save Draft"
-						className="c-btn c-btn--secondary"
-						onClick={this.saveDraftData}
-						disabled={disabled}
-					>
-						{content.saveDraft}
-					</button>
-					<button
-						name="Send"
-						className="c-btn c-btn--default"
-						onClick={this.sendData}
-						disabled={disabled}
-					>
-						{content.send}
-					</button>
-				</div>
+								{content.subject}
+							</label>
+							<div className="c-field__controls u-position-relative">
+								<DropDownComponent
+									accessID="Subject"
+									subjects={subjects}
+									content={content}
+									selectSubject={this.selectSubject}
+									showSubjectError={validationSubjectMsg}
+									id="subjects"
+									isFromDraft={false}
+									selectedValue={content.pleaseSelect}
+									ddId="ddlSubject"
+								/>
+							</div>
+						</div>
+
+						<div className="c-field">
+							<label
+								id="relatesTitle"
+								className="c-field__label c-field__label--block"
+								htmlFor="accounts"
+							>
+								{content.messageRelatesTo}
+							</label>
+							<div className="c-field__controls u-position-relative">
+								<DropDownComponent
+									accessID="Message relates to"
+									accounts={accounts}
+									content={content}
+									selectSubject={this.selectSubject}
+									showAccountError={validationAccountMsg}
+									id="accounts"
+									isFromDraft={false}
+									selectedValue={content.pleaseSelect}
+									ddId="ddlAccount"
+								/>
+							</div>
+						</div>
+
+						<div className="c-field">
+							<label
+								id="messageTitle"
+								className="c-field__label c-field__label--block"
+								htmlFor="message"
+							>
+								{content.message}
+							</label>
+							<div className="c-field__controls">
+								<div className="u-visually-hidden off-screen" id="textAreaMaxMsg">
+									{content.maxCharLimit}
+								</div>
+								<TextAreaComponent
+									textData={this.textChange}
+									ariaId="textAreaMaxMsg"
+									accessID="messageTitle"
+									id="message"
+								/>
+							</div>
+							{this.renderRemainingChar()}
+						</div>
+
+						{showPopup && this.returnModalComponent()}
+						{showDraftSuccessModal &&
+							messages.successModal &&
+							this.returnDraftModal()}
+						{showSentMessageModal &&
+							messages.successModal &&
+							this.returnSentMessageModal()}
+						{messages.newMessageError &&
+							showSaveServiceErrorModal &&
+							this.returnErrorModal()}
+						{messages.newMessageError &&
+							showSendServiceErrorModal &&
+							this.returnErrorModal()}
+						<div className="c-btn--group">
+							{!disabled ? (
+								<button
+									name="Back"
+									className="c-btn c-btn--secondary"
+									onClick={this.callBackModal}
+								>
+									{content.back}
+								</button>
+							) : (
+									<Link
+										to={`${window.baseURl}/securemessages`}
+										className="c-btn c-btn--secondary"
+									>
+										{content.back}
+									</Link>
+								)}
+							<button
+								name="Save Draft"
+								className="c-btn c-btn--secondary"
+								onClick={this.saveDraftData}
+								disabled={disabled}
+							>
+								{content.saveDraft}
+							</button>
+							<button
+								name="Send"
+								className="c-btn c-btn--default"
+								onClick={this.sendData}
+								disabled={disabled}
+							>
+								{content.send}
+							</button>
+						</div>
+					</div>
+				</div>	
 			</div>
 		);
 	}
