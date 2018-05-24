@@ -1,3 +1,5 @@
+import BrowserUtils from '../js/utils/BrowserUtils';
+
 const token = {
 	accessToken() {
 		const accessToken = window.location;
@@ -49,6 +51,14 @@ const token = {
 			client: {
 				app_title: hashValue.appTitle,
 				user_tracking_id: hashValue.userTrackingId,
+				client_id: this.getFingerPrints,
+			},
+			env: {
+				platform_version: BrowserUtils.getBrowserVersion(),
+				make: BrowserUtils.getPlatform(),
+				locale: BrowserUtils.getUserLocale(),
+				platform: "B Web",
+				device_name: this.getFingerPrints(),
 			},
 		};
 	},
