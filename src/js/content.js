@@ -55,6 +55,7 @@ const content = {
 		unread: 'Unread',
 		replyUnread: 'Reply Unread',
 		deleteUnread: 'Delete Unread',
+		pending: 'Pending',
 	},
 
 	CB: {
@@ -112,6 +113,7 @@ const content = {
 		unread: 'Unread',
 		replyUnread: 'Reply Unread',
 		deleteUnread: 'Delete Unread',
+		pending: 'Pending',
 	},
 };
 

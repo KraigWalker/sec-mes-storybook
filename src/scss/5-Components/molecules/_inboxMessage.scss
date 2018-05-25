@@ -127,6 +127,13 @@
             display: inline-block;
         }
     }
+     &__pending__txt {
+        cursor: default;
+        display: none;
+        @include media-breakpoint-up(md1) {
+            display: inline-block;
+        }
+    }
 
     &__reply__icon,
     &__delete__icon {

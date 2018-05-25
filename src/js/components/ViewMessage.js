@@ -21,6 +21,7 @@ import GetIcon from "./common/GetIcon";
 import SendMessageRequestEntity from "../entities/SendMessageRequestEntity.js";
 import ModalComponent from "./common/ModalComponent";
 import { sendDeleteData } from "../actions/AppActions";
+import { PENDING } from '../constants/StringsConstants';
 let messageEntity = new SendMessageRequestEntity();
 
 export class ViewMessage extends React.Component {
@@ -267,7 +268,7 @@ export class ViewMessage extends React.Component {
 						<pre>{messageDetail.message}</pre>
 						<div className="c-btn--group">
 							{this.getBackButton()}
-							{this.getDeleteButton(messageDetail)}
+							{!messageDetail.status === PENDING && this.getDeleteButton(messageDetail)}
 							{this.getReplyButton(messageDetail)}
 						</div>
 						{this.state.showDeleteConfirmModal && this.returnModalComponent()}

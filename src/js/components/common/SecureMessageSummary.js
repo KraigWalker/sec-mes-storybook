@@ -102,6 +102,25 @@ export class SecureMessageSummary extends React.Component {
 			</button>
 		);
 	};
+
+	getPendingStatus = () => {
+		return (
+			<div
+				className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
+			>
+				<span
+					id="pendingMsg"
+					className="c-message__summary__head__actions__pending__txt"
+				>
+					{this.props.content.pending}
+				</span>
+				<span className="c-message__summary__head__actions__delete__icon">
+					<GetIcon id="icon-outline-large" viewbox="0 0 16 16" width="24px" height="24px" />
+				</span>
+			</div>
+		);
+	};
+
 	hasOnClick = () => {
 		const { message, threadFlag, content } = this.props;
 		const path =
@@ -210,16 +229,16 @@ export class SecureMessageSummary extends React.Component {
 				</Link>
 			</div>
 		) : (
-			<div>
-				<button
-					type="button"
-					onClick={this.closeSuccessModal}
-					className="c-btn c-btn--primary c-btn--sm c-modal__button"
-				>
-					{content.ok}
-				</button>
-			</div>
-		);
+				<div>
+					<button
+						type="button"
+						onClick={this.closeSuccessModal}
+						className="c-btn c-btn--primary c-btn--sm c-modal__button"
+					>
+						{content.ok}
+					</button>
+				</div>
+			);
 		return (
 			<ModalComponent
 				show
@@ -364,7 +383,7 @@ export class SecureMessageSummary extends React.Component {
 						<div className={actionsClass}>
 							{(message.status === NEW || message.status === READ) &&
 								this.getReplyButton(message)}
-							{!threadFlag && this.getDeleteButton()}
+							{!threadFlag && message.status !== PENDING ? this.getDeleteButton() : this.getPendingStatus()}
 						</div>
 					</div>
 					{!viewMessageFlag && (
