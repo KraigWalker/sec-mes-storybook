@@ -165,20 +165,7 @@ export class SecureMessageSummary extends React.Component {
 	}
 	retryServiceCall() {
 		this.props.dispatch(popupState());
-		const { message, dispatch } = this.props;
-		if (message.status === NEW) {
-			dispatch(updateMessageData(message, message.id, READ));
-			setTimeout(() => {
-				dispatch(
-					delMessageData(message, message.id, DELETED)
-				);
-			}, 500);
-		} else dispatch(delMessageData(message, message.id, DELETED));
-		this.setState({
-			showDeleteSuccessModal: true,
-			showDeleteConfirmModal: false,
-			showSendServiceErrorModal: true,
-		});
+		this.deleteClick();
 	}
 	closeModal() {
 		setTimeout(() => {

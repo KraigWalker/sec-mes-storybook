@@ -8,9 +8,9 @@
  */
 export function getMessageType(type){
     if(type == 'SENT' || type == 'PENDING'){
-        return 'sent';
+        return 'SENT';
     } else if(type == 'NEW' || type == 'READ'){
-        return 'inbox';
+        return 'INBOX';
     }
 }
 

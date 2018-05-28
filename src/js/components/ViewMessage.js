@@ -21,7 +21,7 @@ import GetIcon from "./common/GetIcon";
 import SendMessageRequestEntity from "../entities/SendMessageRequestEntity.js";
 import ModalComponent from "./common/ModalComponent";
 import { sendDeleteData } from "../actions/AppActions";
-import { PENDING } from '../constants/StringsConstants';
+import { NEW, READ, DRAFT, PENDING, SENT, DELETED } from '../constants/StringsConstants';
 let messageEntity = new SendMessageRequestEntity();
 
 export class ViewMessage extends React.Component {
@@ -47,7 +47,7 @@ export class ViewMessage extends React.Component {
 	}
 
 	componentDidMount() {
-		const { messageDetail } = this.props.location;
+	const { messageDetail } = this.props.location;
 		messageDetail &&
 			this.props.dispatch(
 				setViewMessageDetail(this.props.location.messageDetail)
@@ -70,13 +70,13 @@ export class ViewMessage extends React.Component {
 		return <Threads Threads={threads} />;
 	}
 	getReplyButton = message => {
-		if (getMessageType(message.status) !== 'sent') {
+		if (getMessageType(message.status) !== SENT) {
 			return (
 				<Link
 					to={{ pathname: `${window.baseURl}/replysecuremessage`, backPath: `${window.baseURl}/viewmessage`, messageDetail: message }}
 					className="c-btn c-btn--primary"
 				>
-					Reply
+				{this.props.content.replyMessageTitle}
 	</Link>
 			);
 		};
@@ -84,7 +84,7 @@ export class ViewMessage extends React.Component {
 
 	getDeleteButton = message => (
 		<button className="c-btn c-btn--secondary" onClick={this.handleDelete}>
-			Delete
+			{this.props.content.delete}
 	  	 </button>
 	);
 	handleDelete(data) {
@@ -110,7 +110,7 @@ export class ViewMessage extends React.Component {
 			updateMessageData(
 				this.props.location.messageDetail,
 				this.props.location.messageDetail.id,
-				'DELETED'
+				DELETED
 			)
 		);
 	}
@@ -120,14 +120,15 @@ export class ViewMessage extends React.Component {
 				to={{ pathname: `${window.baseURl}/securemessage` }}
 				className="c-btn c-btn--secondary"
 			>
-				Back
+				{this.props.content.back}
 	</Link>
 		);
 	}
 	returnModalComponent() {
+		const { content } = this.props;
 		const bodyContent = (
 			<div className="callout callout__error">
-				{this.props.content.deleteMessageBody}
+				{content.deleteMessageBody}
 			</div>
 		);
 		const footerButtons = (
@@ -137,14 +138,14 @@ export class ViewMessage extends React.Component {
 					onClick={this.closeModal}
 					className="c-btn c-btn--secondary c-modal__button"
 				>
-					{this.props.content.dontDelButton}
+					{content.dontDelButton}
 				</button>
 				<button
 					type="button"
 					onClick={this.deleteClick}
 					className="c-btn c-btn--default c-modal__button"
 				>
-					{this.props.content.delButton}
+					{content.delButton}
 				</button>
 			</div>
 		);
@@ -153,7 +154,7 @@ export class ViewMessage extends React.Component {
 				show
 				onHide={this.closeModal}
 				customClass="c-modal"
-				modalheading={this.props.content.deleteMessageHeading}
+				modalheading={content.deleteMessageHeading}
 				modalbody={bodyContent}
 				modalfooter={footerButtons}
 				modalInContainer={false}
@@ -162,11 +163,12 @@ export class ViewMessage extends React.Component {
 		);
 	}
 	returnDeleteSuccessModalComponent() {
+		const { content } = this.props;
 		const bodyContent = (
 			<div>
 				<div>
 					<GetIcon id="icon-success" width="68px" height="68px" />
-				</div>{this.props.content.messageDeleted}
+				</div>{content.messageDeleted}
 			</div>
 		);
 		const footerButtons = (
@@ -175,7 +177,7 @@ export class ViewMessage extends React.Component {
 				onClick={this.closeSuccessModal}
 				className="c-btn c-btn--default c-btn--sm c-modal__button"
 			>
-				OK
+				{content.ok}
     </Link>
 		);
 
@@ -196,13 +198,14 @@ export class ViewMessage extends React.Component {
 		this.setState({ showDeleteSuccessModal: false });
 	}
 	returnErrorModal() {
+		const { content } = this.props;
 		const bodyContent = (
 			<div>
-				<h3>{this.props.content.sorryHeader}</h3>
+				<h3>{content.sorryHeader}</h3>
 				<br />
-				<p>{this.props.content.tryAgain}</p>
+				<p>{content.tryAgain}</p>
 				<br />
-				<p>{this.props.content.getInTouch}</p>
+				<p>{content.getInTouch}</p>
 			</div>
 		);
 		const footerButtons = (
@@ -212,14 +215,14 @@ export class ViewMessage extends React.Component {
 					className="c-btn c-btn--secondary c-modal__button"
 					onClick={this.errorCloseClicked}
 				>
-					Back
+					{content.back}
 		</button>
 				<button
 					type="button"
 					onClick={this.retryServiceCall}
 					className="c-btn c-btn--default c-modal__button"
 				>
-					{this.props.content.retry}
+					{content.retry}
 				</button>
 			</div>
 		);
@@ -252,7 +255,7 @@ export class ViewMessage extends React.Component {
 							}}
 							headerCrumbsMessage="Back"
 							headerTitle={
-								getMessageType(messageDetail.status) == 'sent'
+								getMessageType(messageDetail.status) == SENT
 									? this.props.content.sentPageTitle
 									: this.props.content.inboxPageTitle
 							}
@@ -261,14 +264,14 @@ export class ViewMessage extends React.Component {
 						<SecureMessageSummary
 							message={messageDetail}
 							viewMessageFlag
-							readFlag={messageDetail.status === 'READ'}
-							sentFlag={getMessageType(messageDetail.status) === 'sent'}
+							readFlag={messageDetail.status === READ}
+							sentFlag={getMessageType(messageDetail.status) === SENT}
 							content={this.props.content}
 						/>
 						<pre>{messageDetail.message}</pre>
 						<div className="c-btn--group">
 							{this.getBackButton()}
-							{!messageDetail.status === PENDING && this.getDeleteButton(messageDetail)}
+							{messageDetail.status !== PENDING && this.getDeleteButton(messageDetail)}
 							{this.getReplyButton(messageDetail)}
 						</div>
 						{this.state.showDeleteConfirmModal && this.returnModalComponent()}

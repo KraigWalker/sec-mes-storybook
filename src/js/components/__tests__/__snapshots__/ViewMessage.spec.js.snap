@@ -100,15 +100,11 @@ ShallowWrapper {
                   "pathname": "undefined/securemessage",
                 }
               }
-            >
-              Back
-            </Link>
+            />
             <button
               className="c-btn c-btn--secondary"
               onClick={[Function]}
-            >
-              Delete
-            </button>
+            />
             <Link
               className="c-btn c-btn--primary"
               replace={false}
@@ -121,9 +117,7 @@ ShallowWrapper {
                   "pathname": "undefined/replysecuremessage",
                 }
               }
-            >
-              Reply
-            </Link>
+            />
           </div>
           <ThreadList
             Threads={undefined}
@@ -179,15 +173,11 @@ ShallowWrapper {
                   "pathname": "undefined/securemessage",
                 }
               }
-            >
-              Back
-            </Link>
+            />
             <button
               className="c-btn c-btn--secondary"
               onClick={[Function]}
-            >
-              Delete
-            </button>
+            />
             <Link
               className="c-btn c-btn--primary"
               replace={false}
@@ -200,9 +190,7 @@ ShallowWrapper {
                   "pathname": "undefined/replysecuremessage",
                 }
               }
-            >
-              Reply
-            </Link>
+            />
           </div>
           <ThreadList
             Threads={undefined}
@@ -255,15 +243,11 @@ ShallowWrapper {
                     "pathname": "undefined/securemessage",
                   }
                 }
-              >
-                Back
-              </Link>
+              />
               <button
                 className="c-btn c-btn--secondary"
                 onClick={[Function]}
-              >
-                Delete
-              </button>
+              />
               <Link
                 className="c-btn c-btn--primary"
                 replace={false}
@@ -276,9 +260,7 @@ ShallowWrapper {
                     "pathname": "undefined/replysecuremessage",
                   }
                 }
-              >
-                Reply
-              </Link>
+              />
             </div>,
             false,
             false,
@@ -352,15 +334,11 @@ ShallowWrapper {
                       "pathname": "undefined/securemessage",
                     }
                   }
-                >
-                  Back
-                </Link>,
+                />,
                 <button
                   className="c-btn c-btn--secondary"
                   onClick={[Function]}
-                >
-                  Delete
-                </button>,
+                />,
                 <Link
                   className="c-btn c-btn--primary"
                   replace={false}
@@ -373,9 +351,7 @@ ShallowWrapper {
                       "pathname": "undefined/replysecuremessage",
                     }
                   }
-                >
-                  Reply
-                </Link>,
+                />,
               ],
               "className": "c-btn--group",
             },
@@ -386,7 +362,7 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "class",
                 "props": Object {
-                  "children": "Back",
+                  "children": undefined,
                   "className": "c-btn c-btn--secondary",
                   "replace": false,
                   "to": Object {
@@ -394,7 +370,7 @@ ShallowWrapper {
                   },
                 },
                 "ref": null,
-                "rendered": "Back",
+                "rendered": null,
                 "type": [Function],
               },
               Object {
@@ -402,12 +378,12 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "host",
                 "props": Object {
-                  "children": "Delete",
+                  "children": undefined,
                   "className": "c-btn c-btn--secondary",
                   "onClick": [Function],
                 },
                 "ref": null,
-                "rendered": "Delete",
+                "rendered": null,
                 "type": "button",
               },
               Object {
@@ -415,7 +391,7 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "class",
                 "props": Object {
-                  "children": "Reply",
+                  "children": undefined,
                   "className": "c-btn c-btn--primary",
                   "replace": false,
                   "to": Object {
@@ -427,7 +403,7 @@ ShallowWrapper {
                   },
                 },
                 "ref": null,
-                "rendered": "Reply",
+                "rendered": null,
                 "type": [Function],
               },
             ],
@@ -504,15 +480,11 @@ ShallowWrapper {
                     "pathname": "undefined/securemessage",
                   }
                 }
-              >
-                Back
-              </Link>
+              />
               <button
                 className="c-btn c-btn--secondary"
                 onClick={[Function]}
-              >
-                Delete
-              </button>
+              />
               <Link
                 className="c-btn c-btn--primary"
                 replace={false}
@@ -525,9 +497,7 @@ ShallowWrapper {
                     "pathname": "undefined/replysecuremessage",
                   }
                 }
-              >
-                Reply
-              </Link>
+              />
             </div>
             <ThreadList
               Threads={undefined}
@@ -583,15 +553,11 @@ ShallowWrapper {
                     "pathname": "undefined/securemessage",
                   }
                 }
-              >
-                Back
-              </Link>
+              />
               <button
                 className="c-btn c-btn--secondary"
                 onClick={[Function]}
-              >
-                Delete
-              </button>
+              />
               <Link
                 className="c-btn c-btn--primary"
                 replace={false}
@@ -604,9 +570,7 @@ ShallowWrapper {
                     "pathname": "undefined/replysecuremessage",
                   }
                 }
-              >
-                Reply
-              </Link>
+              />
             </div>
             <ThreadList
               Threads={undefined}
@@ -659,15 +623,11 @@ ShallowWrapper {
                       "pathname": "undefined/securemessage",
                     }
                   }
-                >
-                  Back
-                </Link>
+                />
                 <button
                   className="c-btn c-btn--secondary"
                   onClick={[Function]}
-                >
-                  Delete
-                </button>
+                />
                 <Link
                   className="c-btn c-btn--primary"
                   replace={false}
@@ -680,9 +640,7 @@ ShallowWrapper {
                       "pathname": "undefined/replysecuremessage",
                     }
                   }
-                >
-                  Reply
-                </Link>
+                />
               </div>,
               false,
               false,
@@ -756,15 +714,11 @@ ShallowWrapper {
                         "pathname": "undefined/securemessage",
                       }
                     }
-                  >
-                    Back
-                  </Link>,
+                  />,
                   <button
                     className="c-btn c-btn--secondary"
                     onClick={[Function]}
-                  >
-                    Delete
-                  </button>,
+                  />,
                   <Link
                     className="c-btn c-btn--primary"
                     replace={false}
@@ -777,9 +731,7 @@ ShallowWrapper {
                         "pathname": "undefined/replysecuremessage",
                       }
                     }
-                  >
-                    Reply
-                  </Link>,
+                  />,
                 ],
                 "className": "c-btn--group",
               },
@@ -790,7 +742,7 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "class",
                   "props": Object {
-                    "children": "Back",
+                    "children": undefined,
                     "className": "c-btn c-btn--secondary",
                     "replace": false,
                     "to": Object {
@@ -798,7 +750,7 @@ ShallowWrapper {
                     },
                   },
                   "ref": null,
-                  "rendered": "Back",
+                  "rendered": null,
                   "type": [Function],
                 },
                 Object {
@@ -806,12 +758,12 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "host",
                   "props": Object {
-                    "children": "Delete",
+                    "children": undefined,
                     "className": "c-btn c-btn--secondary",
                     "onClick": [Function],
                   },
                   "ref": null,
-                  "rendered": "Delete",
+                  "rendered": null,
                   "type": "button",
                 },
                 Object {
@@ -819,7 +771,7 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "class",
                   "props": Object {
-                    "children": "Reply",
+                    "children": undefined,
                     "className": "c-btn c-btn--primary",
                     "replace": false,
                     "to": Object {
@@ -831,7 +783,7 @@ ShallowWrapper {
                     },
                   },
                   "ref": null,
-                  "rendered": "Reply",
+                  "rendered": null,
                   "type": [Function],
                 },
               ],
@@ -978,9 +930,7 @@ ShallowWrapper {
             <button
               className="c-btn c-btn--secondary"
               onClick={[Function]}
-            >
-              Delete
-            </button>
+            />
             <Link
               className="c-btn c-btn--primary"
               replace={false}
@@ -993,9 +943,7 @@ ShallowWrapper {
                   "pathname": "undefined/replysecuremessage",
                 }
               }
-            >
-              Reply
-            </Link>
+            />
           </div>
           <ModalComponent
             backdrop={true}
@@ -1049,9 +997,7 @@ ShallowWrapper {
                 onClick={[Function]}
                 replace={false}
                 to="undefined/securemessages"
-              >
-                OK
-              </Link>
+              />
             }
             modalheading=""
             onHide={[Function]}
@@ -1154,9 +1100,7 @@ ShallowWrapper {
             <button
               className="c-btn c-btn--secondary"
               onClick={[Function]}
-            >
-              Delete
-            </button>
+            />
             <Link
               className="c-btn c-btn--primary"
               replace={false}
@@ -1169,9 +1113,7 @@ ShallowWrapper {
                   "pathname": "undefined/replysecuremessage",
                 }
               }
-            >
-              Reply
-            </Link>
+            />
           </div>
           <ModalComponent
             backdrop={true}
@@ -1225,9 +1167,7 @@ ShallowWrapper {
                 onClick={[Function]}
                 replace={false}
                 to="undefined/securemessages"
-              >
-                OK
-              </Link>
+              />
             }
             modalheading=""
             onHide={[Function]}
@@ -1327,9 +1267,7 @@ ShallowWrapper {
               <button
                 className="c-btn c-btn--secondary"
                 onClick={[Function]}
-              >
-                Delete
-              </button>
+              />
               <Link
                 className="c-btn c-btn--primary"
                 replace={false}
@@ -1342,9 +1280,7 @@ ShallowWrapper {
                     "pathname": "undefined/replysecuremessage",
                   }
                 }
-              >
-                Reply
-              </Link>
+              />
             </div>,
             <ModalComponent
               backdrop={true}
@@ -1398,9 +1334,7 @@ ShallowWrapper {
                   onClick={[Function]}
                   replace={false}
                   to="undefined/securemessages"
-                >
-                  OK
-                </Link>
+                />
               }
               modalheading=""
               onHide={[Function]}
@@ -1518,9 +1452,7 @@ ShallowWrapper {
                 <button
                   className="c-btn c-btn--secondary"
                   onClick={[Function]}
-                >
-                  Delete
-                </button>,
+                />,
                 <Link
                   className="c-btn c-btn--primary"
                   replace={false}
@@ -1533,9 +1465,7 @@ ShallowWrapper {
                       "pathname": "undefined/replysecuremessage",
                     }
                   }
-                >
-                  Reply
-                </Link>,
+                />,
               ],
               "className": "c-btn--group",
             },
@@ -1562,12 +1492,12 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "host",
                 "props": Object {
-                  "children": "Delete",
+                  "children": undefined,
                   "className": "c-btn c-btn--secondary",
                   "onClick": [Function],
                 },
                 "ref": null,
-                "rendered": "Delete",
+                "rendered": null,
                 "type": "button",
               },
               Object {
@@ -1575,7 +1505,7 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "class",
                 "props": Object {
-                  "children": "Reply",
+                  "children": undefined,
                   "className": "c-btn c-btn--primary",
                   "replace": false,
                   "to": Object {
@@ -1587,7 +1517,7 @@ ShallowWrapper {
                   },
                 },
                 "ref": null,
-                "rendered": "Reply",
+                "rendered": null,
                 "type": [Function],
               },
             ],
@@ -1650,9 +1580,7 @@ ShallowWrapper {
                 onClick={[Function]}
                 replace={false}
                 to="undefined/securemessages"
-              >
-                OK
-              </Link>,
+              />,
               "modalheading": "",
               "onHide": [Function],
               "scope": undefined,
@@ -1776,9 +1704,7 @@ ShallowWrapper {
               <button
                 className="c-btn c-btn--secondary"
                 onClick={[Function]}
-              >
-                Delete
-              </button>
+              />
               <Link
                 className="c-btn c-btn--primary"
                 replace={false}
@@ -1791,9 +1717,7 @@ ShallowWrapper {
                     "pathname": "undefined/replysecuremessage",
                   }
                 }
-              >
-                Reply
-              </Link>
+              />
             </div>
             <ModalComponent
               backdrop={true}
@@ -1847,9 +1771,7 @@ ShallowWrapper {
                   onClick={[Function]}
                   replace={false}
                   to="undefined/securemessages"
-                >
-                  OK
-                </Link>
+                />
               }
               modalheading=""
               onHide={[Function]}
@@ -1952,9 +1874,7 @@ ShallowWrapper {
               <button
                 className="c-btn c-btn--secondary"
                 onClick={[Function]}
-              >
-                Delete
-              </button>
+              />
               <Link
                 className="c-btn c-btn--primary"
                 replace={false}
@@ -1967,9 +1887,7 @@ ShallowWrapper {
                     "pathname": "undefined/replysecuremessage",
                   }
                 }
-              >
-                Reply
-              </Link>
+              />
             </div>
             <ModalComponent
               backdrop={true}
@@ -2023,9 +1941,7 @@ ShallowWrapper {
                   onClick={[Function]}
                   replace={false}
                   to="undefined/securemessages"
-                >
-                  OK
-                </Link>
+                />
               }
               modalheading=""
               onHide={[Function]}
@@ -2125,9 +2041,7 @@ ShallowWrapper {
                 <button
                   className="c-btn c-btn--secondary"
                   onClick={[Function]}
-                >
-                  Delete
-                </button>
+                />
                 <Link
                   className="c-btn c-btn--primary"
                   replace={false}
@@ -2140,9 +2054,7 @@ ShallowWrapper {
                       "pathname": "undefined/replysecuremessage",
                     }
                   }
-                >
-                  Reply
-                </Link>
+                />
               </div>,
               <ModalComponent
                 backdrop={true}
@@ -2196,9 +2108,7 @@ ShallowWrapper {
                     onClick={[Function]}
                     replace={false}
                     to="undefined/securemessages"
-                  >
-                    OK
-                  </Link>
+                  />
                 }
                 modalheading=""
                 onHide={[Function]}
@@ -2316,9 +2226,7 @@ ShallowWrapper {
                   <button
                     className="c-btn c-btn--secondary"
                     onClick={[Function]}
-                  >
-                    Delete
-                  </button>,
+                  />,
                   <Link
                     className="c-btn c-btn--primary"
                     replace={false}
@@ -2331,9 +2239,7 @@ ShallowWrapper {
                         "pathname": "undefined/replysecuremessage",
                       }
                     }
-                  >
-                    Reply
-                  </Link>,
+                  />,
                 ],
                 "className": "c-btn--group",
               },
@@ -2360,12 +2266,12 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "host",
                   "props": Object {
-                    "children": "Delete",
+                    "children": undefined,
                     "className": "c-btn c-btn--secondary",
                     "onClick": [Function],
                   },
                   "ref": null,
-                  "rendered": "Delete",
+                  "rendered": null,
                   "type": "button",
                 },
                 Object {
@@ -2373,7 +2279,7 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "class",
                   "props": Object {
-                    "children": "Reply",
+                    "children": undefined,
                     "className": "c-btn c-btn--primary",
                     "replace": false,
                     "to": Object {
@@ -2385,7 +2291,7 @@ ShallowWrapper {
                     },
                   },
                   "ref": null,
-                  "rendered": "Reply",
+                  "rendered": null,
                   "type": [Function],
                 },
               ],
@@ -2448,9 +2354,7 @@ ShallowWrapper {
                   onClick={[Function]}
                   replace={false}
                   to="undefined/securemessages"
-                >
-                  OK
-                </Link>,
+                />,
                 "modalheading": "",
                 "onHide": [Function],
                 "scope": undefined,
