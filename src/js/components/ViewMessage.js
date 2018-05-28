@@ -47,7 +47,7 @@ export class ViewMessage extends React.Component {
 	}
 
 	componentDidMount() {
-	const { messageDetail } = this.props.location;
+		const { messageDetail } = this.props.location;
 		messageDetail &&
 			this.props.dispatch(
 				setViewMessageDetail(this.props.location.messageDetail)
