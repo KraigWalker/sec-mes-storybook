@@ -370,7 +370,8 @@ export class SecureMessageSummary extends React.Component {
 						<div className={actionsClass}>
 							{(message.status === NEW || message.status === READ) &&
 								this.getReplyButton(message)}
-							{!threadFlag && message.status !== PENDING ? this.getDeleteButton() : this.getPendingStatus()}
+							{!threadFlag && message.status !== PENDING && this.getDeleteButton()}
+							{!threadFlag && message.status === PENDING && this.getPendingStatus()}
 						</div>
 					</div>
 					{!viewMessageFlag && (

@@ -830,6 +830,7 @@ ShallowWrapper {
                         />
                       </span>
                     </button>,
+                    false,
                   ],
                   "className": "c-message__summary__head__actions u-position-relative",
                 },
@@ -1010,6 +1011,7 @@ ShallowWrapper {
                     ],
                     "type": "button",
                   },
+                  false,
                 ],
                 "type": "div",
               },
@@ -1839,6 +1841,7 @@ ShallowWrapper {
                           />
                         </span>
                       </button>,
+                      false,
                     ],
                     "className": "c-message__summary__head__actions u-position-relative",
                   },
@@ -2019,6 +2022,7 @@ ShallowWrapper {
                       ],
                       "type": "button",
                     },
+                    false,
                   ],
                   "type": "div",
                 },
@@ -2683,6 +2687,7 @@ ShallowWrapper {
                         />
                       </span>
                     </button>,
+                    false,
                   ],
                   "className": "c-message__summary__head__actions u-position-relative",
                 },
@@ -2760,6 +2765,7 @@ ShallowWrapper {
                     ],
                     "type": "button",
                   },
+                  false,
                 ],
                 "type": "div",
               },
@@ -3339,6 +3345,7 @@ ShallowWrapper {
                           />
                         </span>
                       </button>,
+                      false,
                     ],
                     "className": "c-message__summary__head__actions u-position-relative",
                   },
@@ -3416,6 +3423,7 @@ ShallowWrapper {
                       ],
                       "type": "button",
                     },
+                    false,
                   ],
                   "type": "div",
                 },
@@ -4301,6 +4309,7 @@ ShallowWrapper {
                         />
                       </span>
                     </button>,
+                    false,
                   ],
                   "className": "c-message__summary__head__actions u-position-relative",
                 },
@@ -4477,6 +4486,7 @@ ShallowWrapper {
                     ],
                     "type": "button",
                   },
+                  false,
                 ],
                 "type": "div",
               },
@@ -5286,6 +5296,7 @@ ShallowWrapper {
                           />
                         </span>
                       </button>,
+                      false,
                     ],
                     "className": "c-message__summary__head__actions u-position-relative",
                   },
@@ -5462,6 +5473,7 @@ ShallowWrapper {
                       ],
                       "type": "button",
                     },
+                    false,
                   ],
                   "type": "div",
                 },

@@ -162,7 +162,7 @@ export function replyMessage(data, ids, status) {
             requestData = {
                 secure_message: {
                     subject: data.subject,
-                    threadID: ids.threadID,
+                    thread_id: ids.threadID,
                     account: {
                         id: data.id,
                         number: data.number,
@@ -210,7 +210,7 @@ export function replyMessage(data, ids, status) {
             requestData = {
                 secure_message: {
                     subject: data.subject,
-                    threadID: ids.threadID,
+                    thread_id: ids.threadID,
                     payload: {
                         headers: [
                             {
