@@ -121,6 +121,11 @@ ShallowWrapper {
           </div>
           <ThreadList
             Threads={undefined}
+            content={
+              Object {
+                "sentPageTitle": "sentPageTitle",
+              }
+            }
           />
         </div>
       </div>,
@@ -194,6 +199,11 @@ ShallowWrapper {
           </div>
           <ThreadList
             Threads={undefined}
+            content={
+              Object {
+                "sentPageTitle": "sentPageTitle",
+              }
+            }
           />
         </div>,
         "className": "row centralised-container",
@@ -267,6 +277,11 @@ ShallowWrapper {
             false,
             <ThreadList
               Threads={undefined}
+              content={
+                Object {
+                  "sentPageTitle": "sentPageTitle",
+                }
+              }
             />,
           ],
           "className": "col-md1-24 col-sm1-24 col-lg1-24",
@@ -418,6 +433,9 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "Threads": undefined,
+              "content": Object {
+                "sentPageTitle": "sentPageTitle",
+              },
             },
             "ref": null,
             "rendered": null,
@@ -501,6 +519,11 @@ ShallowWrapper {
             </div>
             <ThreadList
               Threads={undefined}
+              content={
+                Object {
+                  "sentPageTitle": "sentPageTitle",
+                }
+              }
             />
           </div>
         </div>,
@@ -574,6 +597,11 @@ ShallowWrapper {
             </div>
             <ThreadList
               Threads={undefined}
+              content={
+                Object {
+                  "sentPageTitle": "sentPageTitle",
+                }
+              }
             />
           </div>,
           "className": "row centralised-container",
@@ -647,6 +675,11 @@ ShallowWrapper {
               false,
               <ThreadList
                 Threads={undefined}
+                content={
+                  Object {
+                    "sentPageTitle": "sentPageTitle",
+                  }
+                }
               />,
             ],
             "className": "col-md1-24 col-sm1-24 col-lg1-24",
@@ -798,6 +831,9 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "Threads": undefined,
+                "content": Object {
+                  "sentPageTitle": "sentPageTitle",
+                },
               },
               "ref": null,
               "rendered": null,
@@ -1042,6 +1078,11 @@ ShallowWrapper {
           />
           <ThreadList
             Threads={undefined}
+            content={
+              Object {
+                "back": "Back",
+              }
+            }
           />
         </div>
       </div>,
@@ -1212,6 +1253,11 @@ ShallowWrapper {
           />
           <ThreadList
             Threads={undefined}
+            content={
+              Object {
+                "back": "Back",
+              }
+            }
           />
         </div>,
         "className": "row centralised-container",
@@ -1379,6 +1425,11 @@ ShallowWrapper {
             />,
             <ThreadList
               Threads={undefined}
+              content={
+                Object {
+                  "back": "Back",
+                }
+              }
             />,
           ],
           "className": "col-md1-24 col-sm1-24 col-lg1-24",
@@ -1636,6 +1687,9 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "Threads": undefined,
+              "content": Object {
+                "back": "Back",
+              },
             },
             "ref": null,
             "rendered": null,
@@ -1816,6 +1870,11 @@ ShallowWrapper {
             />
             <ThreadList
               Threads={undefined}
+              content={
+                Object {
+                  "back": "Back",
+                }
+              }
             />
           </div>
         </div>,
@@ -1986,6 +2045,11 @@ ShallowWrapper {
             />
             <ThreadList
               Threads={undefined}
+              content={
+                Object {
+                  "back": "Back",
+                }
+              }
             />
           </div>,
           "className": "row centralised-container",
@@ -2153,6 +2217,11 @@ ShallowWrapper {
               />,
               <ThreadList
                 Threads={undefined}
+                content={
+                  Object {
+                    "back": "Back",
+                  }
+                }
               />,
             ],
             "className": "col-md1-24 col-sm1-24 col-lg1-24",
@@ -2410,6 +2479,9 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "Threads": undefined,
+                "content": Object {
+                  "back": "Back",
+                },
               },
               "ref": null,
               "rendered": null,

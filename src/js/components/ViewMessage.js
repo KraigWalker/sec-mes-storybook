@@ -67,7 +67,7 @@ export class ViewMessage extends React.Component {
 	}
 	getThreads(messages, currentMessage) {
 		const threads = getThreadsBL(messages, currentMessage);
-		return <Threads Threads={threads} />;
+		return <Threads Threads={threads} content={this.props.content}/>;
 	}
 	getReplyButton = message => {
 		if (getMessageType(message.status) !== SENT) {
