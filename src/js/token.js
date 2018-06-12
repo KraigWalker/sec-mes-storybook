@@ -52,6 +52,7 @@ const token = {
 				app_title: hashValue.appTitle,
 				user_tracking_id: hashValue.userTrackingId,
 				client_id: this.getFingerPrints,
+				app_version_code: "1.0.0",
 			},
 			env: {
 				platform_version: BrowserUtils.getBrowserVersion(),
