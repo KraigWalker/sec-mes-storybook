@@ -4,7 +4,8 @@ import subjects from "./MessageSubjectReducer";
 import accounts from "./AccountsReducer";
 import viewMessage from "./ViewMessageReducer";
 import accessibilityReducer from "./AccessibilityReducer";
+import segmentData from "./SegmentsReducer";
 
 export default combineReducers({
-  messages,subjects,accounts,viewMessage,accessibilityReducer
+  messages,subjects,accounts,viewMessage,accessibilityReducer,segmentData
 })

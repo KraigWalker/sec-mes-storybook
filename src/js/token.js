@@ -1,11 +1,11 @@
 import BrowserUtils from '../js/utils/BrowserUtils';
 
+const accessToken = window.location;
+const hashKeyValue = {};
+const hashValue = {};
+let params;
 const token = {
 	accessToken() {
-		const accessToken = window.location;
-		const hashKeyValue = {};
-		const hashValue = {};
-		let params;
 		const bearer = 'Bearer ';
 		let bearerToken = 'Bearer 7b676003-7794-4dea-975f-7ce97f4463b2';
 		if (accessToken.hash.length > 0 && window.location.hash) {
@@ -19,10 +19,6 @@ const token = {
 		return bearerToken;
 	},
 	getBankId() {
-		const accessToken = window.location;
-		const hashKeyValue = {};
-		const hashValue = {};
-		let params;
 		let bankID = 'CB';
 		if (accessToken.hash.length > 0 && window.location.hash) {
 			params = accessToken.hash.substr(1);
@@ -35,10 +31,6 @@ const token = {
 		return bankID;
 	},
 	getClientContext() {
-		const accessToken = window.location;
-		const hashKeyValue = {};
-		const hashValue = {};
-		let params;
 		if (accessToken.hash.length > 0 && window.location.hash) {
 			params = accessToken.hash.substr(1);
 			hashKeyValue.appTitle = params.split('&')[2];
@@ -64,10 +56,6 @@ const token = {
 		};
 	},
 	getContentBankId() {
-		const accessToken = window.location;
-		const hashKeyValue = {};
-		const hashValue = {};
-		let params;
 		let contentBankID = 'CB';
 		if (accessToken.hash.length > 0 && window.location.hash) {
 			params = accessToken.hash.substr(1);
@@ -80,10 +68,6 @@ const token = {
 		return contentBankID;
 	},
 	getFingerPrints() {
-		const accessToken = window.location;
-		const hashKeyValue = {};
-		const hashValue = {};
-		let params;
 		let stateID;
 		if (accessToken.hash.length > 0 && window.location.hash) {
 			params = accessToken.hash.substr(1);

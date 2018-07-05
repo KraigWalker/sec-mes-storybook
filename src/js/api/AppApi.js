@@ -8,6 +8,7 @@ const _getMessageURLEndpoint = '/banks/{bank_id}/securemessages';
 const _getMessageSubjectsURL = '/banks/{bank_id}/securemessages/subjects';
 const _getAccountsURL = '/banks/{bank_id}/accounts/default';
 const _sendMessageURL = '/banks/{bank_id}/securemessages/{message_id}';
+const _getAccountSegmentEndpoint = '/user/details';
 
 class AppApi {
 	static fetchSecureMessages(success, error) {
@@ -22,8 +23,8 @@ class AppApi {
 		ApiUtils.makeRequest({ url: `${ConfigUtils.config.apiBaseUrl}${_getAccountsURL}`, method: 'GET', apiVersion: '0.8.0' }, success, error);
 	}
 
-	static sendMessageData(requestData, status, success, error) {
-		const reqData = parseDraft(requestData, status);
+	static sendMessageData(requestData, status, name, success, error) {
+		const reqData = parseDraft(requestData, status, name);
 		ApiUtils.makeRequest({ url: `${ConfigUtils.config.apiBaseUrl}${_getMessageURLEndpoint}`, method: 'POST', apiVersion: '1.2.0', requestData: reqData }, success, error);
 	}
 
@@ -52,6 +53,10 @@ class AppApi {
 			default:
 		}
 		ApiUtils.makeRequest({ url, method: 'PUT', requestData: reqData, apiVersion: '1.2.0' }, success, error);
+	}
+
+	static fetchAccountSegment(success, error) {
+		ApiUtils.makeRequest({ url: `${ConfigUtils.config.apiBaseUrlPAAS}${_getAccountSegmentEndpoint}`, method: 'GET', apiVersion: '0.8.0' }, success, error);
 	}
 }
 

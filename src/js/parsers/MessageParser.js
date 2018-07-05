@@ -26,11 +26,19 @@ export function parseMessages(response) {
 
 }
 
-export function parseDraft(data, status) {
+export function parseDraft(data, status, name) {
     if (data.id === undefined || null && data.number === undefined || null) {
         const requestData = {
             secure_message: {
                 subject: data.subject,
+                user: {
+                    name: {
+                        title: name.title,
+                        first_name: name.first_name,
+                        middle_name: name.middle_name,
+                        last_name: name.last_name
+                    }
+                },
                 payload: {
                     body: {
                         data: data.message,
@@ -44,6 +52,14 @@ export function parseDraft(data, status) {
         const requestData = {
             secure_message: {
                 subject: data.subject,
+                user: {
+                    name: {
+                        title: name.title,
+                        first_name: name.first_name,
+                        middle_name: name.middle_name,
+                        last_name: name.last_name
+                    }
+                },
                 account: {
                     id: data.id,
                     number: data.number,
@@ -158,92 +174,92 @@ export function deleteMessage(data, id, status) {
 
 export function replyMessage(data, ids, status) {
     let requestData = {};
-        if (data.id !== undefined && ids.threadID !== null) {
-            requestData = {
-                secure_message: {
-                    subject: data.subject,
-                    thread_id: ids.threadID,
-                    account: {
-                        id: data.id,
-                        number: data.number,
-                    },
-                    payload: {
-                        headers: [
-                            {
-                                name: "In-Reply-To",
-                                value: ids.id,
-                            }
-                        ],
-                        body: {
-                            data: data.message,
+    if (data.id !== undefined && ids.threadID !== null) {
+        requestData = {
+            secure_message: {
+                subject: data.subject,
+                thread_id: ids.threadID,
+                account: {
+                    id: data.id,
+                    number: data.number,
+                },
+                payload: {
+                    headers: [
+                        {
+                            name: "In-Reply-To",
+                            value: ids.id,
                         }
-                    },
-                    status: status,
-                }
+                    ],
+                    body: {
+                        data: data.message,
+                    }
+                },
+                status: status,
             }
         }
+    }
 
-       else if (data.id !== undefined && ids.threadID === null) {
-            requestData = {
-                secure_message: {
-                    subject: data.subject,
-                    account: {
-                        id: data.id,
-                        number: data.number,
-                    },
-                    payload: {
-                        headers: [
-                            {
-                                name: "In-Reply-To",
-                                value: ids.id,
-                            }
-                        ],
-                        body: {
-                            data: data.message,
+    else if (data.id !== undefined && ids.threadID === null) {
+        requestData = {
+            secure_message: {
+                subject: data.subject,
+                account: {
+                    id: data.id,
+                    number: data.number,
+                },
+                payload: {
+                    headers: [
+                        {
+                            name: "In-Reply-To",
+                            value: ids.id,
                         }
-                    },
-                    status: status,
-                }
+                    ],
+                    body: {
+                        data: data.message,
+                    }
+                },
+                status: status,
             }
         }
-       else if (data.id === undefined && ids.threadID !== null) {
-            requestData = {
-                secure_message: {
-                    subject: data.subject,
-                    thread_id: ids.threadID,
-                    payload: {
-                        headers: [
-                            {
-                                name: "In-Reply-To",
-                                value: ids.id,
-                            }
-                        ],
-                        body: {
-                            data: data.message,
+    }
+    else if (data.id === undefined && ids.threadID !== null) {
+        requestData = {
+            secure_message: {
+                subject: data.subject,
+                thread_id: ids.threadID,
+                payload: {
+                    headers: [
+                        {
+                            name: "In-Reply-To",
+                            value: ids.id,
                         }
-                    },
-                    status: status,
-                }
+                    ],
+                    body: {
+                        data: data.message,
+                    }
+                },
+                status: status,
             }
         }
-      else if (data.id === undefined && ids.threadID === null) {
-            requestData = {
-                secure_message: {
-                    subject: data.subject,
-                    payload: {
-                        headers: [
-                            {
-                                name: "In-Reply-To",
-                                value: ids.id,
-                            }
-                        ],
-                        body: {
-                            data: data.message,
+    }
+    else if (data.id === undefined && ids.threadID === null) {
+        requestData = {
+            secure_message: {
+                subject: data.subject,
+                payload: {
+                    headers: [
+                        {
+                            name: "In-Reply-To",
+                            value: ids.id,
                         }
-                    },
-                    status: status,
-                }
+                    ],
+                    body: {
+                        data: data.message,
+                    }
+                },
+                status: status,
             }
         }
+    }
     return requestData;
 }

@@ -85,7 +85,7 @@ export function backButton() {
 		dispatch(payload);
 	};
 }
-export function sendMessageData(requestData, status) {
+export function sendMessageData(requestData, status, name) {
 	return function(dispatch) {
 		const success = response => {
 			const payload = {
@@ -100,7 +100,7 @@ export function sendMessageData(requestData, status) {
 			};
 			dispatch(payload);
 		};
-		AppApi.sendMessageData(requestData, status, success, error);
+		AppApi.sendMessageData(requestData, status, name, success, error);
 	};
 }
 
@@ -195,5 +195,32 @@ export function closeDelModal() {
 			type: AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS,
 		};
 		dispatch(payload);
+	};
+}
+
+export function getCustomerName() {
+	return function(dispatch) {
+		const payload = {
+			type: AppConstants.REQUEST_SEGMENT_DATA,
+		};
+		dispatch(payload);
+		const success = response => {
+			console.log(response,'hellooooo');
+		//	const parseData = parseSegmentData(response);
+			const payload = {
+				type: AppConstants.REQUEST_SEGMENTS_SUCCESS,
+				payload: response,
+			};
+			dispatch(payload);
+		};
+		const error = error => {
+			console.log(error,'ERROR')
+			// const payload = {
+			// 	type: AppConstants.REQUEST_SEGMENTS_FAILURE,
+			// 	payload: error,
+			// };
+			// dispatch(payload);
+		};
+		AppApi.fetchAccountSegment(success, error);
 	};
 }

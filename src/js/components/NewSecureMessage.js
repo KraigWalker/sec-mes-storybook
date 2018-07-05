@@ -136,7 +136,8 @@ export class NewSecureMessage extends React.Component {
 			this.props.dispatch(
 				sendMessageData(
 					messageEntity.getMessageRequestData(),
-					StringsConstants.PENDING
+					StringsConstants.PENDING,
+					this.getCustomerName()
 				)
 			);
 			this.setState({ showSentMessageModal: true });
@@ -241,12 +242,17 @@ export class NewSecureMessage extends React.Component {
 		this.setState({ showDraftSuccessModal: false });
 	}
 
+	getCustomerName() {
+		return this.props.segmentData.segmentData.name;
+	}
+
 	saveDraftData() {
 		if (this.checkValidation() && this.state.chars_left >= 0) {
 			this.props.dispatch(
 				sendMessageData(
 					messageEntity.getMessageRequestData(),
-					StringsConstants.DRAFT
+					StringsConstants.DRAFT,
+					this.getCustomerName()
 				)
 			);
 			this.setState({ showDraftSuccessModal: true });
@@ -565,5 +571,6 @@ const mapState = state => ({
 	subjects: state.subjects,
 	messages: state.messages,
 	accounts: state.accounts,
+	segmentData: state.segmentData,
 });
 export default connect(mapState)(NewSecureMessage);
