@@ -28,8 +28,8 @@ class AppApi {
 		ApiUtils.makeRequest({ url: `${ConfigUtils.config.apiBaseUrl}${_getMessageURLEndpoint}`, method: 'POST', apiVersion: '1.2.0', requestData: reqData }, success, error);
 	}
 
-	static replyMessageData(requestData, ids, status, success, error) {
-		const reqData = replyMessage(requestData, ids, status);
+	static replyMessageData(requestData, ids, status, name, success, error) {
+		const reqData = replyMessage(requestData, ids, status, name);
 		ApiUtils.makeRequest({ url: `${ConfigUtils.config.apiBaseUrl}${_getMessageURLEndpoint}`, method: 'POST', apiVersion: '1.2.0', requestData: reqData }, success, error);
 	}
 
