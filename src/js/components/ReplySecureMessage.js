@@ -129,7 +129,7 @@ export class ReplySecureMessage extends React.Component {
 		});
 	}
 	sendData() {
-		const { dispatch, location } = this.props;
+		const { dispatch, location, segmentData } = this.props;
 		this.setState({ charError: true });
 		this.renderRemainingChar();
 		if (this.state.chars_left >= 0) {
@@ -137,7 +137,8 @@ export class ReplySecureMessage extends React.Component {
 				replyMessageData(
 					messageEntity.getMessageRequestData(),
 					location.messageDetail,
-					StringsConstants.PENDING
+					StringsConstants.PENDING,
+					segmentData.segmentData.name
 				)
 			);
 			this.setState({ showSentMessageModal: true });
@@ -214,12 +215,13 @@ export class ReplySecureMessage extends React.Component {
 		);
 	}
 	saveDraftData() {
-		const { dispatch, location } = this.props;
+		const { dispatch, location, segmentData } = this.props;
 		dispatch(
 			replyMessageData(
 				messageEntity.getMessageRequestData(),
 				location.messageDetail,
-				StringsConstants.DRAFT
+				StringsConstants.DRAFT,
+				segmentData.segmentData.name
 			)
 		);
 		this.setState({ showPopup: false });
@@ -574,5 +576,6 @@ const mapState = state => ({
 	messages: state.messages,
 	accounts: state.accounts,
 	messageDetail: state.viewMessage.messageDetail,
+	segmentData: state.segmentData,
 });
 export default connect(mapState)(ReplySecureMessage);
