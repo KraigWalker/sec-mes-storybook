@@ -33,6 +33,16 @@ describe("New Secure message snapshot", () => {
                 }
             }
         },
+        segmentData: {
+            segmentData: {
+                name: {
+                    title: 'Mr',
+                    first_name: 'Akash',
+                    middle_name: '',
+                    last_name: 'Srivastava',
+                }
+            }
+        },
         dispatch: dispatch
     };
     let component = shallow(<ReplySecureMessage {...props} />);
