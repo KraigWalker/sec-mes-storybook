@@ -129,7 +129,7 @@ export class ReplySecureMessage extends React.Component {
 		});
 	}
 	sendData() {
-		const { dispatch, location } = this.props;
+		const { dispatch, location, segmentData } = this.props;
 		this.setState({ charError: true });
 		this.renderRemainingChar();
 		if (this.state.chars_left >= 0) {
@@ -138,7 +138,7 @@ export class ReplySecureMessage extends React.Component {
 					messageEntity.getMessageRequestData(),
 					location.messageDetail,
 					StringsConstants.PENDING,
-					this.props.segmentData.segmentData.name
+					segmentData.segmentData.name
 				)
 			);
 			this.setState({ showSentMessageModal: true });
@@ -215,13 +215,13 @@ export class ReplySecureMessage extends React.Component {
 		);
 	}
 	saveDraftData() {
-		const { dispatch, location } = this.props;
+		const { dispatch, location, segmentData } = this.props;
 		dispatch(
 			replyMessageData(
 				messageEntity.getMessageRequestData(),
 				location.messageDetail,
 				StringsConstants.DRAFT,
-				this.props.segmentData.segmentData.name
+				segmentData.segmentData.name
 			)
 		);
 		this.setState({ showPopup: false });

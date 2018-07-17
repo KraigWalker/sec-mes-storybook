@@ -19,9 +19,10 @@ export function withSubscription(WrappedComponent) {
 			};
 		}
 		componentWillMount() {
-			this.props.dispatch(getAccounts());
-			this.props.dispatch(getCustomerName());
-			!this.props.fetched && this.props.dispatch(fetchSecureMessages());
+			const { dispatch, fetched } = this.props;
+			dispatch(getAccounts());
+			dispatch(getCustomerName());
+			!fetched && dispatch(fetchSecureMessages());
 		}
 		componentWillReceiveProps(nextProps) {
 			!nextProps.fetched && this.props.dispatch(fetchSecureMessages());
