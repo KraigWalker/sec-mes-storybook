@@ -56,7 +56,7 @@ class AppApi {
 	}
 
 	static fetchAccountSegment(success, error) {
-		ApiUtils.makeRequest({ url: `${ConfigUtils.config.apiBaseUrlPAAS}${_getAccountSegmentEndpoint}`, method: 'GET', apiVersion: '0.8.0' }, success, error);
+		ApiUtils.makeRequest({ url: `${ConfigUtils.config.apiBaseUrl2}${_getAccountSegmentEndpoint}`, method: 'GET', apiVersion: '0.8.0' }, success, error);
 	}
 }
 
