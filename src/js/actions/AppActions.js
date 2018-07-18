@@ -4,7 +4,7 @@ import { parseMessages } from '../parsers/MessageParser';
 import { parseSubjects, parseAccounts } from '../parsers/MessageSubjectParser';
 
 export function fetchSecureMessages() {
-	return function(dispatch) {
+	return function (dispatch) {
 		const payload = {
 			type: AppConstants.REQUEST_SECURE_MESSAGES,
 		};
@@ -27,7 +27,7 @@ export function fetchSecureMessages() {
 	};
 }
 export function getMessageSubjects() {
-	return function(dispatch) {
+	return function (dispatch) {
 		const success = response => {
 			const parseData = parseSubjects(response);
 			const payload = {
@@ -47,7 +47,7 @@ export function getMessageSubjects() {
 	};
 }
 export function getAccounts() {
-	return function(dispatch) {
+	return function (dispatch) {
 		const success = response => {
 			const parseData = parseAccounts(response);
 			const payload = {
@@ -68,7 +68,7 @@ export function getAccounts() {
 }
 
 export function getActiveTab(activeTab) {
-	return function(dispatch) {
+	return function (dispatch) {
 		const payload = {
 			type: AppConstants.REQUEST_TAB_ACTIVE,
 			payload: activeTab,
@@ -78,15 +78,15 @@ export function getActiveTab(activeTab) {
 }
 
 export function backButton() {
-	return function(dispatch) {
+	return function (dispatch) {
 		const payload = {
 			type: AppConstants.ERROR_BACK_BUTTON,
 		};
 		dispatch(payload);
 	};
 }
-export function sendMessageData(requestData, status) {
-	return function(dispatch) {
+export function sendMessageData(requestData, status, name) {
+	return function (dispatch) {
 		const success = response => {
 			const payload = {
 				type: AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS,
@@ -100,12 +100,12 @@ export function sendMessageData(requestData, status) {
 			};
 			dispatch(payload);
 		};
-		AppApi.sendMessageData(requestData, status, success, error);
+		AppApi.sendMessageData(requestData, status, name, success, error);
 	};
 }
 
-export function replyMessageData(requestData, ids, status) {
-	return function(dispatch) {
+export function replyMessageData(requestData, ids, status, name) {
+	return function (dispatch) {
 		const success = response => {
 			const payload = {
 				type: AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS,
@@ -119,12 +119,12 @@ export function replyMessageData(requestData, ids, status) {
 			};
 			dispatch(payload);
 		};
-		AppApi.replyMessageData(requestData, ids, status, success, error);
+		AppApi.replyMessageData(requestData, ids, status, name, success, error);
 	};
 }
 
 export function updateMessageData(requestData, id, status) {
-	return function(dispatch) {
+	return function (dispatch) {
 		const success = () => {
 			const payload = {
 				type: AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS,
@@ -142,7 +142,7 @@ export function updateMessageData(requestData, id, status) {
 	};
 }
 export function setViewMessageDetail(messageDetail) {
-	return function(dispatch) {
+	return function (dispatch) {
 		const payload = {
 			payload: messageDetail,
 			type: AppConstants.SET_VIEW_MESSAGE_DETAIL,
@@ -152,7 +152,7 @@ export function setViewMessageDetail(messageDetail) {
 }
 
 export function delMessageData(requestData, id, status) {
-	return function(dispatch) {
+	return function (dispatch) {
 		const success = () => {
 			const payload = {
 				type: AppConstants.DELETE_SECURE_MESSAGE_SUCCESS,
@@ -171,7 +171,7 @@ export function delMessageData(requestData, id, status) {
 }
 
 export function sendMessageForAccessibiltiy(message) {
-	return function(dispatch) {
+	return function (dispatch) {
 		const payload = {
 			payload: message,
 			type: AppConstants.SEND_MESSAGE_FOR_ACCESSIBILITY,
@@ -181,7 +181,7 @@ export function sendMessageForAccessibiltiy(message) {
 }
 
 export function popupState() {
-	return function(dispatch) {
+	return function (dispatch) {
 		const payload = {
 			type: AppConstants.SET_POPUP_STATE,
 		};
@@ -190,10 +190,34 @@ export function popupState() {
 }
 
 export function closeDelModal() {
-	return function(dispatch) {
+	return function (dispatch) {
 		const payload = {
 			type: AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS,
 		};
 		dispatch(payload);
+	};
+}
+
+export function getCustomerName() {
+	return function (dispatch) {
+		const payload = {
+			type: AppConstants.REQUEST_SEGMENT_DATA,
+		};
+		dispatch(payload);
+		const success = response => {
+			const payload = {
+				type: AppConstants.REQUEST_SEGMENTS_SUCCESS,
+				payload: response,
+			};
+			dispatch(payload);
+		};
+		const error = error => {
+			const payload = {
+				type: AppConstants.REQUEST_SECURE_MESSAGES_FAILURE,
+				payload: error,
+			};
+			dispatch(payload);
+		};
+		AppApi.fetchAccountSegment(success, error);
 	};
 }

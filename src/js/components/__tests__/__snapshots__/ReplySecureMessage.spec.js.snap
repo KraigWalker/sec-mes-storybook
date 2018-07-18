@@ -36,6 +36,18 @@ ShallowWrapper {
         "successModal": false,
       }
     }
+    segmentData={
+      Object {
+        "segmentData": Object {
+          "name": Object {
+            "first_name": "Akash",
+            "last_name": "Srivastava",
+            "middle_name": "",
+            "title": "Mr",
+          },
+        },
+      }
+    }
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],

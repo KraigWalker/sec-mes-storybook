@@ -26,11 +26,19 @@ export function parseMessages(response) {
 
 }
 
-export function parseDraft(data, status) {
+export function parseDraft(data, status, name) {
     if (data.id === undefined || null && data.number === undefined || null) {
         const requestData = {
             secure_message: {
                 subject: data.subject,
+                user: {
+                    name: {
+                        title: name.title,
+                        first_name: name.first_name,
+                        middle_name: name.middle_name,
+                        last_name: name.last_name
+                    }
+                },
                 payload: {
                     body: {
                         data: data.message,
@@ -44,6 +52,14 @@ export function parseDraft(data, status) {
         const requestData = {
             secure_message: {
                 subject: data.subject,
+                user: {
+                    name: {
+                        title: name.title,
+                        first_name: name.first_name,
+                        middle_name: name.middle_name,
+                        last_name: name.last_name
+                    }
+                },
                 account: {
                     id: data.id,
                     number: data.number,
@@ -156,12 +172,21 @@ export function deleteMessage(data, id, status) {
     return requestData;
 }
 
-export function replyMessage(data, ids, status) {
+export function replyMessage(data, ids, status, name) {
     let requestData = {};
-        if (data.id !== undefined && ids.threadID !== null) {
+    switch (true) {
+        case (data.id !== undefined && ids.threadID !== null):
             requestData = {
                 secure_message: {
                     subject: data.subject,
+                    user: {
+                        name: {
+                            title: name.title,
+                            first_name: name.first_name,
+                            middle_name: name.middle_name,
+                            last_name: name.last_name
+                        }
+                    },
                     thread_id: ids.threadID,
                     account: {
                         id: data.id,
@@ -181,12 +206,19 @@ export function replyMessage(data, ids, status) {
                     status: status,
                 }
             }
-        }
-
-       else if (data.id !== undefined && ids.threadID === null) {
+            break;
+        case (data.id !== undefined && ids.threadID === null):
             requestData = {
                 secure_message: {
                     subject: data.subject,
+                    user: {
+                        name: {
+                            title: name.title,
+                            first_name: name.first_name,
+                            middle_name: name.middle_name,
+                            last_name: name.last_name
+                        }
+                    },
                     account: {
                         id: data.id,
                         number: data.number,
@@ -205,11 +237,19 @@ export function replyMessage(data, ids, status) {
                     status: status,
                 }
             }
-        }
-       else if (data.id === undefined && ids.threadID !== null) {
+            break;
+        case (data.id === undefined && ids.threadID !== null):
             requestData = {
                 secure_message: {
                     subject: data.subject,
+                    user: {
+                        name: {
+                            title: name.title,
+                            first_name: name.first_name,
+                            middle_name: name.middle_name,
+                            last_name: name.last_name
+                        }
+                    },
                     thread_id: ids.threadID,
                     payload: {
                         headers: [
@@ -225,11 +265,19 @@ export function replyMessage(data, ids, status) {
                     status: status,
                 }
             }
-        }
-      else if (data.id === undefined && ids.threadID === null) {
+            break;
+        case (data.id === undefined && ids.threadID === null):
             requestData = {
                 secure_message: {
                     subject: data.subject,
+                    user: {
+                        name: {
+                            title: name.title,
+                            first_name: name.first_name,
+                            middle_name: name.middle_name,
+                            last_name: name.last_name
+                        }
+                    },
                     payload: {
                         headers: [
                             {
@@ -244,6 +292,8 @@ export function replyMessage(data, ids, status) {
                     status: status,
                 }
             }
-        }
+            break;
+        default:
+    }
     return requestData;
 }
