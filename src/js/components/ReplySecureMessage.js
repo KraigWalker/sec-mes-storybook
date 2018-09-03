@@ -83,6 +83,10 @@ export class ReplySecureMessage extends React.Component {
 		window.scrollTo(0, 0);
 		this.props.dispatch(popupState());
 	}
+	componentWillUnmount() {
+		window.top.postMessage('clearNewMessagePage', '*');
+		window.scrollTo(0, 0);
+	}
 	getThreads(messages, currentMessage) {
 		const threads = getThreadsBL(messages, currentMessage);
 		return (

@@ -57,7 +57,10 @@ export class NewSecureMessage extends React.Component {
 		this.props.dispatch(popupState());
 		window.scrollTo(0, 0);
 	}
-
+	componentWillUnmount() {
+		window.top.postMessage('clearNewMessagePage', '*');
+		window.scrollTo(0, 0);
+	}
 	selectSubject(value, id, data) {
 		switch (id) {
 			case 'accounts':
@@ -556,7 +559,7 @@ export class NewSecureMessage extends React.Component {
 							</button>
 						</div>
 					</div>
-				</div>	
+				</div>
 			</div>
 		);
 	}
