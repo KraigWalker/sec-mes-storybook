@@ -17,13 +17,6 @@ const Fingerprint = require('fingerprintjs2');
 
 export class LandingPage extends React.PureComponent {
     componentDidMount() {
-        const { token, history } = this.props;
-        const FPOptions = { excludePixelRatio: true, excludeScreenResolution: true };
-        new Fingerprint(FPOptions).get(result => {
-            if (this.props.fingerprintID !== result) {
-                this.props.history.push('/errormessage');
-            }
-        });
         window.top.postMessage('clearNewMessagePage', '*');
         window.scrollTo(0, 0);
     }
