@@ -5,6 +5,7 @@ import {
 	sendMessageData,
 	sendMessageForAccessibiltiy,
 	popupState,
+	getCustomerName,
 } from '../actions/AppActions';
 import DropDownComponent from './common/DropDownComponent';
 import TextAreaComponent from './common/TextAreaComponent';
@@ -36,6 +37,8 @@ export class NewSecureMessage extends React.Component {
 		this.errorCloseClicked = this.errorCloseClicked.bind(this);
 		this.retryServiceCall = this.retryServiceCall.bind(this);
 		this.callBackModal = this.callBackModal.bind(this);
+		this.retryCustomerCall = this.retryCustomerCall.bind(this);
+		this.customerErrorModal = this.customerErrorModal.bind(this);
 		this.state = {
 			chars_left: 3000,
 			showPopup: false,
@@ -55,6 +58,7 @@ export class NewSecureMessage extends React.Component {
 	componentWillMount() { }
 	componentDidMount() {
 		this.props.dispatch(popupState());
+		this.props.dispatch(getCustomerName(this.props.customerID));
 		window.scrollTo(0, 0);
 	}
 	componentWillUnmount() {
@@ -133,7 +137,7 @@ export class NewSecureMessage extends React.Component {
 		return false;
 	}
 	sendData() {
-		const { dispatch, segmentData } = this.props;
+		const { dispatch, customerDetails } = this.props;
 		this.setState({ charError: true });
 		this.renderRemainingChar();
 		if (this.checkValidation() && this.state.chars_left >= 0) {
@@ -141,7 +145,7 @@ export class NewSecureMessage extends React.Component {
 				sendMessageData(
 					messageEntity.getMessageRequestData(),
 					StringsConstants.PENDING,
-					segmentData.segmentData.name
+					customerDetails.personal_details.name
 				)
 			);
 			this.setState({ showSentMessageModal: true });
@@ -247,13 +251,13 @@ export class NewSecureMessage extends React.Component {
 	}
 
 	saveDraftData() {
-		const { dispatch, segmentData } = this.props;
+		const { dispatch, customerDetails } = this.props;
 		if (this.checkValidation() && this.state.chars_left >= 0) {
 			dispatch(
 				sendMessageData(
 					messageEntity.getMessageRequestData(),
 					StringsConstants.DRAFT,
-					segmentData.segmentData.name
+					customerDetails.personal_details.name
 				)
 			);
 			this.setState({ showDraftSuccessModal: true });
@@ -300,6 +304,10 @@ export class NewSecureMessage extends React.Component {
 		);
 	}
 	errorCloseClicked() {
+		const { dispatch, customerNameError } = this.props;
+		if (customerNameError) {
+			dispatch(popupState());
+		}
 		this.setState({ showSaveServiceErrorModal: false });
 		this.setState({ showSendServiceErrorModal: false });
 	}
@@ -312,6 +320,10 @@ export class NewSecureMessage extends React.Component {
 		if (showSendServiceErrorModal) {
 			this.sendData();
 		}
+	}
+	retryCustomerCall() {
+		const { dispatch, customerID } = this.props;
+		dispatch(getCustomerName(customerID));
 	}
 	returnErrorModal() {
 		const { content } = this.props;
@@ -339,6 +351,49 @@ export class NewSecureMessage extends React.Component {
 					className="c-btn c-btn--default c-modal__button"
 				>
 					{content.retry}
+				</button>
+			</div>
+		);
+		return (
+			<ModalComponent
+				show
+				onHide={this.errorCloseClicked}
+				customClass="c-modal c-modal--center"
+				bsSize="medium"
+				modalheading=""
+				modalbody={bodyContent}
+				modalfooter={footerButtons}
+				modalInContainer={false}
+				closeButton
+			/>
+		);
+	}
+	customerErrorModal() {
+		const { sorryHeader, tryAgain, getInTouch, back, retry } = this.props.content;
+		const bodyContent = (
+			<div>
+				<h3>{sorryHeader}</h3>
+				<br />
+				<p>{tryAgain}</p>
+				<br />
+				<p>{getInTouch}</p>
+			</div>
+		);
+		const footerButtons = (
+			<div>
+				<Link
+					to={`${window.baseURl}/securemessages`}
+					onClick={this.errorCloseClicked}
+					className="c-btn c-btn--default c-btn--sm c-modal__button"
+				>
+					{back}
+				</Link>
+				<button
+					type="button"
+					onClick={this.retryCustomerCall}
+					className="c-btn c-btn--default c-modal__button"
+				>
+					{retry}
 				</button>
 			</div>
 		);
@@ -436,7 +491,7 @@ export class NewSecureMessage extends React.Component {
 		}
 	}
 	render() {
-		const { content, subjects, accounts, messages } = this.props;
+		const { content, subjects, accounts, messages, customerNameError } = this.props;
 		const { validationSubjectMsg, validationAccountMsg, showPopup, showDraftSuccessModal, showSentMessageModal, showSaveServiceErrorModal, disabled, showSendServiceErrorModal } = this.state;
 		return (
 			<div className="container">
@@ -524,6 +579,7 @@ export class NewSecureMessage extends React.Component {
 						{messages.newMessageError &&
 							showSendServiceErrorModal &&
 							this.returnErrorModal()}
+						{customerNameError && this.customerErrorModal()}
 						<div className="c-btn--group">
 							{!disabled ? (
 								<button
@@ -572,6 +628,8 @@ const mapState = state => ({
 	subjects: state.subjects,
 	messages: state.messages,
 	accounts: state.accounts,
-	segmentData: state.segmentData,
+	customerID: state.segmentData.segmentData.customers[0].id,
+	customerDetails: state.customerDetails.customerDetails,
+	customerNameError: state.customerDetails.error,
 });
 export default connect(mapState)(NewSecureMessage);
