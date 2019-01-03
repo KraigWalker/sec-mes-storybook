@@ -198,7 +198,7 @@ export function closeDelModal() {
 	};
 }
 
-export function getCustomerName() {
+export function getCustomerID() {
 	return function (dispatch) {
 		const payload = {
 			type: AppConstants.REQUEST_SEGMENT_DATA,
@@ -219,5 +219,29 @@ export function getCustomerName() {
 			dispatch(payload);
 		};
 		AppApi.fetchAccountSegment(success, error);
+	};
+}
+
+export function getCustomerName(id) {
+	return function (dispatch) {
+		const payload = {
+			type: AppConstants.REQUEST_CUSTOMER_NAME,
+		};
+		dispatch(payload);
+		const success = response => {
+			const payload = {
+				type: AppConstants.REQUEST_CUSTOMER_NAME_SUCCESS,
+				payload: response,
+			};
+			dispatch(payload);
+		};
+		const error = error => {
+			const payload = {
+				type: AppConstants.REQUEST_CUSTOMER_NAME_FAILURE,
+				payload: error,
+			};
+			dispatch(payload);
+		};
+		AppApi.fetchCustomerDetails(success, error, id);
 	};
 }
