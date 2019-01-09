@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import content from '../../content';
 import token from '../../token';
 
-import { fetchSecureMessages, getAccounts, getCustomerName } from '../../actions/AppActions';
+import { fetchSecureMessages, getAccounts, getCustomerID } from '../../actions/AppActions';
 
 export function withSubscription(WrappedComponent) {
 	const mapState = state => ({
@@ -21,7 +21,7 @@ export function withSubscription(WrappedComponent) {
 		componentWillMount() {
 			const { dispatch, fetched } = this.props;
 			dispatch(getAccounts());
-			dispatch(getCustomerName());
+			dispatch(getCustomerID());
 			!fetched && dispatch(fetchSecureMessages());
 		}
 		componentWillReceiveProps(nextProps) {

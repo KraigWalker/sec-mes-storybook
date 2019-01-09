@@ -8,7 +8,9 @@ const _getMessageURLEndpoint = '/banks/{bank_id}/securemessages';
 const _getMessageSubjectsURL = '/banks/{bank_id}/securemessages/subjects';
 const _getAccountsURL = '/banks/{bank_id}/accounts/default';
 const _sendMessageURL = '/banks/{bank_id}/securemessages/{message_id}';
-const _getAccountSegmentEndpoint = '/user/details';
+const _getAccountSegmentEndpoint = '/banks/{bank_id}/customers';
+const _getCustomerDetailsEndpoint = '/banks/{bank_id}/customers/{customer_id}';
+//const _getAccountSegmentEndpoint = '/user/details'; //TODOxCYBG will be used for SME
 
 class AppApi {
 	static fetchSecureMessages(success, error) {
@@ -57,6 +59,12 @@ class AppApi {
 
 	static fetchAccountSegment(success, error) {
 		ApiUtils.makeRequest({ url: `${ConfigUtils.config.apiBaseUrl2}${_getAccountSegmentEndpoint}`, method: 'GET', apiVersion: '0.8.0' }, success, error);
+	}
+
+	static fetchCustomerDetails(success, error, id) {
+		const updateUrl = `${ConfigUtils.config.apiBaseUrl2}${_getCustomerDetailsEndpoint}`;
+		const url = updateUrl.replace('{customer_id}', id);
+		ApiUtils.makeRequest({ url, method: 'GET', apiVersion: '0.8.0' }, success, error);
 	}
 }
 
