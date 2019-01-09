@@ -57,11 +57,7 @@ export class LandingPage extends React.PureComponent {
         }
     }
     render() {
-        return (
-            <div className="container">
-                {this.checkError()}
-            </div>
-        );
+        return this.checkError();
     }
 }
 /**

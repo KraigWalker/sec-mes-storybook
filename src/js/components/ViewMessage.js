@@ -245,45 +245,43 @@ export class ViewMessage extends React.Component {
 			? this.props.location
 			: this.props;
 		return (
-			<div className="container">
-				<div className="row centralised-container">
-					<div className="col-md1-24 col-sm1-24 col-lg1-24">
-						<StepHeader
-							showheaderCrumbs
-							headerCrumbsPath={{
-								pathname: `${window.baseURl}/securemessages`,
-							}}
-							headerCrumbsMessage="Back"
-							headerTitle={
-								getMessageType(messageDetail.status) == SENT
-									? this.props.content.sentPageTitle
-									: this.props.content.inboxPageTitle
-							}
-						/>
+			<div className="row centralised-container">
+				<div className="col-md1-24 col-sm1-24 col-lg1-24">
+					<StepHeader
+						showheaderCrumbs
+						headerCrumbsPath={{
+							pathname: `${window.baseURl}/securemessages`,
+						}}
+						headerCrumbsMessage="Back"
+						headerTitle={
+							getMessageType(messageDetail.status) == SENT
+								? this.props.content.sentPageTitle
+								: this.props.content.inboxPageTitle
+						}
+					/>
 
-						<SecureMessageSummary
-							message={messageDetail}
-							viewMessageFlag
-							readFlag={messageDetail.status === READ}
-							sentFlag={getMessageType(messageDetail.status) === SENT}
-							content={this.props.content}
-						/>
-						<pre>{messageDetail.message}</pre>
-						<div className="c-btn--group">
-							{this.getBackButton()}
-							{messageDetail.status !== PENDING && this.getDeleteButton(messageDetail)}
-							{this.getReplyButton(messageDetail)}
-						</div>
-						{this.state.showDeleteConfirmModal && this.returnModalComponent()}
-						{this.state.showDeleteSuccessModal &&
-							this.props.messages.successModal &&
-							this.returnDeleteSuccessModalComponent()}
-						{this.props.messages.draftError &&
-							this.state.showSendServiceErrorModal &&
-							this.returnErrorModal()}
-						{messageDetail.threadID !== null &&
-							this.getThreads(this.props.messages.messages, messageDetail)}
+					<SecureMessageSummary
+						message={messageDetail}
+						viewMessageFlag
+						readFlag={messageDetail.status === READ}
+						sentFlag={getMessageType(messageDetail.status) === SENT}
+						content={this.props.content}
+					/>
+					<pre>{messageDetail.message}</pre>
+					<div className="c-btn--group">
+						{this.getBackButton()}
+						{messageDetail.status !== PENDING && this.getDeleteButton(messageDetail)}
+						{this.getReplyButton(messageDetail)}
 					</div>
+					{this.state.showDeleteConfirmModal && this.returnModalComponent()}
+					{this.state.showDeleteSuccessModal &&
+						this.props.messages.successModal &&
+						this.returnDeleteSuccessModalComponent()}
+					{this.props.messages.draftError &&
+						this.state.showSendServiceErrorModal &&
+						this.returnErrorModal()}
+					{messageDetail.threadID !== null &&
+						this.getThreads(this.props.messages.messages, messageDetail)}
 				</div>
 			</div>
 		);

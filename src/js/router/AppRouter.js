@@ -9,8 +9,16 @@ import { withSubscription,accessibilityWrapper } from '../components/wrappers/Ge
 import DraftSecureMessage from '../components/DraftSecureMessage';
 import AccessibilityMessage from '../components/common/AccessibilityMessage';
 import ErrorPage from '../components/common/ErrorPage';
+import { FolderList } from '../components/FolderList';
+import { DocumentList } from '../components/DocumentList';
+import { DocumentView } from '../components/DocumentView';
 
 
+const RouteWithLayout = ({ Component, ...restProps }) => <Route {...restProps} render={(routeProps) => 
+    <Main>
+        <Component {...restProps} {...routeProps} />
+    </Main>
+} />
 
 /** 
  * @class AppRouter Class to initiate and route the application 
@@ -24,24 +32,31 @@ class AppRouter extends React.Component {
       render() {
         return (
             <BrowserRouter>
-                <Main>
-                <Switch>
-                   <Route path = {`${window.baseURl}/securemessages`} render = { (props) => (<LandingPage {...this.props} {...props} />)} />
-                   <Route path = {`${window.baseURl}/viewmessage`} render = {(props) => (<ViewMessage {...this.props} {...props}/>)}/>
-                   <Route path = {`${window.baseURl}/newsecuremessage`} render = {(props) => (<NewSecureMessage {...this.props} {...props}/>)}/>
-                   <Route path = {`${window.baseURl}/replysecuremessage`} render = {(props) => (<ReplySecuremessage {...this.props} {...props}/>)}/>
-                   <Route path = {`${window.baseURl}/draftsecuremessage`} render = {(props) => (<DraftSecureMessage {...this.props} {...props}/>)}/>
-                   <Route path = '/errormessage' render = {(props) => (<ErrorPage {...this.props} {...props}/>)}/>
-                   <Redirect from = '/' to = {`${window.baseURl}/securemessages`} key='redirect'/>;    
-                </Switch>
-                <AccessibilityMessage/>
-                </Main>
+                <div>
+                        <Switch>
+                            <RouteWithLayout path = {`${window.baseURl}/securemessages`} Component={LandingPage} {...this.props} />
+                            <RouteWithLayout path = {`${window.baseURl}/viewmessage`} Component={ViewMessage} {...this.props} />
+                            <RouteWithLayout path = {`${window.baseURl}/newsecuremessage`} Component={NewSecureMessage} {...this.props} />
+                            <RouteWithLayout path = {`${window.baseURl}/replysecuremessage`} Component={ReplySecuremessage} {...this.props} />
+                            <RouteWithLayout path = {`${window.baseURl}/draftsecuremessage`} Component={DraftSecureMessage} {...this.props} />
+                            <RouteWithLayout path = '/errormessage' Component={ErrorPage} />
+                            <RouteWithLayout path={`${window.baseURl}/my-documents`} session={{ bank_id: "CB" }}  exact Component={FolderList} />
+                            <RouteWithLayout
+                                Component={DocumentList}
+                                session={{ bank_id: "CB" }} client={{ client: { app_title: "WEB", user_tracking_id: "24"}}}
+                                path={`${window.baseURl}/my-documents/:product`}
+                                exact
+                            />
+                            <Redirect exact from = '/' to = {`${window.baseURl}/securemessages`} key='redirect'/>;    
+                        </Switch>
+                        <AccessibilityMessage/>
+                    <Route path={`${window.baseURl}/my-documents/:product/:documentId`} exact component={DocumentView} />
+                </div>
             </BrowserRouter>
         );
     }
 }
 
-//export default accessibilityWrapper(withSubscription(AppRouter));
 export default withSubscription(AppRouter);
 
 
