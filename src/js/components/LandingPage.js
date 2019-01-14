@@ -47,7 +47,7 @@ export class LandingPage extends React.PureComponent {
                         <h1 className="c-step-header__title" id="headingTag" tabIndex="-1">{this.props.content.messages}</h1>
                         <p className="c-step-header__subtext">{this.props.content.landingPageMessage}</p>
                         <p className="c-step-header__subtext">{this.props.content.faqLink}</p>
-                        <Link className="c-btn c-btn--default u-margin-bottom-c new-message-btn" to={{ pathname: `${window.baseURl}/newsecuremessage` }}>
+                        <Link className="c-btn c-btn--default u-margin-bottom-c new-message-btn" to={{ pathname: `${window.baseURl}/securemessages/new` }}>
                             <GetIcon id="icon-pencil" width="16px" height="16px" />{this.props.content.newSecureMessage}
                         </Link>
                         <SecureMessageTabs location={this.props.location} onClick={this.linkClick} messages={this.mapMessages(this.props.messages)} activeTab={this.props.activeTab} content={this.props.content} />

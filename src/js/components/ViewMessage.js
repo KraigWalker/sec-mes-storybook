@@ -73,7 +73,7 @@ export class ViewMessage extends React.Component {
 		if (getMessageType(message.status) !== SENT) {
 			return (
 				<Link
-					to={{ pathname: `${window.baseURl}/replysecuremessage`, backPath: `${window.baseURl}/viewmessage`, messageDetail: message }}
+					to={{ pathname: `${window.baseURl}/securemessages/reply`, backPath: `${window.baseURl}/securemessages/view`, messageDetail: message }}
 					className="c-btn c-btn--primary"
 				>
 				{this.props.content.replyMessageTitle}
@@ -117,7 +117,7 @@ export class ViewMessage extends React.Component {
 	getBackButton() {
 		return (
 			<Link
-				to={{ pathname: `${window.baseURl}/securemessage` }}
+				to={{ pathname: `${window.baseURl}/securemessages` }}
 				className="c-btn c-btn--secondary"
 			>
 				{this.props.content.back}

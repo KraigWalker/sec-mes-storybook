@@ -446,7 +446,7 @@ export class NewSecureMessage extends React.Component {
 						onClick={() => { }}
 						headerCrumbsMessage={content.back}
 						headerTitle={content.newSecureMessage}
-						headerCrumbsPath={{ pathname: `${window.baseURl}/securemessage` }}
+						headerCrumbsPath={{ pathname: `${window.baseURl}/securemessages` }}
 					/>
 				</div>
 			</div>
