@@ -27,7 +27,10 @@ module.exports = {
 		  }, {
 			  from: 'src/images',
 			  to:'images'
-		  }])
+		  }]),
+		new webpack.DefinePlugin({
+			 "process.env.NODE_ENV": JSON.stringify("production"),
+		}),
 	],
 	module: {
 		rules: [
