@@ -7,8 +7,8 @@ const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 console.log("**********************************************");
 const brand = process.env.brand;
 console.log("Compiling for - "+brand+" Brand");
-const JSEntry = ["babel-polyfill","./src/js/client.js","./src/scss/main.scss"];
-const SCSSEntry = ["babel-polyfill","./src/scss/main.scss"];
+const JSEntry = ["babel-polyfill", "whatwg-fetch","./src/js/client.js","./src/scss/main.scss"];
+const SCSSEntry = ["./src/scss/main.scss"];
 module.exports = {
 	entry: JSEntry,
 	devtool: 'source-map',
