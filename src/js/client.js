@@ -22,7 +22,7 @@ const session = {
   access_token: hash.access_token,
   bank_id: hash.bank_id,
   brand: hash.branId,
-  sate: hash.state
+  state: hash.state
 };
 
 const clientContext = token.getClientContext();

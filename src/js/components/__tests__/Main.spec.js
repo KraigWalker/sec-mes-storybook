@@ -5,7 +5,10 @@ import TestUtils from 'react-addons-test-utils';
 
 describe("Main snapshot", () => {
     let props = {
-        children: 'cjejd'
+        children: 'cjejd',
+        location: {
+            pathname: "",
+        }
     };
     let component = shallow(<Main {...props} />);
     it('should match to snapshot', () => {
