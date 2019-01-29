@@ -1,4 +1,4 @@
-import { Switch, BrowserRouter, Route, Redirect } from 'react-router-dom';
+import { Switch, BrowserRouter, Route, Redirect, withRouter } from 'react-router-dom';
 import React from 'react';
 import LandingPage from '../components/LandingPage';
 import Main from '../components/Main';
@@ -9,12 +9,33 @@ import { withSubscription,accessibilityWrapper } from '../components/wrappers/Ge
 import DraftSecureMessage from '../components/DraftSecureMessage';
 import AccessibilityMessage from '../components/common/AccessibilityMessage';
 import ErrorPage from '../components/common/ErrorPage';
+import { FolderList } from '../components/FolderList';
+import { DocumentList } from '../components/DocumentList';
+import { DocumentView } from '../components/DocumentView';
 
 
+const RouteWithLayout = ({ Component, ...restProps }) => <Route {...restProps} render={(routeProps) => 
+    <Main>
+        <Component {...restProps} {...routeProps} />
+    </Main>
+} />
 
 /** 
  * @class AppRouter Class to initiate and route the application 
  */
+
+const RoutesWithLayout = (props) => (
+    <Switch>
+        <RouteWithLayout exact path={`${window.baseURl}/securemessages`} Component={LandingPage} content={props.content} />
+        <RouteWithLayout exact path={`${window.baseURl}/securemessages/view`} Component={ViewMessage} content={props.content} />
+        <RouteWithLayout exact path={`${window.baseURl}/securemessages/new`} Component={NewSecureMessage} content={props.content} />
+        <RouteWithLayout exact path={`${window.baseURl}/securemessages/reply`} Component={ReplySecuremessage} content={props.content} />
+        <RouteWithLayout exact path={`${window.baseURl}/securemessages/draft`} Component={DraftSecureMessage} content={props.content} />
+        <Redirect exact from = '/' to = {`${window.baseURl}/securemessages`} key='redirect'/>;    
+    </Switch>
+)
+
+const RoutesWithLayoutAndSubscription = withRouter(withSubscription(RoutesWithLayout))
 
 class AppRouter extends React.Component {
     /**
@@ -24,24 +45,33 @@ class AppRouter extends React.Component {
       render() {
         return (
             <BrowserRouter>
-                <Main>
-                <Switch>
-                   <Route path = {`${window.baseURl}/securemessages`} render = { (props) => (<LandingPage {...this.props} {...props} />)} />
-                   <Route path = {`${window.baseURl}/viewmessage`} render = {(props) => (<ViewMessage {...this.props} {...props}/>)}/>
-                   <Route path = {`${window.baseURl}/newsecuremessage`} render = {(props) => (<NewSecureMessage {...this.props} {...props}/>)}/>
-                   <Route path = {`${window.baseURl}/replysecuremessage`} render = {(props) => (<ReplySecuremessage {...this.props} {...props}/>)}/>
-                   <Route path = {`${window.baseURl}/draftsecuremessage`} render = {(props) => (<DraftSecureMessage {...this.props} {...props}/>)}/>
-                   <Route path = '/errormessage' render = {(props) => (<ErrorPage {...this.props} {...props}/>)}/>
-                   <Redirect from = '/' to = {`${window.baseURl}/securemessages`} key='redirect'/>;    
-                </Switch>
-                <AccessibilityMessage/>
-                </Main>
+                <div>
+                    <Route path={`${window.baseURl}/securemessages`} render={() => (
+                        <RoutesWithLayoutAndSubscription {...this.props} />
+                    )} />
+                    <AccessibilityMessage/>
+                    <RouteWithLayout path='/errormessage' Component={ErrorPage} />
+                    <RouteWithLayout
+                        path={`${window.baseURl}/my-documents`}
+                        exact
+                        Component={FolderList}
+                        session={this.props.session}
+                        client={this.props.client}
+                    />
+                    <RouteWithLayout
+                        Component={DocumentList}
+                        session={this.props.session}
+                        client={this.props.client}
+                        path={`${window.baseURl}/my-documents/:product`}
+                        exact
+                    />
+                    <Route path={`${window.baseURl}/my-documents/:product/:documentId`} exact component={DocumentView} />
+                </div>
             </BrowserRouter>
         );
     }
 }
 
-//export default accessibilityWrapper(withSubscription(AppRouter));
-export default withSubscription(AppRouter);
+export default AppRouter;
 
 

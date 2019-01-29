@@ -1,10 +1,10 @@
 import { applyMiddleware, createStore } from "redux"
+import { buildMiddleware } from "document-management-web-ui";
 
-import logger from "redux-logger"
-import thunk from "redux-thunk"
+import reducer from "../reducers";
 
-import reducer from "../reducers"
+const middleware = (session, clientContext) => applyMiddleware(
+    buildMiddleware(clientContext, session, { apiBaseUrl: "http://localhost:8888" })
+)
 
-const middleware = applyMiddleware(thunk)
-
-export default createStore(reducer, middleware)
+export default (session, clientContext) => createStore(reducer, middleware(session, clientContext))

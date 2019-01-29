@@ -9,31 +9,18 @@
     <title>Secure Messaging</title>
 </head>
 <body>
-    <div id="app"></div>
-    <script>
-      var path = document.URL.substr(0,document.URL.lastIndexOf('securemessages'));
-      window.pathValue = path;
-      window.baseURl = window.location.pathname.substr(0, window.location.pathname.lastIndexOf('/securemessages'))
-      var head = document.getElementsByTagName('head')[0];
-      if (window.location.pathname.indexOf('/CB') > 0){
-        var element = document.createElement('link');
-        element.rel = 'stylesheet';
-        element.href = path + 'cb.main.css';
-        head.appendChild(element);
-      } else if(window.location.pathname.indexOf('/YB') > 0){
-          var element = document.createElement('link');
-          element.rel = 'stylesheet';
-          element.href = path + 'yb.main.css';
-          head.appendChild(element);
-        } else if(window.location.pathname.indexOf('/DYB') > 0){
-          var element = document.createElement('link');
-          element.rel = 'stylesheet';
-          element.href = path + 'dyb.main.css';
-          head.appendChild(element);
-        }
-        var element = document.createElement('script');
-        element.src = path + 'main.bundle.js';
-        document.body.appendChild(element);
-  </script>
-</body>
+  <div id="app"></div>
+  <script>
+    // TODO: this is messy. Need to rationalise the baseUrl in a better way
+    var myDocuments = false;
+    if (document.URL.lastIndexOf('securemessages') < 0) {
+      myDocuments = true;
+    }
+
+    var path = document.URL.substr(0,document.URL.lastIndexOf(myDocuments ? 'my-documents' : 'securemessages'));
+    window.pathValue = path;
+    window.baseURl = window.location.pathname.substr(0, window.location.pathname.lastIndexOf(myDocuments ? '/my-documents' : '/securemessages'))
+    
+    </script>
+  </body>
 </html>
