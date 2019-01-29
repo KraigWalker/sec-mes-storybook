@@ -62,10 +62,10 @@ class AppRouter extends React.Component {
                         Component={DocumentList}
                         session={this.props.session}
                         client={this.props.client}
-                        path={`${window.baseURl}/my-documents/:product`}
+                        path={`${window.baseURl}/my-documents/:displayCategory`}
                         exact
                     />
-                    <Route path={`${window.baseURl}/my-documents/:product/:documentId`} exact component={DocumentView} />
+                    <Route path={`${window.baseURl}/my-documents/:displayCategory/:documentId`} exact component={DocumentView} />
                 </div>
             </BrowserRouter>
         );

@@ -22,7 +22,21 @@ import SendMessageRequestEntity from "../entities/SendMessageRequestEntity.js";
 import ModalComponent from "./common/ModalComponent";
 import { sendDeleteData } from "../actions/AppActions";
 import { NEW, READ, DRAFT, PENDING, SENT, DELETED } from '../constants/StringsConstants';
-let messageEntity = new SendMessageRequestEntity();
+
+const Attachments = () => (
+	<div className="c-message--attachments">
+		<h4>Attachments</h4>
+		<ul>
+			<li>
+				<Link
+					to={{ pathname: `${window.baseURl}/my-documents` }}
+				>
+					New documents available
+				</Link>
+			</li>
+		</ul>
+	</div>
+);
 
 export class ViewMessage extends React.Component {
 	constructor(props) {
@@ -244,6 +258,9 @@ export class ViewMessage extends React.Component {
 		const { messageDetail } = this.props.location.messageDetail
 			? this.props.location
 			: this.props;
+
+		const { hasAttachment } = this.props;
+
 		return (
 			<div className="row centralised-container">
 				<div className="col-md1-24 col-sm1-24 col-lg1-24">
@@ -268,6 +285,7 @@ export class ViewMessage extends React.Component {
 						content={this.props.content}
 					/>
 					<pre>{messageDetail.message}</pre>
+					{ hasAttachment && <Attachments /> }
 					<div className="c-btn--group">
 						{this.getBackButton()}
 						{messageDetail.status !== PENDING && this.getDeleteButton(messageDetail)}
@@ -291,6 +309,7 @@ export class ViewMessage extends React.Component {
 const mapState = state => ({
 	messages: state.messages,
 	messageDetail: state.viewMessage.messageDetail,
+	hasAttachment: state.viewMessage.messageDetail.subject === "DOCUMENT"
 });
 
 export default connect(mapState)(ViewMessage);
