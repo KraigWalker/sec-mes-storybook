@@ -1,19 +1,46 @@
 import React from 'react';
+import { compose } from 'redux';
 import { withRouter, Link } from 'react-router-dom';
+import { TabCardBlock, TabCard } from "web-ui-components/lib/navigation/tab-cards";
+import { utils } from "document-management-web-ui";
 
 export class Main extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.handleSecureMessagesClick = this.handleSecureMessagesClick.bind(this);
+		this.handleDocumentPortalClick = this.handleDocumentPortalClick.bind(this);
+
+	}
+	handleSecureMessagesClick() {
+		const { history } = this.props;
+		history.push(`${window.baseURl}/securemessages`)
+	}
+
+	handleDocumentPortalClick() {
+		const { history } = this.props;
+		history.push(`${window.baseURl}/my-documents`)
+
+	}
+
 	render() {
+		const { location, isWebView } = this.props;
 		return (
 			<div className="container">
-				<div className="row tab-container">
-                	<div className="col-md1-24 col-sm1-24 col-lg1-24">
-						<Link className="c-btn c-btn--secondary tab-button" to={`${window.baseURl}/securemessages`}>Secure Messages</Link>
-						<Link className="c-btn c-btn--secondary tab-button" to={`${window.baseURl}/my-documents`}>Document portal</Link>
+				{ !isWebView &&
+					<div className="tab-container web-ui-components">
+						<TabCardBlock>
+							<TabCard label="Secure messages" onClick={this.handleSecureMessagesClick} iconType="MailOutlineSmall" isActive={location.pathname.includes("securemessages")} />
+							<TabCard label="Document portal" onClick={this.handleDocumentPortalClick} iconType="BriefcaseOutlineSmall" isActive={location.pathname.includes("my-documents")} />
+						</TabCardBlock>
 					</div>
-				</div>
+				}
 				{ this.props.children }
 			</div>
 		);
 	}
 }
-export default withRouter(Main);
+export default compose(
+	withRouter,
+	utils.withNativeBridge(window.navigator.userAgent)
+)(Main);
