@@ -39,7 +39,7 @@ export class LandingPage extends React.PureComponent {
             this.props.history.push('/errormessage');
         } else {
             return (
-                <div className="row centralised-container">
+                <div className="row centralised-container c-card">
                     <div className="col-md1-24 col-sm1-24 col-lg1-24">
                     { !isWebView &&
                         <p className="c-step-header__crumbs">
