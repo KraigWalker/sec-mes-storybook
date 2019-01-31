@@ -104,7 +104,7 @@ ShallowWrapper {
           onClick={[Function]}
         />
       </div>,
-      "className": "row centralised-container",
+      "className": "row centralised-container c-card",
     },
     "ref": null,
     "rendered": Object {
@@ -466,7 +466,7 @@ ShallowWrapper {
             onClick={[Function]}
           />
         </div>,
-        "className": "row centralised-container",
+        "className": "row centralised-container c-card",
       },
       "ref": null,
       "rendered": Object {

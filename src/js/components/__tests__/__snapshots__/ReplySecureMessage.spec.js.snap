@@ -212,7 +212,7 @@ ShallowWrapper {
           isFromReplyMessage={true}
         />
       </div>,
-      "className": "row centralised-container",
+      "className": "row centralised-container c-card",
     },
     "ref": null,
     "rendered": Object {
@@ -1034,7 +1034,7 @@ ShallowWrapper {
             isFromReplyMessage={true}
           />
         </div>,
-        "className": "row centralised-container",
+        "className": "row centralised-container c-card",
       },
       "ref": null,
       "rendered": Object {

@@ -47,6 +47,7 @@ ShallowWrapper {
             Array [],
             Array [],
             Array [],
+            Array [],
           ],
         },
         "status": "READ",
@@ -131,6 +132,7 @@ ShallowWrapper {
                             Array [],
                             Array [],
                             Array [],
+                            Array [],
                           ],
                         },
                         "status": "READ",
@@ -147,6 +149,60 @@ ShallowWrapper {
             <div
               className="c-message__summary__head__actions u-position-relative"
             >
+              <Link
+                className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding"
+                replace={false}
+                to={
+                  Object {
+                    "backPath": "undefined/securemessages",
+                    "messageDetail": Object {
+                      "account": Object {
+                        "number": "32236",
+                      },
+                      "getDateCreated": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                        ],
+                      },
+                      "getMessageBody": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                        ],
+                      },
+                      "getReference": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                        ],
+                      },
+                      "getSubject": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                          Array [],
+                          Array [],
+                          Array [],
+                        ],
+                      },
+                      "status": "READ",
+                    },
+                    "pathname": "undefined/securemessages/reply",
+                  }
+                }
+              >
+                <span
+                  aria-label="undefined undefined"
+                  className="c-message__summary__head__actions__reply__txt"
+                  id="replyMsg"
+                />
+                <span
+                  className="c-message__summary__head__actions__reply__icon"
+                >
+                  <CommonGetIcon
+                    height="24px"
+                    id="icon-reply"
+                    width="24px"
+                  />
+                </span>
+              </Link>
               <button
                 className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
                 onClick={[Function]}
@@ -286,6 +342,7 @@ ShallowWrapper {
                               Array [],
                               Array [],
                               Array [],
+                              Array [],
                             ],
                           },
                           "status": "READ",
@@ -302,6 +359,60 @@ ShallowWrapper {
               <div
                 className="c-message__summary__head__actions u-position-relative"
               >
+                <Link
+                  className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding"
+                  replace={false}
+                  to={
+                    Object {
+                      "backPath": "undefined/securemessages",
+                      "messageDetail": Object {
+                        "account": Object {
+                          "number": "32236",
+                        },
+                        "getDateCreated": [MockFunction] {
+                          "calls": Array [
+                            Array [],
+                          ],
+                        },
+                        "getMessageBody": [MockFunction] {
+                          "calls": Array [
+                            Array [],
+                          ],
+                        },
+                        "getReference": [MockFunction] {
+                          "calls": Array [
+                            Array [],
+                          ],
+                        },
+                        "getSubject": [MockFunction] {
+                          "calls": Array [
+                            Array [],
+                            Array [],
+                            Array [],
+                            Array [],
+                          ],
+                        },
+                        "status": "READ",
+                      },
+                      "pathname": "undefined/securemessages/reply",
+                    }
+                  }
+                >
+                  <span
+                    aria-label="undefined undefined"
+                    className="c-message__summary__head__actions__reply__txt"
+                    id="replyMsg"
+                  />
+                  <span
+                    className="c-message__summary__head__actions__reply__icon"
+                  >
+                    <CommonGetIcon
+                      height="24px"
+                      id="icon-reply"
+                      width="24px"
+                    />
+                  </span>
+                </Link>
                 <button
                   className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
                   onClick={[Function]}
@@ -377,6 +488,7 @@ ShallowWrapper {
                                 Array [],
                                 Array [],
                                 Array [],
+                                Array [],
                               ],
                             },
                             "status": "READ",
@@ -393,6 +505,60 @@ ShallowWrapper {
                 <div
                   className="c-message__summary__head__actions u-position-relative"
                 >
+                  <Link
+                    className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding"
+                    replace={false}
+                    to={
+                      Object {
+                        "backPath": "undefined/securemessages",
+                        "messageDetail": Object {
+                          "account": Object {
+                            "number": "32236",
+                          },
+                          "getDateCreated": [MockFunction] {
+                            "calls": Array [
+                              Array [],
+                            ],
+                          },
+                          "getMessageBody": [MockFunction] {
+                            "calls": Array [
+                              Array [],
+                            ],
+                          },
+                          "getReference": [MockFunction] {
+                            "calls": Array [
+                              Array [],
+                            ],
+                          },
+                          "getSubject": [MockFunction] {
+                            "calls": Array [
+                              Array [],
+                              Array [],
+                              Array [],
+                              Array [],
+                            ],
+                          },
+                          "status": "READ",
+                        },
+                        "pathname": "undefined/securemessages/reply",
+                      }
+                    }
+                  >
+                    <span
+                      aria-label="undefined undefined"
+                      className="c-message__summary__head__actions__reply__txt"
+                      id="replyMsg"
+                    />
+                    <span
+                      className="c-message__summary__head__actions__reply__icon"
+                    >
+                      <CommonGetIcon
+                        height="24px"
+                        id="icon-reply"
+                        width="24px"
+                      />
+                    </span>
+                  </Link>
                   <button
                     className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
                     onClick={[Function]}
@@ -457,6 +623,7 @@ ShallowWrapper {
                                   Array [],
                                   Array [],
                                   Array [],
+                                  Array [],
                                 ],
                               },
                               "status": "READ",
@@ -508,6 +675,7 @@ ShallowWrapper {
                                   Array [],
                                   Array [],
                                   Array [],
+                                  Array [],
                                 ],
                               },
                               "status": "READ",
@@ -553,6 +721,7 @@ ShallowWrapper {
                                 Array [],
                                 Array [],
                                 Array [],
+                                Array [],
                               ],
                             },
                             "status": "READ",
@@ -587,7 +756,60 @@ ShallowWrapper {
                 "nodeType": "host",
                 "props": Object {
                   "children": Array [
-                    undefined,
+                    <Link
+                      className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding"
+                      replace={false}
+                      to={
+                        Object {
+                          "backPath": "undefined/securemessages",
+                          "messageDetail": Object {
+                            "account": Object {
+                              "number": "32236",
+                            },
+                            "getDateCreated": [MockFunction] {
+                              "calls": Array [
+                                Array [],
+                              ],
+                            },
+                            "getMessageBody": [MockFunction] {
+                              "calls": Array [
+                                Array [],
+                              ],
+                            },
+                            "getReference": [MockFunction] {
+                              "calls": Array [
+                                Array [],
+                              ],
+                            },
+                            "getSubject": [MockFunction] {
+                              "calls": Array [
+                                Array [],
+                                Array [],
+                                Array [],
+                                Array [],
+                              ],
+                            },
+                            "status": "READ",
+                          },
+                          "pathname": "undefined/securemessages/reply",
+                        }
+                      }
+                    >
+                      <span
+                        aria-label="undefined undefined"
+                        className="c-message__summary__head__actions__reply__txt"
+                        id="replyMsg"
+                      />
+                      <span
+                        className="c-message__summary__head__actions__reply__icon"
+                      >
+                        <CommonGetIcon
+                          height="24px"
+                          id="icon-reply"
+                          width="24px"
+                        />
+                      </span>
+                    </Link>,
                     <button
                       className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
                       onClick={[Function]}
@@ -613,7 +835,110 @@ ShallowWrapper {
                 },
                 "ref": null,
                 "rendered": Array [
-                  undefined,
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": Array [
+                        <span
+                          aria-label="undefined undefined"
+                          className="c-message__summary__head__actions__reply__txt"
+                          id="replyMsg"
+                        />,
+                        <span
+                          className="c-message__summary__head__actions__reply__icon"
+                        >
+                          <CommonGetIcon
+                            height="24px"
+                            id="icon-reply"
+                            width="24px"
+                          />
+                        </span>,
+                      ],
+                      "className": "c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding",
+                      "replace": false,
+                      "to": Object {
+                        "backPath": "undefined/securemessages",
+                        "messageDetail": Object {
+                          "account": Object {
+                            "number": "32236",
+                          },
+                          "getDateCreated": [MockFunction] {
+                            "calls": Array [
+                              Array [],
+                            ],
+                          },
+                          "getMessageBody": [MockFunction] {
+                            "calls": Array [
+                              Array [],
+                            ],
+                          },
+                          "getReference": [MockFunction] {
+                            "calls": Array [
+                              Array [],
+                            ],
+                          },
+                          "getSubject": [MockFunction] {
+                            "calls": Array [
+                              Array [],
+                              Array [],
+                              Array [],
+                              Array [],
+                            ],
+                          },
+                          "status": "READ",
+                        },
+                        "pathname": "undefined/securemessages/reply",
+                      },
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "aria-label": "undefined undefined",
+                          "children": undefined,
+                          "className": "c-message__summary__head__actions__reply__txt",
+                          "id": "replyMsg",
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": "span",
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "children": <CommonGetIcon
+                            height="24px"
+                            id="icon-reply"
+                            width="24px"
+                          />,
+                          "className": "c-message__summary__head__actions__reply__icon",
+                        },
+                        "ref": null,
+                        "rendered": Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "class",
+                          "props": Object {
+                            "height": "24px",
+                            "id": "icon-reply",
+                            "width": "24px",
+                          },
+                          "ref": null,
+                          "rendered": null,
+                          "type": [Function],
+                        },
+                        "type": "span",
+                      },
+                    ],
+                    "type": [Function],
+                  },
                   Object {
                     "instance": null,
                     "key": undefined,
@@ -818,6 +1143,7 @@ ShallowWrapper {
                               Array [],
                               Array [],
                               Array [],
+                              Array [],
                             ],
                           },
                           "status": "READ",
@@ -834,6 +1160,60 @@ ShallowWrapper {
               <div
                 className="c-message__summary__head__actions u-position-relative"
               >
+                <Link
+                  className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding"
+                  replace={false}
+                  to={
+                    Object {
+                      "backPath": "undefined/securemessages",
+                      "messageDetail": Object {
+                        "account": Object {
+                          "number": "32236",
+                        },
+                        "getDateCreated": [MockFunction] {
+                          "calls": Array [
+                            Array [],
+                          ],
+                        },
+                        "getMessageBody": [MockFunction] {
+                          "calls": Array [
+                            Array [],
+                          ],
+                        },
+                        "getReference": [MockFunction] {
+                          "calls": Array [
+                            Array [],
+                          ],
+                        },
+                        "getSubject": [MockFunction] {
+                          "calls": Array [
+                            Array [],
+                            Array [],
+                            Array [],
+                            Array [],
+                          ],
+                        },
+                        "status": "READ",
+                      },
+                      "pathname": "undefined/securemessages/reply",
+                    }
+                  }
+                >
+                  <span
+                    aria-label="undefined undefined"
+                    className="c-message__summary__head__actions__reply__txt"
+                    id="replyMsg"
+                  />
+                  <span
+                    className="c-message__summary__head__actions__reply__icon"
+                  >
+                    <CommonGetIcon
+                      height="24px"
+                      id="icon-reply"
+                      width="24px"
+                    />
+                  </span>
+                </Link>
                 <button
                   className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
                   onClick={[Function]}
@@ -973,6 +1353,7 @@ ShallowWrapper {
                                 Array [],
                                 Array [],
                                 Array [],
+                                Array [],
                               ],
                             },
                             "status": "READ",
@@ -989,6 +1370,60 @@ ShallowWrapper {
                 <div
                   className="c-message__summary__head__actions u-position-relative"
                 >
+                  <Link
+                    className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding"
+                    replace={false}
+                    to={
+                      Object {
+                        "backPath": "undefined/securemessages",
+                        "messageDetail": Object {
+                          "account": Object {
+                            "number": "32236",
+                          },
+                          "getDateCreated": [MockFunction] {
+                            "calls": Array [
+                              Array [],
+                            ],
+                          },
+                          "getMessageBody": [MockFunction] {
+                            "calls": Array [
+                              Array [],
+                            ],
+                          },
+                          "getReference": [MockFunction] {
+                            "calls": Array [
+                              Array [],
+                            ],
+                          },
+                          "getSubject": [MockFunction] {
+                            "calls": Array [
+                              Array [],
+                              Array [],
+                              Array [],
+                              Array [],
+                            ],
+                          },
+                          "status": "READ",
+                        },
+                        "pathname": "undefined/securemessages/reply",
+                      }
+                    }
+                  >
+                    <span
+                      aria-label="undefined undefined"
+                      className="c-message__summary__head__actions__reply__txt"
+                      id="replyMsg"
+                    />
+                    <span
+                      className="c-message__summary__head__actions__reply__icon"
+                    >
+                      <CommonGetIcon
+                        height="24px"
+                        id="icon-reply"
+                        width="24px"
+                      />
+                    </span>
+                  </Link>
                   <button
                     className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
                     onClick={[Function]}
@@ -1064,6 +1499,7 @@ ShallowWrapper {
                                   Array [],
                                   Array [],
                                   Array [],
+                                  Array [],
                                 ],
                               },
                               "status": "READ",
@@ -1080,6 +1516,60 @@ ShallowWrapper {
                   <div
                     className="c-message__summary__head__actions u-position-relative"
                   >
+                    <Link
+                      className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding"
+                      replace={false}
+                      to={
+                        Object {
+                          "backPath": "undefined/securemessages",
+                          "messageDetail": Object {
+                            "account": Object {
+                              "number": "32236",
+                            },
+                            "getDateCreated": [MockFunction] {
+                              "calls": Array [
+                                Array [],
+                              ],
+                            },
+                            "getMessageBody": [MockFunction] {
+                              "calls": Array [
+                                Array [],
+                              ],
+                            },
+                            "getReference": [MockFunction] {
+                              "calls": Array [
+                                Array [],
+                              ],
+                            },
+                            "getSubject": [MockFunction] {
+                              "calls": Array [
+                                Array [],
+                                Array [],
+                                Array [],
+                                Array [],
+                              ],
+                            },
+                            "status": "READ",
+                          },
+                          "pathname": "undefined/securemessages/reply",
+                        }
+                      }
+                    >
+                      <span
+                        aria-label="undefined undefined"
+                        className="c-message__summary__head__actions__reply__txt"
+                        id="replyMsg"
+                      />
+                      <span
+                        className="c-message__summary__head__actions__reply__icon"
+                      >
+                        <CommonGetIcon
+                          height="24px"
+                          id="icon-reply"
+                          width="24px"
+                        />
+                      </span>
+                    </Link>
                     <button
                       className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
                       onClick={[Function]}
@@ -1144,6 +1634,7 @@ ShallowWrapper {
                                     Array [],
                                     Array [],
                                     Array [],
+                                    Array [],
                                   ],
                                 },
                                 "status": "READ",
@@ -1195,6 +1686,7 @@ ShallowWrapper {
                                     Array [],
                                     Array [],
                                     Array [],
+                                    Array [],
                                   ],
                                 },
                                 "status": "READ",
@@ -1240,6 +1732,7 @@ ShallowWrapper {
                                   Array [],
                                   Array [],
                                   Array [],
+                                  Array [],
                                 ],
                               },
                               "status": "READ",
@@ -1274,7 +1767,60 @@ ShallowWrapper {
                   "nodeType": "host",
                   "props": Object {
                     "children": Array [
-                      undefined,
+                      <Link
+                        className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding"
+                        replace={false}
+                        to={
+                          Object {
+                            "backPath": "undefined/securemessages",
+                            "messageDetail": Object {
+                              "account": Object {
+                                "number": "32236",
+                              },
+                              "getDateCreated": [MockFunction] {
+                                "calls": Array [
+                                  Array [],
+                                ],
+                              },
+                              "getMessageBody": [MockFunction] {
+                                "calls": Array [
+                                  Array [],
+                                ],
+                              },
+                              "getReference": [MockFunction] {
+                                "calls": Array [
+                                  Array [],
+                                ],
+                              },
+                              "getSubject": [MockFunction] {
+                                "calls": Array [
+                                  Array [],
+                                  Array [],
+                                  Array [],
+                                  Array [],
+                                ],
+                              },
+                              "status": "READ",
+                            },
+                            "pathname": "undefined/securemessages/reply",
+                          }
+                        }
+                      >
+                        <span
+                          aria-label="undefined undefined"
+                          className="c-message__summary__head__actions__reply__txt"
+                          id="replyMsg"
+                        />
+                        <span
+                          className="c-message__summary__head__actions__reply__icon"
+                        >
+                          <CommonGetIcon
+                            height="24px"
+                            id="icon-reply"
+                            width="24px"
+                          />
+                        </span>
+                      </Link>,
                       <button
                         className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
                         onClick={[Function]}
@@ -1300,7 +1846,110 @@ ShallowWrapper {
                   },
                   "ref": null,
                   "rendered": Array [
-                    undefined,
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": Array [
+                          <span
+                            aria-label="undefined undefined"
+                            className="c-message__summary__head__actions__reply__txt"
+                            id="replyMsg"
+                          />,
+                          <span
+                            className="c-message__summary__head__actions__reply__icon"
+                          >
+                            <CommonGetIcon
+                              height="24px"
+                              id="icon-reply"
+                              width="24px"
+                            />
+                          </span>,
+                        ],
+                        "className": "c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding",
+                        "replace": false,
+                        "to": Object {
+                          "backPath": "undefined/securemessages",
+                          "messageDetail": Object {
+                            "account": Object {
+                              "number": "32236",
+                            },
+                            "getDateCreated": [MockFunction] {
+                              "calls": Array [
+                                Array [],
+                              ],
+                            },
+                            "getMessageBody": [MockFunction] {
+                              "calls": Array [
+                                Array [],
+                              ],
+                            },
+                            "getReference": [MockFunction] {
+                              "calls": Array [
+                                Array [],
+                              ],
+                            },
+                            "getSubject": [MockFunction] {
+                              "calls": Array [
+                                Array [],
+                                Array [],
+                                Array [],
+                                Array [],
+                              ],
+                            },
+                            "status": "READ",
+                          },
+                          "pathname": "undefined/securemessages/reply",
+                        },
+                      },
+                      "ref": null,
+                      "rendered": Array [
+                        Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "host",
+                          "props": Object {
+                            "aria-label": "undefined undefined",
+                            "children": undefined,
+                            "className": "c-message__summary__head__actions__reply__txt",
+                            "id": "replyMsg",
+                          },
+                          "ref": null,
+                          "rendered": null,
+                          "type": "span",
+                        },
+                        Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "host",
+                          "props": Object {
+                            "children": <CommonGetIcon
+                              height="24px"
+                              id="icon-reply"
+                              width="24px"
+                            />,
+                            "className": "c-message__summary__head__actions__reply__icon",
+                          },
+                          "ref": null,
+                          "rendered": Object {
+                            "instance": null,
+                            "key": undefined,
+                            "nodeType": "class",
+                            "props": Object {
+                              "height": "24px",
+                              "id": "icon-reply",
+                              "width": "24px",
+                            },
+                            "ref": null,
+                            "rendered": null,
+                            "type": [Function],
+                          },
+                          "type": "span",
+                        },
+                      ],
+                      "type": [Function],
+                    },
                     Object {
                       "instance": null,
                       "key": undefined,
@@ -2911,6 +3560,7 @@ ShallowWrapper {
             Array [],
             Array [],
             Array [],
+            Array [],
           ],
         },
         "status": "NEW",
@@ -2993,6 +3643,7 @@ ShallowWrapper {
                             Array [],
                             Array [],
                             Array [],
+                            Array [],
                           ],
                         },
                         "status": "NEW",
@@ -3009,6 +3660,56 @@ ShallowWrapper {
             <div
               className="c-message__summary__head__actions u-position-relative"
             >
+              <Link
+                className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding"
+                replace={false}
+                to={
+                  Object {
+                    "backPath": "undefined/securemessages/view",
+                    "messageDetail": Object {
+                      "account": Object {
+                        "number": "32236",
+                      },
+                      "getDateCreated": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                        ],
+                      },
+                      "getMessageBody": [MockFunction],
+                      "getReference": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                        ],
+                      },
+                      "getSubject": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                          Array [],
+                          Array [],
+                          Array [],
+                        ],
+                      },
+                      "status": "NEW",
+                    },
+                    "pathname": "undefined/securemessages/reply",
+                  }
+                }
+              >
+                <span
+                  aria-label="undefined undefined"
+                  className="c-message__summary__head__actions__reply__txt"
+                  id="replyMsg"
+                />
+                <span
+                  className="c-message__summary__head__actions__reply__icon"
+                >
+                  <CommonGetIcon
+                    height="24px"
+                    id="icon-reply"
+                    width="24px"
+                  />
+                </span>
+              </Link>
               <button
                 className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
                 onClick={[Function]}
@@ -3149,6 +3850,7 @@ ShallowWrapper {
                               Array [],
                               Array [],
                               Array [],
+                              Array [],
                             ],
                           },
                           "status": "NEW",
@@ -3165,6 +3867,56 @@ ShallowWrapper {
               <div
                 className="c-message__summary__head__actions u-position-relative"
               >
+                <Link
+                  className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding"
+                  replace={false}
+                  to={
+                    Object {
+                      "backPath": "undefined/securemessages/view",
+                      "messageDetail": Object {
+                        "account": Object {
+                          "number": "32236",
+                        },
+                        "getDateCreated": [MockFunction] {
+                          "calls": Array [
+                            Array [],
+                          ],
+                        },
+                        "getMessageBody": [MockFunction],
+                        "getReference": [MockFunction] {
+                          "calls": Array [
+                            Array [],
+                          ],
+                        },
+                        "getSubject": [MockFunction] {
+                          "calls": Array [
+                            Array [],
+                            Array [],
+                            Array [],
+                            Array [],
+                          ],
+                        },
+                        "status": "NEW",
+                      },
+                      "pathname": "undefined/securemessages/reply",
+                    }
+                  }
+                >
+                  <span
+                    aria-label="undefined undefined"
+                    className="c-message__summary__head__actions__reply__txt"
+                    id="replyMsg"
+                  />
+                  <span
+                    className="c-message__summary__head__actions__reply__icon"
+                  >
+                    <CommonGetIcon
+                      height="24px"
+                      id="icon-reply"
+                      width="24px"
+                    />
+                  </span>
+                </Link>
                 <button
                   className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
                   onClick={[Function]}
@@ -3240,6 +3992,7 @@ ShallowWrapper {
                                 Array [],
                                 Array [],
                                 Array [],
+                                Array [],
                               ],
                             },
                             "status": "NEW",
@@ -3256,6 +4009,56 @@ ShallowWrapper {
                 <div
                   className="c-message__summary__head__actions u-position-relative"
                 >
+                  <Link
+                    className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding"
+                    replace={false}
+                    to={
+                      Object {
+                        "backPath": "undefined/securemessages/view",
+                        "messageDetail": Object {
+                          "account": Object {
+                            "number": "32236",
+                          },
+                          "getDateCreated": [MockFunction] {
+                            "calls": Array [
+                              Array [],
+                            ],
+                          },
+                          "getMessageBody": [MockFunction],
+                          "getReference": [MockFunction] {
+                            "calls": Array [
+                              Array [],
+                            ],
+                          },
+                          "getSubject": [MockFunction] {
+                            "calls": Array [
+                              Array [],
+                              Array [],
+                              Array [],
+                              Array [],
+                            ],
+                          },
+                          "status": "NEW",
+                        },
+                        "pathname": "undefined/securemessages/reply",
+                      }
+                    }
+                  >
+                    <span
+                      aria-label="undefined undefined"
+                      className="c-message__summary__head__actions__reply__txt"
+                      id="replyMsg"
+                    />
+                    <span
+                      className="c-message__summary__head__actions__reply__icon"
+                    >
+                      <CommonGetIcon
+                        height="24px"
+                        id="icon-reply"
+                        width="24px"
+                      />
+                    </span>
+                  </Link>
                   <button
                     className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
                     onClick={[Function]}
@@ -3317,6 +4120,7 @@ ShallowWrapper {
                                   Array [],
                                   Array [],
                                   Array [],
+                                  Array [],
                                 ],
                               },
                               "status": "NEW",
@@ -3365,6 +4169,7 @@ ShallowWrapper {
                                   Array [],
                                   Array [],
                                   Array [],
+                                  Array [],
                                 ],
                               },
                               "status": "NEW",
@@ -3407,6 +4212,7 @@ ShallowWrapper {
                                 Array [],
                                 Array [],
                                 Array [],
+                                Array [],
                               ],
                             },
                             "status": "NEW",
@@ -3441,7 +4247,56 @@ ShallowWrapper {
                 "nodeType": "host",
                 "props": Object {
                   "children": Array [
-                    undefined,
+                    <Link
+                      className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding"
+                      replace={false}
+                      to={
+                        Object {
+                          "backPath": "undefined/securemessages/view",
+                          "messageDetail": Object {
+                            "account": Object {
+                              "number": "32236",
+                            },
+                            "getDateCreated": [MockFunction] {
+                              "calls": Array [
+                                Array [],
+                              ],
+                            },
+                            "getMessageBody": [MockFunction],
+                            "getReference": [MockFunction] {
+                              "calls": Array [
+                                Array [],
+                              ],
+                            },
+                            "getSubject": [MockFunction] {
+                              "calls": Array [
+                                Array [],
+                                Array [],
+                                Array [],
+                                Array [],
+                              ],
+                            },
+                            "status": "NEW",
+                          },
+                          "pathname": "undefined/securemessages/reply",
+                        }
+                      }
+                    >
+                      <span
+                        aria-label="undefined undefined"
+                        className="c-message__summary__head__actions__reply__txt"
+                        id="replyMsg"
+                      />
+                      <span
+                        className="c-message__summary__head__actions__reply__icon"
+                      >
+                        <CommonGetIcon
+                          height="24px"
+                          id="icon-reply"
+                          width="24px"
+                        />
+                      </span>
+                    </Link>,
                     <button
                       className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
                       onClick={[Function]}
@@ -3467,7 +4322,106 @@ ShallowWrapper {
                 },
                 "ref": null,
                 "rendered": Array [
-                  undefined,
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": Array [
+                        <span
+                          aria-label="undefined undefined"
+                          className="c-message__summary__head__actions__reply__txt"
+                          id="replyMsg"
+                        />,
+                        <span
+                          className="c-message__summary__head__actions__reply__icon"
+                        >
+                          <CommonGetIcon
+                            height="24px"
+                            id="icon-reply"
+                            width="24px"
+                          />
+                        </span>,
+                      ],
+                      "className": "c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding",
+                      "replace": false,
+                      "to": Object {
+                        "backPath": "undefined/securemessages/view",
+                        "messageDetail": Object {
+                          "account": Object {
+                            "number": "32236",
+                          },
+                          "getDateCreated": [MockFunction] {
+                            "calls": Array [
+                              Array [],
+                            ],
+                          },
+                          "getMessageBody": [MockFunction],
+                          "getReference": [MockFunction] {
+                            "calls": Array [
+                              Array [],
+                            ],
+                          },
+                          "getSubject": [MockFunction] {
+                            "calls": Array [
+                              Array [],
+                              Array [],
+                              Array [],
+                              Array [],
+                            ],
+                          },
+                          "status": "NEW",
+                        },
+                        "pathname": "undefined/securemessages/reply",
+                      },
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "aria-label": "undefined undefined",
+                          "children": undefined,
+                          "className": "c-message__summary__head__actions__reply__txt",
+                          "id": "replyMsg",
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": "span",
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "children": <CommonGetIcon
+                            height="24px"
+                            id="icon-reply"
+                            width="24px"
+                          />,
+                          "className": "c-message__summary__head__actions__reply__icon",
+                        },
+                        "ref": null,
+                        "rendered": Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "class",
+                          "props": Object {
+                            "height": "24px",
+                            "id": "icon-reply",
+                            "width": "24px",
+                          },
+                          "ref": null,
+                          "rendered": null,
+                          "type": [Function],
+                        },
+                        "type": "span",
+                      },
+                    ],
+                    "type": [Function],
+                  },
                   Object {
                     "instance": null,
                     "key": undefined,
@@ -3676,6 +4630,7 @@ ShallowWrapper {
                               Array [],
                               Array [],
                               Array [],
+                              Array [],
                             ],
                           },
                           "status": "NEW",
@@ -3692,6 +4647,56 @@ ShallowWrapper {
               <div
                 className="c-message__summary__head__actions u-position-relative"
               >
+                <Link
+                  className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding"
+                  replace={false}
+                  to={
+                    Object {
+                      "backPath": "undefined/securemessages/view",
+                      "messageDetail": Object {
+                        "account": Object {
+                          "number": "32236",
+                        },
+                        "getDateCreated": [MockFunction] {
+                          "calls": Array [
+                            Array [],
+                          ],
+                        },
+                        "getMessageBody": [MockFunction],
+                        "getReference": [MockFunction] {
+                          "calls": Array [
+                            Array [],
+                          ],
+                        },
+                        "getSubject": [MockFunction] {
+                          "calls": Array [
+                            Array [],
+                            Array [],
+                            Array [],
+                            Array [],
+                          ],
+                        },
+                        "status": "NEW",
+                      },
+                      "pathname": "undefined/securemessages/reply",
+                    }
+                  }
+                >
+                  <span
+                    aria-label="undefined undefined"
+                    className="c-message__summary__head__actions__reply__txt"
+                    id="replyMsg"
+                  />
+                  <span
+                    className="c-message__summary__head__actions__reply__icon"
+                  >
+                    <CommonGetIcon
+                      height="24px"
+                      id="icon-reply"
+                      width="24px"
+                    />
+                  </span>
+                </Link>
                 <button
                   className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
                   onClick={[Function]}
@@ -3832,6 +4837,7 @@ ShallowWrapper {
                                 Array [],
                                 Array [],
                                 Array [],
+                                Array [],
                               ],
                             },
                             "status": "NEW",
@@ -3848,6 +4854,56 @@ ShallowWrapper {
                 <div
                   className="c-message__summary__head__actions u-position-relative"
                 >
+                  <Link
+                    className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding"
+                    replace={false}
+                    to={
+                      Object {
+                        "backPath": "undefined/securemessages/view",
+                        "messageDetail": Object {
+                          "account": Object {
+                            "number": "32236",
+                          },
+                          "getDateCreated": [MockFunction] {
+                            "calls": Array [
+                              Array [],
+                            ],
+                          },
+                          "getMessageBody": [MockFunction],
+                          "getReference": [MockFunction] {
+                            "calls": Array [
+                              Array [],
+                            ],
+                          },
+                          "getSubject": [MockFunction] {
+                            "calls": Array [
+                              Array [],
+                              Array [],
+                              Array [],
+                              Array [],
+                            ],
+                          },
+                          "status": "NEW",
+                        },
+                        "pathname": "undefined/securemessages/reply",
+                      }
+                    }
+                  >
+                    <span
+                      aria-label="undefined undefined"
+                      className="c-message__summary__head__actions__reply__txt"
+                      id="replyMsg"
+                    />
+                    <span
+                      className="c-message__summary__head__actions__reply__icon"
+                    >
+                      <CommonGetIcon
+                        height="24px"
+                        id="icon-reply"
+                        width="24px"
+                      />
+                    </span>
+                  </Link>
                   <button
                     className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
                     onClick={[Function]}
@@ -3923,6 +4979,7 @@ ShallowWrapper {
                                   Array [],
                                   Array [],
                                   Array [],
+                                  Array [],
                                 ],
                               },
                               "status": "NEW",
@@ -3939,6 +4996,56 @@ ShallowWrapper {
                   <div
                     className="c-message__summary__head__actions u-position-relative"
                   >
+                    <Link
+                      className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding"
+                      replace={false}
+                      to={
+                        Object {
+                          "backPath": "undefined/securemessages/view",
+                          "messageDetail": Object {
+                            "account": Object {
+                              "number": "32236",
+                            },
+                            "getDateCreated": [MockFunction] {
+                              "calls": Array [
+                                Array [],
+                              ],
+                            },
+                            "getMessageBody": [MockFunction],
+                            "getReference": [MockFunction] {
+                              "calls": Array [
+                                Array [],
+                              ],
+                            },
+                            "getSubject": [MockFunction] {
+                              "calls": Array [
+                                Array [],
+                                Array [],
+                                Array [],
+                                Array [],
+                              ],
+                            },
+                            "status": "NEW",
+                          },
+                          "pathname": "undefined/securemessages/reply",
+                        }
+                      }
+                    >
+                      <span
+                        aria-label="undefined undefined"
+                        className="c-message__summary__head__actions__reply__txt"
+                        id="replyMsg"
+                      />
+                      <span
+                        className="c-message__summary__head__actions__reply__icon"
+                      >
+                        <CommonGetIcon
+                          height="24px"
+                          id="icon-reply"
+                          width="24px"
+                        />
+                      </span>
+                    </Link>
                     <button
                       className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
                       onClick={[Function]}
@@ -4000,6 +5107,7 @@ ShallowWrapper {
                                     Array [],
                                     Array [],
                                     Array [],
+                                    Array [],
                                   ],
                                 },
                                 "status": "NEW",
@@ -4048,6 +5156,7 @@ ShallowWrapper {
                                     Array [],
                                     Array [],
                                     Array [],
+                                    Array [],
                                   ],
                                 },
                                 "status": "NEW",
@@ -4090,6 +5199,7 @@ ShallowWrapper {
                                   Array [],
                                   Array [],
                                   Array [],
+                                  Array [],
                                 ],
                               },
                               "status": "NEW",
@@ -4124,7 +5234,56 @@ ShallowWrapper {
                   "nodeType": "host",
                   "props": Object {
                     "children": Array [
-                      undefined,
+                      <Link
+                        className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding"
+                        replace={false}
+                        to={
+                          Object {
+                            "backPath": "undefined/securemessages/view",
+                            "messageDetail": Object {
+                              "account": Object {
+                                "number": "32236",
+                              },
+                              "getDateCreated": [MockFunction] {
+                                "calls": Array [
+                                  Array [],
+                                ],
+                              },
+                              "getMessageBody": [MockFunction],
+                              "getReference": [MockFunction] {
+                                "calls": Array [
+                                  Array [],
+                                ],
+                              },
+                              "getSubject": [MockFunction] {
+                                "calls": Array [
+                                  Array [],
+                                  Array [],
+                                  Array [],
+                                  Array [],
+                                ],
+                              },
+                              "status": "NEW",
+                            },
+                            "pathname": "undefined/securemessages/reply",
+                          }
+                        }
+                      >
+                        <span
+                          aria-label="undefined undefined"
+                          className="c-message__summary__head__actions__reply__txt"
+                          id="replyMsg"
+                        />
+                        <span
+                          className="c-message__summary__head__actions__reply__icon"
+                        >
+                          <CommonGetIcon
+                            height="24px"
+                            id="icon-reply"
+                            width="24px"
+                          />
+                        </span>
+                      </Link>,
                       <button
                         className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
                         onClick={[Function]}
@@ -4150,7 +5309,106 @@ ShallowWrapper {
                   },
                   "ref": null,
                   "rendered": Array [
-                    undefined,
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": Array [
+                          <span
+                            aria-label="undefined undefined"
+                            className="c-message__summary__head__actions__reply__txt"
+                            id="replyMsg"
+                          />,
+                          <span
+                            className="c-message__summary__head__actions__reply__icon"
+                          >
+                            <CommonGetIcon
+                              height="24px"
+                              id="icon-reply"
+                              width="24px"
+                            />
+                          </span>,
+                        ],
+                        "className": "c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding",
+                        "replace": false,
+                        "to": Object {
+                          "backPath": "undefined/securemessages/view",
+                          "messageDetail": Object {
+                            "account": Object {
+                              "number": "32236",
+                            },
+                            "getDateCreated": [MockFunction] {
+                              "calls": Array [
+                                Array [],
+                              ],
+                            },
+                            "getMessageBody": [MockFunction],
+                            "getReference": [MockFunction] {
+                              "calls": Array [
+                                Array [],
+                              ],
+                            },
+                            "getSubject": [MockFunction] {
+                              "calls": Array [
+                                Array [],
+                                Array [],
+                                Array [],
+                                Array [],
+                              ],
+                            },
+                            "status": "NEW",
+                          },
+                          "pathname": "undefined/securemessages/reply",
+                        },
+                      },
+                      "ref": null,
+                      "rendered": Array [
+                        Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "host",
+                          "props": Object {
+                            "aria-label": "undefined undefined",
+                            "children": undefined,
+                            "className": "c-message__summary__head__actions__reply__txt",
+                            "id": "replyMsg",
+                          },
+                          "ref": null,
+                          "rendered": null,
+                          "type": "span",
+                        },
+                        Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "host",
+                          "props": Object {
+                            "children": <CommonGetIcon
+                              height="24px"
+                              id="icon-reply"
+                              width="24px"
+                            />,
+                            "className": "c-message__summary__head__actions__reply__icon",
+                          },
+                          "ref": null,
+                          "rendered": Object {
+                            "instance": null,
+                            "key": undefined,
+                            "nodeType": "class",
+                            "props": Object {
+                              "height": "24px",
+                              "id": "icon-reply",
+                              "width": "24px",
+                            },
+                            "ref": null,
+                            "rendered": null,
+                            "type": [Function],
+                          },
+                          "type": "span",
+                        },
+                      ],
+                      "type": [Function],
+                    },
                     Object {
                       "instance": null,
                       "key": undefined,

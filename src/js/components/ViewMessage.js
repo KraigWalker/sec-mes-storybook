@@ -262,7 +262,7 @@ export class ViewMessage extends React.Component {
 		const { hasAttachment } = this.props;
 
 		return (
-			<div className="row centralised-container">
+			<div className="row centralised-container c-card">
 				<div className="col-md1-24 col-sm1-24 col-lg1-24">
 					<StepHeader
 						showheaderCrumbs

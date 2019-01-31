@@ -214,7 +214,7 @@ export class DraftSecureMessage extends React.Component {
 		const { validationSubjectMsg, validationAccountMsg, showPopup, showDraftSuccessModal, showSaveServiceErrorModal, showSendServiceErrorModal, disabled } = this.state;
 		account.number === undefined || null ? content.noSpecificAccount : account;
 		return (
-			<div className="row centralised-container">
+			<div className="row centralised-container c-card">
 				<div className="col-md1-24 col-sm1-24 col-lg1-24">
 					<StepHeader showheaderCrumbs onClick={() => { }} headerCrumbsMessage={content.back} headerTitle={content.editSavedMessage} headerCrumbsPath={{ pathname: `${window.baseURl}/securemessages` }} />
 					<div className="c-field">

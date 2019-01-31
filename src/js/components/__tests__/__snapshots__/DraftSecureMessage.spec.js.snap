@@ -162,7 +162,7 @@ ShallowWrapper {
           />
         </div>
       </div>,
-      "className": "row centralised-container",
+      "className": "row centralised-container c-card",
     },
     "ref": null,
     "rendered": Object {
@@ -786,7 +786,7 @@ ShallowWrapper {
             />
           </div>
         </div>,
-        "className": "row centralised-container",
+        "className": "row centralised-container c-card",
       },
       "ref": null,
       "rendered": Object {
