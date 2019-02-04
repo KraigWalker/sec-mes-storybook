@@ -76,6 +76,4 @@ const mapState = state => ({
     activeTab: state.messages.activeTab,
 });
 
-console.log(utils, utils.withNativeBridge(window.navigator.userAgent)(LandingPage))
-
 export default connect(mapState)(utils.withNativeBridge(window.navigator.userAgent)(LandingPage));
