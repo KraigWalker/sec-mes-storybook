@@ -108,17 +108,6 @@ describe("New Secure message snapshot", () => {
     //     expect(component.instance().state.disabled).toBeFalsy();
     // });
     it('sendData function test', () => {
-        component.instance().sendData();
-        component.setState({ charError: true, showSentMessageModal: true, showSendServiceErrorModal: true });
-        expect(component.instance().state.charError).toBeTruthy();
-    });
-    it('saveDraftData function test', () => {
-        component.instance().saveDraftData();
-        component.setState({ showDraftSuccessModal: true, chars_left: 40 });
-        expect(component.instance().state.showDraftSuccessModal).toBeTruthy();
-        expect(props.dispatch).toBeCalled();
-    });
-    it('sendData function test', () => {
         component.instance().retryServiceCall();
         expect(props.dispatch).toBeCalled();
     });
