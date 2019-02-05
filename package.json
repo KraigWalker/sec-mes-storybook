@@ -81,7 +81,8 @@
     "test:coverage": "jest --coverage --u"
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js"
+    "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js",
+    "testURL": "http://localhost"
   },
   "author": "",
   "license": "ISC",
