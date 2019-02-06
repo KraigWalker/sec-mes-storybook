@@ -366,7 +366,6 @@ export class ReplySecureMessage extends React.Component {
 		);
 	}
 	returnBackButton(backpath) {
-		console.log(backpath)
 		const { content } = this.props;
 		const { showModalBack, disabled } = this.state;
 		if (showModalBack && disabled === false) {
@@ -451,7 +450,6 @@ export class ReplySecureMessage extends React.Component {
 		const { messageDetail } = location.messageDetail
 			? location
 			: this.props;
-		console.log(backButton);
 		return (
 			<div className="row centralised-container c-card">
 				<div className="col-md1-24 col-sm1-24 col-lg1-24">

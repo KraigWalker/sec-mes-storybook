@@ -29,7 +29,7 @@ const session = {
 const clientContext = token.getClientContext();
 
 const store = createStore(session)
-const { brandId } = hash;
+const { brandId, isDocumentLibraryEnabled } = hash;
 const defaultTheme = getTheme(brandId);
 const theme = {
   ...defaultTheme,

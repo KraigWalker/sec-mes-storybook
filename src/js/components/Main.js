@@ -24,10 +24,10 @@ export class Main extends React.Component {
 	}
 
 	render() {
-		const { location, isWebView } = this.props;
+		const { location, isWebView, isDocumentLibraryEnabled } = this.props;
 		return (
 			<div className="container">
-				{ !isWebView &&
+				{ !isWebView && isDocumentLibraryEnabled &&
 					<div className="tab-container web-ui-components">
 						<TabCardBlock>
 							<TabCard label="Secure messages" onClick={this.handleSecureMessagesClick} iconType="MailOutlineSmall" isActive={location.pathname.includes("securemessages")} />
