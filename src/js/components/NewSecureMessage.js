@@ -494,7 +494,7 @@ export class NewSecureMessage extends React.Component {
 		const { content, subjects, accounts, messages, customerNameError } = this.props;
 		const { validationSubjectMsg, validationAccountMsg, showPopup, showDraftSuccessModal, showSentMessageModal, showSaveServiceErrorModal, disabled, showSendServiceErrorModal } = this.state;
 		return (
-			<div className="row centralised-container">
+			<div className="row centralised-container c-card">
 				<div className="col-md1-24 col-sm1-24 col-lg1-24">
 					{this.returnBackButton()}
 					<div className="c-field">

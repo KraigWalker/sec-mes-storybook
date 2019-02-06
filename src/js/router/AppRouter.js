@@ -52,26 +52,23 @@ class AppRouter extends React.Component {
                     )} />
                     <AccessibilityMessage/>
                     <RouteWithLayout path='/errormessage' Component={ErrorPage} />
-                    <Switch>
-                        <Route path={`${window.baseURl}/my-documents/:brand/:displayCategory/:documentId`} exact component={DocumentView} />
-                        <RouteWithLayout
-                            Component={DocumentList}
-                            session={this.props.session}
-                            client={this.props.client}
-                            path={`${window.baseURl}/my-documents/:brand/:displayCategory`}
-                            isDocumentLibraryEnabled={isDocumentLibraryEnabled}
-                            exact
-                        />
-                        <RouteWithLayout
-                            path={`${window.baseURl}/my-documents/:brand`}
-                            exact
-                            Component={FolderList}
-                            session={this.props.session}
-                            client={this.props.client}
-                            isDocumentLibraryEnabled={isDocumentLibraryEnabled}
-                        />
-                        
-                    </Switch>
+                    <RouteWithLayout
+                        path={`${window.baseURl}/my-documents`}
+                        exact
+                        Component={FolderList}
+                        session={this.props.session}
+                        client={this.props.client}
+                        isDocumentLibraryEnabled={isDocumentLibraryEnabled}
+                    />
+                    <RouteWithLayout
+                        Component={DocumentList}
+                        session={this.props.session}
+                        client={this.props.client}
+                        path={`${window.baseURl}/my-documents/:displayCategory`}
+                        isDocumentLibraryEnabled={isDocumentLibraryEnabled}
+                        exact
+                    />
+                    <Route path={`${window.baseURl}/my-documents/:displayCategory/:documentId`} exact component={DocumentView} />
                 </div>
             </BrowserRouter>
         );
