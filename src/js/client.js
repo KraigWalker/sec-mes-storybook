@@ -30,13 +30,24 @@ const clientContext = token.getClientContext();
 
 const store = createStore(session)
 const { brandId } = hash;
-const theme = getTheme(brandId);
+const defaultTheme = getTheme(brandId);
+const theme = {
+  ...defaultTheme,
+  fonts: {
+    ...defaultTheme.fonts,
+    display: {
+      bold: "CYBHouschkaAltProBold !important"
+    }
+  }
+};
+
+const { isDocumentLibraryEnabled } = hash;
 
 const startApp = () => {
   ReactDOM.render(
     <Provider store={store}>
       <WebUIThemeProvider theme={theme}>
-        <AppRouter session={session} client={clientContext}/>
+        <AppRouter session={session} client={clientContext} isDocumentLibraryEnabled={isDocumentLibraryEnabled} />
       </WebUIThemeProvider>
     </Provider>, app);
 }
