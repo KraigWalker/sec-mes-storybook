@@ -41,8 +41,6 @@ const theme = {
   }
 };
 
-const { isDocumentLibraryEnabled } = hash;
-
 const startApp = () => {
   ReactDOM.render(
     <Provider store={store}>
