@@ -27,11 +27,13 @@ const session = {
 
 const clientContext = token.getClientContext();
 
-const store = createStore(session)
+const store = createStore(session);
+
+const { isDocumentLibraryEnabled } = hash;
 
 const startApp = () => {
   ReactDOM.render(<Provider store={store}>
-  <AppRouter session={session} client={clientContext}/>
+  <AppRouter session={session} client={clientContext} isDocumentLibraryEnabled={isDocumentLibraryEnabled} />
   </Provider>, app);
 }
 
