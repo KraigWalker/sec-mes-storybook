@@ -12,11 +12,7 @@
   <div id="app"></div>
   <script>
     // TODO: this is messy. Need to rationalise the baseUrl in a better way
-    var myDocuments = false;
-    if (document.URL.lastIndexOf('securemessages') < 0) {
-      myDocuments = true;
-    }
-
+    var myDocuments = document.URL.lastIndexOf('my-documents') > 0 ? true : false;
     var path = document.URL.substr(0,document.URL.lastIndexOf(myDocuments ? 'my-documents' : 'securemessages'));
     window.pathValue = path;
     window.baseURl = window.location.pathname.substr(0, window.location.pathname.lastIndexOf(myDocuments ? '/my-documents' : '/securemessages'))

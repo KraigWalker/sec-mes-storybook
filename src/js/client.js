@@ -5,6 +5,7 @@ import AppRouter from './router/AppRouter';
 import createStore from './stores/AppStore';
 import ConfigUtils from './utils/ConfigUtils';
 import token from "./token";
+import { getTheme, WebUIThemeProvider } from "web-ui-components/lib/utilities/themes";
 
 const app = document.getElementById('app');
  /**
@@ -22,21 +23,25 @@ const session = {
   access_token: hash.access_token,
   bank_id: hash.bank_id,
   brand: hash.branId,
-  sate: hash.state
+  state: hash.state
 };
 
 const clientContext = token.getClientContext();
 
 const store = createStore(session)
+const { brandId } = hash;
+const theme = getTheme(brandId);
 
 const startApp = () => {
-  ReactDOM.render(<Provider store={store}>
-  <AppRouter session={session} client={clientContext}/>
-  </Provider>, app);
+  ReactDOM.render(
+    <Provider store={store}>
+      <WebUIThemeProvider theme={theme}>
+        <AppRouter session={session} client={clientContext}/>
+      </WebUIThemeProvider>
+    </Provider>, app);
 }
 
 const loadStyles = () => {
-  const { brandId } = hash;
   
   var head = document.getElementsByTagName('head')[0];
   var element = document.createElement('link');

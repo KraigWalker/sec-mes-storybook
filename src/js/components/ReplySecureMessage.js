@@ -10,7 +10,8 @@ import {
 	replyMessageData,
 	sendMessageForAccessibiltiy,
 	popupState,
-	updateMessageData
+	updateMessageData,
+	backButton
 } from '../actions/AppActions';
 import { getThreadsBL, getAccountName } from '../bl/SecureMessageBL';
 import Threads from './common/ThreadList';
@@ -450,7 +451,7 @@ export class ReplySecureMessage extends React.Component {
 			? location
 			: this.props;
 		return (
-			<div className="row centralised-container">
+			<div className="row centralised-container c-card">
 				<div className="col-md1-24 col-sm1-24 col-lg1-24">
 					{this.returnBackButton(location)}
 					<div className="c-field">

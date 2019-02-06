@@ -4,6 +4,7 @@
 @import "atoms/buttons";
 @import "atoms/form-elements";
 @import "atoms/loader";
+@import "atoms/card";
 
 //molecules
 @import "molecules/tabs";
@@ -17,5 +18,5 @@
 
 //Custom
 @import "custom/tab-container";
-@import "custom/tab-button";
 @import "custom/global-takeover";
+@import "custom/message";
