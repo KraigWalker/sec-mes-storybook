@@ -30,7 +30,7 @@ const RoutesWithLayout = (props) => (
         <RouteWithLayout exact path={`${window.baseURl}/securemessages/new`} Component={NewSecureMessage} content={props.content} isDocumentLibraryEnabled={props.isDocumentLibraryEnabled}  />
         <RouteWithLayout exact path={`${window.baseURl}/securemessages/reply`} Component={ReplySecuremessage} content={props.content} isDocumentLibraryEnabled={props.isDocumentLibraryEnabled}  />
         <RouteWithLayout exact path={`${window.baseURl}/securemessages/draft`} Component={DraftSecureMessage} content={props.content} isDocumentLibraryEnabled={props.isDocumentLibraryEnabled}  />
-        <RouteWithLayout exact path={`${window.baseURl}/securemessages/:bankId`} Component={LandingPage} content={props.content} isDocumentLibraryEnabled={props.isDocumentLibraryEnabled}  />
+        <RouteWithLayout path={`${window.baseURl}/securemessages`} Component={LandingPage} content={props.content} isDocumentLibraryEnabled={props.isDocumentLibraryEnabled}  />
         <Redirect exact from = '/' to = {`${window.baseURl}/securemessages`} key='redirect'/>;    
     </Switch>
 )
