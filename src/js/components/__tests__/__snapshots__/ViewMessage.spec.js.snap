@@ -56,11 +56,83 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": <div
-        className="row centralised-container"
+        className="col-md1-24 col-sm1-24 col-lg1-24"
       >
+        <StepHeader
+          headerCrumbsMessage="Back"
+          headerCrumbsPath={
+            Object {
+              "pathname": "undefined/securemessages",
+            }
+          }
+          headerTitle={undefined}
+          showControl={false}
+          showheaderCrumbs={true}
+        />
+        <Connect(SecureMessageSummary)
+          content={
+            Object {
+              "sentPageTitle": "sentPageTitle",
+            }
+          }
+          message={
+            Object {
+              "status": "sent",
+            }
+          }
+          readFlag={false}
+          sentFlag={false}
+          viewMessageFlag={true}
+        />
+        <pre />
         <div
-          className="col-md1-24 col-sm1-24 col-lg1-24"
+          className="c-btn--group"
         >
+          <Link
+            className="c-btn c-btn--secondary"
+            replace={false}
+            to={
+              Object {
+                "pathname": "undefined/securemessages",
+              }
+            }
+          />
+          <button
+            className="c-btn c-btn--secondary"
+            onClick={[Function]}
+          />
+          <Link
+            className="c-btn c-btn--primary"
+            replace={false}
+            to={
+              Object {
+                "backPath": "undefined/securemessages/view",
+                "messageDetail": Object {
+                  "status": "sent",
+                },
+                "pathname": "undefined/securemessages/reply",
+              }
+            }
+          />
+        </div>
+        <ThreadList
+          Threads={undefined}
+          content={
+            Object {
+              "sentPageTitle": "sentPageTitle",
+            }
+          }
+        />
+      </div>,
+      "className": "row centralised-container c-card",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
           <StepHeader
             headerCrumbsMessage="Back"
             headerCrumbsPath={
@@ -71,7 +143,7 @@ ShallowWrapper {
             headerTitle={undefined}
             showControl={false}
             showheaderCrumbs={true}
-          />
+          />,
           <Connect(SecureMessageSummary)
             content={
               Object {
@@ -86,8 +158,9 @@ ShallowWrapper {
             readFlag={false}
             sentFlag={false}
             viewMessageFlag={true}
-          />
-          <pre />
+          />,
+          <pre />,
+          undefined,
           <div
             className="c-btn--group"
           >
@@ -96,7 +169,7 @@ ShallowWrapper {
               replace={false}
               to={
                 Object {
-                  "pathname": "undefined/securemessage",
+                  "pathname": "undefined/securemessages",
                 }
               }
             />
@@ -109,15 +182,18 @@ ShallowWrapper {
               replace={false}
               to={
                 Object {
-                  "backPath": "undefined/viewmessage",
+                  "backPath": "undefined/securemessages/view",
                   "messageDetail": Object {
                     "status": "sent",
                   },
-                  "pathname": "undefined/replysecuremessage",
+                  "pathname": "undefined/securemessages/reply",
                 }
               }
             />
-          </div>
+          </div>,
+          false,
+          false,
+          false,
           <ThreadList
             Threads={undefined}
             content={
@@ -125,13 +201,173 @@ ShallowWrapper {
                 "sentPageTitle": "sentPageTitle",
               }
             }
-          />
-        </div>
-      </div>,
-      "className": "container",
+          />,
+        ],
+        "className": "col-md1-24 col-sm1-24 col-lg1-24",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "headerCrumbsMessage": "Back",
+            "headerCrumbsPath": Object {
+              "pathname": "undefined/securemessages",
+            },
+            "headerTitle": undefined,
+            "showControl": false,
+            "showheaderCrumbs": true,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "content": Object {
+              "sentPageTitle": "sentPageTitle",
+            },
+            "message": Object {
+              "status": "sent",
+            },
+            "readFlag": false,
+            "sentFlag": false,
+            "viewMessageFlag": true,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": undefined,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "pre",
+        },
+        undefined,
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <Link
+                className="c-btn c-btn--secondary"
+                replace={false}
+                to={
+                  Object {
+                    "pathname": "undefined/securemessages",
+                  }
+                }
+              />,
+              <button
+                className="c-btn c-btn--secondary"
+                onClick={[Function]}
+              />,
+              <Link
+                className="c-btn c-btn--primary"
+                replace={false}
+                to={
+                  Object {
+                    "backPath": "undefined/securemessages/view",
+                    "messageDetail": Object {
+                      "status": "sent",
+                    },
+                    "pathname": "undefined/securemessages/reply",
+                  }
+                }
+              />,
+            ],
+            "className": "c-btn--group",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": undefined,
+                "className": "c-btn c-btn--secondary",
+                "replace": false,
+                "to": Object {
+                  "pathname": "undefined/securemessages",
+                },
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": undefined,
+                "className": "c-btn c-btn--secondary",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "button",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": undefined,
+                "className": "c-btn c-btn--primary",
+                "replace": false,
+                "to": Object {
+                  "backPath": "undefined/securemessages/view",
+                  "messageDetail": Object {
+                    "status": "sent",
+                  },
+                  "pathname": "undefined/securemessages/reply",
+                },
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+        false,
+        false,
+        false,
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "Threads": undefined,
+            "content": Object {
+              "sentPageTitle": "sentPageTitle",
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
     },
-    "ref": null,
-    "rendered": Object {
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
       "instance": null,
       "key": undefined,
       "nodeType": "host",
@@ -174,7 +410,7 @@ ShallowWrapper {
               replace={false}
               to={
                 Object {
-                  "pathname": "undefined/securemessage",
+                  "pathname": "undefined/securemessages",
                 }
               }
             />
@@ -187,11 +423,11 @@ ShallowWrapper {
               replace={false}
               to={
                 Object {
-                  "backPath": "undefined/viewmessage",
+                  "backPath": "undefined/securemessages/view",
                   "messageDetail": Object {
                     "status": "sent",
                   },
-                  "pathname": "undefined/replysecuremessage",
+                  "pathname": "undefined/securemessages/reply",
                 }
               }
             />
@@ -205,7 +441,7 @@ ShallowWrapper {
             }
           />
         </div>,
-        "className": "row centralised-container",
+        "className": "row centralised-container c-card",
       },
       "ref": null,
       "rendered": Object {
@@ -241,6 +477,7 @@ ShallowWrapper {
               viewMessageFlag={true}
             />,
             <pre />,
+            undefined,
             <div
               className="c-btn--group"
             >
@@ -249,7 +486,7 @@ ShallowWrapper {
                 replace={false}
                 to={
                   Object {
-                    "pathname": "undefined/securemessage",
+                    "pathname": "undefined/securemessages",
                   }
                 }
               />
@@ -262,11 +499,11 @@ ShallowWrapper {
                 replace={false}
                 to={
                   Object {
-                    "backPath": "undefined/viewmessage",
+                    "backPath": "undefined/securemessages/view",
                     "messageDetail": Object {
                       "status": "sent",
                     },
-                    "pathname": "undefined/replysecuremessage",
+                    "pathname": "undefined/securemessages/reply",
                   }
                 }
               />
@@ -334,6 +571,7 @@ ShallowWrapper {
             "rendered": null,
             "type": "pre",
           },
+          undefined,
           Object {
             "instance": null,
             "key": undefined,
@@ -345,7 +583,7 @@ ShallowWrapper {
                   replace={false}
                   to={
                     Object {
-                      "pathname": "undefined/securemessage",
+                      "pathname": "undefined/securemessages",
                     }
                   }
                 />,
@@ -358,11 +596,11 @@ ShallowWrapper {
                   replace={false}
                   to={
                     Object {
-                      "backPath": "undefined/viewmessage",
+                      "backPath": "undefined/securemessages/view",
                       "messageDetail": Object {
                         "status": "sent",
                       },
-                      "pathname": "undefined/replysecuremessage",
+                      "pathname": "undefined/securemessages/reply",
                     }
                   }
                 />,
@@ -380,7 +618,7 @@ ShallowWrapper {
                   "className": "c-btn c-btn--secondary",
                   "replace": false,
                   "to": Object {
-                    "pathname": "undefined/securemessage",
+                    "pathname": "undefined/securemessages",
                   },
                 },
                 "ref": null,
@@ -409,11 +647,11 @@ ShallowWrapper {
                   "className": "c-btn c-btn--primary",
                   "replace": false,
                   "to": Object {
-                    "backPath": "undefined/viewmessage",
+                    "backPath": "undefined/securemessages/view",
                     "messageDetail": Object {
                       "status": "sent",
                     },
-                    "pathname": "undefined/replysecuremessage",
+                    "pathname": "undefined/securemessages/reply",
                   },
                 },
                 "ref": null,
@@ -445,417 +683,13 @@ ShallowWrapper {
       },
       "type": "div",
     },
-    "type": "div",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": <div
-          className="row centralised-container"
-        >
-          <div
-            className="col-md1-24 col-sm1-24 col-lg1-24"
-          >
-            <StepHeader
-              headerCrumbsMessage="Back"
-              headerCrumbsPath={
-                Object {
-                  "pathname": "undefined/securemessages",
-                }
-              }
-              headerTitle={undefined}
-              showControl={false}
-              showheaderCrumbs={true}
-            />
-            <Connect(SecureMessageSummary)
-              content={
-                Object {
-                  "sentPageTitle": "sentPageTitle",
-                }
-              }
-              message={
-                Object {
-                  "status": "sent",
-                }
-              }
-              readFlag={false}
-              sentFlag={false}
-              viewMessageFlag={true}
-            />
-            <pre />
-            <div
-              className="c-btn--group"
-            >
-              <Link
-                className="c-btn c-btn--secondary"
-                replace={false}
-                to={
-                  Object {
-                    "pathname": "undefined/securemessage",
-                  }
-                }
-              />
-              <button
-                className="c-btn c-btn--secondary"
-                onClick={[Function]}
-              />
-              <Link
-                className="c-btn c-btn--primary"
-                replace={false}
-                to={
-                  Object {
-                    "backPath": "undefined/viewmessage",
-                    "messageDetail": Object {
-                      "status": "sent",
-                    },
-                    "pathname": "undefined/replysecuremessage",
-                  }
-                }
-              />
-            </div>
-            <ThreadList
-              Threads={undefined}
-              content={
-                Object {
-                  "sentPageTitle": "sentPageTitle",
-                }
-              }
-            />
-          </div>
-        </div>,
-        "className": "container",
-      },
-      "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": <div
-            className="col-md1-24 col-sm1-24 col-lg1-24"
-          >
-            <StepHeader
-              headerCrumbsMessage="Back"
-              headerCrumbsPath={
-                Object {
-                  "pathname": "undefined/securemessages",
-                }
-              }
-              headerTitle={undefined}
-              showControl={false}
-              showheaderCrumbs={true}
-            />
-            <Connect(SecureMessageSummary)
-              content={
-                Object {
-                  "sentPageTitle": "sentPageTitle",
-                }
-              }
-              message={
-                Object {
-                  "status": "sent",
-                }
-              }
-              readFlag={false}
-              sentFlag={false}
-              viewMessageFlag={true}
-            />
-            <pre />
-            <div
-              className="c-btn--group"
-            >
-              <Link
-                className="c-btn c-btn--secondary"
-                replace={false}
-                to={
-                  Object {
-                    "pathname": "undefined/securemessage",
-                  }
-                }
-              />
-              <button
-                className="c-btn c-btn--secondary"
-                onClick={[Function]}
-              />
-              <Link
-                className="c-btn c-btn--primary"
-                replace={false}
-                to={
-                  Object {
-                    "backPath": "undefined/viewmessage",
-                    "messageDetail": Object {
-                      "status": "sent",
-                    },
-                    "pathname": "undefined/replysecuremessage",
-                  }
-                }
-              />
-            </div>
-            <ThreadList
-              Threads={undefined}
-              content={
-                Object {
-                  "sentPageTitle": "sentPageTitle",
-                }
-              }
-            />
-          </div>,
-          "className": "row centralised-container",
-        },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              <StepHeader
-                headerCrumbsMessage="Back"
-                headerCrumbsPath={
-                  Object {
-                    "pathname": "undefined/securemessages",
-                  }
-                }
-                headerTitle={undefined}
-                showControl={false}
-                showheaderCrumbs={true}
-              />,
-              <Connect(SecureMessageSummary)
-                content={
-                  Object {
-                    "sentPageTitle": "sentPageTitle",
-                  }
-                }
-                message={
-                  Object {
-                    "status": "sent",
-                  }
-                }
-                readFlag={false}
-                sentFlag={false}
-                viewMessageFlag={true}
-              />,
-              <pre />,
-              <div
-                className="c-btn--group"
-              >
-                <Link
-                  className="c-btn c-btn--secondary"
-                  replace={false}
-                  to={
-                    Object {
-                      "pathname": "undefined/securemessage",
-                    }
-                  }
-                />
-                <button
-                  className="c-btn c-btn--secondary"
-                  onClick={[Function]}
-                />
-                <Link
-                  className="c-btn c-btn--primary"
-                  replace={false}
-                  to={
-                    Object {
-                      "backPath": "undefined/viewmessage",
-                      "messageDetail": Object {
-                        "status": "sent",
-                      },
-                      "pathname": "undefined/replysecuremessage",
-                    }
-                  }
-                />
-              </div>,
-              false,
-              false,
-              false,
-              <ThreadList
-                Threads={undefined}
-                content={
-                  Object {
-                    "sentPageTitle": "sentPageTitle",
-                  }
-                }
-              />,
-            ],
-            "className": "col-md1-24 col-sm1-24 col-lg1-24",
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "headerCrumbsMessage": "Back",
-                "headerCrumbsPath": Object {
-                  "pathname": "undefined/securemessages",
-                },
-                "headerTitle": undefined,
-                "showControl": false,
-                "showheaderCrumbs": true,
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "content": Object {
-                  "sentPageTitle": "sentPageTitle",
-                },
-                "message": Object {
-                  "status": "sent",
-                },
-                "readFlag": false,
-                "sentFlag": false,
-                "viewMessageFlag": true,
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": undefined,
-              },
-              "ref": null,
-              "rendered": null,
-              "type": "pre",
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <Link
-                    className="c-btn c-btn--secondary"
-                    replace={false}
-                    to={
-                      Object {
-                        "pathname": "undefined/securemessage",
-                      }
-                    }
-                  />,
-                  <button
-                    className="c-btn c-btn--secondary"
-                    onClick={[Function]}
-                  />,
-                  <Link
-                    className="c-btn c-btn--primary"
-                    replace={false}
-                    to={
-                      Object {
-                        "backPath": "undefined/viewmessage",
-                        "messageDetail": Object {
-                          "status": "sent",
-                        },
-                        "pathname": "undefined/replysecuremessage",
-                      }
-                    }
-                  />,
-                ],
-                "className": "c-btn--group",
-              },
-              "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "class",
-                  "props": Object {
-                    "children": undefined,
-                    "className": "c-btn c-btn--secondary",
-                    "replace": false,
-                    "to": Object {
-                      "pathname": "undefined/securemessage",
-                    },
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": [Function],
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": undefined,
-                    "className": "c-btn c-btn--secondary",
-                    "onClick": [Function],
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "button",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "class",
-                  "props": Object {
-                    "children": undefined,
-                    "className": "c-btn c-btn--primary",
-                    "replace": false,
-                    "to": Object {
-                      "backPath": "undefined/viewmessage",
-                      "messageDetail": Object {
-                        "status": "sent",
-                      },
-                      "pathname": "undefined/replysecuremessage",
-                    },
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": [Function],
-                },
-              ],
-              "type": "div",
-            },
-            false,
-            false,
-            false,
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "Threads": undefined,
-                "content": Object {
-                  "sentPageTitle": "sentPageTitle",
-                },
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-          ],
-          "type": "div",
-        },
-        "type": "div",
-      },
-      "type": "div",
-    },
   ],
   Symbol(enzyme.__options__): Object {
     "adapter": ReactFifteenFourAdapter {
       "options": Object {
-        "legacyContextMode": "parent",
         "lifecycles": Object {
           "componentDidUpdate": Object {
             "prevContext": true,
-          },
-          "getChildContext": Object {
-            "calledByRenderer": true,
           },
         },
         "supportPrevContextArgumentOfComponentDidUpdate": true,
@@ -924,11 +758,180 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": <div
-        className="row centralised-container"
+        className="col-md1-24 col-sm1-24 col-lg1-24"
       >
+        <StepHeader
+          headerCrumbsMessage="Back"
+          headerCrumbsPath={
+            Object {
+              "pathname": "undefined/securemessages",
+            }
+          }
+          headerTitle={undefined}
+          showControl={false}
+          showheaderCrumbs={true}
+        />
+        <Connect(SecureMessageSummary)
+          content={
+            Object {
+              "back": "Back",
+            }
+          }
+          message={
+            Object {
+              "status": "NEW",
+            }
+          }
+          readFlag={false}
+          sentFlag={false}
+          viewMessageFlag={true}
+        />
+        <pre />
         <div
-          className="col-md1-24 col-sm1-24 col-lg1-24"
+          className="c-btn--group"
         >
+          <Link
+            className="c-btn c-btn--secondary"
+            replace={false}
+            to={
+              Object {
+                "pathname": "undefined/securemessages",
+              }
+            }
+          >
+            Back
+          </Link>
+          <button
+            className="c-btn c-btn--secondary"
+            onClick={[Function]}
+          />
+          <Link
+            className="c-btn c-btn--primary"
+            replace={false}
+            to={
+              Object {
+                "backPath": "undefined/securemessages/view",
+                "messageDetail": Object {
+                  "status": "NEW",
+                },
+                "pathname": "undefined/securemessages/reply",
+              }
+            }
+          />
+        </div>
+        <ModalComponent
+          backdrop={true}
+          closeButton={true}
+          customClass="c-modal"
+          modalInContainer={false}
+          modalbody={
+            <div
+              className="callout callout__error"
+            />
+          }
+          modalfooter={
+            <div>
+              <button
+                className="c-btn c-btn--secondary c-modal__button"
+                onClick={[Function]}
+                type="button"
+              />
+              <button
+                className="c-btn c-btn--default c-modal__button"
+                onClick={[Function]}
+                type="button"
+              />
+            </div>
+          }
+          modalheading=""
+          onHide={[Function]}
+          scope={undefined}
+          show={true}
+        />
+        <ModalComponent
+          backdrop={true}
+          bsSize="small"
+          closeButton={false}
+          customClass="c-modal c-modal--center"
+          modalInContainer={false}
+          modalbody={
+            <div>
+              <div>
+                <CommonGetIcon
+                  height="68px"
+                  id="icon-success"
+                  width="68px"
+                />
+              </div>
+            </div>
+          }
+          modalfooter={
+            <Link
+              className="c-btn c-btn--default c-btn--sm c-modal__button"
+              onClick={[Function]}
+              replace={false}
+              to="undefined/securemessages"
+            />
+          }
+          modalheading=""
+          onHide={[Function]}
+          scope={undefined}
+          show={true}
+        />
+        <ModalComponent
+          backdrop={true}
+          bsSize="medium"
+          closeButton={true}
+          customClass="c-modal c-modal--center"
+          modalInContainer={false}
+          modalbody={
+            <div>
+              <h3 />
+              <br />
+              <p />
+              <br />
+              <p />
+            </div>
+          }
+          modalfooter={
+            <div>
+              <button
+                className="c-btn c-btn--secondary c-modal__button"
+                onClick={[Function]}
+                type="button"
+              >
+                Back
+              </button>
+              <button
+                className="c-btn c-btn--default c-modal__button"
+                onClick={[Function]}
+                type="button"
+              />
+            </div>
+          }
+          modalheading=""
+          onHide={[Function]}
+          scope={undefined}
+          show={true}
+        />
+        <ThreadList
+          Threads={undefined}
+          content={
+            Object {
+              "back": "Back",
+            }
+          }
+        />
+      </div>,
+      "className": "row centralised-container c-card",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
           <StepHeader
             headerCrumbsMessage="Back"
             headerCrumbsPath={
@@ -939,7 +942,7 @@ ShallowWrapper {
             headerTitle={undefined}
             showControl={false}
             showheaderCrumbs={true}
-          />
+          />,
           <Connect(SecureMessageSummary)
             content={
               Object {
@@ -954,8 +957,9 @@ ShallowWrapper {
             readFlag={false}
             sentFlag={false}
             viewMessageFlag={true}
-          />
-          <pre />
+          />,
+          <pre />,
+          undefined,
           <div
             className="c-btn--group"
           >
@@ -964,7 +968,7 @@ ShallowWrapper {
               replace={false}
               to={
                 Object {
-                  "pathname": "undefined/securemessage",
+                  "pathname": "undefined/securemessages",
                 }
               }
             >
@@ -979,15 +983,15 @@ ShallowWrapper {
               replace={false}
               to={
                 Object {
-                  "backPath": "undefined/viewmessage",
+                  "backPath": "undefined/securemessages/view",
                   "messageDetail": Object {
                     "status": "NEW",
                   },
-                  "pathname": "undefined/replysecuremessage",
+                  "pathname": "undefined/securemessages/reply",
                 }
               }
             />
-          </div>
+          </div>,
           <ModalComponent
             backdrop={true}
             closeButton={true}
@@ -1016,7 +1020,7 @@ ShallowWrapper {
             onHide={[Function]}
             scope={undefined}
             show={true}
-          />
+          />,
           <ModalComponent
             backdrop={true}
             bsSize="small"
@@ -1046,7 +1050,7 @@ ShallowWrapper {
             onHide={[Function]}
             scope={undefined}
             show={true}
-          />
+          />,
           <ModalComponent
             backdrop={true}
             bsSize="medium"
@@ -1082,7 +1086,7 @@ ShallowWrapper {
             onHide={[Function]}
             scope={undefined}
             show={true}
-          />
+          />,
           <ThreadList
             Threads={undefined}
             content={
@@ -1090,13 +1094,279 @@ ShallowWrapper {
                 "back": "Back",
               }
             }
-          />
-        </div>
-      </div>,
-      "className": "container",
+          />,
+        ],
+        "className": "col-md1-24 col-sm1-24 col-lg1-24",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "headerCrumbsMessage": "Back",
+            "headerCrumbsPath": Object {
+              "pathname": "undefined/securemessages",
+            },
+            "headerTitle": undefined,
+            "showControl": false,
+            "showheaderCrumbs": true,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "content": Object {
+              "back": "Back",
+            },
+            "message": Object {
+              "status": "NEW",
+            },
+            "readFlag": false,
+            "sentFlag": false,
+            "viewMessageFlag": true,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": undefined,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "pre",
+        },
+        undefined,
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <Link
+                className="c-btn c-btn--secondary"
+                replace={false}
+                to={
+                  Object {
+                    "pathname": "undefined/securemessages",
+                  }
+                }
+              >
+                Back
+              </Link>,
+              <button
+                className="c-btn c-btn--secondary"
+                onClick={[Function]}
+              />,
+              <Link
+                className="c-btn c-btn--primary"
+                replace={false}
+                to={
+                  Object {
+                    "backPath": "undefined/securemessages/view",
+                    "messageDetail": Object {
+                      "status": "NEW",
+                    },
+                    "pathname": "undefined/securemessages/reply",
+                  }
+                }
+              />,
+            ],
+            "className": "c-btn--group",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Back",
+                "className": "c-btn c-btn--secondary",
+                "replace": false,
+                "to": Object {
+                  "pathname": "undefined/securemessages",
+                },
+              },
+              "ref": null,
+              "rendered": "Back",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": undefined,
+                "className": "c-btn c-btn--secondary",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "button",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": undefined,
+                "className": "c-btn c-btn--primary",
+                "replace": false,
+                "to": Object {
+                  "backPath": "undefined/securemessages/view",
+                  "messageDetail": Object {
+                    "status": "NEW",
+                  },
+                  "pathname": "undefined/securemessages/reply",
+                },
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "backdrop": true,
+            "closeButton": true,
+            "customClass": "c-modal",
+            "modalInContainer": false,
+            "modalbody": <div
+              className="callout callout__error"
+            />,
+            "modalfooter": <div>
+              <button
+                className="c-btn c-btn--secondary c-modal__button"
+                onClick={[Function]}
+                type="button"
+              />
+              <button
+                className="c-btn c-btn--default c-modal__button"
+                onClick={[Function]}
+                type="button"
+              />
+            </div>,
+            "modalheading": "",
+            "onHide": [Function],
+            "scope": undefined,
+            "show": true,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "backdrop": true,
+            "bsSize": "small",
+            "closeButton": false,
+            "customClass": "c-modal c-modal--center",
+            "modalInContainer": false,
+            "modalbody": <div>
+              <div>
+                <CommonGetIcon
+                  height="68px"
+                  id="icon-success"
+                  width="68px"
+                />
+              </div>
+            </div>,
+            "modalfooter": <Link
+              className="c-btn c-btn--default c-btn--sm c-modal__button"
+              onClick={[Function]}
+              replace={false}
+              to="undefined/securemessages"
+            />,
+            "modalheading": "",
+            "onHide": [Function],
+            "scope": undefined,
+            "show": true,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "backdrop": true,
+            "bsSize": "medium",
+            "closeButton": true,
+            "customClass": "c-modal c-modal--center",
+            "modalInContainer": false,
+            "modalbody": <div>
+              <h3 />
+              <br />
+              <p />
+              <br />
+              <p />
+            </div>,
+            "modalfooter": <div>
+              <button
+                className="c-btn c-btn--secondary c-modal__button"
+                onClick={[Function]}
+                type="button"
+              >
+                Back
+              </button>
+              <button
+                className="c-btn c-btn--default c-modal__button"
+                onClick={[Function]}
+                type="button"
+              />
+            </div>,
+            "modalheading": "",
+            "onHide": [Function],
+            "scope": undefined,
+            "show": true,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "Threads": undefined,
+            "content": Object {
+              "back": "Back",
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
     },
-    "ref": null,
-    "rendered": Object {
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
       "instance": null,
       "key": undefined,
       "nodeType": "host",
@@ -1139,7 +1409,7 @@ ShallowWrapper {
               replace={false}
               to={
                 Object {
-                  "pathname": "undefined/securemessage",
+                  "pathname": "undefined/securemessages",
                 }
               }
             >
@@ -1154,11 +1424,11 @@ ShallowWrapper {
               replace={false}
               to={
                 Object {
-                  "backPath": "undefined/viewmessage",
+                  "backPath": "undefined/securemessages/view",
                   "messageDetail": Object {
                     "status": "NEW",
                   },
-                  "pathname": "undefined/replysecuremessage",
+                  "pathname": "undefined/securemessages/reply",
                 }
               }
             />
@@ -1267,7 +1537,7 @@ ShallowWrapper {
             }
           />
         </div>,
-        "className": "row centralised-container",
+        "className": "row centralised-container c-card",
       },
       "ref": null,
       "rendered": Object {
@@ -1303,6 +1573,7 @@ ShallowWrapper {
               viewMessageFlag={true}
             />,
             <pre />,
+            undefined,
             <div
               className="c-btn--group"
             >
@@ -1311,7 +1582,7 @@ ShallowWrapper {
                 replace={false}
                 to={
                   Object {
-                    "pathname": "undefined/securemessage",
+                    "pathname": "undefined/securemessages",
                   }
                 }
               >
@@ -1326,11 +1597,11 @@ ShallowWrapper {
                 replace={false}
                 to={
                   Object {
-                    "backPath": "undefined/viewmessage",
+                    "backPath": "undefined/securemessages/view",
                     "messageDetail": Object {
                       "status": "NEW",
                     },
-                    "pathname": "undefined/replysecuremessage",
+                    "pathname": "undefined/securemessages/reply",
                   }
                 }
               />
@@ -1490,6 +1761,7 @@ ShallowWrapper {
             "rendered": null,
             "type": "pre",
           },
+          undefined,
           Object {
             "instance": null,
             "key": undefined,
@@ -1501,7 +1773,7 @@ ShallowWrapper {
                   replace={false}
                   to={
                     Object {
-                      "pathname": "undefined/securemessage",
+                      "pathname": "undefined/securemessages",
                     }
                   }
                 >
@@ -1516,11 +1788,11 @@ ShallowWrapper {
                   replace={false}
                   to={
                     Object {
-                      "backPath": "undefined/viewmessage",
+                      "backPath": "undefined/securemessages/view",
                       "messageDetail": Object {
                         "status": "NEW",
                       },
-                      "pathname": "undefined/replysecuremessage",
+                      "pathname": "undefined/securemessages/reply",
                     }
                   }
                 />,
@@ -1538,7 +1810,7 @@ ShallowWrapper {
                   "className": "c-btn c-btn--secondary",
                   "replace": false,
                   "to": Object {
-                    "pathname": "undefined/securemessage",
+                    "pathname": "undefined/securemessages",
                   },
                 },
                 "ref": null,
@@ -1567,11 +1839,11 @@ ShallowWrapper {
                   "className": "c-btn c-btn--primary",
                   "replace": false,
                   "to": Object {
-                    "backPath": "undefined/viewmessage",
+                    "backPath": "undefined/securemessages/view",
                     "messageDetail": Object {
                       "status": "NEW",
                     },
-                    "pathname": "undefined/replysecuremessage",
+                    "pathname": "undefined/securemessages/reply",
                   },
                 },
                 "ref": null,
@@ -1707,811 +1979,13 @@ ShallowWrapper {
       },
       "type": "div",
     },
-    "type": "div",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": <div
-          className="row centralised-container"
-        >
-          <div
-            className="col-md1-24 col-sm1-24 col-lg1-24"
-          >
-            <StepHeader
-              headerCrumbsMessage="Back"
-              headerCrumbsPath={
-                Object {
-                  "pathname": "undefined/securemessages",
-                }
-              }
-              headerTitle={undefined}
-              showControl={false}
-              showheaderCrumbs={true}
-            />
-            <Connect(SecureMessageSummary)
-              content={
-                Object {
-                  "back": "Back",
-                }
-              }
-              message={
-                Object {
-                  "status": "NEW",
-                }
-              }
-              readFlag={false}
-              sentFlag={false}
-              viewMessageFlag={true}
-            />
-            <pre />
-            <div
-              className="c-btn--group"
-            >
-              <Link
-                className="c-btn c-btn--secondary"
-                replace={false}
-                to={
-                  Object {
-                    "pathname": "undefined/securemessage",
-                  }
-                }
-              >
-                Back
-              </Link>
-              <button
-                className="c-btn c-btn--secondary"
-                onClick={[Function]}
-              />
-              <Link
-                className="c-btn c-btn--primary"
-                replace={false}
-                to={
-                  Object {
-                    "backPath": "undefined/viewmessage",
-                    "messageDetail": Object {
-                      "status": "NEW",
-                    },
-                    "pathname": "undefined/replysecuremessage",
-                  }
-                }
-              />
-            </div>
-            <ModalComponent
-              backdrop={true}
-              closeButton={true}
-              customClass="c-modal"
-              modalInContainer={false}
-              modalbody={
-                <div
-                  className="callout callout__error"
-                />
-              }
-              modalfooter={
-                <div>
-                  <button
-                    className="c-btn c-btn--secondary c-modal__button"
-                    onClick={[Function]}
-                    type="button"
-                  />
-                  <button
-                    className="c-btn c-btn--default c-modal__button"
-                    onClick={[Function]}
-                    type="button"
-                  />
-                </div>
-              }
-              modalheading=""
-              onHide={[Function]}
-              scope={undefined}
-              show={true}
-            />
-            <ModalComponent
-              backdrop={true}
-              bsSize="small"
-              closeButton={false}
-              customClass="c-modal c-modal--center"
-              modalInContainer={false}
-              modalbody={
-                <div>
-                  <div>
-                    <CommonGetIcon
-                      height="68px"
-                      id="icon-success"
-                      width="68px"
-                    />
-                  </div>
-                </div>
-              }
-              modalfooter={
-                <Link
-                  className="c-btn c-btn--default c-btn--sm c-modal__button"
-                  onClick={[Function]}
-                  replace={false}
-                  to="undefined/securemessages"
-                />
-              }
-              modalheading=""
-              onHide={[Function]}
-              scope={undefined}
-              show={true}
-            />
-            <ModalComponent
-              backdrop={true}
-              bsSize="medium"
-              closeButton={true}
-              customClass="c-modal c-modal--center"
-              modalInContainer={false}
-              modalbody={
-                <div>
-                  <h3 />
-                  <br />
-                  <p />
-                  <br />
-                  <p />
-                </div>
-              }
-              modalfooter={
-                <div>
-                  <button
-                    className="c-btn c-btn--secondary c-modal__button"
-                    onClick={[Function]}
-                    type="button"
-                  >
-                    Back
-                  </button>
-                  <button
-                    className="c-btn c-btn--default c-modal__button"
-                    onClick={[Function]}
-                    type="button"
-                  />
-                </div>
-              }
-              modalheading=""
-              onHide={[Function]}
-              scope={undefined}
-              show={true}
-            />
-            <ThreadList
-              Threads={undefined}
-              content={
-                Object {
-                  "back": "Back",
-                }
-              }
-            />
-          </div>
-        </div>,
-        "className": "container",
-      },
-      "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": <div
-            className="col-md1-24 col-sm1-24 col-lg1-24"
-          >
-            <StepHeader
-              headerCrumbsMessage="Back"
-              headerCrumbsPath={
-                Object {
-                  "pathname": "undefined/securemessages",
-                }
-              }
-              headerTitle={undefined}
-              showControl={false}
-              showheaderCrumbs={true}
-            />
-            <Connect(SecureMessageSummary)
-              content={
-                Object {
-                  "back": "Back",
-                }
-              }
-              message={
-                Object {
-                  "status": "NEW",
-                }
-              }
-              readFlag={false}
-              sentFlag={false}
-              viewMessageFlag={true}
-            />
-            <pre />
-            <div
-              className="c-btn--group"
-            >
-              <Link
-                className="c-btn c-btn--secondary"
-                replace={false}
-                to={
-                  Object {
-                    "pathname": "undefined/securemessage",
-                  }
-                }
-              >
-                Back
-              </Link>
-              <button
-                className="c-btn c-btn--secondary"
-                onClick={[Function]}
-              />
-              <Link
-                className="c-btn c-btn--primary"
-                replace={false}
-                to={
-                  Object {
-                    "backPath": "undefined/viewmessage",
-                    "messageDetail": Object {
-                      "status": "NEW",
-                    },
-                    "pathname": "undefined/replysecuremessage",
-                  }
-                }
-              />
-            </div>
-            <ModalComponent
-              backdrop={true}
-              closeButton={true}
-              customClass="c-modal"
-              modalInContainer={false}
-              modalbody={
-                <div
-                  className="callout callout__error"
-                />
-              }
-              modalfooter={
-                <div>
-                  <button
-                    className="c-btn c-btn--secondary c-modal__button"
-                    onClick={[Function]}
-                    type="button"
-                  />
-                  <button
-                    className="c-btn c-btn--default c-modal__button"
-                    onClick={[Function]}
-                    type="button"
-                  />
-                </div>
-              }
-              modalheading=""
-              onHide={[Function]}
-              scope={undefined}
-              show={true}
-            />
-            <ModalComponent
-              backdrop={true}
-              bsSize="small"
-              closeButton={false}
-              customClass="c-modal c-modal--center"
-              modalInContainer={false}
-              modalbody={
-                <div>
-                  <div>
-                    <CommonGetIcon
-                      height="68px"
-                      id="icon-success"
-                      width="68px"
-                    />
-                  </div>
-                </div>
-              }
-              modalfooter={
-                <Link
-                  className="c-btn c-btn--default c-btn--sm c-modal__button"
-                  onClick={[Function]}
-                  replace={false}
-                  to="undefined/securemessages"
-                />
-              }
-              modalheading=""
-              onHide={[Function]}
-              scope={undefined}
-              show={true}
-            />
-            <ModalComponent
-              backdrop={true}
-              bsSize="medium"
-              closeButton={true}
-              customClass="c-modal c-modal--center"
-              modalInContainer={false}
-              modalbody={
-                <div>
-                  <h3 />
-                  <br />
-                  <p />
-                  <br />
-                  <p />
-                </div>
-              }
-              modalfooter={
-                <div>
-                  <button
-                    className="c-btn c-btn--secondary c-modal__button"
-                    onClick={[Function]}
-                    type="button"
-                  >
-                    Back
-                  </button>
-                  <button
-                    className="c-btn c-btn--default c-modal__button"
-                    onClick={[Function]}
-                    type="button"
-                  />
-                </div>
-              }
-              modalheading=""
-              onHide={[Function]}
-              scope={undefined}
-              show={true}
-            />
-            <ThreadList
-              Threads={undefined}
-              content={
-                Object {
-                  "back": "Back",
-                }
-              }
-            />
-          </div>,
-          "className": "row centralised-container",
-        },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              <StepHeader
-                headerCrumbsMessage="Back"
-                headerCrumbsPath={
-                  Object {
-                    "pathname": "undefined/securemessages",
-                  }
-                }
-                headerTitle={undefined}
-                showControl={false}
-                showheaderCrumbs={true}
-              />,
-              <Connect(SecureMessageSummary)
-                content={
-                  Object {
-                    "back": "Back",
-                  }
-                }
-                message={
-                  Object {
-                    "status": "NEW",
-                  }
-                }
-                readFlag={false}
-                sentFlag={false}
-                viewMessageFlag={true}
-              />,
-              <pre />,
-              <div
-                className="c-btn--group"
-              >
-                <Link
-                  className="c-btn c-btn--secondary"
-                  replace={false}
-                  to={
-                    Object {
-                      "pathname": "undefined/securemessage",
-                    }
-                  }
-                >
-                  Back
-                </Link>
-                <button
-                  className="c-btn c-btn--secondary"
-                  onClick={[Function]}
-                />
-                <Link
-                  className="c-btn c-btn--primary"
-                  replace={false}
-                  to={
-                    Object {
-                      "backPath": "undefined/viewmessage",
-                      "messageDetail": Object {
-                        "status": "NEW",
-                      },
-                      "pathname": "undefined/replysecuremessage",
-                    }
-                  }
-                />
-              </div>,
-              <ModalComponent
-                backdrop={true}
-                closeButton={true}
-                customClass="c-modal"
-                modalInContainer={false}
-                modalbody={
-                  <div
-                    className="callout callout__error"
-                  />
-                }
-                modalfooter={
-                  <div>
-                    <button
-                      className="c-btn c-btn--secondary c-modal__button"
-                      onClick={[Function]}
-                      type="button"
-                    />
-                    <button
-                      className="c-btn c-btn--default c-modal__button"
-                      onClick={[Function]}
-                      type="button"
-                    />
-                  </div>
-                }
-                modalheading=""
-                onHide={[Function]}
-                scope={undefined}
-                show={true}
-              />,
-              <ModalComponent
-                backdrop={true}
-                bsSize="small"
-                closeButton={false}
-                customClass="c-modal c-modal--center"
-                modalInContainer={false}
-                modalbody={
-                  <div>
-                    <div>
-                      <CommonGetIcon
-                        height="68px"
-                        id="icon-success"
-                        width="68px"
-                      />
-                    </div>
-                  </div>
-                }
-                modalfooter={
-                  <Link
-                    className="c-btn c-btn--default c-btn--sm c-modal__button"
-                    onClick={[Function]}
-                    replace={false}
-                    to="undefined/securemessages"
-                  />
-                }
-                modalheading=""
-                onHide={[Function]}
-                scope={undefined}
-                show={true}
-              />,
-              <ModalComponent
-                backdrop={true}
-                bsSize="medium"
-                closeButton={true}
-                customClass="c-modal c-modal--center"
-                modalInContainer={false}
-                modalbody={
-                  <div>
-                    <h3 />
-                    <br />
-                    <p />
-                    <br />
-                    <p />
-                  </div>
-                }
-                modalfooter={
-                  <div>
-                    <button
-                      className="c-btn c-btn--secondary c-modal__button"
-                      onClick={[Function]}
-                      type="button"
-                    >
-                      Back
-                    </button>
-                    <button
-                      className="c-btn c-btn--default c-modal__button"
-                      onClick={[Function]}
-                      type="button"
-                    />
-                  </div>
-                }
-                modalheading=""
-                onHide={[Function]}
-                scope={undefined}
-                show={true}
-              />,
-              <ThreadList
-                Threads={undefined}
-                content={
-                  Object {
-                    "back": "Back",
-                  }
-                }
-              />,
-            ],
-            "className": "col-md1-24 col-sm1-24 col-lg1-24",
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "headerCrumbsMessage": "Back",
-                "headerCrumbsPath": Object {
-                  "pathname": "undefined/securemessages",
-                },
-                "headerTitle": undefined,
-                "showControl": false,
-                "showheaderCrumbs": true,
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "content": Object {
-                  "back": "Back",
-                },
-                "message": Object {
-                  "status": "NEW",
-                },
-                "readFlag": false,
-                "sentFlag": false,
-                "viewMessageFlag": true,
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": undefined,
-              },
-              "ref": null,
-              "rendered": null,
-              "type": "pre",
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <Link
-                    className="c-btn c-btn--secondary"
-                    replace={false}
-                    to={
-                      Object {
-                        "pathname": "undefined/securemessage",
-                      }
-                    }
-                  >
-                    Back
-                  </Link>,
-                  <button
-                    className="c-btn c-btn--secondary"
-                    onClick={[Function]}
-                  />,
-                  <Link
-                    className="c-btn c-btn--primary"
-                    replace={false}
-                    to={
-                      Object {
-                        "backPath": "undefined/viewmessage",
-                        "messageDetail": Object {
-                          "status": "NEW",
-                        },
-                        "pathname": "undefined/replysecuremessage",
-                      }
-                    }
-                  />,
-                ],
-                "className": "c-btn--group",
-              },
-              "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "class",
-                  "props": Object {
-                    "children": "Back",
-                    "className": "c-btn c-btn--secondary",
-                    "replace": false,
-                    "to": Object {
-                      "pathname": "undefined/securemessage",
-                    },
-                  },
-                  "ref": null,
-                  "rendered": "Back",
-                  "type": [Function],
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": undefined,
-                    "className": "c-btn c-btn--secondary",
-                    "onClick": [Function],
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "button",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "class",
-                  "props": Object {
-                    "children": undefined,
-                    "className": "c-btn c-btn--primary",
-                    "replace": false,
-                    "to": Object {
-                      "backPath": "undefined/viewmessage",
-                      "messageDetail": Object {
-                        "status": "NEW",
-                      },
-                      "pathname": "undefined/replysecuremessage",
-                    },
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": [Function],
-                },
-              ],
-              "type": "div",
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "backdrop": true,
-                "closeButton": true,
-                "customClass": "c-modal",
-                "modalInContainer": false,
-                "modalbody": <div
-                  className="callout callout__error"
-                />,
-                "modalfooter": <div>
-                  <button
-                    className="c-btn c-btn--secondary c-modal__button"
-                    onClick={[Function]}
-                    type="button"
-                  />
-                  <button
-                    className="c-btn c-btn--default c-modal__button"
-                    onClick={[Function]}
-                    type="button"
-                  />
-                </div>,
-                "modalheading": "",
-                "onHide": [Function],
-                "scope": undefined,
-                "show": true,
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "backdrop": true,
-                "bsSize": "small",
-                "closeButton": false,
-                "customClass": "c-modal c-modal--center",
-                "modalInContainer": false,
-                "modalbody": <div>
-                  <div>
-                    <CommonGetIcon
-                      height="68px"
-                      id="icon-success"
-                      width="68px"
-                    />
-                  </div>
-                </div>,
-                "modalfooter": <Link
-                  className="c-btn c-btn--default c-btn--sm c-modal__button"
-                  onClick={[Function]}
-                  replace={false}
-                  to="undefined/securemessages"
-                />,
-                "modalheading": "",
-                "onHide": [Function],
-                "scope": undefined,
-                "show": true,
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "backdrop": true,
-                "bsSize": "medium",
-                "closeButton": true,
-                "customClass": "c-modal c-modal--center",
-                "modalInContainer": false,
-                "modalbody": <div>
-                  <h3 />
-                  <br />
-                  <p />
-                  <br />
-                  <p />
-                </div>,
-                "modalfooter": <div>
-                  <button
-                    className="c-btn c-btn--secondary c-modal__button"
-                    onClick={[Function]}
-                    type="button"
-                  >
-                    Back
-                  </button>
-                  <button
-                    className="c-btn c-btn--default c-modal__button"
-                    onClick={[Function]}
-                    type="button"
-                  />
-                </div>,
-                "modalheading": "",
-                "onHide": [Function],
-                "scope": undefined,
-                "show": true,
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "Threads": undefined,
-                "content": Object {
-                  "back": "Back",
-                },
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-          ],
-          "type": "div",
-        },
-        "type": "div",
-      },
-      "type": "div",
-    },
   ],
   Symbol(enzyme.__options__): Object {
     "adapter": ReactFifteenFourAdapter {
       "options": Object {
-        "legacyContextMode": "parent",
         "lifecycles": Object {
           "componentDidUpdate": Object {
             "prevContext": true,
-          },
-          "getChildContext": Object {
-            "calledByRenderer": true,
           },
         },
         "supportPrevContextArgumentOfComponentDidUpdate": true,

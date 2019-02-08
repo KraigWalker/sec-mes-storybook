@@ -137,7 +137,7 @@ ShallowWrapper {
                         },
                         "status": "READ",
                       },
-                      "pathname": "undefined/viewmessage",
+                      "pathname": "undefined/securemessages/view",
                     }
                   }
                 />
@@ -184,7 +184,7 @@ ShallowWrapper {
                       },
                       "status": "READ",
                     },
-                    "pathname": "undefined/replysecuremessage",
+                    "pathname": "undefined/securemessages/reply",
                   }
                 }
               >
@@ -347,7 +347,7 @@ ShallowWrapper {
                           },
                           "status": "READ",
                         },
-                        "pathname": "undefined/viewmessage",
+                        "pathname": "undefined/securemessages/view",
                       }
                     }
                   />
@@ -394,7 +394,7 @@ ShallowWrapper {
                         },
                         "status": "READ",
                       },
-                      "pathname": "undefined/replysecuremessage",
+                      "pathname": "undefined/securemessages/reply",
                     }
                   }
                 >
@@ -493,7 +493,7 @@ ShallowWrapper {
                             },
                             "status": "READ",
                           },
-                          "pathname": "undefined/viewmessage",
+                          "pathname": "undefined/securemessages/view",
                         }
                       }
                     />
@@ -540,7 +540,7 @@ ShallowWrapper {
                           },
                           "status": "READ",
                         },
-                        "pathname": "undefined/replysecuremessage",
+                        "pathname": "undefined/securemessages/reply",
                       }
                     }
                   >
@@ -628,7 +628,7 @@ ShallowWrapper {
                               },
                               "status": "READ",
                             },
-                            "pathname": "undefined/viewmessage",
+                            "pathname": "undefined/securemessages/view",
                           }
                         }
                       />
@@ -680,7 +680,7 @@ ShallowWrapper {
                               },
                               "status": "READ",
                             },
-                            "pathname": "undefined/viewmessage",
+                            "pathname": "undefined/securemessages/view",
                           }
                         }
                       />,
@@ -726,7 +726,7 @@ ShallowWrapper {
                             },
                             "status": "READ",
                           },
-                          "pathname": "undefined/viewmessage",
+                          "pathname": "undefined/securemessages/view",
                         },
                       },
                       "ref": null,
@@ -791,7 +791,7 @@ ShallowWrapper {
                             },
                             "status": "READ",
                           },
-                          "pathname": "undefined/replysecuremessage",
+                          "pathname": "undefined/securemessages/reply",
                         }
                       }
                     >
@@ -889,7 +889,7 @@ ShallowWrapper {
                           },
                           "status": "READ",
                         },
-                        "pathname": "undefined/replysecuremessage",
+                        "pathname": "undefined/securemessages/reply",
                       },
                     },
                     "ref": null,
@@ -1148,7 +1148,7 @@ ShallowWrapper {
                           },
                           "status": "READ",
                         },
-                        "pathname": "undefined/viewmessage",
+                        "pathname": "undefined/securemessages/view",
                       }
                     }
                   />
@@ -1195,7 +1195,7 @@ ShallowWrapper {
                         },
                         "status": "READ",
                       },
-                      "pathname": "undefined/replysecuremessage",
+                      "pathname": "undefined/securemessages/reply",
                     }
                   }
                 >
@@ -1358,7 +1358,7 @@ ShallowWrapper {
                             },
                             "status": "READ",
                           },
-                          "pathname": "undefined/viewmessage",
+                          "pathname": "undefined/securemessages/view",
                         }
                       }
                     />
@@ -1405,7 +1405,7 @@ ShallowWrapper {
                           },
                           "status": "READ",
                         },
-                        "pathname": "undefined/replysecuremessage",
+                        "pathname": "undefined/securemessages/reply",
                       }
                     }
                   >
@@ -1504,7 +1504,7 @@ ShallowWrapper {
                               },
                               "status": "READ",
                             },
-                            "pathname": "undefined/viewmessage",
+                            "pathname": "undefined/securemessages/view",
                           }
                         }
                       />
@@ -1551,7 +1551,7 @@ ShallowWrapper {
                             },
                             "status": "READ",
                           },
-                          "pathname": "undefined/replysecuremessage",
+                          "pathname": "undefined/securemessages/reply",
                         }
                       }
                     >
@@ -1639,7 +1639,7 @@ ShallowWrapper {
                                 },
                                 "status": "READ",
                               },
-                              "pathname": "undefined/viewmessage",
+                              "pathname": "undefined/securemessages/view",
                             }
                           }
                         />
@@ -1691,7 +1691,7 @@ ShallowWrapper {
                                 },
                                 "status": "READ",
                               },
-                              "pathname": "undefined/viewmessage",
+                              "pathname": "undefined/securemessages/view",
                             }
                           }
                         />,
@@ -1737,7 +1737,7 @@ ShallowWrapper {
                               },
                               "status": "READ",
                             },
-                            "pathname": "undefined/viewmessage",
+                            "pathname": "undefined/securemessages/view",
                           },
                         },
                         "ref": null,
@@ -1802,7 +1802,7 @@ ShallowWrapper {
                               },
                               "status": "READ",
                             },
-                            "pathname": "undefined/replysecuremessage",
+                            "pathname": "undefined/securemessages/reply",
                           }
                         }
                       >
@@ -1900,7 +1900,7 @@ ShallowWrapper {
                             },
                             "status": "READ",
                           },
-                          "pathname": "undefined/replysecuremessage",
+                          "pathname": "undefined/securemessages/reply",
                         },
                       },
                       "ref": null,
@@ -2100,13 +2100,9 @@ ShallowWrapper {
   Symbol(enzyme.__options__): Object {
     "adapter": ReactFifteenFourAdapter {
       "options": Object {
-        "legacyContextMode": "parent",
         "lifecycles": Object {
           "componentDidUpdate": Object {
             "prevContext": true,
-          },
-          "getChildContext": Object {
-            "calledByRenderer": true,
           },
         },
         "supportPrevContextArgumentOfComponentDidUpdate": true,
@@ -2244,7 +2240,7 @@ ShallowWrapper {
                         },
                         "status": "DRAFT",
                       },
-                      "pathname": "undefined/draftsecuremessage",
+                      "pathname": "undefined/securemessages/draft",
                     }
                   }
                 />
@@ -2373,7 +2369,7 @@ ShallowWrapper {
                           },
                           "status": "DRAFT",
                         },
-                        "pathname": "undefined/draftsecuremessage",
+                        "pathname": "undefined/securemessages/draft",
                       }
                     }
                   />
@@ -2465,7 +2461,7 @@ ShallowWrapper {
                             },
                             "status": "DRAFT",
                           },
-                          "pathname": "undefined/draftsecuremessage",
+                          "pathname": "undefined/securemessages/draft",
                         }
                       }
                     />
@@ -2546,7 +2542,7 @@ ShallowWrapper {
                               },
                               "status": "DRAFT",
                             },
-                            "pathname": "undefined/draftsecuremessage",
+                            "pathname": "undefined/securemessages/draft",
                           }
                         }
                       />
@@ -2598,7 +2594,7 @@ ShallowWrapper {
                               },
                               "status": "DRAFT",
                             },
-                            "pathname": "undefined/draftsecuremessage",
+                            "pathname": "undefined/securemessages/draft",
                           }
                         }
                       />,
@@ -2644,7 +2640,7 @@ ShallowWrapper {
                             },
                             "status": "DRAFT",
                           },
-                          "pathname": "undefined/draftsecuremessage",
+                          "pathname": "undefined/securemessages/draft",
                         },
                       },
                       "ref": null,
@@ -2902,7 +2898,7 @@ ShallowWrapper {
                           },
                           "status": "DRAFT",
                         },
-                        "pathname": "undefined/draftsecuremessage",
+                        "pathname": "undefined/securemessages/draft",
                       }
                     }
                   />
@@ -3031,7 +3027,7 @@ ShallowWrapper {
                             },
                             "status": "DRAFT",
                           },
-                          "pathname": "undefined/draftsecuremessage",
+                          "pathname": "undefined/securemessages/draft",
                         }
                       }
                     />
@@ -3123,7 +3119,7 @@ ShallowWrapper {
                               },
                               "status": "DRAFT",
                             },
-                            "pathname": "undefined/draftsecuremessage",
+                            "pathname": "undefined/securemessages/draft",
                           }
                         }
                       />
@@ -3204,7 +3200,7 @@ ShallowWrapper {
                                 },
                                 "status": "DRAFT",
                               },
-                              "pathname": "undefined/draftsecuremessage",
+                              "pathname": "undefined/securemessages/draft",
                             }
                           }
                         />
@@ -3256,7 +3252,7 @@ ShallowWrapper {
                                 },
                                 "status": "DRAFT",
                               },
-                              "pathname": "undefined/draftsecuremessage",
+                              "pathname": "undefined/securemessages/draft",
                             }
                           }
                         />,
@@ -3302,7 +3298,7 @@ ShallowWrapper {
                               },
                               "status": "DRAFT",
                             },
-                            "pathname": "undefined/draftsecuremessage",
+                            "pathname": "undefined/securemessages/draft",
                           },
                         },
                         "ref": null,
@@ -3509,13 +3505,9 @@ ShallowWrapper {
   Symbol(enzyme.__options__): Object {
     "adapter": ReactFifteenFourAdapter {
       "options": Object {
-        "legacyContextMode": "parent",
         "lifecycles": Object {
           "componentDidUpdate": Object {
             "prevContext": true,
-          },
-          "getChildContext": Object {
-            "calledByRenderer": true,
           },
         },
         "supportPrevContextArgumentOfComponentDidUpdate": true,
@@ -3656,7 +3648,7 @@ ShallowWrapper {
                         },
                         "status": "NEW",
                       },
-                      "pathname": "undefined/viewmessage",
+                      "pathname": "undefined/securemessages/view",
                     }
                   }
                 />
@@ -3673,7 +3665,7 @@ ShallowWrapper {
                 replace={false}
                 to={
                   Object {
-                    "backPath": "undefined/viewmessage",
+                    "backPath": "undefined/securemessages/view",
                     "messageDetail": Object {
                       "account": Object {
                         "number": "32236",
@@ -3699,7 +3691,7 @@ ShallowWrapper {
                       },
                       "status": "NEW",
                     },
-                    "pathname": "undefined/replysecuremessage",
+                    "pathname": "undefined/securemessages/reply",
                   }
                 }
               >
@@ -3863,7 +3855,7 @@ ShallowWrapper {
                           },
                           "status": "NEW",
                         },
-                        "pathname": "undefined/viewmessage",
+                        "pathname": "undefined/securemessages/view",
                       }
                     }
                   />
@@ -3880,7 +3872,7 @@ ShallowWrapper {
                   replace={false}
                   to={
                     Object {
-                      "backPath": "undefined/viewmessage",
+                      "backPath": "undefined/securemessages/view",
                       "messageDetail": Object {
                         "account": Object {
                           "number": "32236",
@@ -3906,7 +3898,7 @@ ShallowWrapper {
                         },
                         "status": "NEW",
                       },
-                      "pathname": "undefined/replysecuremessage",
+                      "pathname": "undefined/securemessages/reply",
                     }
                   }
                 >
@@ -4005,7 +3997,7 @@ ShallowWrapper {
                             },
                             "status": "NEW",
                           },
-                          "pathname": "undefined/viewmessage",
+                          "pathname": "undefined/securemessages/view",
                         }
                       }
                     />
@@ -4022,7 +4014,7 @@ ShallowWrapper {
                     replace={false}
                     to={
                       Object {
-                        "backPath": "undefined/viewmessage",
+                        "backPath": "undefined/securemessages/view",
                         "messageDetail": Object {
                           "account": Object {
                             "number": "32236",
@@ -4048,7 +4040,7 @@ ShallowWrapper {
                           },
                           "status": "NEW",
                         },
-                        "pathname": "undefined/replysecuremessage",
+                        "pathname": "undefined/securemessages/reply",
                       }
                     }
                   >
@@ -4133,7 +4125,7 @@ ShallowWrapper {
                               },
                               "status": "NEW",
                             },
-                            "pathname": "undefined/viewmessage",
+                            "pathname": "undefined/securemessages/view",
                           }
                         }
                       />
@@ -4182,7 +4174,7 @@ ShallowWrapper {
                               },
                               "status": "NEW",
                             },
-                            "pathname": "undefined/viewmessage",
+                            "pathname": "undefined/securemessages/view",
                           }
                         }
                       />,
@@ -4225,7 +4217,7 @@ ShallowWrapper {
                             },
                             "status": "NEW",
                           },
-                          "pathname": "undefined/viewmessage",
+                          "pathname": "undefined/securemessages/view",
                         },
                       },
                       "ref": null,
@@ -4260,7 +4252,7 @@ ShallowWrapper {
                       replace={false}
                       to={
                         Object {
-                          "backPath": "undefined/viewmessage",
+                          "backPath": "undefined/securemessages/view",
                           "messageDetail": Object {
                             "account": Object {
                               "number": "32236",
@@ -4286,7 +4278,7 @@ ShallowWrapper {
                             },
                             "status": "NEW",
                           },
-                          "pathname": "undefined/replysecuremessage",
+                          "pathname": "undefined/securemessages/reply",
                         }
                       }
                     >
@@ -4354,7 +4346,7 @@ ShallowWrapper {
                       "className": "c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding",
                       "replace": false,
                       "to": Object {
-                        "backPath": "undefined/viewmessage",
+                        "backPath": "undefined/securemessages/view",
                         "messageDetail": Object {
                           "account": Object {
                             "number": "32236",
@@ -4380,7 +4372,7 @@ ShallowWrapper {
                           },
                           "status": "NEW",
                         },
-                        "pathname": "undefined/replysecuremessage",
+                        "pathname": "undefined/securemessages/reply",
                       },
                     },
                     "ref": null,
@@ -4643,7 +4635,7 @@ ShallowWrapper {
                           },
                           "status": "NEW",
                         },
-                        "pathname": "undefined/viewmessage",
+                        "pathname": "undefined/securemessages/view",
                       }
                     }
                   />
@@ -4660,7 +4652,7 @@ ShallowWrapper {
                   replace={false}
                   to={
                     Object {
-                      "backPath": "undefined/viewmessage",
+                      "backPath": "undefined/securemessages/view",
                       "messageDetail": Object {
                         "account": Object {
                           "number": "32236",
@@ -4686,7 +4678,7 @@ ShallowWrapper {
                         },
                         "status": "NEW",
                       },
-                      "pathname": "undefined/replysecuremessage",
+                      "pathname": "undefined/securemessages/reply",
                     }
                   }
                 >
@@ -4850,7 +4842,7 @@ ShallowWrapper {
                             },
                             "status": "NEW",
                           },
-                          "pathname": "undefined/viewmessage",
+                          "pathname": "undefined/securemessages/view",
                         }
                       }
                     />
@@ -4867,7 +4859,7 @@ ShallowWrapper {
                     replace={false}
                     to={
                       Object {
-                        "backPath": "undefined/viewmessage",
+                        "backPath": "undefined/securemessages/view",
                         "messageDetail": Object {
                           "account": Object {
                             "number": "32236",
@@ -4893,7 +4885,7 @@ ShallowWrapper {
                           },
                           "status": "NEW",
                         },
-                        "pathname": "undefined/replysecuremessage",
+                        "pathname": "undefined/securemessages/reply",
                       }
                     }
                   >
@@ -4992,7 +4984,7 @@ ShallowWrapper {
                               },
                               "status": "NEW",
                             },
-                            "pathname": "undefined/viewmessage",
+                            "pathname": "undefined/securemessages/view",
                           }
                         }
                       />
@@ -5009,7 +5001,7 @@ ShallowWrapper {
                       replace={false}
                       to={
                         Object {
-                          "backPath": "undefined/viewmessage",
+                          "backPath": "undefined/securemessages/view",
                           "messageDetail": Object {
                             "account": Object {
                               "number": "32236",
@@ -5035,7 +5027,7 @@ ShallowWrapper {
                             },
                             "status": "NEW",
                           },
-                          "pathname": "undefined/replysecuremessage",
+                          "pathname": "undefined/securemessages/reply",
                         }
                       }
                     >
@@ -5120,7 +5112,7 @@ ShallowWrapper {
                                 },
                                 "status": "NEW",
                               },
-                              "pathname": "undefined/viewmessage",
+                              "pathname": "undefined/securemessages/view",
                             }
                           }
                         />
@@ -5169,7 +5161,7 @@ ShallowWrapper {
                                 },
                                 "status": "NEW",
                               },
-                              "pathname": "undefined/viewmessage",
+                              "pathname": "undefined/securemessages/view",
                             }
                           }
                         />,
@@ -5212,7 +5204,7 @@ ShallowWrapper {
                               },
                               "status": "NEW",
                             },
-                            "pathname": "undefined/viewmessage",
+                            "pathname": "undefined/securemessages/view",
                           },
                         },
                         "ref": null,
@@ -5247,7 +5239,7 @@ ShallowWrapper {
                         replace={false}
                         to={
                           Object {
-                            "backPath": "undefined/viewmessage",
+                            "backPath": "undefined/securemessages/view",
                             "messageDetail": Object {
                               "account": Object {
                                 "number": "32236",
@@ -5273,7 +5265,7 @@ ShallowWrapper {
                               },
                               "status": "NEW",
                             },
-                            "pathname": "undefined/replysecuremessage",
+                            "pathname": "undefined/securemessages/reply",
                           }
                         }
                       >
@@ -5341,7 +5333,7 @@ ShallowWrapper {
                         "className": "c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding",
                         "replace": false,
                         "to": Object {
-                          "backPath": "undefined/viewmessage",
+                          "backPath": "undefined/securemessages/view",
                           "messageDetail": Object {
                             "account": Object {
                               "number": "32236",
@@ -5367,7 +5359,7 @@ ShallowWrapper {
                             },
                             "status": "NEW",
                           },
-                          "pathname": "undefined/replysecuremessage",
+                          "pathname": "undefined/securemessages/reply",
                         },
                       },
                       "ref": null,
@@ -5574,13 +5566,9 @@ ShallowWrapper {
   Symbol(enzyme.__options__): Object {
     "adapter": ReactFifteenFourAdapter {
       "options": Object {
-        "legacyContextMode": "parent",
         "lifecycles": Object {
           "componentDidUpdate": Object {
             "prevContext": true,
-          },
-          "getChildContext": Object {
-            "calledByRenderer": true,
           },
         },
         "supportPrevContextArgumentOfComponentDidUpdate": true,

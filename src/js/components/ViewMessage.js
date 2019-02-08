@@ -22,7 +22,21 @@ import SendMessageRequestEntity from "../entities/SendMessageRequestEntity.js";
 import ModalComponent from "./common/ModalComponent";
 import { sendDeleteData } from "../actions/AppActions";
 import { NEW, READ, DRAFT, PENDING, SENT, DELETED } from '../constants/StringsConstants';
-let messageEntity = new SendMessageRequestEntity();
+
+const Attachments = () => (
+	<div className="c-message--attachments">
+		<h4>Attachments</h4>
+		<ul>
+			<li>
+				<Link
+					to={{ pathname: `${window.baseURl}/my-documents` }}
+				>
+					New documents available
+				</Link>
+			</li>
+		</ul>
+	</div>
+);
 
 export class ViewMessage extends React.Component {
 	constructor(props) {
@@ -73,7 +87,7 @@ export class ViewMessage extends React.Component {
 		if (getMessageType(message.status) !== SENT) {
 			return (
 				<Link
-					to={{ pathname: `${window.baseURl}/replysecuremessage`, backPath: `${window.baseURl}/viewmessage`, messageDetail: message }}
+					to={{ pathname: `${window.baseURl}/securemessages/reply`, backPath: `${window.baseURl}/securemessages/view`, messageDetail: message }}
 					className="c-btn c-btn--primary"
 				>
 				{this.props.content.replyMessageTitle}
@@ -117,7 +131,7 @@ export class ViewMessage extends React.Component {
 	getBackButton() {
 		return (
 			<Link
-				to={{ pathname: `${window.baseURl}/securemessage` }}
+				to={{ pathname: `${window.baseURl}/securemessages` }}
 				className="c-btn c-btn--secondary"
 			>
 				{this.props.content.back}
@@ -244,46 +258,48 @@ export class ViewMessage extends React.Component {
 		const { messageDetail } = this.props.location.messageDetail
 			? this.props.location
 			: this.props;
-		return (
-			<div className="container">
-				<div className="row centralised-container">
-					<div className="col-md1-24 col-sm1-24 col-lg1-24">
-						<StepHeader
-							showheaderCrumbs
-							headerCrumbsPath={{
-								pathname: `${window.baseURl}/securemessages`,
-							}}
-							headerCrumbsMessage="Back"
-							headerTitle={
-								getMessageType(messageDetail.status) == SENT
-									? this.props.content.sentPageTitle
-									: this.props.content.inboxPageTitle
-							}
-						/>
 
-						<SecureMessageSummary
-							message={messageDetail}
-							viewMessageFlag
-							readFlag={messageDetail.status === READ}
-							sentFlag={getMessageType(messageDetail.status) === SENT}
-							content={this.props.content}
-						/>
-						<pre>{messageDetail.message}</pre>
-						<div className="c-btn--group">
-							{this.getBackButton()}
-							{messageDetail.status !== PENDING && this.getDeleteButton(messageDetail)}
-							{this.getReplyButton(messageDetail)}
-						</div>
-						{this.state.showDeleteConfirmModal && this.returnModalComponent()}
-						{this.state.showDeleteSuccessModal &&
-							this.props.messages.successModal &&
-							this.returnDeleteSuccessModalComponent()}
-						{this.props.messages.draftError &&
-							this.state.showSendServiceErrorModal &&
-							this.returnErrorModal()}
-						{messageDetail.threadID !== null &&
-							this.getThreads(this.props.messages.messages, messageDetail)}
+		const { hasAttachment } = this.props;
+
+		return (
+			<div className="row centralised-container c-card">
+				<div className="col-md1-24 col-sm1-24 col-lg1-24">
+					<StepHeader
+						showheaderCrumbs
+						headerCrumbsPath={{
+							pathname: `${window.baseURl}/securemessages`,
+						}}
+						headerCrumbsMessage="Back"
+						headerTitle={
+							getMessageType(messageDetail.status) == SENT
+								? this.props.content.sentPageTitle
+								: this.props.content.inboxPageTitle
+						}
+					/>
+
+					<SecureMessageSummary
+						message={messageDetail}
+						viewMessageFlag
+						readFlag={messageDetail.status === READ}
+						sentFlag={getMessageType(messageDetail.status) === SENT}
+						content={this.props.content}
+					/>
+					<pre>{messageDetail.message}</pre>
+					{ hasAttachment && <Attachments /> }
+					<div className="c-btn--group">
+						{this.getBackButton()}
+						{messageDetail.status !== PENDING && this.getDeleteButton(messageDetail)}
+						{this.getReplyButton(messageDetail)}
 					</div>
+					{this.state.showDeleteConfirmModal && this.returnModalComponent()}
+					{this.state.showDeleteSuccessModal &&
+						this.props.messages.successModal &&
+						this.returnDeleteSuccessModalComponent()}
+					{this.props.messages.draftError &&
+						this.state.showSendServiceErrorModal &&
+						this.returnErrorModal()}
+					{messageDetail.threadID !== null &&
+						this.getThreads(this.props.messages.messages, messageDetail)}
 				</div>
 			</div>
 		);
@@ -293,6 +309,7 @@ export class ViewMessage extends React.Component {
 const mapState = state => ({
 	messages: state.messages,
 	messageDetail: state.viewMessage.messageDetail,
+	hasAttachment: state.viewMessage.messageDetail.subject === "DOCUMENT"
 });
 
 export default connect(mapState)(ViewMessage);

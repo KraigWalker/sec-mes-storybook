@@ -7,15 +7,15 @@ const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 console.log("**********************************************");
 const brand = process.env.brand;
 console.log("Compiling for - "+brand+" Brand");
-const JSEntry = ["babel-polyfill","./src/js/client.js","./src/scss/main.scss"];
-const SCSSEntry = ["babel-polyfill","./src/scss/main.scss"];
+const JSEntry = ["babel-polyfill", "whatwg-fetch", "./src/js/client.js"];
+const SCSSEntry = ["./src/scss/main.scss", ...(brand ? [`./src/scss/web-components.${brand}.scss`] : [])];
 module.exports = {
 	entry: JSEntry,
 	devtool: 'source-map',
 	output: {
 		path:__dirname+ '/src/compiled',
 		filename: "[name].bundle.js",
-		publicPath: ''
+		publicPath: '/'
 	},
 	plugins: [
         new UglifyJSPlugin({
@@ -23,11 +23,19 @@ module.exports = {
 		}),
 		new ExtractTextPlugin(`${brand}.main.css`, { allChunks: true }),
 		new CopyWebpackPlugin([{
-			from: 'src/index.html'
-		  }, {
 			  from: 'src/images',
 			  to:'images'
-		  }]),
+		  },
+		  {
+				context: "node_modules/web-ui-components/lib",
+				from: "**/*.css",
+				to: "css"
+		  }
+		]),
+		new HtmlWebpackPlugin({
+			template: "src/index.html",
+			excludeChunks: ["cb.main", "yb.main", "dyb.main", "undefined.main"],
+		}),
 		new webpack.DefinePlugin({
 			 "process.env.NODE_ENV": JSON.stringify("production"),
 		}),
@@ -50,8 +58,8 @@ module.exports = {
 						{
 						loader:"sass-loader",
 						options: {
-                            data: `$brand: ${brand};$env: prod;`
-                        }
+              data: `$brand: ${brand};$env: prod;`
+            }
 					}]
 				}),
 			},

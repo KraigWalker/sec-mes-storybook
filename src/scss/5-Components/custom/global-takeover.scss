@@ -1,0 +1,100 @@
+// .has-global-takeover
+$color-black:    #000 !default;
+$color-white:    #fff !default;
+
+$size-value: 8 !default;
+
+// Size
+// ====
+// This function takes a size value setting from above and multiplies it, 
+// before applying it in a format that can be used elsewhere.
+
+// Usage: 
+//   .selector { width: size(2) }
+
+@function size($num) {
+  @return ($num * $size-value) + 0px;
+}
+
+
+.has-global-takeover .web-ui-components {
+    overflow: hidden;
+  
+    .o-global-takeover {
+      opacity: 1;
+      clip: auto;
+      height: auto;
+      width: auto;
+      overflow: visible;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1051;
+      background-color: rgba($color-black, 0.8);
+      color: $color-white;
+      user-select: none;
+      transition: opacity 0.35s ease-in-out;
+  
+  
+      // __content
+  
+      .o-global-takeover__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        padding-left: size(2);
+        padding-right: size(2);
+      }
+  
+  
+        // __media
+  
+        .o-global-takeover__media {
+          margin-bottom: size(1);
+        }
+  
+  
+          // .c-a-icon
+  
+          @keyframes global-takeover-loader {
+            from { transform: rotate(0deg) }
+            to   { transform: rotate(360deg) }
+          }
+  
+          .c-a-icon {
+            width: size(6);
+            height: size(6);
+            fill: $color-white;
+            animation: global-takeover-loader 1.25s linear infinite;
+          }
+  
+  
+        // __title
+  
+        .o-global-takeover__title {
+          text-align: center;
+          font-size: 21px;
+          line-height: 23px;
+        }
+  
+  
+        // __body
+  
+        .o-global-takeover__body {
+          padding-top: size(2);
+          text-align: center;
+  
+          p {
+            margin-bottom: size(1);
+  
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
+        }
+    }
+  }
