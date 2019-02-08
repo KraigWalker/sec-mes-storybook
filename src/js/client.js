@@ -28,9 +28,14 @@ const session = {
 
 const clientContext = token.getClientContext();
 
-const store = createStore(session)
 const { brandId, isDocumentLibraryEnabled } = hash;
-const defaultTheme = getTheme(brandId);
+const normalisedBrandId = {
+  CB: "CB",
+  YB: "YB",
+  DYB: "B"
+}[brandId];
+
+const defaultTheme = getTheme(normalisedBrandId);
 const theme = {
   ...defaultTheme,
   fonts: {
@@ -42,6 +47,7 @@ const theme = {
 };
 
 const startApp = () => {
+  const store = createStore(session, clientContext, ConfigUtils.config)
   ReactDOM.render(
     <Provider store={store}>
       <WebUIThemeProvider theme={theme}>
