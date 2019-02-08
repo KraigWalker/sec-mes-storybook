@@ -42,7 +42,7 @@ export function withSubscription(WrappedComponent) {
 
 		render() {
 			return (
-				<WrappedComponent content={this.state.content} token={this.state.token} fingerprintID={this.state.fingerprintID}/>
+				<WrappedComponent content={this.state.content} token={this.state.token} fingerprintID={this.state.fingerprintID} {...this.props} />
 			);
 		}
 	});
@@ -68,7 +68,7 @@ export function accessibilityWrapper(WrappedComponent) {
 					<div className="u-visually-hidden off-screen" role="status" aria-live="polite" aria-atomic="true">
 						{currentMessage && this.props.fetched ? <span>{currentMessage}</span> : ''}
 					</div>
-					<WrappedComponent />
+					<WrappedComponent  />
 				</div>
 			);
 		}

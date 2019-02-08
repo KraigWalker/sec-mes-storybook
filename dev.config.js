@@ -6,28 +6,31 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 console.log("**********************************************");
 const brand = process.env.brand;
 console.log("Compiling for - "+brand+" Brand");
-const JSEntry = ["babel-polyfill","./src/js/client.js","./src/scss/main.scss"];
-const SCSSEntry = ["babel-polyfill","./src/scss/main.scss"];
+const JSEntry = ["babel-polyfill","./src/js/client.js"];
+const SCSSEntry = ["./src/scss/main.scss", ...(brand ? [`./src/scss/web-components.${brand}.scss`] : [])];
 module.exports = {
-	entry: JSEntry,
+	entry: [...JSEntry, ...SCSSEntry],
 	devtool: 'inline-source-map',
 	output: {
 		path:__dirname+ '/src/compiled',
 		filename: "[name].bundle.js",
-		publicPath: ''
+		publicPath: '/'
 	},
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
 		new ExtractTextPlugin(`${brand}.main.css`, { allChunks: true }),
 		new CopyWebpackPlugin([{
-			from: 'src/index.html'
-		  }, {
 			  from: 'src/images',
 			  to:'images'
 		  }, {
 			  from: '_config',
 			  to: '_config'
-		  }])
+		  }
+		]),
+		new HtmlWebpackPlugin({
+			template: "src/index.html",
+			excludeChunks: ["cb.main", "yb.main", "dyb.main", "undefined.main"],
+		})
 	],
 	module: {
 		rules: [
@@ -51,13 +54,6 @@ module.exports = {
                         }
 					}]
 				}),
-			},
-			{
-				test: /\.(html)$/,
-				exclude:/node_modules/,
-				use: {
-					loader: 'html-loader'
-				}
 			},
 			{
 			  test: /\.json$/,

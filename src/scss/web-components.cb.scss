@@ -1,0 +1,4 @@
+.web-ui-components, .ReactModalPortal {
+    @import "node_modules/web-ui-components/lib/app.cb";
+    @import "node_modules/document-management-web-ui/lib/bundle";
+}
