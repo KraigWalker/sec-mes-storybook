@@ -79,7 +79,7 @@ module.exports = {
 		open: true, // Open browser after compilation
 		historyApiFallback: true, // Allow changes from history
 		host: 'localhost',
-		port: 8181,
+		port: 8080,
 		hot: true
 	},
 	

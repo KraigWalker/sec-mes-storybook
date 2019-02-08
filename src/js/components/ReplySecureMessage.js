@@ -11,7 +11,7 @@ import {
 	sendMessageForAccessibiltiy,
 	popupState,
 	updateMessageData,
-	backButton
+	getCustomerName
 } from '../actions/AppActions';
 import { getThreadsBL, getAccountName } from '../bl/SecureMessageBL';
 import Threads from './common/ThreadList';
@@ -70,19 +70,21 @@ export class ReplySecureMessage extends React.Component {
 		}
 	}
 	componentDidMount() {
+		const { dispatch, customerID } = this.props;
 		const { messageDetail } = this.props.location;
 		// Below is to update New message to Read message status.
-		if (messageDetail && this.props.location.messageDetail.status === StringsConstants.NEW) {
-			this.props.dispatch(
+		if (messageDetail && messageDetail.status === StringsConstants.NEW) {
+			dispatch(
 				updateMessageData(
-					this.props.location.messageDetail,
-					this.props.location.messageDetail.id,
+					messageDetail,
+					messageDetail.id,
 					StringsConstants.READ
 				)
 			);
 		}
+		dispatch(getCustomerName(customerID));
+		dispatch(popupState());
 		window.scrollTo(0, 0);
-		this.props.dispatch(popupState());
 	}
 	componentWillUnmount() {
 		window.top.postMessage('clearNewMessagePage', '*');
@@ -134,7 +136,7 @@ export class ReplySecureMessage extends React.Component {
 		});
 	}
 	sendData() {
-		const { dispatch, location, segmentData } = this.props;
+		const { dispatch, location, customerDetails } = this.props;
 		this.setState({ charError: true });
 		this.renderRemainingChar();
 		if (this.state.chars_left >= 0) {
@@ -143,7 +145,7 @@ export class ReplySecureMessage extends React.Component {
 					messageEntity.getMessageRequestData(),
 					location.messageDetail,
 					StringsConstants.PENDING,
-					segmentData.segmentData.name
+					customerDetails.personal_details.name
 				)
 			);
 			this.setState({ showSentMessageModal: true });
@@ -220,13 +222,13 @@ export class ReplySecureMessage extends React.Component {
 		);
 	}
 	saveDraftData() {
-		const { dispatch, location, segmentData } = this.props;
+		const { dispatch, location, customerDetails } = this.props;
 		dispatch(
 			replyMessageData(
 				messageEntity.getMessageRequestData(),
 				location.messageDetail,
 				StringsConstants.DRAFT,
-				segmentData.segmentData.name
+				customerDetails.personal_details.name || {}
 			)
 		);
 		this.setState({ showPopup: false });
@@ -247,6 +249,10 @@ export class ReplySecureMessage extends React.Component {
 		return accVal;
 	}
 	errorCloseClicked() {
+		const { dispatch, customerNameError } = this.props;
+		if (customerNameError) {
+			dispatch(popupState());
+		}
 		this.setState({ showSaveServiceErrorModal: false });
 		this.setState({ showSendServiceErrorModal: false });
 	}
@@ -579,6 +585,8 @@ const mapState = state => ({
 	messages: state.messages,
 	accounts: state.accounts,
 	messageDetail: state.viewMessage.messageDetail,
-	segmentData: state.segmentData,
+	customerID: state.segmentData.segmentData.customers[0].id,
+	customerDetails: state.customerDetails.customerDetails,
+	customerNameError: state.customerDetails.error,
 });
 export default connect(mapState)(ReplySecureMessage);
