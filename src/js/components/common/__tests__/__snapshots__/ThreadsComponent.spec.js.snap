@@ -2,7 +2,6 @@
 
 exports[`ThreadsComponent snapshot should match to snapshot 1`] = `
 ShallowWrapper {
-  "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ThreadsComponent
     ThreadDetail={
@@ -136,6 +135,11 @@ ShallowWrapper {
   Symbol(enzyme.__options__): Object {
     "adapter": ReactFifteenFourAdapter {
       "options": Object {
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "prevContext": true,
+          },
+        },
         "supportPrevContextArgumentOfComponentDidUpdate": true,
       },
     },

@@ -10,7 +10,8 @@ import {
 	replyMessageData,
 	sendMessageForAccessibiltiy,
 	popupState,
-	updateMessageData
+	updateMessageData,
+	getCustomerName
 } from '../actions/AppActions';
 import { getThreadsBL, getAccountName } from '../bl/SecureMessageBL';
 import Threads from './common/ThreadList';
@@ -69,19 +70,21 @@ export class ReplySecureMessage extends React.Component {
 		}
 	}
 	componentDidMount() {
+		const { dispatch, customerID } = this.props;
 		const { messageDetail } = this.props.location;
 		// Below is to update New message to Read message status.
-		if (messageDetail && this.props.location.messageDetail.status === StringsConstants.NEW) {
-			this.props.dispatch(
+		if (messageDetail && messageDetail.status === StringsConstants.NEW) {
+			dispatch(
 				updateMessageData(
-					this.props.location.messageDetail,
-					this.props.location.messageDetail.id,
+					messageDetail,
+					messageDetail.id,
 					StringsConstants.READ
 				)
 			);
 		}
+		dispatch(getCustomerName(customerID));
+		dispatch(popupState());
 		window.scrollTo(0, 0);
-		this.props.dispatch(popupState());
 	}
 	componentWillUnmount() {
 		window.top.postMessage('clearNewMessagePage', '*');
@@ -133,7 +136,7 @@ export class ReplySecureMessage extends React.Component {
 		});
 	}
 	sendData() {
-		const { dispatch, location, segmentData } = this.props;
+		const { dispatch, location, customerDetails } = this.props;
 		this.setState({ charError: true });
 		this.renderRemainingChar();
 		if (this.state.chars_left >= 0) {
@@ -142,7 +145,7 @@ export class ReplySecureMessage extends React.Component {
 					messageEntity.getMessageRequestData(),
 					location.messageDetail,
 					StringsConstants.PENDING,
-					segmentData.segmentData.name
+					customerDetails.personal_details.name
 				)
 			);
 			this.setState({ showSentMessageModal: true });
@@ -219,13 +222,13 @@ export class ReplySecureMessage extends React.Component {
 		);
 	}
 	saveDraftData() {
-		const { dispatch, location, segmentData } = this.props;
+		const { dispatch, location, customerDetails } = this.props;
 		dispatch(
 			replyMessageData(
 				messageEntity.getMessageRequestData(),
 				location.messageDetail,
 				StringsConstants.DRAFT,
-				segmentData.segmentData.name
+				customerDetails.personal_details.name || {}
 			)
 		);
 		this.setState({ showPopup: false });
@@ -246,6 +249,10 @@ export class ReplySecureMessage extends React.Component {
 		return accVal;
 	}
 	errorCloseClicked() {
+		const { dispatch, customerNameError } = this.props;
+		if (customerNameError) {
+			dispatch(popupState());
+		}
 		this.setState({ showSaveServiceErrorModal: false });
 		this.setState({ showSendServiceErrorModal: false });
 	}
@@ -450,126 +457,124 @@ export class ReplySecureMessage extends React.Component {
 			? location
 			: this.props;
 		return (
-			<div className="container">
-				<div className="row centralised-container">
-					<div className="col-md1-24 col-sm1-24 col-lg1-24">
-						{this.returnBackButton(location)}
-						<div className="c-field">
-							<label
-								id="subjectTitle"
-								className="c-field__label c-field__label--block"
-								htmlFor="subjects"
-							>
-								{content.subject}
-							</label>
-							<div className="c-field__controls u-position-relative">
-								<DropDownComponent
-									accessID="Subject"
-									subjects={messageDetail.subject}
-									name="subjects"
-									id="subjects"
-									selectSubject={this.selectSubject}
-									isFromDraftOrReply
-									selectedValue={messageDetail.subject}
-									content={content}
-									isFromReply
-								/>
-							</div>
+			<div className="row centralised-container c-card">
+				<div className="col-md1-24 col-sm1-24 col-lg1-24">
+					{this.returnBackButton(location)}
+					<div className="c-field">
+						<label
+							id="subjectTitle"
+							className="c-field__label c-field__label--block"
+							htmlFor="subjects"
+						>
+							{content.subject}
+						</label>
+						<div className="c-field__controls u-position-relative">
+							<DropDownComponent
+								accessID="Subject"
+								subjects={messageDetail.subject}
+								name="subjects"
+								id="subjects"
+								selectSubject={this.selectSubject}
+								isFromDraftOrReply
+								selectedValue={messageDetail.subject}
+								content={content}
+								isFromReply
+							/>
 						</div>
-
-						<div className="c-field">
-							<label
-								id="relatesTitle"
-								className="c-field__label c-field__label--block"
-								htmlFor="subjects"
-							>
-								{content.messageRelatesTo}
-							</label>
-							<div className="c-field__controls u-position-relative">
-								<DropDownComponent
-									accessID="Message relates to"
-									accounts={messageDetail.account.number}
-									selectSubject={this.selectSubject}
-									name="accounts"
-									id="accounts"
-									isFromDraftOrReply
-									selectedValue={this.checkAccountValue()}
-									content={content}
-									isFromReply
-								/>
-							</div>
-						</div>
-
-						<div className="c-field">
-							<label
-								id="messageTitle"
-								className="c-field__label c-field__label--block"
-								htmlFor="subjects"
-							>
-								{content.message}
-							</label>
-							<div className="c-field__controls">
-								<div className="u-visually-hidden off-screen" id="textAreaMaxMsg">
-									{content.maxCharLimit}
-								</div>
-								<TextAreaComponent
-									textData={this.textChange}
-									ariaId="textAreaMaxMsg"
-									id="message"
-									accessID="messageTitle"
-								/>
-							</div>
-							{this.renderRemainingChar()}
-						</div>
-						<div className="c-btn--group">
-							{!disabled ? (
-								<button
-									name="Back"
-									className="c-btn c-btn--secondary"
-									onClick={this.callBackModal}
-								>
-									{content.back}
-								</button>
-							) : (
-									<Link
-										to={`${window.baseURl}/securemessages`}
-										className="c-btn c-btn--secondary"
-									>
-										{content.back}{' '}
-									</Link>
-								)}
-							<button
-								name="Save Draft"
-								className="c-btn c-btn--secondary"
-								onClick={this.saveDraftData}
-								disabled={this.state.disabled}
-							>
-								{content.saveDraft}
-							</button>
-							<button
-								name="Send"
-								className="c-btn c-btn--default"
-								onClick={this.sendData}
-								disabled={this.state.disabled}
-							>
-								{content.send}
-							</button>
-						</div>
-						{showPopup && this.returnModalComponent()}
-						{showSentMessageModal && messages.successModal
-							? this.returnSentMessageModal()
-							: ''}
-						{showDraftSuccessModal &&
-							messages.successModal &&
-							this.returnDraftModal()}
-						{messages.newMessageError &&
-							showSaveServiceErrorModal &&
-							this.returnErrorModal()}
-						{messages.newMessageError &&
-							showSendServiceErrorModal &&
-							this.returnErrorModal()}
-						{this.getThreads(messages.messages, messageDetail)}
 					</div>
+
+					<div className="c-field">
+						<label
+							id="relatesTitle"
+							className="c-field__label c-field__label--block"
+							htmlFor="subjects"
+						>
+							{content.messageRelatesTo}
+						</label>
+						<div className="c-field__controls u-position-relative">
+							<DropDownComponent
+								accessID="Message relates to"
+								accounts={messageDetail.account.number}
+								selectSubject={this.selectSubject}
+								name="accounts"
+								id="accounts"
+								isFromDraftOrReply
+								selectedValue={this.checkAccountValue()}
+								content={content}
+								isFromReply
+							/>
+						</div>
+					</div>
+
+					<div className="c-field">
+						<label
+							id="messageTitle"
+							className="c-field__label c-field__label--block"
+							htmlFor="subjects"
+						>
+							{content.message}
+						</label>
+						<div className="c-field__controls">
+							<div className="u-visually-hidden off-screen" id="textAreaMaxMsg">
+								{content.maxCharLimit}
+							</div>
+							<TextAreaComponent
+								textData={this.textChange}
+								ariaId="textAreaMaxMsg"
+								id="message"
+								accessID="messageTitle"
+							/>
+						</div>
+						{this.renderRemainingChar()}
+					</div>
+					<div className="c-btn--group">
+						{!disabled ? (
+							<button
+								name="Back"
+								className="c-btn c-btn--secondary"
+								onClick={this.callBackModal}
+							>
+								{content.back}
+							</button>
+						) : (
+								<Link
+									to={`${window.baseURl}/securemessages`}
+									className="c-btn c-btn--secondary"
+								>
+									{content.back}{' '}
+								</Link>
+							)}
+						<button
+							name="Save Draft"
+							className="c-btn c-btn--secondary"
+							onClick={this.saveDraftData}
+							disabled={this.state.disabled}
+						>
+							{content.saveDraft}
+						</button>
+						<button
+							name="Send"
+							className="c-btn c-btn--default"
+							onClick={this.sendData}
+							disabled={this.state.disabled}
+						>
+							{content.send}
+						</button>
+					</div>
+					{showPopup && this.returnModalComponent()}
+					{showSentMessageModal && messages.successModal
+						? this.returnSentMessageModal()
+						: ''}
+					{showDraftSuccessModal &&
+						messages.successModal &&
+						this.returnDraftModal()}
+					{messages.newMessageError &&
+						showSaveServiceErrorModal &&
+						this.returnErrorModal()}
+					{messages.newMessageError &&
+						showSendServiceErrorModal &&
+						this.returnErrorModal()}
+					{this.getThreads(messages.messages, messageDetail)}
 				</div>
 			</div>
 		);
@@ -580,6 +585,8 @@ const mapState = state => ({
 	messages: state.messages,
 	accounts: state.accounts,
 	messageDetail: state.viewMessage.messageDetail,
-	segmentData: state.segmentData,
+	customerID: state.segmentData.segmentData.customers[0].id,
+	customerDetails: state.customerDetails.customerDetails,
+	customerNameError: state.customerDetails.error,
 });
 export default connect(mapState)(ReplySecureMessage);

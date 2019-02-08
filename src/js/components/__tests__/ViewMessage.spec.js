@@ -57,6 +57,55 @@ describe("View Message snapshot", () => {
         component.instance().retryServiceCall();
         expect(props.dispatch).toBeCalled();
     });
+    it('renders attachment section if hasAttachment true', () => {
+        let props = {
+            content: {
+                sentPageTitle: 'sentPageTitle',
+            },
+            activeTab: 'SENT',
+            messages: {
+                draftError: true,
+                successModal: true,
+                filter: filter,
+            },
+            location: {
+                messageDetail: { status: 'sent' }
+            },
+            messagesFetched: {
+                fetching: false,
+                successModal: false
+            },
+            dispatch: dispatch,
+            hasAttachment: true
+        };
+        const component = shallow(<ViewMessage {...props} />);
+        expect(component.find("Attachments")).toHaveLength(1);
+    });
+
+    it("does not render attachments if hasAttachment false", () => {
+        let props = {
+            content: {
+                sentPageTitle: 'sentPageTitle',
+            },
+            activeTab: 'SENT',
+            messages: {
+                draftError: true,
+                successModal: true,
+                filter: filter,
+            },
+            location: {
+                messageDetail: { status: 'sent' }
+            },
+            messagesFetched: {
+                fetching: false,
+                successModal: false
+            },
+            dispatch: dispatch,
+            hasAttachment: false
+        };
+        const component = shallow(<ViewMessage {...props} />);
+        expect(component.find("Attachments")).toHaveLength(0);
+    }); 
 });
 describe("Main snapshot", () => {
     const dispatch = jest.fn();

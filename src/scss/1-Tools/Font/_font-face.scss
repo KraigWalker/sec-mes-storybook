@@ -3,11 +3,11 @@
 //\*----------------------------------*/
 
 // Mixin for multiple font faces
-@mixin font-face($font-family, $file-path, $extension, $format) {
+@mixin font-face($font-family, $file-path, $extension, $format, $font-weight: normal) {
 	@font-face {
 		font-family: $font-family;
 		font-style: normal;
-		font-weight: normal;
+		font-weight: $font-weight;
 		// src: url('#{$file-path}.eot');
 		src: url('#{$file-path}.eot?#iefix') format('embedded-opentype'),
 				 url('#{$file-path}.#{$extension}') format($format),
@@ -56,6 +56,14 @@
 // Glypse Fonts
 @include font-face(Glyphicons Halflings, '../fonts/webfont/glyphicons-halflings-regular', 'otf', 'opentype');
 
+// @include font-face(Houschka-Alt-Pro Display Bold, '../fonts/cyb/heading/CYBHouschkaAltPro-Bold', 'otf', 'opentype', '500');
+
+@font-face {
+	font-family: Houschka-Alt-Pro Display Bold;
+		font-style: normal;
+		font-weight: 500;
+		src: url('../fonts/cyb/heading/CYBHouschkaAltPro-Bold.otf') format("opentype");
+}
 
 
 //---- Font Face Variables
@@ -83,7 +91,7 @@ $dyb-body-bold: MuliBold;
 
 // CB-YB heading font
 $cyb-medium: CYBHouschkaAltProMedium;
-$cyb-bold: CYBHouschkaAltProBold;
+$cyb-bold: CYBHouschkaAltProBold, "Houschka-Alt-Pro Display Bold";
 // $cyb-light: CYBHouschkaAltProLight;
 
 // CB-YB body font

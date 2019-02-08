@@ -53,9 +53,9 @@ export class SecureMessageSummary extends React.Component {
 			!threadFlag && (
 				<Link
 					to={{
-						pathname: `${window.baseURl}/replysecuremessage`,
+						pathname: `${window.baseURl}/securemessages/reply`,
 						backPath: viewMessageFlag
-							? `${window.baseURl}/viewmessage`
+							? `${window.baseURl}/securemessages/view`
 							: `${window.baseURl}/securemessages`,
 						messageDetail: message,
 					}}
@@ -125,8 +125,8 @@ export class SecureMessageSummary extends React.Component {
 		const { message, threadFlag, content } = this.props;
 		const path =
 			message.status === DRAFT
-				? `${window.baseURl}/draftsecuremessage`
-				: `${window.baseURl}/viewmessage`;
+				? `${window.baseURl}/securemessages/draft`
+				: `${window.baseURl}/securemessages/view`;
 		let messageTitle = '';
 		if (message.status === 'NEW') {
 			messageTitle = `${content.unread} ${message.getSubject()}`;

@@ -2,9 +2,14 @@
 
 exports[`Main snapshot should match to snapshot 1`] = `
 ShallowWrapper {
-  "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Main>
+  Symbol(enzyme.__unrendered__): <Main
+    location={
+      Object {
+        "pathname": "",
+      }
+    }
+  >
     cjejd
   </Main>,
   Symbol(enzyme.__renderer__): Object {
@@ -19,10 +24,17 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": "cjejd",
+      "children": Array [
+        undefined,
+        "cjejd",
+      ],
+      "className": "container",
     },
     "ref": null,
-    "rendered": "cjejd",
+    "rendered": Array [
+      undefined,
+      "cjejd",
+    ],
     "type": "div",
   },
   Symbol(enzyme.__nodes__): Array [
@@ -31,16 +43,28 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "children": "cjejd",
+        "children": Array [
+          undefined,
+          "cjejd",
+        ],
+        "className": "container",
       },
       "ref": null,
-      "rendered": "cjejd",
+      "rendered": Array [
+        undefined,
+        "cjejd",
+      ],
       "type": "div",
     },
   ],
   Symbol(enzyme.__options__): Object {
     "adapter": ReactFifteenFourAdapter {
       "options": Object {
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "prevContext": true,
+          },
+        },
         "supportPrevContextArgumentOfComponentDidUpdate": true,
       },
     },
