@@ -6,7 +6,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 console.log("**********************************************");
 const brand = process.env.brand;
 console.log("Compiling for - "+brand+" Brand");
-const JSEntry = ["babel-polyfill","./src/js/client.js"];
+const JSEntry = ["babel-polyfill", "whatwg-fetch", "./src/js/client.js"];
 const SCSSEntry = ["./src/scss/main.scss", ...(brand ? [`./src/scss/web-components.${brand}.scss`] : [])];
 module.exports = {
 	entry: [...JSEntry, ...SCSSEntry],
