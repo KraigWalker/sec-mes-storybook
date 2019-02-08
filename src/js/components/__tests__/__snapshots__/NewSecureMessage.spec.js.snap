@@ -2,7 +2,6 @@
 
 exports[`New Secure message snapshot should match to snapshot 1`] = `
 ShallowWrapper {
-  "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <NewSecureMessage
     content={
@@ -13,6 +12,9 @@ ShallowWrapper {
     dispatch={
       [MockFunction] {
         "calls": Array [
+          Array [
+            [Function],
+          ],
           Array [
             [Function],
           ],
@@ -416,6 +418,7 @@ ShallowWrapper {
             false,
             false,
             false,
+            undefined,
             <div
               className="c-btn--group"
             >
@@ -811,6 +814,7 @@ ShallowWrapper {
           false,
           false,
           false,
+          undefined,
           Object {
             "instance": null,
             "key": undefined,
@@ -1278,6 +1282,7 @@ ShallowWrapper {
               false,
               false,
               false,
+              undefined,
               <div
                 className="c-btn--group"
               >
@@ -1673,6 +1678,7 @@ ShallowWrapper {
             false,
             false,
             false,
+            undefined,
             Object {
               "instance": null,
               "key": undefined,
@@ -1761,6 +1767,15 @@ ShallowWrapper {
   Symbol(enzyme.__options__): Object {
     "adapter": ReactFifteenFourAdapter {
       "options": Object {
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "prevContext": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": true,
+          },
+        },
         "supportPrevContextArgumentOfComponentDidUpdate": true,
       },
     },
