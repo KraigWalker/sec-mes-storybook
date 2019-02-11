@@ -14,7 +14,7 @@ module.exports = {
 	output: {
 		path:__dirname+ '/src/compiled',
 		filename: "[name].bundle.js",
-		publicPath: '/'
+		publicPath: ''
 	},
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
@@ -29,7 +29,7 @@ module.exports = {
 		]),
 		new HtmlWebpackPlugin({
 			template: "src/index.html",
-			excludeChunks: ["cb.main", "yb.main", "dyb.main", "undefined.main"],
+			excludeChunks: ["cb.main", "yb.main", "dyb.main", "undefined.main", "main"],
 		})
 	],
 	module: {
@@ -77,7 +77,11 @@ module.exports = {
 	devServer: {
 		contentBase: __dirname +"/src/compiled/",
 		open: true, // Open browser after compilation
-		historyApiFallback: true, // Allow changes from history
+		historyApiFallback: {
+			rewrites: [
+				{ from: /^\/$/, to: "index.html" }
+			]
+		},
 		host: 'localhost',
 		port: 8080,
 		hot: true

@@ -15,7 +15,7 @@ module.exports = {
 	output: {
 		path:__dirname+ '/src/compiled',
 		filename: "[name].bundle.js",
-		publicPath: '/'
+		publicPath: ''
 	},
 	plugins: [
         new UglifyJSPlugin({
@@ -34,7 +34,7 @@ module.exports = {
 		]),
 		new HtmlWebpackPlugin({
 			template: "src/index.html",
-			excludeChunks: ["cb.main", "yb.main", "dyb.main", "undefined.main"],
+			excludeChunks: ["cb.main", "yb.main", "dyb.main", "undefined.main", "main"],
 		}),
 		new webpack.DefinePlugin({
 			 "process.env.NODE_ENV": JSON.stringify("production"),
