@@ -10,7 +10,7 @@ console.log("Compiling for - "+brand+" Brand");
 const JSEntry = ["babel-polyfill", "whatwg-fetch", "./src/js/client.js"];
 const SCSSEntry = ["./src/scss/main.scss", ...(brand ? [`./src/scss/web-components.${brand}.scss`] : [])];
 module.exports = {
-	entry: JSEntry,
+	entry: [...JSEntry, ...SCSSEntry],
 	devtool: 'source-map',
 	output: {
 		path:__dirname+ '/src/compiled',
