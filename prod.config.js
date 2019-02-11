@@ -34,7 +34,7 @@ module.exports = {
 		]),
 		new HtmlWebpackPlugin({
 			template: "src/index.html",
-			excludeChunks: ["cb.main", "yb.main", "dyb.main", "undefined.main"],
+			excludeChunks: ["cb.main", "yb.main", "dyb.main", "undefined.main", "main"],
 		}),
 		new webpack.DefinePlugin({
 			 "process.env.NODE_ENV": JSON.stringify("production"),
