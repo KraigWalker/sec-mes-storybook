@@ -12,6 +12,7 @@ const StringConstants = {
     SENT: 'SENT',
     DRAFT: 'DRAFT',
     INBOX: 'INBOX',
+    READ_ONLY: 'READ_ONLY',
 }
 
 module.exports = StringConstants;

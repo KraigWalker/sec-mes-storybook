@@ -8,6 +8,7 @@ import MessageEntity from '../../entities/MessageEntity';
 import ModalComponent from '../common/ModalComponent';
 import { updateMessageData, popupState, delMessageData, closeDelModal } from '../../actions/AppActions';
 import { NEW, READ, DRAFT, PENDING, SENT, DELETED } from '../../constants/StringsConstants';
+import StringConstants from '../../constants/StringsConstants';
 
 export class SecureMessageSummary extends React.Component {
 	constructor(props) {
@@ -321,7 +322,7 @@ export class SecureMessageSummary extends React.Component {
 		);
 	}
 	render() {
-		const { message, listFlag, threadFlag, content, viewMessageFlag, messageDetail, messages } = this.props;
+		const { message, listFlag, threadFlag, content, viewMessageFlag, messageDetail, messages, isReadOnly } = this.props;
 		const { showSendServiceErrorModal, showDeleteSuccessModal, showDeleteConfirmModal } = this.state;
 		const messageClass = cx({
 			'c-message': true,
@@ -368,9 +369,9 @@ export class SecureMessageSummary extends React.Component {
 							</p>
 						</div>
 						<div className={actionsClass}>
-							{(message.status === NEW || message.status === READ) &&
+							{(message.status === NEW || message.status === READ) && !isReadOnly &&
 								this.getReplyButton(message)}
-							{!threadFlag && message.status !== PENDING && this.getDeleteButton()}
+							{!threadFlag && !isReadOnly && message.status !== PENDING && this.getDeleteButton()}
 							{!threadFlag && message.status === PENDING && this.getPendingStatus()}
 						</div>
 					</div>
@@ -418,5 +419,6 @@ const mapState = state => ({
 	messagesubjects: state.subjects,
 	messageaccounts: state.accounts,
 	messageDetail: state.viewMessage,
+	readOnly: state.messages.mode === StringConstants.READ_ONLY
 });
 export default connect(mapState)(SecureMessageSummary);

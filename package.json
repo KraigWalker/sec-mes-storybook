@@ -74,6 +74,7 @@
     "dyb-prod": "brand=yb webpack --config ./prod.config.js",
     "yb-prod": "brand=dyb webpack --config ./prod.config.js",
     "start": "cross-env npm run dyb && npm run cb && npm run yb && webpack-dev-server --config ./dev.config.js",
+    "start:advisor": "cross-env brand=cb webpack-dev-server --config ./dev/advisor/dev.config.js",
     "dev": "webpack --config ./dev.config.js",
     "test": "jest",
     "build": "npm run dyb-prod && npm run cb-prod && npm run yb-prod && npm run release",

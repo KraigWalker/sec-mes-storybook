@@ -27,4 +27,5 @@ export default keyMirror({
 	REQUEST_CUSTOMER_NAME: null,
 	REQUEST_CUSTOMER_NAME_SUCCESS: null,
 	REQUEST_CUSTOMER_NAME_FAILURE: null,
+	SET_MODE: null,
 });

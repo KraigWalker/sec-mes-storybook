@@ -1,10 +1,9 @@
-import AppApi from '../api/AppApi';
 import AppConstants from '../constants/AppConstants';
 import { parseMessages } from '../parsers/MessageParser';
 import { parseSubjects, parseAccounts } from '../parsers/MessageSubjectParser';
 
 export function fetchSecureMessages() {
-	return function (dispatch) {
+	return function (dispatch, _, { AppApi }) {
 		const payload = {
 			type: AppConstants.REQUEST_SECURE_MESSAGES,
 		};
@@ -27,7 +26,7 @@ export function fetchSecureMessages() {
 	};
 }
 export function getMessageSubjects() {
-	return function (dispatch) {
+	return function (dispatch, _, { AppApi }) {
 		const success = response => {
 			const parseData = parseSubjects(response);
 			const payload = {
@@ -47,7 +46,7 @@ export function getMessageSubjects() {
 	};
 }
 export function getAccounts() {
-	return function (dispatch) {
+	return function (dispatch, _, { AppApi }) {
 		const success = response => {
 			const parseData = parseAccounts(response);
 			const payload = {
@@ -86,7 +85,7 @@ export function backButton() {
 	};
 }
 export function sendMessageData(requestData, status, name) {
-	return function (dispatch) {
+	return function (dispatch, _, { AppApi }) {
 		const success = response => {
 			const payload = {
 				type: AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS,
@@ -105,7 +104,7 @@ export function sendMessageData(requestData, status, name) {
 }
 
 export function replyMessageData(requestData, ids, status, name) {
-	return function (dispatch) {
+	return function (dispatch, _, { AppApi }) {
 		const success = response => {
 			const payload = {
 				type: AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS,
@@ -124,7 +123,7 @@ export function replyMessageData(requestData, ids, status, name) {
 }
 
 export function updateMessageData(requestData, id, status) {
-	return function (dispatch) {
+	return function (dispatch, _, { AppApi }) {
 		const success = () => {
 			const payload = {
 				type: AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS,
@@ -152,7 +151,7 @@ export function setViewMessageDetail(messageDetail) {
 }
 
 export function delMessageData(requestData, id, status) {
-	return function (dispatch) {
+	return function (dispatch, _, { AppApi }) {
 		const success = () => {
 			const payload = {
 				type: AppConstants.DELETE_SECURE_MESSAGE_SUCCESS,
@@ -199,7 +198,7 @@ export function closeDelModal() {
 }
 
 export function getCustomerID() {
-	return function (dispatch) {
+	return function (dispatch, _, { AppApi }) {
 		const payload = {
 			type: AppConstants.REQUEST_SEGMENT_DATA,
 		};
@@ -223,7 +222,7 @@ export function getCustomerID() {
 }
 
 export function getCustomerName(id) {
-	return function (dispatch) {
+	return function (dispatch, _, { AppApi }) {
 		const payload = {
 			type: AppConstants.REQUEST_CUSTOMER_NAME,
 		};
@@ -243,5 +242,12 @@ export function getCustomerName(id) {
 			dispatch(payload);
 		};
 		AppApi.fetchCustomerDetails(success, error, id);
+	};
+}
+
+export function setMode(mode) {
+	return {
+		type: AppConstants.SET_MODE,
+		payload: mode
 	};
 }

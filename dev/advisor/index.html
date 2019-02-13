@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+    <link rel="shortcut icon" href="favicon.ico" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document Portal</title>
+    <link rel="stylesheet" href="/css/app.cb.css" />
+    <script src="//assets.adobedtm.com/6677ad16b0484ad2b930d0b209e41c1e96798d52/satelliteLib-0cc949d1889ae0e893deead7d027ffc8cbbfd117.js"></script>
+    </head>
+
+    <body>
+    <div id="base-web-app"></div>
+    <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+    <script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+    <% } %>
+    <script>
+        const meoConfig = {
+            bpiApiUrl: "",
+            ibApiUrl: "http://localhost:8888",
+            bankId: "CB",
+            brandId: "CB",
+            accessToken: "fake-token",
+            baseURI: "",
+            customerId: "",
+            customerNumber: "",
+            customerName: "",
+            scope: "40",
+            scopeCreatedDate: null,
+            staffId: "SR0765",
+            appTitle: "MEO"
+        };
+        window.cybgSecureMessagesUI(meoConfig, "base-web-app");
+    </script>
+    <script type="text/javascript">
+        _satellite.pageBottom();
+    </script>
+    </body>
+
+</html>

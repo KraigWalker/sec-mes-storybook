@@ -1,30 +1,18 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 import { Provider } from "react-redux";
 import AppRouter from './router/AppRouter.advisor';
 import createStore from './stores/AppStore';
-import ConfigUtils from './utils/ConfigUtils';
 import token from "./token";
 import { getTheme, WebUIThemeProvider } from "web-ui-components/lib/utilities/themes";
+import { setMode } from './actions/AppActions';
+import StringConstants from './constants/StringsConstants';
+import { buildClientContext } from './utils/ContextUtils';
 
-const app = document.getElementById('app');
- /**
-  * Starts the application with the Provider Wrapper from Redux
-  * @return {ReactComponent} AppRouter which initiates the application.
- */
-const parseHash = hash => hash
-  .split("&")
-  .map(v => v.split("="))
-  .reduce( (pre, [key, value]) => ({ ...pre, [key]: value }), {} )
+export const App = ({ config }) => {
 
-const hash = parseHash(window.location.hash.substring(1));
+    const clientContext = buildClientContext(config.appTitle, config.userTrackingId, config.state);
 
-
-
-const clientContext = token.getClientContext();
-
-
-const App = ({ config }) => {
     const session = {
         access_token: config.accessToken,
         bank_id: config.bankId,
@@ -33,18 +21,25 @@ const App = ({ config }) => {
 
     const defaultTheme = getTheme(config.brandId);
     const theme = {
-    ...defaultTheme,
-    fonts: {
-        ...defaultTheme.fonts,
-        display: {
-        // Limitiation of component library within "non-web-component" app
-        bold: "CYBHouschkaAltProBold !important"
+        ...defaultTheme,
+        fonts: {
+            ...defaultTheme.fonts,
+            display: {
+                // Limitiation of component library within "non-web-component" app
+                bold: "CYBHouschkaAltProBold !important"
+            }
         }
-    }
     };
 
-    const store = createStore(session);
+    const envConfig = {
+        apiBaseUrl: config.bpiApiUrl,
+        apiBaseUrl2: config.ibApiUrl
+    }
 
+    const store = createStore(session, clientContext, envConfig);
+
+    store.dispatch(setMode(StringConstants.READ_ONLY));
+    console.log(AppRouter);
     return (
         <Provider store={store}>
             <WebUIThemeProvider theme={theme}>

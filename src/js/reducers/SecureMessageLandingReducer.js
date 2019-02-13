@@ -44,6 +44,9 @@ export default function reducer(state = {
 		case AppConstants.SET_POPUP_STATE: {
 			return { ...state, error: false, successModal: false, newMessageError: false, draftError: false };
 		}
+		case AppConstants.SET_MODE: {
+			return { ...state, mode: action.payload }
+		}
 		default:
 			return state;
 	}

@@ -1,4 +1,4 @@
-import BrowserUtils from '../js/utils/BrowserUtils';
+import { buildClientContext } from '../js/utils/ContextUtils';
 
 const accessToken = window.location;
 const hashKeyValue = {};
@@ -39,21 +39,7 @@ const token = {
 			hashKeyValue.userTrackingId = params.split('&')[3];
 			hashValue.userTrackingId = hashKeyValue.userTrackingId.split('=')[1];
 		}
-		return {
-			client: {
-				app_title: hashValue.appTitle,
-				user_tracking_id: hashValue.userTrackingId,
-				client_id: this.getFingerPrints,
-				app_version_code: "1.0.0",
-			},
-			env: {
-				platform_version: BrowserUtils.getBrowserVersion(),
-				make: BrowserUtils.getPlatform(),
-				locale: BrowserUtils.getUserLocale(),
-				platform: "B Web",
-				device_name: this.getFingerPrints(),
-			},
-		};
+		return buildClientContext(hashValue.appTitle, hashValue.userTrackingId, this.getFingerPrints());
 	},
 	getContentBankId() {
 		let contentBankID = 'CB';
