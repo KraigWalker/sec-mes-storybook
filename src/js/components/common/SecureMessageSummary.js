@@ -54,10 +54,10 @@ export class SecureMessageSummary extends React.Component {
 			!threadFlag && (
 				<Link
 					to={{
-						pathname: `${window.baseURl}/securemessages/reply`,
+						pathname: `/securemessages/reply`,
 						backPath: viewMessageFlag
-							? `${window.baseURl}/securemessages/view`
-							: `${window.baseURl}/securemessages`,
+							? `/securemessages/view`
+							: `/securemessages`,
 						messageDetail: message,
 					}}
 					className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding"
@@ -126,8 +126,8 @@ export class SecureMessageSummary extends React.Component {
 		const { message, threadFlag, content } = this.props;
 		const path =
 			message.status === DRAFT
-				? `${window.baseURl}/securemessages/draft`
-				: `${window.baseURl}/securemessages/view`;
+				? `/securemessages/draft`
+				: `/securemessages/view`;
 		let messageTitle = '';
 		if (message.status === 'NEW') {
 			messageTitle = `${content.unread} ${message.getSubject()}`;
@@ -209,7 +209,7 @@ export class SecureMessageSummary extends React.Component {
 		const footerButtons = viewMessageFlag ? (
 			<div>
 				<Link
-					to={`${window.baseURl}/securemessages`}
+					to={`/securemessages`}
 					onClick={this.closeSuccessModal}
 					className="c-btn c-btn--primary c-btn--sm c-modal__button"
 				>
@@ -322,7 +322,7 @@ export class SecureMessageSummary extends React.Component {
 		);
 	}
 	render() {
-		const { message, listFlag, threadFlag, content, viewMessageFlag, messageDetail, messages, isReadOnly } = this.props;
+		const { message, listFlag, threadFlag, content, viewMessageFlag, messageDetail, messages, readOnly } = this.props;
 		const { showSendServiceErrorModal, showDeleteSuccessModal, showDeleteConfirmModal } = this.state;
 		const messageClass = cx({
 			'c-message': true,
@@ -354,6 +354,8 @@ export class SecureMessageSummary extends React.Component {
 		const accNo = message.account.number
 			? message.account.number
 			: content.noSpecificAccount;
+
+		console.log(readOnly)
 		return (
 			<div className={messageClass}>
 				{(message.status === READ || message.status === NEW) &&
@@ -369,9 +371,9 @@ export class SecureMessageSummary extends React.Component {
 							</p>
 						</div>
 						<div className={actionsClass}>
-							{(message.status === NEW || message.status === READ) && !isReadOnly &&
+							{(message.status === NEW || message.status === READ) && !readOnly &&
 								this.getReplyButton(message)}
-							{!threadFlag && !isReadOnly && message.status !== PENDING && this.getDeleteButton()}
+							{!threadFlag && !readOnly && message.status !== PENDING && this.getDeleteButton()}
 							{!threadFlag && message.status === PENDING && this.getPendingStatus()}
 						</div>
 					</div>
