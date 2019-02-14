@@ -17,7 +17,7 @@
     "react-addons-test-utils": "^15.4.1",
     "react-dom": "15.4.1",
     "whatwg-fetch": "^3.0.0",
-    "web-ui-components": "13.0.1"
+    "web-ui-components": "13.2.0"
   },
   "devDependencies": {
     "autosize": "^4.0.0",
