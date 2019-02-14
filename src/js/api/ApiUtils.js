@@ -1,12 +1,14 @@
 import axios from "axios";
+import moment from 'moment';
 
 class ApiUtils {
-  constructor(clientContext, accessToken, bankId) {
+  constructor(clientContext, accessToken, bankId, headers) {
     this.bankId = bankId;
     this.requestHeaders = {
       "x-bpi-client-context": JSON.stringify(clientContext),
       Authorization: `Bearer ${accessToken}`,
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      ...headers
     };
   }
   makeRequest(apiData, onSuccess, onFail) {
@@ -55,5 +57,12 @@ class ApiUtils {
     }
   }
 }
+
+export const getStaffHeaders = (session) => ({
+  "x-bpi-customer-id": session.customer_id,
+  "x-bpi-trust-level": session.accessTokenScope || "40",
+  "x-bpi-trust-created-dt": session.scopeCreatedDate || moment().format("YYYY-MM-DDTHH:mm:ss"),
+  "x-bpi-customer-bank-id": session.bank_id
+});
 
 export default ApiUtils;

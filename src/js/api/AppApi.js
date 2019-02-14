@@ -1,3 +1,4 @@
+import moment from 'moment';
 
 import ApiUtils from './ApiUtils';
 import { parseDraft, deleteMessage, replyMessage, updateMessage } from '../parsers/MessageParser';
@@ -13,9 +14,9 @@ const _getCustomerDetailsEndpoint = '/banks/{bank_id}/customers/{customer_id}';
 
 
 class AppApi {
-	constructor(config, clientContext, session) {
+	constructor(config, clientContext, session, apiUtils = new ApiUtils(clientContext, session.access_token, session.bank_id)) {
 		this.config = config;
-		this.apiUtils = new ApiUtils(clientContext, session.access_token, session.bank_id);
+		this.apiUtils = apiUtils;
 	}
 	fetchSecureMessages(success, error) {
 		this.apiUtils.makeRequest({ url: `${this.config.apiBaseUrl}${_getMessageURLEndpoint}`, method: 'GET', apiVersion: '1.2.0' }, success, error);

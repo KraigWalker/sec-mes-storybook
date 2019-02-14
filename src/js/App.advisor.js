@@ -2,11 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from "react-redux";
 import AppRouter from './router/AppRouter.advisor';
+import { dependencies } from "document-management-web-ui";
+
 import createStore from './stores/AppStore';
 import { getTheme, WebUIThemeProvider } from "web-ui-components/lib/utilities/themes";
 import { setMode } from './actions/AppActions';
 import StringConstants from './constants/StringsConstants';
 import { buildClientContext } from './utils/ContextUtils';
+import AppApi from './api/AppApi';
+import ApiUtils, { getStaffHeaders } from './api/ApiUtils';
 
 export const App = ({ config }) => {
 
@@ -35,7 +39,17 @@ export const App = ({ config }) => {
         apiBaseUrl2: config.ibApiUrl
     }
 
-    const store = createStore(session, clientContext, envConfig);
+    const staffHeaders = getStaffHeaders(session);
+
+    const apiUtils = new ApiUtils(clientContext, session.access_token, session.bank_id, staffHeaders);
+
+    const deps = {
+        native: dependencies.native,
+        api: dependencies.api,
+        secureMessagesApi: new AppApi(envConfig, clientContext, session, apiUtils )
+    }
+
+    const store = createStore(session, clientContext, envConfig, deps);
 
     store.dispatch(setMode(StringConstants.READ_ONLY));
     console.log(AppRouter);
