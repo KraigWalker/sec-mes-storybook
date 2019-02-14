@@ -1,25 +1,21 @@
 import axios from "axios";
-import token from "../token.js";
-const apiParams = {
-  accessToken: token.accessToken(),
-  clientContext: token.getClientContext(),
-  bankId: token.getBankId()
-};
-
-const requestHeaders = {
-  "x-bpi-client-context": JSON.stringify(apiParams.clientContext),
-  Authorization: apiParams.accessToken,
-  "Content-Type": "application/json"
-};
 
 class ApiUtils {
-  static makeRequest(apiData, onSuccess, onFail) {
-    apiData.url = apiData.url.replace("{bank_id}", apiParams.bankId);
-    requestHeaders["x-bpi-version"] = apiData.apiVersion;
+  constructor(clientContext, accessToken, bankId) {
+    this.bankId = bankId;
+    this.requestHeaders = {
+      "x-bpi-client-context": JSON.stringify(clientContext),
+      Authorization: `Bearer ${accessToken}`,
+      "Content-Type": "application/json"
+    };
+  }
+  makeRequest(apiData, onSuccess, onFail) {
+    apiData.url = apiData.url.replace("{bank_id}", this.bankId);
+    this.requestHeaders["x-bpi-version"] = apiData.apiVersion;
     switch (apiData.method) {
       case "GET":
         return axios
-          .get(apiData.url, { headers: requestHeaders })
+          .get(apiData.url, { headers: this.requestHeaders })
           .then(response => {
             onSuccess(response.data);
           })
@@ -28,7 +24,8 @@ class ApiUtils {
           });
       case "POST":
         return axios
-          .post(apiData.url, apiData.requestData, { headers: requestHeaders })
+          .get(apiData.url, { headers: this.requestHeaders })
+          .post(apiData.url, apiData.requestData, { headers: this.requestHeaders })
           .then(response => {
             onSuccess(response);
           })
@@ -37,7 +34,8 @@ class ApiUtils {
           });
       case "PUT":
         return axios
-          .put(apiData.url, apiData.requestData, { headers: requestHeaders })
+          .get(apiData.url, { headers: this.requestHeaders })
+          .put(apiData.url, apiData.requestData, { headers: this.requestHeaders })
           .then(response => {
             onSuccess(response);
           })
@@ -46,7 +44,8 @@ class ApiUtils {
           });
       case "DELETE":
         return axios
-          .delete(apiData.url, apiData.requestData, { headers: requestHeaders })
+          .get(apiData.url, { headers: this.requestHeaders })
+          .delete(apiData.url, apiData.requestData, { headers: this.requestHeaders  })
           .then(response => {
             onSuccess(response.data);
           })

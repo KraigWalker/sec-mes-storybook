@@ -3,7 +3,7 @@ import { parseMessages } from '../parsers/MessageParser';
 import { parseSubjects, parseAccounts } from '../parsers/MessageSubjectParser';
 
 export function fetchSecureMessages() {
-	return function (dispatch, _, { AppApi }) {
+	return function (dispatch, _, { secureMessagesApi }) {
 		const payload = {
 			type: AppConstants.REQUEST_SECURE_MESSAGES,
 		};
@@ -22,11 +22,11 @@ export function fetchSecureMessages() {
 			};
 			dispatch(payload);
 		};
-		AppApi.fetchSecureMessages(success, error);
+		secureMessagesApi.fetchSecureMessages(success, error);
 	};
 }
 export function getMessageSubjects() {
-	return function (dispatch, _, { AppApi }) {
+	return function (dispatch, _, { secureMessagesApi }) {
 		const success = response => {
 			const parseData = parseSubjects(response);
 			const payload = {
@@ -42,11 +42,11 @@ export function getMessageSubjects() {
 			};
 			dispatch(payload);
 		};
-		AppApi.getSubjects(success, error);
+		secureMessagesApi.getSubjects(success, error);
 	};
 }
 export function getAccounts() {
-	return function (dispatch, _, { AppApi }) {
+	return function (dispatch, _, { secureMessagesApi }) {
 		const success = response => {
 			const parseData = parseAccounts(response);
 			const payload = {
@@ -62,7 +62,7 @@ export function getAccounts() {
 			};
 			dispatch(payload);
 		};
-		AppApi.getAccounts(success, error);
+		secureMessagesApi.getAccounts(success, error);
 	};
 }
 
@@ -85,7 +85,7 @@ export function backButton() {
 	};
 }
 export function sendMessageData(requestData, status, name) {
-	return function (dispatch, _, { AppApi }) {
+	return function (dispatch, _, { secureMessagesApi }) {
 		const success = response => {
 			const payload = {
 				type: AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS,
@@ -99,12 +99,12 @@ export function sendMessageData(requestData, status, name) {
 			};
 			dispatch(payload);
 		};
-		AppApi.sendMessageData(requestData, status, name, success, error);
+		secureMessagesApi.sendMessageData(requestData, status, name, success, error);
 	};
 }
 
 export function replyMessageData(requestData, ids, status, name) {
-	return function (dispatch, _, { AppApi }) {
+	return function (dispatch, _, { secureMessagesApi }) {
 		const success = response => {
 			const payload = {
 				type: AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS,
@@ -118,12 +118,12 @@ export function replyMessageData(requestData, ids, status, name) {
 			};
 			dispatch(payload);
 		};
-		AppApi.replyMessageData(requestData, ids, status, name, success, error);
+		secureMessagesApi.replyMessageData(requestData, ids, status, name, success, error);
 	};
 }
 
 export function updateMessageData(requestData, id, status) {
-	return function (dispatch, _, { AppApi }) {
+	return function (dispatch, _, { secureMessagesApi }) {
 		const success = () => {
 			const payload = {
 				type: AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS,
@@ -137,7 +137,7 @@ export function updateMessageData(requestData, id, status) {
 			};
 			dispatch(payload);
 		};
-		AppApi.updateMessageData(requestData, id, status, success, error);
+		secureMessagesApi.updateMessageData(requestData, id, status, success, error);
 	};
 }
 export function setViewMessageDetail(messageDetail) {
@@ -151,7 +151,7 @@ export function setViewMessageDetail(messageDetail) {
 }
 
 export function delMessageData(requestData, id, status) {
-	return function (dispatch, _, { AppApi }) {
+	return function (dispatch, _, { secureMessagesApi }) {
 		const success = () => {
 			const payload = {
 				type: AppConstants.DELETE_SECURE_MESSAGE_SUCCESS,
@@ -165,7 +165,7 @@ export function delMessageData(requestData, id, status) {
 			};
 			dispatch(payload);
 		};
-		AppApi.updateMessageData(requestData, id, status, success, error);
+		secureMessagesApi.updateMessageData(requestData, id, status, success, error);
 	};
 }
 
@@ -198,7 +198,7 @@ export function closeDelModal() {
 }
 
 export function getCustomerID() {
-	return function (dispatch, _, { AppApi }) {
+	return function (dispatch, _, { secureMessagesApi }) {
 		const payload = {
 			type: AppConstants.REQUEST_SEGMENT_DATA,
 		};
@@ -217,12 +217,12 @@ export function getCustomerID() {
 			};
 			dispatch(payload);
 		};
-		AppApi.fetchAccountSegment(success, error);
+		secureMessagesApi.fetchAccountSegment(success, error);
 	};
 }
 
 export function getCustomerName(id) {
-	return function (dispatch, _, { AppApi }) {
+	return function (dispatch, _, { secureMessagesApi }) {
 		const payload = {
 			type: AppConstants.REQUEST_CUSTOMER_NAME,
 		};
@@ -241,7 +241,7 @@ export function getCustomerName(id) {
 			};
 			dispatch(payload);
 		};
-		AppApi.fetchCustomerDetails(success, error, id);
+		secureMessagesApi.fetchCustomerDetails(success, error, id);
 	};
 }
 

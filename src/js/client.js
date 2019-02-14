@@ -4,8 +4,8 @@ import { Provider } from "react-redux";
 import AppRouter from './router/AppRouter';
 import createStore from './stores/AppStore';
 import ConfigUtils from './utils/ConfigUtils';
-import token from "./token";
 import { getTheme, WebUIThemeProvider } from "web-ui-components/lib/utilities/themes";
+import { buildClientContext } from './utils/ContextUtils';
 
 const app = document.getElementById('app');
  /**
@@ -26,7 +26,7 @@ const session = {
   state: hash.state
 };
 
-const clientContext = token.getClientContext();
+const clientContext = buildClientContext(hash.client_context, hash.user_tracking_id, hash.state);
 
 const { brandId, isDocumentLibraryEnabled } = hash;
 const normalisedBrandId = {
@@ -57,7 +57,6 @@ const startApp = () => {
 }
 
 const loadStyles = () => {
-  
   var head = document.getElementsByTagName('head')[0];
   var element = document.createElement('link');
   element.rel = 'stylesheet';
@@ -69,5 +68,5 @@ const initApp = () => {
     ConfigUtils.getConfig(startApp);
     loadStyles()
 }
-
+// DEBTxCYBG: this is not an ideal pattern for initialising an app.
 setTimeout(initApp, 50);

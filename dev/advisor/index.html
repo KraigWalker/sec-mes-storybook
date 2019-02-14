@@ -17,8 +17,11 @@
     <script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
     <% } %>
     <script>
+        var myDocuments = document.URL.lastIndexOf('my-documents') > 0 ? true : false;
+        var path = document.URL.substr(0,document.URL.lastIndexOf(myDocuments ? 'my-documents' : 'securemessages'));
+        window.path = path;
         const meoConfig = {
-            bpiApiUrl: "",
+            bpiApiUrl: "http://localhost:8888",
             ibApiUrl: "http://localhost:8888",
             bankId: "CB",
             brandId: "CB",

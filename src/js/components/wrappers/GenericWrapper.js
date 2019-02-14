@@ -14,8 +14,6 @@ export function withSubscription(WrappedComponent) {
 			super();
 			this.state = {
 				content: this.getcontentBankID(),
-				token: token,
-				fingerprintID: this.fingerPrintID()
 			};
 		}
 		componentWillMount() {
@@ -42,7 +40,7 @@ export function withSubscription(WrappedComponent) {
 
 		render() {
 			return (
-				<WrappedComponent content={this.state.content} token={this.state.token} fingerprintID={this.state.fingerprintID} {...this.props} />
+				<WrappedComponent content={this.state.content} token={this.state.token} {...this.props} />
 			);
 		}
 	});

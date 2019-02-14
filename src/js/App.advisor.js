@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Provider } from "react-redux";
 import AppRouter from './router/AppRouter.advisor';
 import createStore from './stores/AppStore';
-import token from "./token";
 import { getTheme, WebUIThemeProvider } from "web-ui-components/lib/utilities/themes";
 import { setMode } from './actions/AppActions';
 import StringConstants from './constants/StringsConstants';
