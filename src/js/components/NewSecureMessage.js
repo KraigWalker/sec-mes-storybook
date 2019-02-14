@@ -174,7 +174,7 @@ export class NewSecureMessage extends React.Component {
 			const footerButtons = (
 				<div>
 					<Link
-						to={`${window.baseURl}/securemessages`}
+						to={`/securemessages`}
 						onClick={this.leavePage}
 						className="c-btn c-btn--secondary c-modal__button"
 					>
@@ -225,7 +225,7 @@ export class NewSecureMessage extends React.Component {
 		const footerButtons = (
 			<div>
 				<Link
-					to={`${window.baseURl}/securemessages`}
+					to={`/securemessages`}
 					onClick={this.draftOkClicked}
 					className="c-btn c-btn--default c-btn--sm c-modal__button"
 				>
@@ -282,7 +282,7 @@ export class NewSecureMessage extends React.Component {
 		const footerButtons = (
 			<div>
 				<Link
-					to={`${window.baseURl}/securemessages`}
+					to={`/securemessages`}
 					onClick={this.sentOkClicked}
 					className="c-btn c-btn--default c-btn--sm c-modal__button"
 				>
@@ -382,7 +382,7 @@ export class NewSecureMessage extends React.Component {
 		const footerButtons = (
 			<div>
 				<Link
-					to={`${window.baseURl}/securemessages`}
+					to={`/securemessages`}
 					onClick={this.errorCloseClicked}
 					className="c-btn c-btn--default c-btn--sm c-modal__button"
 				>
@@ -446,7 +446,7 @@ export class NewSecureMessage extends React.Component {
 						onClick={() => { }}
 						headerCrumbsMessage={content.back}
 						headerTitle={content.newSecureMessage}
-						headerCrumbsPath={{ pathname: `${window.baseURl}/securemessages` }}
+						headerCrumbsPath={{ pathname: `/securemessages` }}
 					/>
 				</div>
 			</div>
@@ -590,7 +590,7 @@ export class NewSecureMessage extends React.Component {
 							</button>
 						) : (
 								<Link
-									to={`${window.baseURl}/securemessages`}
+									to={`/securemessages`}
 									className="c-btn c-btn--secondary"
 								>
 									{content.back}
