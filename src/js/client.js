@@ -19,10 +19,13 @@ const parseHash = hash => hash
 
 const hash = parseHash(window.location.hash.substring(1));
 
+// clear hash parameters
+window.location.hash = '';
+
 const session = {
   access_token: hash.access_token,
   bank_id: hash.bank_id,
-  brand: hash.branId,
+  brand: hash.brandId,
   state: hash.state
 };
 
@@ -47,6 +50,7 @@ const theme = {
 };
 
 const startApp = () => {
+  console.log(ConfigUtils.config)
   const store = createStore(session, clientContext, ConfigUtils.config)
   ReactDOM.render(
     <Provider store={store}>

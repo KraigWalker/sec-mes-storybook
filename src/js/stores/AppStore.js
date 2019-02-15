@@ -1,13 +1,15 @@
 import { applyMiddleware, createStore } from "redux"
-import { buildMiddleware } from "document-management-web-ui";
+import { buildMiddleware, dependencies as docDependencies } from "document-management-web-ui";
 import AppApi from "../api/AppApi";
 import reducer from "../reducers";
 
 const middleware = (session, clientContext, config, dependencies = {
-    native: dependencies.native,
-    api: dependencies.api,
+    native: docDependencies.native,
+    api: new docDependencies.Api(clientContext, session, {
+        apiBaseUrl: config.apiBaseUrl2
+    }), // documentManagmentApi
     secureMessagesApi: new AppApi(config, clientContext, session)
-}) => { 
+}) => {
     return applyMiddleware(
         buildMiddleware(clientContext, session, { apiBaseUrl: config.apiBaseUrl2 }, dependencies)
     );

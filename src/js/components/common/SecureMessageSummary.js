@@ -355,7 +355,6 @@ export class SecureMessageSummary extends React.Component {
 			? message.account.number
 			: content.noSpecificAccount;
 
-		console.log(readOnly)
 		return (
 			<div className={messageClass}>
 				{(message.status === READ || message.status === NEW) &&

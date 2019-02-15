@@ -1,19 +1,30 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import content from '../../content';
-import token from '../../token';
 
 import { fetchSecureMessages, getAccounts, getCustomerID } from '../../actions/AppActions';
+
+const getContent = (brand) => {
+	switch (brand) {
+		case 'CB':
+		case 'YB':
+			return content.CB;
+		case 'DYB':
+			return content.DYB;
+	}
+}
 
 export function withSubscription(WrappedComponent) {
 	const mapState = state => ({
 		fetched: state.messages.fetched,
 	});
 	return connect(mapState)(class extends React.PureComponent {
-		constructor() {
-			super();
+		constructor(props) {
+			super(props);
+			const { brand } = props.session;
+
 			this.state = {
-				content: this.getcontentBankID(),
+				content: getContent(brand)
 			};
 		}
 		componentWillMount() {
@@ -25,19 +36,6 @@ export function withSubscription(WrappedComponent) {
 		componentWillReceiveProps(nextProps) {
 			!nextProps.fetched && this.props.dispatch(fetchSecureMessages());
 		}
-		getcontentBankID() {
-			switch (token.getContentBankId()) {
-				case 'CB':
-				case 'YB':
-					return content.CB;
-				case 'DYB':
-					return content.DYB;
-			}
-		}
-		fingerPrintID() {
-			return token.getFingerPrints();
-		}
-
 		render() {
 			return (
 				<WrappedComponent content={this.state.content} token={this.state.token} {...this.props} />

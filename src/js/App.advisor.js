@@ -19,7 +19,8 @@ export const App = ({ config }) => {
     const session = {
         access_token: config.accessToken,
         bank_id: config.bankId,
-        brand: config.branId
+        brand: config.brandId,
+        customer_id: config.customerNumber
     };
 
     const defaultTheme = getTheme(config.brandId);
@@ -50,9 +51,8 @@ export const App = ({ config }) => {
     }
 
     const store = createStore(session, clientContext, envConfig, deps);
-
     store.dispatch(setMode(StringConstants.READ_ONLY));
-    console.log(AppRouter);
+
     return (
         <Provider store={store}>
             <WebUIThemeProvider theme={theme}>
