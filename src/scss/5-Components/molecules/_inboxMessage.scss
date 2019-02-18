@@ -2,7 +2,6 @@
     display: flex;
     // margin-top: get-px(b);
     border: 1px solid bow-palette(grey, base, base);
-    max-width: 640px;
     margin-bottom: get-px(c);
     &.c-message--stacked {
         border-bottom: 0;
@@ -171,7 +170,6 @@
 
 .c-messagelist {
     padding: 0;
-    max-width: 640px;
     margin-bottom: get-px(c);
     
     &__wrapper {

@@ -18,12 +18,14 @@ export class Main extends React.Component {
 	}
 
 	handleDocumentPortalClick() {
-		const { history } = this.props;
-		history.push(`/my-documents`)
+		const { history, session } = this.props;
+		console.log(this.props);
+		history.push(`/my-documents/${session.brand}`)
 
 	}
 
 	render() {
+		console.log(this.props);
 		const { location, isWebView, isDocumentLibraryEnabled } = this.props;
 		return (
 			<div className="container">
