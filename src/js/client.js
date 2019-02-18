@@ -50,7 +50,6 @@ const theme = {
 };
 
 const startApp = () => {
-  console.log(ConfigUtils.config)
   const store = createStore(session, clientContext, ConfigUtils.config)
   ReactDOM.render(
     <Provider store={store}>
