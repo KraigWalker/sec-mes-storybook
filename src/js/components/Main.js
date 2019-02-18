@@ -19,7 +19,6 @@ export class Main extends React.Component {
 
 	handleDocumentPortalClick() {
 		const { history, session } = this.props;
-		console.log(this.props);
 		history.push(`/my-documents/${session.brand}`)
 
 	}

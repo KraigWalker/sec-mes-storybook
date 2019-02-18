@@ -19,13 +19,13 @@ import GetIcon from "./common/GetIcon";
 import ModalComponent from "./common/ModalComponent";
 import { READ, PENDING, SENT, DELETED, READ_ONLY } from '../constants/StringsConstants';
 
-const Attachments = () => (
+const Attachments = ({ session }) => (
 	<div className="c-message--attachments">
 		<h4>Attachments</h4>
 		<ul>
 			<li>
 				<Link
-					to={{ pathname: `/my-documents` }}
+					to={{ pathname: `/my-documents/${session.brand}` }}
 				>
 					New documents available
 				</Link>
@@ -255,7 +255,7 @@ export class ViewMessage extends React.Component {
 			? this.props.location
 			: this.props;
 
-		const { hasAttachment, readOnly } = this.props;
+		const { hasAttachment, readOnly, session } = this.props;
 
 		return (
 			<div className="row centralised-container c-card">
@@ -281,7 +281,7 @@ export class ViewMessage extends React.Component {
 						content={this.props.content}
 					/>
 					<pre>{messageDetail.message}</pre>
-					{ hasAttachment && <Attachments /> }
+					{ hasAttachment && <Attachments session={session} /> }
 					<div className="c-btn--group">
 						{this.getBackButton()}
 						{messageDetail.status !== PENDING && !readOnly && this.getDeleteButton(messageDetail)}
