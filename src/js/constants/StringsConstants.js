@@ -15,4 +15,14 @@ const StringConstants = {
     READ_ONLY: 'READ_ONLY',
 }
 
-module.exports = StringConstants;
+export const PENDING = 'PENDING';
+export const DELETED = 'DELETED';
+export const READ = 'READ';
+export const NEW = 'NEW';
+export const SENT = 'SENT';
+export const DRAFT = 'DRAFT';
+export const INBOX = 'INBOX';
+export const READ_ONLY = 'READ_ONLY';
+
+
+export default StringConstants
