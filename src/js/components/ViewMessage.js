@@ -62,6 +62,7 @@ export class ViewMessage extends React.Component {
 
 	componentDidMount() {
 		const { messageDetail } = this.props.location;
+		const { isWebView, setMessagesMetaData, messages } = this.props;
 		messageDetail &&
 			this.props.dispatch(
 				setViewMessageDetail(this.props.location.messageDetail)
@@ -75,6 +76,10 @@ export class ViewMessage extends React.Component {
 					'READ'
 				)
 			);
+			if (isWebView) {
+				const unreadMessageCount = messages.messages.filter(message => message.status === "NEW").length
+				setMessagesMetaData({ unread: unreadMessageCount - 1 });
+			}
 		}
 		this.props.dispatch(popupState());
 		window.scrollTo(0, 0);
