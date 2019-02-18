@@ -1,4 +1,7 @@
 import React from "react";
+import { compose } from "redux";
+import { utils } from "document-management-web-ui";
+
 import StepHeader from "./common/StepHeader";
 import SecureMessageSummary from "./common/SecureMessageSummary";
 import TextArea from "./common/TextAreaComponent";
@@ -317,4 +320,7 @@ const mapState = state => ({
 	hasAttachment: state.viewMessage.messageDetail.subject === "DOCUMENT"
 });
 
-export default connect(mapState)(ViewMessage);
+export default compose(
+	connect(mapState),
+	utils.withNativeBridge(window.navigator.userAgent)
+)(ViewMessage);
