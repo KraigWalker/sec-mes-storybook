@@ -51,7 +51,7 @@ module.exports = {
 						loader:"sass-loader",
 						options: {
             	data: `$brand: ${brand};$env: prod;`
-            }
+          	}
 					}]
 				}),
 			},
