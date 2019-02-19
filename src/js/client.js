@@ -28,8 +28,7 @@ const session = {
   brand: hash.brandId,
   state: hash.state
 };
-
-const clientContext = buildClientContext(hash.client_context, hash.user_tracking_id, hash.state);
+const clientContext = buildClientContext(decodeURIComponent(hash.client_context), hash.user_tracking_id, hash.state);
 
 const { brandId, isDocumentLibraryEnabled } = hash;
 const normalisedBrandId = {

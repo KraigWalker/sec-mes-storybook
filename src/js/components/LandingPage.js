@@ -6,12 +6,9 @@ import { utils } from "document-management-web-ui";
 
 import StringConstants from "../constants/StringsConstants";
 import SecureMessageTabs from './SecureMessageTabs';
-import StepHeader from './common/StepHeader';
 import { SecureMessageBL } from '../bl/SecureMessageBL'
 import GetIcon from './common/GetIcon';
-import ErrorPage from './common/ErrorPage';
 import SvgIcon from './common/GetIcon.js';
-const Fingerprint = require('fingerprintjs2');
 /**
  * @class Landing Page
  * Landing Page of the application
