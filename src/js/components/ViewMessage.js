@@ -1,4 +1,7 @@
 import React from "react";
+import { compose } from "redux";
+import { utils } from "document-management-web-ui";
+
 import StepHeader from "./common/StepHeader";
 import SecureMessageSummary from "./common/SecureMessageSummary";
 import TextArea from "./common/TextAreaComponent";
@@ -62,6 +65,7 @@ export class ViewMessage extends React.Component {
 
 	componentDidMount() {
 		const { messageDetail } = this.props.location;
+		const { isWebView, setMessagesMetaData, messages } = this.props;
 		messageDetail &&
 			this.props.dispatch(
 				setViewMessageDetail(this.props.location.messageDetail)
@@ -75,6 +79,10 @@ export class ViewMessage extends React.Component {
 					'READ'
 				)
 			);
+			if (isWebView) {
+				const unreadMessageCount = messages.messages.filter(message => message.status === "NEW").length
+				setMessagesMetaData({ unread: unreadMessageCount - 1 });
+			}
 		}
 		this.props.dispatch(popupState());
 		window.scrollTo(0, 0);
@@ -312,4 +320,7 @@ const mapState = state => ({
 	hasAttachment: state.viewMessage.messageDetail.subject === "DOCUMENT"
 });
 
-export default connect(mapState)(ViewMessage);
+export default compose(
+	connect(mapState),
+	utils.withNativeBridge(window.navigator.userAgent)
+)(ViewMessage);
