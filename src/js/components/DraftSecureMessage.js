@@ -100,7 +100,7 @@ export class DraftSecureMessage extends React.Component {
 
 	returnModalComponent() {
 		const bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>{this.props.content.messageSent}</div>;
-		const footerButtons = <div><Link to={`${window.baseURl}/securemessages`} onClick={this.sentOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">{this.props.content.ok}</Link></div>;
+		const footerButtons = <div><Link to={`/securemessages`} onClick={this.sentOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">{this.props.content.ok}</Link></div>;
 		return (<ModalComponent
 			show
 			customClass="c-modal c-modal--center"
@@ -117,7 +117,7 @@ export class DraftSecureMessage extends React.Component {
 	}
 	returnDraftModal() {
 		const bodyContent = <div><div><GetIcon id="icon-success" width="68px" height="68px" /></div>{this.props.content.draftBody}</div>;
-		const footerButtons = <div><Link to={`${window.baseURl}/securemessages`} onClick={this.draftOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">{this.props.content.ok}</Link></div>;
+		const footerButtons = <div><Link to={`/securemessages`} onClick={this.draftOkClicked} className="c-btn c-btn--default c-btn--sm c-modal__button">{this.props.content.ok}</Link></div>;
 		return (<ModalComponent
 			show
 			customClass="c-modal c-modal--center"
@@ -216,7 +216,7 @@ export class DraftSecureMessage extends React.Component {
 		return (
 			<div className="row centralised-container c-card">
 				<div className="col-md1-24 col-sm1-24 col-lg1-24">
-					<StepHeader showheaderCrumbs onClick={() => { }} headerCrumbsMessage={content.back} headerTitle={content.editSavedMessage} headerCrumbsPath={{ pathname: `${window.baseURl}/securemessages` }} />
+					<StepHeader showheaderCrumbs onClick={() => { }} headerCrumbsMessage={content.back} headerTitle={content.editSavedMessage} headerCrumbsPath={{ pathname: `/securemessages` }} />
 					<div className="c-field">
 						<label className="c-field__label c-field__label--block" htmlFor="subjects">
 							{content.subject}
@@ -251,7 +251,7 @@ export class DraftSecureMessage extends React.Component {
 					{messages.draftError && showSaveServiceErrorModal && this.returnErrorModal()}
 					{messages.draftError && showSendServiceErrorModal && this.returnErrorModal()}
 					<div className="c-btn--group">
-						<Link to={`${window.baseURl}/securemessages`} className="c-btn c-btn--secondary">{content.back} </Link>
+						<Link to={`/securemessages`} className="c-btn c-btn--secondary">{content.back} </Link>
 						<button name="Save Draft" className="c-btn c-btn--secondary" onClick={this.saveDraftData} disabled={disabled}>{content.saveDraft}</button>
 						<button name="Send" className="c-btn c-btn--default" onClick={this.sendData} disabled={disabled}>{content.send}</button>
 					</div>

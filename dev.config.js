@@ -45,13 +45,13 @@ module.exports = {
 				use: ExtractTextPlugin.extract({
 					fallback: "style-loader",
 					use:[{
-							loader: "css-loader"
-						},
-						{
+						loader: "css-loader"
+					},
+					{
 						loader:"sass-loader",
 						options: {
-                            data: `$brand: ${brand};$env: prod;`
-                        }
+							data: `$brand: ${brand};$env: prod;`
+						}
 					}]
 				}),
 			},

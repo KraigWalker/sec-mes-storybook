@@ -28,7 +28,7 @@ const RoutesWithLayout = (props) => (
     <Switch>
         <RouteWithLayout
             exact
-            path={`${window.baseURl}/securemessages/view`}
+            path={`/securemessages/view`}
             Component={ViewMessage}
             content={props.content}
             isDocumentLibraryEnabled={props.isDocumentLibraryEnabled}
@@ -36,7 +36,7 @@ const RoutesWithLayout = (props) => (
         />
         <RouteWithLayout
             exact
-            path={`${window.baseURl}/securemessages/new`}
+            path={`/securemessages/new`}
             Component={NewSecureMessage}
             content={props.content}
             isDocumentLibraryEnabled={props.isDocumentLibraryEnabled}
@@ -44,7 +44,7 @@ const RoutesWithLayout = (props) => (
         />
         <RouteWithLayout
             exact
-            path={`${window.baseURl}/securemessages/reply`}
+            path={`/securemessages/reply`}
             Component={ReplySecuremessage}
             content={props.content}
             isDocumentLibraryEnabled={props.isDocumentLibraryEnabled}
@@ -52,14 +52,14 @@ const RoutesWithLayout = (props) => (
         />
         <RouteWithLayout
             exact
-            path={`${window.baseURl}/securemessages/draft`}
+            path={`/securemessages/draft`}
             Component={DraftSecureMessage}
             content={props.content}
             isDocumentLibraryEnabled={props.isDocumentLibraryEnabled}
             session={props.session}
         />
         <RouteWithLayout
-            path={`${window.baseURl}/securemessages`}
+            path={`/securemessages`}
             Component={LandingPage}
             content={props.content}
             isDocumentLibraryEnabled={props.isDocumentLibraryEnabled}
@@ -68,7 +68,7 @@ const RoutesWithLayout = (props) => (
         <Redirect
             exact
             from = '/'
-            to = {`${window.baseURl}/securemessages`}
+            to = {`/securemessages`}
             key='redirect'
         />    
     </Switch>
@@ -84,16 +84,16 @@ class AppRouter extends React.Component {
       render() {
         const { isDocumentLibraryEnabled } = this.props;
         return (
-            <BrowserRouter>
+            <BrowserRouter basename={window.baseURl}>
                 <div>
-                    <Route path={`${window.baseURl}/securemessages`} render={() => (
+                    <Route path={`/securemessages`} render={() => (
                         <RoutesWithLayoutAndSubscription {...this.props} />
                     )} />
                     <AccessibilityMessage/>
                     <RouteWithLayout path='/errormessage' Component={ErrorPage} />
                     <Switch>
                         <RouteWithLayout
-                            path={`${window.baseURl}/my-documents/:bankId(CB|YB|DYB)`}
+                            path={`/my-documents/:bankId(CB|YB|DYB)`}
                             exact
                             Component={FolderList}
                             session={this.props.session}
@@ -104,12 +104,12 @@ class AppRouter extends React.Component {
                             Component={DocumentList}
                             session={this.props.session}
                             client={this.props.client}
-                            path={`${window.baseURl}/my-documents/:bankId(CB|YB|DYB)/:displayCategory`}
+                            path={`/my-documents/:bankId(CB|YB|DYB)/:displayCategory`}
                             isDocumentLibraryEnabled={isDocumentLibraryEnabled}
                             exact
                         />
                         <Route 
-                            path={`${window.baseURl}/my-documents/:bankId(CB|YB|DYB)/:displayCategory/:documentId`}
+                            path={`/my-documents/:bankId(CB|YB|DYB)/:displayCategory/:documentId`}
                             exact
                             component={DocumentView}
                         />

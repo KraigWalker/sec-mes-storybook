@@ -14,13 +14,12 @@ export class Main extends React.Component {
 	}
 	handleSecureMessagesClick() {
 		const { history } = this.props;
-		history.push(`${window.baseURl}/securemessages`)
+		history.push(`/securemessages`)
 	}
 
 	handleDocumentPortalClick() {
 		const { history, session } = this.props;
-		console.log(this.props);
-		history.push(`${window.baseURl}/my-documents/${session.brand}`)
+		history.push(`/my-documents/${session.brand}`)
 
 	}
 
