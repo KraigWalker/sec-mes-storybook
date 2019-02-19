@@ -2,7 +2,7 @@
   "name": "secure-messaging",
   "version": "1.0.0",
   "description": "Secure Message Web application",
-  "main": "index.js",
+  "main": "lib/index.js",
   "dependencies": {
     "babel-jest": "^22.4.3",
     "babel-preset-env": "^1.6.1",
@@ -20,6 +20,7 @@
     "web-ui-components": "13.2.0"
   },
   "devDependencies": {
+    "autoprefixer": "9.4.7",
     "autosize": "^4.0.0",
     "axios": "^0.12.0",
     "babel-core": "^6.18.2",
@@ -31,6 +32,7 @@
     "babel-preset-react": "^6.3.13",
     "cross-env": "^5.1.1",
     "css-loader": "^0.28.7",
+    "cssnano": "4.1.10",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-15.4": "^1.0.5",
     "enzyme-to-json": "^3.3.3",
@@ -46,6 +48,8 @@
     "lodash": "^4.17.4",
     "moment": "^2.19.2",
     "node-sass": "4.5.3",
+    "postcss": "7.0.14",
+    "postcss-url": "8.0.0",
     "prop-types": "^15.6.0",
     "react-bootstrap": "^0.31.5",
     "react-bootstrap-modal": "^3.0.1",
@@ -58,7 +62,7 @@
     "redux-logger": "^2.6.1",
     "redux-test-utils": "^0.2.2",
     "redux-thunk": "^2.1.0",
-    "rollup": "0.67.4",
+    "rollup": "1.2.2",
     "rollup-plugin-babel": "3.0.7",
     "rollup-plugin-commonjs": "9.2.0",
     "rollup-plugin-css-only": "0.4.0",

@@ -3,6 +3,10 @@ import multiEntry from "rollup-plugin-multi-entry";
 import json from "rollup-plugin-json";
 import sass from "rollup-plugin-sass";
 import babel from "rollup-plugin-babel";
+import postcss from 'postcss';
+import autoprefixer from 'autoprefixer';
+import cssnano from 'cssnano';
+import url from "postcss-url";
 
 const webUIExternals = {
   global: ["layout"],
@@ -67,18 +71,43 @@ export default [
     ]
   },
   ...["CB", "YB", "DYB"].map(brand => ({
-    input: "./src/scss/main.js",
+    input: `${__dirname}/src/scss/main.scss`,
     output: {
       format: "cjs",
-      file: "./lib/scss.js",
+      dir: "lib",
     },
+    external: [
+      "moment",
+      "prop-types",
+      "react-hot-loader",
+      "react-router-dom",
+      "react-redux",
+      "reselect",
+      "react",
+      "redux",
+      "react-dom",
+      "react-router",
+      "redux-thunk",
+      ...webUIExternalsFlat
+    ],
     plugins: [
       sass({
+        output: `lib/app.${brand}.css`,
         options: {
           data: `$brand: ${brand};$env: prod;`
         },
-        output: `./lib/app.${brand}.css`,
-      })
+        processor: css => postcss([autoprefixer, cssnano({ preset: 'default' })])
+            .use(
+              url({
+                url: 'inline',
+              })
+            )
+            .process(css, {
+              from: `${__dirname}/src/scss/main.scss`,
+              to: `lib/app.${brand}.css`,
+            })
+            .then(result => result.css)
+        })
     ]
   })),
 ];
