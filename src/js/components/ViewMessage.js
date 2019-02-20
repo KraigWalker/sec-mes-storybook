@@ -61,26 +61,29 @@ export class ViewMessage extends React.Component {
 
 	componentDidMount() {
 		const { messageDetail } = this.props.location;
-		const { isWebView, setMessagesMetaData, messages } = this.props;
+		const { isWebView, setMessagesMetaData, messages, readOnly, dispatch } = this.props;
+
 		messageDetail &&
-			this.props.dispatch(
-				setViewMessageDetail(this.props.location.messageDetail)
+			dispatch(
+				setViewMessageDetail(messageDetail)
 			); // to set current viewing message
 		// Below is to update New message to Read message status.
-		if (messageDetail && this.props.location.messageDetail.status === 'NEW') {
-			this.props.dispatch(
-				updateMessageData(
-					this.props.location.messageDetail,
-					this.props.location.messageDetail.id,
-					'READ'
-				)
-			);
+		if (messageDetail && messageDetail.status === 'NEW') {
+			if (!readOnly) {
+				dispatch(
+					updateMessageData(
+						messageDetail,
+						messageDetail.id,
+						'READ'
+					)
+				);
+			}
 			if (isWebView) {
 				const unreadMessageCount = messages.messages.filter(message => message.status === "NEW").length
 				setMessagesMetaData({ unread: unreadMessageCount - 1 });
 			}
 		}
-		this.props.dispatch(popupState());
+		dispatch(popupState());
 		window.scrollTo(0, 0);
 	}
 	getThreads(messages, currentMessage) {
