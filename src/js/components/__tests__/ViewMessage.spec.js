@@ -195,6 +195,37 @@ describe("View Message snapshot", () => {
         shallow(<ViewMessage {...props} />);
         expect(props.setMessagesMetaData).not.toHaveBeenCalled();
     });
+
+    it("does not update message status to read when in readOnly mode", () => {
+        let props = {
+            content: {
+                sentPageTitle: 'sentPageTitle',
+            },
+            activeTab: 'SENT',
+            messages: {
+                draftError: true,
+                successModal: true,
+                filter: filter,
+                messages: [
+                    { status: 'NEW' }, { status: 'NEW' }, { status: 'NEW' }
+                ]
+            },
+            location: {
+                messageDetail: { status: 'NEW' }
+            },
+            messagesFetched: {
+                fetching: false,
+                successModal: false
+            },
+            dispatch: jest.fn(),
+            setMessagesMetaData: jest.fn(),
+            hasAttachment: false,
+            isWebView: false,
+            readOnly: true,
+        };
+        shallow(<ViewMessage {...props} />);
+        expect(props.dispatch).toHaveBeenCalledTimes(2);
+    });
 });
 describe("Main snapshot", () => {
     const dispatch = jest.fn();
