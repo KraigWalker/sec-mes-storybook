@@ -37,3 +37,7 @@ To deploy changes to secure messages into INT do the following:
 
 
 NOTE: there is an unadrressed caching issue which means you may need to clear cache to see changes
+
+### Rollback
+
+To rollback a secure messages build simply deploy the previously deployed build using [Deploy Secure Messaging](http://jenkins-dev.eu.nag.net/V2/job/Web-Apps/job/Deploy%20secure-messaging%20v1.0/)
