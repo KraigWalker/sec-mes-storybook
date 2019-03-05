@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from "react-redux";
+import svg4everybody from "svg4everybody";
 import AppRouter from './router/AppRouter';
 import createStore from './stores/AppStore';
 import ConfigUtils from './utils/ConfigUtils';
 import { getTheme, WebUIThemeProvider } from "web-ui-components/lib/utilities/themes";
 import { buildClientContext } from './utils/ContextUtils';
+
+svg4everybody();
 
 const app = document.getElementById('app');
  /**
