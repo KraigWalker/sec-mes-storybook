@@ -1,4 +1,7 @@
 import React from "react";
+import { compose } from "redux";
+import { utils } from "document-management-web-ui";
+
 import StepHeader from "./common/StepHeader";
 import SecureMessageSummary from "./common/SecureMessageSummary";
 import TextArea from "./common/TextAreaComponent";
@@ -7,29 +10,25 @@ import _ from "lodash";
 import { connect } from "react-redux";
 import {
 	setViewMessageDetail,
-	updateMessage,
 	updateMessageData,
 	popupState
 } from "../actions/AppActions";
 import { getThreadsBL } from "../bl/SecureMessageBL";
 import {
 	getMessageType,
-	updateMessageStatus
 } from "../utils/SecureMessageUtils";
 import { Link } from "react-router-dom";
 import GetIcon from "./common/GetIcon";
-import SendMessageRequestEntity from "../entities/SendMessageRequestEntity.js";
 import ModalComponent from "./common/ModalComponent";
-import { sendDeleteData } from "../actions/AppActions";
-import { NEW, READ, DRAFT, PENDING, SENT, DELETED } from '../constants/StringsConstants';
+import { READ, PENDING, SENT, DELETED, READ_ONLY } from '../constants/StringsConstants';
 
-const Attachments = () => (
+const Attachments = ({ session }) => (
 	<div className="c-message--attachments">
 		<h4>Attachments</h4>
 		<ul>
 			<li>
 				<Link
-					to={{ pathname: `${window.baseURl}/my-documents` }}
+					to={{ pathname: `/my-documents/${session.brand}` }}
 				>
 					New documents available
 				</Link>
@@ -62,21 +61,29 @@ export class ViewMessage extends React.Component {
 
 	componentDidMount() {
 		const { messageDetail } = this.props.location;
+		const { isWebView, setMessagesMetaData, messages, readOnly, dispatch } = this.props;
+
 		messageDetail &&
-			this.props.dispatch(
-				setViewMessageDetail(this.props.location.messageDetail)
+			dispatch(
+				setViewMessageDetail(messageDetail)
 			); // to set current viewing message
 		// Below is to update New message to Read message status.
-		if (messageDetail && this.props.location.messageDetail.status === 'NEW') {
-			this.props.dispatch(
-				updateMessageData(
-					this.props.location.messageDetail,
-					this.props.location.messageDetail.id,
-					'READ'
-				)
-			);
+		if (messageDetail && messageDetail.status === 'NEW') {
+			if (!readOnly) {
+				dispatch(
+					updateMessageData(
+						messageDetail,
+						messageDetail.id,
+						'READ'
+					)
+				);
+			}
+			if (isWebView) {
+				const unreadMessageCount = messages.messages.filter(message => message.status === "NEW").length
+				setMessagesMetaData({ unread: unreadMessageCount - 1 });
+			}
 		}
-		this.props.dispatch(popupState());
+		dispatch(popupState());
 		window.scrollTo(0, 0);
 	}
 	getThreads(messages, currentMessage) {
@@ -87,7 +94,7 @@ export class ViewMessage extends React.Component {
 		if (getMessageType(message.status) !== SENT) {
 			return (
 				<Link
-					to={{ pathname: `${window.baseURl}/securemessages/reply`, backPath: `${window.baseURl}/securemessages/view`, messageDetail: message }}
+					to={{ pathname: `/securemessages/reply`, backPath: `/securemessages/view`, messageDetail: message }}
 					className="c-btn c-btn--primary"
 				>
 				{this.props.content.replyMessageTitle}
@@ -131,7 +138,7 @@ export class ViewMessage extends React.Component {
 	getBackButton() {
 		return (
 			<Link
-				to={{ pathname: `${window.baseURl}/securemessages` }}
+				to={{ pathname: `/securemessages` }}
 				className="c-btn c-btn--secondary"
 			>
 				{this.props.content.back}
@@ -187,7 +194,7 @@ export class ViewMessage extends React.Component {
 		);
 		const footerButtons = (
 			<Link
-				to={`${window.baseURl}/securemessages`}
+				to={`/securemessages`}
 				onClick={this.closeSuccessModal}
 				className="c-btn c-btn--default c-btn--sm c-modal__button"
 			>
@@ -259,7 +266,7 @@ export class ViewMessage extends React.Component {
 			? this.props.location
 			: this.props;
 
-		const { hasAttachment } = this.props;
+		const { hasAttachment, readOnly, session } = this.props;
 
 		return (
 			<div className="row centralised-container c-card">
@@ -267,7 +274,7 @@ export class ViewMessage extends React.Component {
 					<StepHeader
 						showheaderCrumbs
 						headerCrumbsPath={{
-							pathname: `${window.baseURl}/securemessages`,
+							pathname: `/securemessages`,
 						}}
 						headerCrumbsMessage="Back"
 						headerTitle={
@@ -285,11 +292,11 @@ export class ViewMessage extends React.Component {
 						content={this.props.content}
 					/>
 					<pre>{messageDetail.message}</pre>
-					{ hasAttachment && <Attachments /> }
+					{ hasAttachment && <Attachments session={session} /> }
 					<div className="c-btn--group">
 						{this.getBackButton()}
-						{messageDetail.status !== PENDING && this.getDeleteButton(messageDetail)}
-						{this.getReplyButton(messageDetail)}
+						{messageDetail.status !== PENDING && !readOnly && this.getDeleteButton(messageDetail)}
+						{!readOnly && this.getReplyButton(messageDetail)}
 					</div>
 					{this.state.showDeleteConfirmModal && this.returnModalComponent()}
 					{this.state.showDeleteSuccessModal &&
@@ -307,9 +314,13 @@ export class ViewMessage extends React.Component {
 }
 
 const mapState = state => ({
+	readOnly: state.messages.mode === READ_ONLY,
 	messages: state.messages,
 	messageDetail: state.viewMessage.messageDetail,
 	hasAttachment: state.viewMessage.messageDetail.subject === "DOCUMENT"
 });
 
-export default connect(mapState)(ViewMessage);
+export default compose(
+	connect(mapState),
+	utils.withNativeBridge(window.navigator.userAgent)
+)(ViewMessage);

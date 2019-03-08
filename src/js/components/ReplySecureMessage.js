@@ -165,7 +165,7 @@ export class ReplySecureMessage extends React.Component {
 		);
 		const footerButtons = (
 			<Link
-				to={`${window.baseURl}/securemessages`}
+				to={`/securemessages`}
 				onClick={this.sentOkClicked}
 				className="c-btn c-btn--default c-btn--sm c-modal__button"
 			>
@@ -201,7 +201,7 @@ export class ReplySecureMessage extends React.Component {
 		);
 		const footerButtons = (
 			<Link
-				to={`${window.baseURl}/securemessages`}
+				to={`/securemessages`}
 				onClick={this.draftOkClicked}
 				className="c-btn c-btn--default c-btn--sm c-modal__button"
 			>
@@ -287,7 +287,7 @@ export class ReplySecureMessage extends React.Component {
 			);
 			const footerButtons = (
 				<div>
-					<Link to={`${window.baseURl}/securemessages`}>
+					<Link to={`/securemessages`}>
 						<button
 							type="button"
 							onClick={this.leavePage}
@@ -538,7 +538,7 @@ export class ReplySecureMessage extends React.Component {
 							</button>
 						) : (
 								<Link
-									to={`${window.baseURl}/securemessages`}
+									to={`/securemessages`}
 									className="c-btn c-btn--secondary"
 								>
 									{content.back}{' '}

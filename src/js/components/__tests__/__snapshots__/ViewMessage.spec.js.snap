@@ -62,7 +62,7 @@ ShallowWrapper {
           headerCrumbsMessage="Back"
           headerCrumbsPath={
             Object {
-              "pathname": "undefined/securemessages",
+              "pathname": "/securemessages",
             }
           }
           headerTitle={undefined}
@@ -93,7 +93,7 @@ ShallowWrapper {
             replace={false}
             to={
               Object {
-                "pathname": "undefined/securemessages",
+                "pathname": "/securemessages",
               }
             }
           />
@@ -106,11 +106,11 @@ ShallowWrapper {
             replace={false}
             to={
               Object {
-                "backPath": "undefined/securemessages/view",
+                "backPath": "/securemessages/view",
                 "messageDetail": Object {
                   "status": "sent",
                 },
-                "pathname": "undefined/securemessages/reply",
+                "pathname": "/securemessages/reply",
               }
             }
           />
@@ -137,7 +137,7 @@ ShallowWrapper {
             headerCrumbsMessage="Back"
             headerCrumbsPath={
               Object {
-                "pathname": "undefined/securemessages",
+                "pathname": "/securemessages",
               }
             }
             headerTitle={undefined}
@@ -169,7 +169,7 @@ ShallowWrapper {
               replace={false}
               to={
                 Object {
-                  "pathname": "undefined/securemessages",
+                  "pathname": "/securemessages",
                 }
               }
             />
@@ -182,11 +182,11 @@ ShallowWrapper {
               replace={false}
               to={
                 Object {
-                  "backPath": "undefined/securemessages/view",
+                  "backPath": "/securemessages/view",
                   "messageDetail": Object {
                     "status": "sent",
                   },
-                  "pathname": "undefined/securemessages/reply",
+                  "pathname": "/securemessages/reply",
                 }
               }
             />
@@ -214,7 +214,7 @@ ShallowWrapper {
           "props": Object {
             "headerCrumbsMessage": "Back",
             "headerCrumbsPath": Object {
-              "pathname": "undefined/securemessages",
+              "pathname": "/securemessages",
             },
             "headerTitle": undefined,
             "showControl": false,
@@ -266,7 +266,7 @@ ShallowWrapper {
                 replace={false}
                 to={
                   Object {
-                    "pathname": "undefined/securemessages",
+                    "pathname": "/securemessages",
                   }
                 }
               />,
@@ -279,11 +279,11 @@ ShallowWrapper {
                 replace={false}
                 to={
                   Object {
-                    "backPath": "undefined/securemessages/view",
+                    "backPath": "/securemessages/view",
                     "messageDetail": Object {
                       "status": "sent",
                     },
-                    "pathname": "undefined/securemessages/reply",
+                    "pathname": "/securemessages/reply",
                   }
                 }
               />,
@@ -301,7 +301,7 @@ ShallowWrapper {
                 "className": "c-btn c-btn--secondary",
                 "replace": false,
                 "to": Object {
-                  "pathname": "undefined/securemessages",
+                  "pathname": "/securemessages",
                 },
               },
               "ref": null,
@@ -330,11 +330,11 @@ ShallowWrapper {
                 "className": "c-btn c-btn--primary",
                 "replace": false,
                 "to": Object {
-                  "backPath": "undefined/securemessages/view",
+                  "backPath": "/securemessages/view",
                   "messageDetail": Object {
                     "status": "sent",
                   },
-                  "pathname": "undefined/securemessages/reply",
+                  "pathname": "/securemessages/reply",
                 },
               },
               "ref": null,
@@ -379,7 +379,7 @@ ShallowWrapper {
             headerCrumbsMessage="Back"
             headerCrumbsPath={
               Object {
-                "pathname": "undefined/securemessages",
+                "pathname": "/securemessages",
               }
             }
             headerTitle={undefined}
@@ -410,7 +410,7 @@ ShallowWrapper {
               replace={false}
               to={
                 Object {
-                  "pathname": "undefined/securemessages",
+                  "pathname": "/securemessages",
                 }
               }
             />
@@ -423,11 +423,11 @@ ShallowWrapper {
               replace={false}
               to={
                 Object {
-                  "backPath": "undefined/securemessages/view",
+                  "backPath": "/securemessages/view",
                   "messageDetail": Object {
                     "status": "sent",
                   },
-                  "pathname": "undefined/securemessages/reply",
+                  "pathname": "/securemessages/reply",
                 }
               }
             />
@@ -454,7 +454,7 @@ ShallowWrapper {
               headerCrumbsMessage="Back"
               headerCrumbsPath={
                 Object {
-                  "pathname": "undefined/securemessages",
+                  "pathname": "/securemessages",
                 }
               }
               headerTitle={undefined}
@@ -486,7 +486,7 @@ ShallowWrapper {
                 replace={false}
                 to={
                   Object {
-                    "pathname": "undefined/securemessages",
+                    "pathname": "/securemessages",
                   }
                 }
               />
@@ -499,11 +499,11 @@ ShallowWrapper {
                 replace={false}
                 to={
                   Object {
-                    "backPath": "undefined/securemessages/view",
+                    "backPath": "/securemessages/view",
                     "messageDetail": Object {
                       "status": "sent",
                     },
-                    "pathname": "undefined/securemessages/reply",
+                    "pathname": "/securemessages/reply",
                   }
                 }
               />
@@ -531,7 +531,7 @@ ShallowWrapper {
             "props": Object {
               "headerCrumbsMessage": "Back",
               "headerCrumbsPath": Object {
-                "pathname": "undefined/securemessages",
+                "pathname": "/securemessages",
               },
               "headerTitle": undefined,
               "showControl": false,
@@ -583,7 +583,7 @@ ShallowWrapper {
                   replace={false}
                   to={
                     Object {
-                      "pathname": "undefined/securemessages",
+                      "pathname": "/securemessages",
                     }
                   }
                 />,
@@ -596,11 +596,11 @@ ShallowWrapper {
                   replace={false}
                   to={
                     Object {
-                      "backPath": "undefined/securemessages/view",
+                      "backPath": "/securemessages/view",
                       "messageDetail": Object {
                         "status": "sent",
                       },
-                      "pathname": "undefined/securemessages/reply",
+                      "pathname": "/securemessages/reply",
                     }
                   }
                 />,
@@ -618,7 +618,7 @@ ShallowWrapper {
                   "className": "c-btn c-btn--secondary",
                   "replace": false,
                   "to": Object {
-                    "pathname": "undefined/securemessages",
+                    "pathname": "/securemessages",
                   },
                 },
                 "ref": null,
@@ -647,11 +647,11 @@ ShallowWrapper {
                   "className": "c-btn c-btn--primary",
                   "replace": false,
                   "to": Object {
-                    "backPath": "undefined/securemessages/view",
+                    "backPath": "/securemessages/view",
                     "messageDetail": Object {
                       "status": "sent",
                     },
-                    "pathname": "undefined/securemessages/reply",
+                    "pathname": "/securemessages/reply",
                   },
                 },
                 "ref": null,
@@ -687,15 +687,20 @@ ShallowWrapper {
   Symbol(enzyme.__options__): Object {
     "adapter": ReactFifteenFourAdapter {
       "options": Object {
+        "legacyContextMode": "parent",
         "lifecycles": Object {
           "componentDidUpdate": Object {
             "prevContext": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": true,
           },
         },
         "supportPrevContextArgumentOfComponentDidUpdate": true,
       },
     },
   },
+  Symbol(enzyme.__childContext__): null,
 }
 `;
 
@@ -764,7 +769,7 @@ ShallowWrapper {
           headerCrumbsMessage="Back"
           headerCrumbsPath={
             Object {
-              "pathname": "undefined/securemessages",
+              "pathname": "/securemessages",
             }
           }
           headerTitle={undefined}
@@ -795,7 +800,7 @@ ShallowWrapper {
             replace={false}
             to={
               Object {
-                "pathname": "undefined/securemessages",
+                "pathname": "/securemessages",
               }
             }
           >
@@ -810,11 +815,11 @@ ShallowWrapper {
             replace={false}
             to={
               Object {
-                "backPath": "undefined/securemessages/view",
+                "backPath": "/securemessages/view",
                 "messageDetail": Object {
                   "status": "NEW",
                 },
-                "pathname": "undefined/securemessages/reply",
+                "pathname": "/securemessages/reply",
               }
             }
           />
@@ -870,7 +875,7 @@ ShallowWrapper {
               className="c-btn c-btn--default c-btn--sm c-modal__button"
               onClick={[Function]}
               replace={false}
-              to="undefined/securemessages"
+              to="/securemessages"
             />
           }
           modalheading=""
@@ -936,7 +941,7 @@ ShallowWrapper {
             headerCrumbsMessage="Back"
             headerCrumbsPath={
               Object {
-                "pathname": "undefined/securemessages",
+                "pathname": "/securemessages",
               }
             }
             headerTitle={undefined}
@@ -968,7 +973,7 @@ ShallowWrapper {
               replace={false}
               to={
                 Object {
-                  "pathname": "undefined/securemessages",
+                  "pathname": "/securemessages",
                 }
               }
             >
@@ -983,11 +988,11 @@ ShallowWrapper {
               replace={false}
               to={
                 Object {
-                  "backPath": "undefined/securemessages/view",
+                  "backPath": "/securemessages/view",
                   "messageDetail": Object {
                     "status": "NEW",
                   },
-                  "pathname": "undefined/securemessages/reply",
+                  "pathname": "/securemessages/reply",
                 }
               }
             />
@@ -1043,7 +1048,7 @@ ShallowWrapper {
                 className="c-btn c-btn--default c-btn--sm c-modal__button"
                 onClick={[Function]}
                 replace={false}
-                to="undefined/securemessages"
+                to="/securemessages"
               />
             }
             modalheading=""
@@ -1107,7 +1112,7 @@ ShallowWrapper {
           "props": Object {
             "headerCrumbsMessage": "Back",
             "headerCrumbsPath": Object {
-              "pathname": "undefined/securemessages",
+              "pathname": "/securemessages",
             },
             "headerTitle": undefined,
             "showControl": false,
@@ -1159,7 +1164,7 @@ ShallowWrapper {
                 replace={false}
                 to={
                   Object {
-                    "pathname": "undefined/securemessages",
+                    "pathname": "/securemessages",
                   }
                 }
               >
@@ -1174,11 +1179,11 @@ ShallowWrapper {
                 replace={false}
                 to={
                   Object {
-                    "backPath": "undefined/securemessages/view",
+                    "backPath": "/securemessages/view",
                     "messageDetail": Object {
                       "status": "NEW",
                     },
-                    "pathname": "undefined/securemessages/reply",
+                    "pathname": "/securemessages/reply",
                   }
                 }
               />,
@@ -1196,7 +1201,7 @@ ShallowWrapper {
                 "className": "c-btn c-btn--secondary",
                 "replace": false,
                 "to": Object {
-                  "pathname": "undefined/securemessages",
+                  "pathname": "/securemessages",
                 },
               },
               "ref": null,
@@ -1225,11 +1230,11 @@ ShallowWrapper {
                 "className": "c-btn c-btn--primary",
                 "replace": false,
                 "to": Object {
-                  "backPath": "undefined/securemessages/view",
+                  "backPath": "/securemessages/view",
                   "messageDetail": Object {
                     "status": "NEW",
                   },
-                  "pathname": "undefined/securemessages/reply",
+                  "pathname": "/securemessages/reply",
                 },
               },
               "ref": null,
@@ -1295,7 +1300,7 @@ ShallowWrapper {
               className="c-btn c-btn--default c-btn--sm c-modal__button"
               onClick={[Function]}
               replace={false}
-              to="undefined/securemessages"
+              to="/securemessages"
             />,
             "modalheading": "",
             "onHide": [Function],
@@ -1378,7 +1383,7 @@ ShallowWrapper {
             headerCrumbsMessage="Back"
             headerCrumbsPath={
               Object {
-                "pathname": "undefined/securemessages",
+                "pathname": "/securemessages",
               }
             }
             headerTitle={undefined}
@@ -1409,7 +1414,7 @@ ShallowWrapper {
               replace={false}
               to={
                 Object {
-                  "pathname": "undefined/securemessages",
+                  "pathname": "/securemessages",
                 }
               }
             >
@@ -1424,11 +1429,11 @@ ShallowWrapper {
               replace={false}
               to={
                 Object {
-                  "backPath": "undefined/securemessages/view",
+                  "backPath": "/securemessages/view",
                   "messageDetail": Object {
                     "status": "NEW",
                   },
-                  "pathname": "undefined/securemessages/reply",
+                  "pathname": "/securemessages/reply",
                 }
               }
             />
@@ -1484,7 +1489,7 @@ ShallowWrapper {
                 className="c-btn c-btn--default c-btn--sm c-modal__button"
                 onClick={[Function]}
                 replace={false}
-                to="undefined/securemessages"
+                to="/securemessages"
               />
             }
             modalheading=""
@@ -1550,7 +1555,7 @@ ShallowWrapper {
               headerCrumbsMessage="Back"
               headerCrumbsPath={
                 Object {
-                  "pathname": "undefined/securemessages",
+                  "pathname": "/securemessages",
                 }
               }
               headerTitle={undefined}
@@ -1582,7 +1587,7 @@ ShallowWrapper {
                 replace={false}
                 to={
                   Object {
-                    "pathname": "undefined/securemessages",
+                    "pathname": "/securemessages",
                   }
                 }
               >
@@ -1597,11 +1602,11 @@ ShallowWrapper {
                 replace={false}
                 to={
                   Object {
-                    "backPath": "undefined/securemessages/view",
+                    "backPath": "/securemessages/view",
                     "messageDetail": Object {
                       "status": "NEW",
                     },
-                    "pathname": "undefined/securemessages/reply",
+                    "pathname": "/securemessages/reply",
                   }
                 }
               />
@@ -1657,7 +1662,7 @@ ShallowWrapper {
                   className="c-btn c-btn--default c-btn--sm c-modal__button"
                   onClick={[Function]}
                   replace={false}
-                  to="undefined/securemessages"
+                  to="/securemessages"
                 />
               }
               modalheading=""
@@ -1721,7 +1726,7 @@ ShallowWrapper {
             "props": Object {
               "headerCrumbsMessage": "Back",
               "headerCrumbsPath": Object {
-                "pathname": "undefined/securemessages",
+                "pathname": "/securemessages",
               },
               "headerTitle": undefined,
               "showControl": false,
@@ -1773,7 +1778,7 @@ ShallowWrapper {
                   replace={false}
                   to={
                     Object {
-                      "pathname": "undefined/securemessages",
+                      "pathname": "/securemessages",
                     }
                   }
                 >
@@ -1788,11 +1793,11 @@ ShallowWrapper {
                   replace={false}
                   to={
                     Object {
-                      "backPath": "undefined/securemessages/view",
+                      "backPath": "/securemessages/view",
                       "messageDetail": Object {
                         "status": "NEW",
                       },
-                      "pathname": "undefined/securemessages/reply",
+                      "pathname": "/securemessages/reply",
                     }
                   }
                 />,
@@ -1810,7 +1815,7 @@ ShallowWrapper {
                   "className": "c-btn c-btn--secondary",
                   "replace": false,
                   "to": Object {
-                    "pathname": "undefined/securemessages",
+                    "pathname": "/securemessages",
                   },
                 },
                 "ref": null,
@@ -1839,11 +1844,11 @@ ShallowWrapper {
                   "className": "c-btn c-btn--primary",
                   "replace": false,
                   "to": Object {
-                    "backPath": "undefined/securemessages/view",
+                    "backPath": "/securemessages/view",
                     "messageDetail": Object {
                       "status": "NEW",
                     },
-                    "pathname": "undefined/securemessages/reply",
+                    "pathname": "/securemessages/reply",
                   },
                 },
                 "ref": null,
@@ -1909,7 +1914,7 @@ ShallowWrapper {
                 className="c-btn c-btn--default c-btn--sm c-modal__button"
                 onClick={[Function]}
                 replace={false}
-                to="undefined/securemessages"
+                to="/securemessages"
               />,
               "modalheading": "",
               "onHide": [Function],
@@ -1983,14 +1988,19 @@ ShallowWrapper {
   Symbol(enzyme.__options__): Object {
     "adapter": ReactFifteenFourAdapter {
       "options": Object {
+        "legacyContextMode": "parent",
         "lifecycles": Object {
           "componentDidUpdate": Object {
             "prevContext": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": true,
           },
         },
         "supportPrevContextArgumentOfComponentDidUpdate": true,
       },
     },
   },
+  Symbol(enzyme.__childContext__): null,
 }
 `;

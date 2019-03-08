@@ -14,26 +14,24 @@ export class Main extends React.Component {
 	}
 	handleSecureMessagesClick() {
 		const { history } = this.props;
-		history.push(`${window.baseURl}/securemessages`)
+		history.push(`/securemessages`)
 	}
 
 	handleDocumentPortalClick() {
 		const { history, session } = this.props;
-		console.log(this.props);
-		history.push(`${window.baseURl}/my-documents/${session.brand}`)
+		history.push(`/my-documents/${session.brand}`)
 
 	}
 
 	render() {
-		console.log(this.props);
 		const { location, isWebView, isDocumentLibraryEnabled } = this.props;
 		return (
 			<div className="container">
 				{ !isWebView && isDocumentLibraryEnabled &&
 					<div className="tab-container web-ui-components">
 						<TabCardBlock>
-							<TabCard label="Secure messages" onClick={this.handleSecureMessagesClick} iconType="MailBrandedSmall" isActive={location.pathname.includes("securemessages")} />
-							<TabCard label="Document portal" onClick={this.handleDocumentPortalClick} iconType="BriefcaseBrandedSmall" isActive={location.pathname.includes("my-documents")} />
+							<TabCard label="Secure Messages" onClick={this.handleSecureMessagesClick} iconType="MailBrandedSmall" isActive={location.pathname.includes("securemessages")} />
+							<TabCard label="Document Library" onClick={this.handleDocumentPortalClick} iconType="BriefcaseBrandedSmall" isActive={location.pathname.includes("my-documents")} />
 						</TabCardBlock>
 					</div>
 				}

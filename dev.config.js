@@ -45,13 +45,13 @@ module.exports = {
 				use: ExtractTextPlugin.extract({
 					fallback: "style-loader",
 					use:[{
-							loader: "css-loader"
-						},
-						{
+						loader: "css-loader"
+					},
+					{
 						loader:"sass-loader",
 						options: {
-                            data: `$brand: ${brand};$env: prod;`
-                        }
+							data: `$brand: ${brand};$env: prod;`
+						}
 					}]
 				}),
 			},
@@ -77,12 +77,13 @@ module.exports = {
 	devServer: {
 		contentBase: __dirname +"/src/compiled/",
 		open: true, // Open browser after compilation
+		openPage: "securemessages/CB#access_token=access_token&bank_id=CB&client_context=CB%20Web&user_tracking_id=23453-34343-34343&brandId=CB&state=state&isDocumentLibraryEnabled=true",
 		historyApiFallback: {
 			rewrites: [
 				{ from: /^\/$/, to: "index.html" }
 			]
 		},
-		host: 'localhost',
+		host: '0.0.0.0',
 		port: 8080,
 		hot: true
 	},

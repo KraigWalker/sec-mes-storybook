@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Modal from 'react-bootstrap/lib/Modal';
 
 
-class ModalComponent extends React.Component {
+export default class ModalComponent extends React.Component {
     render() {
         return (
             <Modal
@@ -59,6 +59,4 @@ ModalComponent.defaultProps = {
     backdrop: true,
     scope: this
 };
-
-module.exports = ModalComponent;
 

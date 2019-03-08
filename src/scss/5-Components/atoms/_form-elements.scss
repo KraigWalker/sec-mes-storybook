@@ -279,7 +279,7 @@ $text-color: bow-palette(grey, text);
 			width: 24px;
 			display: inline-block;
 			left: 0;
-			border: 1px solid palette((color: black)...);
+			border: 1px solid bow-palette(black, base);
 			content: ' ';
 			position: relative;
 			margin-right: 16px;

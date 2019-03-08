@@ -27,5 +27,9 @@
     -moz-osx-font-smoothing: grayscale; /* [5] */
     -webkit-font-smoothing: antialiased; /* [5] */
     background-color: #F1F1F1;
+
+    @include media-breakpoint-down(sm1) {
+      background-color: white;
+    }
   }
   
