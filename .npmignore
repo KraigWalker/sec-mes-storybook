@@ -1,0 +1,10 @@
+/node_modules/
+npm-debug.log
+.DS_Store
+/src
+/coverage
+/dev
+testSetup.js
+rollup.config.js
+prod.config.js
+dev.config.js
