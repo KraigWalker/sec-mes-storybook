@@ -26,7 +26,6 @@ class ApiUtils {
           });
       case "POST":
         return axios
-          .get(apiData.url, { headers: this.requestHeaders })
           .post(apiData.url, apiData.requestData, { headers: this.requestHeaders })
           .then(response => {
             onSuccess(response);
@@ -36,7 +35,6 @@ class ApiUtils {
           });
       case "PUT":
         return axios
-          .get(apiData.url, { headers: this.requestHeaders })
           .put(apiData.url, apiData.requestData, { headers: this.requestHeaders })
           .then(response => {
             onSuccess(response);
@@ -46,7 +44,6 @@ class ApiUtils {
           });
       case "DELETE":
         return axios
-          .get(apiData.url, { headers: this.requestHeaders })
           .delete(apiData.url, apiData.requestData, { headers: this.requestHeaders  })
           .then(response => {
             onSuccess(response.data);
