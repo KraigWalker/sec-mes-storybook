@@ -19,11 +19,11 @@ class AppApi {
 		this.apiUtils = apiUtils;
 	}
 	fetchSecureMessages(success, error) {
-		this.apiUtils.makeRequest({ url: `${this.config.apiBaseUrl}${_getMessageURLEndpoint}`, method: 'GET', apiVersion: '1.2.0' }, success, error);
+		this.apiUtils.makeRequest({ url: `${this.config.apiBaseUrl2}${_getMessageURLEndpoint}`, method: 'GET', apiVersion: '1.2.0' }, success, error);
 	}
 
 	getSubjects(success, error) {
-		this.apiUtils.makeRequest({ url: `${this.config.apiBaseUrl}${_getMessageSubjectsURL}`, method: 'GET', apiVersion: '1.2.0' }, success, error);
+		this.apiUtils.makeRequest({ url: `${this.config.apiBaseUrl2}${_getMessageSubjectsURL}`, method: 'GET', apiVersion: '1.2.0' }, success, error);
 	}
 
 	getAccounts(success, error) {
@@ -32,16 +32,16 @@ class AppApi {
 
 	sendMessageData(requestData, status, name, success, error) {
 		const reqData = parseDraft(requestData, status, name);
-		this.apiUtils.makeRequest({ url: `${this.config.apiBaseUrl}${_getMessageURLEndpoint}`, method: 'POST', apiVersion: '1.2.0', requestData: reqData }, success, error);
+		this.apiUtils.makeRequest({ url: `${this.config.apiBaseUrl2}${_getMessageURLEndpoint}`, method: 'POST', apiVersion: '1.2.0', requestData: reqData }, success, error);
 	}
 
 	replyMessageData(requestData, ids, status, name, success, error) {
 		const reqData = replyMessage(requestData, ids, status, name);
-		this.apiUtils.makeRequest({ url: `${this.config.apiBaseUrl}${_getMessageURLEndpoint}`, method: 'POST', apiVersion: '1.2.0', requestData: reqData }, success, error);
+		this.apiUtils.makeRequest({ url: `${this.config.apiBaseUrl2}${_getMessageURLEndpoint}`, method: 'POST', apiVersion: '1.2.0', requestData: reqData }, success, error);
 	}
 
 	updateMessageData(requestData, id, status, success, error) {
-		const updateUrl = `${this.config.apiBaseUrl}${_sendMessageURL}`;
+		const updateUrl = `${this.config.apiBaseUrl2}${_sendMessageURL}`;
 		const url = updateUrl.replace('{message_id}', id);
 		let reqData;
 		switch (status) {
