@@ -75,7 +75,7 @@ class MessageEntity {
      * @param {Object} Account Entity related to the message
      */
     setAccount(account) {
-        if(account === null ) {
+        if(account === null || account === undefined) {
         this.account.setId();
         this.account.setAccountNumber();
         } else {
