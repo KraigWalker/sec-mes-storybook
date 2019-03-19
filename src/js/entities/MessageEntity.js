@@ -14,6 +14,9 @@ class MessageEntity {
         this.threadID = null;
         this.subject = null;
         this.message = null;
+        this.document = null;
+        this.noReply = false;
+
     }
     /**
      * @returns account mapped to message
@@ -124,6 +127,14 @@ class MessageEntity {
      */
     setMessageBody(message) {
         this.message = message
+    }
+
+    setDocumentData(document) {
+        this.document = document;
+    }
+
+    setNoReply(noReply) {
+        this.noReply = noReply;
     }
 
 }

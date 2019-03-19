@@ -370,7 +370,7 @@ export class SecureMessageSummary extends React.Component {
 							</p>
 						</div>
 						<div className={actionsClass}>
-							{(message.status === NEW || message.status === READ) && !readOnly &&
+							{(message.status === NEW || message.status === READ) && !readOnly && !message.noReply &&
 								this.getReplyButton(message)}
 							{!threadFlag && !readOnly && message.status !== PENDING && this.getDeleteButton()}
 							{!threadFlag && message.status === PENDING && this.getPendingStatus()}
@@ -415,7 +415,7 @@ SecureMessageSummary.defaultProps = {
  * Maps the state of the component to the state of the redux store
  * @param {object} state. State of the application
  */
-const mapState = state => ({
+const mapState = (state, props) => ({
 	messages: state.messages,
 	messagesubjects: state.subjects,
 	messageaccounts: state.accounts,
