@@ -97,6 +97,7 @@ export class ViewMessage extends React.Component {
 		if (getMessageType(message.status) !== SENT) {
 			return (
 				<Link
+					id="reply-button"
 					to={{ pathname: `/securemessages/reply`, backPath: `/securemessages/view`, messageDetail: message }}
 					className="c-btn c-btn--primary"
 				>

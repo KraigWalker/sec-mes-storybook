@@ -856,15 +856,20 @@ ShallowWrapper {
   Symbol(enzyme.__options__): Object {
     "adapter": ReactFifteenFourAdapter {
       "options": Object {
+        "legacyContextMode": "parent",
         "lifecycles": Object {
           "componentDidUpdate": Object {
             "prevContext": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": true,
           },
         },
         "supportPrevContextArgumentOfComponentDidUpdate": true,
       },
     },
   },
+  Symbol(enzyme.__childContext__): null,
 }
 `;
 
@@ -956,14 +961,19 @@ ShallowWrapper {
   Symbol(enzyme.__options__): Object {
     "adapter": ReactFifteenFourAdapter {
       "options": Object {
+        "legacyContextMode": "parent",
         "lifecycles": Object {
           "componentDidUpdate": Object {
             "prevContext": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": true,
           },
         },
         "supportPrevContextArgumentOfComponentDidUpdate": true,
       },
     },
   },
+  Symbol(enzyme.__childContext__): null,
 }
 `;

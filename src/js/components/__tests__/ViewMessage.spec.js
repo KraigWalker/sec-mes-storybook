@@ -226,6 +226,71 @@ describe("View Message snapshot", () => {
         shallow(<ViewMessage {...props} />);
         expect(props.dispatch).toHaveBeenCalledTimes(2);
     });
+
+    it("does not render Reply button if message has noReply flag", () => {
+        let props = {
+            content: {
+                sentPageTitle: 'sentPageTitle',
+            },
+            activeTab: 'SENT',
+            messages: {
+                draftError: true,
+                successModal: true,
+                filter: filter,
+                messages: [
+                    { status: 'NEW' }, { status: 'NEW' }, { status: 'NEW' }
+                ]
+            },
+            location: {
+                messageDetail: { status: 'NEW' }
+            },
+            messagesFetched: {
+                fetching: false,
+                successModal: false
+            },
+            noReply: true,
+            dispatch: jest.fn(),
+            setMessagesMetaData: jest.fn(),
+            hasAttachment: false,
+            isWebView: false,
+            readOnly: false,
+        };
+        const wrapper = shallow(<ViewMessage {...props} />);
+        expect(wrapper.find("#reply-button")).toHaveLength(0);
+    });
+
+    it("renders reply button if not readOnly mode and no noReply flag", () => {
+        let props = {
+            content: {
+                sentPageTitle: 'sentPageTitle',
+            },
+            activeTab: 'SENT',
+            messages: {
+                draftError: true,
+                successModal: true,
+                filter: filter,
+                messages: [
+                    { status: 'NEW' }, { status: 'NEW' }, { status: 'NEW' }
+                ]
+            },
+            location: {
+                messageDetail: { status: 'NEW' }
+            },
+            messagesFetched: {
+                fetching: false,
+                successModal: false
+            },
+            noReply: false,
+            dispatch: jest.fn(),
+            setMessagesMetaData: jest.fn(),
+            hasAttachment: false,
+            isWebView: false,
+            readOnly: false,
+        };
+        const wrapper = shallow(<ViewMessage {...props} />);
+        expect(wrapper.find("#reply-button")).toHaveLength(1);
+    });
+
 });
 describe("Main snapshot", () => {
     const dispatch = jest.fn();

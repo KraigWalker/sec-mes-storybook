@@ -103,6 +103,7 @@ ShallowWrapper {
           />
           <Link
             className="c-btn c-btn--primary"
+            id="reply-button"
             replace={false}
             to={
               Object {
@@ -179,6 +180,7 @@ ShallowWrapper {
             />
             <Link
               className="c-btn c-btn--primary"
+              id="reply-button"
               replace={false}
               to={
                 Object {
@@ -274,8 +276,10 @@ ShallowWrapper {
                 className="c-btn c-btn--secondary"
                 onClick={[Function]}
               />,
+              undefined,
               <Link
                 className="c-btn c-btn--primary"
+                id="reply-button"
                 replace={false}
                 to={
                   Object {
@@ -321,6 +325,7 @@ ShallowWrapper {
               "rendered": null,
               "type": "button",
             },
+            undefined,
             Object {
               "instance": null,
               "key": undefined,
@@ -328,6 +333,7 @@ ShallowWrapper {
               "props": Object {
                 "children": undefined,
                 "className": "c-btn c-btn--primary",
+                "id": "reply-button",
                 "replace": false,
                 "to": Object {
                   "backPath": "/securemessages/view",
@@ -420,6 +426,7 @@ ShallowWrapper {
             />
             <Link
               className="c-btn c-btn--primary"
+              id="reply-button"
               replace={false}
               to={
                 Object {
@@ -496,6 +503,7 @@ ShallowWrapper {
               />
               <Link
                 className="c-btn c-btn--primary"
+                id="reply-button"
                 replace={false}
                 to={
                   Object {
@@ -591,8 +599,10 @@ ShallowWrapper {
                   className="c-btn c-btn--secondary"
                   onClick={[Function]}
                 />,
+                undefined,
                 <Link
                   className="c-btn c-btn--primary"
+                  id="reply-button"
                   replace={false}
                   to={
                     Object {
@@ -638,6 +648,7 @@ ShallowWrapper {
                 "rendered": null,
                 "type": "button",
               },
+              undefined,
               Object {
                 "instance": null,
                 "key": undefined,
@@ -645,6 +656,7 @@ ShallowWrapper {
                 "props": Object {
                   "children": undefined,
                   "className": "c-btn c-btn--primary",
+                  "id": "reply-button",
                   "replace": false,
                   "to": Object {
                     "backPath": "/securemessages/view",
@@ -717,9 +729,6 @@ ShallowWrapper {
     dispatch={
       [MockFunction] {
         "calls": Array [
-          Array [
-            [Function],
-          ],
           Array [
             [Function],
           ],
@@ -812,6 +821,7 @@ ShallowWrapper {
           />
           <Link
             className="c-btn c-btn--primary"
+            id="reply-button"
             replace={false}
             to={
               Object {
@@ -985,6 +995,7 @@ ShallowWrapper {
             />
             <Link
               className="c-btn c-btn--primary"
+              id="reply-button"
               replace={false}
               to={
                 Object {
@@ -1174,8 +1185,10 @@ ShallowWrapper {
                 className="c-btn c-btn--secondary"
                 onClick={[Function]}
               />,
+              undefined,
               <Link
                 className="c-btn c-btn--primary"
+                id="reply-button"
                 replace={false}
                 to={
                   Object {
@@ -1221,6 +1234,7 @@ ShallowWrapper {
               "rendered": null,
               "type": "button",
             },
+            undefined,
             Object {
               "instance": null,
               "key": undefined,
@@ -1228,6 +1242,7 @@ ShallowWrapper {
               "props": Object {
                 "children": undefined,
                 "className": "c-btn c-btn--primary",
+                "id": "reply-button",
                 "replace": false,
                 "to": Object {
                   "backPath": "/securemessages/view",
@@ -1426,6 +1441,7 @@ ShallowWrapper {
             />
             <Link
               className="c-btn c-btn--primary"
+              id="reply-button"
               replace={false}
               to={
                 Object {
@@ -1599,6 +1615,7 @@ ShallowWrapper {
               />
               <Link
                 className="c-btn c-btn--primary"
+                id="reply-button"
                 replace={false}
                 to={
                   Object {
@@ -1788,8 +1805,10 @@ ShallowWrapper {
                   className="c-btn c-btn--secondary"
                   onClick={[Function]}
                 />,
+                undefined,
                 <Link
                   className="c-btn c-btn--primary"
+                  id="reply-button"
                   replace={false}
                   to={
                     Object {
@@ -1835,6 +1854,7 @@ ShallowWrapper {
                 "rendered": null,
                 "type": "button",
               },
+              undefined,
               Object {
                 "instance": null,
                 "key": undefined,
@@ -1842,6 +1862,7 @@ ShallowWrapper {
                 "props": Object {
                   "children": undefined,
                   "className": "c-btn c-btn--primary",
+                  "id": "reply-button",
                   "replace": false,
                   "to": Object {
                     "backPath": "/securemessages/view",
