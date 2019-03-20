@@ -27,7 +27,7 @@ class AppApi {
 	}
 
 	getAccounts(success, error) {
-		this.apiUtils.makeRequest({ url: `${this.config.apiBaseUrl}${_getAccountsURL}`, method: 'GET', apiVersion: '0.8.0' }, success, error);
+		this.apiUtils.makeRequest({ url: `${this.config.apiBaseUrl2}${_getAccountsURL}`, method: 'GET', apiVersion: '0.8.0' }, success, error);
 	}
 
 	sendMessageData(requestData, status, name, success, error) {
