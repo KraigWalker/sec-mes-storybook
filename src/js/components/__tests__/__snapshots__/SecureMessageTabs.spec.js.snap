@@ -35,9 +35,9 @@ ShallowWrapper {
       "activeKey": "inbox",
       "children": Array [
         <Tab
-          aria-label="Inbox (1) unread messages"
+          aria-label="Inbox (true) unread messages"
           eventKey="inbox"
-          title="Inbox (1)"
+          title="Inbox (true)"
         >
           <Connect(SecureMessageList)
             activeTab="INBOX"
@@ -85,6 +85,21 @@ ShallowWrapper {
             messages={undefined}
           />
         </Tab>,
+        <Tab
+          aria-label="Archive"
+          eventKey="archived"
+          title="Archive"
+        >
+          <Connect(SecureMessageList)
+            activeTab="ARCHIVED"
+            content={
+              Object {
+                "back": "Back",
+              }
+            }
+            messages={undefined}
+          />
+        </Tab>,
       ],
       "className": "c-scroll-tabs",
       "id": "secure_tabs",
@@ -97,7 +112,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "aria-label": "Inbox (1) unread messages",
+          "aria-label": "Inbox (true) unread messages",
           "children": <Connect(SecureMessageList)
             activeTab="INBOX"
             content={
@@ -114,7 +129,7 @@ ShallowWrapper {
             }
           />,
           "eventKey": "inbox",
-          "title": "Inbox (1)",
+          "title": "Inbox (true)",
         },
         "ref": null,
         "rendered": Object {
@@ -210,6 +225,42 @@ ShallowWrapper {
         },
         "type": [Function],
       },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "aria-label": "Archive",
+          "children": <Connect(SecureMessageList)
+            activeTab="ARCHIVED"
+            content={
+              Object {
+                "back": "Back",
+              }
+            }
+            messages={undefined}
+          />,
+          "eventKey": "archived",
+          "title": "Archive",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "activeTab": "ARCHIVED",
+            "content": Object {
+              "back": "Back",
+            },
+            "messages": undefined,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        "type": [Function],
+      },
     ],
     "type": [Function],
   },
@@ -222,9 +273,9 @@ ShallowWrapper {
         "activeKey": "inbox",
         "children": Array [
           <Tab
-            aria-label="Inbox (1) unread messages"
+            aria-label="Inbox (true) unread messages"
             eventKey="inbox"
-            title="Inbox (1)"
+            title="Inbox (true)"
           >
             <Connect(SecureMessageList)
               activeTab="INBOX"
@@ -272,6 +323,21 @@ ShallowWrapper {
               messages={undefined}
             />
           </Tab>,
+          <Tab
+            aria-label="Archive"
+            eventKey="archived"
+            title="Archive"
+          >
+            <Connect(SecureMessageList)
+              activeTab="ARCHIVED"
+              content={
+                Object {
+                  "back": "Back",
+                }
+              }
+              messages={undefined}
+            />
+          </Tab>,
         ],
         "className": "c-scroll-tabs",
         "id": "secure_tabs",
@@ -284,7 +350,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "aria-label": "Inbox (1) unread messages",
+            "aria-label": "Inbox (true) unread messages",
             "children": <Connect(SecureMessageList)
               activeTab="INBOX"
               content={
@@ -301,7 +367,7 @@ ShallowWrapper {
               }
             />,
             "eventKey": "inbox",
-            "title": "Inbox (1)",
+            "title": "Inbox (true)",
           },
           "ref": null,
           "rendered": Object {
@@ -397,6 +463,42 @@ ShallowWrapper {
           },
           "type": [Function],
         },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "aria-label": "Archive",
+            "children": <Connect(SecureMessageList)
+              activeTab="ARCHIVED"
+              content={
+                Object {
+                  "back": "Back",
+                }
+              }
+              messages={undefined}
+            />,
+            "eventKey": "archived",
+            "title": "Archive",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "activeTab": "ARCHIVED",
+              "content": Object {
+                "back": "Back",
+              },
+              "messages": undefined,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": [Function],
+        },
       ],
       "type": [Function],
     },
@@ -404,14 +506,19 @@ ShallowWrapper {
   Symbol(enzyme.__options__): Object {
     "adapter": ReactFifteenFourAdapter {
       "options": Object {
+        "legacyContextMode": "parent",
         "lifecycles": Object {
           "componentDidUpdate": Object {
             "prevContext": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": true,
           },
         },
         "supportPrevContextArgumentOfComponentDidUpdate": true,
       },
     },
   },
+  Symbol(enzyme.__childContext__): null,
 }
 `;

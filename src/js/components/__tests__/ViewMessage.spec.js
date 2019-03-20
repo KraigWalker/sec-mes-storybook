@@ -4,6 +4,8 @@ import { shallow } from 'enzyme';
 import TestUtils from 'react-addons-test-utils';
 jest.mock('../../bl/SecureMessageBL');
 
+window.scrollTo = () => {}
+
 describe("View Message snapshot", () => {
     const dispatch = jest.fn();
     const filter = jest.fn();

@@ -1,8 +1,7 @@
 import React from 'react';
 import { SecureMessageTabs } from '../SecureMessageTabs';
 import { shallow } from 'enzyme';
-import TestUtils from 'react-addons-test-utils';
-//jest.mock('../SecureMessageList');
+import { Tab } from "react-bootstrap";
 
 describe("New Secure message snapshot", () => {
     const dispatch = jest.fn();
@@ -14,7 +13,7 @@ describe("New Secure message snapshot", () => {
             inboxMessages: [
                 {
                     status: 'NEW'
-                }
+                },
             ]
         },
         dispatch: dispatch
@@ -23,14 +22,74 @@ describe("New Secure message snapshot", () => {
     it('should match to snapshot', () => {
         expect(component).toMatchSnapshot();
     });
-    // it('should match to snapshot', () => {
-    //     let message = props.messages.inboxMessages;
-    //     let newMessageCount = 0;
-    //     expect(message.length().toBe(newMessageCount));
-    // });
     it('onClick method test', () => {
         component.instance().onclick();
         component.setState({ tab: 'inbox' });
         expect(component.instance().state.tab).toBe('inbox');
+    });
+});
+
+describe("inbox messages tab header", () => {
+
+    const dispatch = jest.fn();
+    it('has 2 new messages', () => {
+        let props = {
+            content: {
+                back: 'Back',
+            },
+            messages: {
+                inboxMessages: [
+                    {
+                        status: 'NEW'
+                    },
+                    {
+                        status: 'READ'
+                    },
+                    {
+                        status: 'NEW'
+                    }
+                ]
+            },
+            dispatch: dispatch
+        };
+        let component = shallow(<SecureMessageTabs {...props} />);
+        expect(component.find(Tab).first().props().title).toEqual("Inbox (2)")
+    });
+
+    it('has 0 new messages', () => {
+        let props = {
+            content: {
+                back: 'Back',
+            },
+            messages: {
+                inboxMessages: [
+                    {
+                        status: 'READ'
+                    },
+                    {
+                        status: 'READ'
+                    },
+                    {
+                        status: 'READ'
+                    }
+                ]
+            },
+            dispatch: dispatch
+        };
+        let component = shallow(<SecureMessageTabs {...props} />);
+        expect(component.find(Tab).first().props().title).toEqual("Inbox")
+    });
+
+    it('has no messages', () => {
+        let props = {
+            content: {
+                back: 'Back',
+            },
+            messages: {
+            },
+            dispatch: dispatch
+        };
+        let component = shallow(<SecureMessageTabs {...props} />);
+        expect(component.find(Tab).first().props().title).toEqual("Inbox")
     });
 });

@@ -5,9 +5,11 @@ import TestUtils from 'react-addons-test-utils';
 import { createMockStore } from 'redux-test-utils';
 import { LandingPage } from '../LandingPage';
 import { Provider } from "react-redux";
-jest.mock('fingerprintjs2');
 
 describe("Landing Page else snapshot", () => {
+    
+    window.scrollTo = () => {}
+
     const dispatch = jest.fn();
     const linkClick = jest.fn();
     const postMessage = jest.fn();

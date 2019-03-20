@@ -50,10 +50,6 @@ describe("SecureMessageSummary snapshot", () => {
     component.instance().errorCloseClicked();
     expect(component.instance().state.showSendServiceErrorModal).toBeFalsy();
   });
-  it('closeSuccessModal function test', () => {
-    component.instance().closeSuccessModal();
-    expect(component.instance().state.showDeleteSuccessModal).toBeFalsy();
-  });
   it('closeModal function test', () => {
     component.instance().closeModal();
     expect(component.instance().state.showDeleteConfirmModal).toBeFalsy();

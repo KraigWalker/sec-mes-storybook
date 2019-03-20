@@ -114,13 +114,19 @@
     }
 
     &__reply,
-    &__delete {
+    &__delete,
+    &__archive,
+    &__unarchive,
+    &__pending {
         @extend .type--bute;
         margin-left: get-px(a);
     }
 
     &__reply__txt,
-    &__delete__txt {
+    &__delete__txt, 
+    &__archive__txt,
+    &__unarchive__txt,
+    &__pending__txt  {
         display: none;
         @include media-breakpoint-up(md1) {
             display: inline-block;
@@ -135,7 +141,9 @@
     }
 
     &__reply__icon,
-    &__delete__icon {
+    &__delete__icon,
+    &__archive__icon,
+    &__unarchive__icon {
         display: inline-block;
 
         svg { @include general-theme(fill, blue, account); }

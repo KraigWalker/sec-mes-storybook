@@ -46,8 +46,6 @@ ShallowWrapper {
           "calls": Array [
             Array [],
             Array [],
-            Array [],
-            Array [],
           ],
         },
         "status": "READ",
@@ -131,13 +129,11 @@ ShallowWrapper {
                           "calls": Array [
                             Array [],
                             Array [],
-                            Array [],
-                            Array [],
                           ],
                         },
                         "status": "READ",
                       },
-                      "pathname": "undefined/securemessages/view",
+                      "pathname": "/securemessages/view",
                     }
                   }
                 />
@@ -146,83 +142,72 @@ ShallowWrapper {
                 className="c-message__summary__head__title__ref"
               />
             </div>
-            <div
-              className="c-message__summary__head__actions u-position-relative"
-            >
-              <Link
-                className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding"
-                replace={false}
-                to={
-                  Object {
-                    "backPath": "undefined/securemessages",
-                    "messageDetail": Object {
-                      "account": Object {
-                        "number": "32236",
-                      },
-                      "getDateCreated": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                        ],
-                      },
-                      "getMessageBody": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                        ],
-                      },
-                      "getReference": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                        ],
-                      },
-                      "getSubject": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                          Array [],
-                          Array [],
-                          Array [],
-                        ],
-                      },
-                      "status": "READ",
-                    },
-                    "pathname": "undefined/securemessages/reply",
-                  }
+            <secureMessageSummaryButtons
+              content={
+                Object {
+                  "back": "Back",
+                  "noSpecificAccount": "noSpecificAccount",
                 }
-              >
-                <span
-                  aria-label="undefined undefined"
-                  className="c-message__summary__head__actions__reply__txt"
-                  id="replyMsg"
-                />
-                <span
-                  className="c-message__summary__head__actions__reply__icon"
-                >
-                  <CommonGetIcon
-                    height="24px"
-                    id="icon-reply"
-                    width="24px"
-                  />
-                </span>
-              </Link>
-              <button
-                className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
-                onClick={[Function]}
-              >
-                <span
-                  aria-label="undefined undefined"
-                  className="c-message__summary__head__actions__delete__txt"
-                  id="deleteMsg"
-                />
-                <span
-                  className="c-message__summary__head__actions__delete__icon"
-                >
-                  <CommonGetIcon
-                    height="24px"
-                    id="icon-delete"
-                    width="24px"
-                  />
-                </span>
-              </button>
-            </div>
+              }
+              dispatch={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      [Function],
+                    ],
+                  ],
+                }
+              }
+              draftFlag={false}
+              hasOnClick={false}
+              listFlag={false}
+              message={
+                Object {
+                  "account": Object {
+                    "number": "32236",
+                  },
+                  "getDateCreated": [MockFunction] {
+                    "calls": Array [
+                      Array [],
+                    ],
+                  },
+                  "getMessageBody": [MockFunction] {
+                    "calls": Array [
+                      Array [],
+                    ],
+                  },
+                  "getReference": [MockFunction] {
+                    "calls": Array [
+                      Array [],
+                    ],
+                  },
+                  "getSubject": [MockFunction] {
+                    "calls": Array [
+                      Array [],
+                      Array [],
+                    ],
+                  },
+                  "status": "READ",
+                }
+              }
+              messageDetail={
+                Object {
+                  "delSuccessModal": true,
+                  "newMessageError": true,
+                }
+              }
+              messages={
+                Object {
+                  "draftError": true,
+                }
+              }
+              onArchiveClick={[Function]}
+              onDeleteClick={[Function]}
+              onUnarchiveClick={[Function]}
+              readFlag={false}
+              sentFlag={false}
+              threadFlag={false}
+            />
           </div>
           <p
             className="c-message__summary__account"
@@ -232,37 +217,7 @@ ShallowWrapper {
           />
         </div>,
         false,
-        <ModalComponent
-          backdrop={true}
-          bsSize="small"
-          closeButton={false}
-          customClass="c-modal c-modal--center"
-          modalInContainer={false}
-          modalbody={
-            <div>
-              <div>
-                <CommonGetIcon
-                  height="68px"
-                  id="icon-success"
-                  width="68px"
-                />
-              </div>
-            </div>
-          }
-          modalfooter={
-            <div>
-              <button
-                className="c-btn c-btn--primary c-btn--sm c-modal__button"
-                onClick={[Function]}
-                type="button"
-              />
-            </div>
-          }
-          modalheading=""
-          onHide={[Function]}
-          scope={undefined}
-          show={true}
-        />,
+        false,
         false,
       ],
       "className": "c-message c-message--read u-position-relative",
@@ -341,13 +296,11 @@ ShallowWrapper {
                             "calls": Array [
                               Array [],
                               Array [],
-                              Array [],
-                              Array [],
                             ],
                           },
                           "status": "READ",
                         },
-                        "pathname": "undefined/securemessages/view",
+                        "pathname": "/securemessages/view",
                       }
                     }
                   />
@@ -356,83 +309,72 @@ ShallowWrapper {
                   className="c-message__summary__head__title__ref"
                 />
               </div>
-              <div
-                className="c-message__summary__head__actions u-position-relative"
-              >
-                <Link
-                  className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding"
-                  replace={false}
-                  to={
-                    Object {
-                      "backPath": "undefined/securemessages",
-                      "messageDetail": Object {
-                        "account": Object {
-                          "number": "32236",
-                        },
-                        "getDateCreated": [MockFunction] {
-                          "calls": Array [
-                            Array [],
-                          ],
-                        },
-                        "getMessageBody": [MockFunction] {
-                          "calls": Array [
-                            Array [],
-                          ],
-                        },
-                        "getReference": [MockFunction] {
-                          "calls": Array [
-                            Array [],
-                          ],
-                        },
-                        "getSubject": [MockFunction] {
-                          "calls": Array [
-                            Array [],
-                            Array [],
-                            Array [],
-                            Array [],
-                          ],
-                        },
-                        "status": "READ",
-                      },
-                      "pathname": "undefined/securemessages/reply",
-                    }
+              <secureMessageSummaryButtons
+                content={
+                  Object {
+                    "back": "Back",
+                    "noSpecificAccount": "noSpecificAccount",
                   }
-                >
-                  <span
-                    aria-label="undefined undefined"
-                    className="c-message__summary__head__actions__reply__txt"
-                    id="replyMsg"
-                  />
-                  <span
-                    className="c-message__summary__head__actions__reply__icon"
-                  >
-                    <CommonGetIcon
-                      height="24px"
-                      id="icon-reply"
-                      width="24px"
-                    />
-                  </span>
-                </Link>
-                <button
-                  className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
-                  onClick={[Function]}
-                >
-                  <span
-                    aria-label="undefined undefined"
-                    className="c-message__summary__head__actions__delete__txt"
-                    id="deleteMsg"
-                  />
-                  <span
-                    className="c-message__summary__head__actions__delete__icon"
-                  >
-                    <CommonGetIcon
-                      height="24px"
-                      id="icon-delete"
-                      width="24px"
-                    />
-                  </span>
-                </button>
-              </div>
+                }
+                dispatch={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        [Function],
+                      ],
+                    ],
+                  }
+                }
+                draftFlag={false}
+                hasOnClick={false}
+                listFlag={false}
+                message={
+                  Object {
+                    "account": Object {
+                      "number": "32236",
+                    },
+                    "getDateCreated": [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                      ],
+                    },
+                    "getMessageBody": [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                      ],
+                    },
+                    "getReference": [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                      ],
+                    },
+                    "getSubject": [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                        Array [],
+                      ],
+                    },
+                    "status": "READ",
+                  }
+                }
+                messageDetail={
+                  Object {
+                    "delSuccessModal": true,
+                    "newMessageError": true,
+                  }
+                }
+                messages={
+                  Object {
+                    "draftError": true,
+                  }
+                }
+                onArchiveClick={[Function]}
+                onDeleteClick={[Function]}
+                onUnarchiveClick={[Function]}
+                readFlag={false}
+                sentFlag={false}
+                threadFlag={false}
+              />
             </div>,
             <p
               className="c-message__summary__account"
@@ -487,13 +429,11 @@ ShallowWrapper {
                               "calls": Array [
                                 Array [],
                                 Array [],
-                                Array [],
-                                Array [],
                               ],
                             },
                             "status": "READ",
                           },
-                          "pathname": "undefined/securemessages/view",
+                          "pathname": "/securemessages/view",
                         }
                       }
                     />
@@ -502,83 +442,72 @@ ShallowWrapper {
                     className="c-message__summary__head__title__ref"
                   />
                 </div>,
-                <div
-                  className="c-message__summary__head__actions u-position-relative"
-                >
-                  <Link
-                    className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding"
-                    replace={false}
-                    to={
-                      Object {
-                        "backPath": "undefined/securemessages",
-                        "messageDetail": Object {
-                          "account": Object {
-                            "number": "32236",
-                          },
-                          "getDateCreated": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                            ],
-                          },
-                          "getMessageBody": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                            ],
-                          },
-                          "getReference": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                            ],
-                          },
-                          "getSubject": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                              Array [],
-                              Array [],
-                              Array [],
-                            ],
-                          },
-                          "status": "READ",
-                        },
-                        "pathname": "undefined/securemessages/reply",
-                      }
+                <secureMessageSummaryButtons
+                  content={
+                    Object {
+                      "back": "Back",
+                      "noSpecificAccount": "noSpecificAccount",
                     }
-                  >
-                    <span
-                      aria-label="undefined undefined"
-                      className="c-message__summary__head__actions__reply__txt"
-                      id="replyMsg"
-                    />
-                    <span
-                      className="c-message__summary__head__actions__reply__icon"
-                    >
-                      <CommonGetIcon
-                        height="24px"
-                        id="icon-reply"
-                        width="24px"
-                      />
-                    </span>
-                  </Link>
-                  <button
-                    className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
-                    onClick={[Function]}
-                  >
-                    <span
-                      aria-label="undefined undefined"
-                      className="c-message__summary__head__actions__delete__txt"
-                      id="deleteMsg"
-                    />
-                    <span
-                      className="c-message__summary__head__actions__delete__icon"
-                    >
-                      <CommonGetIcon
-                        height="24px"
-                        id="icon-delete"
-                        width="24px"
-                      />
-                    </span>
-                  </button>
-                </div>,
+                  }
+                  dispatch={
+                    [MockFunction] {
+                      "calls": Array [
+                        Array [
+                          [Function],
+                        ],
+                      ],
+                    }
+                  }
+                  draftFlag={false}
+                  hasOnClick={false}
+                  listFlag={false}
+                  message={
+                    Object {
+                      "account": Object {
+                        "number": "32236",
+                      },
+                      "getDateCreated": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                        ],
+                      },
+                      "getMessageBody": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                        ],
+                      },
+                      "getReference": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                        ],
+                      },
+                      "getSubject": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                          Array [],
+                        ],
+                      },
+                      "status": "READ",
+                    }
+                  }
+                  messageDetail={
+                    Object {
+                      "delSuccessModal": true,
+                      "newMessageError": true,
+                    }
+                  }
+                  messages={
+                    Object {
+                      "draftError": true,
+                    }
+                  }
+                  onArchiveClick={[Function]}
+                  onDeleteClick={[Function]}
+                  onUnarchiveClick={[Function]}
+                  readFlag={false}
+                  sentFlag={false}
+                  threadFlag={false}
+                />,
               ],
               "className": "c-message__summary__head",
             },
@@ -622,13 +551,11 @@ ShallowWrapper {
                                 "calls": Array [
                                   Array [],
                                   Array [],
-                                  Array [],
-                                  Array [],
                                 ],
                               },
                               "status": "READ",
                             },
-                            "pathname": "undefined/securemessages/view",
+                            "pathname": "/securemessages/view",
                           }
                         }
                       />
@@ -674,13 +601,11 @@ ShallowWrapper {
                                 "calls": Array [
                                   Array [],
                                   Array [],
-                                  Array [],
-                                  Array [],
                                 ],
                               },
                               "status": "READ",
                             },
-                            "pathname": "undefined/securemessages/view",
+                            "pathname": "/securemessages/view",
                           }
                         }
                       />,
@@ -720,13 +645,11 @@ ShallowWrapper {
                               "calls": Array [
                                 Array [],
                                 Array [],
-                                Array [],
-                                Array [],
                               ],
                             },
                             "status": "READ",
                           },
-                          "pathname": "undefined/securemessages/view",
+                          "pathname": "/securemessages/view",
                         },
                       },
                       "ref": null,
@@ -753,266 +676,66 @@ ShallowWrapper {
               Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "host",
+                "nodeType": "function",
                 "props": Object {
-                  "children": Array [
-                    <Link
-                      className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding"
-                      replace={false}
-                      to={
-                        Object {
-                          "backPath": "undefined/securemessages",
-                          "messageDetail": Object {
-                            "account": Object {
-                              "number": "32236",
-                            },
-                            "getDateCreated": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getMessageBody": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getReference": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getSubject": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                                Array [],
-                                Array [],
-                                Array [],
-                              ],
-                            },
-                            "status": "READ",
-                          },
-                          "pathname": "undefined/securemessages/reply",
-                        }
-                      }
-                    >
-                      <span
-                        aria-label="undefined undefined"
-                        className="c-message__summary__head__actions__reply__txt"
-                        id="replyMsg"
-                      />
-                      <span
-                        className="c-message__summary__head__actions__reply__icon"
-                      >
-                        <CommonGetIcon
-                          height="24px"
-                          id="icon-reply"
-                          width="24px"
-                        />
-                      </span>
-                    </Link>,
-                    <button
-                      className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
-                      onClick={[Function]}
-                    >
-                      <span
-                        aria-label="undefined undefined"
-                        className="c-message__summary__head__actions__delete__txt"
-                        id="deleteMsg"
-                      />
-                      <span
-                        className="c-message__summary__head__actions__delete__icon"
-                      >
-                        <CommonGetIcon
-                          height="24px"
-                          id="icon-delete"
-                          width="24px"
-                        />
-                      </span>
-                    </button>,
-                    false,
-                  ],
-                  "className": "c-message__summary__head__actions u-position-relative",
+                  "content": Object {
+                    "back": "Back",
+                    "noSpecificAccount": "noSpecificAccount",
+                  },
+                  "dispatch": [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        [Function],
+                      ],
+                    ],
+                  },
+                  "draftFlag": false,
+                  "hasOnClick": false,
+                  "listFlag": false,
+                  "message": Object {
+                    "account": Object {
+                      "number": "32236",
+                    },
+                    "getDateCreated": [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                      ],
+                    },
+                    "getMessageBody": [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                      ],
+                    },
+                    "getReference": [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                      ],
+                    },
+                    "getSubject": [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                        Array [],
+                      ],
+                    },
+                    "status": "READ",
+                  },
+                  "messageDetail": Object {
+                    "delSuccessModal": true,
+                    "newMessageError": true,
+                  },
+                  "messages": Object {
+                    "draftError": true,
+                  },
+                  "onArchiveClick": [Function],
+                  "onDeleteClick": [Function],
+                  "onUnarchiveClick": [Function],
+                  "readFlag": false,
+                  "sentFlag": false,
+                  "threadFlag": false,
                 },
                 "ref": null,
-                "rendered": Array [
-                  Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "class",
-                    "props": Object {
-                      "children": Array [
-                        <span
-                          aria-label="undefined undefined"
-                          className="c-message__summary__head__actions__reply__txt"
-                          id="replyMsg"
-                        />,
-                        <span
-                          className="c-message__summary__head__actions__reply__icon"
-                        >
-                          <CommonGetIcon
-                            height="24px"
-                            id="icon-reply"
-                            width="24px"
-                          />
-                        </span>,
-                      ],
-                      "className": "c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding",
-                      "replace": false,
-                      "to": Object {
-                        "backPath": "undefined/securemessages",
-                        "messageDetail": Object {
-                          "account": Object {
-                            "number": "32236",
-                          },
-                          "getDateCreated": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                            ],
-                          },
-                          "getMessageBody": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                            ],
-                          },
-                          "getReference": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                            ],
-                          },
-                          "getSubject": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                              Array [],
-                              Array [],
-                              Array [],
-                            ],
-                          },
-                          "status": "READ",
-                        },
-                        "pathname": "undefined/securemessages/reply",
-                      },
-                    },
-                    "ref": null,
-                    "rendered": Array [
-                      Object {
-                        "instance": null,
-                        "key": undefined,
-                        "nodeType": "host",
-                        "props": Object {
-                          "aria-label": "undefined undefined",
-                          "children": undefined,
-                          "className": "c-message__summary__head__actions__reply__txt",
-                          "id": "replyMsg",
-                        },
-                        "ref": null,
-                        "rendered": null,
-                        "type": "span",
-                      },
-                      Object {
-                        "instance": null,
-                        "key": undefined,
-                        "nodeType": "host",
-                        "props": Object {
-                          "children": <CommonGetIcon
-                            height="24px"
-                            id="icon-reply"
-                            width="24px"
-                          />,
-                          "className": "c-message__summary__head__actions__reply__icon",
-                        },
-                        "ref": null,
-                        "rendered": Object {
-                          "instance": null,
-                          "key": undefined,
-                          "nodeType": "class",
-                          "props": Object {
-                            "height": "24px",
-                            "id": "icon-reply",
-                            "width": "24px",
-                          },
-                          "ref": null,
-                          "rendered": null,
-                          "type": [Function],
-                        },
-                        "type": "span",
-                      },
-                    ],
-                    "type": [Function],
-                  },
-                  Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "host",
-                    "props": Object {
-                      "children": Array [
-                        <span
-                          aria-label="undefined undefined"
-                          className="c-message__summary__head__actions__delete__txt"
-                          id="deleteMsg"
-                        />,
-                        <span
-                          className="c-message__summary__head__actions__delete__icon"
-                        >
-                          <CommonGetIcon
-                            height="24px"
-                            id="icon-delete"
-                            width="24px"
-                          />
-                        </span>,
-                      ],
-                      "className": "c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding",
-                      "onClick": [Function],
-                    },
-                    "ref": null,
-                    "rendered": Array [
-                      Object {
-                        "instance": null,
-                        "key": undefined,
-                        "nodeType": "host",
-                        "props": Object {
-                          "aria-label": "undefined undefined",
-                          "children": undefined,
-                          "className": "c-message__summary__head__actions__delete__txt",
-                          "id": "deleteMsg",
-                        },
-                        "ref": null,
-                        "rendered": null,
-                        "type": "span",
-                      },
-                      Object {
-                        "instance": null,
-                        "key": undefined,
-                        "nodeType": "host",
-                        "props": Object {
-                          "children": <CommonGetIcon
-                            height="24px"
-                            id="icon-delete"
-                            width="24px"
-                          />,
-                          "className": "c-message__summary__head__actions__delete__icon",
-                        },
-                        "ref": null,
-                        "rendered": Object {
-                          "instance": null,
-                          "key": undefined,
-                          "nodeType": "class",
-                          "props": Object {
-                            "height": "24px",
-                            "id": "icon-delete",
-                            "width": "24px",
-                          },
-                          "ref": null,
-                          "rendered": null,
-                          "type": [Function],
-                        },
-                        "type": "span",
-                      },
-                    ],
-                    "type": "button",
-                  },
-                  false,
-                ],
-                "type": "div",
+                "rendered": null,
+                "type": [Function],
               },
             ],
             "type": "div",
@@ -1046,41 +769,7 @@ ShallowWrapper {
         "type": "div",
       },
       false,
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "backdrop": true,
-          "bsSize": "small",
-          "closeButton": false,
-          "customClass": "c-modal c-modal--center",
-          "modalInContainer": false,
-          "modalbody": <div>
-            <div>
-              <CommonGetIcon
-                height="68px"
-                id="icon-success"
-                width="68px"
-              />
-            </div>
-          </div>,
-          "modalfooter": <div>
-            <button
-              className="c-btn c-btn--primary c-btn--sm c-modal__button"
-              onClick={[Function]}
-              type="button"
-            />
-          </div>,
-          "modalheading": "",
-          "onHide": [Function],
-          "scope": undefined,
-          "show": true,
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
+      false,
       false,
     ],
     "type": "div",
@@ -1142,13 +831,11 @@ ShallowWrapper {
                             "calls": Array [
                               Array [],
                               Array [],
-                              Array [],
-                              Array [],
                             ],
                           },
                           "status": "READ",
                         },
-                        "pathname": "undefined/securemessages/view",
+                        "pathname": "/securemessages/view",
                       }
                     }
                   />
@@ -1157,83 +844,72 @@ ShallowWrapper {
                   className="c-message__summary__head__title__ref"
                 />
               </div>
-              <div
-                className="c-message__summary__head__actions u-position-relative"
-              >
-                <Link
-                  className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding"
-                  replace={false}
-                  to={
-                    Object {
-                      "backPath": "undefined/securemessages",
-                      "messageDetail": Object {
-                        "account": Object {
-                          "number": "32236",
-                        },
-                        "getDateCreated": [MockFunction] {
-                          "calls": Array [
-                            Array [],
-                          ],
-                        },
-                        "getMessageBody": [MockFunction] {
-                          "calls": Array [
-                            Array [],
-                          ],
-                        },
-                        "getReference": [MockFunction] {
-                          "calls": Array [
-                            Array [],
-                          ],
-                        },
-                        "getSubject": [MockFunction] {
-                          "calls": Array [
-                            Array [],
-                            Array [],
-                            Array [],
-                            Array [],
-                          ],
-                        },
-                        "status": "READ",
-                      },
-                      "pathname": "undefined/securemessages/reply",
-                    }
+              <secureMessageSummaryButtons
+                content={
+                  Object {
+                    "back": "Back",
+                    "noSpecificAccount": "noSpecificAccount",
                   }
-                >
-                  <span
-                    aria-label="undefined undefined"
-                    className="c-message__summary__head__actions__reply__txt"
-                    id="replyMsg"
-                  />
-                  <span
-                    className="c-message__summary__head__actions__reply__icon"
-                  >
-                    <CommonGetIcon
-                      height="24px"
-                      id="icon-reply"
-                      width="24px"
-                    />
-                  </span>
-                </Link>
-                <button
-                  className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
-                  onClick={[Function]}
-                >
-                  <span
-                    aria-label="undefined undefined"
-                    className="c-message__summary__head__actions__delete__txt"
-                    id="deleteMsg"
-                  />
-                  <span
-                    className="c-message__summary__head__actions__delete__icon"
-                  >
-                    <CommonGetIcon
-                      height="24px"
-                      id="icon-delete"
-                      width="24px"
-                    />
-                  </span>
-                </button>
-              </div>
+                }
+                dispatch={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        [Function],
+                      ],
+                    ],
+                  }
+                }
+                draftFlag={false}
+                hasOnClick={false}
+                listFlag={false}
+                message={
+                  Object {
+                    "account": Object {
+                      "number": "32236",
+                    },
+                    "getDateCreated": [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                      ],
+                    },
+                    "getMessageBody": [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                      ],
+                    },
+                    "getReference": [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                      ],
+                    },
+                    "getSubject": [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                        Array [],
+                      ],
+                    },
+                    "status": "READ",
+                  }
+                }
+                messageDetail={
+                  Object {
+                    "delSuccessModal": true,
+                    "newMessageError": true,
+                  }
+                }
+                messages={
+                  Object {
+                    "draftError": true,
+                  }
+                }
+                onArchiveClick={[Function]}
+                onDeleteClick={[Function]}
+                onUnarchiveClick={[Function]}
+                readFlag={false}
+                sentFlag={false}
+                threadFlag={false}
+              />
             </div>
             <p
               className="c-message__summary__account"
@@ -1243,37 +919,7 @@ ShallowWrapper {
             />
           </div>,
           false,
-          <ModalComponent
-            backdrop={true}
-            bsSize="small"
-            closeButton={false}
-            customClass="c-modal c-modal--center"
-            modalInContainer={false}
-            modalbody={
-              <div>
-                <div>
-                  <CommonGetIcon
-                    height="68px"
-                    id="icon-success"
-                    width="68px"
-                  />
-                </div>
-              </div>
-            }
-            modalfooter={
-              <div>
-                <button
-                  className="c-btn c-btn--primary c-btn--sm c-modal__button"
-                  onClick={[Function]}
-                  type="button"
-                />
-              </div>
-            }
-            modalheading=""
-            onHide={[Function]}
-            scope={undefined}
-            show={true}
-          />,
+          false,
           false,
         ],
         "className": "c-message c-message--read u-position-relative",
@@ -1352,13 +998,11 @@ ShallowWrapper {
                               "calls": Array [
                                 Array [],
                                 Array [],
-                                Array [],
-                                Array [],
                               ],
                             },
                             "status": "READ",
                           },
-                          "pathname": "undefined/securemessages/view",
+                          "pathname": "/securemessages/view",
                         }
                       }
                     />
@@ -1367,83 +1011,72 @@ ShallowWrapper {
                     className="c-message__summary__head__title__ref"
                   />
                 </div>
-                <div
-                  className="c-message__summary__head__actions u-position-relative"
-                >
-                  <Link
-                    className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding"
-                    replace={false}
-                    to={
-                      Object {
-                        "backPath": "undefined/securemessages",
-                        "messageDetail": Object {
-                          "account": Object {
-                            "number": "32236",
-                          },
-                          "getDateCreated": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                            ],
-                          },
-                          "getMessageBody": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                            ],
-                          },
-                          "getReference": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                            ],
-                          },
-                          "getSubject": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                              Array [],
-                              Array [],
-                              Array [],
-                            ],
-                          },
-                          "status": "READ",
-                        },
-                        "pathname": "undefined/securemessages/reply",
-                      }
+                <secureMessageSummaryButtons
+                  content={
+                    Object {
+                      "back": "Back",
+                      "noSpecificAccount": "noSpecificAccount",
                     }
-                  >
-                    <span
-                      aria-label="undefined undefined"
-                      className="c-message__summary__head__actions__reply__txt"
-                      id="replyMsg"
-                    />
-                    <span
-                      className="c-message__summary__head__actions__reply__icon"
-                    >
-                      <CommonGetIcon
-                        height="24px"
-                        id="icon-reply"
-                        width="24px"
-                      />
-                    </span>
-                  </Link>
-                  <button
-                    className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
-                    onClick={[Function]}
-                  >
-                    <span
-                      aria-label="undefined undefined"
-                      className="c-message__summary__head__actions__delete__txt"
-                      id="deleteMsg"
-                    />
-                    <span
-                      className="c-message__summary__head__actions__delete__icon"
-                    >
-                      <CommonGetIcon
-                        height="24px"
-                        id="icon-delete"
-                        width="24px"
-                      />
-                    </span>
-                  </button>
-                </div>
+                  }
+                  dispatch={
+                    [MockFunction] {
+                      "calls": Array [
+                        Array [
+                          [Function],
+                        ],
+                      ],
+                    }
+                  }
+                  draftFlag={false}
+                  hasOnClick={false}
+                  listFlag={false}
+                  message={
+                    Object {
+                      "account": Object {
+                        "number": "32236",
+                      },
+                      "getDateCreated": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                        ],
+                      },
+                      "getMessageBody": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                        ],
+                      },
+                      "getReference": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                        ],
+                      },
+                      "getSubject": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                          Array [],
+                        ],
+                      },
+                      "status": "READ",
+                    }
+                  }
+                  messageDetail={
+                    Object {
+                      "delSuccessModal": true,
+                      "newMessageError": true,
+                    }
+                  }
+                  messages={
+                    Object {
+                      "draftError": true,
+                    }
+                  }
+                  onArchiveClick={[Function]}
+                  onDeleteClick={[Function]}
+                  onUnarchiveClick={[Function]}
+                  readFlag={false}
+                  sentFlag={false}
+                  threadFlag={false}
+                />
               </div>,
               <p
                 className="c-message__summary__account"
@@ -1498,13 +1131,11 @@ ShallowWrapper {
                                 "calls": Array [
                                   Array [],
                                   Array [],
-                                  Array [],
-                                  Array [],
                                 ],
                               },
                               "status": "READ",
                             },
-                            "pathname": "undefined/securemessages/view",
+                            "pathname": "/securemessages/view",
                           }
                         }
                       />
@@ -1513,83 +1144,72 @@ ShallowWrapper {
                       className="c-message__summary__head__title__ref"
                     />
                   </div>,
-                  <div
-                    className="c-message__summary__head__actions u-position-relative"
-                  >
-                    <Link
-                      className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding"
-                      replace={false}
-                      to={
-                        Object {
-                          "backPath": "undefined/securemessages",
-                          "messageDetail": Object {
-                            "account": Object {
-                              "number": "32236",
-                            },
-                            "getDateCreated": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getMessageBody": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getReference": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getSubject": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                                Array [],
-                                Array [],
-                                Array [],
-                              ],
-                            },
-                            "status": "READ",
-                          },
-                          "pathname": "undefined/securemessages/reply",
-                        }
+                  <secureMessageSummaryButtons
+                    content={
+                      Object {
+                        "back": "Back",
+                        "noSpecificAccount": "noSpecificAccount",
                       }
-                    >
-                      <span
-                        aria-label="undefined undefined"
-                        className="c-message__summary__head__actions__reply__txt"
-                        id="replyMsg"
-                      />
-                      <span
-                        className="c-message__summary__head__actions__reply__icon"
-                      >
-                        <CommonGetIcon
-                          height="24px"
-                          id="icon-reply"
-                          width="24px"
-                        />
-                      </span>
-                    </Link>
-                    <button
-                      className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
-                      onClick={[Function]}
-                    >
-                      <span
-                        aria-label="undefined undefined"
-                        className="c-message__summary__head__actions__delete__txt"
-                        id="deleteMsg"
-                      />
-                      <span
-                        className="c-message__summary__head__actions__delete__icon"
-                      >
-                        <CommonGetIcon
-                          height="24px"
-                          id="icon-delete"
-                          width="24px"
-                        />
-                      </span>
-                    </button>
-                  </div>,
+                    }
+                    dispatch={
+                      [MockFunction] {
+                        "calls": Array [
+                          Array [
+                            [Function],
+                          ],
+                        ],
+                      }
+                    }
+                    draftFlag={false}
+                    hasOnClick={false}
+                    listFlag={false}
+                    message={
+                      Object {
+                        "account": Object {
+                          "number": "32236",
+                        },
+                        "getDateCreated": [MockFunction] {
+                          "calls": Array [
+                            Array [],
+                          ],
+                        },
+                        "getMessageBody": [MockFunction] {
+                          "calls": Array [
+                            Array [],
+                          ],
+                        },
+                        "getReference": [MockFunction] {
+                          "calls": Array [
+                            Array [],
+                          ],
+                        },
+                        "getSubject": [MockFunction] {
+                          "calls": Array [
+                            Array [],
+                            Array [],
+                          ],
+                        },
+                        "status": "READ",
+                      }
+                    }
+                    messageDetail={
+                      Object {
+                        "delSuccessModal": true,
+                        "newMessageError": true,
+                      }
+                    }
+                    messages={
+                      Object {
+                        "draftError": true,
+                      }
+                    }
+                    onArchiveClick={[Function]}
+                    onDeleteClick={[Function]}
+                    onUnarchiveClick={[Function]}
+                    readFlag={false}
+                    sentFlag={false}
+                    threadFlag={false}
+                  />,
                 ],
                 "className": "c-message__summary__head",
               },
@@ -1633,13 +1253,11 @@ ShallowWrapper {
                                   "calls": Array [
                                     Array [],
                                     Array [],
-                                    Array [],
-                                    Array [],
                                   ],
                                 },
                                 "status": "READ",
                               },
-                              "pathname": "undefined/securemessages/view",
+                              "pathname": "/securemessages/view",
                             }
                           }
                         />
@@ -1685,13 +1303,11 @@ ShallowWrapper {
                                   "calls": Array [
                                     Array [],
                                     Array [],
-                                    Array [],
-                                    Array [],
                                   ],
                                 },
                                 "status": "READ",
                               },
-                              "pathname": "undefined/securemessages/view",
+                              "pathname": "/securemessages/view",
                             }
                           }
                         />,
@@ -1731,13 +1347,11 @@ ShallowWrapper {
                                 "calls": Array [
                                   Array [],
                                   Array [],
-                                  Array [],
-                                  Array [],
                                 ],
                               },
                               "status": "READ",
                             },
-                            "pathname": "undefined/securemessages/view",
+                            "pathname": "/securemessages/view",
                           },
                         },
                         "ref": null,
@@ -1764,266 +1378,66 @@ ShallowWrapper {
                 Object {
                   "instance": null,
                   "key": undefined,
-                  "nodeType": "host",
+                  "nodeType": "function",
                   "props": Object {
-                    "children": Array [
-                      <Link
-                        className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding"
-                        replace={false}
-                        to={
-                          Object {
-                            "backPath": "undefined/securemessages",
-                            "messageDetail": Object {
-                              "account": Object {
-                                "number": "32236",
-                              },
-                              "getDateCreated": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getMessageBody": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getReference": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getSubject": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                  Array [],
-                                  Array [],
-                                  Array [],
-                                ],
-                              },
-                              "status": "READ",
-                            },
-                            "pathname": "undefined/securemessages/reply",
-                          }
-                        }
-                      >
-                        <span
-                          aria-label="undefined undefined"
-                          className="c-message__summary__head__actions__reply__txt"
-                          id="replyMsg"
-                        />
-                        <span
-                          className="c-message__summary__head__actions__reply__icon"
-                        >
-                          <CommonGetIcon
-                            height="24px"
-                            id="icon-reply"
-                            width="24px"
-                          />
-                        </span>
-                      </Link>,
-                      <button
-                        className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
-                        onClick={[Function]}
-                      >
-                        <span
-                          aria-label="undefined undefined"
-                          className="c-message__summary__head__actions__delete__txt"
-                          id="deleteMsg"
-                        />
-                        <span
-                          className="c-message__summary__head__actions__delete__icon"
-                        >
-                          <CommonGetIcon
-                            height="24px"
-                            id="icon-delete"
-                            width="24px"
-                          />
-                        </span>
-                      </button>,
-                      false,
-                    ],
-                    "className": "c-message__summary__head__actions u-position-relative",
+                    "content": Object {
+                      "back": "Back",
+                      "noSpecificAccount": "noSpecificAccount",
+                    },
+                    "dispatch": [MockFunction] {
+                      "calls": Array [
+                        Array [
+                          [Function],
+                        ],
+                      ],
+                    },
+                    "draftFlag": false,
+                    "hasOnClick": false,
+                    "listFlag": false,
+                    "message": Object {
+                      "account": Object {
+                        "number": "32236",
+                      },
+                      "getDateCreated": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                        ],
+                      },
+                      "getMessageBody": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                        ],
+                      },
+                      "getReference": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                        ],
+                      },
+                      "getSubject": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                          Array [],
+                        ],
+                      },
+                      "status": "READ",
+                    },
+                    "messageDetail": Object {
+                      "delSuccessModal": true,
+                      "newMessageError": true,
+                    },
+                    "messages": Object {
+                      "draftError": true,
+                    },
+                    "onArchiveClick": [Function],
+                    "onDeleteClick": [Function],
+                    "onUnarchiveClick": [Function],
+                    "readFlag": false,
+                    "sentFlag": false,
+                    "threadFlag": false,
                   },
                   "ref": null,
-                  "rendered": Array [
-                    Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "class",
-                      "props": Object {
-                        "children": Array [
-                          <span
-                            aria-label="undefined undefined"
-                            className="c-message__summary__head__actions__reply__txt"
-                            id="replyMsg"
-                          />,
-                          <span
-                            className="c-message__summary__head__actions__reply__icon"
-                          >
-                            <CommonGetIcon
-                              height="24px"
-                              id="icon-reply"
-                              width="24px"
-                            />
-                          </span>,
-                        ],
-                        "className": "c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding",
-                        "replace": false,
-                        "to": Object {
-                          "backPath": "undefined/securemessages",
-                          "messageDetail": Object {
-                            "account": Object {
-                              "number": "32236",
-                            },
-                            "getDateCreated": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getMessageBody": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getReference": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getSubject": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                                Array [],
-                                Array [],
-                                Array [],
-                              ],
-                            },
-                            "status": "READ",
-                          },
-                          "pathname": "undefined/securemessages/reply",
-                        },
-                      },
-                      "ref": null,
-                      "rendered": Array [
-                        Object {
-                          "instance": null,
-                          "key": undefined,
-                          "nodeType": "host",
-                          "props": Object {
-                            "aria-label": "undefined undefined",
-                            "children": undefined,
-                            "className": "c-message__summary__head__actions__reply__txt",
-                            "id": "replyMsg",
-                          },
-                          "ref": null,
-                          "rendered": null,
-                          "type": "span",
-                        },
-                        Object {
-                          "instance": null,
-                          "key": undefined,
-                          "nodeType": "host",
-                          "props": Object {
-                            "children": <CommonGetIcon
-                              height="24px"
-                              id="icon-reply"
-                              width="24px"
-                            />,
-                            "className": "c-message__summary__head__actions__reply__icon",
-                          },
-                          "ref": null,
-                          "rendered": Object {
-                            "instance": null,
-                            "key": undefined,
-                            "nodeType": "class",
-                            "props": Object {
-                              "height": "24px",
-                              "id": "icon-reply",
-                              "width": "24px",
-                            },
-                            "ref": null,
-                            "rendered": null,
-                            "type": [Function],
-                          },
-                          "type": "span",
-                        },
-                      ],
-                      "type": [Function],
-                    },
-                    Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "host",
-                      "props": Object {
-                        "children": Array [
-                          <span
-                            aria-label="undefined undefined"
-                            className="c-message__summary__head__actions__delete__txt"
-                            id="deleteMsg"
-                          />,
-                          <span
-                            className="c-message__summary__head__actions__delete__icon"
-                          >
-                            <CommonGetIcon
-                              height="24px"
-                              id="icon-delete"
-                              width="24px"
-                            />
-                          </span>,
-                        ],
-                        "className": "c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding",
-                        "onClick": [Function],
-                      },
-                      "ref": null,
-                      "rendered": Array [
-                        Object {
-                          "instance": null,
-                          "key": undefined,
-                          "nodeType": "host",
-                          "props": Object {
-                            "aria-label": "undefined undefined",
-                            "children": undefined,
-                            "className": "c-message__summary__head__actions__delete__txt",
-                            "id": "deleteMsg",
-                          },
-                          "ref": null,
-                          "rendered": null,
-                          "type": "span",
-                        },
-                        Object {
-                          "instance": null,
-                          "key": undefined,
-                          "nodeType": "host",
-                          "props": Object {
-                            "children": <CommonGetIcon
-                              height="24px"
-                              id="icon-delete"
-                              width="24px"
-                            />,
-                            "className": "c-message__summary__head__actions__delete__icon",
-                          },
-                          "ref": null,
-                          "rendered": Object {
-                            "instance": null,
-                            "key": undefined,
-                            "nodeType": "class",
-                            "props": Object {
-                              "height": "24px",
-                              "id": "icon-delete",
-                              "width": "24px",
-                            },
-                            "ref": null,
-                            "rendered": null,
-                            "type": [Function],
-                          },
-                          "type": "span",
-                        },
-                      ],
-                      "type": "button",
-                    },
-                    false,
-                  ],
-                  "type": "div",
+                  "rendered": null,
+                  "type": [Function],
                 },
               ],
               "type": "div",
@@ -2057,41 +1471,7 @@ ShallowWrapper {
           "type": "div",
         },
         false,
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "backdrop": true,
-            "bsSize": "small",
-            "closeButton": false,
-            "customClass": "c-modal c-modal--center",
-            "modalInContainer": false,
-            "modalbody": <div>
-              <div>
-                <CommonGetIcon
-                  height="68px"
-                  id="icon-success"
-                  width="68px"
-                />
-              </div>
-            </div>,
-            "modalfooter": <div>
-              <button
-                className="c-btn c-btn--primary c-btn--sm c-modal__button"
-                onClick={[Function]}
-                type="button"
-              />
-            </div>,
-            "modalheading": "",
-            "onHide": [Function],
-            "scope": undefined,
-            "show": true,
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
+        false,
         false,
       ],
       "type": "div",
@@ -2100,15 +1480,20 @@ ShallowWrapper {
   Symbol(enzyme.__options__): Object {
     "adapter": ReactFifteenFourAdapter {
       "options": Object {
+        "legacyContextMode": "parent",
         "lifecycles": Object {
           "componentDidUpdate": Object {
             "prevContext": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": true,
           },
         },
         "supportPrevContextArgumentOfComponentDidUpdate": true,
       },
     },
   },
+  Symbol(enzyme.__childContext__): null,
 }
 `;
 
@@ -2156,7 +1541,6 @@ ShallowWrapper {
         },
         "getSubject": [MockFunction] {
           "calls": Array [
-            Array [],
             Array [],
             Array [],
           ],
@@ -2235,12 +1619,11 @@ ShallowWrapper {
                           "calls": Array [
                             Array [],
                             Array [],
-                            Array [],
                           ],
                         },
                         "status": "DRAFT",
                       },
-                      "pathname": "undefined/securemessages/draft",
+                      "pathname": "/securemessages/draft",
                     }
                   }
                 />
@@ -2249,29 +1632,72 @@ ShallowWrapper {
                 className="c-message__summary__head__title__ref"
               />
             </div>
-            <div
-              className="c-message__summary__head__actions u-position-relative"
-            >
-              <button
-                className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
-                onClick={[Function]}
-              >
-                <span
-                  aria-label="undefined undefined"
-                  className="c-message__summary__head__actions__delete__txt"
-                  id="deleteMsg"
-                />
-                <span
-                  className="c-message__summary__head__actions__delete__icon"
-                >
-                  <CommonGetIcon
-                    height="24px"
-                    id="icon-delete"
-                    width="24px"
-                  />
-                </span>
-              </button>
-            </div>
+            <secureMessageSummaryButtons
+              content={
+                Object {
+                  "back": "Back",
+                  "noSpecificAccount": "noSpecificAccount",
+                }
+              }
+              dispatch={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      [Function],
+                    ],
+                  ],
+                }
+              }
+              draftFlag={false}
+              hasOnClick={false}
+              listFlag={false}
+              message={
+                Object {
+                  "account": Object {
+                    "number": undefined,
+                  },
+                  "getDateCreated": [MockFunction] {
+                    "calls": Array [
+                      Array [],
+                    ],
+                  },
+                  "getMessageBody": [MockFunction] {
+                    "calls": Array [
+                      Array [],
+                    ],
+                  },
+                  "getReference": [MockFunction] {
+                    "calls": Array [
+                      Array [],
+                    ],
+                  },
+                  "getSubject": [MockFunction] {
+                    "calls": Array [
+                      Array [],
+                      Array [],
+                    ],
+                  },
+                  "status": "DRAFT",
+                }
+              }
+              messageDetail={
+                Object {
+                  "delSuccessModal": true,
+                  "newMessageError": true,
+                }
+              }
+              messages={
+                Object {
+                  "draftError": true,
+                }
+              }
+              onArchiveClick={[Function]}
+              onDeleteClick={[Function]}
+              onUnarchiveClick={[Function]}
+              readFlag={false}
+              sentFlag={false}
+              threadFlag={false}
+            />
           </div>
           <p
             className="c-message__summary__account"
@@ -2281,37 +1707,7 @@ ShallowWrapper {
           />
         </div>,
         false,
-        <ModalComponent
-          backdrop={true}
-          bsSize="small"
-          closeButton={false}
-          customClass="c-modal c-modal--center"
-          modalInContainer={false}
-          modalbody={
-            <div>
-              <div>
-                <CommonGetIcon
-                  height="68px"
-                  id="icon-success"
-                  width="68px"
-                />
-              </div>
-            </div>
-          }
-          modalfooter={
-            <div>
-              <button
-                className="c-btn c-btn--primary c-btn--sm c-modal__button"
-                onClick={[Function]}
-                type="button"
-              />
-            </div>
-          }
-          modalheading=""
-          onHide={[Function]}
-          scope={undefined}
-          show={true}
-        />,
+        false,
         false,
       ],
       "className": "c-message u-position-relative",
@@ -2364,12 +1760,11 @@ ShallowWrapper {
                             "calls": Array [
                               Array [],
                               Array [],
-                              Array [],
                             ],
                           },
                           "status": "DRAFT",
                         },
-                        "pathname": "undefined/securemessages/draft",
+                        "pathname": "/securemessages/draft",
                       }
                     }
                   />
@@ -2378,29 +1773,72 @@ ShallowWrapper {
                   className="c-message__summary__head__title__ref"
                 />
               </div>
-              <div
-                className="c-message__summary__head__actions u-position-relative"
-              >
-                <button
-                  className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
-                  onClick={[Function]}
-                >
-                  <span
-                    aria-label="undefined undefined"
-                    className="c-message__summary__head__actions__delete__txt"
-                    id="deleteMsg"
-                  />
-                  <span
-                    className="c-message__summary__head__actions__delete__icon"
-                  >
-                    <CommonGetIcon
-                      height="24px"
-                      id="icon-delete"
-                      width="24px"
-                    />
-                  </span>
-                </button>
-              </div>
+              <secureMessageSummaryButtons
+                content={
+                  Object {
+                    "back": "Back",
+                    "noSpecificAccount": "noSpecificAccount",
+                  }
+                }
+                dispatch={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        [Function],
+                      ],
+                    ],
+                  }
+                }
+                draftFlag={false}
+                hasOnClick={false}
+                listFlag={false}
+                message={
+                  Object {
+                    "account": Object {
+                      "number": undefined,
+                    },
+                    "getDateCreated": [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                      ],
+                    },
+                    "getMessageBody": [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                      ],
+                    },
+                    "getReference": [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                      ],
+                    },
+                    "getSubject": [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                        Array [],
+                      ],
+                    },
+                    "status": "DRAFT",
+                  }
+                }
+                messageDetail={
+                  Object {
+                    "delSuccessModal": true,
+                    "newMessageError": true,
+                  }
+                }
+                messages={
+                  Object {
+                    "draftError": true,
+                  }
+                }
+                onArchiveClick={[Function]}
+                onDeleteClick={[Function]}
+                onUnarchiveClick={[Function]}
+                readFlag={false}
+                sentFlag={false}
+                threadFlag={false}
+              />
             </div>,
             <p
               className="c-message__summary__account"
@@ -2456,12 +1894,11 @@ ShallowWrapper {
                               "calls": Array [
                                 Array [],
                                 Array [],
-                                Array [],
                               ],
                             },
                             "status": "DRAFT",
                           },
-                          "pathname": "undefined/securemessages/draft",
+                          "pathname": "/securemessages/draft",
                         }
                       }
                     />
@@ -2470,29 +1907,72 @@ ShallowWrapper {
                     className="c-message__summary__head__title__ref"
                   />
                 </div>,
-                <div
-                  className="c-message__summary__head__actions u-position-relative"
-                >
-                  <button
-                    className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
-                    onClick={[Function]}
-                  >
-                    <span
-                      aria-label="undefined undefined"
-                      className="c-message__summary__head__actions__delete__txt"
-                      id="deleteMsg"
-                    />
-                    <span
-                      className="c-message__summary__head__actions__delete__icon"
-                    >
-                      <CommonGetIcon
-                        height="24px"
-                        id="icon-delete"
-                        width="24px"
-                      />
-                    </span>
-                  </button>
-                </div>,
+                <secureMessageSummaryButtons
+                  content={
+                    Object {
+                      "back": "Back",
+                      "noSpecificAccount": "noSpecificAccount",
+                    }
+                  }
+                  dispatch={
+                    [MockFunction] {
+                      "calls": Array [
+                        Array [
+                          [Function],
+                        ],
+                      ],
+                    }
+                  }
+                  draftFlag={false}
+                  hasOnClick={false}
+                  listFlag={false}
+                  message={
+                    Object {
+                      "account": Object {
+                        "number": undefined,
+                      },
+                      "getDateCreated": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                        ],
+                      },
+                      "getMessageBody": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                        ],
+                      },
+                      "getReference": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                        ],
+                      },
+                      "getSubject": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                          Array [],
+                        ],
+                      },
+                      "status": "DRAFT",
+                    }
+                  }
+                  messageDetail={
+                    Object {
+                      "delSuccessModal": true,
+                      "newMessageError": true,
+                    }
+                  }
+                  messages={
+                    Object {
+                      "draftError": true,
+                    }
+                  }
+                  onArchiveClick={[Function]}
+                  onDeleteClick={[Function]}
+                  onUnarchiveClick={[Function]}
+                  readFlag={false}
+                  sentFlag={false}
+                  threadFlag={false}
+                />,
               ],
               "className": "c-message__summary__head",
             },
@@ -2537,12 +2017,11 @@ ShallowWrapper {
                                 "calls": Array [
                                   Array [],
                                   Array [],
-                                  Array [],
                                 ],
                               },
                               "status": "DRAFT",
                             },
-                            "pathname": "undefined/securemessages/draft",
+                            "pathname": "/securemessages/draft",
                           }
                         }
                       />
@@ -2589,12 +2068,11 @@ ShallowWrapper {
                                 "calls": Array [
                                   Array [],
                                   Array [],
-                                  Array [],
                                 ],
                               },
                               "status": "DRAFT",
                             },
-                            "pathname": "undefined/securemessages/draft",
+                            "pathname": "/securemessages/draft",
                           }
                         }
                       />,
@@ -2635,12 +2113,11 @@ ShallowWrapper {
                               "calls": Array [
                                 Array [],
                                 Array [],
-                                Array [],
                               ],
                             },
                             "status": "DRAFT",
                           },
-                          "pathname": "undefined/securemessages/draft",
+                          "pathname": "/securemessages/draft",
                         },
                       },
                       "ref": null,
@@ -2667,110 +2144,66 @@ ShallowWrapper {
               Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "host",
+                "nodeType": "function",
                 "props": Object {
-                  "children": Array [
-                    false,
-                    <button
-                      className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
-                      onClick={[Function]}
-                    >
-                      <span
-                        aria-label="undefined undefined"
-                        className="c-message__summary__head__actions__delete__txt"
-                        id="deleteMsg"
-                      />
-                      <span
-                        className="c-message__summary__head__actions__delete__icon"
-                      >
-                        <CommonGetIcon
-                          height="24px"
-                          id="icon-delete"
-                          width="24px"
-                        />
-                      </span>
-                    </button>,
-                    false,
-                  ],
-                  "className": "c-message__summary__head__actions u-position-relative",
+                  "content": Object {
+                    "back": "Back",
+                    "noSpecificAccount": "noSpecificAccount",
+                  },
+                  "dispatch": [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        [Function],
+                      ],
+                    ],
+                  },
+                  "draftFlag": false,
+                  "hasOnClick": false,
+                  "listFlag": false,
+                  "message": Object {
+                    "account": Object {
+                      "number": undefined,
+                    },
+                    "getDateCreated": [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                      ],
+                    },
+                    "getMessageBody": [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                      ],
+                    },
+                    "getReference": [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                      ],
+                    },
+                    "getSubject": [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                        Array [],
+                      ],
+                    },
+                    "status": "DRAFT",
+                  },
+                  "messageDetail": Object {
+                    "delSuccessModal": true,
+                    "newMessageError": true,
+                  },
+                  "messages": Object {
+                    "draftError": true,
+                  },
+                  "onArchiveClick": [Function],
+                  "onDeleteClick": [Function],
+                  "onUnarchiveClick": [Function],
+                  "readFlag": false,
+                  "sentFlag": false,
+                  "threadFlag": false,
                 },
                 "ref": null,
-                "rendered": Array [
-                  false,
-                  Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "host",
-                    "props": Object {
-                      "children": Array [
-                        <span
-                          aria-label="undefined undefined"
-                          className="c-message__summary__head__actions__delete__txt"
-                          id="deleteMsg"
-                        />,
-                        <span
-                          className="c-message__summary__head__actions__delete__icon"
-                        >
-                          <CommonGetIcon
-                            height="24px"
-                            id="icon-delete"
-                            width="24px"
-                          />
-                        </span>,
-                      ],
-                      "className": "c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding",
-                      "onClick": [Function],
-                    },
-                    "ref": null,
-                    "rendered": Array [
-                      Object {
-                        "instance": null,
-                        "key": undefined,
-                        "nodeType": "host",
-                        "props": Object {
-                          "aria-label": "undefined undefined",
-                          "children": undefined,
-                          "className": "c-message__summary__head__actions__delete__txt",
-                          "id": "deleteMsg",
-                        },
-                        "ref": null,
-                        "rendered": null,
-                        "type": "span",
-                      },
-                      Object {
-                        "instance": null,
-                        "key": undefined,
-                        "nodeType": "host",
-                        "props": Object {
-                          "children": <CommonGetIcon
-                            height="24px"
-                            id="icon-delete"
-                            width="24px"
-                          />,
-                          "className": "c-message__summary__head__actions__delete__icon",
-                        },
-                        "ref": null,
-                        "rendered": Object {
-                          "instance": null,
-                          "key": undefined,
-                          "nodeType": "class",
-                          "props": Object {
-                            "height": "24px",
-                            "id": "icon-delete",
-                            "width": "24px",
-                          },
-                          "ref": null,
-                          "rendered": null,
-                          "type": [Function],
-                        },
-                        "type": "span",
-                      },
-                    ],
-                    "type": "button",
-                  },
-                  false,
-                ],
-                "type": "div",
+                "rendered": null,
+                "type": [Function],
               },
             ],
             "type": "div",
@@ -2804,41 +2237,7 @@ ShallowWrapper {
         "type": "div",
       },
       false,
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "backdrop": true,
-          "bsSize": "small",
-          "closeButton": false,
-          "customClass": "c-modal c-modal--center",
-          "modalInContainer": false,
-          "modalbody": <div>
-            <div>
-              <CommonGetIcon
-                height="68px"
-                id="icon-success"
-                width="68px"
-              />
-            </div>
-          </div>,
-          "modalfooter": <div>
-            <button
-              className="c-btn c-btn--primary c-btn--sm c-modal__button"
-              onClick={[Function]}
-              type="button"
-            />
-          </div>,
-          "modalheading": "",
-          "onHide": [Function],
-          "scope": undefined,
-          "show": true,
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
+      false,
       false,
     ],
     "type": "div",
@@ -2893,12 +2292,11 @@ ShallowWrapper {
                             "calls": Array [
                               Array [],
                               Array [],
-                              Array [],
                             ],
                           },
                           "status": "DRAFT",
                         },
-                        "pathname": "undefined/securemessages/draft",
+                        "pathname": "/securemessages/draft",
                       }
                     }
                   />
@@ -2907,29 +2305,72 @@ ShallowWrapper {
                   className="c-message__summary__head__title__ref"
                 />
               </div>
-              <div
-                className="c-message__summary__head__actions u-position-relative"
-              >
-                <button
-                  className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
-                  onClick={[Function]}
-                >
-                  <span
-                    aria-label="undefined undefined"
-                    className="c-message__summary__head__actions__delete__txt"
-                    id="deleteMsg"
-                  />
-                  <span
-                    className="c-message__summary__head__actions__delete__icon"
-                  >
-                    <CommonGetIcon
-                      height="24px"
-                      id="icon-delete"
-                      width="24px"
-                    />
-                  </span>
-                </button>
-              </div>
+              <secureMessageSummaryButtons
+                content={
+                  Object {
+                    "back": "Back",
+                    "noSpecificAccount": "noSpecificAccount",
+                  }
+                }
+                dispatch={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        [Function],
+                      ],
+                    ],
+                  }
+                }
+                draftFlag={false}
+                hasOnClick={false}
+                listFlag={false}
+                message={
+                  Object {
+                    "account": Object {
+                      "number": undefined,
+                    },
+                    "getDateCreated": [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                      ],
+                    },
+                    "getMessageBody": [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                      ],
+                    },
+                    "getReference": [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                      ],
+                    },
+                    "getSubject": [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                        Array [],
+                      ],
+                    },
+                    "status": "DRAFT",
+                  }
+                }
+                messageDetail={
+                  Object {
+                    "delSuccessModal": true,
+                    "newMessageError": true,
+                  }
+                }
+                messages={
+                  Object {
+                    "draftError": true,
+                  }
+                }
+                onArchiveClick={[Function]}
+                onDeleteClick={[Function]}
+                onUnarchiveClick={[Function]}
+                readFlag={false}
+                sentFlag={false}
+                threadFlag={false}
+              />
             </div>
             <p
               className="c-message__summary__account"
@@ -2939,37 +2380,7 @@ ShallowWrapper {
             />
           </div>,
           false,
-          <ModalComponent
-            backdrop={true}
-            bsSize="small"
-            closeButton={false}
-            customClass="c-modal c-modal--center"
-            modalInContainer={false}
-            modalbody={
-              <div>
-                <div>
-                  <CommonGetIcon
-                    height="68px"
-                    id="icon-success"
-                    width="68px"
-                  />
-                </div>
-              </div>
-            }
-            modalfooter={
-              <div>
-                <button
-                  className="c-btn c-btn--primary c-btn--sm c-modal__button"
-                  onClick={[Function]}
-                  type="button"
-                />
-              </div>
-            }
-            modalheading=""
-            onHide={[Function]}
-            scope={undefined}
-            show={true}
-          />,
+          false,
           false,
         ],
         "className": "c-message u-position-relative",
@@ -3022,12 +2433,11 @@ ShallowWrapper {
                               "calls": Array [
                                 Array [],
                                 Array [],
-                                Array [],
                               ],
                             },
                             "status": "DRAFT",
                           },
-                          "pathname": "undefined/securemessages/draft",
+                          "pathname": "/securemessages/draft",
                         }
                       }
                     />
@@ -3036,29 +2446,72 @@ ShallowWrapper {
                     className="c-message__summary__head__title__ref"
                   />
                 </div>
-                <div
-                  className="c-message__summary__head__actions u-position-relative"
-                >
-                  <button
-                    className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
-                    onClick={[Function]}
-                  >
-                    <span
-                      aria-label="undefined undefined"
-                      className="c-message__summary__head__actions__delete__txt"
-                      id="deleteMsg"
-                    />
-                    <span
-                      className="c-message__summary__head__actions__delete__icon"
-                    >
-                      <CommonGetIcon
-                        height="24px"
-                        id="icon-delete"
-                        width="24px"
-                      />
-                    </span>
-                  </button>
-                </div>
+                <secureMessageSummaryButtons
+                  content={
+                    Object {
+                      "back": "Back",
+                      "noSpecificAccount": "noSpecificAccount",
+                    }
+                  }
+                  dispatch={
+                    [MockFunction] {
+                      "calls": Array [
+                        Array [
+                          [Function],
+                        ],
+                      ],
+                    }
+                  }
+                  draftFlag={false}
+                  hasOnClick={false}
+                  listFlag={false}
+                  message={
+                    Object {
+                      "account": Object {
+                        "number": undefined,
+                      },
+                      "getDateCreated": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                        ],
+                      },
+                      "getMessageBody": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                        ],
+                      },
+                      "getReference": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                        ],
+                      },
+                      "getSubject": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                          Array [],
+                        ],
+                      },
+                      "status": "DRAFT",
+                    }
+                  }
+                  messageDetail={
+                    Object {
+                      "delSuccessModal": true,
+                      "newMessageError": true,
+                    }
+                  }
+                  messages={
+                    Object {
+                      "draftError": true,
+                    }
+                  }
+                  onArchiveClick={[Function]}
+                  onDeleteClick={[Function]}
+                  onUnarchiveClick={[Function]}
+                  readFlag={false}
+                  sentFlag={false}
+                  threadFlag={false}
+                />
               </div>,
               <p
                 className="c-message__summary__account"
@@ -3114,12 +2567,11 @@ ShallowWrapper {
                                 "calls": Array [
                                   Array [],
                                   Array [],
-                                  Array [],
                                 ],
                               },
                               "status": "DRAFT",
                             },
-                            "pathname": "undefined/securemessages/draft",
+                            "pathname": "/securemessages/draft",
                           }
                         }
                       />
@@ -3128,29 +2580,72 @@ ShallowWrapper {
                       className="c-message__summary__head__title__ref"
                     />
                   </div>,
-                  <div
-                    className="c-message__summary__head__actions u-position-relative"
-                  >
-                    <button
-                      className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
-                      onClick={[Function]}
-                    >
-                      <span
-                        aria-label="undefined undefined"
-                        className="c-message__summary__head__actions__delete__txt"
-                        id="deleteMsg"
-                      />
-                      <span
-                        className="c-message__summary__head__actions__delete__icon"
-                      >
-                        <CommonGetIcon
-                          height="24px"
-                          id="icon-delete"
-                          width="24px"
-                        />
-                      </span>
-                    </button>
-                  </div>,
+                  <secureMessageSummaryButtons
+                    content={
+                      Object {
+                        "back": "Back",
+                        "noSpecificAccount": "noSpecificAccount",
+                      }
+                    }
+                    dispatch={
+                      [MockFunction] {
+                        "calls": Array [
+                          Array [
+                            [Function],
+                          ],
+                        ],
+                      }
+                    }
+                    draftFlag={false}
+                    hasOnClick={false}
+                    listFlag={false}
+                    message={
+                      Object {
+                        "account": Object {
+                          "number": undefined,
+                        },
+                        "getDateCreated": [MockFunction] {
+                          "calls": Array [
+                            Array [],
+                          ],
+                        },
+                        "getMessageBody": [MockFunction] {
+                          "calls": Array [
+                            Array [],
+                          ],
+                        },
+                        "getReference": [MockFunction] {
+                          "calls": Array [
+                            Array [],
+                          ],
+                        },
+                        "getSubject": [MockFunction] {
+                          "calls": Array [
+                            Array [],
+                            Array [],
+                          ],
+                        },
+                        "status": "DRAFT",
+                      }
+                    }
+                    messageDetail={
+                      Object {
+                        "delSuccessModal": true,
+                        "newMessageError": true,
+                      }
+                    }
+                    messages={
+                      Object {
+                        "draftError": true,
+                      }
+                    }
+                    onArchiveClick={[Function]}
+                    onDeleteClick={[Function]}
+                    onUnarchiveClick={[Function]}
+                    readFlag={false}
+                    sentFlag={false}
+                    threadFlag={false}
+                  />,
                 ],
                 "className": "c-message__summary__head",
               },
@@ -3195,12 +2690,11 @@ ShallowWrapper {
                                   "calls": Array [
                                     Array [],
                                     Array [],
-                                    Array [],
                                   ],
                                 },
                                 "status": "DRAFT",
                               },
-                              "pathname": "undefined/securemessages/draft",
+                              "pathname": "/securemessages/draft",
                             }
                           }
                         />
@@ -3247,12 +2741,11 @@ ShallowWrapper {
                                   "calls": Array [
                                     Array [],
                                     Array [],
-                                    Array [],
                                   ],
                                 },
                                 "status": "DRAFT",
                               },
-                              "pathname": "undefined/securemessages/draft",
+                              "pathname": "/securemessages/draft",
                             }
                           }
                         />,
@@ -3293,12 +2786,11 @@ ShallowWrapper {
                                 "calls": Array [
                                   Array [],
                                   Array [],
-                                  Array [],
                                 ],
                               },
                               "status": "DRAFT",
                             },
-                            "pathname": "undefined/securemessages/draft",
+                            "pathname": "/securemessages/draft",
                           },
                         },
                         "ref": null,
@@ -3325,110 +2817,66 @@ ShallowWrapper {
                 Object {
                   "instance": null,
                   "key": undefined,
-                  "nodeType": "host",
+                  "nodeType": "function",
                   "props": Object {
-                    "children": Array [
-                      false,
-                      <button
-                        className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
-                        onClick={[Function]}
-                      >
-                        <span
-                          aria-label="undefined undefined"
-                          className="c-message__summary__head__actions__delete__txt"
-                          id="deleteMsg"
-                        />
-                        <span
-                          className="c-message__summary__head__actions__delete__icon"
-                        >
-                          <CommonGetIcon
-                            height="24px"
-                            id="icon-delete"
-                            width="24px"
-                          />
-                        </span>
-                      </button>,
-                      false,
-                    ],
-                    "className": "c-message__summary__head__actions u-position-relative",
+                    "content": Object {
+                      "back": "Back",
+                      "noSpecificAccount": "noSpecificAccount",
+                    },
+                    "dispatch": [MockFunction] {
+                      "calls": Array [
+                        Array [
+                          [Function],
+                        ],
+                      ],
+                    },
+                    "draftFlag": false,
+                    "hasOnClick": false,
+                    "listFlag": false,
+                    "message": Object {
+                      "account": Object {
+                        "number": undefined,
+                      },
+                      "getDateCreated": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                        ],
+                      },
+                      "getMessageBody": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                        ],
+                      },
+                      "getReference": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                        ],
+                      },
+                      "getSubject": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                          Array [],
+                        ],
+                      },
+                      "status": "DRAFT",
+                    },
+                    "messageDetail": Object {
+                      "delSuccessModal": true,
+                      "newMessageError": true,
+                    },
+                    "messages": Object {
+                      "draftError": true,
+                    },
+                    "onArchiveClick": [Function],
+                    "onDeleteClick": [Function],
+                    "onUnarchiveClick": [Function],
+                    "readFlag": false,
+                    "sentFlag": false,
+                    "threadFlag": false,
                   },
                   "ref": null,
-                  "rendered": Array [
-                    false,
-                    Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "host",
-                      "props": Object {
-                        "children": Array [
-                          <span
-                            aria-label="undefined undefined"
-                            className="c-message__summary__head__actions__delete__txt"
-                            id="deleteMsg"
-                          />,
-                          <span
-                            className="c-message__summary__head__actions__delete__icon"
-                          >
-                            <CommonGetIcon
-                              height="24px"
-                              id="icon-delete"
-                              width="24px"
-                            />
-                          </span>,
-                        ],
-                        "className": "c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding",
-                        "onClick": [Function],
-                      },
-                      "ref": null,
-                      "rendered": Array [
-                        Object {
-                          "instance": null,
-                          "key": undefined,
-                          "nodeType": "host",
-                          "props": Object {
-                            "aria-label": "undefined undefined",
-                            "children": undefined,
-                            "className": "c-message__summary__head__actions__delete__txt",
-                            "id": "deleteMsg",
-                          },
-                          "ref": null,
-                          "rendered": null,
-                          "type": "span",
-                        },
-                        Object {
-                          "instance": null,
-                          "key": undefined,
-                          "nodeType": "host",
-                          "props": Object {
-                            "children": <CommonGetIcon
-                              height="24px"
-                              id="icon-delete"
-                              width="24px"
-                            />,
-                            "className": "c-message__summary__head__actions__delete__icon",
-                          },
-                          "ref": null,
-                          "rendered": Object {
-                            "instance": null,
-                            "key": undefined,
-                            "nodeType": "class",
-                            "props": Object {
-                              "height": "24px",
-                              "id": "icon-delete",
-                              "width": "24px",
-                            },
-                            "ref": null,
-                            "rendered": null,
-                            "type": [Function],
-                          },
-                          "type": "span",
-                        },
-                      ],
-                      "type": "button",
-                    },
-                    false,
-                  ],
-                  "type": "div",
+                  "rendered": null,
+                  "type": [Function],
                 },
               ],
               "type": "div",
@@ -3462,41 +2910,7 @@ ShallowWrapper {
           "type": "div",
         },
         false,
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "backdrop": true,
-            "bsSize": "small",
-            "closeButton": false,
-            "customClass": "c-modal c-modal--center",
-            "modalInContainer": false,
-            "modalbody": <div>
-              <div>
-                <CommonGetIcon
-                  height="68px"
-                  id="icon-success"
-                  width="68px"
-                />
-              </div>
-            </div>,
-            "modalfooter": <div>
-              <button
-                className="c-btn c-btn--primary c-btn--sm c-modal__button"
-                onClick={[Function]}
-                type="button"
-              />
-            </div>,
-            "modalheading": "",
-            "onHide": [Function],
-            "scope": undefined,
-            "show": true,
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
+        false,
         false,
       ],
       "type": "div",
@@ -3505,15 +2919,20 @@ ShallowWrapper {
   Symbol(enzyme.__options__): Object {
     "adapter": ReactFifteenFourAdapter {
       "options": Object {
+        "legacyContextMode": "parent",
         "lifecycles": Object {
           "componentDidUpdate": Object {
             "prevContext": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": true,
           },
         },
         "supportPrevContextArgumentOfComponentDidUpdate": true,
       },
     },
   },
+  Symbol(enzyme.__childContext__): null,
 }
 `;
 
@@ -3557,8 +2976,6 @@ ShallowWrapper {
         },
         "getSubject": [MockFunction] {
           "calls": Array [
-            Array [],
-            Array [],
             Array [],
             Array [],
           ],
@@ -3642,13 +3059,11 @@ ShallowWrapper {
                           "calls": Array [
                             Array [],
                             Array [],
-                            Array [],
-                            Array [],
                           ],
                         },
                         "status": "NEW",
                       },
-                      "pathname": "undefined/securemessages/view",
+                      "pathname": "/securemessages/view",
                     }
                   }
                 />
@@ -3657,79 +3072,69 @@ ShallowWrapper {
                 className="c-message__summary__head__title__ref"
               />
             </div>
-            <div
-              className="c-message__summary__head__actions u-position-relative"
-            >
-              <Link
-                className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding"
-                replace={false}
-                to={
-                  Object {
-                    "backPath": "undefined/securemessages/view",
-                    "messageDetail": Object {
-                      "account": Object {
-                        "number": "32236",
-                      },
-                      "getDateCreated": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                        ],
-                      },
-                      "getMessageBody": [MockFunction],
-                      "getReference": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                        ],
-                      },
-                      "getSubject": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                          Array [],
-                          Array [],
-                          Array [],
-                        ],
-                      },
-                      "status": "NEW",
-                    },
-                    "pathname": "undefined/securemessages/reply",
-                  }
+            <secureMessageSummaryButtons
+              content={
+                Object {
+                  "back": "Back",
+                  "noSpecificAccount": "noSpecificAccount",
                 }
-              >
-                <span
-                  aria-label="undefined undefined"
-                  className="c-message__summary__head__actions__reply__txt"
-                  id="replyMsg"
-                />
-                <span
-                  className="c-message__summary__head__actions__reply__icon"
-                >
-                  <CommonGetIcon
-                    height="24px"
-                    id="icon-reply"
-                    width="24px"
-                  />
-                </span>
-              </Link>
-              <button
-                className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
-                onClick={[Function]}
-              >
-                <span
-                  aria-label="undefined undefined"
-                  className="c-message__summary__head__actions__delete__txt"
-                  id="deleteMsg"
-                />
-                <span
-                  className="c-message__summary__head__actions__delete__icon"
-                >
-                  <CommonGetIcon
-                    height="24px"
-                    id="icon-delete"
-                    width="24px"
-                  />
-                </span>
-              </button>
-            </div>
+              }
+              dispatch={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      [Function],
+                    ],
+                  ],
+                }
+              }
+              draftFlag={false}
+              hasOnClick={false}
+              listFlag={false}
+              message={
+                Object {
+                  "account": Object {
+                    "number": "32236",
+                  },
+                  "getDateCreated": [MockFunction] {
+                    "calls": Array [
+                      Array [],
+                    ],
+                  },
+                  "getMessageBody": [MockFunction],
+                  "getReference": [MockFunction] {
+                    "calls": Array [
+                      Array [],
+                    ],
+                  },
+                  "getSubject": [MockFunction] {
+                    "calls": Array [
+                      Array [],
+                      Array [],
+                    ],
+                  },
+                  "status": "NEW",
+                }
+              }
+              messageDetail={
+                Object {
+                  "delSuccessModal": true,
+                  "newMessageError": true,
+                }
+              }
+              messages={
+                Object {
+                  "draftError": true,
+                }
+              }
+              onArchiveClick={[Function]}
+              onDeleteClick={[Function]}
+              onUnarchiveClick={[Function]}
+              readFlag={false}
+              sentFlag={false}
+              threadFlag={false}
+              viewMessageFlag={true}
+            />
           </div>
           <p
             className="c-message__summary__account"
@@ -3742,38 +3147,7 @@ ShallowWrapper {
           />
         </div>,
         false,
-        <ModalComponent
-          backdrop={true}
-          bsSize="small"
-          closeButton={false}
-          customClass="c-modal c-modal--center"
-          modalInContainer={false}
-          modalbody={
-            <div>
-              <div>
-                <CommonGetIcon
-                  height="68px"
-                  id="icon-success"
-                  width="68px"
-                />
-              </div>
-            </div>
-          }
-          modalfooter={
-            <div>
-              <Link
-                className="c-btn c-btn--primary c-btn--sm c-modal__button"
-                onClick={[Function]}
-                replace={false}
-                to="undefined/securemessages"
-              />
-            </div>
-          }
-          modalheading=""
-          onHide={[Function]}
-          scope={undefined}
-          show={true}
-        />,
+        false,
         false,
       ],
       "className": "c-message u-position-relative",
@@ -3849,13 +3223,11 @@ ShallowWrapper {
                             "calls": Array [
                               Array [],
                               Array [],
-                              Array [],
-                              Array [],
                             ],
                           },
                           "status": "NEW",
                         },
-                        "pathname": "undefined/securemessages/view",
+                        "pathname": "/securemessages/view",
                       }
                     }
                   />
@@ -3864,79 +3236,69 @@ ShallowWrapper {
                   className="c-message__summary__head__title__ref"
                 />
               </div>
-              <div
-                className="c-message__summary__head__actions u-position-relative"
-              >
-                <Link
-                  className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding"
-                  replace={false}
-                  to={
-                    Object {
-                      "backPath": "undefined/securemessages/view",
-                      "messageDetail": Object {
-                        "account": Object {
-                          "number": "32236",
-                        },
-                        "getDateCreated": [MockFunction] {
-                          "calls": Array [
-                            Array [],
-                          ],
-                        },
-                        "getMessageBody": [MockFunction],
-                        "getReference": [MockFunction] {
-                          "calls": Array [
-                            Array [],
-                          ],
-                        },
-                        "getSubject": [MockFunction] {
-                          "calls": Array [
-                            Array [],
-                            Array [],
-                            Array [],
-                            Array [],
-                          ],
-                        },
-                        "status": "NEW",
-                      },
-                      "pathname": "undefined/securemessages/reply",
-                    }
+              <secureMessageSummaryButtons
+                content={
+                  Object {
+                    "back": "Back",
+                    "noSpecificAccount": "noSpecificAccount",
                   }
-                >
-                  <span
-                    aria-label="undefined undefined"
-                    className="c-message__summary__head__actions__reply__txt"
-                    id="replyMsg"
-                  />
-                  <span
-                    className="c-message__summary__head__actions__reply__icon"
-                  >
-                    <CommonGetIcon
-                      height="24px"
-                      id="icon-reply"
-                      width="24px"
-                    />
-                  </span>
-                </Link>
-                <button
-                  className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
-                  onClick={[Function]}
-                >
-                  <span
-                    aria-label="undefined undefined"
-                    className="c-message__summary__head__actions__delete__txt"
-                    id="deleteMsg"
-                  />
-                  <span
-                    className="c-message__summary__head__actions__delete__icon"
-                  >
-                    <CommonGetIcon
-                      height="24px"
-                      id="icon-delete"
-                      width="24px"
-                    />
-                  </span>
-                </button>
-              </div>
+                }
+                dispatch={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        [Function],
+                      ],
+                    ],
+                  }
+                }
+                draftFlag={false}
+                hasOnClick={false}
+                listFlag={false}
+                message={
+                  Object {
+                    "account": Object {
+                      "number": "32236",
+                    },
+                    "getDateCreated": [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                      ],
+                    },
+                    "getMessageBody": [MockFunction],
+                    "getReference": [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                      ],
+                    },
+                    "getSubject": [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                        Array [],
+                      ],
+                    },
+                    "status": "NEW",
+                  }
+                }
+                messageDetail={
+                  Object {
+                    "delSuccessModal": true,
+                    "newMessageError": true,
+                  }
+                }
+                messages={
+                  Object {
+                    "draftError": true,
+                  }
+                }
+                onArchiveClick={[Function]}
+                onDeleteClick={[Function]}
+                onUnarchiveClick={[Function]}
+                readFlag={false}
+                sentFlag={false}
+                threadFlag={false}
+                viewMessageFlag={true}
+              />
             </div>,
             false,
             <p
@@ -3991,13 +3353,11 @@ ShallowWrapper {
                               "calls": Array [
                                 Array [],
                                 Array [],
-                                Array [],
-                                Array [],
                               ],
                             },
                             "status": "NEW",
                           },
-                          "pathname": "undefined/securemessages/view",
+                          "pathname": "/securemessages/view",
                         }
                       }
                     />
@@ -4006,79 +3366,69 @@ ShallowWrapper {
                     className="c-message__summary__head__title__ref"
                   />
                 </div>,
-                <div
-                  className="c-message__summary__head__actions u-position-relative"
-                >
-                  <Link
-                    className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding"
-                    replace={false}
-                    to={
-                      Object {
-                        "backPath": "undefined/securemessages/view",
-                        "messageDetail": Object {
-                          "account": Object {
-                            "number": "32236",
-                          },
-                          "getDateCreated": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                            ],
-                          },
-                          "getMessageBody": [MockFunction],
-                          "getReference": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                            ],
-                          },
-                          "getSubject": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                              Array [],
-                              Array [],
-                              Array [],
-                            ],
-                          },
-                          "status": "NEW",
-                        },
-                        "pathname": "undefined/securemessages/reply",
-                      }
+                <secureMessageSummaryButtons
+                  content={
+                    Object {
+                      "back": "Back",
+                      "noSpecificAccount": "noSpecificAccount",
                     }
-                  >
-                    <span
-                      aria-label="undefined undefined"
-                      className="c-message__summary__head__actions__reply__txt"
-                      id="replyMsg"
-                    />
-                    <span
-                      className="c-message__summary__head__actions__reply__icon"
-                    >
-                      <CommonGetIcon
-                        height="24px"
-                        id="icon-reply"
-                        width="24px"
-                      />
-                    </span>
-                  </Link>
-                  <button
-                    className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
-                    onClick={[Function]}
-                  >
-                    <span
-                      aria-label="undefined undefined"
-                      className="c-message__summary__head__actions__delete__txt"
-                      id="deleteMsg"
-                    />
-                    <span
-                      className="c-message__summary__head__actions__delete__icon"
-                    >
-                      <CommonGetIcon
-                        height="24px"
-                        id="icon-delete"
-                        width="24px"
-                      />
-                    </span>
-                  </button>
-                </div>,
+                  }
+                  dispatch={
+                    [MockFunction] {
+                      "calls": Array [
+                        Array [
+                          [Function],
+                        ],
+                      ],
+                    }
+                  }
+                  draftFlag={false}
+                  hasOnClick={false}
+                  listFlag={false}
+                  message={
+                    Object {
+                      "account": Object {
+                        "number": "32236",
+                      },
+                      "getDateCreated": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                        ],
+                      },
+                      "getMessageBody": [MockFunction],
+                      "getReference": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                        ],
+                      },
+                      "getSubject": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                          Array [],
+                        ],
+                      },
+                      "status": "NEW",
+                    }
+                  }
+                  messageDetail={
+                    Object {
+                      "delSuccessModal": true,
+                      "newMessageError": true,
+                    }
+                  }
+                  messages={
+                    Object {
+                      "draftError": true,
+                    }
+                  }
+                  onArchiveClick={[Function]}
+                  onDeleteClick={[Function]}
+                  onUnarchiveClick={[Function]}
+                  readFlag={false}
+                  sentFlag={false}
+                  threadFlag={false}
+                  viewMessageFlag={true}
+                />,
               ],
               "className": "c-message__summary__head",
             },
@@ -4119,13 +3469,11 @@ ShallowWrapper {
                                 "calls": Array [
                                   Array [],
                                   Array [],
-                                  Array [],
-                                  Array [],
                                 ],
                               },
                               "status": "NEW",
                             },
-                            "pathname": "undefined/securemessages/view",
+                            "pathname": "/securemessages/view",
                           }
                         }
                       />
@@ -4168,13 +3516,11 @@ ShallowWrapper {
                                 "calls": Array [
                                   Array [],
                                   Array [],
-                                  Array [],
-                                  Array [],
                                 ],
                               },
                               "status": "NEW",
                             },
-                            "pathname": "undefined/securemessages/view",
+                            "pathname": "/securemessages/view",
                           }
                         }
                       />,
@@ -4211,13 +3557,11 @@ ShallowWrapper {
                               "calls": Array [
                                 Array [],
                                 Array [],
-                                Array [],
-                                Array [],
                               ],
                             },
                             "status": "NEW",
                           },
-                          "pathname": "undefined/securemessages/view",
+                          "pathname": "/securemessages/view",
                         },
                       },
                       "ref": null,
@@ -4244,258 +3588,63 @@ ShallowWrapper {
               Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "host",
+                "nodeType": "function",
                 "props": Object {
-                  "children": Array [
-                    <Link
-                      className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding"
-                      replace={false}
-                      to={
-                        Object {
-                          "backPath": "undefined/securemessages/view",
-                          "messageDetail": Object {
-                            "account": Object {
-                              "number": "32236",
-                            },
-                            "getDateCreated": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getMessageBody": [MockFunction],
-                            "getReference": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getSubject": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                                Array [],
-                                Array [],
-                                Array [],
-                              ],
-                            },
-                            "status": "NEW",
-                          },
-                          "pathname": "undefined/securemessages/reply",
-                        }
-                      }
-                    >
-                      <span
-                        aria-label="undefined undefined"
-                        className="c-message__summary__head__actions__reply__txt"
-                        id="replyMsg"
-                      />
-                      <span
-                        className="c-message__summary__head__actions__reply__icon"
-                      >
-                        <CommonGetIcon
-                          height="24px"
-                          id="icon-reply"
-                          width="24px"
-                        />
-                      </span>
-                    </Link>,
-                    <button
-                      className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
-                      onClick={[Function]}
-                    >
-                      <span
-                        aria-label="undefined undefined"
-                        className="c-message__summary__head__actions__delete__txt"
-                        id="deleteMsg"
-                      />
-                      <span
-                        className="c-message__summary__head__actions__delete__icon"
-                      >
-                        <CommonGetIcon
-                          height="24px"
-                          id="icon-delete"
-                          width="24px"
-                        />
-                      </span>
-                    </button>,
-                    false,
-                  ],
-                  "className": "c-message__summary__head__actions u-position-relative",
+                  "content": Object {
+                    "back": "Back",
+                    "noSpecificAccount": "noSpecificAccount",
+                  },
+                  "dispatch": [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        [Function],
+                      ],
+                    ],
+                  },
+                  "draftFlag": false,
+                  "hasOnClick": false,
+                  "listFlag": false,
+                  "message": Object {
+                    "account": Object {
+                      "number": "32236",
+                    },
+                    "getDateCreated": [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                      ],
+                    },
+                    "getMessageBody": [MockFunction],
+                    "getReference": [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                      ],
+                    },
+                    "getSubject": [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                        Array [],
+                      ],
+                    },
+                    "status": "NEW",
+                  },
+                  "messageDetail": Object {
+                    "delSuccessModal": true,
+                    "newMessageError": true,
+                  },
+                  "messages": Object {
+                    "draftError": true,
+                  },
+                  "onArchiveClick": [Function],
+                  "onDeleteClick": [Function],
+                  "onUnarchiveClick": [Function],
+                  "readFlag": false,
+                  "sentFlag": false,
+                  "threadFlag": false,
+                  "viewMessageFlag": true,
                 },
                 "ref": null,
-                "rendered": Array [
-                  Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "class",
-                    "props": Object {
-                      "children": Array [
-                        <span
-                          aria-label="undefined undefined"
-                          className="c-message__summary__head__actions__reply__txt"
-                          id="replyMsg"
-                        />,
-                        <span
-                          className="c-message__summary__head__actions__reply__icon"
-                        >
-                          <CommonGetIcon
-                            height="24px"
-                            id="icon-reply"
-                            width="24px"
-                          />
-                        </span>,
-                      ],
-                      "className": "c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding",
-                      "replace": false,
-                      "to": Object {
-                        "backPath": "undefined/securemessages/view",
-                        "messageDetail": Object {
-                          "account": Object {
-                            "number": "32236",
-                          },
-                          "getDateCreated": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                            ],
-                          },
-                          "getMessageBody": [MockFunction],
-                          "getReference": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                            ],
-                          },
-                          "getSubject": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                              Array [],
-                              Array [],
-                              Array [],
-                            ],
-                          },
-                          "status": "NEW",
-                        },
-                        "pathname": "undefined/securemessages/reply",
-                      },
-                    },
-                    "ref": null,
-                    "rendered": Array [
-                      Object {
-                        "instance": null,
-                        "key": undefined,
-                        "nodeType": "host",
-                        "props": Object {
-                          "aria-label": "undefined undefined",
-                          "children": undefined,
-                          "className": "c-message__summary__head__actions__reply__txt",
-                          "id": "replyMsg",
-                        },
-                        "ref": null,
-                        "rendered": null,
-                        "type": "span",
-                      },
-                      Object {
-                        "instance": null,
-                        "key": undefined,
-                        "nodeType": "host",
-                        "props": Object {
-                          "children": <CommonGetIcon
-                            height="24px"
-                            id="icon-reply"
-                            width="24px"
-                          />,
-                          "className": "c-message__summary__head__actions__reply__icon",
-                        },
-                        "ref": null,
-                        "rendered": Object {
-                          "instance": null,
-                          "key": undefined,
-                          "nodeType": "class",
-                          "props": Object {
-                            "height": "24px",
-                            "id": "icon-reply",
-                            "width": "24px",
-                          },
-                          "ref": null,
-                          "rendered": null,
-                          "type": [Function],
-                        },
-                        "type": "span",
-                      },
-                    ],
-                    "type": [Function],
-                  },
-                  Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "host",
-                    "props": Object {
-                      "children": Array [
-                        <span
-                          aria-label="undefined undefined"
-                          className="c-message__summary__head__actions__delete__txt"
-                          id="deleteMsg"
-                        />,
-                        <span
-                          className="c-message__summary__head__actions__delete__icon"
-                        >
-                          <CommonGetIcon
-                            height="24px"
-                            id="icon-delete"
-                            width="24px"
-                          />
-                        </span>,
-                      ],
-                      "className": "c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding",
-                      "onClick": [Function],
-                    },
-                    "ref": null,
-                    "rendered": Array [
-                      Object {
-                        "instance": null,
-                        "key": undefined,
-                        "nodeType": "host",
-                        "props": Object {
-                          "aria-label": "undefined undefined",
-                          "children": undefined,
-                          "className": "c-message__summary__head__actions__delete__txt",
-                          "id": "deleteMsg",
-                        },
-                        "ref": null,
-                        "rendered": null,
-                        "type": "span",
-                      },
-                      Object {
-                        "instance": null,
-                        "key": undefined,
-                        "nodeType": "host",
-                        "props": Object {
-                          "children": <CommonGetIcon
-                            height="24px"
-                            id="icon-delete"
-                            width="24px"
-                          />,
-                          "className": "c-message__summary__head__actions__delete__icon",
-                        },
-                        "ref": null,
-                        "rendered": Object {
-                          "instance": null,
-                          "key": undefined,
-                          "nodeType": "class",
-                          "props": Object {
-                            "height": "24px",
-                            "id": "icon-delete",
-                            "width": "24px",
-                          },
-                          "ref": null,
-                          "rendered": null,
-                          "type": [Function],
-                        },
-                        "type": "span",
-                      },
-                    ],
-                    "type": "button",
-                  },
-                  false,
-                ],
-                "type": "div",
+                "rendered": null,
+                "type": [Function],
               },
             ],
             "type": "div",
@@ -4535,42 +3684,7 @@ ShallowWrapper {
         "type": "div",
       },
       false,
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "backdrop": true,
-          "bsSize": "small",
-          "closeButton": false,
-          "customClass": "c-modal c-modal--center",
-          "modalInContainer": false,
-          "modalbody": <div>
-            <div>
-              <CommonGetIcon
-                height="68px"
-                id="icon-success"
-                width="68px"
-              />
-            </div>
-          </div>,
-          "modalfooter": <div>
-            <Link
-              className="c-btn c-btn--primary c-btn--sm c-modal__button"
-              onClick={[Function]}
-              replace={false}
-              to="undefined/securemessages"
-            />
-          </div>,
-          "modalheading": "",
-          "onHide": [Function],
-          "scope": undefined,
-          "show": true,
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
+      false,
       false,
     ],
     "type": "div",
@@ -4629,13 +3743,11 @@ ShallowWrapper {
                             "calls": Array [
                               Array [],
                               Array [],
-                              Array [],
-                              Array [],
                             ],
                           },
                           "status": "NEW",
                         },
-                        "pathname": "undefined/securemessages/view",
+                        "pathname": "/securemessages/view",
                       }
                     }
                   />
@@ -4644,79 +3756,69 @@ ShallowWrapper {
                   className="c-message__summary__head__title__ref"
                 />
               </div>
-              <div
-                className="c-message__summary__head__actions u-position-relative"
-              >
-                <Link
-                  className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding"
-                  replace={false}
-                  to={
-                    Object {
-                      "backPath": "undefined/securemessages/view",
-                      "messageDetail": Object {
-                        "account": Object {
-                          "number": "32236",
-                        },
-                        "getDateCreated": [MockFunction] {
-                          "calls": Array [
-                            Array [],
-                          ],
-                        },
-                        "getMessageBody": [MockFunction],
-                        "getReference": [MockFunction] {
-                          "calls": Array [
-                            Array [],
-                          ],
-                        },
-                        "getSubject": [MockFunction] {
-                          "calls": Array [
-                            Array [],
-                            Array [],
-                            Array [],
-                            Array [],
-                          ],
-                        },
-                        "status": "NEW",
-                      },
-                      "pathname": "undefined/securemessages/reply",
-                    }
+              <secureMessageSummaryButtons
+                content={
+                  Object {
+                    "back": "Back",
+                    "noSpecificAccount": "noSpecificAccount",
                   }
-                >
-                  <span
-                    aria-label="undefined undefined"
-                    className="c-message__summary__head__actions__reply__txt"
-                    id="replyMsg"
-                  />
-                  <span
-                    className="c-message__summary__head__actions__reply__icon"
-                  >
-                    <CommonGetIcon
-                      height="24px"
-                      id="icon-reply"
-                      width="24px"
-                    />
-                  </span>
-                </Link>
-                <button
-                  className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
-                  onClick={[Function]}
-                >
-                  <span
-                    aria-label="undefined undefined"
-                    className="c-message__summary__head__actions__delete__txt"
-                    id="deleteMsg"
-                  />
-                  <span
-                    className="c-message__summary__head__actions__delete__icon"
-                  >
-                    <CommonGetIcon
-                      height="24px"
-                      id="icon-delete"
-                      width="24px"
-                    />
-                  </span>
-                </button>
-              </div>
+                }
+                dispatch={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        [Function],
+                      ],
+                    ],
+                  }
+                }
+                draftFlag={false}
+                hasOnClick={false}
+                listFlag={false}
+                message={
+                  Object {
+                    "account": Object {
+                      "number": "32236",
+                    },
+                    "getDateCreated": [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                      ],
+                    },
+                    "getMessageBody": [MockFunction],
+                    "getReference": [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                      ],
+                    },
+                    "getSubject": [MockFunction] {
+                      "calls": Array [
+                        Array [],
+                        Array [],
+                      ],
+                    },
+                    "status": "NEW",
+                  }
+                }
+                messageDetail={
+                  Object {
+                    "delSuccessModal": true,
+                    "newMessageError": true,
+                  }
+                }
+                messages={
+                  Object {
+                    "draftError": true,
+                  }
+                }
+                onArchiveClick={[Function]}
+                onDeleteClick={[Function]}
+                onUnarchiveClick={[Function]}
+                readFlag={false}
+                sentFlag={false}
+                threadFlag={false}
+                viewMessageFlag={true}
+              />
             </div>
             <p
               className="c-message__summary__account"
@@ -4729,38 +3831,7 @@ ShallowWrapper {
             />
           </div>,
           false,
-          <ModalComponent
-            backdrop={true}
-            bsSize="small"
-            closeButton={false}
-            customClass="c-modal c-modal--center"
-            modalInContainer={false}
-            modalbody={
-              <div>
-                <div>
-                  <CommonGetIcon
-                    height="68px"
-                    id="icon-success"
-                    width="68px"
-                  />
-                </div>
-              </div>
-            }
-            modalfooter={
-              <div>
-                <Link
-                  className="c-btn c-btn--primary c-btn--sm c-modal__button"
-                  onClick={[Function]}
-                  replace={false}
-                  to="undefined/securemessages"
-                />
-              </div>
-            }
-            modalheading=""
-            onHide={[Function]}
-            scope={undefined}
-            show={true}
-          />,
+          false,
           false,
         ],
         "className": "c-message u-position-relative",
@@ -4836,13 +3907,11 @@ ShallowWrapper {
                               "calls": Array [
                                 Array [],
                                 Array [],
-                                Array [],
-                                Array [],
                               ],
                             },
                             "status": "NEW",
                           },
-                          "pathname": "undefined/securemessages/view",
+                          "pathname": "/securemessages/view",
                         }
                       }
                     />
@@ -4851,79 +3920,69 @@ ShallowWrapper {
                     className="c-message__summary__head__title__ref"
                   />
                 </div>
-                <div
-                  className="c-message__summary__head__actions u-position-relative"
-                >
-                  <Link
-                    className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding"
-                    replace={false}
-                    to={
-                      Object {
-                        "backPath": "undefined/securemessages/view",
-                        "messageDetail": Object {
-                          "account": Object {
-                            "number": "32236",
-                          },
-                          "getDateCreated": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                            ],
-                          },
-                          "getMessageBody": [MockFunction],
-                          "getReference": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                            ],
-                          },
-                          "getSubject": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                              Array [],
-                              Array [],
-                              Array [],
-                            ],
-                          },
-                          "status": "NEW",
-                        },
-                        "pathname": "undefined/securemessages/reply",
-                      }
+                <secureMessageSummaryButtons
+                  content={
+                    Object {
+                      "back": "Back",
+                      "noSpecificAccount": "noSpecificAccount",
                     }
-                  >
-                    <span
-                      aria-label="undefined undefined"
-                      className="c-message__summary__head__actions__reply__txt"
-                      id="replyMsg"
-                    />
-                    <span
-                      className="c-message__summary__head__actions__reply__icon"
-                    >
-                      <CommonGetIcon
-                        height="24px"
-                        id="icon-reply"
-                        width="24px"
-                      />
-                    </span>
-                  </Link>
-                  <button
-                    className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
-                    onClick={[Function]}
-                  >
-                    <span
-                      aria-label="undefined undefined"
-                      className="c-message__summary__head__actions__delete__txt"
-                      id="deleteMsg"
-                    />
-                    <span
-                      className="c-message__summary__head__actions__delete__icon"
-                    >
-                      <CommonGetIcon
-                        height="24px"
-                        id="icon-delete"
-                        width="24px"
-                      />
-                    </span>
-                  </button>
-                </div>
+                  }
+                  dispatch={
+                    [MockFunction] {
+                      "calls": Array [
+                        Array [
+                          [Function],
+                        ],
+                      ],
+                    }
+                  }
+                  draftFlag={false}
+                  hasOnClick={false}
+                  listFlag={false}
+                  message={
+                    Object {
+                      "account": Object {
+                        "number": "32236",
+                      },
+                      "getDateCreated": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                        ],
+                      },
+                      "getMessageBody": [MockFunction],
+                      "getReference": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                        ],
+                      },
+                      "getSubject": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                          Array [],
+                        ],
+                      },
+                      "status": "NEW",
+                    }
+                  }
+                  messageDetail={
+                    Object {
+                      "delSuccessModal": true,
+                      "newMessageError": true,
+                    }
+                  }
+                  messages={
+                    Object {
+                      "draftError": true,
+                    }
+                  }
+                  onArchiveClick={[Function]}
+                  onDeleteClick={[Function]}
+                  onUnarchiveClick={[Function]}
+                  readFlag={false}
+                  sentFlag={false}
+                  threadFlag={false}
+                  viewMessageFlag={true}
+                />
               </div>,
               false,
               <p
@@ -4978,13 +4037,11 @@ ShallowWrapper {
                                 "calls": Array [
                                   Array [],
                                   Array [],
-                                  Array [],
-                                  Array [],
                                 ],
                               },
                               "status": "NEW",
                             },
-                            "pathname": "undefined/securemessages/view",
+                            "pathname": "/securemessages/view",
                           }
                         }
                       />
@@ -4993,79 +4050,69 @@ ShallowWrapper {
                       className="c-message__summary__head__title__ref"
                     />
                   </div>,
-                  <div
-                    className="c-message__summary__head__actions u-position-relative"
-                  >
-                    <Link
-                      className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding"
-                      replace={false}
-                      to={
-                        Object {
-                          "backPath": "undefined/securemessages/view",
-                          "messageDetail": Object {
-                            "account": Object {
-                              "number": "32236",
-                            },
-                            "getDateCreated": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getMessageBody": [MockFunction],
-                            "getReference": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getSubject": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                                Array [],
-                                Array [],
-                                Array [],
-                              ],
-                            },
-                            "status": "NEW",
-                          },
-                          "pathname": "undefined/securemessages/reply",
-                        }
+                  <secureMessageSummaryButtons
+                    content={
+                      Object {
+                        "back": "Back",
+                        "noSpecificAccount": "noSpecificAccount",
                       }
-                    >
-                      <span
-                        aria-label="undefined undefined"
-                        className="c-message__summary__head__actions__reply__txt"
-                        id="replyMsg"
-                      />
-                      <span
-                        className="c-message__summary__head__actions__reply__icon"
-                      >
-                        <CommonGetIcon
-                          height="24px"
-                          id="icon-reply"
-                          width="24px"
-                        />
-                      </span>
-                    </Link>
-                    <button
-                      className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
-                      onClick={[Function]}
-                    >
-                      <span
-                        aria-label="undefined undefined"
-                        className="c-message__summary__head__actions__delete__txt"
-                        id="deleteMsg"
-                      />
-                      <span
-                        className="c-message__summary__head__actions__delete__icon"
-                      >
-                        <CommonGetIcon
-                          height="24px"
-                          id="icon-delete"
-                          width="24px"
-                        />
-                      </span>
-                    </button>
-                  </div>,
+                    }
+                    dispatch={
+                      [MockFunction] {
+                        "calls": Array [
+                          Array [
+                            [Function],
+                          ],
+                        ],
+                      }
+                    }
+                    draftFlag={false}
+                    hasOnClick={false}
+                    listFlag={false}
+                    message={
+                      Object {
+                        "account": Object {
+                          "number": "32236",
+                        },
+                        "getDateCreated": [MockFunction] {
+                          "calls": Array [
+                            Array [],
+                          ],
+                        },
+                        "getMessageBody": [MockFunction],
+                        "getReference": [MockFunction] {
+                          "calls": Array [
+                            Array [],
+                          ],
+                        },
+                        "getSubject": [MockFunction] {
+                          "calls": Array [
+                            Array [],
+                            Array [],
+                          ],
+                        },
+                        "status": "NEW",
+                      }
+                    }
+                    messageDetail={
+                      Object {
+                        "delSuccessModal": true,
+                        "newMessageError": true,
+                      }
+                    }
+                    messages={
+                      Object {
+                        "draftError": true,
+                      }
+                    }
+                    onArchiveClick={[Function]}
+                    onDeleteClick={[Function]}
+                    onUnarchiveClick={[Function]}
+                    readFlag={false}
+                    sentFlag={false}
+                    threadFlag={false}
+                    viewMessageFlag={true}
+                  />,
                 ],
                 "className": "c-message__summary__head",
               },
@@ -5106,13 +4153,11 @@ ShallowWrapper {
                                   "calls": Array [
                                     Array [],
                                     Array [],
-                                    Array [],
-                                    Array [],
                                   ],
                                 },
                                 "status": "NEW",
                               },
-                              "pathname": "undefined/securemessages/view",
+                              "pathname": "/securemessages/view",
                             }
                           }
                         />
@@ -5155,13 +4200,11 @@ ShallowWrapper {
                                   "calls": Array [
                                     Array [],
                                     Array [],
-                                    Array [],
-                                    Array [],
                                   ],
                                 },
                                 "status": "NEW",
                               },
-                              "pathname": "undefined/securemessages/view",
+                              "pathname": "/securemessages/view",
                             }
                           }
                         />,
@@ -5198,13 +4241,11 @@ ShallowWrapper {
                                 "calls": Array [
                                   Array [],
                                   Array [],
-                                  Array [],
-                                  Array [],
                                 ],
                               },
                               "status": "NEW",
                             },
-                            "pathname": "undefined/securemessages/view",
+                            "pathname": "/securemessages/view",
                           },
                         },
                         "ref": null,
@@ -5231,258 +4272,63 @@ ShallowWrapper {
                 Object {
                   "instance": null,
                   "key": undefined,
-                  "nodeType": "host",
+                  "nodeType": "function",
                   "props": Object {
-                    "children": Array [
-                      <Link
-                        className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding"
-                        replace={false}
-                        to={
-                          Object {
-                            "backPath": "undefined/securemessages/view",
-                            "messageDetail": Object {
-                              "account": Object {
-                                "number": "32236",
-                              },
-                              "getDateCreated": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getMessageBody": [MockFunction],
-                              "getReference": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getSubject": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                  Array [],
-                                  Array [],
-                                  Array [],
-                                ],
-                              },
-                              "status": "NEW",
-                            },
-                            "pathname": "undefined/securemessages/reply",
-                          }
-                        }
-                      >
-                        <span
-                          aria-label="undefined undefined"
-                          className="c-message__summary__head__actions__reply__txt"
-                          id="replyMsg"
-                        />
-                        <span
-                          className="c-message__summary__head__actions__reply__icon"
-                        >
-                          <CommonGetIcon
-                            height="24px"
-                            id="icon-reply"
-                            width="24px"
-                          />
-                        </span>
-                      </Link>,
-                      <button
-                        className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
-                        onClick={[Function]}
-                      >
-                        <span
-                          aria-label="undefined undefined"
-                          className="c-message__summary__head__actions__delete__txt"
-                          id="deleteMsg"
-                        />
-                        <span
-                          className="c-message__summary__head__actions__delete__icon"
-                        >
-                          <CommonGetIcon
-                            height="24px"
-                            id="icon-delete"
-                            width="24px"
-                          />
-                        </span>
-                      </button>,
-                      false,
-                    ],
-                    "className": "c-message__summary__head__actions u-position-relative",
+                    "content": Object {
+                      "back": "Back",
+                      "noSpecificAccount": "noSpecificAccount",
+                    },
+                    "dispatch": [MockFunction] {
+                      "calls": Array [
+                        Array [
+                          [Function],
+                        ],
+                      ],
+                    },
+                    "draftFlag": false,
+                    "hasOnClick": false,
+                    "listFlag": false,
+                    "message": Object {
+                      "account": Object {
+                        "number": "32236",
+                      },
+                      "getDateCreated": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                        ],
+                      },
+                      "getMessageBody": [MockFunction],
+                      "getReference": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                        ],
+                      },
+                      "getSubject": [MockFunction] {
+                        "calls": Array [
+                          Array [],
+                          Array [],
+                        ],
+                      },
+                      "status": "NEW",
+                    },
+                    "messageDetail": Object {
+                      "delSuccessModal": true,
+                      "newMessageError": true,
+                    },
+                    "messages": Object {
+                      "draftError": true,
+                    },
+                    "onArchiveClick": [Function],
+                    "onDeleteClick": [Function],
+                    "onUnarchiveClick": [Function],
+                    "readFlag": false,
+                    "sentFlag": false,
+                    "threadFlag": false,
+                    "viewMessageFlag": true,
                   },
                   "ref": null,
-                  "rendered": Array [
-                    Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "class",
-                      "props": Object {
-                        "children": Array [
-                          <span
-                            aria-label="undefined undefined"
-                            className="c-message__summary__head__actions__reply__txt"
-                            id="replyMsg"
-                          />,
-                          <span
-                            className="c-message__summary__head__actions__reply__icon"
-                          >
-                            <CommonGetIcon
-                              height="24px"
-                              id="icon-reply"
-                              width="24px"
-                            />
-                          </span>,
-                        ],
-                        "className": "c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding",
-                        "replace": false,
-                        "to": Object {
-                          "backPath": "undefined/securemessages/view",
-                          "messageDetail": Object {
-                            "account": Object {
-                              "number": "32236",
-                            },
-                            "getDateCreated": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getMessageBody": [MockFunction],
-                            "getReference": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getSubject": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                                Array [],
-                                Array [],
-                                Array [],
-                              ],
-                            },
-                            "status": "NEW",
-                          },
-                          "pathname": "undefined/securemessages/reply",
-                        },
-                      },
-                      "ref": null,
-                      "rendered": Array [
-                        Object {
-                          "instance": null,
-                          "key": undefined,
-                          "nodeType": "host",
-                          "props": Object {
-                            "aria-label": "undefined undefined",
-                            "children": undefined,
-                            "className": "c-message__summary__head__actions__reply__txt",
-                            "id": "replyMsg",
-                          },
-                          "ref": null,
-                          "rendered": null,
-                          "type": "span",
-                        },
-                        Object {
-                          "instance": null,
-                          "key": undefined,
-                          "nodeType": "host",
-                          "props": Object {
-                            "children": <CommonGetIcon
-                              height="24px"
-                              id="icon-reply"
-                              width="24px"
-                            />,
-                            "className": "c-message__summary__head__actions__reply__icon",
-                          },
-                          "ref": null,
-                          "rendered": Object {
-                            "instance": null,
-                            "key": undefined,
-                            "nodeType": "class",
-                            "props": Object {
-                              "height": "24px",
-                              "id": "icon-reply",
-                              "width": "24px",
-                            },
-                            "ref": null,
-                            "rendered": null,
-                            "type": [Function],
-                          },
-                          "type": "span",
-                        },
-                      ],
-                      "type": [Function],
-                    },
-                    Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "host",
-                      "props": Object {
-                        "children": Array [
-                          <span
-                            aria-label="undefined undefined"
-                            className="c-message__summary__head__actions__delete__txt"
-                            id="deleteMsg"
-                          />,
-                          <span
-                            className="c-message__summary__head__actions__delete__icon"
-                          >
-                            <CommonGetIcon
-                              height="24px"
-                              id="icon-delete"
-                              width="24px"
-                            />
-                          </span>,
-                        ],
-                        "className": "c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding",
-                        "onClick": [Function],
-                      },
-                      "ref": null,
-                      "rendered": Array [
-                        Object {
-                          "instance": null,
-                          "key": undefined,
-                          "nodeType": "host",
-                          "props": Object {
-                            "aria-label": "undefined undefined",
-                            "children": undefined,
-                            "className": "c-message__summary__head__actions__delete__txt",
-                            "id": "deleteMsg",
-                          },
-                          "ref": null,
-                          "rendered": null,
-                          "type": "span",
-                        },
-                        Object {
-                          "instance": null,
-                          "key": undefined,
-                          "nodeType": "host",
-                          "props": Object {
-                            "children": <CommonGetIcon
-                              height="24px"
-                              id="icon-delete"
-                              width="24px"
-                            />,
-                            "className": "c-message__summary__head__actions__delete__icon",
-                          },
-                          "ref": null,
-                          "rendered": Object {
-                            "instance": null,
-                            "key": undefined,
-                            "nodeType": "class",
-                            "props": Object {
-                              "height": "24px",
-                              "id": "icon-delete",
-                              "width": "24px",
-                            },
-                            "ref": null,
-                            "rendered": null,
-                            "type": [Function],
-                          },
-                          "type": "span",
-                        },
-                      ],
-                      "type": "button",
-                    },
-                    false,
-                  ],
-                  "type": "div",
+                  "rendered": null,
+                  "type": [Function],
                 },
               ],
               "type": "div",
@@ -5522,42 +4368,7 @@ ShallowWrapper {
           "type": "div",
         },
         false,
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "backdrop": true,
-            "bsSize": "small",
-            "closeButton": false,
-            "customClass": "c-modal c-modal--center",
-            "modalInContainer": false,
-            "modalbody": <div>
-              <div>
-                <CommonGetIcon
-                  height="68px"
-                  id="icon-success"
-                  width="68px"
-                />
-              </div>
-            </div>,
-            "modalfooter": <div>
-              <Link
-                className="c-btn c-btn--primary c-btn--sm c-modal__button"
-                onClick={[Function]}
-                replace={false}
-                to="undefined/securemessages"
-              />
-            </div>,
-            "modalheading": "",
-            "onHide": [Function],
-            "scope": undefined,
-            "show": true,
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
+        false,
         false,
       ],
       "type": "div",
@@ -5566,14 +4377,19 @@ ShallowWrapper {
   Symbol(enzyme.__options__): Object {
     "adapter": ReactFifteenFourAdapter {
       "options": Object {
+        "legacyContextMode": "parent",
         "lifecycles": Object {
           "componentDidUpdate": Object {
             "prevContext": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": true,
           },
         },
         "supportPrevContextArgumentOfComponentDidUpdate": true,
       },
     },
   },
+  Symbol(enzyme.__childContext__): null,
 }
 `;

@@ -60,7 +60,6 @@ describe("New Secure message snapshot", () => {
     });
     it('renderShowMoreButton function test', () => {
         component.instance().renderShowMoreButton();
-        expect(props.dispatch).toBeCalled();
     });
     it('renderNoMessagesText function test', () => {
         component.instance().renderNoMessagesText();
@@ -89,12 +88,10 @@ describe("New Secure message snapshot", () => {
         it('renderNoMessagesText with default', () => {
             let component = shallow(<SecureMessageList {...props} />);
             component.instance().renderNoMessagesText();
-            expect(props.dispatch).toBeCalled();
         });
         it('renderNoMessagesText function test', () => {
             let component = shallow(<SecureMessageList {...props} />);
             component.instance().renderThatsAllText();
-            expect(props.dispatch).toBeCalled();
         });
         it('renderNoMessagesText function test', () => {
             let component = shallow(<SecureMessageList {...props} />);
@@ -124,7 +121,6 @@ describe("New Secure message snapshot", () => {
         it('renderNoMessagesText function test', () => {
             let component = shallow(<SecureMessageList {...props} />);
             component.instance().renderNoMessagesText();
-            expect(props.dispatch).toBeCalled();
         });
     });
     describe("New Secure message snapshot", () => {

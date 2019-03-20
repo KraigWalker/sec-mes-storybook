@@ -12,6 +12,10 @@ export function getMessageType(type){
     } else if(type == 'NEW' || type == 'READ'){
         return 'INBOX';
     }
+    else if (type === 'ARCHIVED')
+    {
+        return 'ARCHIVED';
+    }
 }
 
 export function updateMessageStatus(message, status){

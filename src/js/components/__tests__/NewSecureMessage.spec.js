@@ -9,6 +9,7 @@ let props;
 const messageEntity = new SendMessageRequestEntity();
 
 describe("New Secure message snapshot", () => {
+    window.scrollTo = () => {}
     const dispatch = jest.fn();
     let props = {
         content: {

@@ -20,6 +20,7 @@ export function parseMessages(response) {
         messageEntity.setSubject(message.subject);
         messageEntity.setAccount(message.account);
         messageEntity.setMessageBody(message.payload.body.data);
+        messageEntity.setNoReply(message.noreply)
         messages.push(messageEntity);
     });
     return messages;
