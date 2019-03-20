@@ -14,7 +14,6 @@ class MessageEntity {
     this.threadID = null;
     this.subject = null;
     this.message = null;
-    this.noReply = null;
   }
   /**
    * @returns account mapped to message
@@ -77,7 +76,7 @@ class MessageEntity {
    * @param {Object} Account Entity related to the message
    */
   setAccount(account) {
-    if (account === null) {
+    if (account === null || account === undefined) {
       this.account.setId();
       this.account.setAccountNumber();
     } else {
