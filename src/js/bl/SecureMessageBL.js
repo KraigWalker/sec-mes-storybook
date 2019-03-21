@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import moment from 'moment';
-import { NEW, READ, DRAFT, PENDING, SENT } from '../constants/StringsConstants';
+import { NEW, READ, DRAFT, PENDING, SENT, ARCHIVED } from '../constants/StringsConstants';
 
 /**
  *
@@ -11,6 +11,7 @@ export function SecureMessageBL(response) {
 	const inboxMessages = [];
 	const sentMessages = [];
 	const draftMessages = [];
+	const archivedMessages = [];
 	_.map(response.messages, message => {
 		switch (message.status) {
 			case NEW:
@@ -20,6 +21,9 @@ export function SecureMessageBL(response) {
 			case DRAFT:
 				draftMessages.push(message);
 				break;
+			case ARCHIVED:
+				archivedMessages.push(message);
+				break;
 			case PENDING:
 			case SENT:
 				sentMessages.push(message);
@@ -27,7 +31,7 @@ export function SecureMessageBL(response) {
 			default:
 		}
 	});
-	return { inboxMessages, sentMessages, draftMessages };
+	return { inboxMessages, sentMessages, draftMessages, archivedMessages };
 }
 /**
  * to fetch all related threads on the cureent message.

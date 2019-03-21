@@ -6,9 +6,12 @@ import PropTypes from 'prop-types';
 import GetIcon from './GetIcon';
 import MessageEntity from '../../entities/MessageEntity';
 import ModalComponent from '../common/ModalComponent';
-import { updateMessageData, popupState, delMessageData, closeDelModal } from '../../actions/AppActions';
-import { NEW, READ, DRAFT, PENDING, SENT, DELETED } from '../../constants/StringsConstants';
+import { updateMessageData, popupState, delMessageData, closeDelModal, archiveMessageData, unarchiveMessageData } from '../../actions/AppActions';
+import { NEW, READ, DRAFT, PENDING, SENT, DELETED, ARCHIVED } from '../../constants/StringsConstants';
 import StringConstants from '../../constants/StringsConstants';
+import {DELETE_MODAL, ARCHIVE_MODAL, UNARCHIVE_MODAL} from "../../constants/ModalConstants";
+import SecureMessageSummaryButtons from './SecureMessageSummaryButtons';
+
 
 export class SecureMessageSummary extends React.Component {
 	constructor(props) {
@@ -16,13 +19,15 @@ export class SecureMessageSummary extends React.Component {
 		this.handleDelete = this.handleDelete.bind(this);
 		this.state = {
 			showDeleteConfirmModal: false,
-			showDeleteSuccessModal: this.props.messageDetail.delSuccessModal,
 			showSendServiceErrorModal: false,
 		};
 		this.returnModalComponent = this.returnModalComponent.bind(this);
 		this.closeModal = this.closeModal.bind(this);
 		this.deleteClick = this.deleteClick.bind(this);
-		this.returnDeleteSuccessModalComponent = this.returnDeleteSuccessModalComponent.bind(this);
+		this.archiveClick = this.archiveClick.bind(this);
+		this.unarchiveClick = this.unarchiveClick.bind(this);
+		this.returnSuccessModalComponent = this.returnSuccessModalComponent.bind(this);
+		this.getModalMessage = this.getModalMessage.bind(this);
 		this.closeSuccessModal = this.closeSuccessModal.bind(this);
 		this.errorCloseClicked = this.errorCloseClicked.bind(this);
 		this.retryServiceCall = this.retryServiceCall.bind(this);
@@ -41,85 +46,6 @@ export class SecureMessageSummary extends React.Component {
 				</span>
 			);
 		}
-	};
-	getReplyButton = () => {
-		const { message, threadFlag, viewMessageFlag, content } = this.props;
-		let replymessage = '';
-		if (message.status === 'READ') {
-			replymessage = `${content.replyMessageTitle} ${message.getSubject()}`;
-		} else {
-			replymessage = `${content.replyUnread} ${message.getSubject()}`;
-		}
-		return (
-			!threadFlag && (
-				<Link
-					to={{
-						pathname: `/securemessages/reply`,
-						backPath: viewMessageFlag
-							? `/securemessages/view`
-							: `/securemessages`,
-						messageDetail: message,
-					}}
-					className="c-btn c-btn--link c-message__summary__head__actions__reply u-no-padding"
-				>
-					<span
-						id="replyMsg"
-						className="c-message__summary__head__actions__reply__txt"
-						aria-label={`${replymessage}`}
-					>
-						{content.replyMessageTitle}
-					</span>
-					<span className="c-message__summary__head__actions__reply__icon">
-						<GetIcon id="icon-reply" width="24px" height="24px" />
-					</span>
-				</Link>
-			)
-		);
-	};
-
-	getDeleteButton = () => {
-		const { message, content } = this.props;
-		let deletemessage = '';
-		if (!message.status !== NEW) {
-			deletemessage = `${content.delete} ${message.getSubject()}`;
-		} else {
-			deletemessage = `${content.deleteUnread} ${message.getSubject()}`;
-		}
-		return (
-			<button
-				className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
-				onClick={this.handleDelete}
-			>
-				<span
-					id="deleteMsg"
-					className="c-message__summary__head__actions__delete__txt"
-					aria-label={`${deletemessage}`}
-				>
-					{content.delete}
-				</span>
-				<span className="c-message__summary__head__actions__delete__icon">
-					<GetIcon id="icon-delete" width="24px" height="24px" />
-				</span>
-			</button>
-		);
-	};
-
-	getPendingStatus = () => {
-		return (
-			<div
-				className="c-btn c-btn--link c-message__summary__head__actions__delete u-no-padding"
-			>
-				<span
-					id="pendingMsg"
-					className="c-message__summary__head__actions__pending__txt"
-				>
-					{this.props.content.pending}
-				</span>
-				<span className="c-message__summary__head__actions__delete__icon">
-					<GetIcon id="icon-outline-large" viewbox="0 0 16 16" width="24px" height="24px" />
-				</span>
-			</div>
-		);
 	};
 
 	hasOnClick = () => {
@@ -185,25 +111,33 @@ export class SecureMessageSummary extends React.Component {
 			}, 500);
 		} else dispatch(delMessageData(message, message.id, DELETED));
 		this.setState({
-			showDeleteSuccessModal: true,
 			showDeleteConfirmModal: false,
 			showSendServiceErrorModal: true,
 		});
 	}
 
+	archiveClick() {
+		const { message, dispatch } = this.props;
+		dispatch(archiveMessageData(message, message.id, ARCHIVED));
+	}
+
+	unarchiveClick() {
+		const { message, dispatch } = this.props;
+		dispatch(unarchiveMessageData(message, message.id, READ));
+	}
+
 	closeSuccessModal() {
 		this.props.dispatch(closeDelModal());
-		this.setState({
-			showDeleteSuccessModal: false
-		})
 	}
-	returnDeleteSuccessModalComponent() {
-		const { content, viewMessageFlag } = this.props;
+
+	returnSuccessModalComponent(modalType, content) {
+
+		const {viewMessageFlag } = this.props;
 		const bodyContent = (
 			<div>
 				<div>
 					<GetIcon id="icon-success" width="68px" height="68px" />
-				</div>{content.messageDeleted}
+				</div>{this.getModalMessage(modalType, content)}
 			</div>
 		);
 		const footerButtons = viewMessageFlag ? (
@@ -240,6 +174,23 @@ export class SecureMessageSummary extends React.Component {
 			/>
 		);
 	}
+
+	getModalMessage(modalType, content) {
+		switch(modalType)
+		{
+			case ARCHIVE_MODAL: {
+				return content.messageArchived;
+			}
+			case UNARCHIVE_MODAL: {
+				return content.messageUnarchived;
+			}
+			case DELETE_MODAL:
+			default: {
+				return content.messageDeleted;
+			}
+		}
+	}
+
 	returnErrorModal() {
 		const { content } = this.props;
 		const bodyContent = (
@@ -322,8 +273,8 @@ export class SecureMessageSummary extends React.Component {
 		);
 	}
 	render() {
-		const { message, listFlag, threadFlag, content, viewMessageFlag, messageDetail, messages, readOnly } = this.props;
-		const { showSendServiceErrorModal, showDeleteSuccessModal, showDeleteConfirmModal } = this.state;
+		const { message, listFlag, threadFlag, content, viewMessageFlag, messageDetail, messages } = this.props;
+		const { showSendServiceErrorModal, showDeleteConfirmModal } = this.state;
 		const messageClass = cx({
 			'c-message': true,
 			'c-message--stacked': listFlag,
@@ -346,10 +297,6 @@ export class SecureMessageSummary extends React.Component {
 			'c-message__summary__head__title__subject': true,
 			'c-message__summary__head__title__subject--read': message.status !== NEW,
 		});
-		const actionsClass = cx({
-			'c-message__summary__head__actions': true,
-			'u-position-relative': !threadFlag,
-		});
 
 		const accNo = message.account.number
 			? message.account.number
@@ -369,12 +316,12 @@ export class SecureMessageSummary extends React.Component {
 								{message.getReference()}
 							</p>
 						</div>
-						<div className={actionsClass}>
-							{(message.status === NEW || message.status === READ) && !readOnly && !message.noReply &&
-								this.getReplyButton(message)}
-							{!threadFlag && !readOnly && message.status !== PENDING && this.getDeleteButton()}
-							{!threadFlag && message.status === PENDING && this.getPendingStatus()}
-						</div>
+						<SecureMessageSummaryButtons 
+							{...this.props} 
+							noReply={message.noReply}
+							onArchiveClick={this.archiveClick}
+							onUnarchiveClick={this.unarchiveClick}
+							onDeleteClick={this.deleteClick}/>					
 					</div>
 					{!viewMessageFlag && (
 						<p className="c-message__summary__account">
@@ -387,7 +334,8 @@ export class SecureMessageSummary extends React.Component {
 					<p className="c-message__summary__date">{message.getDateCreated()}</p>
 				</div>
 				{showDeleteConfirmModal && this.returnModalComponent()}
-				{showDeleteSuccessModal && messageDetail.delSuccessModal && this.returnDeleteSuccessModalComponent()}
+				{messageDetail.modalType > 0 && this.returnSuccessModalComponent(messageDetail.modalType, content)}
+				
 				{messages.draftError && showSendServiceErrorModal && this.returnErrorModal()}
 			</div>
 		);

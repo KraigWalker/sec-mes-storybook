@@ -4,14 +4,14 @@ import { utils } from "document-management-web-ui";
 
 import StepHeader from "./common/StepHeader";
 import SecureMessageSummary from "./common/SecureMessageSummary";
-import TextArea from "./common/TextAreaComponent";
 import Threads from "./common/ThreadList";
 import _ from "lodash";
 import { connect } from "react-redux";
 import {
 	setViewMessageDetail,
 	updateMessageData,
-	popupState
+	popupState,
+	archiveMessageData, unarchiveMessageData
 } from "../actions/AppActions";
 import { getThreadsBL } from "../bl/SecureMessageBL";
 import {
@@ -20,7 +20,9 @@ import {
 import { Link } from "react-router-dom";
 import GetIcon from "./common/GetIcon";
 import ModalComponent from "./common/ModalComponent";
-import { READ, PENDING, SENT, DELETED, READ_ONLY } from '../constants/StringsConstants';
+import { READ, NEW, SENT, DELETED, READ_ONLY, ARCHIVED } from '../constants/StringsConstants';
+import getOptionDisplayFunctions from "./common/MessageOptions";
+import SecondaryButton from "./common/SecondaryButton";
 
 const Attachments = ({ session, client, document }) => (
 	<div className="c-message--attachments">
@@ -44,7 +46,6 @@ export class ViewMessage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.getReplyButton = this.getReplyButton.bind(this);
-		this.getDeleteButton = this.getDeleteButton.bind(this);
 		this.state = {
 			showDeleteConfirmModal: false,
 			showDeleteSuccessModal: false,
@@ -53,6 +54,8 @@ export class ViewMessage extends React.Component {
 		this.closeModal = this.closeModal.bind(this);
 		this.handleDelete = this.handleDelete.bind(this);
 		this.deleteClick = this.deleteClick.bind(this);
+		this.archiveClick = this.archiveClick.bind(this);
+		this.unarchiveClick = this.unarchiveClick.bind(this);
 		this.returnDeleteSuccessModalComponent = this.returnDeleteSuccessModalComponent.bind(
 			this
 		);
@@ -64,7 +67,7 @@ export class ViewMessage extends React.Component {
 
 	componentDidMount() {
 		const { messageDetail } = this.props.location;
-		const { isWebView, setMessagesMetaData, messages, readOnly, dispatch } = this.props;
+		const { isWebView, setMessagesMetaData, messages, dispatch } = this.props;
 
 		messageDetail &&
 			dispatch(
@@ -107,11 +110,6 @@ export class ViewMessage extends React.Component {
 		};
 	};
 
-	getDeleteButton = message => (
-		<button className="c-btn c-btn--secondary" onClick={this.handleDelete}>
-			{this.props.content.delete}
-	  	 </button>
-	);
 	handleDelete(data) {
 		this.setState({ showDeleteConfirmModal: true });
 	}
@@ -139,6 +137,31 @@ export class ViewMessage extends React.Component {
 			)
 		);
 	}
+
+	archiveClick() {
+		const { messageDetail, dispatch } = this.props;
+		dispatch(archiveMessageData(messageDetail, messageDetail.id, ARCHIVED));
+	}
+
+	unarchiveClick() {
+		const { messageDetail, dispatch } = this.props;
+		dispatch(unarchiveMessageData(messageDetail, messageDetail.id, READ));
+	}
+
+	getHeaderTitle(status) {
+
+		switch (getMessageType(status))
+		{
+			case SENT: 
+				return this.props.content.sentPageTitle;
+			case ARCHIVED:
+				return this.props.content.archivePageTitle;
+			default:
+				return this.props.content.inboxPageTitle;
+
+		}
+	}
+
 	getBackButton() {
 		return (
 			<Link
@@ -270,7 +293,15 @@ export class ViewMessage extends React.Component {
 			? this.props.location
 			: this.props;
 
-		const { hasAttachment, readOnly, session, client, noReply } = this.props;
+		const { hasAttachment, readOnly, session, client, content } = this.props;
+
+		const optionFunctions = getOptionDisplayFunctions(readOnly, messageDetail.noReply);
+
+		//DEBT: Before getting here status may still be NEW after user has clicked on email in summary
+		//Status should be READ in this instance. We may need to change where/when status is updated...
+		const messageStatus = (messageDetail.status === NEW && readOnly !== true) 
+						? READ
+						: messageDetail.status;
 
 		return (
 			<div className="row centralised-container c-card">
@@ -281,26 +312,24 @@ export class ViewMessage extends React.Component {
 							pathname: `/securemessages`,
 						}}
 						headerCrumbsMessage="Back"
-						headerTitle={
-							getMessageType(messageDetail.status) == SENT
-								? this.props.content.sentPageTitle
-								: this.props.content.inboxPageTitle
-						}
+						headerTitle={this.getHeaderTitle(messageStatus)}
 					/>
 
 					<SecureMessageSummary
 						message={messageDetail}
 						viewMessageFlag
-						readFlag={messageDetail.status === READ}
-						sentFlag={getMessageType(messageDetail.status) === SENT}
+						readFlag={messageStatus === READ}
+						sentFlag={getMessageType(messageStatus) === SENT}
 						content={this.props.content}
 					/>
 					<pre>{messageDetail.message}</pre>
 					{ hasAttachment && <Attachments session={session} document={messageDetail.document} client={client} /> }
 					<div className="c-btn--group">
 						{this.getBackButton()}
-						{messageDetail.status !== PENDING && !readOnly && this.getDeleteButton(messageDetail)}
-						{!readOnly && !noReply && this.getReplyButton(messageDetail)}
+						{optionFunctions.showDeleteButton(messageStatus) && <SecondaryButton name={content.delete} onClick={this.handleDelete} />}
+						{optionFunctions.showUnarchiveButton(messageStatus) && <SecondaryButton name={content.moveToInbox} onClick={this.unarchiveClick} />}
+						{optionFunctions.showArchiveButton(messageStatus) && <SecondaryButton name={content.archive} onClick={this.archiveClick} />}
+						{optionFunctions.showReplyButton(messageStatus) && this.getReplyButton(messageDetail)}
 					</div>
 					{this.state.showDeleteConfirmModal && this.returnModalComponent()}
 					{this.state.showDeleteSuccessModal &&
@@ -314,6 +343,8 @@ export class ViewMessage extends React.Component {
 				</div>
 			</div>
 		);
+
+
 	}
 }
 

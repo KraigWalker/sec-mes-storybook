@@ -84,10 +84,6 @@ describe("SecureMessageSummary snapshot", () => {
     component.instance().errorCloseClicked();
     expect(component.instance().state.showSendServiceErrorModal).toBeFalsy();
   });
-  it('closeSuccessModal function test', () => {
-    component.instance().closeSuccessModal();
-    expect(component.instance().state.showDeleteSuccessModal).toBeFalsy();
-  });
   it('closeModal function test', () => {
     component.instance().closeModal();
     expect(component.instance().state.showDeleteConfirmModal).toBeFalsy();
@@ -185,41 +181,5 @@ describe("SecureMessageSummary snapshot", () => {
       component.setState({ showDeleteConfirmModal: true, showDeleteSuccessModal: true, showSendServiceErrorModal: true, viewMessageFlag: true });
       expect(component.instance().state.showSendServiceErrorModal).toBeTruthy();
     });
-  });
-});
-
-describe("SecureMessageSummary", () => {
-  it("renders Reply button if noReply flag not set", () => {
-    const { wrapper } = setup({
-      message: {
-        status: 'READ',
-        noReply: false,
-        getSubject: jest.fn(),
-        getReference: jest.fn(),
-        getMessageBody: jest.fn(),
-        getDateCreated: jest.fn(),
-        account: {
-          number: '32236',
-        }
-      },
-    });
-    expect(wrapper.find("#replyMsg")).toHaveLength(1);
-  });
-
-  it("does not Render Reply button if noReply flag set", () => {
-    const { wrapper } = setup({
-      message: {
-        status: 'READ',
-        noReply: true,
-        getSubject: jest.fn(),
-        getReference: jest.fn(),
-        getMessageBody: jest.fn(),
-        getDateCreated: jest.fn(),
-        account: {
-          number: '32236',
-        }
-      },
-    });
-    expect(wrapper.find("#replyMsg")).toHaveLength(0);
   });
 });

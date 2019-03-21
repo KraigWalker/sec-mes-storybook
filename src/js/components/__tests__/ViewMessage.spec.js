@@ -242,13 +242,12 @@ describe("View Message snapshot", () => {
                 ]
             },
             location: {
-                messageDetail: { status: 'NEW' }
+                messageDetail: { status: 'NEW', noReply: true }
             },
             messagesFetched: {
                 fetching: false,
                 successModal: false
             },
-            noReply: true,
             dispatch: jest.fn(),
             setMessagesMetaData: jest.fn(),
             hasAttachment: false,
@@ -274,13 +273,12 @@ describe("View Message snapshot", () => {
                 ]
             },
             location: {
-                messageDetail: { status: 'NEW' }
+                messageDetail: { status: 'NEW' , noReply: false}
             },
             messagesFetched: {
                 fetching: false,
                 successModal: false
             },
-            noReply: false,
             dispatch: jest.fn(),
             setMessagesMetaData: jest.fn(),
             hasAttachment: false,

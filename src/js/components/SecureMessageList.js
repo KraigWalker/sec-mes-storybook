@@ -1,12 +1,10 @@
 import React from "react";
 import _ from "lodash";
-import { Link } from "react-router-dom";
 import SecureMessageSummary from "./common/SecureMessageSummary";
-import { getMessageType } from "../utils/SecureMessageUtils";
 import { sendMessageForAccessibiltiy } from "../actions/AppActions";
 import { connect } from "react-redux";
 import SvgIcon from './common/GetIcon';
-import { SENT, INBOX, DRAFT } from '../constants/StringsConstants';
+import { SENT, INBOX, DRAFT, ARCHIVED } from '../constants/StringsConstants';
 
 const MESSAGE_LIMIT = 20;
 
@@ -14,13 +12,14 @@ export class SecureMessageList extends React.Component {
 	constructor(props) {
 		super(props);
 		this.showMoreClicked = this.showMoreClicked.bind(this);
+		this.sendAccessibilityMessage = this.sendAccessibilityMessage.bind(this);
 		this.state = {
 			showMoreLimit: MESSAGE_LIMIT,
 			showThatsAllMessage: false,
 		};
 	}
 	componentWillReceiveProps(props) {
-		const { messages, activeTab, messagesFetched, content, dispatch } = this.props;
+		const { messages } = this.props;
 		if (messages.length <= MESSAGE_LIMIT) {
 			this.setState({ showThatsAllMessage: true });
 		}
@@ -28,11 +27,19 @@ export class SecureMessageList extends React.Component {
 			this.setState({ showThatsAllMessage: false });
 		}
 	}
+
+	componentDidMount()
+	{
+		const { messages } = this.props;
+		if (messages.length === 0)
+		{
+			this.sendAccessibilityMessage()
+		}
+	}
 	showMessages() {
 		const { messages, content } = this.props;
 		const msgs = messages.slice(0, this.state.showMoreLimit);
 		const allMessages = [];
-		const hasOnClick = true;
 		const listFlag = true;
 		_.map(msgs, (message, index) => {
 			allMessages.push(
@@ -54,7 +61,11 @@ export class SecureMessageList extends React.Component {
 	}
 	renderShowMoreButton() {
 		const { content, activeTab, messages } = this.props;
-		if (this.state.showMoreLimit < messages.length && (activeTab === SENT || activeTab === INBOX || activeTab === DRAFT)) {
+		if (this.state.showMoreLimit < messages.length && 
+			(activeTab === SENT || 
+			activeTab === INBOX || 
+			activeTab === DRAFT ||
+			activeTab === ARCHIVED )) {
 			return (
 				<button
 					type="button"
@@ -71,6 +82,8 @@ export class SecureMessageList extends React.Component {
 		let thatsallText = content.thatsallTextInbox;
 		if (activeTab === SENT) {
 			thatsallText = content.thatsallTextSend;
+		} else if (activeTab === ARCHIVED) {
+			thatsallText = content.thatsallTextArchived;
 		} else if (activeTab === DRAFT) {
 			thatsallText = content.thatsallTextDraft;
 		}
@@ -80,21 +93,24 @@ export class SecureMessageList extends React.Component {
 		const { content, activeTab, dispatch } = this.props;
 		switch (activeTab) {
 			case SENT:
-				dispatch(sendMessageForAccessibiltiy(content.noSentMessages));
 				return (
 					<p className="callout callout--msgbottom callout__txt-center">
 						{content.noSentMessages}
 					</p>
 				);
 			case DRAFT:
-				dispatch(sendMessageForAccessibiltiy(content.noDraftMessages));
 				return (
 					<p className="callout callout--msgbottom callout__txt-center">
 						{content.noDraftMessages}
 					</p>
 				);
+			case ARCHIVED:
+				return (
+					<p className="callout callout--msgbottom callout__txt-center">
+						{content.noArchivedMessages}
+					</p>
+				);
 			default:
-				dispatch(sendMessageForAccessibiltiy(content.noInboxMessages));
 				return (
 					<p className="callout callout--msgbottom callout__txt-center">
 						{content.noInboxMessages}
@@ -102,6 +118,27 @@ export class SecureMessageList extends React.Component {
 				);
 		}
 	}
+
+	sendAccessibilityMessage() {
+
+		const { activeTab, dispatch, content } = this.props;
+		switch (activeTab) {
+			case SENT:
+				dispatch(sendMessageForAccessibiltiy(content.noSentMessages));
+				break;
+			case DRAFT:
+				dispatch(sendMessageForAccessibiltiy(content.noDraftMessages));
+				break;
+			case ARCHIVED:
+				dispatch(sendMessageForAccessibiltiy(content.noArchivedMessages));
+				break;
+			default:
+				dispatch(sendMessageForAccessibiltiy(content.noInboxMessages));
+				break;
+				
+		}
+	}
+
 	render() {
 		const { messagesFetched, messages } = this.props;
 		return (

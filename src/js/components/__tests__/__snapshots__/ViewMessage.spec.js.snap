@@ -97,23 +97,13 @@ ShallowWrapper {
               }
             }
           />
-          <button
-            className="c-btn c-btn--secondary"
+          <SecondaryButton
+            name={undefined}
             onClick={[Function]}
           />
-          <Link
-            className="c-btn c-btn--primary"
-            id="reply-button"
-            replace={false}
-            to={
-              Object {
-                "backPath": "/securemessages/view",
-                "messageDetail": Object {
-                  "status": "sent",
-                },
-                "pathname": "/securemessages/reply",
-              }
-            }
+          <SecondaryButton
+            name={undefined}
+            onClick={[Function]}
           />
         </div>
         <ThreadList
@@ -174,23 +164,13 @@ ShallowWrapper {
                 }
               }
             />
-            <button
-              className="c-btn c-btn--secondary"
+            <SecondaryButton
+              name={undefined}
               onClick={[Function]}
             />
-            <Link
-              className="c-btn c-btn--primary"
-              id="reply-button"
-              replace={false}
-              to={
-                Object {
-                  "backPath": "/securemessages/view",
-                  "messageDetail": Object {
-                    "status": "sent",
-                  },
-                  "pathname": "/securemessages/reply",
-                }
-              }
+            <SecondaryButton
+              name={undefined}
+              onClick={[Function]}
             />
           </div>,
           false,
@@ -272,25 +252,16 @@ ShallowWrapper {
                   }
                 }
               />,
-              <button
-                className="c-btn c-btn--secondary"
+              <SecondaryButton
+                name={undefined}
                 onClick={[Function]}
               />,
-              undefined,
-              <Link
-                className="c-btn c-btn--primary"
-                id="reply-button"
-                replace={false}
-                to={
-                  Object {
-                    "backPath": "/securemessages/view",
-                    "messageDetail": Object {
-                      "status": "sent",
-                    },
-                    "pathname": "/securemessages/reply",
-                  }
-                }
+              false,
+              <SecondaryButton
+                name={undefined}
+                onClick={[Function]}
               />,
+              false,
             ],
             "className": "c-btn--group",
           },
@@ -315,38 +286,29 @@ ShallowWrapper {
             Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "host",
+              "nodeType": "function",
               "props": Object {
-                "children": undefined,
-                "className": "c-btn c-btn--secondary",
+                "name": undefined,
                 "onClick": [Function],
-              },
-              "ref": null,
-              "rendered": null,
-              "type": "button",
-            },
-            undefined,
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "children": undefined,
-                "className": "c-btn c-btn--primary",
-                "id": "reply-button",
-                "replace": false,
-                "to": Object {
-                  "backPath": "/securemessages/view",
-                  "messageDetail": Object {
-                    "status": "sent",
-                  },
-                  "pathname": "/securemessages/reply",
-                },
               },
               "ref": null,
               "rendered": null,
               "type": [Function],
             },
+            false,
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "name": undefined,
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            false,
           ],
           "type": "div",
         },
@@ -420,23 +382,13 @@ ShallowWrapper {
                 }
               }
             />
-            <button
-              className="c-btn c-btn--secondary"
+            <SecondaryButton
+              name={undefined}
               onClick={[Function]}
             />
-            <Link
-              className="c-btn c-btn--primary"
-              id="reply-button"
-              replace={false}
-              to={
-                Object {
-                  "backPath": "/securemessages/view",
-                  "messageDetail": Object {
-                    "status": "sent",
-                  },
-                  "pathname": "/securemessages/reply",
-                }
-              }
+            <SecondaryButton
+              name={undefined}
+              onClick={[Function]}
             />
           </div>
           <ThreadList
@@ -497,23 +449,13 @@ ShallowWrapper {
                   }
                 }
               />
-              <button
-                className="c-btn c-btn--secondary"
+              <SecondaryButton
+                name={undefined}
                 onClick={[Function]}
               />
-              <Link
-                className="c-btn c-btn--primary"
-                id="reply-button"
-                replace={false}
-                to={
-                  Object {
-                    "backPath": "/securemessages/view",
-                    "messageDetail": Object {
-                      "status": "sent",
-                    },
-                    "pathname": "/securemessages/reply",
-                  }
-                }
+              <SecondaryButton
+                name={undefined}
+                onClick={[Function]}
               />
             </div>,
             false,
@@ -595,25 +537,16 @@ ShallowWrapper {
                     }
                   }
                 />,
-                <button
-                  className="c-btn c-btn--secondary"
+                <SecondaryButton
+                  name={undefined}
                   onClick={[Function]}
                 />,
-                undefined,
-                <Link
-                  className="c-btn c-btn--primary"
-                  id="reply-button"
-                  replace={false}
-                  to={
-                    Object {
-                      "backPath": "/securemessages/view",
-                      "messageDetail": Object {
-                        "status": "sent",
-                      },
-                      "pathname": "/securemessages/reply",
-                    }
-                  }
+                false,
+                <SecondaryButton
+                  name={undefined}
+                  onClick={[Function]}
                 />,
+                false,
               ],
               "className": "c-btn--group",
             },
@@ -638,38 +571,29 @@ ShallowWrapper {
               Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "host",
+                "nodeType": "function",
                 "props": Object {
-                  "children": undefined,
-                  "className": "c-btn c-btn--secondary",
+                  "name": undefined,
                   "onClick": [Function],
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "button",
-              },
-              undefined,
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "class",
-                "props": Object {
-                  "children": undefined,
-                  "className": "c-btn c-btn--primary",
-                  "id": "reply-button",
-                  "replace": false,
-                  "to": Object {
-                    "backPath": "/securemessages/view",
-                    "messageDetail": Object {
-                      "status": "sent",
-                    },
-                    "pathname": "/securemessages/reply",
-                  },
                 },
                 "ref": null,
                 "rendered": null,
                 "type": [Function],
               },
+              false,
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "name": undefined,
+                  "onClick": [Function],
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              false,
             ],
             "type": "div",
           },
@@ -796,7 +720,7 @@ ShallowWrapper {
               "status": "NEW",
             }
           }
-          readFlag={false}
+          readFlag={true}
           sentFlag={false}
           viewMessageFlag={true}
         />
@@ -815,8 +739,12 @@ ShallowWrapper {
           >
             Back
           </Link>
-          <button
-            className="c-btn c-btn--secondary"
+          <SecondaryButton
+            name={undefined}
+            onClick={[Function]}
+          />
+          <SecondaryButton
+            name={undefined}
             onClick={[Function]}
           />
           <Link
@@ -969,7 +897,7 @@ ShallowWrapper {
                 "status": "NEW",
               }
             }
-            readFlag={false}
+            readFlag={true}
             sentFlag={false}
             viewMessageFlag={true}
           />,
@@ -989,8 +917,12 @@ ShallowWrapper {
             >
               Back
             </Link>
-            <button
-              className="c-btn c-btn--secondary"
+            <SecondaryButton
+              name={undefined}
+              onClick={[Function]}
+            />
+            <SecondaryButton
+              name={undefined}
               onClick={[Function]}
             />
             <Link
@@ -1144,7 +1076,7 @@ ShallowWrapper {
             "message": Object {
               "status": "NEW",
             },
-            "readFlag": false,
+            "readFlag": true,
             "sentFlag": false,
             "viewMessageFlag": true,
           },
@@ -1181,11 +1113,15 @@ ShallowWrapper {
               >
                 Back
               </Link>,
-              <button
-                className="c-btn c-btn--secondary"
+              <SecondaryButton
+                name={undefined}
                 onClick={[Function]}
               />,
-              undefined,
+              false,
+              <SecondaryButton
+                name={undefined}
+                onClick={[Function]}
+              />,
               <Link
                 className="c-btn c-btn--primary"
                 id="reply-button"
@@ -1224,17 +1160,28 @@ ShallowWrapper {
             Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "host",
+              "nodeType": "function",
               "props": Object {
-                "children": undefined,
-                "className": "c-btn c-btn--secondary",
+                "name": undefined,
                 "onClick": [Function],
               },
               "ref": null,
               "rendered": null,
-              "type": "button",
+              "type": [Function],
             },
-            undefined,
+            false,
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "name": undefined,
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
             Object {
               "instance": null,
               "key": undefined,
@@ -1416,7 +1363,7 @@ ShallowWrapper {
                 "status": "NEW",
               }
             }
-            readFlag={false}
+            readFlag={true}
             sentFlag={false}
             viewMessageFlag={true}
           />
@@ -1435,8 +1382,12 @@ ShallowWrapper {
             >
               Back
             </Link>
-            <button
-              className="c-btn c-btn--secondary"
+            <SecondaryButton
+              name={undefined}
+              onClick={[Function]}
+            />
+            <SecondaryButton
+              name={undefined}
               onClick={[Function]}
             />
             <Link
@@ -1589,7 +1540,7 @@ ShallowWrapper {
                   "status": "NEW",
                 }
               }
-              readFlag={false}
+              readFlag={true}
               sentFlag={false}
               viewMessageFlag={true}
             />,
@@ -1609,8 +1560,12 @@ ShallowWrapper {
               >
                 Back
               </Link>
-              <button
-                className="c-btn c-btn--secondary"
+              <SecondaryButton
+                name={undefined}
+                onClick={[Function]}
+              />
+              <SecondaryButton
+                name={undefined}
                 onClick={[Function]}
               />
               <Link
@@ -1764,7 +1719,7 @@ ShallowWrapper {
               "message": Object {
                 "status": "NEW",
               },
-              "readFlag": false,
+              "readFlag": true,
               "sentFlag": false,
               "viewMessageFlag": true,
             },
@@ -1801,11 +1756,15 @@ ShallowWrapper {
                 >
                   Back
                 </Link>,
-                <button
-                  className="c-btn c-btn--secondary"
+                <SecondaryButton
+                  name={undefined}
                   onClick={[Function]}
                 />,
-                undefined,
+                false,
+                <SecondaryButton
+                  name={undefined}
+                  onClick={[Function]}
+                />,
                 <Link
                   className="c-btn c-btn--primary"
                   id="reply-button"
@@ -1844,17 +1803,28 @@ ShallowWrapper {
               Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "host",
+                "nodeType": "function",
                 "props": Object {
-                  "children": undefined,
-                  "className": "c-btn c-btn--secondary",
+                  "name": undefined,
                   "onClick": [Function],
                 },
                 "ref": null,
                 "rendered": null,
-                "type": "button",
+                "type": [Function],
               },
-              undefined,
+              false,
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "name": undefined,
+                  "onClick": [Function],
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
               Object {
                 "instance": null,
                 "key": undefined,
