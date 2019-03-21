@@ -318,6 +318,7 @@ export class SecureMessageSummary extends React.Component {
 						</div>
 						<SecureMessageSummaryButtons 
 							{...this.props} 
+							noReply={message.noReply}
 							onArchiveClick={this.archiveClick}
 							onUnarchiveClick={this.unarchiveClick}
 							onDeleteClick={this.deleteClick}/>					
@@ -362,7 +363,7 @@ SecureMessageSummary.defaultProps = {
  * Maps the state of the component to the state of the redux store
  * @param {object} state. State of the application
  */
-const mapState = state => ({
+const mapState = (state, props) => ({
 	messages: state.messages,
 	messagesubjects: state.subjects,
 	messageaccounts: state.accounts,

@@ -3,6 +3,40 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { SecureMessageSummary } from '../SecureMessageSummary';
 
+const setup = (setupProps) => {
+  const props = {
+    content: {
+      back: 'Back',
+      noSpecificAccount: 'noSpecificAccount'
+    },
+    messageDetail: {
+      newMessageError: true,
+      delSuccessModal: true,
+    },
+    message: {
+      status: 'READ',
+      getSubject: jest.fn(),
+      getReference: jest.fn(),
+      getMessageBody: jest.fn(),
+      getDateCreated: jest.fn(),
+      account: {
+        number: '32236',
+      }
+    },
+    messages: {
+      draftError: true,
+    },
+    dispatch: jest.fn(),
+    ...setupProps
+  }
+  const wrapper = shallow(<SecureMessageSummary {...props} />);
+  return {
+    wrapper,
+    props
+  }
+}
+
+
 describe("SecureMessageSummary snapshot", () => {
   const dispatch = jest.fn();
   const getSubject = jest.fn();

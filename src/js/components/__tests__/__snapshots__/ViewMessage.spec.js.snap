@@ -663,9 +663,6 @@ ShallowWrapper {
           Array [
             [Function],
           ],
-          Array [
-            [Function],
-          ],
         ],
       }
     }
@@ -756,6 +753,7 @@ ShallowWrapper {
           />
           <Link
             className="c-btn c-btn--primary"
+            id="reply-button"
             replace={false}
             to={
               Object {
@@ -933,6 +931,7 @@ ShallowWrapper {
             />
             <Link
               className="c-btn c-btn--primary"
+              id="reply-button"
               replace={false}
               to={
                 Object {
@@ -1129,6 +1128,7 @@ ShallowWrapper {
               />,
               <Link
                 className="c-btn c-btn--primary"
+                id="reply-button"
                 replace={false}
                 to={
                   Object {
@@ -1195,6 +1195,7 @@ ShallowWrapper {
               "props": Object {
                 "children": undefined,
                 "className": "c-btn c-btn--primary",
+                "id": "reply-button",
                 "replace": false,
                 "to": Object {
                   "backPath": "/securemessages/view",
@@ -1397,6 +1398,7 @@ ShallowWrapper {
             />
             <Link
               className="c-btn c-btn--primary"
+              id="reply-button"
               replace={false}
               to={
                 Object {
@@ -1574,6 +1576,7 @@ ShallowWrapper {
               />
               <Link
                 className="c-btn c-btn--primary"
+                id="reply-button"
                 replace={false}
                 to={
                   Object {
@@ -1770,6 +1773,7 @@ ShallowWrapper {
                 />,
                 <Link
                   className="c-btn c-btn--primary"
+                  id="reply-button"
                   replace={false}
                   to={
                     Object {
@@ -1836,6 +1840,7 @@ ShallowWrapper {
                 "props": Object {
                   "children": undefined,
                   "className": "c-btn c-btn--primary",
+                  "id": "reply-button",
                   "replace": false,
                   "to": Object {
                     "backPath": "/securemessages/view",

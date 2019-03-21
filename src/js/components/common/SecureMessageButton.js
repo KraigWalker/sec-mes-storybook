@@ -23,6 +23,7 @@ export const SecureButton = ({
 };
 
 export const SecureButtonIcon = ({ name, description, label, children }) => {
+
   return (
     <div>
       <span
@@ -43,7 +44,9 @@ export const SecureButtonIcon = ({ name, description, label, children }) => {
 
 
 export const SecureLink = ({ name, label, message, path, backpath, description, children }) => {
-  return (
+
+    return (
+
     <Link
       to={{
         pathname: path ,

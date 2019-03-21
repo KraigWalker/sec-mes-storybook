@@ -101,7 +101,6 @@ describe("when in readonly mode & no reply message", () => {
     describe("status is sent", () =>
     {
         it("show archive returns false", () => {
-            console.log(messageFunctions.showArchiveButton(SENT));
             expect(messageFunctions.showArchiveButton(SENT)).toEqual(false);
         });
     

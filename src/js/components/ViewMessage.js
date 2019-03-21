@@ -23,15 +23,18 @@ import ModalComponent from "./common/ModalComponent";
 import { READ, NEW, SENT, DELETED, READ_ONLY, ARCHIVED } from '../constants/StringsConstants';
 import getOptionDisplayFunctions from "./common/MessageOptions";
 
-const Attachments = ({ session }) => (
+const Attachments = ({ session, client, document }) => (
 	<div className="c-message--attachments">
 		<h4>Attachments</h4>
 		<ul>
 			<li>
 				<Link
-					to={{ pathname: `/my-documents/${session.brand}` }}
+					target="_blank"
+					to={{ pathname: `/my-documents/${session.brand}/${document.id}#access_token=${session.access_token}&bank_id=${session.bank_id}&client_context=${
+						client.client.app_title
+					  }&user_tracking_id=${client.client.user_tracking_id}&brandId=${session.bank_id}&state=${session.state}` }}
 				>
-					New documents available
+					{document.label}
 				</Link>
 			</li>
 		</ul>
@@ -64,7 +67,7 @@ export class ViewMessage extends React.Component {
 
 	componentDidMount() {
 		const { messageDetail } = this.props.location;
-		const { isWebView, setMessagesMetaData, messages, readOnly, dispatch } = this.props;
+		const { isWebView, setMessagesMetaData, messages, dispatch } = this.props;
 
 		messageDetail &&
 			dispatch(
@@ -72,7 +75,7 @@ export class ViewMessage extends React.Component {
 			); // to set current viewing message
 		// Below is to update New message to Read message status.
 		if (messageDetail && messageDetail.status === 'NEW') {
-			if (!readOnly) {
+			if (!messages.mode === READ_ONLY) {
 				dispatch(
 					updateMessageData(
 						messageDetail,
@@ -97,6 +100,7 @@ export class ViewMessage extends React.Component {
 		if (getMessageType(message.status) !== SENT) {
 			return (
 				<Link
+					id="reply-button"
 					to={{ pathname: `/securemessages/reply`, backPath: `/securemessages/view`, messageDetail: message }}
 					className="c-btn c-btn--primary"
 				>
@@ -309,9 +313,7 @@ export class ViewMessage extends React.Component {
 			? this.props.location
 			: this.props;
 
-
-
-		const { hasAttachment, readOnly, session } = this.props;
+		const { hasAttachment, readOnly, session, client } = this.props;
 
 		const optionFunctions = getOptionDisplayFunctions(readOnly, messageDetail.noReply);
 
@@ -341,7 +343,7 @@ export class ViewMessage extends React.Component {
 						content={this.props.content}
 					/>
 					<pre>{messageDetail.message}</pre>
-					{ hasAttachment && <Attachments session={session} /> }
+					{ hasAttachment && <Attachments session={session} document={messageDetail.document} client={client} /> }
 					<div className="c-btn--group">
 						{this.getBackButton()}
 						{optionFunctions.showDeleteButton(messageStatus) && this.getDeleteButton(messageDetail)}
@@ -368,9 +370,10 @@ export class ViewMessage extends React.Component {
 
 const mapState = state => ({
 	readOnly: state.messages.mode === READ_ONLY,
+	noReply: state.viewMessage.messageDetail.noReply,
 	messages: state.messages,
 	messageDetail: state.viewMessage.messageDetail,
-	hasAttachment: state.viewMessage.messageDetail.subject === "DOCUMENT"
+	hasAttachment: state.viewMessage.messageDetail.document && state.viewMessage.messageDetail.document.id !== undefined, 
 });
 
 export default compose(

@@ -33,6 +33,7 @@ const RoutesWithLayout = (props) => (
             content={props.content}
             isDocumentLibraryEnabled={props.isDocumentLibraryEnabled}
             session={props.session}
+            client={props.client}
         />
         <RouteWithLayout
             exact
@@ -100,6 +101,11 @@ class AppRouter extends React.Component {
                             client={this.props.client}
                             isDocumentLibraryEnabled={isDocumentLibraryEnabled}
                         />
+                        <Route 
+                            path={`/my-documents/:bankId(CB|YB|DYB)/:documentId`}
+                            exact
+                            component={DocumentView}
+                        />
                         <RouteWithLayout
                             Component={DocumentList}
                             session={this.props.session}
@@ -108,11 +114,7 @@ class AppRouter extends React.Component {
                             isDocumentLibraryEnabled={isDocumentLibraryEnabled}
                             exact
                         />
-                        <Route 
-                            path={`/my-documents/:bankId(CB|YB|DYB)/:displayCategory/:documentId`}
-                            exact
-                            component={DocumentView}
-                        />
+                        
                     </Switch>
                 </div>
             </BrowserRouter>

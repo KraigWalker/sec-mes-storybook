@@ -53,6 +53,7 @@ const secureMessageSummaryButtons = props => {
     } else {
       replymessage = `${content.replyUnread} ${message.getSubject()}`;
     }
+
     return (
       !threadFlag && (
         <SecureLink

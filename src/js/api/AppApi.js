@@ -78,6 +78,10 @@ class AppApi {
     );
   }
 
+  getAccounts(success, error) {
+	this.apiUtils.makeRequest({ url: `${this.config.apiBaseUrl2}${_getAccountsURL}`, method: 'GET', apiVersion: '0.8.0' }, success, error);
+  }
+
   replyMessageData(requestData, ids, status, name, success, error) {
     const reqData = replyMessage(requestData, ids, status, name);
     this.apiUtils.makeRequest(
