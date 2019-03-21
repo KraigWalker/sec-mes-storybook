@@ -7,8 +7,6 @@ import { LandingPage } from '../LandingPage';
 import { Provider } from "react-redux";
 
 describe("Landing Page else snapshot", () => {
-    
-    window.scrollTo = () => {}
 
     const dispatch = jest.fn();
     const linkClick = jest.fn();

@@ -5,7 +5,7 @@ const getOptionDisplayFunctions = (readOnly, noReply) => {
     showUnarchiveButton: status => !readOnly && status === ARCHIVED,
     showArchiveButton: status =>
       !readOnly && status !== NEW && status !== ARCHIVED && status !== SENT && status !== PENDING,
-    showDeleteButton: status => !readOnly && status !== PENDING,
+    showDeleteButton: status => !readOnly && status !== PENDING && status !== NEW,
     showReplyButton: status =>
       (status === NEW || status === READ || status === ARCHIVED) &&
       !readOnly &&

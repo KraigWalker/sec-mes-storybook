@@ -24,8 +24,8 @@ export class SecureMessageTabs extends React.Component {
 
   render() {
     const { messages } = this.props;
-	const unreadInboxCount = this.getInboxUnreadCount(messages);
-	const inboxTitle = this.getInboxTitle(unreadInboxCount);
+	const unreadInboxCount = getInboxUnreadCount(messages);
+	const inboxTitle = getInboxTitle(unreadInboxCount);
 
     return messages ? (
       <Tabs
@@ -71,16 +71,15 @@ export class SecureMessageTabs extends React.Component {
       <p>Loading...</p>
     );
   }
-
-  getInboxUnreadCount = messages => _.sumBy(messages.inboxMessages, message => message.status === NEW);
-
-  getInboxTitle(messageCount) {
-    return messageCount > 0
-      ? `Inbox (${messageCount})`
-      : `Inbox`;
-  }
 }
 
+const getInboxUnreadCount = messages => _.sumBy(messages.inboxMessages, message => message.status === NEW);
+const getInboxTitle = (messageCount) => {
+    return messageCount > 0
+      ? `Inbox (${messageCount})`
+	  : `Inbox`;
+}
+	  
 SecureMessageTabs.propTypes = {};
 SecureMessageTabs.defaultProps = {};
 

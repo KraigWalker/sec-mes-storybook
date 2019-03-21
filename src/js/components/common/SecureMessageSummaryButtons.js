@@ -9,7 +9,7 @@ import cx from 'classnames';
 import GetIcon from './GetIcon';
 import { NEW } from '../../constants/StringsConstants';
 
-const secureMessageSummaryButtons = props => {
+const SecureMessageSummaryButtons = props => {
   const optionFunctions = getOptionDisplayFunctions(props.readOnly, props.noReply);
 
   const actionsClass = cx({
@@ -17,7 +17,7 @@ const secureMessageSummaryButtons = props => {
     "u-position-relative": !props.threadFlag
   });
 
-  const getPendingStatus = () => {
+  const PendingStatus = () => {
     return (
       <SecureButtonIcon name="pending" description={props.content.pending}>
         <GetIcon
@@ -103,9 +103,9 @@ const secureMessageSummaryButtons = props => {
       )}
       {!threadFlag &&
         optionFunctions.showPending(message.status) &&
-        getPendingStatus()}
+        PendingStatus()}
     </div>
   );
 };
 
-export default secureMessageSummaryButtons;
+export default SecureMessageSummaryButtons;

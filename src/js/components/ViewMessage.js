@@ -22,6 +22,7 @@ import GetIcon from "./common/GetIcon";
 import ModalComponent from "./common/ModalComponent";
 import { READ, NEW, SENT, DELETED, READ_ONLY, ARCHIVED } from '../constants/StringsConstants';
 import getOptionDisplayFunctions from "./common/MessageOptions";
+import SecondaryButton from "./common/SecondaryButton";
 
 const Attachments = ({ session, client, document }) => (
 	<div className="c-message--attachments">
@@ -45,7 +46,6 @@ export class ViewMessage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.getReplyButton = this.getReplyButton.bind(this);
-		this.getDeleteButton = this.getDeleteButton.bind(this);
 		this.state = {
 			showDeleteConfirmModal: false,
 			showDeleteSuccessModal: false,
@@ -109,26 +109,6 @@ export class ViewMessage extends React.Component {
 			);
 		};
 	};
-
-	getDeleteButton = message => (
-		<button className="c-btn c-btn--secondary" onClick={this.handleDelete}>
-			{this.props.content.delete}
-	  	 </button>
-	);
-
-	getArchiveButton = () => (
-		<button className="c-btn c-btn--secondary" onClick={this.archiveClick}>
-			{this.props.content.archive}
-	  	 </button>
-	);
-
-	getUnarchiveButton = () => (
-		<button className="c-btn c-btn--secondary" onClick={this.unarchiveClick}>
-			{this.props.content.moveToInbox}
-	  	 </button>
-	);
-
-
 
 	handleDelete(data) {
 		this.setState({ showDeleteConfirmModal: true });
@@ -313,7 +293,7 @@ export class ViewMessage extends React.Component {
 			? this.props.location
 			: this.props;
 
-		const { hasAttachment, readOnly, session, client } = this.props;
+		const { hasAttachment, readOnly, session, client, content } = this.props;
 
 		const optionFunctions = getOptionDisplayFunctions(readOnly, messageDetail.noReply);
 
@@ -346,9 +326,9 @@ export class ViewMessage extends React.Component {
 					{ hasAttachment && <Attachments session={session} document={messageDetail.document} client={client} /> }
 					<div className="c-btn--group">
 						{this.getBackButton()}
-						{optionFunctions.showDeleteButton(messageStatus) && this.getDeleteButton(messageDetail)}
-						{optionFunctions.showUnarchiveButton(messageStatus) && this.getUnarchiveButton()}
-						{optionFunctions.showArchiveButton(messageStatus) && this.getArchiveButton()}
+						{optionFunctions.showDeleteButton(messageStatus) && <SecondaryButton name={content.delete} onClick={this.handleDelete} />}
+						{optionFunctions.showUnarchiveButton(messageStatus) && <SecondaryButton name={content.moveToInbox} onClick={this.unarchiveClick} />}
+						{optionFunctions.showArchiveButton(messageStatus) && <SecondaryButton name={content.archive} onClick={this.archiveClick} />}
 						{optionFunctions.showReplyButton(messageStatus) && this.getReplyButton(messageDetail)}
 					</div>
 					{this.state.showDeleteConfirmModal && this.returnModalComponent()}

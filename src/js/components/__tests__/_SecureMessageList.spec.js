@@ -1,8 +1,6 @@
 import React from 'react';
 import { SecureMessageList } from '../SecureMessageList';
 import { shallow } from 'enzyme';
-import TestUtils from 'react-addons-test-utils';
-import SvgIcon from '.././common/GetIcon';
 
 describe("New Secure message snapshot", () => {
     const dispatch = jest.fn();
@@ -32,9 +30,6 @@ describe("New Secure message snapshot", () => {
         component.setState({ showThatsAllMessage: true });
         expect(component.instance().state.showThatsAllMessage).toBeTruthy();
     });
-    it('renderShowMoreButton function test', () => {
-        component.instance().renderShowMoreButton();
-    });
     it('renderNoMessagesText function test', () => {
         component.instance().renderNoMessagesText();
         component.setState({ showMoreLimit: 8 });
@@ -59,42 +54,11 @@ describe("New Secure message snapshot", () => {
             },
             dispatch: dispatch
         };
-        it('renderNoMessagesText with default', () => {
-            let component = shallow(<SecureMessageList {...props} />);
-            component.instance().renderNoMessagesText();
-        });
-        it('renderNoMessagesText function test', () => {
-            let component = shallow(<SecureMessageList {...props} />);
-            component.instance().renderThatsAllText();
-        });
         it('renderNoMessagesText function test', () => {
             let component = shallow(<SecureMessageList {...props} />);
             component.instance().renderNoMessagesText();
             component.setState({ showMoreLimit: 8 });
             expect(component.instance().state.showMoreLimit).toBeLessThan(props.messages.length);
-        });
-    });
-    describe("New Secure message snapshot", () => {
-        const dispatch = jest.fn();
-        const slice = jest.fn();
-        let props = {
-            content: {
-                noDraftMessages: 'noDraftMessages',
-            },
-            activeTab: '',
-            messagesFetched: {
-                fetching: false,
-                successModal: false
-            },
-            messages: {
-                slice: slice,
-                length: 0
-            },
-            dispatch: dispatch
-        };
-        it('renderNoMessagesText function test', () => {
-            let component = shallow(<SecureMessageList {...props} />);
-            component.instance().renderNoMessagesText();
         });
     });
     describe("New Secure message snapshot", () => {

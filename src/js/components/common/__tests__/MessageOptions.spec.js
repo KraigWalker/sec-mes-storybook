@@ -133,8 +133,8 @@ describe("when in edit mode & no reply message", () => {
             expect(messageFunctions.showArchiveButton(NEW)).toEqual(false);
         });
     
-        it("show delete returns true", () => {
-            expect(messageFunctions.showDeleteButton(NEW)).toEqual(true);
+        it("show delete returns false", () => {
+            expect(messageFunctions.showDeleteButton(NEW)).toEqual(false);
         });
     
         it("show pending returns false ", () => {

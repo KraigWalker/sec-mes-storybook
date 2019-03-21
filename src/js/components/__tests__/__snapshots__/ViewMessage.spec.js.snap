@@ -97,12 +97,12 @@ ShallowWrapper {
               }
             }
           />
-          <button
-            className="c-btn c-btn--secondary"
+          <SecondaryButton
+            name={undefined}
             onClick={[Function]}
           />
-          <button
-            className="c-btn c-btn--secondary"
+          <SecondaryButton
+            name={undefined}
             onClick={[Function]}
           />
         </div>
@@ -164,12 +164,12 @@ ShallowWrapper {
                 }
               }
             />
-            <button
-              className="c-btn c-btn--secondary"
+            <SecondaryButton
+              name={undefined}
               onClick={[Function]}
             />
-            <button
-              className="c-btn c-btn--secondary"
+            <SecondaryButton
+              name={undefined}
               onClick={[Function]}
             />
           </div>,
@@ -252,13 +252,13 @@ ShallowWrapper {
                   }
                 }
               />,
-              <button
-                className="c-btn c-btn--secondary"
+              <SecondaryButton
+                name={undefined}
                 onClick={[Function]}
               />,
               false,
-              <button
-                className="c-btn c-btn--secondary"
+              <SecondaryButton
+                name={undefined}
                 onClick={[Function]}
               />,
               false,
@@ -286,29 +286,27 @@ ShallowWrapper {
             Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "host",
+              "nodeType": "function",
               "props": Object {
-                "children": undefined,
-                "className": "c-btn c-btn--secondary",
+                "name": undefined,
                 "onClick": [Function],
               },
               "ref": null,
               "rendered": null,
-              "type": "button",
+              "type": [Function],
             },
             false,
             Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "host",
+              "nodeType": "function",
               "props": Object {
-                "children": undefined,
-                "className": "c-btn c-btn--secondary",
+                "name": undefined,
                 "onClick": [Function],
               },
               "ref": null,
               "rendered": null,
-              "type": "button",
+              "type": [Function],
             },
             false,
           ],
@@ -384,12 +382,12 @@ ShallowWrapper {
                 }
               }
             />
-            <button
-              className="c-btn c-btn--secondary"
+            <SecondaryButton
+              name={undefined}
               onClick={[Function]}
             />
-            <button
-              className="c-btn c-btn--secondary"
+            <SecondaryButton
+              name={undefined}
               onClick={[Function]}
             />
           </div>
@@ -451,12 +449,12 @@ ShallowWrapper {
                   }
                 }
               />
-              <button
-                className="c-btn c-btn--secondary"
+              <SecondaryButton
+                name={undefined}
                 onClick={[Function]}
               />
-              <button
-                className="c-btn c-btn--secondary"
+              <SecondaryButton
+                name={undefined}
                 onClick={[Function]}
               />
             </div>,
@@ -539,13 +537,13 @@ ShallowWrapper {
                     }
                   }
                 />,
-                <button
-                  className="c-btn c-btn--secondary"
+                <SecondaryButton
+                  name={undefined}
                   onClick={[Function]}
                 />,
                 false,
-                <button
-                  className="c-btn c-btn--secondary"
+                <SecondaryButton
+                  name={undefined}
                   onClick={[Function]}
                 />,
                 false,
@@ -573,29 +571,27 @@ ShallowWrapper {
               Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "host",
+                "nodeType": "function",
                 "props": Object {
-                  "children": undefined,
-                  "className": "c-btn c-btn--secondary",
+                  "name": undefined,
                   "onClick": [Function],
                 },
                 "ref": null,
                 "rendered": null,
-                "type": "button",
+                "type": [Function],
               },
               false,
               Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "host",
+                "nodeType": "function",
                 "props": Object {
-                  "children": undefined,
-                  "className": "c-btn c-btn--secondary",
+                  "name": undefined,
                   "onClick": [Function],
                 },
                 "ref": null,
                 "rendered": null,
-                "type": "button",
+                "type": [Function],
               },
               false,
             ],
@@ -743,12 +739,12 @@ ShallowWrapper {
           >
             Back
           </Link>
-          <button
-            className="c-btn c-btn--secondary"
+          <SecondaryButton
+            name={undefined}
             onClick={[Function]}
           />
-          <button
-            className="c-btn c-btn--secondary"
+          <SecondaryButton
+            name={undefined}
             onClick={[Function]}
           />
           <Link
@@ -921,12 +917,12 @@ ShallowWrapper {
             >
               Back
             </Link>
-            <button
-              className="c-btn c-btn--secondary"
+            <SecondaryButton
+              name={undefined}
               onClick={[Function]}
             />
-            <button
-              className="c-btn c-btn--secondary"
+            <SecondaryButton
+              name={undefined}
               onClick={[Function]}
             />
             <Link
@@ -1117,13 +1113,13 @@ ShallowWrapper {
               >
                 Back
               </Link>,
-              <button
-                className="c-btn c-btn--secondary"
+              <SecondaryButton
+                name={undefined}
                 onClick={[Function]}
               />,
               false,
-              <button
-                className="c-btn c-btn--secondary"
+              <SecondaryButton
+                name={undefined}
                 onClick={[Function]}
               />,
               <Link
@@ -1164,29 +1160,27 @@ ShallowWrapper {
             Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "host",
+              "nodeType": "function",
               "props": Object {
-                "children": undefined,
-                "className": "c-btn c-btn--secondary",
+                "name": undefined,
                 "onClick": [Function],
               },
               "ref": null,
               "rendered": null,
-              "type": "button",
+              "type": [Function],
             },
             false,
             Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "host",
+              "nodeType": "function",
               "props": Object {
-                "children": undefined,
-                "className": "c-btn c-btn--secondary",
+                "name": undefined,
                 "onClick": [Function],
               },
               "ref": null,
               "rendered": null,
-              "type": "button",
+              "type": [Function],
             },
             Object {
               "instance": null,
@@ -1388,12 +1382,12 @@ ShallowWrapper {
             >
               Back
             </Link>
-            <button
-              className="c-btn c-btn--secondary"
+            <SecondaryButton
+              name={undefined}
               onClick={[Function]}
             />
-            <button
-              className="c-btn c-btn--secondary"
+            <SecondaryButton
+              name={undefined}
               onClick={[Function]}
             />
             <Link
@@ -1566,12 +1560,12 @@ ShallowWrapper {
               >
                 Back
               </Link>
-              <button
-                className="c-btn c-btn--secondary"
+              <SecondaryButton
+                name={undefined}
                 onClick={[Function]}
               />
-              <button
-                className="c-btn c-btn--secondary"
+              <SecondaryButton
+                name={undefined}
                 onClick={[Function]}
               />
               <Link
@@ -1762,13 +1756,13 @@ ShallowWrapper {
                 >
                   Back
                 </Link>,
-                <button
-                  className="c-btn c-btn--secondary"
+                <SecondaryButton
+                  name={undefined}
                   onClick={[Function]}
                 />,
                 false,
-                <button
-                  className="c-btn c-btn--secondary"
+                <SecondaryButton
+                  name={undefined}
                   onClick={[Function]}
                 />,
                 <Link
@@ -1809,29 +1803,27 @@ ShallowWrapper {
               Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "host",
+                "nodeType": "function",
                 "props": Object {
-                  "children": undefined,
-                  "className": "c-btn c-btn--secondary",
+                  "name": undefined,
                   "onClick": [Function],
                 },
                 "ref": null,
                 "rendered": null,
-                "type": "button",
+                "type": [Function],
               },
               false,
               Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "host",
+                "nodeType": "function",
                 "props": Object {
-                  "children": undefined,
-                  "className": "c-btn c-btn--secondary",
+                  "name": undefined,
                   "onClick": [Function],
                 },
                 "ref": null,
                 "rendered": null,
-                "type": "button",
+                "type": [Function],
               },
               Object {
                 "instance": null,

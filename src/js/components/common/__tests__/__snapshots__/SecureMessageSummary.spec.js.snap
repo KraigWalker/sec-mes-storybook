@@ -142,7 +142,7 @@ ShallowWrapper {
                 className="c-message__summary__head__title__ref"
               />
             </div>
-            <secureMessageSummaryButtons
+            <SecureMessageSummaryButtons
               content={
                 Object {
                   "back": "Back",
@@ -201,6 +201,7 @@ ShallowWrapper {
                   "draftError": true,
                 }
               }
+              noReply={undefined}
               onArchiveClick={[Function]}
               onDeleteClick={[Function]}
               onUnarchiveClick={[Function]}
@@ -309,7 +310,7 @@ ShallowWrapper {
                   className="c-message__summary__head__title__ref"
                 />
               </div>
-              <secureMessageSummaryButtons
+              <SecureMessageSummaryButtons
                 content={
                   Object {
                     "back": "Back",
@@ -368,6 +369,7 @@ ShallowWrapper {
                     "draftError": true,
                   }
                 }
+                noReply={undefined}
                 onArchiveClick={[Function]}
                 onDeleteClick={[Function]}
                 onUnarchiveClick={[Function]}
@@ -442,7 +444,7 @@ ShallowWrapper {
                     className="c-message__summary__head__title__ref"
                   />
                 </div>,
-                <secureMessageSummaryButtons
+                <SecureMessageSummaryButtons
                   content={
                     Object {
                       "back": "Back",
@@ -501,6 +503,7 @@ ShallowWrapper {
                       "draftError": true,
                     }
                   }
+                  noReply={undefined}
                   onArchiveClick={[Function]}
                   onDeleteClick={[Function]}
                   onUnarchiveClick={[Function]}
@@ -726,6 +729,7 @@ ShallowWrapper {
                   "messages": Object {
                     "draftError": true,
                   },
+                  "noReply": undefined,
                   "onArchiveClick": [Function],
                   "onDeleteClick": [Function],
                   "onUnarchiveClick": [Function],
@@ -844,7 +848,7 @@ ShallowWrapper {
                   className="c-message__summary__head__title__ref"
                 />
               </div>
-              <secureMessageSummaryButtons
+              <SecureMessageSummaryButtons
                 content={
                   Object {
                     "back": "Back",
@@ -903,6 +907,7 @@ ShallowWrapper {
                     "draftError": true,
                   }
                 }
+                noReply={undefined}
                 onArchiveClick={[Function]}
                 onDeleteClick={[Function]}
                 onUnarchiveClick={[Function]}
@@ -1011,7 +1016,7 @@ ShallowWrapper {
                     className="c-message__summary__head__title__ref"
                   />
                 </div>
-                <secureMessageSummaryButtons
+                <SecureMessageSummaryButtons
                   content={
                     Object {
                       "back": "Back",
@@ -1070,6 +1075,7 @@ ShallowWrapper {
                       "draftError": true,
                     }
                   }
+                  noReply={undefined}
                   onArchiveClick={[Function]}
                   onDeleteClick={[Function]}
                   onUnarchiveClick={[Function]}
@@ -1144,7 +1150,7 @@ ShallowWrapper {
                       className="c-message__summary__head__title__ref"
                     />
                   </div>,
-                  <secureMessageSummaryButtons
+                  <SecureMessageSummaryButtons
                     content={
                       Object {
                         "back": "Back",
@@ -1203,6 +1209,7 @@ ShallowWrapper {
                         "draftError": true,
                       }
                     }
+                    noReply={undefined}
                     onArchiveClick={[Function]}
                     onDeleteClick={[Function]}
                     onUnarchiveClick={[Function]}
@@ -1428,6 +1435,7 @@ ShallowWrapper {
                     "messages": Object {
                       "draftError": true,
                     },
+                    "noReply": undefined,
                     "onArchiveClick": [Function],
                     "onDeleteClick": [Function],
                     "onUnarchiveClick": [Function],
@@ -1632,7 +1640,7 @@ ShallowWrapper {
                 className="c-message__summary__head__title__ref"
               />
             </div>
-            <secureMessageSummaryButtons
+            <SecureMessageSummaryButtons
               content={
                 Object {
                   "back": "Back",
@@ -1691,6 +1699,7 @@ ShallowWrapper {
                   "draftError": true,
                 }
               }
+              noReply={undefined}
               onArchiveClick={[Function]}
               onDeleteClick={[Function]}
               onUnarchiveClick={[Function]}
@@ -1773,7 +1782,7 @@ ShallowWrapper {
                   className="c-message__summary__head__title__ref"
                 />
               </div>
-              <secureMessageSummaryButtons
+              <SecureMessageSummaryButtons
                 content={
                   Object {
                     "back": "Back",
@@ -1832,6 +1841,7 @@ ShallowWrapper {
                     "draftError": true,
                   }
                 }
+                noReply={undefined}
                 onArchiveClick={[Function]}
                 onDeleteClick={[Function]}
                 onUnarchiveClick={[Function]}
@@ -1907,7 +1917,7 @@ ShallowWrapper {
                     className="c-message__summary__head__title__ref"
                   />
                 </div>,
-                <secureMessageSummaryButtons
+                <SecureMessageSummaryButtons
                   content={
                     Object {
                       "back": "Back",
@@ -1966,6 +1976,7 @@ ShallowWrapper {
                       "draftError": true,
                     }
                   }
+                  noReply={undefined}
                   onArchiveClick={[Function]}
                   onDeleteClick={[Function]}
                   onUnarchiveClick={[Function]}
@@ -2194,6 +2205,7 @@ ShallowWrapper {
                   "messages": Object {
                     "draftError": true,
                   },
+                  "noReply": undefined,
                   "onArchiveClick": [Function],
                   "onDeleteClick": [Function],
                   "onUnarchiveClick": [Function],
@@ -2305,7 +2317,7 @@ ShallowWrapper {
                   className="c-message__summary__head__title__ref"
                 />
               </div>
-              <secureMessageSummaryButtons
+              <SecureMessageSummaryButtons
                 content={
                   Object {
                     "back": "Back",
@@ -2364,6 +2376,7 @@ ShallowWrapper {
                     "draftError": true,
                   }
                 }
+                noReply={undefined}
                 onArchiveClick={[Function]}
                 onDeleteClick={[Function]}
                 onUnarchiveClick={[Function]}
@@ -2446,7 +2459,7 @@ ShallowWrapper {
                     className="c-message__summary__head__title__ref"
                   />
                 </div>
-                <secureMessageSummaryButtons
+                <SecureMessageSummaryButtons
                   content={
                     Object {
                       "back": "Back",
@@ -2505,6 +2518,7 @@ ShallowWrapper {
                       "draftError": true,
                     }
                   }
+                  noReply={undefined}
                   onArchiveClick={[Function]}
                   onDeleteClick={[Function]}
                   onUnarchiveClick={[Function]}
@@ -2580,7 +2594,7 @@ ShallowWrapper {
                       className="c-message__summary__head__title__ref"
                     />
                   </div>,
-                  <secureMessageSummaryButtons
+                  <SecureMessageSummaryButtons
                     content={
                       Object {
                         "back": "Back",
@@ -2639,6 +2653,7 @@ ShallowWrapper {
                         "draftError": true,
                       }
                     }
+                    noReply={undefined}
                     onArchiveClick={[Function]}
                     onDeleteClick={[Function]}
                     onUnarchiveClick={[Function]}
@@ -2867,6 +2882,7 @@ ShallowWrapper {
                     "messages": Object {
                       "draftError": true,
                     },
+                    "noReply": undefined,
                     "onArchiveClick": [Function],
                     "onDeleteClick": [Function],
                     "onUnarchiveClick": [Function],
@@ -3072,7 +3088,7 @@ ShallowWrapper {
                 className="c-message__summary__head__title__ref"
               />
             </div>
-            <secureMessageSummaryButtons
+            <SecureMessageSummaryButtons
               content={
                 Object {
                   "back": "Back",
@@ -3127,6 +3143,7 @@ ShallowWrapper {
                   "draftError": true,
                 }
               }
+              noReply={undefined}
               onArchiveClick={[Function]}
               onDeleteClick={[Function]}
               onUnarchiveClick={[Function]}
@@ -3236,7 +3253,7 @@ ShallowWrapper {
                   className="c-message__summary__head__title__ref"
                 />
               </div>
-              <secureMessageSummaryButtons
+              <SecureMessageSummaryButtons
                 content={
                   Object {
                     "back": "Back",
@@ -3291,6 +3308,7 @@ ShallowWrapper {
                     "draftError": true,
                   }
                 }
+                noReply={undefined}
                 onArchiveClick={[Function]}
                 onDeleteClick={[Function]}
                 onUnarchiveClick={[Function]}
@@ -3366,7 +3384,7 @@ ShallowWrapper {
                     className="c-message__summary__head__title__ref"
                   />
                 </div>,
-                <secureMessageSummaryButtons
+                <SecureMessageSummaryButtons
                   content={
                     Object {
                       "back": "Back",
@@ -3421,6 +3439,7 @@ ShallowWrapper {
                       "draftError": true,
                     }
                   }
+                  noReply={undefined}
                   onArchiveClick={[Function]}
                   onDeleteClick={[Function]}
                   onUnarchiveClick={[Function]}
@@ -3634,6 +3653,7 @@ ShallowWrapper {
                   "messages": Object {
                     "draftError": true,
                   },
+                  "noReply": undefined,
                   "onArchiveClick": [Function],
                   "onDeleteClick": [Function],
                   "onUnarchiveClick": [Function],
@@ -3756,7 +3776,7 @@ ShallowWrapper {
                   className="c-message__summary__head__title__ref"
                 />
               </div>
-              <secureMessageSummaryButtons
+              <SecureMessageSummaryButtons
                 content={
                   Object {
                     "back": "Back",
@@ -3811,6 +3831,7 @@ ShallowWrapper {
                     "draftError": true,
                   }
                 }
+                noReply={undefined}
                 onArchiveClick={[Function]}
                 onDeleteClick={[Function]}
                 onUnarchiveClick={[Function]}
@@ -3920,7 +3941,7 @@ ShallowWrapper {
                     className="c-message__summary__head__title__ref"
                   />
                 </div>
-                <secureMessageSummaryButtons
+                <SecureMessageSummaryButtons
                   content={
                     Object {
                       "back": "Back",
@@ -3975,6 +3996,7 @@ ShallowWrapper {
                       "draftError": true,
                     }
                   }
+                  noReply={undefined}
                   onArchiveClick={[Function]}
                   onDeleteClick={[Function]}
                   onUnarchiveClick={[Function]}
@@ -4050,7 +4072,7 @@ ShallowWrapper {
                       className="c-message__summary__head__title__ref"
                     />
                   </div>,
-                  <secureMessageSummaryButtons
+                  <SecureMessageSummaryButtons
                     content={
                       Object {
                         "back": "Back",
@@ -4105,6 +4127,7 @@ ShallowWrapper {
                         "draftError": true,
                       }
                     }
+                    noReply={undefined}
                     onArchiveClick={[Function]}
                     onDeleteClick={[Function]}
                     onUnarchiveClick={[Function]}
@@ -4318,6 +4341,7 @@ ShallowWrapper {
                     "messages": Object {
                       "draftError": true,
                     },
+                    "noReply": undefined,
                     "onArchiveClick": [Function],
                     "onDeleteClick": [Function],
                     "onUnarchiveClick": [Function],

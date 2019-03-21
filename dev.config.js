@@ -83,7 +83,7 @@ module.exports = {
 				{ from: /^\/$/, to: "index.html" }
 			]
 		},
-		host: '0.0.0.0',
+		host: 'localhost',
 		port: 8080,
 		hot: true
 	},

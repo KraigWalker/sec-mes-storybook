@@ -14,7 +14,6 @@ const shallowRender = props => {
     />);
     return shallowRenderer.getRenderOutput();
 };
-window.scrollTo = () => {}
 describe("New Secure message snapshot", () => {
     const dispatch = jest.fn();
     let props = {
