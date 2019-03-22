@@ -1,10 +1,10 @@
 import React from 'react';
-import { FolderListContainer, PreferenceCardContainer } from 'document-management-web-ui';
+import { ListViewContainer, PreferenceCardContainer } from 'document-management-web-ui';
 
-export const FolderList = (props) => (
+export const ListView = (props) => (
     <div className="web-ui-components centralised-container">
         <div className="u-margin-bottom-c">   
-            <FolderListContainer {...props} />
+            <ListViewContainer {...props} />
         </div>
         <div>
             <PreferenceCardContainer {...props} />
