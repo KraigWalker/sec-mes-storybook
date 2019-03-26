@@ -21,10 +21,11 @@ export function parseMessages(response) {
         messageEntity.setAccount(message.account);
         messageEntity.setMessageBody(message.payload.body.data);
         messageEntity.setDocumentData({
-            id: message.document_id,
-            label: message.document_display_label
+            id: message.document.id,
+            label: message.document.display_label,
+            fileSize: message.document_file_size,
         });
-        messageEntity.setNoReply(message.noreply)
+        messageEntity.setNoReply(message.no_reply)
         messages.push(messageEntity);
     });
     return messages;

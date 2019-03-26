@@ -1,6 +1,6 @@
 import React from "react";
 import { compose } from "redux";
-import { utils } from "document-management-web-ui";
+import { utils, actions as documentActions } from "document-management-web-ui";
 
 import StepHeader from "./common/StepHeader";
 import SecureMessageSummary from "./common/SecureMessageSummary";
@@ -24,19 +24,12 @@ import { READ, NEW, SENT, DELETED, READ_ONLY, ARCHIVED } from '../constants/Stri
 import getOptionDisplayFunctions from "./common/MessageOptions";
 import SecondaryButton from "./common/SecondaryButton";
 
-const Attachments = ({ session, client, document }) => (
+const Attachments = ({ session, client, document, onClick }) => (
 	<div className="c-message--attachments">
 		<h4>Attachments</h4>
 		<ul>
 			<li>
-				<Link
-					target="_blank"
-					to={{ pathname: `/my-documents/${session.brand}/${document.id}#access_token=${session.access_token}&bank_id=${session.bank_id}&client_context=${
-						client.client.app_title
-					  }&user_tracking_id=${client.client.user_tracking_id}&brandId=${session.bank_id}&state=${session.state}` }}
-				>
-					{document.label}
-				</Link>
+				<a href="#" onClick={onClick}>{document.label}</a>
 			</li>
 		</ul>
 	</div>
@@ -63,6 +56,8 @@ export class ViewMessage extends React.Component {
 		this.closeSuccessModal = this.closeSuccessModal.bind(this);
 		this.errorCloseClicked = this.errorCloseClicked.bind(this);
 		this.retryServiceCall = this.retryServiceCall.bind(this);
+		this.handleAttachmentClick = this.handleAttachmentClick.bind(this);
+
 	}
 
 	componentDidMount() {
@@ -113,6 +108,20 @@ export class ViewMessage extends React.Component {
 	handleDelete(data) {
 		this.setState({ showDeleteConfirmModal: true });
 	}
+
+	handleAttachmentClick() {
+		const { isWebView, session, messageDetail, client, dispatch } = this.props;
+		if (!isWebView) {
+			window.open(`/my-documents/${session.brand}/${messageDetail.document.id}#access_token=${session.access_token}&bank_id=${session.bank_id}&client_context=${
+				client.client.app_title
+			  }&user_tracking_id=${client.client.user_tracking_id}&brandId=${session.bank_id}&state=${session.state}`)
+		} else {
+			dispatch(
+				documentActions.getDocumentByIdNative(messageDetail.document.id, messageDetail.document.fileSize)
+			);
+		}
+	}
+
 	closeModal() {
 		this.setState({ showDeleteConfirmModal: false });
 	}
@@ -323,7 +332,7 @@ export class ViewMessage extends React.Component {
 						content={this.props.content}
 					/>
 					<pre>{messageDetail.message}</pre>
-					{ hasAttachment && <Attachments session={session} document={messageDetail.document} client={client} /> }
+					{ hasAttachment && <Attachments document={messageDetail.document} onClick={this.handleAttachmentClick}/> }
 					<div className="c-btn--group">
 						{this.getBackButton()}
 						{optionFunctions.showDeleteButton(messageStatus) && <SecondaryButton name={content.delete} onClick={this.handleDelete} />}
@@ -358,5 +367,5 @@ const mapState = state => ({
 
 export default compose(
 	connect(mapState),
-	utils.withNativeBridge(window.navigator.userAgent)
+	utils.withNativeBridge(window)
 )(ViewMessage);
