@@ -13,12 +13,11 @@ import { ListView } from '../components/ListView';
 import { AccountSelector } from '../components/AccountSelector';
 import { DocumentView } from '../components/DocumentView';
 
-console.log(ListView);
 const RouteWithLayout = ({ Component, ...restProps }) => <Route {...restProps} render={(routeProps) => 
     <Main {...restProps} >
         <Component {...restProps} {...routeProps} />
     </Main>
-} />
+} />;
 
 /** 
  * @class AppRouter Class to initiate and route the application 
