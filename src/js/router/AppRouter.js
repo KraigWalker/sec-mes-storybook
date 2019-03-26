@@ -9,11 +9,11 @@ import { withSubscription,accessibilityWrapper } from '../components/wrappers/Ge
 import DraftSecureMessage from '../components/DraftSecureMessage';
 import AccessibilityMessage from '../components/common/AccessibilityMessage';
 import ErrorPage from '../components/common/ErrorPage';
-import { ListView } from '../components/ListView';
-import { AccountSelector } from '../components/AccountSelector';
+import { FolderList } from '../components/FolderList';
+import { DocumentList } from '../components/DocumentList';
 import { DocumentView } from '../components/DocumentView';
 
-console.log(ListView);
+
 const RouteWithLayout = ({ Component, ...restProps }) => <Route {...restProps} render={(routeProps) => 
     <Main {...restProps} >
         <Component {...restProps} {...routeProps} />
@@ -84,7 +84,6 @@ class AppRouter extends React.Component {
     */ 
       render() {
         const { isDocumentLibraryEnabled } = this.props;
-        console.log(window.baseURl);
         return (
             <BrowserRouter basename={window.baseURl}>
                 <div>
@@ -97,7 +96,7 @@ class AppRouter extends React.Component {
                         <RouteWithLayout
                             path={`/my-documents/:bankId(CB|YB|DYB)`}
                             exact
-                            Component={ListView}
+                            Component={FolderList}
                             session={this.props.session}
                             client={this.props.client}
                             isDocumentLibraryEnabled={isDocumentLibraryEnabled}
@@ -108,10 +107,10 @@ class AppRouter extends React.Component {
                             component={DocumentView}
                         />
                         <RouteWithLayout
-                            Component={AccountSelector}
+                            Component={DocumentList}
                             session={this.props.session}
                             client={this.props.client}
-                            path={`/digital-statements/select-account`}
+                            path={`/my-documents/:bankId(CB|YB|DYB)/:displayCategory`}
                             isDocumentLibraryEnabled={isDocumentLibraryEnabled}
                             exact
                         />
