@@ -358,5 +358,5 @@ const mapState = state => ({
 
 export default compose(
 	connect(mapState),
-	utils.withNativeBridge(window.navigator.userAgent)
+	utils.withNativeBridge(window)
 )(ViewMessage);
