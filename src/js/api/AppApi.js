@@ -55,7 +55,7 @@ class AppApi {
   getAccounts(success, error) {
     this.apiUtils.makeRequest(
       {
-        url: `${this.config.apiBaseUrl}${_getAccountsURL}`,
+        url: `${this.config.apiBaseUrl2}${_getAccountsURL}`,
         method: "GET",
         apiVersion: "0.8.0"
       },
