@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { getActiveTab } from '../actions/AppActions';
 import { connect } from 'react-redux';
 import { utils } from "document-management-web-ui";
@@ -9,7 +8,6 @@ import SecureMessageTabs from './SecureMessageTabs';
 import { SecureMessageBL } from '../bl/SecureMessageBL'
 import { Button } from 'web-ui-components/lib/atoms/buttons';
 import { BackButton } from 'web-ui-components/lib/molecules/navigation';
-import { Container } from 'web-ui-components/lib/global/layout';
 
 /**
  * @class Landing Page
@@ -38,15 +36,11 @@ export class LandingPage extends React.PureComponent {
             this.props.history.push('/errormessage');
         } else {
             return (
-                <div className="row centralised-container c-card">
-                    <Container>
+                <div>
+                    <div>
                     { !isWebView && !readOnly &&
                         <p className="c-step-header__crumbs">
                             <BackButton onClick={this.handleBackClick} label={this.props.content.backToAccounts} />
-                            {/* // <a onClick={this.handleBackClick} className="c-step-header__link u-cursor-pointer">
-                            //     <span className="c-step-header__linkicon"><SvgIcon id="icon-left" width="16px" height="16px" /></span>
-                            //     <span className="c-step-header__linktext">{this.props.content.backToAccounts}</span>
-                            // </a> */}
                         </p>
                         }
                         <h1 className="c-step-header__title" id="headingTag" tabIndex="-1">{this.props.content.messages}</h1>
@@ -64,7 +58,7 @@ export class LandingPage extends React.PureComponent {
                             activeTab={this.props.activeTab}
                             content={this.props.content}
                         />
-                    </Container>
+                    </div>
                 </div>
             );
         }

@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import { getMessageSubjects, popupState } from '../../actions/AppActions';
-import CalloutComponent from './CalloutComponent';
 import { Select } from 'web-ui-components/lib/atoms/forms';
 import { ConfirmationModal} from 'web-ui-components/lib/organisms/modals';
+import { ValidationMessage } from 'web-ui-components/lib/molecules/forms';
 
 //DEBT: refactor the business logic out of this component. It does not belong here.
 //The values to render should be passed not determined based on a string
@@ -22,6 +22,7 @@ export class DropDownComponent extends React.Component {
 		};
 	}
 	componentWillMount() {
+		//TODO: doing this here breaks the web ui component as defaultValue is set only on first render...
 		this.props.dispatch(getMessageSubjects());
 	}
 	componentDidMount() {
@@ -103,32 +104,8 @@ export class DropDownComponent extends React.Component {
 		return items;
 	}
 
-	getSelectedValue()
-	{
-		const { selectedValue, id, subjects, isFromDraftOrReply, messageSubjects}  = this.props;
-		console.log('And the selected value is' + selectedValue);
-
-		if (!selectedValue)
-		{
-			return selectedValue;
-		}
-
-		switch(id)
-		{
-			case "subjects":
-				return selectedValue;
-				break;
-			default:
-				return selectedValue;
-				break;
-
-		}
-	}
-
 	onChange (id, value)
 	{
-		console.log("On change value=" + value);
-		console.log("id=" + id);
 		const { isFromDraftOrReply, accounts, messageaccounts} = this.props;
 		let outValue;
 		switch(id)
@@ -156,20 +133,18 @@ export class DropDownComponent extends React.Component {
 		const { ddId, accessID, showAccountError, showSubjectError, messagesubjects, content } = this.props;
 		const { showErrorModal} = this.state;
 		const options = this.getOptions();
-		const selectedValue = this.getSelectedValue();
-
-		console.log('selected value is ' + selectedValue);
 	
 		return (
 			<div>
 				<div>
-					<Select aria-label={`${accessID} ${this.props.selectedValue}`} defaultValue={selectedValue} 
+					<Select defaultValue={this.props.selectedValue}
 					id={ddId} 
-					options={options} 
-					onChange={(e) => this.onChange(this.props.id, e.target.value)}  />
+					options={options}
+					onChange={(e) => this.onChange(this.props.id, e.target.value)}  /> 
+
 				</div>
-				{showAccountError ? <CalloutComponent dClass="callout callout__error callout__inline-error" paraText={content.accError} /> : ''}
-				{showSubjectError ? <CalloutComponent dClass="callout callout__error callout__inline-error" paraText={content.subError} /> : ''}
+				{showAccountError ? <ValidationMessage value={content.accError} /> : ''}
+				{showSubjectError ? <ValidationMessage value={content.subError} /> : ''}
 				{messagesubjects.error && showErrorModal && accessID === 'Subject' ? this.returnErrorModal() : ''}
 			</div>
 		);

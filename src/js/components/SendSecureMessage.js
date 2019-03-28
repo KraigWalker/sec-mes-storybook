@@ -2,15 +2,13 @@ import React from 'react';
 import StepHeader from './common/StepHeader';
 import DropDownComponent from './common/DropDownComponent';
 import RegexUtils from '../utils/RegexUtils';
-import SendMessageRequestEntity from '../entities/SendMessageRequestEntity';
-import { getAccountName } from '../bl/SecureMessageBL';
 import GetIcon from './common/GetIcon';
-import CalloutComponent from './common/CalloutComponent';
 import { Textarea } from 'web-ui-components/lib/atoms/forms';
 import { Button } from 'web-ui-components/lib/atoms/buttons';
 import { ButtonGroup } from 'web-ui-components/lib/molecules/buttons';
 import { UnfinishedWorkModal, CentredModal, ConfirmationModal} from 'web-ui-components/lib/organisms/modals';
 import MessageEntity from '../entities/MessageEntity';
+import { ValidationMessage } from 'web-ui-components/lib/molecules/forms';
 
 const CHARS_LEFT_DISPLAY_THRESHOLD = 300;
 const MAX_CHARS = 3000;
@@ -349,12 +347,12 @@ export class SendSecureMessage extends React.Component {
 		if (chars_left < 0 && charError === true) {
 			return (
 				<div>
-					<p className="char__error error__right">
-						{chars_left} {content.charLeft}
-					</p>
-					<CalloutComponent
-						dClass="callout callout__error callout__inline-error-textarea"
-						paraText={content.messageVal}
+					<ValidationMessage
+						value={`${chars_left} ${content.charLeft}`}
+						hasIcon={false}
+					/>
+					<ValidationMessage
+						value={content.messageVal}
 					/>
 				</div>
 			);

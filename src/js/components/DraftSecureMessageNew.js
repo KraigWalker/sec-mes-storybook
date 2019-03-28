@@ -29,6 +29,7 @@ class DraftSecureMessageNew extends React.Component {
         this.sendMessageData(messageEntity, DRAFT);
     }
     render() {
+
         const { messageDetail } = this.props.location;
         const { messages, content } = this.props;
         return <SendSecureMessage {...this.props} 
@@ -38,7 +39,7 @@ class DraftSecureMessageNew extends React.Component {
             onMount={this.onMount} 
             hasErrors={messages.draftMessageError}
             selectedSubject={messageDetail.subject}
-            selectedAccount={content.pleaseSelect}/>;
+            selectedAccount={messageDetail.account.number}/>;
     }
 }
 

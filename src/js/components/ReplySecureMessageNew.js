@@ -82,7 +82,9 @@ class ReplySecureMessageNew extends React.Component {
             onSave={this.save}
             onMount={this.onMount}
             hasErrors={messages.newMessageError}
-            />
+            selectedSubject={messageDetail.subject}
+            selectedAccount={messageDetail.account.number}/>;
+            
     }
 };
 

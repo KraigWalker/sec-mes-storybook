@@ -1,5 +1,4 @@
 import React from "react";
-import { Tabs, Tab, Grid, Row, Col } from "react-bootstrap";
 import SecureMessageList from "./SecureMessageList";
 import {
   DRAFT,
