@@ -42,5 +42,5 @@ export class Main extends React.Component {
 }
 export default compose(
 	withRouter,
-	utils.withNativeBridge(window.navigator.userAgent)
+	utils.withNativeBridge(window)
 )(Main);
