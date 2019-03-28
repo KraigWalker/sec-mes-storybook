@@ -1,9 +1,8 @@
 import React from "react";
+import { Button } from 'web-ui-components/lib/atoms/buttons';
 
 const SecondaryButton = ({ name, onClick }) => (
-  <button className="c-btn c-btn--secondary" onClick={onClick}>
-    {name}
-  </button>
+  <Button display="secondary" onClick={onClick} width='narrow'> {name}</Button>
 );
 
 export default SecondaryButton;

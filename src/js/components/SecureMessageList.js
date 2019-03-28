@@ -4,7 +4,8 @@ import SecureMessageSummary from "./common/SecureMessageSummary";
 import { sendMessageForAccessibiltiy } from "../actions/AppActions";
 import { connect } from "react-redux";
 import SvgIcon from './common/GetIcon';
-import { SENT, INBOX, DRAFT, ARCHIVED } from '../constants/StringsConstants';
+import { SENT, DRAFT, ARCHIVED } from '../constants/StringsConstants';
+import { Button } from 'web-ui-components/lib/atoms/buttons';
 
 const MESSAGE_LIMIT = 20;
 
@@ -36,6 +37,7 @@ export class SecureMessageList extends React.Component {
 			this.sendAccessibilityMessage()
 		}
 	}
+	
 	showMessages() {
 		const { messages, content } = this.props;
 		const msgs = messages.slice(0, this.state.showMoreLimit);
@@ -59,24 +61,7 @@ export class SecureMessageList extends React.Component {
 			showThatsAllMessage: true,
 		});
 	}
-	renderShowMoreButton() {
-		const { content, activeTab, messages } = this.props;
-		if (this.state.showMoreLimit < messages.length && 
-			(activeTab === SENT || 
-			activeTab === INBOX || 
-			activeTab === DRAFT ||
-			activeTab === ARCHIVED )) {
-			return (
-				<button
-					type="button"
-					onClick={this.showMoreClicked}
-					className="c-btn c-btn--default c-modal__button u-margin-bottom-c"
-				>
-					{content.showMore}
-				</button>
-			);
-		}
-	}
+
 	renderThatsAllText() {
 		const { content, activeTab } = this.props;
 		let thatsallText = content.thatsallTextInbox;
@@ -90,7 +75,7 @@ export class SecureMessageList extends React.Component {
 		return thatsallText;
 	}
 	renderNoMessagesText() {
-		const { content, activeTab, dispatch } = this.props;
+		const { content, activeTab } = this.props;
 		switch (activeTab) {
 			case SENT:
 				return (
@@ -140,7 +125,7 @@ export class SecureMessageList extends React.Component {
 	}
 
 	render() {
-		const { messagesFetched, messages } = this.props;
+		const { messagesFetched, messages, content } = this.props;
 		return (
 			messagesFetched.fetching && !messagesFetched.successModal ? <div style={{ textAlign: "center" }}><SvgIcon id="icon-refresh" width="32px" height="32px" className="spinner-loader" /></div> :
 				<section>
@@ -151,7 +136,8 @@ export class SecureMessageList extends React.Component {
 							{this.showMessages()}
 						</ol>
 					}
-					{this.renderShowMoreButton()}
+					{this.state.showMoreLimit < messages.length 
+						&& <Button display="primary" onClick={this.showMoreClicked}>{content.showMore}</Button>}
 					{this.state.showThatsAllMessage && <p className="u-margin-bottom-c">{this.renderThatsAllText()}</p>}
 				</section>
 		);

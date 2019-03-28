@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import moment from 'moment';
 import { NEW, READ, DRAFT, PENDING, SENT, ARCHIVED } from '../constants/StringsConstants';
-
+import SendMessageRequestEntity from "../entities/SendMessageRequestEntity";
 /**
  *
  * @param {array of Messages} parses all messages and creates 3 different arrays for INBOX/DRAFT/SENT.
@@ -54,4 +54,33 @@ export function getAccountName(id, accountData) {
 		});
 	}
 	return 'No specific account';
+}
+
+
+export function BuildSendMessageRequestEntity(accounts, messageEntity ) {
+	// If account service responding late then what to do...
+    // const { account, subject } = this.props.messageInfo;
+
+    const { subject, account, message } = messageEntity;
+
+    const sendMessageRequestEntity = new SendMessageRequestEntity();
+    sendMessageRequestEntity.setUpdateSubject(subject);
+    sendMessageRequestEntity.setMessage(message);
+
+    const accName = getAccountName(account.accountId, accounts);
+    if ((account.accountId !== undefined || null) && subject) {
+        console.log('A')
+        let accountNameNew = accName.display_name || accName.name;
+        sendMessageRequestEntity.setName(accountNameNew);
+        sendMessageRequestEntity.setAccountId(account.accountId);
+        sendMessageRequestEntity.setAccountNumber(account.number);
+    }
+    if (account.accountId === undefined || null) {
+        sendMessageRequestEntity.setAccount(account);
+    }
+
+    console.log("message to send");
+    console.log(sendMessageRequestEntity);
+
+    return sendMessageRequestEntity;
 }

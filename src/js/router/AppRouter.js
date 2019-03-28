@@ -2,16 +2,16 @@ import { Switch, BrowserRouter, Route, Redirect, withRouter } from 'react-router
 import React from 'react';
 import LandingPage from '../components/LandingPage';
 import Main from '../components/Main';
-import NewSecureMessage from '../components/NewSecureMessage';
+import NewSecureMessageNew from '../components/NewSecureMessageNew';
 import ViewMessage from '../components/ViewMessage';
-import ReplySecuremessage from '../components/ReplySecureMessage';
-import { withSubscription,accessibilityWrapper } from '../components/wrappers/GenericWrapper';
-import DraftSecureMessage from '../components/DraftSecureMessage';
+import ReplySecuremessageNew from '../components/ReplySecureMessageNew';
+import { withSubscription } from '../components/wrappers/GenericWrapper';
 import AccessibilityMessage from '../components/common/AccessibilityMessage';
 import ErrorPage from '../components/common/ErrorPage';
 import { FolderList } from '../components/FolderList';
 import { DocumentList } from '../components/DocumentList';
 import { DocumentView } from '../components/DocumentView';
+import DraftSecureMessageNew from '../components/DraftSecureMessageNew';
 
 
 const RouteWithLayout = ({ Component, ...restProps }) => <Route {...restProps} render={(routeProps) => 
@@ -38,7 +38,7 @@ const RoutesWithLayout = (props) => (
         <RouteWithLayout
             exact
             path={`/securemessages/new`}
-            Component={NewSecureMessage}
+            Component={NewSecureMessageNew}
             content={props.content}
             isDocumentLibraryEnabled={props.isDocumentLibraryEnabled}
             session={props.session} 
@@ -46,7 +46,7 @@ const RoutesWithLayout = (props) => (
         <RouteWithLayout
             exact
             path={`/securemessages/reply`}
-            Component={ReplySecuremessage}
+            Component={ReplySecuremessageNew}
             content={props.content}
             isDocumentLibraryEnabled={props.isDocumentLibraryEnabled}
             session={props.session}
@@ -54,7 +54,7 @@ const RoutesWithLayout = (props) => (
         <RouteWithLayout
             exact
             path={`/securemessages/draft`}
-            Component={DraftSecureMessage}
+            Component={DraftSecureMessageNew}
             content={props.content}
             isDocumentLibraryEnabled={props.isDocumentLibraryEnabled}
             session={props.session}

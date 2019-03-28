@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import autosize from 'autosize';
+import { Textarea } from 'web-ui-components/lib/atoms/forms';
 
 class TextAreaComponent extends React.Component {
     constructor(props) {
@@ -22,7 +22,7 @@ class TextAreaComponent extends React.Component {
     }
     render() {
         return (
-            <textarea className="c-field__input c-field__input--txtarea"
+            <Textarea 
                 name="message"
                 id="message"
                 rows="10"
@@ -36,7 +36,7 @@ class TextAreaComponent extends React.Component {
                 aria-labelledby={`${this.props.accessID}`}
                 aria-describedby={this.props.ariaId}
             >
-            </textarea>
+            </Textarea>
         );
     }
 }

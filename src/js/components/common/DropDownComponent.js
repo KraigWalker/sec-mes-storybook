@@ -1,26 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import PropTypes from 'prop-types';
-import cx from 'classnames';
 import { getMessageSubjects, popupState } from '../../actions/AppActions';
 import CalloutComponent from './CalloutComponent';
-import ModalComponent from './ModalComponent';
+import { Select } from 'web-ui-components/lib/atoms/forms';
+import { ConfirmationModal} from 'web-ui-components/lib/organisms/modals';
 
+//DEBT: refactor the business logic out of this component. It does not belong here.
+//The values to render should be passed not determined based on a string
 export class DropDownComponent extends React.Component {
 	constructor(props) {
 		super(props);
-		this.returnMenuItem = this.returnMenuItem.bind(this);
-		this.overlayclick = this.overlayclick.bind(this);
 		this.showList = this.showList.bind(this);
-		this.setDropDrownValue = this.setDropDrownValue.bind(this);
-		this.onBlur = this.onBlur.bind(this);
 		this.errorCloseClicked = this.errorCloseClicked.bind(this);
 		this.retryServiceCall = this.retryServiceCall.bind(this);
+		this.getOptions = this.getOptions.bind(this);
+		this.onChange = this.onChange.bind(this);
+
 		this.state = {
-			list: false,
 			showErrorModal: false,
-			btnText: this.props.selectedValue,
 		};
 	}
 	componentWillMount() {
@@ -29,18 +27,7 @@ export class DropDownComponent extends React.Component {
 	componentDidMount() {
 		this.props.dispatch(popupState());
 	}
-	onBlur() {
-		this.setState({
-			list: false,
-		});
-	}
-	setDropDrownValue(e, typeOfData, name) {
-		this.setState({
-			btnText: name,
-			list: false,
-		});
-		this.props.selectSubject(e.target.textContent, this.props.id, typeOfData);
-	}
+
 	errorCloseClicked() {
 		this.setState({ showErrorModal: false });
 	}
@@ -49,27 +36,25 @@ export class DropDownComponent extends React.Component {
 		this.showList();
 	}
 	returnErrorModal() {
+
 		const { content } = this.props;
-		const bodyContent = (<div><h3>{content.sorryHeader}</h3><br />
-			<p>{content.tryAgain}</p><br />
+		const bodyContent = (
+			<div>
+			<h3>{content.sorryHeader}</h3>
+			<br />
+			<p>{content.tryAgain}</p>
+			<br />
 			<p>{content.getInTouch}</p>
-		</div>);
-		const footerButtons = (<div><button type="button" className="c-btn c-btn--secondary c-modal__button" onClick={this.errorCloseClicked}>{content.back}</button>
-			<button type="button" onClick={this.retryServiceCall} className="c-btn c-btn--default c-modal__button">{content.retry}</button>
-		</div>);
-		return (
-			<ModalComponent
-				show
-				onHide={this.errorCloseClicked}
-				customClass="c-modal c-modal--center"
-				bsSize="medium"
-				modalheading=""
-				modalbody={bodyContent}
-				modalfooter={footerButtons}
-				modalInContainer={false}
-				closeButton
-			/>
+			</div>
 		);
+		return  <ConfirmationModal
+			title={bodyContent} 
+			onConfirm={this.retryServiceCall} 
+			isOpen={true} 
+			onClose={this.errorCloseClicked}
+			dismissButtonText={content.back}
+			confirmButtonText={content.retry}
+		/>;
 	}
 	showList() {
 		const { messagesubjects, dispatch } = this.props;
@@ -83,60 +68,105 @@ export class DropDownComponent extends React.Component {
 			this.setState({ list: false });
 		}
 	}
-	overlayclick() {
-		this.setState({
-			list: false,
-		});
-	}
-	returnMenuItem() {
+
+	getOptions() {
 		const { isFromDraftOrReply, id, accounts, subjects, messageaccounts, messagesubjects } = this.props;
 		const { noSpecificAccount } = this.props.content;
 		const items = [];
 		switch (true) {
 			case (!isFromDraftOrReply && id === 'accounts'):
-				items.push(<li className="c-dropdown__value" id={noSpecificAccount} key={noSpecificAccount} value={noSpecificAccount} onClick={e => this.setDropDrownValue(e, {}, noSpecificAccount)}>{noSpecificAccount}</li>);
+				items.push({value: noSpecificAccount, label: noSpecificAccount});
 				_.map(accounts.accounts, account => {
 					const name = (account.display_name !== null) ? account.display_name : account.name;
-					items.push(<li className="c-dropdown__value" id={account.name} key={account.id} value={account.name} onClick={e => this.setDropDrownValue(e, account, name)}><span className="c-dropdown__value__account">{name}</span><span className="c-dropdown__value__number">{`ending ${account.number.slice(-4)}`}</span></li>
-					);
-				});
+					items.push({value: account.number,  label: `${name} (ending ${account.number.slice(-4)})`})}
+					)
 				break;
 			case (!isFromDraftOrReply && id === 'subjects'):
 				_.map(subjects.subjects, subject => {
-					items.push(<li className="c-dropdown__value" key={subject.key} id={subject.value} onClick={e => this.setDropDrownValue(e, subject, subject.value)}>{subject.value}</li>);
+					items.push({value: subject.value,  label: subject.value});
 				}, false);
 				break;
 			case (isFromDraftOrReply && id === 'accounts'):
-				items.push(<li className="c-dropdown__value" id={noSpecificAccount} key={noSpecificAccount} value={noSpecificAccount} onClick={e => this.setDropDrownValue(e, {}, noSpecificAccount)}>{noSpecificAccount}</li>);
+				items.push({value: noSpecificAccount, label: noSpecificAccount});
 				_.map(messageaccounts.accounts, account => {
 					const name = (account.display_name !== null) ? account.display_name : account.name;
-					items.push(<li className="c-dropdown__value" id={account.name} key={account.id} value={account.name} onClick={e => this.setDropDrownValue(e, account, name)}><span span className="c-dropdown__value__account">{name}</span><span className="c-dropdown__value__number">{`ending ${account.number.slice(-4)}`}</span></li>
-					);
-				});
+					items.push({value: account.number,  label: `${name} (ending ${account.number.slice(-4)})`})}
+					)
 				break;
 			case (isFromDraftOrReply && id === 'subjects'):
 				_.map(messagesubjects.subjects, subject => {
-					items.push(<li className="c-dropdown__value" key={subject.key} id={subject.value} onClick={e => this.setDropDrownValue(e, subject, subject.value)}>{subject.value}</li>
-					);
-				});
+					items.push({value: subject.value,  label: subject.value});
+				}, false);
 				break;
 			default:
 		}
 		return items;
 	}
+
+	getSelectedValue()
+	{
+		const { selectedValue, id, subjects, isFromDraftOrReply, messageSubjects}  = this.props;
+		console.log('And the selected value is' + selectedValue);
+
+		if (!selectedValue)
+		{
+			return selectedValue;
+		}
+
+		switch(id)
+		{
+			case "subjects":
+				return selectedValue;
+				break;
+			default:
+				return selectedValue;
+				break;
+
+		}
+	}
+
+	onChange (id, value)
+	{
+		console.log("On change value=" + value);
+		console.log("id=" + id);
+		const { isFromDraftOrReply, accounts, messageaccounts} = this.props;
+		let outValue;
+		switch(id)
+		{
+			case "subjects": 
+				outValue = value;
+				break;
+			case "accounts":
+				if (!isFromDraftOrReply)
+				{
+					outValue = _.find(accounts.accounts, account => account.number === value);
+				}
+				else {
+					outValue = _.find(messageaccounts.accounts, account => account.number === value);
+				}
+				break;
+			default:
+				break;
+		}
+		this.props.selectSubject(id, outValue);
+	}
+
 	render() {
+
 		const { ddId, accessID, showAccountError, showSubjectError, messagesubjects, content } = this.props;
-		const { btnText, list, showErrorModal } = this.state;
-		const overlayClassName = cx({
-			'c-overlay overlay__custom--zindex': true,
-			overlay__show: list,
-		});
+		const { showErrorModal} = this.state;
+		const options = this.getOptions();
+		const selectedValue = this.getSelectedValue();
+
+		console.log('selected value is ' + selectedValue);
+	
 		return (
 			<div>
 				<div>
-					<button id={ddId} aria-label={`${accessID} ${btnText}`} className="c-field__input c-field__input--select c-dropdown u-cursor-pointer" onClick={this.showList}>{btnText}</button>
-					{list && <div ref="overlay" className={overlayClassName} onClick={this.overlayclick} />}
-					{list && <ul className="c-dropdown__list u-cursor-pointer" onBlur={this.onBlur}>{this.returnMenuItem()}</ul>}
+					<Select aria-label={`${accessID} ${this.props.selectedValue}`} defaultValue={selectedValue} 
+					id={ddId} 
+					options={options} 
+					onChange={(e) => this.onChange(this.props.id, e.target.value)}  />
 				</div>
 				{showAccountError ? <CalloutComponent dClass="callout callout__error callout__inline-error" paraText={content.accError} /> : ''}
 				{showSubjectError ? <CalloutComponent dClass="callout callout__error callout__inline-error" paraText={content.subError} /> : ''}

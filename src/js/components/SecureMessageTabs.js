@@ -10,76 +10,89 @@ import {
 } from "../constants/StringsConstants";
 import _ from "lodash";
 const titleName = ["Inbox", "Drafts", "Sent", "Archive"];
+import { TabGroup } from "web-ui-components/lib/navigation/tab-group";
 
 export class SecureMessageTabs extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tab: "inbox"
+      activeTab: INBOX
     };
   }
-  onclick = tab => {
-    this.setState({ tab });
+  onclick = activeTab => {
+    this.setState({ activeTab });
   };
 
   render() {
     const { messages } = this.props;
-	const unreadInboxCount = getInboxUnreadCount(messages);
-	const inboxTitle = getInboxTitle(unreadInboxCount);
+    const unreadInboxCount = getInboxUnreadCount(messages);
+    const inboxTitle = getInboxTitle(unreadInboxCount);
+
+    const activeTabMessages = getActiveTabMessages(
+      this.state.activeTab,
+      this.props.messages
+    );
 
     return messages ? (
-      <Tabs
-        activeKey={this.state.tab}
-        onSelect={this.onclick}
-        id="secure_tabs"
-        className="c-scroll-tabs"
-      >
-        <Tab
-          eventKey="inbox"
-          title={inboxTitle}
-          aria-label={`${inboxTitle} unread messages`}
-        >
-          <SecureMessageList
-            messages={messages.inboxMessages}
-            activeTab={INBOX}
-            content={this.props.content}
-          />
-        </Tab>
-        <Tab eventKey="drafts" title={titleName[1]} aria-label={titleName[1]}>
-          <SecureMessageList
-            messages={messages.draftMessages}
-            activeTab={DRAFT}
-            content={this.props.content}
-          />
-        </Tab>
-        <Tab eventKey="sent" title={titleName[2]} aria-label={titleName[2]}>
-          <SecureMessageList
-            messages={messages.sentMessages}
-            activeTab={SENT}
-            content={this.props.content}
-          />
-        </Tab>
-        <Tab eventKey="archived" title={titleName[3]} aria-label={titleName[3]}>
-          <SecureMessageList
-            messages={messages.archivedMessages}
-            activeTab={ARCHIVE}
-            content={this.props.content}
-          />
-        </Tab>
-      </Tabs>
+      <div>
+        <TabGroup
+          activeTab={this.state.activeTab}
+          onChange={val => {
+            this.setState({ activeTab: val });
+          }}
+          tabButtons={[
+            {
+              title: inboxTitle,
+              id: INBOX
+            },
+            {
+              title: titleName[1],
+              id: DRAFT
+            },
+            {
+              title: titleName[2],
+              id: SENT
+            },
+            {
+              title: titleName[3],
+              id: ARCHIVE
+            }
+          ]}
+        />
+
+        <SecureMessageList
+          messages={activeTabMessages}
+          activeTab={this.state.activeTab}
+		  content={this.props.content}
+        />
+      </div>
     ) : (
       <p>Loading...</p>
     );
   }
 }
 
-const getInboxUnreadCount = messages => _.sumBy(messages.inboxMessages, message => message.status === NEW);
-const getInboxTitle = (messageCount) => {
-    return messageCount > 0
-      ? `Inbox (${messageCount})`
-	  : `Inbox`;
-}
-	  
+const getInboxUnreadCount = messages =>
+  _.sumBy(messages.inboxMessages, message => message.status === NEW);
+
+const getInboxTitle = messageCount => {
+  return messageCount > 0 ? `Inbox (${messageCount})` : `Inbox`;
+};
+
+const getActiveTabMessages = (tab, messages) => {
+  switch (tab) {
+    case DRAFT:
+      return messages.draftMessages;
+    case SENT:
+      return messages.sentMessages;
+    case ARCHIVE:
+      return messages.archivedMessages;
+    case INBOX:
+    default:
+      return messages.inboxMessages;
+  }
+};
+
 SecureMessageTabs.propTypes = {};
 SecureMessageTabs.defaultProps = {};
 
