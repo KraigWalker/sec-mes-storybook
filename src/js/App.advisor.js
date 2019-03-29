@@ -5,7 +5,7 @@ import AppRouter from './router/AppRouter.advisor';
 import { dependencies } from "document-management-web-ui";
 
 import createStore from './stores/AppStore';
-import { getTheme, WebUIThemeProvider } from "web-ui-components/lib/utilities/themes";
+import { WebUIThemeProvider } from "web-ui-components/lib/utilities/themes";
 import { setMode } from './actions/AppActions';
 import StringConstants from './constants/StringsConstants';
 import { buildClientContext } from './utils/ContextUtils';
@@ -21,18 +21,6 @@ export const App = ({ config }) => {
         bank_id: config.bankId,
         brand: config.brandId,
         customer_id: config.customerNumber
-    };
-
-    const defaultTheme = getTheme(config.brandId);
-    const theme = {
-        ...defaultTheme,
-        fonts: {
-            ...defaultTheme.fonts,
-            display: {
-                // Limitiation of component library within "non-web-component" app
-                bold: "CYBHouschkaAltProBold !important"
-            }
-        }
     };
 
     const envConfig = {
@@ -55,7 +43,7 @@ export const App = ({ config }) => {
 
     return (
         <Provider store={store}>
-            <WebUIThemeProvider theme={theme}>
+            <WebUIThemeProvider brandID={config.brandId}>
                 <AppRouter session={session} client={clientContext}/>
             </WebUIThemeProvider>
         </Provider>
