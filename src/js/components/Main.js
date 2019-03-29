@@ -28,7 +28,7 @@ export class Main extends React.Component {
 		return (
 			<div className="container">
 				{ !isWebView && isDocumentLibraryEnabled &&
-					<div className="tab-container web-ui-components">
+					<div className="tab-container">
 						<TabCardBlock>
 							<TabCard label="Secure Messages" onClick={this.handleSecureMessagesClick} iconType="MailBrandedSmall" isActive={location.pathname.includes("securemessages")} />
 							<TabCard label="Document Library" onClick={this.handleDocumentPortalClick} iconType="BriefcaseBrandedSmall" isActive={location.pathname.includes("my-documents")} />
@@ -42,5 +42,5 @@ export class Main extends React.Component {
 }
 export default compose(
 	withRouter,
-	utils.withNativeBridge(window.navigator.userAgent)
+	utils.withNativeBridge(window)
 )(Main);

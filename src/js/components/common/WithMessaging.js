@@ -237,7 +237,7 @@ const WithMessaging = WrappedComponent =>
 			const showUnarchive = optionFunctions.showUnarchiveButton(message.status);
 
       return (
-        <div>
+        <div className="u-full-width">
           <WrappedComponent
 						{...this.props}
 						onArchiveClick={showArchive? this.archiveClick : null}
