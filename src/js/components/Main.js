@@ -32,6 +32,7 @@ export class Main extends React.Component {
                 {!isWebView && isDocumentLibraryEnabled &&
                 <div className="tab-container">
                     <TabCardBlock>
+                        {/* TODO: Remove TextBody once completely using UI components and no custom styles */}
                         <TextBody>
                                 <TabCard  label="Secure Messages" onClick={this.handleSecureMessagesClick}
                                          iconType="MailBrandedSmall"
