@@ -24,7 +24,7 @@ import { READ, NEW, SENT, DELETED, READ_ONLY, ARCHIVED } from '../constants/Stri
 import getOptionDisplayFunctions from "./common/MessageOptions";
 import SecondaryButton from "./common/SecondaryButton";
 
-const Attachments = ({ session, client, document, onClick }) => (
+const Attachments = ({ document, onClick }) => (
 	<div className="c-message--attachments">
 		<h4>Attachments</h4>
 		<ul>
