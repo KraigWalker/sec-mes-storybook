@@ -1,6 +1,0 @@
-.container {
-	@each $breakpoint in $container-padding {
-		$key: nth($breakpoint, 1);
-		@include container-padding($key);
-	}
-}

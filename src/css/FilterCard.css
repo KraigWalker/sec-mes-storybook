@@ -1,0 +1,10 @@
+.c-filter-card .c-a-select {
+    width: initial;
+    margin-left: 16px;
+}
+
+.c-filter-card {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}

@@ -1,0 +1,16 @@
+.u-font-weight-bold {
+    font-weight: bold;
+}
+
+ul.c-document-list {
+    padding-left: 0;
+}
+
+.c-document-list, .c-document-list li {
+    list-style: none;
+}
+
+.c-created-date {
+    padding-left: 6px;
+}
+
