@@ -1,8 +1,10 @@
 const webpack = require("webpack");
+const paths = require("./paths");
 const { resolve, resolveFromRoot } = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const StyleExtHtmlWebpackPlugin = require("style-ext-html-webpack-plugin");
 
 console.log("**********************************************");
@@ -10,20 +12,10 @@ const brand = process.env.brand;
 console.log("Compiling for - " + brand + " Brand");
 const JSEntry = ["babel-polyfill", "whatwg-fetch", "./src/js/client.js"];
 
-
-const SCSSEntry = [
-
-  "./src/scss/main.scss",
-  ...(brand ? [`./src/scss/web-components.${brand}.scss`] : [])
-  ];
-
-
-const extractMain = new ExtractTextPlugin(`${brand}.main.css`, { allChunks: true });
-const extractWeb = new ExtractTextPlugin(`[name].css`, { allChunks: true });
-
 module.exports = {
-  entry: [...JSEntry, ...SCSSEntry],
+  entry: [...JSEntry],
   devtool: "inline-source-map",
+  mode: "development",
   output: {
     path: __dirname + "/src/compiled",
     filename: "[name].bundle.js",
@@ -31,8 +23,18 @@ module.exports = {
   },
   plugins: [
 	new webpack.HotModuleReplacementPlugin(),
-	
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: "[name].css",
+      chunkFilename: "[id].css"
+    }),
     new CopyWebpackPlugin([
+      {
+        context: paths.resolveFromRoot("node_modules/web-ui-components/lib"),
+        from: "**/*.css",
+        to: "css"
+      },
       {
         from: "src/images",
         to: "images"
@@ -40,15 +42,8 @@ module.exports = {
       {
         from: "_config",
         to: "_config"
-      },
-      {
-        context: resolve(__dirname, "node_modules/web-ui-components/lib"),
-        from: "app.cb.css",
-        to: "css"
       }
 	]),
-	extractMain,
-	extractWeb,
     new HtmlWebpackPlugin({
       template: "src/index.html",
       excludeChunks: [
@@ -68,51 +63,20 @@ module.exports = {
         loader: "babel-loader"
       },
       {
-        test: /\.scss$/,
-        include: resolve(__dirname, "src"),
-        use: extractMain.extract({
-          fallback: "style-loader",
-          use: [
-            {
-              loader: "css-loader"
-            },
-            {
-              loader: "sass-loader",
-              options: {
-                data: `$brand: ${brand};$env: prod;`
-              }
-            }
-          ]
-        })
-      },
-      {
-        test: /\.css$/,
-        use: extractWeb.extract({
-          fallback: "style-loader",
-          use: [
-            {
-              loader: "css-loader"
-            }
-          ]
-        })
-      },
-      {
 		test: /\.json$/,
 		exclude: ["/node_modules/"],
         loader: "json-loader"
       },
       {
-        test: /\.(otf|ttf|eot|svg)$/,
-        exclude: ["/node_modules/", "src/images/"],
-        include: resolve(__dirname, "src/fonts/"),
-        loader: "file-loader?name=fonts/[name].[ext]"
+        test: /\.css$/,
+        use: [
+          {
+            loader: "style-loader",
+            options: {}
+          },
+          "css-loader"
+        ]
       },
-      {
-        test: /\.(jpg|jpeg|gif|png|svg)$/,
-        exclude: ["/node_modules/", "src/fonts/"],
-        include: resolve(__dirname, "src/images/"),
-        loader: "file-loader?name=images/[name].[ext]"
-      }
     ]
   },
 
@@ -120,7 +84,7 @@ module.exports = {
     contentBase: __dirname + "/src/compiled/",
     open: true, // Open browser after compilation
     openPage:
-      "securemessages/CB#access_token=access_token&bank_id=CB&client_context=CB%20Web&user_tracking_id=23453-34343-34343&brandId=CB&state=state&isDocumentLibraryEnabled=true",
+      "securemessages/YB#access_token=access_token&bank_id=YB&client_context=YB%20Web&user_tracking_id=23453-34343-34343&brandId=YB&state=state&isDocumentLibraryEnabled=true",
     historyApiFallback: {
       rewrites: [{ from: /^\/$/, to: "index.html" }]
     },
@@ -131,6 +95,6 @@ module.exports = {
 
   resolve: {
 	modules: [resolve(__dirname,"src"), "node_modules"],
-    extensions: [".js", ".json", ".scss"]
+    extensions: [".js", ".json", ".scss", ".css"]
   }
 };
