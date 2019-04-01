@@ -5,7 +5,7 @@ import svg4everybody from "svg4everybody";
 import AppRouter from './router/AppRouter';
 import createStore from './stores/AppStore';
 import ConfigUtils from './utils/ConfigUtils';
-import { getTheme, WebUIThemeProvider } from "web-ui-components/lib/utilities/themes";
+import { WebUIThemeProvider } from "web-ui-components/lib/utilities/themes";
 import { buildClientContext } from './utils/ContextUtils';
 
 svg4everybody();
@@ -40,22 +40,11 @@ const normalisedBrandId = {
   DYB: "B"
 }[brandId];
 
-const defaultTheme = getTheme(normalisedBrandId);
-const theme = {
-  ...defaultTheme,
-  fonts: {
-    ...defaultTheme.fonts,
-    display: {
-      bold: "CYBHouschkaAltProBold !important"
-    }
-  }
-};
-
 const startApp = () => {
   const store = createStore(session, clientContext, ConfigUtils.config)
   ReactDOM.render(
     <Provider store={store}>
-      <WebUIThemeProvider theme={theme}>
+      <WebUIThemeProvider brandID={normalisedBrandId}>
         <AppRouter session={session} client={clientContext} isDocumentLibraryEnabled={isDocumentLibraryEnabled} />
       </WebUIThemeProvider>
     </Provider>, app);
