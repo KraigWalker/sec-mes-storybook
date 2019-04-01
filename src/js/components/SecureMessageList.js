@@ -6,6 +6,8 @@ import { connect } from "react-redux";
 import SvgIcon from './common/GetIcon';
 import { SENT, DRAFT, ARCHIVED } from '../constants/StringsConstants';
 import { Button } from 'web-ui-components/lib/atoms/buttons';
+import {Row, Container} from "web-ui-components/lib/global/layout";
+import { TextBody } from "web-ui-components/lib/atoms/text";
 
 const MESSAGE_LIMIT = 20;
 
@@ -45,9 +47,9 @@ export class SecureMessageList extends React.Component {
 		const listFlag = true;
 		_.map(msgs, (message, index) => {
 			allMessages.push(
-				<li key={index} className="c-messagelist__wrapper">
+				<Row key={index} className="u-padding-left-1">
 					<SecureMessageSummary message={message} listFlag={listFlag} content={content} />
-				</li>
+				</Row>
 			);
 		});
 		return allMessages;
@@ -79,27 +81,27 @@ export class SecureMessageList extends React.Component {
 		switch (activeTab) {
 			case SENT:
 				return (
-					<p className="callout callout--msgbottom callout__txt-center">
+					<TextBody className="callout callout--msgbottom callout__txt-center">
 						{content.noSentMessages}
-					</p>
+					</TextBody>
 				);
 			case DRAFT:
 				return (
-					<p className="callout callout--msgbottom callout__txt-center">
+					<TextBody className="callout callout--msgbottom callout__txt-center">
 						{content.noDraftMessages}
-					</p>
+					</TextBody>
 				);
 			case ARCHIVED:
 				return (
-					<p className="callout callout--msgbottom callout__txt-center">
+					<TextBody className="callout callout--msgbottom callout__txt-center">
 						{content.noArchivedMessages}
-					</p>
+					</TextBody>
 				);
 			default:
 				return (
-					<p className="callout callout--msgbottom callout__txt-center">
+					<TextBody className="callout callout--msgbottom callout__txt-center">
 						{content.noInboxMessages}
-					</p>
+					</TextBody>
 				);
 		}
 	}
@@ -127,19 +129,16 @@ export class SecureMessageList extends React.Component {
 	render() {
 		const { messagesFetched, messages, content } = this.props;
 		return (
-			messagesFetched.fetching && !messagesFetched.successModal ? <div style={{ textAlign: "center" }}><SvgIcon id="icon-refresh" width="32px" height="32px" className="spinner-loader" /></div> :
-				<section>
+			messagesFetched.fetching && !messagesFetched.successModal ? <div><SvgIcon id="icon-refresh" width="32px" height="32px" className="spinner-loader" /></div> :
+				<div className="u-padding-top-2">
 					{messages.length === 0 ?
 						this.renderNoMessagesText()
 						:
-						<ol className="c-messagelist">
-							{this.showMessages()}
-						</ol>
-					}
+						this.showMessages()}
 					{this.state.showMoreLimit < messages.length 
 						&& <Button display="primary" onClick={this.showMoreClicked}>{content.showMore}</Button>}
-					{this.state.showThatsAllMessage && <p className="u-margin-bottom-c">{this.renderThatsAllText()}</p>}
-				</section>
+					{this.state.showThatsAllMessage && <Row className="u-margin-top-2"><TextBody>{this.renderThatsAllText()}</TextBody></Row>}
+				</div>
 		);
 	}
 }
