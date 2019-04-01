@@ -84,7 +84,7 @@ module.exports = {
     contentBase: __dirname + "/src/compiled/",
     open: true, // Open browser after compilation
     openPage:
-      "securemessages/YB#access_token=access_token&bank_id=YB&client_context=YB%20Web&user_tracking_id=23453-34343-34343&brandId=YB&state=state&isDocumentLibraryEnabled=true",
+      "securemessages/CB#access_token=access_token&bank_id=CB&client_context=CB%20Web&user_tracking_id=23453-34343-34343&brandId=CB&state=state&isDocumentLibraryEnabled=true",
     historyApiFallback: {
       rewrites: [{ from: /^\/$/, to: "index.html" }]
     },
