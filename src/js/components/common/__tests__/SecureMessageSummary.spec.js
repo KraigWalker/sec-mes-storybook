@@ -72,34 +72,6 @@ describe("SecureMessageSummary snapshot", () => {
   it('should match to snapshot', () => {
     expect(component).toMatchSnapshot();
   });
-  it('should call all the modal methods', () => {
-    component.setState({ showDeleteConfirmModal: true, showDeleteSuccessModal: true, showSendServiceErrorModal: true, viewMessageFlag: true });
-    expect(component.instance().state.showSendServiceErrorModal).toBeTruthy();
-  });
-  it('handleDelete function test', () => {
-    component.instance().handleDelete();
-    expect(component.instance().state.showDeleteConfirmModal).toBeTruthy();
-  });
-  it('errorCloseClicked function test', () => {
-    component.instance().errorCloseClicked();
-    expect(component.instance().state.showSendServiceErrorModal).toBeFalsy();
-  });
-  it('closeModal function test', () => {
-    component.instance().closeModal();
-    expect(component.instance().state.showDeleteConfirmModal).toBeFalsy();
-  });
-  it('deleteClick function test', () => {
-    component.instance().deleteClick();
-    expect(component.instance().state.showDeleteConfirmModal).toBeFalsy();
-  });
-  it('deleteClick function test', () => {
-    component.instance().deleteClick();
-    expect(props.dispatch).toBeCalled();
-  });
-  it('retryServiceCall function test', () => {
-    component.instance().retryServiceCall();
-    expect(props.dispatch).toBeCalled();
-  });
   describe("SecureMessageSummary snapshot", () => {
     const dispatch = jest.fn();
     const getSubject = jest.fn();
@@ -133,14 +105,6 @@ describe("SecureMessageSummary snapshot", () => {
     let component = shallow(<SecureMessageSummary {...props} />);
     it('should match to snapshot', () => {
       expect(component).toMatchSnapshot();
-    });
-    it('deleteClick function test', () => {
-      component.instance().deleteClick();
-      expect(props.dispatch).toBeCalled();
-    });
-    it('should call all the modal methods', () => {
-      component.setState({ showDeleteConfirmModal: true, showDeleteSuccessModal: true, showSendServiceErrorModal: true, viewMessageFlag: true });
-      expect(component.instance().state.showSendServiceErrorModal).toBeTruthy();
     });
   });
   describe("SecureMessageSummary snapshot", () => {
@@ -176,10 +140,6 @@ describe("SecureMessageSummary snapshot", () => {
     let component = shallow(<SecureMessageSummary {...props} />);
     it('should match to snapshot', () => {
       expect(component).toMatchSnapshot();
-    });
-    it('should call all the modal methods', () => {
-      component.setState({ showDeleteConfirmModal: true, showDeleteSuccessModal: true, showSendServiceErrorModal: true, viewMessageFlag: true });
-      expect(component.instance().state.showSendServiceErrorModal).toBeTruthy();
     });
   });
 });

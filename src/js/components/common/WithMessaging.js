@@ -16,7 +16,6 @@ import {
   READ_ONLY,
   ARCHIVED
 } from "../../constants/StringsConstants";
-import GetIcon from "./GetIcon";
 import {
   DELETE_MODAL,
   ARCHIVE_MODAL,
@@ -24,10 +23,11 @@ import {
 } from "../../constants/ModalConstants";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
-import { ConfirmationModal, CentredModal } from 'web-ui-components/lib/organisms/modals';
-import { Button } from 'web-ui-components/lib/atoms/buttons';
-import { ButtonGroup } from 'web-ui-components/lib/molecules/buttons'
+import { ConfirmationModal } from 'web-ui-components/lib/organisms/modals';
 import getOptionDisplayFunctions from "./MessageOptions";
+import { TextBody } from "web-ui-components/lib/atoms/text";
+import SuccessModal from "./SuccessModal";
+import ErrorModal from "./ErrorModal";
 
 const getSuccessModalMessage = (modalType, content) => {
   switch (modalType) {
@@ -68,6 +68,7 @@ const WithMessaging = WrappedComponent =>
       );
       this.returnErrorModal = this.returnErrorModal.bind(this);
       this.getDeleteConfirmModal = this.getDeleteConfirmModal.bind(this);
+      this.closeAndReturn = this.closeAndReturn.bind(this);
 		}
 		
 		getOptionFunctions() {
@@ -78,66 +79,28 @@ const WithMessaging = WrappedComponent =>
       this.props.popupState();
     }
 
+    closeAndReturn() {
+      this.closeSuccessModal(); 
+      const {pathName} = this.props.location;
+      if (pathName !== "/securemessages") {
+        this.props.history.push('/securemessages')
+      }
+      
+    }
+ 
     returnSuccessModalComponent(modalType, content) {
-      const { viewMessageFlag } = this.props;
-      const bodyContent = (
-        <div>
-          <div>
-            <GetIcon id="icon-success" width="68px" height="68px" />
-          </div>
-          {getSuccessModalMessage(modalType, content)}
-        </div>
-      );
-			const footerButtons =  (<ButtonGroup alignment="center">
-				{viewMessageFlag ? (
-						<Button
-							display="primary"
-							onClick={() => {this.closeSuccessModal(); this.props.history.push('/securemessages')}}
-						>
-							{content.ok}
-						</Button>
-				) : (
-						<Button
-							display="primary"
-							onClick={this.closeSuccessModal}
-						>
-							{content.ok}
-							</Button>
-				)}
-
-			</ButtonGroup>);
-
-			return  (<CentredModal
-				isOpen={true}
-				buttonNode={footerButtons}
-				onClose={this.closeSuccessModal}
-				title=''
-			>{bodyContent}
-			
-			</CentredModal>);
-			
+      return (<SuccessModal
+        onClick={this.closeAndReturn}
+        bodyText={getSuccessModalMessage(modalType, content)}
+        okText={content.ok} />);			
     }
 
     returnErrorModal() {
       const { content } = this.props;
-      const bodyContent = (
-        <div>
-          <h3>{content.sorryHeader}</h3>
-          <br />
-          <p>{content.tryAgain}</p>
-          <br />
-          <p>{content.getInTouch}</p>
-        </div>
-      );
-		 
-			return  <ConfirmationModal
-				title={bodyContent} 
-				onConfirm={this.retryServiceCall} 
-				isOpen={true} 
-				onClose={this.closeErrorClicked}
-				dismissButtonText={content.back}
-				confirmButtonText={content.retry}
-			/>
+
+      return <ErrorModal content={content}
+				onClose={this.errorCloseClicked}
+				onConfirm={this.retryServiceCall} />;
     }
 
     archiveClick(message) {
@@ -149,24 +112,10 @@ const WithMessaging = WrappedComponent =>
     }
 
     replyClick(message) {
-      const { viewMessageFlag } = this.props;
-      const backpath =
-        viewMessageFlag === true ? `/securemessages/view` : `/securemessages`;
-
-      //Used in aria label for the reply button
-      //   let replymessage;
-      //   if (message.status === "READ") {
-      //     replymessage = `${content.replyMessageTitle} ${message.getSubject()}`;
-      //   } else {
-      //     replymessage = `${content.replyUnread} ${message.getSubject()}`;
-      //   }
-
-			console.log('big push');
-			console.log(message);
       this.props.history.push({
         pathname: "/securemessages/reply",
         messageDetail: message,
-        backpath
+        backpath: "/securemessages/"
       });
     }
 
@@ -191,10 +140,6 @@ const WithMessaging = WrappedComponent =>
     }
 
     closeConfirmModal() {
-      //TODO: not sure what this timeout is foe
-      // setTimeout(() => {
-      // 	document.getElementById('headingTag').focus();
-      // }, 20);
       this.setState({ showDeleteConfirmModal: false, messageToDelete: null });
     }
 
@@ -218,17 +163,18 @@ const WithMessaging = WrappedComponent =>
       const { content } = this.props;
 			
 			return  <ConfirmationModal
-				title={content.delete} 
-				onConfirm={() => this.deleteClick(message)} 
-				isOpen={true} 
-				onClose={this.closeConfirmModal}
-				dismissButtonText={content.dontDelButton}
-				confirmButtonText={content.delButton}
-			>{content.deleteMessageBody}</ConfirmationModal>
+          title={content.delete} 
+          onConfirm={() => this.deleteClick(message)} 
+          isOpen={true} 
+          onClose={this.closeConfirmModal}
+          dismissButtonText={content.dontDelButton}
+          confirmButtonText={content.delButton}
+          ><TextBody>{content.deleteMessageBody}</TextBody>
+        </ConfirmationModal>
     }
 
     render() {
-			const { messageDetail, messages, content, message } = this.props;
+			const { messageDetail, messages, content, message, viewMessageFlag} = this.props;
 			
 			const optionFunctions = this.getOptionFunctions();
 			const showDelete = optionFunctions.showDeleteButton(message.status);

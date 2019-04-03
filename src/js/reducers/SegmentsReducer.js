@@ -21,3 +21,10 @@ export default function reducer(state = {
 			return state;
 	}
 }
+
+//DEBT: this seems incorrect - as segmentData is an array, but this is what the existing code is doing...
+const getCustomerId = (state) => state.segmentData.customers[0].id;
+
+export const selectors = {
+	getCustomerId
+}

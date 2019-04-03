@@ -28,3 +28,12 @@ export default function reducer(state = {
             return state;
     }
 }
+
+const getCustomerDetails = (state) => state.customerDetails;
+
+const getCustomerError = (state) => state.error;
+
+export const selectors = {
+    getCustomerDetails,
+    getCustomerError
+}

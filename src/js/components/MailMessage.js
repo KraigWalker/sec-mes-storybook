@@ -4,6 +4,7 @@ import { Mail } from "web-ui-components/lib/communication/messaging";
 import { Link } from 'react-router-dom';
 import { ButtonGroup } from 'web-ui-components/lib/molecules/buttons';
 import withMessaging from "./common/WithMessaging";
+import {ARCHIVED} from '../constants/StringsConstants';
 
 export const Attachments = ({ session, client, document }) => (
   <div>
@@ -65,6 +66,10 @@ const MailMessage = props => {
             ? onDeleteClick
             : null
         }
+        moveToInboxOnClick={
+          showUnarchive ? onUnarchiveClick : null
+        }
+        isArchived={message.status === ARCHIVED}
         labelOnClick={history.goBack}
       />
       <Mail.Header>
@@ -86,10 +91,10 @@ const MailMessage = props => {
           <Button display="secondary" width="narrow" onClick={history.goBack}>
             {content.back}
           </Button>
-          {showDelete ? <Button display="secondary" onClick={onDeleteClick} width='narrow'>{content.delete}</Button> : null} 
-          {showUnarchive ? <Button display="secondary" onClick={onUnarchiveClick} width='narrow'>{content.unarchive}</Button> : null}
-          {showArchive ? <Button display="secondary" onClick={onArchiveClick} width='narrow'>{content.archive}</Button> : null} 
-          {showReply ? <Button display="secondary" onClick={onReplyClick} width='narrow'>{content.replyMessageTitle}</Button> : null}
+           {showArchive ? <Button display="secondary" onClick={onArchiveClick} width='narrow'>{content.archive}</Button> : null} 
+           {showDelete ? <Button display="secondary" onClick={onDeleteClick} width='narrow'>{content.delete}</Button> : null} 
+           {showUnarchive ? <Button display="secondary" onClick={onUnarchiveClick} width='narrow'>{content.moveToInbox}</Button> : null}
+           {showReply ? <Button display="primary" onClick={onReplyClick} width='narrow'>{content.replyMessageTitle}</Button> : null}
         </ButtonGroup>
       </Mail.Body>
     </div>

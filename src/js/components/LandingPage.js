@@ -1,8 +1,6 @@
 import React from 'react';
-import {getActiveTab} from '../actions/AppActions';
 import {connect} from 'react-redux';
 import {utils} from "document-management-web-ui";
-
 import StringConstants from "../constants/StringsConstants";
 import SecureMessageTabs from './SecureMessageTabs';
 import {SecureMessageBL} from '../bl/SecureMessageBL'
@@ -11,6 +9,7 @@ import {BackButton} from 'web-ui-components/lib/molecules/navigation';
 import {Container, Row} from "web-ui-components/lib/global/layout";
 import {Card} from "web-ui-components/lib/organisms/cards";
 import { Title, TextBody } from "web-ui-components/lib/atoms/text";
+import { getMessageSubjects, getActiveTab } from '../actions/AppActions';
 
 /**
  * @class Landing Page
@@ -21,10 +20,12 @@ export class LandingPage extends React.PureComponent {
     componentDidMount() {
         window.top.postMessage('clearNewMessagePage', '*');
         window.scrollTo(0, 0);
+        //Read message subjects once page has loaded to avoid issues with UX when using Select web-ui-component
+        this.props.getMessageSubjects();
     }
 
     linkClick = activeTab => {
-        this.props.dispatch(getActiveTab(activeTab));
+        this.props.getActiveTab(activeTab);
     }
 
     handleBackClick = () => {
@@ -36,9 +37,9 @@ export class LandingPage extends React.PureComponent {
     }
 
     checkError() {
-        const {isWebView, readOnly} = this.props;
+        const {isWebView, readOnly, content} = this.props;
         if (this.props.messages.error && this.props.messages.fetched) {
-            this.props.history.push('/errormessage');
+            this.props.history.push({pathname: '/errormessage', content});
         } else {
             return (
                 <Container className="u-margin-top-6">
@@ -53,7 +54,7 @@ export class LandingPage extends React.PureComponent {
                             <TextBody>{this.props.content.landingPageMessage}</TextBody>
                             <TextBody>{this.props.content.faqLink}</TextBody>
                             {
-                                !readOnly && <Button display="secondary"
+                                !readOnly && <Button display="primary"
                                                      onClick={() => this.props.history.push('/securemessages/new')}>
                                     {this.props.content.newSecureMessage}
                                 </Button>
@@ -89,4 +90,9 @@ const mapState = state => ({
     activeTab: state.messages.activeTab,
 });
 
-export default connect(mapState)(utils.withNativeBridge(window)(LandingPage));
+const mapDispatchToProps = {
+    getMessageSubjects,
+    getActiveTab
+}
+
+export default connect(mapState, mapDispatchToProps)(utils.withNativeBridge(window)(LandingPage));

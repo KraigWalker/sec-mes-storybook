@@ -16,9 +16,6 @@ ShallowWrapper {
           Array [
             [Function],
           ],
-          Array [
-            [Function],
-          ],
         ],
       }
     }
@@ -53,439 +50,173 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "host",
+    "nodeType": "function",
     "props": Object {
-      "children": <div
-        className="col-md1-24 col-sm1-24 col-lg1-24"
-      >
-        <StepHeader
-          headerCrumbsMessage="Back"
-          headerCrumbsPath={
-            Object {
-              "pathname": "/securemessages",
-            }
-          }
-          headerTitle={undefined}
-          showControl={false}
-          showheaderCrumbs={true}
-        />
-        <Connect(SecureMessageSummary)
-          content={
-            Object {
-              "sentPageTitle": "sentPageTitle",
-            }
-          }
-          message={
-            Object {
-              "status": "sent",
-            }
-          }
-          readFlag={false}
-          sentFlag={false}
-          viewMessageFlag={true}
-        />
-        <pre />
-        <div
-          className="c-btn--group"
+      "children": <Row>
+        <Card
+          bordered={false}
         >
-          <Link
-            className="c-btn c-btn--secondary"
-            replace={false}
-            to={
+          <SectionHeading
+            className="u-margin-bottom-2"
+            heading1={undefined}
+          />
+          <Connect(withRouter(withMessaging))
+            activeTab="SENT"
+            content={
               Object {
-                "pathname": "/securemessages",
+                "sentPageTitle": "sentPageTitle",
               }
             }
-          />
-          <SecondaryButton
-            name={undefined}
-            onClick={[Function]}
-          />
-          <SecondaryButton
-            name={undefined}
-            onClick={[Function]}
-          />
-        </div>
-        <ThreadList
-          Threads={undefined}
-          content={
-            Object {
-              "sentPageTitle": "sentPageTitle",
+            dispatch={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    [Function],
+                  ],
+                ],
+              }
             }
-          }
-        />
-      </div>,
-      "className": "row centralised-container c-card",
+            location={
+              Object {
+                "messageDetail": Object {
+                  "status": "sent",
+                },
+              }
+            }
+            messages={
+              Object {
+                "draftError": true,
+                "filter": [MockFunction],
+                "successModal": true,
+              }
+            }
+            messagesFetched={
+              Object {
+                "fetching": false,
+                "successModal": false,
+              }
+            }
+            newMessageStatus="sent"
+          />
+        </Card>
+      </Row>,
+      "className": "u-margin-top-6",
     },
     "ref": null,
     "rendered": Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "host",
+      "nodeType": "function",
       "props": Object {
-        "children": Array [
-          <StepHeader
-            headerCrumbsMessage="Back"
-            headerCrumbsPath={
-              Object {
-                "pathname": "/securemessages",
-              }
-            }
-            headerTitle={undefined}
-            showControl={false}
-            showheaderCrumbs={true}
-          />,
-          <Connect(SecureMessageSummary)
-            content={
-              Object {
-                "sentPageTitle": "sentPageTitle",
-              }
-            }
-            message={
-              Object {
-                "status": "sent",
-              }
-            }
-            readFlag={false}
-            sentFlag={false}
-            viewMessageFlag={true}
-          />,
-          <pre />,
-          undefined,
-          <div
-            className="c-btn--group"
-          >
-            <Link
-              className="c-btn c-btn--secondary"
-              replace={false}
-              to={
-                Object {
-                  "pathname": "/securemessages",
-                }
-              }
-            />
-            <SecondaryButton
-              name={undefined}
-              onClick={[Function]}
-            />
-            <SecondaryButton
-              name={undefined}
-              onClick={[Function]}
-            />
-          </div>,
-          false,
-          false,
-          false,
-          <ThreadList
-            Threads={undefined}
-            content={
-              Object {
-                "sentPageTitle": "sentPageTitle",
-              }
-            }
-          />,
-        ],
-        "className": "col-md1-24 col-sm1-24 col-lg1-24",
-      },
-      "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "headerCrumbsMessage": "Back",
-            "headerCrumbsPath": Object {
-              "pathname": "/securemessages",
-            },
-            "headerTitle": undefined,
-            "showControl": false,
-            "showheaderCrumbs": true,
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "content": Object {
-              "sentPageTitle": "sentPageTitle",
-            },
-            "message": Object {
-              "status": "sent",
-            },
-            "readFlag": false,
-            "sentFlag": false,
-            "viewMessageFlag": true,
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": undefined,
-          },
-          "ref": null,
-          "rendered": null,
-          "type": "pre",
-        },
-        undefined,
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              <Link
-                className="c-btn c-btn--secondary"
-                replace={false}
-                to={
-                  Object {
-                    "pathname": "/securemessages",
-                  }
-                }
-              />,
-              <SecondaryButton
-                name={undefined}
-                onClick={[Function]}
-              />,
-              false,
-              <SecondaryButton
-                name={undefined}
-                onClick={[Function]}
-              />,
-              false,
-            ],
-            "className": "c-btn--group",
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "children": undefined,
-                "className": "c-btn c-btn--secondary",
-                "replace": false,
-                "to": Object {
-                  "pathname": "/securemessages",
-                },
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "name": undefined,
-                "onClick": [Function],
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            false,
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "name": undefined,
-                "onClick": [Function],
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            false,
-          ],
-          "type": "div",
-        },
-        false,
-        false,
-        false,
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "Threads": undefined,
-            "content": Object {
-              "sentPageTitle": "sentPageTitle",
-            },
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-      ],
-      "type": "div",
-    },
-    "type": "div",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": <div
-          className="col-md1-24 col-sm1-24 col-lg1-24"
+        "children": <Card
+          bordered={false}
         >
-          <StepHeader
-            headerCrumbsMessage="Back"
-            headerCrumbsPath={
-              Object {
-                "pathname": "/securemessages",
-              }
-            }
-            headerTitle={undefined}
-            showControl={false}
-            showheaderCrumbs={true}
+          <SectionHeading
+            className="u-margin-bottom-2"
+            heading1={undefined}
           />
-          <Connect(SecureMessageSummary)
+          <Connect(withRouter(withMessaging))
+            activeTab="SENT"
             content={
               Object {
                 "sentPageTitle": "sentPageTitle",
               }
             }
-            message={
-              Object {
-                "status": "sent",
+            dispatch={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    [Function],
+                  ],
+                ],
               }
             }
-            readFlag={false}
-            sentFlag={false}
-            viewMessageFlag={true}
-          />
-          <pre />
-          <div
-            className="c-btn--group"
-          >
-            <Link
-              className="c-btn c-btn--secondary"
-              replace={false}
-              to={
-                Object {
-                  "pathname": "/securemessages",
-                }
-              }
-            />
-            <SecondaryButton
-              name={undefined}
-              onClick={[Function]}
-            />
-            <SecondaryButton
-              name={undefined}
-              onClick={[Function]}
-            />
-          </div>
-          <ThreadList
-            Threads={undefined}
-            content={
+            location={
               Object {
-                "sentPageTitle": "sentPageTitle",
+                "messageDetail": Object {
+                  "status": "sent",
+                },
               }
             }
+            messages={
+              Object {
+                "draftError": true,
+                "filter": [MockFunction],
+                "successModal": true,
+              }
+            }
+            messagesFetched={
+              Object {
+                "fetching": false,
+                "successModal": false,
+              }
+            }
+            newMessageStatus="sent"
           />
-        </div>,
-        "className": "row centralised-container c-card",
+        </Card>,
       },
       "ref": null,
       "rendered": Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "host",
+        "nodeType": "function",
         "props": Object {
+          "bordered": false,
           "children": Array [
-            <StepHeader
-              headerCrumbsMessage="Back"
-              headerCrumbsPath={
-                Object {
-                  "pathname": "/securemessages",
-                }
-              }
-              headerTitle={undefined}
-              showControl={false}
-              showheaderCrumbs={true}
+            <SectionHeading
+              className="u-margin-bottom-2"
+              heading1={undefined}
             />,
-            <Connect(SecureMessageSummary)
+            <Connect(withRouter(withMessaging))
+              activeTab="SENT"
               content={
                 Object {
                   "sentPageTitle": "sentPageTitle",
                 }
               }
-              message={
-                Object {
-                  "status": "sent",
+              dispatch={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      [Function],
+                    ],
+                  ],
                 }
               }
-              readFlag={false}
-              sentFlag={false}
-              viewMessageFlag={true}
-            />,
-            <pre />,
-            undefined,
-            <div
-              className="c-btn--group"
-            >
-              <Link
-                className="c-btn c-btn--secondary"
-                replace={false}
-                to={
-                  Object {
-                    "pathname": "/securemessages",
-                  }
-                }
-              />
-              <SecondaryButton
-                name={undefined}
-                onClick={[Function]}
-              />
-              <SecondaryButton
-                name={undefined}
-                onClick={[Function]}
-              />
-            </div>,
-            false,
-            false,
-            false,
-            <ThreadList
-              Threads={undefined}
-              content={
+              location={
                 Object {
-                  "sentPageTitle": "sentPageTitle",
+                  "messageDetail": Object {
+                    "status": "sent",
+                  },
                 }
               }
+              messages={
+                Object {
+                  "draftError": true,
+                  "filter": [MockFunction],
+                  "successModal": true,
+                }
+              }
+              messagesFetched={
+                Object {
+                  "fetching": false,
+                  "successModal": false,
+                }
+              }
+              newMessageStatus="sent"
             />,
+            Array [],
           ],
-          "className": "col-md1-24 col-sm1-24 col-lg1-24",
         },
         "ref": null,
         "rendered": Array [
           Object {
             "instance": null,
             "key": undefined,
-            "nodeType": "class",
+            "nodeType": "function",
             "props": Object {
-              "headerCrumbsMessage": "Back",
-              "headerCrumbsPath": Object {
-                "pathname": "/securemessages",
-              },
-              "headerTitle": undefined,
-              "showControl": false,
-              "showheaderCrumbs": true,
+              "className": "u-margin-bottom-2",
+              "heading1": undefined,
             },
             "ref": null,
             "rendered": null,
@@ -496,128 +227,262 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
+              "activeTab": "SENT",
               "content": Object {
                 "sentPageTitle": "sentPageTitle",
               },
-              "message": Object {
-                "status": "sent",
+              "dispatch": [MockFunction] {
+                "calls": Array [
+                  Array [
+                    [Function],
+                  ],
+                ],
               },
-              "readFlag": false,
-              "sentFlag": false,
-              "viewMessageFlag": true,
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": undefined,
-            },
-            "ref": null,
-            "rendered": null,
-            "type": "pre",
-          },
-          undefined,
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <Link
-                  className="c-btn c-btn--secondary"
-                  replace={false}
-                  to={
-                    Object {
-                      "pathname": "/securemessages",
-                    }
-                  }
-                />,
-                <SecondaryButton
-                  name={undefined}
-                  onClick={[Function]}
-                />,
-                false,
-                <SecondaryButton
-                  name={undefined}
-                  onClick={[Function]}
-                />,
-                false,
-              ],
-              "className": "c-btn--group",
-            },
-            "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "class",
-                "props": Object {
-                  "children": undefined,
-                  "className": "c-btn c-btn--secondary",
-                  "replace": false,
-                  "to": Object {
-                    "pathname": "/securemessages",
-                  },
+              "location": Object {
+                "messageDetail": Object {
+                  "status": "sent",
                 },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
               },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "function",
-                "props": Object {
-                  "name": undefined,
-                  "onClick": [Function],
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
+              "messages": Object {
+                "draftError": true,
+                "filter": [MockFunction],
+                "successModal": true,
               },
-              false,
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "function",
-                "props": Object {
-                  "name": undefined,
-                  "onClick": [Function],
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
+              "messagesFetched": Object {
+                "fetching": false,
+                "successModal": false,
               },
-              false,
-            ],
-            "type": "div",
-          },
-          false,
-          false,
-          false,
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "Threads": undefined,
-              "content": Object {
-                "sentPageTitle": "sentPageTitle",
-              },
+              "newMessageStatus": "sent",
             },
             "ref": null,
             "rendered": null,
             "type": [Function],
           },
         ],
-        "type": "div",
+        "type": [Function],
       },
-      "type": "div",
+      "type": [Function],
+    },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": <Row>
+          <Card
+            bordered={false}
+          >
+            <SectionHeading
+              className="u-margin-bottom-2"
+              heading1={undefined}
+            />
+            <Connect(withRouter(withMessaging))
+              activeTab="SENT"
+              content={
+                Object {
+                  "sentPageTitle": "sentPageTitle",
+                }
+              }
+              dispatch={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      [Function],
+                    ],
+                  ],
+                }
+              }
+              location={
+                Object {
+                  "messageDetail": Object {
+                    "status": "sent",
+                  },
+                }
+              }
+              messages={
+                Object {
+                  "draftError": true,
+                  "filter": [MockFunction],
+                  "successModal": true,
+                }
+              }
+              messagesFetched={
+                Object {
+                  "fetching": false,
+                  "successModal": false,
+                }
+              }
+              newMessageStatus="sent"
+            />
+          </Card>
+        </Row>,
+        "className": "u-margin-top-6",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": <Card
+            bordered={false}
+          >
+            <SectionHeading
+              className="u-margin-bottom-2"
+              heading1={undefined}
+            />
+            <Connect(withRouter(withMessaging))
+              activeTab="SENT"
+              content={
+                Object {
+                  "sentPageTitle": "sentPageTitle",
+                }
+              }
+              dispatch={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      [Function],
+                    ],
+                  ],
+                }
+              }
+              location={
+                Object {
+                  "messageDetail": Object {
+                    "status": "sent",
+                  },
+                }
+              }
+              messages={
+                Object {
+                  "draftError": true,
+                  "filter": [MockFunction],
+                  "successModal": true,
+                }
+              }
+              messagesFetched={
+                Object {
+                  "fetching": false,
+                  "successModal": false,
+                }
+              }
+              newMessageStatus="sent"
+            />
+          </Card>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "bordered": false,
+            "children": Array [
+              <SectionHeading
+                className="u-margin-bottom-2"
+                heading1={undefined}
+              />,
+              <Connect(withRouter(withMessaging))
+                activeTab="SENT"
+                content={
+                  Object {
+                    "sentPageTitle": "sentPageTitle",
+                  }
+                }
+                dispatch={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        [Function],
+                      ],
+                    ],
+                  }
+                }
+                location={
+                  Object {
+                    "messageDetail": Object {
+                      "status": "sent",
+                    },
+                  }
+                }
+                messages={
+                  Object {
+                    "draftError": true,
+                    "filter": [MockFunction],
+                    "successModal": true,
+                  }
+                }
+                messagesFetched={
+                  Object {
+                    "fetching": false,
+                    "successModal": false,
+                  }
+                }
+                newMessageStatus="sent"
+              />,
+              Array [],
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "className": "u-margin-bottom-2",
+                "heading1": undefined,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "activeTab": "SENT",
+                "content": Object {
+                  "sentPageTitle": "sentPageTitle",
+                },
+                "dispatch": [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      [Function],
+                    ],
+                  ],
+                },
+                "location": Object {
+                  "messageDetail": Object {
+                    "status": "sent",
+                  },
+                },
+                "messages": Object {
+                  "draftError": true,
+                  "filter": [MockFunction],
+                  "successModal": true,
+                },
+                "messagesFetched": Object {
+                  "fetching": false,
+                  "successModal": false,
+                },
+                "newMessageStatus": "sent",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      "type": [Function],
     },
   ],
   Symbol(enzyme.__options__): Object {
@@ -656,9 +521,6 @@ ShallowWrapper {
           Array [
             [Function],
           ],
-          Array [
-            [Function],
-          ],
         ],
       }
     }
@@ -693,1016 +555,173 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "host",
+    "nodeType": "function",
     "props": Object {
-      "children": <div
-        className="col-md1-24 col-sm1-24 col-lg1-24"
-      >
-        <StepHeader
-          headerCrumbsMessage="Back"
-          headerCrumbsPath={
-            Object {
-              "pathname": "/securemessages",
-            }
-          }
-          headerTitle={undefined}
-          showControl={false}
-          showheaderCrumbs={true}
-        />
-        <Connect(SecureMessageSummary)
-          content={
-            Object {
-              "back": "Back",
-            }
-          }
-          message={
-            Object {
-              "status": "NEW",
-            }
-          }
-          readFlag={true}
-          sentFlag={false}
-          viewMessageFlag={true}
-        />
-        <pre />
-        <div
-          className="c-btn--group"
+      "children": <Row>
+        <Card
+          bordered={false}
         >
-          <Link
-            className="c-btn c-btn--secondary"
-            replace={false}
-            to={
+          <SectionHeading
+            className="u-margin-bottom-2"
+            heading1={undefined}
+          />
+          <Connect(withRouter(withMessaging))
+            activeTab="SENT"
+            content={
               Object {
-                "pathname": "/securemessages",
+                "back": "Back",
               }
             }
-          >
-            Back
-          </Link>
-          <SecondaryButton
-            name={undefined}
-            onClick={[Function]}
-          />
-          <SecondaryButton
-            name={undefined}
-            onClick={[Function]}
-          />
-          <Link
-            className="c-btn c-btn--primary"
-            id="reply-button"
-            replace={false}
-            to={
+            dispatch={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    [Function],
+                  ],
+                ],
+              }
+            }
+            location={
               Object {
-                "backPath": "/securemessages/view",
                 "messageDetail": Object {
                   "status": "NEW",
                 },
-                "pathname": "/securemessages/reply",
               }
             }
-          />
-        </div>
-        <ModalComponent
-          backdrop={true}
-          closeButton={true}
-          customClass="c-modal"
-          modalInContainer={false}
-          modalbody={
-            <div
-              className="callout callout__error"
-            />
-          }
-          modalfooter={
-            <div>
-              <button
-                className="c-btn c-btn--secondary c-modal__button"
-                onClick={[Function]}
-                type="button"
-              />
-              <button
-                className="c-btn c-btn--default c-modal__button"
-                onClick={[Function]}
-                type="button"
-              />
-            </div>
-          }
-          modalheading=""
-          onHide={[Function]}
-          scope={undefined}
-          show={true}
-        />
-        <ModalComponent
-          backdrop={true}
-          bsSize="small"
-          closeButton={false}
-          customClass="c-modal c-modal--center"
-          modalInContainer={false}
-          modalbody={
-            <div>
-              <div>
-                <CommonGetIcon
-                  height="68px"
-                  id="icon-success"
-                  width="68px"
-                />
-              </div>
-            </div>
-          }
-          modalfooter={
-            <Link
-              className="c-btn c-btn--default c-btn--sm c-modal__button"
-              onClick={[Function]}
-              replace={false}
-              to="/securemessages"
-            />
-          }
-          modalheading=""
-          onHide={[Function]}
-          scope={undefined}
-          show={true}
-        />
-        <ModalComponent
-          backdrop={true}
-          bsSize="medium"
-          closeButton={true}
-          customClass="c-modal c-modal--center"
-          modalInContainer={false}
-          modalbody={
-            <div>
-              <h3 />
-              <br />
-              <p />
-              <br />
-              <p />
-            </div>
-          }
-          modalfooter={
-            <div>
-              <button
-                className="c-btn c-btn--secondary c-modal__button"
-                onClick={[Function]}
-                type="button"
-              >
-                Back
-              </button>
-              <button
-                className="c-btn c-btn--default c-modal__button"
-                onClick={[Function]}
-                type="button"
-              />
-            </div>
-          }
-          modalheading=""
-          onHide={[Function]}
-          scope={undefined}
-          show={true}
-        />
-        <ThreadList
-          Threads={undefined}
-          content={
-            Object {
-              "back": "Back",
+            messages={
+              Object {
+                "draftError": true,
+                "filter": [MockFunction],
+                "successModal": true,
+              }
             }
-          }
-        />
-      </div>,
-      "className": "row centralised-container c-card",
+            messagesFetched={
+              Object {
+                "fetching": false,
+                "successModal": false,
+              }
+            }
+            newMessageStatus="READ"
+          />
+        </Card>
+      </Row>,
+      "className": "u-margin-top-6",
     },
     "ref": null,
     "rendered": Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "host",
+      "nodeType": "function",
       "props": Object {
-        "children": Array [
-          <StepHeader
-            headerCrumbsMessage="Back"
-            headerCrumbsPath={
-              Object {
-                "pathname": "/securemessages",
-              }
-            }
-            headerTitle={undefined}
-            showControl={false}
-            showheaderCrumbs={true}
-          />,
-          <Connect(SecureMessageSummary)
-            content={
-              Object {
-                "back": "Back",
-              }
-            }
-            message={
-              Object {
-                "status": "NEW",
-              }
-            }
-            readFlag={true}
-            sentFlag={false}
-            viewMessageFlag={true}
-          />,
-          <pre />,
-          undefined,
-          <div
-            className="c-btn--group"
-          >
-            <Link
-              className="c-btn c-btn--secondary"
-              replace={false}
-              to={
-                Object {
-                  "pathname": "/securemessages",
-                }
-              }
-            >
-              Back
-            </Link>
-            <SecondaryButton
-              name={undefined}
-              onClick={[Function]}
-            />
-            <SecondaryButton
-              name={undefined}
-              onClick={[Function]}
-            />
-            <Link
-              className="c-btn c-btn--primary"
-              id="reply-button"
-              replace={false}
-              to={
-                Object {
-                  "backPath": "/securemessages/view",
-                  "messageDetail": Object {
-                    "status": "NEW",
-                  },
-                  "pathname": "/securemessages/reply",
-                }
-              }
-            />
-          </div>,
-          <ModalComponent
-            backdrop={true}
-            closeButton={true}
-            customClass="c-modal"
-            modalInContainer={false}
-            modalbody={
-              <div
-                className="callout callout__error"
-              />
-            }
-            modalfooter={
-              <div>
-                <button
-                  className="c-btn c-btn--secondary c-modal__button"
-                  onClick={[Function]}
-                  type="button"
-                />
-                <button
-                  className="c-btn c-btn--default c-modal__button"
-                  onClick={[Function]}
-                  type="button"
-                />
-              </div>
-            }
-            modalheading=""
-            onHide={[Function]}
-            scope={undefined}
-            show={true}
-          />,
-          <ModalComponent
-            backdrop={true}
-            bsSize="small"
-            closeButton={false}
-            customClass="c-modal c-modal--center"
-            modalInContainer={false}
-            modalbody={
-              <div>
-                <div>
-                  <CommonGetIcon
-                    height="68px"
-                    id="icon-success"
-                    width="68px"
-                  />
-                </div>
-              </div>
-            }
-            modalfooter={
-              <Link
-                className="c-btn c-btn--default c-btn--sm c-modal__button"
-                onClick={[Function]}
-                replace={false}
-                to="/securemessages"
-              />
-            }
-            modalheading=""
-            onHide={[Function]}
-            scope={undefined}
-            show={true}
-          />,
-          <ModalComponent
-            backdrop={true}
-            bsSize="medium"
-            closeButton={true}
-            customClass="c-modal c-modal--center"
-            modalInContainer={false}
-            modalbody={
-              <div>
-                <h3 />
-                <br />
-                <p />
-                <br />
-                <p />
-              </div>
-            }
-            modalfooter={
-              <div>
-                <button
-                  className="c-btn c-btn--secondary c-modal__button"
-                  onClick={[Function]}
-                  type="button"
-                >
-                  Back
-                </button>
-                <button
-                  className="c-btn c-btn--default c-modal__button"
-                  onClick={[Function]}
-                  type="button"
-                />
-              </div>
-            }
-            modalheading=""
-            onHide={[Function]}
-            scope={undefined}
-            show={true}
-          />,
-          <ThreadList
-            Threads={undefined}
-            content={
-              Object {
-                "back": "Back",
-              }
-            }
-          />,
-        ],
-        "className": "col-md1-24 col-sm1-24 col-lg1-24",
-      },
-      "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "headerCrumbsMessage": "Back",
-            "headerCrumbsPath": Object {
-              "pathname": "/securemessages",
-            },
-            "headerTitle": undefined,
-            "showControl": false,
-            "showheaderCrumbs": true,
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "content": Object {
-              "back": "Back",
-            },
-            "message": Object {
-              "status": "NEW",
-            },
-            "readFlag": true,
-            "sentFlag": false,
-            "viewMessageFlag": true,
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": undefined,
-          },
-          "ref": null,
-          "rendered": null,
-          "type": "pre",
-        },
-        undefined,
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              <Link
-                className="c-btn c-btn--secondary"
-                replace={false}
-                to={
-                  Object {
-                    "pathname": "/securemessages",
-                  }
-                }
-              >
-                Back
-              </Link>,
-              <SecondaryButton
-                name={undefined}
-                onClick={[Function]}
-              />,
-              false,
-              <SecondaryButton
-                name={undefined}
-                onClick={[Function]}
-              />,
-              <Link
-                className="c-btn c-btn--primary"
-                id="reply-button"
-                replace={false}
-                to={
-                  Object {
-                    "backPath": "/securemessages/view",
-                    "messageDetail": Object {
-                      "status": "NEW",
-                    },
-                    "pathname": "/securemessages/reply",
-                  }
-                }
-              />,
-            ],
-            "className": "c-btn--group",
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "children": "Back",
-                "className": "c-btn c-btn--secondary",
-                "replace": false,
-                "to": Object {
-                  "pathname": "/securemessages",
-                },
-              },
-              "ref": null,
-              "rendered": "Back",
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "name": undefined,
-                "onClick": [Function],
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            false,
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "name": undefined,
-                "onClick": [Function],
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "children": undefined,
-                "className": "c-btn c-btn--primary",
-                "id": "reply-button",
-                "replace": false,
-                "to": Object {
-                  "backPath": "/securemessages/view",
-                  "messageDetail": Object {
-                    "status": "NEW",
-                  },
-                  "pathname": "/securemessages/reply",
-                },
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-          ],
-          "type": "div",
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "backdrop": true,
-            "closeButton": true,
-            "customClass": "c-modal",
-            "modalInContainer": false,
-            "modalbody": <div
-              className="callout callout__error"
-            />,
-            "modalfooter": <div>
-              <button
-                className="c-btn c-btn--secondary c-modal__button"
-                onClick={[Function]}
-                type="button"
-              />
-              <button
-                className="c-btn c-btn--default c-modal__button"
-                onClick={[Function]}
-                type="button"
-              />
-            </div>,
-            "modalheading": "",
-            "onHide": [Function],
-            "scope": undefined,
-            "show": true,
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "backdrop": true,
-            "bsSize": "small",
-            "closeButton": false,
-            "customClass": "c-modal c-modal--center",
-            "modalInContainer": false,
-            "modalbody": <div>
-              <div>
-                <CommonGetIcon
-                  height="68px"
-                  id="icon-success"
-                  width="68px"
-                />
-              </div>
-            </div>,
-            "modalfooter": <Link
-              className="c-btn c-btn--default c-btn--sm c-modal__button"
-              onClick={[Function]}
-              replace={false}
-              to="/securemessages"
-            />,
-            "modalheading": "",
-            "onHide": [Function],
-            "scope": undefined,
-            "show": true,
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "backdrop": true,
-            "bsSize": "medium",
-            "closeButton": true,
-            "customClass": "c-modal c-modal--center",
-            "modalInContainer": false,
-            "modalbody": <div>
-              <h3 />
-              <br />
-              <p />
-              <br />
-              <p />
-            </div>,
-            "modalfooter": <div>
-              <button
-                className="c-btn c-btn--secondary c-modal__button"
-                onClick={[Function]}
-                type="button"
-              >
-                Back
-              </button>
-              <button
-                className="c-btn c-btn--default c-modal__button"
-                onClick={[Function]}
-                type="button"
-              />
-            </div>,
-            "modalheading": "",
-            "onHide": [Function],
-            "scope": undefined,
-            "show": true,
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "Threads": undefined,
-            "content": Object {
-              "back": "Back",
-            },
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-      ],
-      "type": "div",
-    },
-    "type": "div",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": <div
-          className="col-md1-24 col-sm1-24 col-lg1-24"
+        "children": <Card
+          bordered={false}
         >
-          <StepHeader
-            headerCrumbsMessage="Back"
-            headerCrumbsPath={
-              Object {
-                "pathname": "/securemessages",
-              }
-            }
-            headerTitle={undefined}
-            showControl={false}
-            showheaderCrumbs={true}
+          <SectionHeading
+            className="u-margin-bottom-2"
+            heading1={undefined}
           />
-          <Connect(SecureMessageSummary)
+          <Connect(withRouter(withMessaging))
+            activeTab="SENT"
             content={
               Object {
                 "back": "Back",
               }
             }
-            message={
+            dispatch={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    [Function],
+                  ],
+                ],
+              }
+            }
+            location={
               Object {
-                "status": "NEW",
+                "messageDetail": Object {
+                  "status": "NEW",
+                },
               }
             }
-            readFlag={true}
-            sentFlag={false}
-            viewMessageFlag={true}
-          />
-          <pre />
-          <div
-            className="c-btn--group"
-          >
-            <Link
-              className="c-btn c-btn--secondary"
-              replace={false}
-              to={
-                Object {
-                  "pathname": "/securemessages",
-                }
-              }
-            >
-              Back
-            </Link>
-            <SecondaryButton
-              name={undefined}
-              onClick={[Function]}
-            />
-            <SecondaryButton
-              name={undefined}
-              onClick={[Function]}
-            />
-            <Link
-              className="c-btn c-btn--primary"
-              id="reply-button"
-              replace={false}
-              to={
-                Object {
-                  "backPath": "/securemessages/view",
-                  "messageDetail": Object {
-                    "status": "NEW",
-                  },
-                  "pathname": "/securemessages/reply",
-                }
-              }
-            />
-          </div>
-          <ModalComponent
-            backdrop={true}
-            closeButton={true}
-            customClass="c-modal"
-            modalInContainer={false}
-            modalbody={
-              <div
-                className="callout callout__error"
-              />
-            }
-            modalfooter={
-              <div>
-                <button
-                  className="c-btn c-btn--secondary c-modal__button"
-                  onClick={[Function]}
-                  type="button"
-                />
-                <button
-                  className="c-btn c-btn--default c-modal__button"
-                  onClick={[Function]}
-                  type="button"
-                />
-              </div>
-            }
-            modalheading=""
-            onHide={[Function]}
-            scope={undefined}
-            show={true}
-          />
-          <ModalComponent
-            backdrop={true}
-            bsSize="small"
-            closeButton={false}
-            customClass="c-modal c-modal--center"
-            modalInContainer={false}
-            modalbody={
-              <div>
-                <div>
-                  <CommonGetIcon
-                    height="68px"
-                    id="icon-success"
-                    width="68px"
-                  />
-                </div>
-              </div>
-            }
-            modalfooter={
-              <Link
-                className="c-btn c-btn--default c-btn--sm c-modal__button"
-                onClick={[Function]}
-                replace={false}
-                to="/securemessages"
-              />
-            }
-            modalheading=""
-            onHide={[Function]}
-            scope={undefined}
-            show={true}
-          />
-          <ModalComponent
-            backdrop={true}
-            bsSize="medium"
-            closeButton={true}
-            customClass="c-modal c-modal--center"
-            modalInContainer={false}
-            modalbody={
-              <div>
-                <h3 />
-                <br />
-                <p />
-                <br />
-                <p />
-              </div>
-            }
-            modalfooter={
-              <div>
-                <button
-                  className="c-btn c-btn--secondary c-modal__button"
-                  onClick={[Function]}
-                  type="button"
-                >
-                  Back
-                </button>
-                <button
-                  className="c-btn c-btn--default c-modal__button"
-                  onClick={[Function]}
-                  type="button"
-                />
-              </div>
-            }
-            modalheading=""
-            onHide={[Function]}
-            scope={undefined}
-            show={true}
-          />
-          <ThreadList
-            Threads={undefined}
-            content={
+            messages={
               Object {
-                "back": "Back",
+                "draftError": true,
+                "filter": [MockFunction],
+                "successModal": true,
               }
             }
+            messagesFetched={
+              Object {
+                "fetching": false,
+                "successModal": false,
+              }
+            }
+            newMessageStatus="READ"
           />
-        </div>,
-        "className": "row centralised-container c-card",
+        </Card>,
       },
       "ref": null,
       "rendered": Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "host",
+        "nodeType": "function",
         "props": Object {
+          "bordered": false,
           "children": Array [
-            <StepHeader
-              headerCrumbsMessage="Back"
-              headerCrumbsPath={
-                Object {
-                  "pathname": "/securemessages",
-                }
-              }
-              headerTitle={undefined}
-              showControl={false}
-              showheaderCrumbs={true}
+            <SectionHeading
+              className="u-margin-bottom-2"
+              heading1={undefined}
             />,
-            <Connect(SecureMessageSummary)
+            <Connect(withRouter(withMessaging))
+              activeTab="SENT"
               content={
                 Object {
                   "back": "Back",
                 }
               }
-              message={
+              dispatch={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      [Function],
+                    ],
+                  ],
+                }
+              }
+              location={
                 Object {
-                  "status": "NEW",
+                  "messageDetail": Object {
+                    "status": "NEW",
+                  },
                 }
               }
-              readFlag={true}
-              sentFlag={false}
-              viewMessageFlag={true}
-            />,
-            <pre />,
-            undefined,
-            <div
-              className="c-btn--group"
-            >
-              <Link
-                className="c-btn c-btn--secondary"
-                replace={false}
-                to={
-                  Object {
-                    "pathname": "/securemessages",
-                  }
-                }
-              >
-                Back
-              </Link>
-              <SecondaryButton
-                name={undefined}
-                onClick={[Function]}
-              />
-              <SecondaryButton
-                name={undefined}
-                onClick={[Function]}
-              />
-              <Link
-                className="c-btn c-btn--primary"
-                id="reply-button"
-                replace={false}
-                to={
-                  Object {
-                    "backPath": "/securemessages/view",
-                    "messageDetail": Object {
-                      "status": "NEW",
-                    },
-                    "pathname": "/securemessages/reply",
-                  }
-                }
-              />
-            </div>,
-            <ModalComponent
-              backdrop={true}
-              closeButton={true}
-              customClass="c-modal"
-              modalInContainer={false}
-              modalbody={
-                <div
-                  className="callout callout__error"
-                />
-              }
-              modalfooter={
-                <div>
-                  <button
-                    className="c-btn c-btn--secondary c-modal__button"
-                    onClick={[Function]}
-                    type="button"
-                  />
-                  <button
-                    className="c-btn c-btn--default c-modal__button"
-                    onClick={[Function]}
-                    type="button"
-                  />
-                </div>
-              }
-              modalheading=""
-              onHide={[Function]}
-              scope={undefined}
-              show={true}
-            />,
-            <ModalComponent
-              backdrop={true}
-              bsSize="small"
-              closeButton={false}
-              customClass="c-modal c-modal--center"
-              modalInContainer={false}
-              modalbody={
-                <div>
-                  <div>
-                    <CommonGetIcon
-                      height="68px"
-                      id="icon-success"
-                      width="68px"
-                    />
-                  </div>
-                </div>
-              }
-              modalfooter={
-                <Link
-                  className="c-btn c-btn--default c-btn--sm c-modal__button"
-                  onClick={[Function]}
-                  replace={false}
-                  to="/securemessages"
-                />
-              }
-              modalheading=""
-              onHide={[Function]}
-              scope={undefined}
-              show={true}
-            />,
-            <ModalComponent
-              backdrop={true}
-              bsSize="medium"
-              closeButton={true}
-              customClass="c-modal c-modal--center"
-              modalInContainer={false}
-              modalbody={
-                <div>
-                  <h3 />
-                  <br />
-                  <p />
-                  <br />
-                  <p />
-                </div>
-              }
-              modalfooter={
-                <div>
-                  <button
-                    className="c-btn c-btn--secondary c-modal__button"
-                    onClick={[Function]}
-                    type="button"
-                  >
-                    Back
-                  </button>
-                  <button
-                    className="c-btn c-btn--default c-modal__button"
-                    onClick={[Function]}
-                    type="button"
-                  />
-                </div>
-              }
-              modalheading=""
-              onHide={[Function]}
-              scope={undefined}
-              show={true}
-            />,
-            <ThreadList
-              Threads={undefined}
-              content={
+              messages={
                 Object {
-                  "back": "Back",
+                  "draftError": true,
+                  "filter": [MockFunction],
+                  "successModal": true,
                 }
               }
+              messagesFetched={
+                Object {
+                  "fetching": false,
+                  "successModal": false,
+                }
+              }
+              newMessageStatus="READ"
             />,
+            Array [],
           ],
-          "className": "col-md1-24 col-sm1-24 col-lg1-24",
         },
         "ref": null,
         "rendered": Array [
           Object {
             "instance": null,
             "key": undefined,
-            "nodeType": "class",
+            "nodeType": "function",
             "props": Object {
-              "headerCrumbsMessage": "Back",
-              "headerCrumbsPath": Object {
-                "pathname": "/securemessages",
-              },
-              "headerTitle": undefined,
-              "showControl": false,
-              "showheaderCrumbs": true,
+              "className": "u-margin-bottom-2",
+              "heading1": undefined,
             },
             "ref": null,
             "rendered": null,
@@ -1713,267 +732,262 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
+              "activeTab": "SENT",
               "content": Object {
                 "back": "Back",
               },
-              "message": Object {
-                "status": "NEW",
+              "dispatch": [MockFunction] {
+                "calls": Array [
+                  Array [
+                    [Function],
+                  ],
+                ],
               },
-              "readFlag": true,
-              "sentFlag": false,
-              "viewMessageFlag": true,
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": undefined,
-            },
-            "ref": null,
-            "rendered": null,
-            "type": "pre",
-          },
-          undefined,
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <Link
-                  className="c-btn c-btn--secondary"
-                  replace={false}
-                  to={
-                    Object {
-                      "pathname": "/securemessages",
-                    }
-                  }
-                >
-                  Back
-                </Link>,
-                <SecondaryButton
-                  name={undefined}
-                  onClick={[Function]}
-                />,
-                false,
-                <SecondaryButton
-                  name={undefined}
-                  onClick={[Function]}
-                />,
-                <Link
-                  className="c-btn c-btn--primary"
-                  id="reply-button"
-                  replace={false}
-                  to={
-                    Object {
-                      "backPath": "/securemessages/view",
-                      "messageDetail": Object {
-                        "status": "NEW",
-                      },
-                      "pathname": "/securemessages/reply",
-                    }
-                  }
-                />,
-              ],
-              "className": "c-btn--group",
-            },
-            "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "class",
-                "props": Object {
-                  "children": "Back",
-                  "className": "c-btn c-btn--secondary",
-                  "replace": false,
-                  "to": Object {
-                    "pathname": "/securemessages",
-                  },
+              "location": Object {
+                "messageDetail": Object {
+                  "status": "NEW",
                 },
-                "ref": null,
-                "rendered": "Back",
-                "type": [Function],
               },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "function",
-                "props": Object {
-                  "name": undefined,
-                  "onClick": [Function],
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
+              "messages": Object {
+                "draftError": true,
+                "filter": [MockFunction],
+                "successModal": true,
               },
-              false,
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "function",
-                "props": Object {
-                  "name": undefined,
-                  "onClick": [Function],
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
+              "messagesFetched": Object {
+                "fetching": false,
+                "successModal": false,
               },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "class",
-                "props": Object {
-                  "children": undefined,
-                  "className": "c-btn c-btn--primary",
-                  "id": "reply-button",
-                  "replace": false,
-                  "to": Object {
-                    "backPath": "/securemessages/view",
-                    "messageDetail": Object {
-                      "status": "NEW",
-                    },
-                    "pathname": "/securemessages/reply",
-                  },
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-            ],
-            "type": "div",
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "backdrop": true,
-              "closeButton": true,
-              "customClass": "c-modal",
-              "modalInContainer": false,
-              "modalbody": <div
-                className="callout callout__error"
-              />,
-              "modalfooter": <div>
-                <button
-                  className="c-btn c-btn--secondary c-modal__button"
-                  onClick={[Function]}
-                  type="button"
-                />
-                <button
-                  className="c-btn c-btn--default c-modal__button"
-                  onClick={[Function]}
-                  type="button"
-                />
-              </div>,
-              "modalheading": "",
-              "onHide": [Function],
-              "scope": undefined,
-              "show": true,
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "backdrop": true,
-              "bsSize": "small",
-              "closeButton": false,
-              "customClass": "c-modal c-modal--center",
-              "modalInContainer": false,
-              "modalbody": <div>
-                <div>
-                  <CommonGetIcon
-                    height="68px"
-                    id="icon-success"
-                    width="68px"
-                  />
-                </div>
-              </div>,
-              "modalfooter": <Link
-                className="c-btn c-btn--default c-btn--sm c-modal__button"
-                onClick={[Function]}
-                replace={false}
-                to="/securemessages"
-              />,
-              "modalheading": "",
-              "onHide": [Function],
-              "scope": undefined,
-              "show": true,
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "backdrop": true,
-              "bsSize": "medium",
-              "closeButton": true,
-              "customClass": "c-modal c-modal--center",
-              "modalInContainer": false,
-              "modalbody": <div>
-                <h3 />
-                <br />
-                <p />
-                <br />
-                <p />
-              </div>,
-              "modalfooter": <div>
-                <button
-                  className="c-btn c-btn--secondary c-modal__button"
-                  onClick={[Function]}
-                  type="button"
-                >
-                  Back
-                </button>
-                <button
-                  className="c-btn c-btn--default c-modal__button"
-                  onClick={[Function]}
-                  type="button"
-                />
-              </div>,
-              "modalheading": "",
-              "onHide": [Function],
-              "scope": undefined,
-              "show": true,
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "Threads": undefined,
-              "content": Object {
-                "back": "Back",
-              },
+              "newMessageStatus": "READ",
             },
             "ref": null,
             "rendered": null,
             "type": [Function],
           },
         ],
-        "type": "div",
+        "type": [Function],
       },
-      "type": "div",
+      "type": [Function],
+    },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": <Row>
+          <Card
+            bordered={false}
+          >
+            <SectionHeading
+              className="u-margin-bottom-2"
+              heading1={undefined}
+            />
+            <Connect(withRouter(withMessaging))
+              activeTab="SENT"
+              content={
+                Object {
+                  "back": "Back",
+                }
+              }
+              dispatch={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      [Function],
+                    ],
+                  ],
+                }
+              }
+              location={
+                Object {
+                  "messageDetail": Object {
+                    "status": "NEW",
+                  },
+                }
+              }
+              messages={
+                Object {
+                  "draftError": true,
+                  "filter": [MockFunction],
+                  "successModal": true,
+                }
+              }
+              messagesFetched={
+                Object {
+                  "fetching": false,
+                  "successModal": false,
+                }
+              }
+              newMessageStatus="READ"
+            />
+          </Card>
+        </Row>,
+        "className": "u-margin-top-6",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": <Card
+            bordered={false}
+          >
+            <SectionHeading
+              className="u-margin-bottom-2"
+              heading1={undefined}
+            />
+            <Connect(withRouter(withMessaging))
+              activeTab="SENT"
+              content={
+                Object {
+                  "back": "Back",
+                }
+              }
+              dispatch={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      [Function],
+                    ],
+                  ],
+                }
+              }
+              location={
+                Object {
+                  "messageDetail": Object {
+                    "status": "NEW",
+                  },
+                }
+              }
+              messages={
+                Object {
+                  "draftError": true,
+                  "filter": [MockFunction],
+                  "successModal": true,
+                }
+              }
+              messagesFetched={
+                Object {
+                  "fetching": false,
+                  "successModal": false,
+                }
+              }
+              newMessageStatus="READ"
+            />
+          </Card>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "bordered": false,
+            "children": Array [
+              <SectionHeading
+                className="u-margin-bottom-2"
+                heading1={undefined}
+              />,
+              <Connect(withRouter(withMessaging))
+                activeTab="SENT"
+                content={
+                  Object {
+                    "back": "Back",
+                  }
+                }
+                dispatch={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        [Function],
+                      ],
+                    ],
+                  }
+                }
+                location={
+                  Object {
+                    "messageDetail": Object {
+                      "status": "NEW",
+                    },
+                  }
+                }
+                messages={
+                  Object {
+                    "draftError": true,
+                    "filter": [MockFunction],
+                    "successModal": true,
+                  }
+                }
+                messagesFetched={
+                  Object {
+                    "fetching": false,
+                    "successModal": false,
+                  }
+                }
+                newMessageStatus="READ"
+              />,
+              Array [],
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "className": "u-margin-bottom-2",
+                "heading1": undefined,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "activeTab": "SENT",
+                "content": Object {
+                  "back": "Back",
+                },
+                "dispatch": [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      [Function],
+                    ],
+                  ],
+                },
+                "location": Object {
+                  "messageDetail": Object {
+                    "status": "NEW",
+                  },
+                },
+                "messages": Object {
+                  "draftError": true,
+                  "filter": [MockFunction],
+                  "successModal": true,
+                },
+                "messagesFetched": Object {
+                  "fetching": false,
+                  "successModal": false,
+                },
+                "newMessageStatus": "READ",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      "type": [Function],
     },
   ],
   Symbol(enzyme.__options__): Object {

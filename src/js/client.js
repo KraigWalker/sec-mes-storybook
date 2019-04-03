@@ -64,21 +64,15 @@ const startApp = () => {
 }
 
 const loadStyles = () => {
-  console.log('load styles')
   var head = document.getElementsByTagName('head')[0];
   var element = document.createElement('link');
     element.rel = 'stylesheet';
     element.href = `${path}css/app.${brandId.toLowerCase()}.css`;
     head.appendChild(element);
-    // var element2 = document.createElement('link');
-    // element2.rel = 'stylesheet';
-    // element2.href = `${path}${brandId.toLowerCase()}.main.css`;
-    // head.appendChild(element2);
 }
 
 const initApp = () => {
     ConfigUtils.getConfig(startApp);
     loadStyles()
 }
-// DEBTxCYBG: this is not an ideal pattern for initialising an app.
-setTimeout(initApp, 50);
+initApp();

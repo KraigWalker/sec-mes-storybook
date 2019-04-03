@@ -30,15 +30,36 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "class",
+    "nodeType": "function",
     "props": Object {
-      "activeKey": "inbox",
       "children": Array [
-        <Tab
-          aria-label="Inbox (true) unread messages"
-          eventKey="inbox"
-          title="Inbox (true)"
-        >
+        <Row>
+          <TabGroup
+            activeTab="INBOX"
+            onChange={[Function]}
+            tabButtons={
+              Array [
+                Object {
+                  "id": "INBOX",
+                  "title": "Inbox (true)",
+                },
+                Object {
+                  "id": "DRAFT",
+                  "title": "Drafts",
+                },
+                Object {
+                  "id": "SENT",
+                  "title": "Sent",
+                },
+                Object {
+                  "id": "ARCHIVED",
+                  "title": "Archive",
+                },
+              ]
+            }
+          />
+        </Row>,
+        <Row>
           <Connect(SecureMessageList)
             activeTab="INBOX"
             content={
@@ -54,65 +75,80 @@ ShallowWrapper {
               ]
             }
           />
-        </Tab>,
-        <Tab
-          aria-label="Drafts"
-          eventKey="drafts"
-          title="Drafts"
-        >
-          <Connect(SecureMessageList)
-            activeTab="DRAFT"
-            content={
-              Object {
-                "back": "Back",
-              }
-            }
-            messages={undefined}
-          />
-        </Tab>,
-        <Tab
-          aria-label="Sent"
-          eventKey="sent"
-          title="Sent"
-        >
-          <Connect(SecureMessageList)
-            activeTab="SENT"
-            content={
-              Object {
-                "back": "Back",
-              }
-            }
-            messages={undefined}
-          />
-        </Tab>,
-        <Tab
-          aria-label="Archive"
-          eventKey="archived"
-          title="Archive"
-        >
-          <Connect(SecureMessageList)
-            activeTab="ARCHIVED"
-            content={
-              Object {
-                "back": "Back",
-              }
-            }
-            messages={undefined}
-          />
-        </Tab>,
+        </Row>,
       ],
-      "className": "c-scroll-tabs",
-      "id": "secure_tabs",
-      "onSelect": [Function],
+      "className": "u-margin-top-2",
     },
     "ref": null,
     "rendered": Array [
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "class",
+        "nodeType": "function",
         "props": Object {
-          "aria-label": "Inbox (true) unread messages",
+          "children": <TabGroup
+            activeTab="INBOX"
+            onChange={[Function]}
+            tabButtons={
+              Array [
+                Object {
+                  "id": "INBOX",
+                  "title": "Inbox (true)",
+                },
+                Object {
+                  "id": "DRAFT",
+                  "title": "Drafts",
+                },
+                Object {
+                  "id": "SENT",
+                  "title": "Sent",
+                },
+                Object {
+                  "id": "ARCHIVED",
+                  "title": "Archive",
+                },
+              ]
+            }
+          />,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "activeTab": "INBOX",
+            "onChange": [Function],
+            "tabButtons": Array [
+              Object {
+                "id": "INBOX",
+                "title": "Inbox (true)",
+              },
+              Object {
+                "id": "DRAFT",
+                "title": "Drafts",
+              },
+              Object {
+                "id": "SENT",
+                "title": "Sent",
+              },
+              Object {
+                "id": "ARCHIVED",
+                "title": "Archive",
+              },
+            ],
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
           "children": <Connect(SecureMessageList)
             activeTab="INBOX"
             content={
@@ -128,8 +164,6 @@ ShallowWrapper {
               ]
             }
           />,
-          "eventKey": "inbox",
-          "title": "Inbox (true)",
         },
         "ref": null,
         "rendered": Object {
@@ -153,114 +187,6 @@ ShallowWrapper {
         },
         "type": [Function],
       },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "aria-label": "Drafts",
-          "children": <Connect(SecureMessageList)
-            activeTab="DRAFT"
-            content={
-              Object {
-                "back": "Back",
-              }
-            }
-            messages={undefined}
-          />,
-          "eventKey": "drafts",
-          "title": "Drafts",
-        },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "activeTab": "DRAFT",
-            "content": Object {
-              "back": "Back",
-            },
-            "messages": undefined,
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "aria-label": "Sent",
-          "children": <Connect(SecureMessageList)
-            activeTab="SENT"
-            content={
-              Object {
-                "back": "Back",
-              }
-            }
-            messages={undefined}
-          />,
-          "eventKey": "sent",
-          "title": "Sent",
-        },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "activeTab": "SENT",
-            "content": Object {
-              "back": "Back",
-            },
-            "messages": undefined,
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "aria-label": "Archive",
-          "children": <Connect(SecureMessageList)
-            activeTab="ARCHIVED"
-            content={
-              Object {
-                "back": "Back",
-              }
-            }
-            messages={undefined}
-          />,
-          "eventKey": "archived",
-          "title": "Archive",
-        },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "activeTab": "ARCHIVED",
-            "content": Object {
-              "back": "Back",
-            },
-            "messages": undefined,
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        "type": [Function],
-      },
     ],
     "type": [Function],
   },
@@ -268,15 +194,36 @@ ShallowWrapper {
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "class",
+      "nodeType": "function",
       "props": Object {
-        "activeKey": "inbox",
         "children": Array [
-          <Tab
-            aria-label="Inbox (true) unread messages"
-            eventKey="inbox"
-            title="Inbox (true)"
-          >
+          <Row>
+            <TabGroup
+              activeTab="INBOX"
+              onChange={[Function]}
+              tabButtons={
+                Array [
+                  Object {
+                    "id": "INBOX",
+                    "title": "Inbox (true)",
+                  },
+                  Object {
+                    "id": "DRAFT",
+                    "title": "Drafts",
+                  },
+                  Object {
+                    "id": "SENT",
+                    "title": "Sent",
+                  },
+                  Object {
+                    "id": "ARCHIVED",
+                    "title": "Archive",
+                  },
+                ]
+              }
+            />
+          </Row>,
+          <Row>
             <Connect(SecureMessageList)
               activeTab="INBOX"
               content={
@@ -292,65 +239,80 @@ ShallowWrapper {
                 ]
               }
             />
-          </Tab>,
-          <Tab
-            aria-label="Drafts"
-            eventKey="drafts"
-            title="Drafts"
-          >
-            <Connect(SecureMessageList)
-              activeTab="DRAFT"
-              content={
-                Object {
-                  "back": "Back",
-                }
-              }
-              messages={undefined}
-            />
-          </Tab>,
-          <Tab
-            aria-label="Sent"
-            eventKey="sent"
-            title="Sent"
-          >
-            <Connect(SecureMessageList)
-              activeTab="SENT"
-              content={
-                Object {
-                  "back": "Back",
-                }
-              }
-              messages={undefined}
-            />
-          </Tab>,
-          <Tab
-            aria-label="Archive"
-            eventKey="archived"
-            title="Archive"
-          >
-            <Connect(SecureMessageList)
-              activeTab="ARCHIVED"
-              content={
-                Object {
-                  "back": "Back",
-                }
-              }
-              messages={undefined}
-            />
-          </Tab>,
+          </Row>,
         ],
-        "className": "c-scroll-tabs",
-        "id": "secure_tabs",
-        "onSelect": [Function],
+        "className": "u-margin-top-2",
       },
       "ref": null,
       "rendered": Array [
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
+          "nodeType": "function",
           "props": Object {
-            "aria-label": "Inbox (true) unread messages",
+            "children": <TabGroup
+              activeTab="INBOX"
+              onChange={[Function]}
+              tabButtons={
+                Array [
+                  Object {
+                    "id": "INBOX",
+                    "title": "Inbox (true)",
+                  },
+                  Object {
+                    "id": "DRAFT",
+                    "title": "Drafts",
+                  },
+                  Object {
+                    "id": "SENT",
+                    "title": "Sent",
+                  },
+                  Object {
+                    "id": "ARCHIVED",
+                    "title": "Archive",
+                  },
+                ]
+              }
+            />,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "activeTab": "INBOX",
+              "onChange": [Function],
+              "tabButtons": Array [
+                Object {
+                  "id": "INBOX",
+                  "title": "Inbox (true)",
+                },
+                Object {
+                  "id": "DRAFT",
+                  "title": "Drafts",
+                },
+                Object {
+                  "id": "SENT",
+                  "title": "Sent",
+                },
+                Object {
+                  "id": "ARCHIVED",
+                  "title": "Archive",
+                },
+              ],
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
             "children": <Connect(SecureMessageList)
               activeTab="INBOX"
               content={
@@ -366,8 +328,6 @@ ShallowWrapper {
                 ]
               }
             />,
-            "eventKey": "inbox",
-            "title": "Inbox (true)",
           },
           "ref": null,
           "rendered": Object {
@@ -384,114 +344,6 @@ ShallowWrapper {
                   "status": "NEW",
                 },
               ],
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "aria-label": "Drafts",
-            "children": <Connect(SecureMessageList)
-              activeTab="DRAFT"
-              content={
-                Object {
-                  "back": "Back",
-                }
-              }
-              messages={undefined}
-            />,
-            "eventKey": "drafts",
-            "title": "Drafts",
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "activeTab": "DRAFT",
-              "content": Object {
-                "back": "Back",
-              },
-              "messages": undefined,
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "aria-label": "Sent",
-            "children": <Connect(SecureMessageList)
-              activeTab="SENT"
-              content={
-                Object {
-                  "back": "Back",
-                }
-              }
-              messages={undefined}
-            />,
-            "eventKey": "sent",
-            "title": "Sent",
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "activeTab": "SENT",
-              "content": Object {
-                "back": "Back",
-              },
-              "messages": undefined,
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "aria-label": "Archive",
-            "children": <Connect(SecureMessageList)
-              activeTab="ARCHIVED"
-              content={
-                Object {
-                  "back": "Back",
-                }
-              }
-              messages={undefined}
-            />,
-            "eventKey": "archived",
-            "title": "Archive",
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "activeTab": "ARCHIVED",
-              "content": Object {
-                "back": "Back",
-              },
-              "messages": undefined,
             },
             "ref": null,
             "rendered": null,

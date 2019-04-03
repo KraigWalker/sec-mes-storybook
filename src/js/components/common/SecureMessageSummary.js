@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {READ, DRAFT} from '../../constants/StringsConstants';
+import { NEW, ARCHIVED, DRAFT } from '../../constants/StringsConstants';
 import withMessaging from "../common/WithMessaging";
 import {Mail} from 'web-ui-components/lib/communication/messaging';
 
-const SecureMessageSummary = (props) => {
+export const SecureMessageSummary = (props) => {
 
     const viewClicked = () => {
         const {message, threadFlag} = props;
@@ -26,11 +26,7 @@ const SecureMessageSummary = (props) => {
     const replyClick = () => props.onReplyClick(props.message);
 
     const {message} = props;
-
-    // const accNo = message.account.number
-    // 		? message.account.number
-    // 		: content.noSpecificAccount;
-
+    
     return (
         <Mail.List>
             <Mail.Item
@@ -39,10 +35,12 @@ const SecureMessageSummary = (props) => {
                 mailSubject={`${message.subject} ${message.reference ? message.reference : ''}`}
                 mailSummary={message.message}
                 mailDate={message.dateCreated}
-                isRead={message.status === READ}
+                isRead={message.status !== NEW }
                 archiveOnClick={props.showArchive ? archiveClick : null}
                 replyOnClick={props.showReply ? replyClick : null}
                 deleteOnClick={props.showDelete ? deleteClick : null}
+                moveToInboxOnClick={props.showUnarchive ? unarchiveClick : null}
+                isArchived={message.status === ARCHIVED}
                 mailOnClick={viewClicked}
             />
         </Mail.List>

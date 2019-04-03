@@ -40,13 +40,13 @@ export function SecureMessageBL(response) {
  */
 export function getThreadsBL(messages, currentMessage) {
 	// Enable it for LOG. ---- messages.filter(message => console.log("old date: "+message.dateCreated+" current date: "+currentMessage.dateCreated+" Condition: "+moment(moment(message.dateCreated, "DD-MM-YYYY")).isBefore(moment(currentMessage.dateCreated, "DD-MM-YYYY"))) );
-	return messages.filter(message => message.threadID === currentMessage.threadID && moment(message.dateCreated, 'DD-MM-YYYY').isBefore(moment(currentMessage.dateCreated, 'DD-MM-YYYY')));
+	return messages.filter(message => message.threadID === currentMessage.threadID && moment(message.dateCreated, 'DD-MMM-YYYY HH:mm').isBefore(moment(currentMessage.dateCreated, 'DD-MMM-YYYY HH:mm')));
 }
 
 // Code for adding accounts name in draft
-export function getAccountName(id, accountData) {
+export function getAccountName(id, accounts) {
 	if (id) {
-		return _.find(accountData.accounts, accData => {
+		return _.find(accounts, accData => {
 			if (accData.accountId === id) {
 				const name = accData.display_name || accData.name;
 				return name;
@@ -58,9 +58,6 @@ export function getAccountName(id, accountData) {
 
 
 export function BuildSendMessageRequestEntity(accounts, messageEntity ) {
-	// If account service responding late then what to do...
-    // const { account, subject } = this.props.messageInfo;
-
     const { subject, account, message } = messageEntity;
 
     const sendMessageRequestEntity = new SendMessageRequestEntity();
@@ -69,7 +66,6 @@ export function BuildSendMessageRequestEntity(accounts, messageEntity ) {
 
     const accName = getAccountName(account.accountId, accounts);
     if ((account.accountId !== undefined || null) && subject) {
-        console.log('A')
         let accountNameNew = accName.display_name || accName.name;
         sendMessageRequestEntity.setName(accountNameNew);
         sendMessageRequestEntity.setAccountId(account.accountId);
@@ -77,10 +73,13 @@ export function BuildSendMessageRequestEntity(accounts, messageEntity ) {
     }
     if (account.accountId === undefined || null) {
         sendMessageRequestEntity.setAccount(account);
-    }
-
-    console.log("message to send");
-    console.log(sendMessageRequestEntity);
-
+	}
     return sendMessageRequestEntity;
+}
+
+export function getMessageAccountValue(message, content) {
+
+	return message.account && message.account.number
+		? message.account.number
+		: content.noSpecificAccount;
 }

@@ -1,5 +1,5 @@
 import AccountEntity from "./AccountEntity";
-import { getISODateString } from "../utils/DateUtils";
+import { getFriendlyDate } from "../utils/DateUtils";
 
 /**
  * @class MessageEntity  Class for getter setter changes
@@ -98,7 +98,7 @@ class MessageEntity {
      * @param {*} date 
      */
     setDateCreated(date) {
-        this.dateCreated = getISODateString(date);
+        this.dateCreated = getFriendlyDate(date);
     }
     /**
      * 

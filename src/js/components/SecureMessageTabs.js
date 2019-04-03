@@ -9,7 +9,6 @@ import {
 } from "../constants/StringsConstants";
 import _ from "lodash";
 
-const titleName = ["Inbox", "Drafts", "Sent", "Archive"];
 import {TabGroup} from "web-ui-components/lib/navigation/tab-group";
 import {Row, Container} from "web-ui-components/lib/global/layout";
 
@@ -49,20 +48,21 @@ export class SecureMessageTabs extends React.Component {
                                 id: INBOX
                             },
                             {
-                                title: titleName[1],
+                                title: "Drafts",
                                 id: DRAFT
                             },
                             {
-                                title: titleName[2],
+                                title: "Sent",
                                 id: SENT
                             },
                             {
-                                title: titleName[3],
+                                title: "Archive",
                                 id: ARCHIVE
                             }
                         ]}
                     />
-
+                </Row>
+                <Row>
                     <SecureMessageList
                         messages={activeTabMessages}
                         activeTab={this.state.activeTab}

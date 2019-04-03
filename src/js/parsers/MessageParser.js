@@ -7,6 +7,7 @@ import { sortArrayByDate } from '../utils/DateUtils';
  * @param {array of Messages} parses the service response 
  */
 export function parseMessages(response) {
+
     const messages = [];
     const sortedMessages = sortArrayByDate(response.secure_messages);
     _.forEach(sortedMessages, message => {

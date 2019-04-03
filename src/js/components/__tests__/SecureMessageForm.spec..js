@@ -1,27 +1,23 @@
 import React from 'react';
-import { NewSecureMessage } from '../NewSecureMessage';
+import SecureMessageForm from '../SecureMessageForm';
 import { shallow } from 'enzyme';
-import TestUtils from 'react-addons-test-utils';
-import SendMessageRequestEntity from '../../entities/SendMessageRequestEntity';
 
-let component;
-let props;
-const messageEntity = new SendMessageRequestEntity();
-
-describe("New Secure message snapshot", () => {
-    const dispatch = jest.fn();
+describe("SecureMessageForm snapshot", () => {
     let props = {
         content: {
             back: 'Back',
         },
-        messages: {
-            successModal: false,
-            newMessageError: false,
-            messages: []
-        },
-        dispatch: dispatch
+        onMount: () => {},
+        popupState: jest.fn(() => {}),
+        sendData: jest.fn(() => {}),
+        onSave: jest.fn(() => {}),
+        saveDraftData: jest.fn(() => {}),
+        sendMessageData: jest.fn(() => {}),
+        sendMessageForAccessibiltiy : jest.fn(() => {}),
+        messages: [],
+        successModal: false,
     };
-    let component = shallow(<NewSecureMessage {...props} />);
+    let component = shallow(<SecureMessageForm {...props} ></SecureMessageForm>);
     it('should match to snapshot', () => {
         expect(component).toMatchSnapshot();
     });
@@ -38,24 +34,16 @@ describe("New Secure message snapshot", () => {
         expect(component.instance().state.showPopup).toBeTruthy();
     });
     it('selectSubject function test with subj', () => {
-        component.instance().selectSubject('test', 'subjects', { value: 'test' });
-        expect(component.instance().state.selectSubject).toBeTruthy();
+        component.instance().selectSubject('subjects', 'test');
+        expect(component.instance().state.subject).toBeTruthy();
     });
     it('selectSubject function test with accounts', () => {
-        component.instance().selectSubject('test', 'accounts', { name: 'test', number: '123443543543', accountId: '1dwwd1e12e21321dd2d' });
-        expect(component.instance().state.selectAccount).toBeTruthy();
+        component.instance().selectSubject('accounts', 'test');
+        expect(component.instance().state.accountValue).toBeTruthy();
     });
     it('selectSubject function test with default case', () => {
         component.instance().selectSubject('test', '', { value: 'test' });
         expect(component.instance()).toBeTruthy();
-    });
-    it('draftOkClicked function test', () => {
-        component.instance().draftOkClicked();
-        expect(component.instance().state.showDraftSuccessModal).toBeFalsy();
-    });
-    it('sentOkClicked function test', () => {
-        component.instance().sentOkClicked();
-        expect(component.instance().state.showSentMessageModal).toBeFalsy();
     });
     it('errorCloseClicked function test', () => {
         component.instance().errorCloseClicked();
@@ -81,33 +69,22 @@ describe("New Secure message snapshot", () => {
     });
     it('retryServiceCall function test', () => {
         component.instance().retryServiceCall();
-        expect(props.dispatch).toBeCalled();
-    });
-    it('renderRemainingChar function test', () => {
-        component.instance().renderRemainingChar();
-        component.setState({ charError: true, chars_left: -2 });
-        expect(props.dispatch).toBeCalled();
+        expect(props.popupState).toBeCalled();
     });
     it('renderRemainingChar function test', () => {
         component.instance().renderRemainingChar();
         component.setState({ charError: true, chars_left: 3 });
-        expect(props.dispatch).toBeCalled();
+        expect(props.sendMessageForAccessibiltiy).toBeCalled();
     });
     it('renderRemainingChar function test', () => {
         component.instance().renderRemainingChar();
         component.setState({ charError: true, chars_left: 1 });
-        expect(props.dispatch).toBeCalled();
+        expect(props.sendMessageForAccessibiltiy).toBeCalled();
     });
     it('renderRemainingChar function test', () => {
         component.instance().renderRemainingChar();
         component.setState({ charError: true, chars_left: 0 });
-        expect(props.dispatch).toBeCalled();
-    });
-    it('renderRemainingChar function test', () => {
-        component.instance().renderRemainingChar();
-        let headerflagClass = 'char__error error__right';
-        component.setState({ chars_left: -78 });
-        expect(headerflagClass).toEqual('char__error error__right');
+        expect(props.sendMessageForAccessibiltiy).toBeCalled();
     });
     it('returnModalComponent function test', () => {
         component.instance().returnModalComponent();
@@ -118,21 +95,25 @@ describe("New Secure message snapshot", () => {
     // for all 3 comp
 });
 
-describe("New Secure message", () => {
+describe("Secure Message From", () => {
     const dispatch = jest.fn();
     let props = {
         content: {
             back: 'Back',
         },
-        messages: {
-            newMessageError: true,
-            successModal: true
-        },
-        dispatch: dispatch
+        onMount: () => {},
+        popupState: jest.fn(() => {}),
+        sendData: jest.fn(() => {}),
+        onSave: jest.fn(() => {}),
+        saveDraftData: jest.fn(() => {}),
+        sendMessageData: jest.fn(() => {}),
+        sendMessageForAccessibiltiy : jest.fn(() => {}),
+        messages: [],
+        successModal: false,
     }
 
     it('returnErrorModal function test', () => {
-        const wrapper = shallow(<NewSecureMessage {...props} />);
+        const wrapper = shallow(<SecureMessageForm {...props} ></SecureMessageForm>);
         wrapper.setState({ showSaveServiceErrorModal: true, showSendServiceErrorModal: true, showDraftSuccessModal: true, showSentMessageModal: true, disabled: false });
         expect(wrapper.instance().state.showSendServiceErrorModal).toBeTruthy();
     });

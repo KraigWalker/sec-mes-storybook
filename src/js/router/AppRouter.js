@@ -2,16 +2,16 @@ import { Switch, BrowserRouter, Route, Redirect, withRouter } from 'react-router
 import React from 'react';
 import LandingPage from '../components/LandingPage';
 import Main from '../components/Main';
-import NewSecureMessageNew from '../components/NewSecureMessageNew';
+import NewSecureMessageNew from '../components/NewSecureMessage';
 import ViewMessage from '../components/ViewMessage';
-import ReplySecuremessageNew from '../components/ReplySecureMessageNew';
+import ReplySecuremessageNew from '../components/ReplySecureMessage';
 import { withSubscription } from '../components/wrappers/GenericWrapper';
 import AccessibilityMessage from '../components/common/AccessibilityMessage';
 import ErrorPage from '../components/common/ErrorPage';
 import { ListView } from '../components/ListView';
 import { AccountSelector } from '../components/AccountSelector';
 import { DocumentView } from '../components/DocumentView';
-import DraftSecureMessageNew from '../components/DraftSecureMessageNew';
+import DraftSecureMessage from '../components/DraftSecureMessage';
 
 const RouteWithLayout = ({ Component, ...restProps }) => <Route {...restProps} render={(routeProps) => 
     <Main {...restProps} >
@@ -53,7 +53,7 @@ const RoutesWithLayout = (props) => (
         <RouteWithLayout
             exact
             path={`/securemessages/draft`}
-            Component={DraftSecureMessageNew}
+            Component={DraftSecureMessage}
             content={props.content}
             isDocumentLibraryEnabled={props.isDocumentLibraryEnabled}
             session={props.session}
@@ -83,7 +83,6 @@ class AppRouter extends React.Component {
     */ 
       render() {
         const { isDocumentLibraryEnabled } = this.props;
-        console.log(window.baseURl);
         return (
             <BrowserRouter basename={window.baseURl}>
                 <div>
