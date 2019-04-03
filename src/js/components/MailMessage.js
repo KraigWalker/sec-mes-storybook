@@ -10,7 +10,7 @@ const Attachments = ({ document, onClick }) => (
 		<h4>Attachments</h4>
 		<ul>
 			<li>
-				<a href="#" onClick={onClick}>{document.label}</a>
+				<a href="javascript:void(0)" onClick={onClick}>{document.label}</a>
 			</li>
 		</ul>
 	</div>

@@ -52,7 +52,7 @@ class DraftSecureMessage extends React.Component {
             selectedAccount={messageDetail.account}
             selectedAccountValue={selectedAccountValue}
             messageText={messageDetail.message}
-            buttonsDisabled={false}/>;
+            buttonsDisabled={true}/>;
     }
 }
 

@@ -38,11 +38,6 @@ else
   hash = parseHash(window.location.hash.substring(1));
 }
 
-
-// clear hash parameters
-window.location.hash = '';
-
-
 const session = {
   access_token: hash.access_token,
   bank_id: hash.bank_id,
@@ -62,7 +57,7 @@ const startApp = () => {
   const store = createStore(session, clientContext, ConfigUtils.config)
   ReactDOM.render(
     <Provider store={store}>
-      <WebUIThemeProvider brandID={brandId}>
+      <WebUIThemeProvider brandID={normalisedBrandId}>
         <AppRouter session={session} client={clientContext} isDocumentLibraryEnabled={isDocumentLibraryEnabled} />
       </WebUIThemeProvider>
     </Provider>, app);
@@ -78,6 +73,13 @@ const loadStyles = () => {
 
 const initApp = () => {
     ConfigUtils.getConfig(startApp);
-    loadStyles()
+    //This is for hot reloading on dev, so css gets loaded when window has is empty
+    if (process.env.NODE_ENV !== 'production' && !window.location.hash)
+    {
+      loadStyles()
+    }
 }
 initApp();
+
+// clear hash parameters
+window.location.hash = '';

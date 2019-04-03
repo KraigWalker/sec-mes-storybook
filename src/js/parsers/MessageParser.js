@@ -29,7 +29,7 @@ export function parseMessages(response) {
                 fileSize: message.document.file_size
             });
         }
-        messageEntity.setNoReply(message.noReply)
+        messageEntity.setNoReply(message.no_reply)
         messages.push(messageEntity);
     });
     return messages;

@@ -10,15 +10,6 @@ ShallowWrapper {
         "sentPageTitle": "sentPageTitle",
       }
     }
-    dispatch={
-      [MockFunction] {
-        "calls": Array [
-          Array [
-            [Function],
-          ],
-        ],
-      }
-    }
     location={
       Object {
         "messageDetail": Object {
@@ -39,6 +30,18 @@ ShallowWrapper {
         "successModal": false,
       }
     }
+    setViewMessageDetail={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "status": "sent",
+            },
+          ],
+        ],
+      }
+    }
+    successModal={true}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -67,15 +70,7 @@ ShallowWrapper {
                 "sentPageTitle": "sentPageTitle",
               }
             }
-            dispatch={
-              [MockFunction] {
-                "calls": Array [
-                  Array [
-                    [Function],
-                  ],
-                ],
-              }
-            }
+            hasAttachment={undefined}
             location={
               Object {
                 "messageDetail": Object {
@@ -97,6 +92,18 @@ ShallowWrapper {
               }
             }
             newMessageStatus="sent"
+            setViewMessageDetail={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    Object {
+                      "status": "sent",
+                    },
+                  ],
+                ],
+              }
+            }
+            successModal={true}
           />
         </Card>
       </Row>,
@@ -122,15 +129,7 @@ ShallowWrapper {
                 "sentPageTitle": "sentPageTitle",
               }
             }
-            dispatch={
-              [MockFunction] {
-                "calls": Array [
-                  Array [
-                    [Function],
-                  ],
-                ],
-              }
-            }
+            hasAttachment={undefined}
             location={
               Object {
                 "messageDetail": Object {
@@ -152,6 +151,18 @@ ShallowWrapper {
               }
             }
             newMessageStatus="sent"
+            setViewMessageDetail={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    Object {
+                      "status": "sent",
+                    },
+                  ],
+                ],
+              }
+            }
+            successModal={true}
           />
         </Card>,
       },
@@ -174,15 +185,7 @@ ShallowWrapper {
                   "sentPageTitle": "sentPageTitle",
                 }
               }
-              dispatch={
-                [MockFunction] {
-                  "calls": Array [
-                    Array [
-                      [Function],
-                    ],
-                  ],
-                }
-              }
+              hasAttachment={undefined}
               location={
                 Object {
                   "messageDetail": Object {
@@ -204,6 +207,18 @@ ShallowWrapper {
                 }
               }
               newMessageStatus="sent"
+              setViewMessageDetail={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      Object {
+                        "status": "sent",
+                      },
+                    ],
+                  ],
+                }
+              }
+              successModal={true}
             />,
             Array [],
           ],
@@ -231,13 +246,7 @@ ShallowWrapper {
               "content": Object {
                 "sentPageTitle": "sentPageTitle",
               },
-              "dispatch": [MockFunction] {
-                "calls": Array [
-                  Array [
-                    [Function],
-                  ],
-                ],
-              },
+              "hasAttachment": undefined,
               "location": Object {
                 "messageDetail": Object {
                   "status": "sent",
@@ -253,6 +262,16 @@ ShallowWrapper {
                 "successModal": false,
               },
               "newMessageStatus": "sent",
+              "setViewMessageDetail": [MockFunction] {
+                "calls": Array [
+                  Array [
+                    Object {
+                      "status": "sent",
+                    },
+                  ],
+                ],
+              },
+              "successModal": true,
             },
             "ref": null,
             "rendered": null,
@@ -286,15 +305,7 @@ ShallowWrapper {
                   "sentPageTitle": "sentPageTitle",
                 }
               }
-              dispatch={
-                [MockFunction] {
-                  "calls": Array [
-                    Array [
-                      [Function],
-                    ],
-                  ],
-                }
-              }
+              hasAttachment={undefined}
               location={
                 Object {
                   "messageDetail": Object {
@@ -316,6 +327,18 @@ ShallowWrapper {
                 }
               }
               newMessageStatus="sent"
+              setViewMessageDetail={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      Object {
+                        "status": "sent",
+                      },
+                    ],
+                  ],
+                }
+              }
+              successModal={true}
             />
           </Card>
         </Row>,
@@ -341,15 +364,7 @@ ShallowWrapper {
                   "sentPageTitle": "sentPageTitle",
                 }
               }
-              dispatch={
-                [MockFunction] {
-                  "calls": Array [
-                    Array [
-                      [Function],
-                    ],
-                  ],
-                }
-              }
+              hasAttachment={undefined}
               location={
                 Object {
                   "messageDetail": Object {
@@ -371,6 +386,18 @@ ShallowWrapper {
                 }
               }
               newMessageStatus="sent"
+              setViewMessageDetail={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      Object {
+                        "status": "sent",
+                      },
+                    ],
+                  ],
+                }
+              }
+              successModal={true}
             />
           </Card>,
         },
@@ -393,15 +420,7 @@ ShallowWrapper {
                     "sentPageTitle": "sentPageTitle",
                   }
                 }
-                dispatch={
-                  [MockFunction] {
-                    "calls": Array [
-                      Array [
-                        [Function],
-                      ],
-                    ],
-                  }
-                }
+                hasAttachment={undefined}
                 location={
                   Object {
                     "messageDetail": Object {
@@ -423,6 +442,18 @@ ShallowWrapper {
                   }
                 }
                 newMessageStatus="sent"
+                setViewMessageDetail={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        Object {
+                          "status": "sent",
+                        },
+                      ],
+                    ],
+                  }
+                }
+                successModal={true}
               />,
               Array [],
             ],
@@ -450,13 +481,7 @@ ShallowWrapper {
                 "content": Object {
                   "sentPageTitle": "sentPageTitle",
                 },
-                "dispatch": [MockFunction] {
-                  "calls": Array [
-                    Array [
-                      [Function],
-                    ],
-                  ],
-                },
+                "hasAttachment": undefined,
                 "location": Object {
                   "messageDetail": Object {
                     "status": "sent",
@@ -472,6 +497,16 @@ ShallowWrapper {
                   "successModal": false,
                 },
                 "newMessageStatus": "sent",
+                "setViewMessageDetail": [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      Object {
+                        "status": "sent",
+                      },
+                    ],
+                  ],
+                },
+                "successModal": true,
               },
               "ref": null,
               "rendered": null,
@@ -515,15 +550,7 @@ ShallowWrapper {
         "back": "Back",
       }
     }
-    dispatch={
-      [MockFunction] {
-        "calls": Array [
-          Array [
-            [Function],
-          ],
-        ],
-      }
-    }
+    dispatch={[MockFunction]}
     location={
       Object {
         "messageDetail": Object {
@@ -542,6 +569,17 @@ ShallowWrapper {
       Object {
         "fetching": false,
         "successModal": false,
+      }
+    }
+    setViewMessageDetail={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "status": "NEW",
+            },
+          ],
+        ],
       }
     }
   />,
@@ -572,15 +610,8 @@ ShallowWrapper {
                 "back": "Back",
               }
             }
-            dispatch={
-              [MockFunction] {
-                "calls": Array [
-                  Array [
-                    [Function],
-                  ],
-                ],
-              }
-            }
+            dispatch={[MockFunction]}
+            hasAttachment={undefined}
             location={
               Object {
                 "messageDetail": Object {
@@ -602,6 +633,17 @@ ShallowWrapper {
               }
             }
             newMessageStatus="READ"
+            setViewMessageDetail={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    Object {
+                      "status": "NEW",
+                    },
+                  ],
+                ],
+              }
+            }
           />
         </Card>
       </Row>,
@@ -627,15 +669,8 @@ ShallowWrapper {
                 "back": "Back",
               }
             }
-            dispatch={
-              [MockFunction] {
-                "calls": Array [
-                  Array [
-                    [Function],
-                  ],
-                ],
-              }
-            }
+            dispatch={[MockFunction]}
+            hasAttachment={undefined}
             location={
               Object {
                 "messageDetail": Object {
@@ -657,6 +692,17 @@ ShallowWrapper {
               }
             }
             newMessageStatus="READ"
+            setViewMessageDetail={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    Object {
+                      "status": "NEW",
+                    },
+                  ],
+                ],
+              }
+            }
           />
         </Card>,
       },
@@ -679,15 +725,8 @@ ShallowWrapper {
                   "back": "Back",
                 }
               }
-              dispatch={
-                [MockFunction] {
-                  "calls": Array [
-                    Array [
-                      [Function],
-                    ],
-                  ],
-                }
-              }
+              dispatch={[MockFunction]}
+              hasAttachment={undefined}
               location={
                 Object {
                   "messageDetail": Object {
@@ -709,6 +748,17 @@ ShallowWrapper {
                 }
               }
               newMessageStatus="READ"
+              setViewMessageDetail={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      Object {
+                        "status": "NEW",
+                      },
+                    ],
+                  ],
+                }
+              }
             />,
             Array [],
           ],
@@ -736,13 +786,8 @@ ShallowWrapper {
               "content": Object {
                 "back": "Back",
               },
-              "dispatch": [MockFunction] {
-                "calls": Array [
-                  Array [
-                    [Function],
-                  ],
-                ],
-              },
+              "dispatch": [MockFunction],
+              "hasAttachment": undefined,
               "location": Object {
                 "messageDetail": Object {
                   "status": "NEW",
@@ -758,6 +803,15 @@ ShallowWrapper {
                 "successModal": false,
               },
               "newMessageStatus": "READ",
+              "setViewMessageDetail": [MockFunction] {
+                "calls": Array [
+                  Array [
+                    Object {
+                      "status": "NEW",
+                    },
+                  ],
+                ],
+              },
             },
             "ref": null,
             "rendered": null,
@@ -791,15 +845,8 @@ ShallowWrapper {
                   "back": "Back",
                 }
               }
-              dispatch={
-                [MockFunction] {
-                  "calls": Array [
-                    Array [
-                      [Function],
-                    ],
-                  ],
-                }
-              }
+              dispatch={[MockFunction]}
+              hasAttachment={undefined}
               location={
                 Object {
                   "messageDetail": Object {
@@ -821,6 +868,17 @@ ShallowWrapper {
                 }
               }
               newMessageStatus="READ"
+              setViewMessageDetail={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      Object {
+                        "status": "NEW",
+                      },
+                    ],
+                  ],
+                }
+              }
             />
           </Card>
         </Row>,
@@ -846,15 +904,8 @@ ShallowWrapper {
                   "back": "Back",
                 }
               }
-              dispatch={
-                [MockFunction] {
-                  "calls": Array [
-                    Array [
-                      [Function],
-                    ],
-                  ],
-                }
-              }
+              dispatch={[MockFunction]}
+              hasAttachment={undefined}
               location={
                 Object {
                   "messageDetail": Object {
@@ -876,6 +927,17 @@ ShallowWrapper {
                 }
               }
               newMessageStatus="READ"
+              setViewMessageDetail={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      Object {
+                        "status": "NEW",
+                      },
+                    ],
+                  ],
+                }
+              }
             />
           </Card>,
         },
@@ -898,15 +960,8 @@ ShallowWrapper {
                     "back": "Back",
                   }
                 }
-                dispatch={
-                  [MockFunction] {
-                    "calls": Array [
-                      Array [
-                        [Function],
-                      ],
-                    ],
-                  }
-                }
+                dispatch={[MockFunction]}
+                hasAttachment={undefined}
                 location={
                   Object {
                     "messageDetail": Object {
@@ -928,6 +983,17 @@ ShallowWrapper {
                   }
                 }
                 newMessageStatus="READ"
+                setViewMessageDetail={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        Object {
+                          "status": "NEW",
+                        },
+                      ],
+                    ],
+                  }
+                }
               />,
               Array [],
             ],
@@ -955,13 +1021,8 @@ ShallowWrapper {
                 "content": Object {
                   "back": "Back",
                 },
-                "dispatch": [MockFunction] {
-                  "calls": Array [
-                    Array [
-                      [Function],
-                    ],
-                  ],
-                },
+                "dispatch": [MockFunction],
+                "hasAttachment": undefined,
                 "location": Object {
                   "messageDetail": Object {
                     "status": "NEW",
@@ -977,6 +1038,15 @@ ShallowWrapper {
                   "successModal": false,
                 },
                 "newMessageStatus": "READ",
+                "setViewMessageDetail": [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      Object {
+                        "status": "NEW",
+                      },
+                    ],
+                  ],
+                },
               },
               "ref": null,
               "rendered": null,
