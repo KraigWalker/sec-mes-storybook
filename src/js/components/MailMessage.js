@@ -1,40 +1,35 @@
 import React from "react";
 import { Button } from "web-ui-components/lib/atoms/buttons";
 import { Mail } from "web-ui-components/lib/communication/messaging";
-import { Link } from 'react-router-dom';
 import { ButtonGroup } from 'web-ui-components/lib/molecules/buttons';
 import withMessaging from "./common/WithMessaging";
 import {ARCHIVED} from '../constants/StringsConstants';
 
-export const Attachments = ({ session, client, document }) => (
-  <div>
-    <h4>Attachments</h4>
-    <ul>
-      <li>
-        <Link
-          target="_blank"
-          to={{
-            pathname: `/my-documents/${session.brand}/${
-              document.id
-            }#access_token=${session.access_token}&bank_id=${
-              session.bank_id
-            }&client_context=${client.client.app_title}&user_tracking_id=${
-              client.client.user_tracking_id
-            }&brandId=${session.bank_id}&state=${session.state}`
-          }}
-        >
-          {document.label}
-        </Link>
-      </li>
-    </ul>
-  </div>
+const Attachments = ({ document, onClick }) => (
+	<div className="c-message--attachments">
+		<h4>Attachments</h4>
+		<ul>
+			<li>
+				<a href="#" onClick={onClick}>{document.label}</a>
+			</li>
+		</ul>
+	</div>
 );
+
+const handleAttachmentClick = ({isWebView, session, message, client, getDocumentByIdNative}) => {
+  if (!isWebView) {
+    window.open(`/my-documents/${session.brand}/${message.document.id}#access_token=${session.access_token}&bank_id=${session.bank_id}&client_context=${
+      client.client.app_title
+      }&user_tracking_id=${client.client.user_tracking_id}&brandId=${session.bank_id}&state=${session.state}`);
+    }
+  else {
+    getDocumentByIdNative(message.document.id, message.document.fileSize);
+  }
+}
 
 const MailMessage = props => {
   const {
     hasAttachment,
-    session,
-    client,
     content,
     history,
 	message,
@@ -84,9 +79,7 @@ const MailMessage = props => {
       </Mail.Header>
       <Mail.Body>
         <p>{message.message}</p>
-        {hasAttachment && (
-          <Attachments session={session} document={message.document} client={client} />
-        )}
+        { hasAttachment && <Attachments document={message.document} onClick={() => handleAttachmentClick(props)}/> }
         <ButtonGroup>
           <Button display="secondary" width="narrow" onClick={history.goBack}>
             {content.back}

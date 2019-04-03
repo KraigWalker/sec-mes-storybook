@@ -5,7 +5,7 @@ import svg4everybody from "svg4everybody";
 import AppRouter from './router/AppRouter';
 import createStore from './stores/AppStore';
 import ConfigUtils from './utils/ConfigUtils';
-import { getTheme, WebUIThemeProvider } from "web-ui-components/lib/utilities/themes";
+import { WebUIThemeProvider } from "web-ui-components/lib/utilities/themes";
 import { buildClientContext } from './utils/ContextUtils';
 
 svg4everybody();
@@ -52,6 +52,11 @@ const session = {
 const clientContext = buildClientContext(decodeURIComponent(hash.client_context), hash.user_tracking_id, hash.state);
 
 const { brandId, isDocumentLibraryEnabled } = hash;
+const normalisedBrandId = {
+  CB: "CB",
+  YB: "YB",
+  DYB: "B"
+}[brandId];
 
 const startApp = () => {
   const store = createStore(session, clientContext, ConfigUtils.config)

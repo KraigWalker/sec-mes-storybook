@@ -1,8 +1,8 @@
 import React from 'react';
-import { compose } from 'redux';
-import { withRouter, Link } from 'react-router-dom';
-import { TabCardBlock, TabCard } from "web-ui-components/lib/navigation/tab-cards";
-import { utils } from "document-management-web-ui";
+import {compose} from 'redux';
+import {withRouter, Link} from 'react-router-dom';
+import {TabCardBlock, TabCard} from "web-ui-components/lib/navigation/tab-cards";
+import {utils} from "document-management-web-ui";
 
 export class Main extends React.Component {
 	constructor(props) {
@@ -40,7 +40,8 @@ export class Main extends React.Component {
 		);
 	}
 }
+
 export default compose(
-	withRouter,
-	utils.withNativeBridge(window)
+    withRouter,
+    utils.withNativeBridge(window)
 )(Main);

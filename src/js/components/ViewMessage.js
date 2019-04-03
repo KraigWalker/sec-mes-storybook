@@ -1,6 +1,6 @@
 import React from "react";
 import {compose} from "redux";
-import {utils} from "document-management-web-ui";
+import { utils, actions as documentActions } from "document-management-web-ui";
 
 import _ from "lodash";
 import {connect} from "react-redux";
@@ -28,20 +28,16 @@ export class ViewMessage extends React.Component {
         const {messageDetail} = this.props.location;
         const {isWebView, setMessagesMetaData, messages, dispatch} = this.props;
 
-        messageDetail &&
-        dispatch(
-            setViewMessageDetail(messageDetail)
-        ); // to set current viewing message
+        messageDetail && this.props.setViewMessageDetail(messageDetail)
+
         // Below is to update New message to Read message status.
         if (messageDetail && messageDetail.status === 'NEW') {
             if (!messages.mode === READ_ONLY) {
-                dispatch(
-                    updateMessageData(
+                this.props.updateMessageData(
                         messageDetail,
                         messageDetail.id,
                         'READ'
-                    )
-                );
+                    );
             }
             if (isWebView) {
                 const unreadMessageCount = messages.messages.filter(message => message.status === "NEW").length
@@ -53,7 +49,6 @@ export class ViewMessage extends React.Component {
 
     getThreads(messages, currentMessage) {
         const threads = getThreadsBL(messages, currentMessage);
-        //TODO: use something unique other than index
         return _.map(threads, (thread, index) => {
             return (
                 <SubordinatePanel key={index}>
@@ -104,8 +99,15 @@ const mapState = state => ({
     hasAttachment: state.viewMessage.messageDetail.document && state.viewMessage.messageDetail.document.id !== undefined,
 });
 
+const mapDispatchToProps = {
+    getDocumentByIdNative: documentActions.getDocumentByIdNative,
+    updateMessageData,
+    setViewMessageDetail
+
+}
+
 export default compose(
-    connect(mapState),
+    connect(mapState, mapDispatchToProps),
     withRouter,
     utils.withNativeBridge(window)
 )(ViewMessage);

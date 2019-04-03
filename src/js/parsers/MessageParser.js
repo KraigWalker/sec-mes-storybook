@@ -14,18 +14,22 @@ export function parseMessages(response) {
         const messageEntity = new MessageEntity();
         messageEntity.setId(message.id);
         messageEntity.setDateCreated(message.date_created);
-        // messageEntity.setAccount(message.account); // Account Entity to be hooked 
         messageEntity.setThreadId(message.thread_id);
         messageEntity.setReference(message.reference);
         messageEntity.setStatus(message.status);
         messageEntity.setSubject(message.subject);
         messageEntity.setAccount(message.account);
         messageEntity.setMessageBody(message.payload.body.data);
-        messageEntity.setDocumentData({
-            id: message.document_id,
-            label: message.document_display_label
-        });
-        messageEntity.setNoReply(message.noreply)
+
+        if (message.document)
+        {
+            messageEntity.setDocumentData({
+                id: message.document.id,
+                label: message.document.display_label,
+                fileSize: message.document.file_size
+            });
+        }
+        messageEntity.setNoReply(message.noReply)
         messages.push(messageEntity);
     });
     return messages;
