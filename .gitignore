@@ -3,5 +3,6 @@ npm-debug.log
 package-lock.json
 .DS_Store
 src/compiled/
+src/js/components/.DS_Store
 coverage/
 /lib

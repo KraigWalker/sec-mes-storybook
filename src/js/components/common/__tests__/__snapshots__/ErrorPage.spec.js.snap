@@ -32,133 +32,30 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "function",
     "props": Object {
-      "children": <Row>
-        <Card
-          bordered={false}
-        >
-          <TextBody>
-            <BackButton
-              disabled={false}
-              label="Back to accounts"
-              onClick={[Function]}
-            />
-          </TextBody>
-          <TextBody>
-            <Title
-              size="h1"
-            />
-          </TextBody>
-          <TextBody>
-            <Title
-              size="h2"
-            />
-          </TextBody>
-          <TextBody />
-          <TextBody />
-          <ButtonGroup
-            alignment="left"
+      "children": <Container>
+        <Row>
+          <Card
+            bordered={false}
           >
-            <Button
-              disabled={false}
-              display="secondary"
-              isLoading={false}
-              onClick={[Function]}
-              size="md"
-            >
-              Back
-            </Button>
-            <Button
-              disabled={false}
-              display="primary"
-              isLoading={false}
-              onClick={[Function]}
-              size="md"
-            >
-              Retry
-            </Button>
-          </ButtonGroup>
-        </Card>
-      </Row>,
-    },
-    "ref": null,
-    "rendered": Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "function",
-      "props": Object {
-        "children": <Card
-          bordered={false}
-        >
-          <TextBody>
-            <BackButton
-              disabled={false}
-              label="Back to accounts"
-              onClick={[Function]}
-            />
-          </TextBody>
-          <TextBody>
-            <Title
-              size="h1"
-            />
-          </TextBody>
-          <TextBody>
-            <Title
-              size="h2"
-            />
-          </TextBody>
-          <TextBody />
-          <TextBody />
-          <ButtonGroup
-            alignment="left"
-          >
-            <Button
-              disabled={false}
-              display="secondary"
-              isLoading={false}
-              onClick={[Function]}
-              size="md"
-            >
-              Back
-            </Button>
-            <Button
-              disabled={false}
-              display="primary"
-              isLoading={false}
-              onClick={[Function]}
-              size="md"
-            >
-              Retry
-            </Button>
-          </ButtonGroup>
-        </Card>,
-      },
-      "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "function",
-        "props": Object {
-          "bordered": false,
-          "children": Array [
             <TextBody>
               <BackButton
                 disabled={false}
                 label="Back to accounts"
                 onClick={[Function]}
               />
-            </TextBody>,
+            </TextBody>
             <TextBody>
               <Title
                 size="h1"
               />
-            </TextBody>,
+            </TextBody>
             <TextBody>
               <Title
                 size="h2"
               />
-            </TextBody>,
-            <TextBody />,
-            <TextBody />,
+            </TextBody>
+            <TextBody />
+            <TextBody />
             <ButtonGroup
               alignment="left"
             >
@@ -180,181 +77,15 @@ ShallowWrapper {
               >
                 Retry
               </Button>
-            </ButtonGroup>,
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "children": <BackButton
-                disabled={false}
-                label="Back to accounts"
-                onClick={[Function]}
-              />,
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "disabled": false,
-                "label": "Back to accounts",
-                "onClick": [Function],
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "children": <Title
-                size="h1"
-              />,
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "children": undefined,
-                "size": "h1",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "children": <Title
-                size="h2"
-              />,
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "children": undefined,
-                "size": "h2",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "children": undefined,
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "children": undefined,
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "alignment": "left",
-              "children": Array [
-                <Button
-                  disabled={false}
-                  display="secondary"
-                  isLoading={false}
-                  onClick={[Function]}
-                  size="md"
-                >
-                  Back
-                </Button>,
-                <Button
-                  disabled={false}
-                  display="primary"
-                  isLoading={false}
-                  onClick={[Function]}
-                  size="md"
-                >
-                  Retry
-                </Button>,
-              ],
-            },
-            "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "function",
-                "props": Object {
-                  "children": "Back",
-                  "disabled": false,
-                  "display": "secondary",
-                  "isLoading": false,
-                  "onClick": [Function],
-                  "size": "md",
-                },
-                "ref": null,
-                "rendered": "Back",
-                "type": [Function],
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "function",
-                "props": Object {
-                  "children": "Retry",
-                  "disabled": false,
-                  "display": "primary",
-                  "isLoading": false,
-                  "onClick": [Function],
-                  "size": "md",
-                },
-                "ref": null,
-                "rendered": "Retry",
-                "type": [Function],
-              },
-            ],
-            "type": [Function],
-          },
-        ],
-        "type": [Function],
-      },
-      "type": [Function],
+            </ButtonGroup>
+          </Card>
+        </Row>
+      </Container>,
+      "show": false,
+      "title": "loading..",
     },
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
+    "ref": null,
+    "rendered": Object {
       "instance": null,
       "key": undefined,
       "nodeType": "function",
@@ -674,6 +405,395 @@ ShallowWrapper {
               "type": [Function],
             },
           ],
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      "type": [Function],
+    },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": <Container>
+          <Row>
+            <Card
+              bordered={false}
+            >
+              <TextBody>
+                <BackButton
+                  disabled={false}
+                  label="Back to accounts"
+                  onClick={[Function]}
+                />
+              </TextBody>
+              <TextBody>
+                <Title
+                  size="h1"
+                />
+              </TextBody>
+              <TextBody>
+                <Title
+                  size="h2"
+                />
+              </TextBody>
+              <TextBody />
+              <TextBody />
+              <ButtonGroup
+                alignment="left"
+              >
+                <Button
+                  disabled={false}
+                  display="secondary"
+                  isLoading={false}
+                  onClick={[Function]}
+                  size="md"
+                >
+                  Back
+                </Button>
+                <Button
+                  disabled={false}
+                  display="primary"
+                  isLoading={false}
+                  onClick={[Function]}
+                  size="md"
+                >
+                  Retry
+                </Button>
+              </ButtonGroup>
+            </Card>
+          </Row>
+        </Container>,
+        "show": false,
+        "title": "loading..",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": <Row>
+            <Card
+              bordered={false}
+            >
+              <TextBody>
+                <BackButton
+                  disabled={false}
+                  label="Back to accounts"
+                  onClick={[Function]}
+                />
+              </TextBody>
+              <TextBody>
+                <Title
+                  size="h1"
+                />
+              </TextBody>
+              <TextBody>
+                <Title
+                  size="h2"
+                />
+              </TextBody>
+              <TextBody />
+              <TextBody />
+              <ButtonGroup
+                alignment="left"
+              >
+                <Button
+                  disabled={false}
+                  display="secondary"
+                  isLoading={false}
+                  onClick={[Function]}
+                  size="md"
+                >
+                  Back
+                </Button>
+                <Button
+                  disabled={false}
+                  display="primary"
+                  isLoading={false}
+                  onClick={[Function]}
+                  size="md"
+                >
+                  Retry
+                </Button>
+              </ButtonGroup>
+            </Card>
+          </Row>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": <Card
+              bordered={false}
+            >
+              <TextBody>
+                <BackButton
+                  disabled={false}
+                  label="Back to accounts"
+                  onClick={[Function]}
+                />
+              </TextBody>
+              <TextBody>
+                <Title
+                  size="h1"
+                />
+              </TextBody>
+              <TextBody>
+                <Title
+                  size="h2"
+                />
+              </TextBody>
+              <TextBody />
+              <TextBody />
+              <ButtonGroup
+                alignment="left"
+              >
+                <Button
+                  disabled={false}
+                  display="secondary"
+                  isLoading={false}
+                  onClick={[Function]}
+                  size="md"
+                >
+                  Back
+                </Button>
+                <Button
+                  disabled={false}
+                  display="primary"
+                  isLoading={false}
+                  onClick={[Function]}
+                  size="md"
+                >
+                  Retry
+                </Button>
+              </ButtonGroup>
+            </Card>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "bordered": false,
+              "children": Array [
+                <TextBody>
+                  <BackButton
+                    disabled={false}
+                    label="Back to accounts"
+                    onClick={[Function]}
+                  />
+                </TextBody>,
+                <TextBody>
+                  <Title
+                    size="h1"
+                  />
+                </TextBody>,
+                <TextBody>
+                  <Title
+                    size="h2"
+                  />
+                </TextBody>,
+                <TextBody />,
+                <TextBody />,
+                <ButtonGroup
+                  alignment="left"
+                >
+                  <Button
+                    disabled={false}
+                    display="secondary"
+                    isLoading={false}
+                    onClick={[Function]}
+                    size="md"
+                  >
+                    Back
+                  </Button>
+                  <Button
+                    disabled={false}
+                    display="primary"
+                    isLoading={false}
+                    onClick={[Function]}
+                    size="md"
+                  >
+                    Retry
+                  </Button>
+                </ButtonGroup>,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": <BackButton
+                    disabled={false}
+                    label="Back to accounts"
+                    onClick={[Function]}
+                  />,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "disabled": false,
+                    "label": "Back to accounts",
+                    "onClick": [Function],
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": <Title
+                    size="h1"
+                  />,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "children": undefined,
+                    "size": "h1",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": <Title
+                    size="h2"
+                  />,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "children": undefined,
+                    "size": "h2",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": undefined,
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": undefined,
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "alignment": "left",
+                  "children": Array [
+                    <Button
+                      disabled={false}
+                      display="secondary"
+                      isLoading={false}
+                      onClick={[Function]}
+                      size="md"
+                    >
+                      Back
+                    </Button>,
+                    <Button
+                      disabled={false}
+                      display="primary"
+                      isLoading={false}
+                      onClick={[Function]}
+                      size="md"
+                    >
+                      Retry
+                    </Button>,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "function",
+                    "props": Object {
+                      "children": "Back",
+                      "disabled": false,
+                      "display": "secondary",
+                      "isLoading": false,
+                      "onClick": [Function],
+                      "size": "md",
+                    },
+                    "ref": null,
+                    "rendered": "Back",
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "function",
+                    "props": Object {
+                      "children": "Retry",
+                      "disabled": false,
+                      "display": "primary",
+                      "isLoading": false,
+                      "onClick": [Function],
+                      "size": "md",
+                    },
+                    "ref": null,
+                    "rendered": "Retry",
+                    "type": [Function],
+                  },
+                ],
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
           "type": [Function],
         },
         "type": [Function],

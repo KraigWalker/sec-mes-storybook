@@ -41,7 +41,14 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "function",
     "props": Object {
-      "children": <TextBody />,
+      "children": <LoadingLocalTakeover
+        show={true}
+        title="loading.."
+        xs={24}
+      >
+        <TextBody />
+      </LoadingLocalTakeover>,
+      "className": "u-padding-left-0",
       "xs": 24,
     },
     "ref": null,
@@ -50,28 +57,9 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "function",
       "props": Object {
-        "children": Array [
-          Array [],
-          false,
-          false,
-        ],
-      },
-      "ref": null,
-      "rendered": Array [
-        false,
-        false,
-      ],
-      "type": [Function],
-    },
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "function",
-      "props": Object {
         "children": <TextBody />,
+        "show": true,
+        "title": "loading..",
         "xs": 24,
       },
       "ref": null,
@@ -91,6 +79,58 @@ ShallowWrapper {
           false,
           false,
         ],
+        "type": [Function],
+      },
+      "type": [Function],
+    },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": <LoadingLocalTakeover
+          show={true}
+          title="loading.."
+          xs={24}
+        >
+          <TextBody />
+        </LoadingLocalTakeover>,
+        "className": "u-padding-left-0",
+        "xs": 24,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": <TextBody />,
+          "show": true,
+          "title": "loading..",
+          "xs": 24,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": Array [
+              Array [],
+              false,
+              false,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            false,
+            false,
+          ],
+          "type": [Function],
+        },
         "type": [Function],
       },
       "type": [Function],
@@ -163,14 +203,19 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "function",
     "props": Object {
-      "children": <TextBody>
-        <Row>
+      "children": <LoadingLocalTakeover
+        show={false}
+        title="loading.."
+        xs={24}
+      >
+        <TextBody>
           <TextStyled
             className="u-padding-top-2"
             size="uist"
           />
-        </Row>
-      </TextBody>,
+        </TextBody>
+      </LoadingLocalTakeover>,
+      "className": "u-padding-left-0",
       "xs": 24,
     },
     "ref": null,
@@ -179,32 +224,35 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "function",
       "props": Object {
-        "children": Array [
-          Array [],
-          false,
-          <Row>
+        "children": <TextBody>
+          <TextStyled
+            className="u-padding-top-2"
+            size="uist"
+          />
+        </TextBody>,
+        "show": false,
+        "title": "loading..",
+        "xs": 24,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": Array [
+            Array [],
+            false,
             <TextStyled
               className="u-padding-top-2"
               size="uist"
-            />
-          </Row>,
-        ],
-      },
-      "ref": null,
-      "rendered": Array [
-        false,
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "function",
-          "props": Object {
-            "children": <TextStyled
-              className="u-padding-top-2"
-              size="uist"
             />,
-          },
-          "ref": null,
-          "rendered": Object {
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          false,
+          Object {
             "instance": null,
             "key": undefined,
             "nodeType": "function",
@@ -217,9 +265,9 @@ ShallowWrapper {
             "rendered": null,
             "type": [Function],
           },
-          "type": [Function],
-        },
-      ],
+        ],
+        "type": [Function],
+      },
       "type": [Function],
     },
     "type": [Function],
@@ -230,14 +278,19 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "function",
       "props": Object {
-        "children": <TextBody>
-          <Row>
+        "children": <LoadingLocalTakeover
+          show={false}
+          title="loading.."
+          xs={24}
+        >
+          <TextBody>
             <TextStyled
               className="u-padding-top-2"
               size="uist"
             />
-          </Row>
-        </TextBody>,
+          </TextBody>
+        </LoadingLocalTakeover>,
+        "className": "u-padding-left-0",
         "xs": 24,
       },
       "ref": null,
@@ -246,32 +299,35 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "children": Array [
-            Array [],
-            false,
-            <Row>
+          "children": <TextBody>
+            <TextStyled
+              className="u-padding-top-2"
+              size="uist"
+            />
+          </TextBody>,
+          "show": false,
+          "title": "loading..",
+          "xs": 24,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": Array [
+              Array [],
+              false,
               <TextStyled
                 className="u-padding-top-2"
                 size="uist"
-              />
-            </Row>,
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          false,
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "children": <TextStyled
-                className="u-padding-top-2"
-                size="uist"
               />,
-            },
-            "ref": null,
-            "rendered": Object {
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            false,
+            Object {
               "instance": null,
               "key": undefined,
               "nodeType": "function",
@@ -284,9 +340,9 @@ ShallowWrapper {
               "rendered": null,
               "type": [Function],
             },
-            "type": [Function],
-          },
-        ],
+          ],
+          "type": [Function],
+        },
         "type": [Function],
       },
       "type": [Function],

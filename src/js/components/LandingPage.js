@@ -36,7 +36,7 @@ export class LandingPage extends React.PureComponent {
         return SecureMessageBL(messages);
     }
 
-    checkError() {
+    render() {
         const {isWebView, readOnly, content} = this.props;
         if (this.props.messages.error && this.props.messages.fetched) {
             this.props.history.push({pathname: '/errormessage', content});
@@ -71,10 +71,6 @@ export class LandingPage extends React.PureComponent {
                 </Container>
             );
         }
-    }
-
-    render() {
-        return this.checkError();
     }
 }
 

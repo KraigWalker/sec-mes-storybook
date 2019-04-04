@@ -2,7 +2,7 @@ import { Switch, BrowserRouter, Route, Redirect, withRouter } from 'react-router
 import React from 'react';
 import LandingPage from '../components/LandingPage';
 import Main from '../components/Main';
-import NewSecureMessageNew from '../components/NewSecureMessage';
+import NewSecureMessage from '../components/NewSecureMessage';
 import ViewMessage from '../components/ViewMessage';
 import ReplySecuremessageNew from '../components/ReplySecureMessage';
 import { withSubscription } from '../components/wrappers/GenericWrapper';
@@ -37,7 +37,7 @@ const RoutesWithLayout = (props) => (
         <RouteWithLayout
             exact
             path={`/securemessages/new`}
-            Component={NewSecureMessageNew}
+            Component={NewSecureMessage}
             content={props.content}
             isDocumentLibraryEnabled={props.isDocumentLibraryEnabled}
             session={props.session} 

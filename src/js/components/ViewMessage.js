@@ -78,8 +78,6 @@ export class ViewMessage extends React.Component {
         const hasAttachment = getHasAttachment(messageDetail);
 
         const {readOnly, content} = this.props;
-        //DEBT: Before getting here status may still be NEW after user has clicked on email in summary
-        //Status should be READ in this instance. We may need to change where/when status is updated...
         const messageStatus = (messageDetail.status === NEW && readOnly !== true)
             ? READ
             : messageDetail.status;

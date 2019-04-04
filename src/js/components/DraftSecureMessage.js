@@ -20,7 +20,6 @@ class DraftSecureMessage extends React.Component {
         this.send = this.send.bind(this);
         this.save = this.save.bind(this);
     }
-    onMount() { }
 
     sendMessageData(messageEntity, status) {
         const { accounts, location} = this.props;
@@ -46,7 +45,7 @@ class DraftSecureMessage extends React.Component {
         return <SecureMessageForm {...this.props} 
             onSend={this.send} 
             onSave={this.save} 
-            onMount={this.onMount} 
+            onMount={() => {}} 
             title={content.draftMessageTitle}
             selectedSubject={messageDetail.subject}
             selectedAccount={messageDetail.account}

@@ -6,7 +6,7 @@ import {Mail} from 'web-ui-components/lib/communication/messaging';
 
 export const SecureMessageSummary = (props) => {
 
-    const viewClicked = () => {
+    const handleMailClick = () => {
         const {message, threadFlag} = props;
         if (threadFlag) {
             return;
@@ -41,7 +41,7 @@ export const SecureMessageSummary = (props) => {
                 deleteOnClick={props.showDelete ? deleteClick : null}
                 moveToInboxOnClick={props.showUnarchive ? unarchiveClick : null}
                 isArchived={message.status === ARCHIVED}
-                mailOnClick={viewClicked}
+                mailOnClick={handleMailClick}
             />
         </Mail.List>
     );

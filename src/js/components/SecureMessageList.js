@@ -7,7 +7,7 @@ import { SENT, DRAFT, ARCHIVED, INBOX } from '../constants/StringsConstants';
 import { Button } from 'web-ui-components/lib/atoms/buttons';
 import { Row, Column } from "web-ui-components/lib/global/layout";
 import { TextBody } from "web-ui-components/lib/atoms/text";
-import { Loader } from 'web-ui-components/lib/organisms/modals';
+import { LoadingLocalTakeover } from 'web-ui-components/lib/organisms/takeovers';
 import { TextStyled } from 'web-ui-components/lib/atoms/text';
 
 const MESSAGE_LIMIT = 20;
@@ -48,9 +48,7 @@ export class SecureMessageList extends React.Component {
 		const listFlag = true;
 		_.map(msgs, (message, index) => {
 			allMessages.push(
-				<Row key={index}>
-					<SecureMessageSummary message={message} listFlag={listFlag} content={content} />
-				</Row>
+				<SecureMessageSummary key={index} message={message} listFlag={listFlag} content={content} />
 			);
 		});
 		return allMessages;
@@ -75,18 +73,18 @@ export class SecureMessageList extends React.Component {
 		} else if (activeTab === DRAFT) {
 			thatsallText = content.thatsallTextDraft;
 		}
-		return (<Row>
-					<TextStyled size="uist" className="u-padding-top-2">
-					{thatsallText}
-					</TextStyled>
-				</Row>);
+		return (
+				<TextStyled size="uist" className="u-padding-top-2">
+				{thatsallText}
+				</TextStyled>
+				);
 	}
 
-	renderNoMessagesText() {
+	renderNoMessagesText(isLoading) {
 		const { content } = this.props;
 		return (
-			<TextBody className="u-padding-top-2">
-				{content.noMessages}
+			<TextBody className="u-padding-top-10 u-text-align-center">
+				{isLoading ? "loading" : content.noMessages}
 			</TextBody>
 		);
 	}
@@ -114,18 +112,24 @@ export class SecureMessageList extends React.Component {
 	render() {
 		const { messagesFetched, messages, content } = this.props;
 		return (
-			messagesFetched.fetching && !messagesFetched.successModal ? 
-			<Loader isOpen={true} /> :
-				<Column xs={24}>
-					<TextBody>
-						{messages.length === 0 
-							? this.renderNoMessagesText()
-							: this.showMessages()}
-						{this.state.showMoreLimit < messages.length 
-							&& <Button display="primary" onClick={this.showMoreClicked}>{content.showMore}</Button>}
-						{this.state.showThatsAllMessage && this.renderThatsAllText()}
-					</TextBody>
-				</Column>
+			<Column xs={24} className="u-padding-left-0">
+			
+				<LoadingLocalTakeover xs={24}
+					show={messagesFetched.fetching} 
+					title="loading..">
+						<TextBody>
+							{messages.length === 0 
+								? this.renderNoMessagesText(messagesFetched.fetching)
+								: this.showMessages()}
+							{this.state.showMoreLimit < messages.length 
+								&& <Button display="primary" onClick={this.showMoreClicked}>{content.showMore}</Button>}
+							{this.state.showThatsAllMessage && this.renderThatsAllText()}
+						</TextBody> 
+				
+				</LoadingLocalTakeover>
+			
+			</Column>
+
 		);
 	}
 }

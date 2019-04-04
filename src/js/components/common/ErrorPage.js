@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchSecureMessages, getAccounts } from '../../actions/AppActions';
-import { Loader } from 'web-ui-components/lib/organisms/modals';
+import { LoadingLocalTakeover } from 'web-ui-components/lib/organisms/takeovers';
 import { Container, Row } from "web-ui-components/lib/global/layout";
 import { Card } from "web-ui-components/lib/organisms/cards";
 import { BackButton } from 'web-ui-components/lib/molecules/navigation';
@@ -30,9 +30,8 @@ export class ErrorPage extends React.Component {
         const { messages} = this.props;
         const { content } = this.props.location;
 
-        return (messages.fetching 
-            ? <Loader isOpen={true} />
-            : <Container>
+        return (<LoadingLocalTakeover show={messages.fetching} title="loading.." >
+            <Container>
                 <Row>
                     <Card>
                         <TextBody>
@@ -52,7 +51,8 @@ export class ErrorPage extends React.Component {
                         </ButtonGroup>
                     </Card>
                 </Row>
-        </Container>);
+            </Container>
+        </LoadingLocalTakeover>);
     }
 }
 const mapState = (state) => {
