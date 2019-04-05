@@ -8,10 +8,6 @@ const loadStyles = (brandId) => {
     element.rel = 'stylesheet';
     element.href = `${path}css/app.${brandId.toLowerCase()}.css`;
     head.appendChild(element);
-    // var element2 = document.createElement('link');
-    // element2.rel = 'stylesheet';
-    // element2.href = `${path}${brandId.toLowerCase()}.main.css`;
-    // head.appendChild(element2);
 };
 
 function cybgSecureMessagesUI(config, id) {
