@@ -25,32 +25,6 @@ describe("New Secure message snapshot", () => {
         component.setState({ showThatsAllMessage: true });
         expect(component).toMatchSnapshot();
     });
-    it('componentWillReceiveProps test', () => {
-        component.instance().componentWillReceiveProps();
-        component.setState({ showMoreLimit: 8 });
-        expect(component.instance().state.showMoreLimit).toBeLessThan(props.messages.length);
-    });
-    it('componentWillReceiveProps with message length equal to 0 test', () => {
-        const dispatch = jest.fn();
-        let props = {
-            content: {
-                back: 'Back',
-            },
-            activeTab: 'SENT',
-            messages: {
-                length: 0
-            },
-            messagesFetched: {
-                fetching: false,
-                successModal: false
-            },
-            dispatch: dispatch
-        };
-        let component = shallow(<SecureMessageList {...props} />);
-        component.instance().componentWillReceiveProps();
-        component.setState({ showThatsAllMessage: false });
-        expect(component.instance().state.showThatsAllMessage).toBeFalsy();
-    });
     it('showMoreClicked function test', () => {
         component.instance().showMoreClicked();
         component.setState({ showThatsAllMessage: true });

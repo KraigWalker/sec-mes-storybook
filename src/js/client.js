@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from "react-redux";
+import { Provider, compose } from "react-redux";
 import svg4everybody from "svg4everybody";
 import AppRouter from './router/AppRouter';
 import createStore from './stores/AppStore';
 import ConfigUtils from './utils/ConfigUtils';
 import { WebUIThemeProvider } from "web-ui-components/lib/utilities/themes";
 import { buildClientContext } from './utils/ContextUtils';
+import "css/main.css";
 
 svg4everybody();
 
@@ -20,10 +21,23 @@ const parseHash = hash => hash
   .map(v => v.split("="))
   .reduce( (pre, [key, value]) => ({ ...pre, [key]: value }), {} )
 
-const hash = parseHash(window.location.hash.substring(1));
-
-// clear hash parameters
-window.location.hash = '';
+let hash;
+if (process.env.NODE_ENV !== 'production')
+{
+  hash = {
+    access_token: "access_token",
+  bank_id: "CB",
+  brandId: "CB",
+  client_context: "CB%20Web",
+  isDocumentLibraryEnabled: "true",
+  state: "state",
+  user_tracking_id: "23453-34343-34343"
+  }
+}
+else
+{
+  hash = parseHash(window.location.hash.substring(1));
+}
 
 const session = {
   access_token: hash.access_token,
@@ -53,14 +67,20 @@ const startApp = () => {
 const loadStyles = () => {
   var head = document.getElementsByTagName('head')[0];
   var element = document.createElement('link');
-  element.rel = 'stylesheet';
-  element.href = `${path}${brandId.toLowerCase()}.main.css`;
-  head.appendChild(element);
+    element.rel = 'stylesheet';
+    element.href = `${path}css/app.${brandId.toLowerCase()}.css`;
+    head.appendChild(element);
 }
 
 const initApp = () => {
     ConfigUtils.getConfig(startApp);
-    loadStyles()
+    //This is for hot reloading on dev, so css gets loaded when window has is empty
+    if (process.env.NODE_ENV !== 'production' && !window.location.hash)
+    {
+      loadStyles()
+    }
 }
-// DEBTxCYBG: this is not an ideal pattern for initialising an app.
-setTimeout(initApp, 50);
+initApp();
+
+// clear hash parameters
+window.location.hash = '';

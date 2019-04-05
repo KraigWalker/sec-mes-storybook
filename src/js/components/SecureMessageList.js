@@ -1,10 +1,14 @@
 import React from "react";
 import _ from "lodash";
 import SecureMessageSummary from "./common/SecureMessageSummary";
-import { sendMessageForAccessibiltiy } from "../actions/AppActions";
+import { sendMessageForAccessibiltiy as sendMessageForAccessibility } from "../actions/AppActions";
 import { connect } from "react-redux";
-import SvgIcon from './common/GetIcon';
-import { SENT, INBOX, DRAFT, ARCHIVED } from '../constants/StringsConstants';
+import { SENT, DRAFT, ARCHIVED, INBOX } from '../constants/StringsConstants';
+import { Button } from 'web-ui-components/lib/atoms/buttons';
+import { Row, Column } from "web-ui-components/lib/global/layout";
+import { TextBody } from "web-ui-components/lib/atoms/text";
+import { LoadingLocalTakeover } from 'web-ui-components/lib/organisms/takeovers';
+import { TextStyled } from 'web-ui-components/lib/atoms/text';
 
 const MESSAGE_LIMIT = 20;
 
@@ -19,12 +23,12 @@ export class SecureMessageList extends React.Component {
 		};
 	}
 	componentWillReceiveProps(props) {
-		const { messages } = this.props;
-		if (messages.length <= MESSAGE_LIMIT) {
-			this.setState({ showThatsAllMessage: true });
-		}
-		if (messages.length == 0) {
+		const { messages } = props;
+		if (messages.length === 0 || messages.length > MESSAGE_LIMIT) {
 			this.setState({ showThatsAllMessage: false });
+		}
+		else {
+			this.setState({ showThatsAllMessage: true });
 		}
 	}
 
@@ -36,6 +40,7 @@ export class SecureMessageList extends React.Component {
 			this.sendAccessibilityMessage()
 		}
 	}
+	
 	showMessages() {
 		const { messages, content } = this.props;
 		const msgs = messages.slice(0, this.state.showMoreLimit);
@@ -43,40 +48,21 @@ export class SecureMessageList extends React.Component {
 		const listFlag = true;
 		_.map(msgs, (message, index) => {
 			allMessages.push(
-				<li key={index} className="c-messagelist__wrapper">
-					<SecureMessageSummary message={message} listFlag={listFlag} content={content} />
-				</li>
+				<SecureMessageSummary key={index} message={message} listFlag={listFlag} content={content} />
 			);
 		});
 		return allMessages;
 	}
 	showMoreClicked() {
 		const { messages, dispatch, activeTab } = this.props;
-		dispatch(sendMessageForAccessibiltiy(`Next 20 messages loaded ${activeTab}`));
+		dispatch(sendMessageForAccessibility(`Next 20 messages loaded ${activeTab}`));
 		let limit = messages.length;
 		this.setState({
 			showMoreLimit: limit,
 			showThatsAllMessage: true,
 		});
 	}
-	renderShowMoreButton() {
-		const { content, activeTab, messages } = this.props;
-		if (this.state.showMoreLimit < messages.length && 
-			(activeTab === SENT || 
-			activeTab === INBOX || 
-			activeTab === DRAFT ||
-			activeTab === ARCHIVED )) {
-			return (
-				<button
-					type="button"
-					onClick={this.showMoreClicked}
-					className="c-btn c-btn--default c-modal__button u-margin-bottom-c"
-				>
-					{content.showMore}
-				</button>
-			);
-		}
-	}
+
 	renderThatsAllText() {
 		const { content, activeTab } = this.props;
 		let thatsallText = content.thatsallTextInbox;
@@ -87,36 +73,20 @@ export class SecureMessageList extends React.Component {
 		} else if (activeTab === DRAFT) {
 			thatsallText = content.thatsallTextDraft;
 		}
-		return thatsallText;
+		return (
+				<TextStyled size="uist" className="u-padding-top-2">
+				{thatsallText}
+				</TextStyled>
+				);
 	}
-	renderNoMessagesText() {
-		const { content, activeTab, dispatch } = this.props;
-		switch (activeTab) {
-			case SENT:
-				return (
-					<p className="callout callout--msgbottom callout__txt-center">
-						{content.noSentMessages}
-					</p>
-				);
-			case DRAFT:
-				return (
-					<p className="callout callout--msgbottom callout__txt-center">
-						{content.noDraftMessages}
-					</p>
-				);
-			case ARCHIVED:
-				return (
-					<p className="callout callout--msgbottom callout__txt-center">
-						{content.noArchivedMessages}
-					</p>
-				);
-			default:
-				return (
-					<p className="callout callout--msgbottom callout__txt-center">
-						{content.noInboxMessages}
-					</p>
-				);
-		}
+
+	renderNoMessagesText(isLoading) {
+		const { content } = this.props;
+		return (
+			<TextBody className="u-padding-top-10 u-text-align-center">
+				{isLoading ? "loading" : content.noMessages}
+			</TextBody>
+		);
 	}
 
 	sendAccessibilityMessage() {
@@ -124,36 +94,42 @@ export class SecureMessageList extends React.Component {
 		const { activeTab, dispatch, content } = this.props;
 		switch (activeTab) {
 			case SENT:
-				dispatch(sendMessageForAccessibiltiy(content.noSentMessages));
+				dispatch(sendMessageForAccessibility(content.noSentMessages));
 				break;
 			case DRAFT:
-				dispatch(sendMessageForAccessibiltiy(content.noDraftMessages));
+				dispatch(sendMessageForAccessibility(content.noDraftMessages));
 				break;
 			case ARCHIVED:
-				dispatch(sendMessageForAccessibiltiy(content.noArchivedMessages));
+				dispatch(sendMessageForAccessibility(content.noArchivedMessages));
 				break;
 			default:
-				dispatch(sendMessageForAccessibiltiy(content.noInboxMessages));
+				dispatch(sendMessageForAccessibility(content.noInboxMessages));
 				break;
 				
 		}
 	}
 
 	render() {
-		const { messagesFetched, messages } = this.props;
+		const { messagesFetched, messages, content } = this.props;
 		return (
-			messagesFetched.fetching && !messagesFetched.successModal ? <div style={{ textAlign: "center" }}><SvgIcon id="icon-refresh" width="32px" height="32px" className="spinner-loader" /></div> :
-				<section>
-					{messages.length === 0 ?
-						this.renderNoMessagesText()
-						:
-						<ol className="c-messagelist">
-							{this.showMessages()}
-						</ol>
-					}
-					{this.renderShowMoreButton()}
-					{this.state.showThatsAllMessage && <p className="u-margin-bottom-c">{this.renderThatsAllText()}</p>}
-				</section>
+			<Column xs={24} className="u-padding-left-0">
+			
+				<LoadingLocalTakeover xs={24}
+					show={messagesFetched.fetching} 
+					title="loading..">
+						<TextBody>
+							{messages.length === 0 
+								? this.renderNoMessagesText(messagesFetched.fetching)
+								: this.showMessages()}
+							{this.state.showMoreLimit < messages.length 
+								&& <Button display="primary" onClick={this.showMoreClicked}>{content.showMore}</Button>}
+							{this.state.showThatsAllMessage && this.renderThatsAllText()}
+						</TextBody> 
+				
+				</LoadingLocalTakeover>
+			
+			</Column>
+
 		);
 	}
 }
