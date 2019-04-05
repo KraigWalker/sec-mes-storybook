@@ -26,7 +26,7 @@ const RouteWithLayout = ({ Component, isDocumentLibraryEnabled, ...restProps }) 
 
 const RoutesWithLayout = (props) => (
     <Switch>
-        <RouteWithLayout path='/securemessages/errormessage' Component={ErrorPage} />
+        <RouteWithLayout path='/securemessages/error' Component={ErrorPage} />
         <RouteWithLayout
             exact
             path={`/securemessages/view`}
