@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { compose } from "Redux";
+import { compose } from "redux";
 import { connect } from "react-redux";
 import {
   updateMessageData,

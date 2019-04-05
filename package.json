@@ -15,7 +15,7 @@
     "react-redux": "^4.4.5",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "redux": "^3.5.2",
+    "redux": "4.0.1",
     "redux-thunk": "^2.1.0",
     "svg4everybody": "2.1.9",
     "whatwg-fetch": "^3.0.0"
