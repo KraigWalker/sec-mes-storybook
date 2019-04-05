@@ -26,7 +26,7 @@ const RouteWithLayout = ({ Component, ...restProps }) => <Route {...restProps} r
 const RoutesWithLayout = (props) => (
     <Switch>
         <RouteWithLayout
-            path='/securemessages/errormessage'
+            path='/securemessages/error'
             Component={ErrorPage}
             content={props.content}
         />
