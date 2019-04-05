@@ -23,6 +23,11 @@ export class LandingPage extends React.PureComponent {
         //Read message subjects once page has loaded to avoid issues with UX when using Select web-ui-component
         this.props.getMessageSubjects();
     }
+    componentDidUpdate() {
+        if (this.props.messages.error && this.props.messages.fetched) {
+            this.props.history.push('/securemessages/error');
+        }
+    }
 
     linkClick = activeTab => {
         this.props.getActiveTab(activeTab);
@@ -37,40 +42,37 @@ export class LandingPage extends React.PureComponent {
     }
 
     render() {
-        const {isWebView, readOnly, content} = this.props;
-        if (this.props.messages.error && this.props.messages.fetched) {
-            this.props.history.push({pathname: '/errormessage', content});
-        } else {
-            return (
-                <Container className="u-margin-top-6">
-                    <Row>
-                        <Card>
-                            {!isWebView && !readOnly &&
-                            <TextBody className="c-step-header__crumbs">
-                                <BackButton onClick={this.handleBackClick} label={this.props.content.backToAccounts}/>
-                            </TextBody>
-                            }
-                            <Title  size="h1">{this.props.content.messages}</Title>
-                            <TextBody>{this.props.content.landingPageMessage}</TextBody>
-                            <TextBody>{this.props.content.faqLink}</TextBody>
-                            {
-                                !readOnly && <Button display="primary"
-                                                     onClick={() => this.props.history.push('/securemessages/new')}>
-                                    {this.props.content.newSecureMessage}
-                                </Button>
-                            }
-                            <SecureMessageTabs
-                                location={this.props.location}
-                                onClick={this.linkClick}
-                                messages={this.mapMessages(this.props.messages)}
-                                activeTab={this.props.activeTab}
-                                content={this.props.content}
-                            />
-                        </Card>
-                    </Row>
-                </Container>
-            );
-        }
+        const {isWebView, readOnly} = this.props;
+        
+        return (
+            <Container className="u-margin-top-6">
+                <Row>
+                    <Card>
+                        {!isWebView && !readOnly &&
+                        <TextBody className="c-step-header__crumbs">
+                            <BackButton onClick={this.handleBackClick} label={this.props.content.backToAccounts}/>
+                        </TextBody>
+                        }
+                        <Title  size="h1">{this.props.content.messages}</Title>
+                        <TextBody>{this.props.content.landingPageMessage}</TextBody>
+                        <TextBody>{this.props.content.faqLink}</TextBody>
+                        {
+                            !readOnly && <Button display="primary"
+                                                    onClick={() => this.props.history.push('/securemessages/new')}>
+                                {this.props.content.newSecureMessage}
+                            </Button>
+                        }
+                        <SecureMessageTabs
+                            location={this.props.location}
+                            onClick={this.linkClick}
+                            messages={this.mapMessages(this.props.messages)}
+                            activeTab={this.props.activeTab}
+                            content={this.props.content}
+                        />
+                    </Card>
+                </Row>
+            </Container>
+        );
     }
 }
 
