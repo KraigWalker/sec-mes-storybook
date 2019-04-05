@@ -26,6 +26,11 @@ const RouteWithLayout = ({ Component, ...restProps }) => <Route {...restProps} r
 const RoutesWithLayout = (props) => (
     <Switch>
         <RouteWithLayout
+            path='/securemessages/errormessage'
+            Component={ErrorPage}
+            content={props.content}
+        />
+        <RouteWithLayout
             exact
             path={`/securemessages/view`}
             Component={ViewMessage}
@@ -91,7 +96,6 @@ class AppRouter extends React.Component {
                         <RoutesWithLayoutAndSubscription {...this.props} />
                     )} />
                     <AccessibilityMessage/>
-                    <RouteWithLayout path='/errormessage' Component={ErrorPage} />
                     <Switch>
                         <RouteWithLayout
                             path={`/my-documents/:bankId(CB|YB|DYB)`}

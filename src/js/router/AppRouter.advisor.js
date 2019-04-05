@@ -26,6 +26,7 @@ const RouteWithLayout = ({ Component, isDocumentLibraryEnabled, ...restProps }) 
 
 const RoutesWithLayout = (props) => (
     <Switch>
+        <RouteWithLayout path='/securemessages/errormessage' Component={ErrorPage} />
         <RouteWithLayout
             exact
             path={`/securemessages/view`}
@@ -60,7 +61,6 @@ class AppRouter extends React.Component {
                         <RoutesWithLayoutAndSubscription {...this.props} />
                     )} />
                     <AccessibilityMessage/>
-                    <RouteWithLayout path='/errormessage' Component={ErrorPage} />
                     <RouteWithLayout
                         path={`my-documents`}
                         exact
