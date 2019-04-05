@@ -1,4 +1,3 @@
-import { shallow } from 'enzyme';
 import { getISODateString, sortArrayByDate } from '../DateUtils';
 import TestData from '../../content/secureMessagesTestData.json'
 

@@ -6,7 +6,7 @@ const loadStyles = (brandId) => {
     var head = document.getElementsByTagName('head')[0];
     var element = document.createElement('link');
     element.rel = 'stylesheet';
-    element.href = `${path}${brandId.toLowerCase()}.main.css`;
+    element.href = `${path}css/app.${brandId.toLowerCase()}.css`;
     head.appendChild(element);
 };
 

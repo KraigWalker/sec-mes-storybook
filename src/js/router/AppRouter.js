@@ -4,14 +4,14 @@ import LandingPage from '../components/LandingPage';
 import Main from '../components/Main';
 import NewSecureMessage from '../components/NewSecureMessage';
 import ViewMessage from '../components/ViewMessage';
-import ReplySecuremessage from '../components/ReplySecureMessage';
-import { withSubscription,accessibilityWrapper } from '../components/wrappers/GenericWrapper';
-import DraftSecureMessage from '../components/DraftSecureMessage';
+import ReplySecuremessageNew from '../components/ReplySecureMessage';
+import { withSubscription } from '../components/wrappers/GenericWrapper';
 import AccessibilityMessage from '../components/common/AccessibilityMessage';
 import ErrorPage from '../components/common/ErrorPage';
 import { ListView } from '../components/ListView';
 import { AccountSelector } from '../components/AccountSelector';
 import { DocumentView } from '../components/DocumentView';
+import DraftSecureMessage from '../components/DraftSecureMessage';
 
 const RouteWithLayout = ({ Component, ...restProps }) => <Route {...restProps} render={(routeProps) => 
     <Main {...restProps} >
@@ -50,7 +50,7 @@ const RoutesWithLayout = (props) => (
         <RouteWithLayout
             exact
             path={`/securemessages/reply`}
-            Component={ReplySecuremessage}
+            Component={ReplySecuremessageNew}
             content={props.content}
             isDocumentLibraryEnabled={props.isDocumentLibraryEnabled}
             session={props.session}
@@ -88,7 +88,6 @@ class AppRouter extends React.Component {
     */ 
       render() {
         const { isDocumentLibraryEnabled } = this.props;
-        console.log(window.baseURl);
         return (
             <BrowserRouter basename={window.baseURl}>
                 <div>

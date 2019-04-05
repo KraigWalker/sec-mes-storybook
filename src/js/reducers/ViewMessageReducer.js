@@ -37,3 +37,12 @@ function reducer(state = {
 	}
 }
 export default reducer;
+
+
+const getMessageDetail = (state) => state.messageDetail;
+	
+export const selectors = {
+	getMessageDetail,
+}
+
+

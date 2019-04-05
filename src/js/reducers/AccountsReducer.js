@@ -23,3 +23,9 @@ export default function reducer(state={
     return state;
   }
 }
+
+const getAccounts = (state) => state.accounts;
+
+export const selectors = {
+  getAccounts
+}

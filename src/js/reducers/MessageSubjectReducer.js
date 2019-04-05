@@ -30,3 +30,11 @@ function reducer(state={
   }
 }
 export default reducer;
+
+const getSubjects = (state) => state.subjects;
+const getSubjectErrors = (state) => state.error;
+
+export const selectors = {
+  getSubjects,
+  getSubjectErrors
+}
