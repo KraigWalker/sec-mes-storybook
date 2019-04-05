@@ -6,11 +6,11 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 console.log("**********************************************");
 console.log("Compiling");
-const JSEntry = ["babel-polyfill", "whatwg-fetch", "./src/js/client.js"];
+
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-	entry: [...JSEntry],
+	entry: "./src/js/client.js",
 	mode: "production",
 	output: {
 	  path: __dirname + "/src/compiled",
@@ -18,9 +18,6 @@ module.exports = {
 	  publicPath: ""
 	},
 	plugins: [
-	  new UglifyJSPlugin({
-			sourceMap: true
-		}),
 	  new MiniCssExtractPlugin({
 		// Options similar to the same options in webpackOptions.output
 		// both options are optional
@@ -53,6 +50,13 @@ module.exports = {
 		 "process.env.NODE_ENV": JSON.stringify("production"),
 	}),
 	],
+	optimization: {
+		minimizer: [
+			new UglifyJSPlugin({
+				sourceMap: false
+			}),
+		]
+	},
 	module: {
 	  rules: [
 		{
