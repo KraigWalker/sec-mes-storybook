@@ -1,13 +1,14 @@
 import React from 'react';
 import { ListViewContainer, PreferenceCardContainer } from 'document-management-web-ui';
+import {Container, Row} from "web-ui-components/lib/global/layout";
 
 export const ListView = (props) => (
-    <div className="web-ui-components centralised-container">
-        <div className="u-margin-bottom-c">   
+    <Container className="u-margin-top-6">
+        <Row>
             <ListViewContainer {...props} />
-        </div>
-        <div>
+        </Row>
+        <Row>
             <PreferenceCardContainer {...props} />
-        </div>
-    </div>
+        </Row>
+    </Container>
 )

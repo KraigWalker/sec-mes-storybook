@@ -1,10 +1,10 @@
-import { NEW, READ, PENDING, SENT, ARCHIVED } from '../../constants/StringsConstants';
+import { NEW, READ, PENDING, ARCHIVED, DRAFT } from '../../constants/StringsConstants';
 
 const getOptionDisplayFunctions = (readOnly, noReply) => {
   return {
     showUnarchiveButton: status => !readOnly && status === ARCHIVED,
     showArchiveButton: status =>
-      !readOnly && status !== NEW && status !== ARCHIVED && status !== SENT && status !== PENDING,
+      !readOnly && status === READ,
     showDeleteButton: status => !readOnly && status !== PENDING && status !== NEW,
     showReplyButton: status =>
       (status === NEW || status === READ || status === ARCHIVED) &&

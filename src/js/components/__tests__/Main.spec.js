@@ -1,7 +1,6 @@
 import React from 'react';
 import { Main } from '../Main';
 import { shallow } from 'enzyme';
-import TestUtils from 'react-addons-test-utils';
 
 describe("Main snapshot", () => {
     let props = {

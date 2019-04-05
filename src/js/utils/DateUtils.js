@@ -21,6 +21,13 @@ import moment from 'moment';
 		return _.sortBy(arrayData, ['date_created']).reverse();
 	};
 
+	/**
+	 * Converts timestamp to moment date 
+	 * @param  {String} dateStr e.g. format - 'DD MMM YYYY hh:mm'
+	 */
+	export function getFriendlyDate(dateStr){
+		return moment(dateStr,  "YYYY-MM-DDTHH:mm").format("DD MMM YYYY HH:mm");
+	};
 		
 	
 

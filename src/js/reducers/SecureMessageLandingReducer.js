@@ -1,5 +1,6 @@
 
 import AppConstants from '../constants/AppConstants';
+import { NEW, DRAFT } from "../constants/StringsConstants";
 /**
  *
  * @param {*} state
@@ -50,4 +51,25 @@ export default function reducer(state = {
 		default:
 			return state;
 	}
+}
+
+const getMessages = (state) => state.messages;
+
+const getMessageError = (state, status) => {
+	switch(status)
+	{
+		case NEW:
+			return state.newMessageError;
+		case DRAFT:
+		default:
+			return state.draftError;
+	}
+}
+
+const getShowSuccessModal = (state) => state.successModal;
+
+export const selectors = {
+	getMessages,
+	getMessageError,
+	getShowSuccessModal
 }

@@ -10,44 +10,16 @@ ShallowWrapper {
         "noSpecificAccount": "noSpecificAccount",
       }
     }
-    dispatch={
-      [MockFunction] {
-        "calls": Array [
-          Array [
-            [Function],
-          ],
-        ],
-      }
-    }
-    draftFlag={false}
-    hasOnClick={false}
-    listFlag={false}
+    dispatch={[MockFunction]}
     message={
       Object {
         "account": Object {
           "number": "32236",
         },
-        "getDateCreated": [MockFunction] {
-          "calls": Array [
-            Array [],
-          ],
-        },
-        "getMessageBody": [MockFunction] {
-          "calls": Array [
-            Array [],
-          ],
-        },
-        "getReference": [MockFunction] {
-          "calls": Array [
-            Array [],
-          ],
-        },
-        "getSubject": [MockFunction] {
-          "calls": Array [
-            Array [],
-            Array [],
-          ],
-        },
+        "getDateCreated": [MockFunction],
+        "getMessageBody": [MockFunction],
+        "getReference": [MockFunction],
+        "getSubject": [MockFunction],
         "status": "READ",
       }
     }
@@ -62,9 +34,6 @@ ShallowWrapper {
         "draftError": true,
       }
     }
-    readFlag={false}
-    sentFlag={false}
-    threadFlag={false}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -76,1413 +45,193 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "host",
+    "nodeType": "function",
     "props": Object {
-      "children": Array [
-        <span
-          className="c-message__icon"
-        >
-          <CommonGetIcon
-            height="24px"
-            id="icon-message-open"
-            width="24px"
-          />
-        </span>,
-        <div
-          className="c-message__summary"
-        >
-          <div
-            className="c-message__summary__head"
-          >
-            <div
-              className="c-message__summary__head__title"
-            >
-              <h2
-                className="c-message__summary__head__title__subject c-message__summary__head__title__subject--read"
-                id="subjectMsg"
-              >
-                <Link
-                  className="c-message__summary__head__title__subject__link"
-                  replace={false}
-                  to={
-                    Object {
-                      "messageDetail": Object {
-                        "account": Object {
-                          "number": "32236",
-                        },
-                        "getDateCreated": [MockFunction] {
-                          "calls": Array [
-                            Array [],
-                          ],
-                        },
-                        "getMessageBody": [MockFunction] {
-                          "calls": Array [
-                            Array [],
-                          ],
-                        },
-                        "getReference": [MockFunction] {
-                          "calls": Array [
-                            Array [],
-                          ],
-                        },
-                        "getSubject": [MockFunction] {
-                          "calls": Array [
-                            Array [],
-                            Array [],
-                          ],
-                        },
-                        "status": "READ",
-                      },
-                      "pathname": "/securemessages/view",
-                    }
-                  }
-                />
-              </h2>
-              <p
-                className="c-message__summary__head__title__ref"
-              />
-            </div>
-            <SecureMessageSummaryButtons
-              content={
-                Object {
-                  "back": "Back",
-                  "noSpecificAccount": "noSpecificAccount",
-                }
-              }
-              dispatch={
-                [MockFunction] {
-                  "calls": Array [
-                    Array [
-                      [Function],
-                    ],
-                  ],
-                }
-              }
-              draftFlag={false}
-              hasOnClick={false}
-              listFlag={false}
-              message={
-                Object {
-                  "account": Object {
-                    "number": "32236",
-                  },
-                  "getDateCreated": [MockFunction] {
-                    "calls": Array [
-                      Array [],
-                    ],
-                  },
-                  "getMessageBody": [MockFunction] {
-                    "calls": Array [
-                      Array [],
-                    ],
-                  },
-                  "getReference": [MockFunction] {
-                    "calls": Array [
-                      Array [],
-                    ],
-                  },
-                  "getSubject": [MockFunction] {
-                    "calls": Array [
-                      Array [],
-                      Array [],
-                    ],
-                  },
-                  "status": "READ",
-                }
-              }
-              messageDetail={
-                Object {
-                  "delSuccessModal": true,
-                  "newMessageError": true,
-                }
-              }
-              messages={
-                Object {
-                  "draftError": true,
-                }
-              }
-              noReply={undefined}
-              onArchiveClick={[Function]}
-              onDeleteClick={[Function]}
-              onUnarchiveClick={[Function]}
-              readFlag={false}
-              sentFlag={false}
-              threadFlag={false}
-            />
-          </div>
-          <p
-            className="c-message__summary__account"
-          />
-          <p
-            className="c-message__summary__date"
-          />
-        </div>,
-        false,
-        false,
-        false,
-      ],
-      "className": "c-message c-message--read u-position-relative",
+      "children": <MailItem
+        archiveOnClick={null}
+        content={
+          Object {
+            "back": "Back",
+            "noSpecificAccount": "noSpecificAccount",
+          }
+        }
+        deleteOnClick={null}
+        dispatch={[MockFunction]}
+        id={undefined}
+        isArchived={false}
+        isRead={true}
+        mailDate={undefined}
+        mailOnClick={[Function]}
+        mailSubject="undefined "
+        mailSummary={undefined}
+        message={
+          Object {
+            "account": Object {
+              "number": "32236",
+            },
+            "getDateCreated": [MockFunction],
+            "getMessageBody": [MockFunction],
+            "getReference": [MockFunction],
+            "getSubject": [MockFunction],
+            "status": "READ",
+          }
+        }
+        messageDetail={
+          Object {
+            "delSuccessModal": true,
+            "newMessageError": true,
+          }
+        }
+        messages={
+          Object {
+            "draftError": true,
+          }
+        }
+        moveToInboxOnClick={null}
+        replyOnClick={null}
+      />,
     },
     "ref": null,
-    "rendered": Array [
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": <CommonGetIcon
-            height="24px"
-            id="icon-message-open"
-            width="24px"
-          />,
-          "className": "c-message__icon",
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "archiveOnClick": null,
+        "content": Object {
+          "back": "Back",
+          "noSpecificAccount": "noSpecificAccount",
         },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "height": "24px",
-            "id": "icon-message-open",
-            "width": "24px",
+        "deleteOnClick": null,
+        "dispatch": [MockFunction],
+        "id": undefined,
+        "isArchived": false,
+        "isRead": true,
+        "mailDate": undefined,
+        "mailOnClick": [Function],
+        "mailSubject": "undefined ",
+        "mailSummary": undefined,
+        "message": Object {
+          "account": Object {
+            "number": "32236",
           },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
+          "getDateCreated": [MockFunction],
+          "getMessageBody": [MockFunction],
+          "getReference": [MockFunction],
+          "getSubject": [MockFunction],
+          "status": "READ",
         },
-        "type": "span",
+        "messageDetail": Object {
+          "delSuccessModal": true,
+          "newMessageError": true,
+        },
+        "messages": Object {
+          "draftError": true,
+        },
+        "moveToInboxOnClick": null,
+        "replyOnClick": null,
       },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            <div
-              className="c-message__summary__head"
-            >
-              <div
-                className="c-message__summary__head__title"
-              >
-                <h2
-                  className="c-message__summary__head__title__subject c-message__summary__head__title__subject--read"
-                  id="subjectMsg"
-                >
-                  <Link
-                    className="c-message__summary__head__title__subject__link"
-                    replace={false}
-                    to={
-                      Object {
-                        "messageDetail": Object {
-                          "account": Object {
-                            "number": "32236",
-                          },
-                          "getDateCreated": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                            ],
-                          },
-                          "getMessageBody": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                            ],
-                          },
-                          "getReference": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                            ],
-                          },
-                          "getSubject": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                              Array [],
-                            ],
-                          },
-                          "status": "READ",
-                        },
-                        "pathname": "/securemessages/view",
-                      }
-                    }
-                  />
-                </h2>
-                <p
-                  className="c-message__summary__head__title__ref"
-                />
-              </div>
-              <SecureMessageSummaryButtons
-                content={
-                  Object {
-                    "back": "Back",
-                    "noSpecificAccount": "noSpecificAccount",
-                  }
-                }
-                dispatch={
-                  [MockFunction] {
-                    "calls": Array [
-                      Array [
-                        [Function],
-                      ],
-                    ],
-                  }
-                }
-                draftFlag={false}
-                hasOnClick={false}
-                listFlag={false}
-                message={
-                  Object {
-                    "account": Object {
-                      "number": "32236",
-                    },
-                    "getDateCreated": [MockFunction] {
-                      "calls": Array [
-                        Array [],
-                      ],
-                    },
-                    "getMessageBody": [MockFunction] {
-                      "calls": Array [
-                        Array [],
-                      ],
-                    },
-                    "getReference": [MockFunction] {
-                      "calls": Array [
-                        Array [],
-                      ],
-                    },
-                    "getSubject": [MockFunction] {
-                      "calls": Array [
-                        Array [],
-                        Array [],
-                      ],
-                    },
-                    "status": "READ",
-                  }
-                }
-                messageDetail={
-                  Object {
-                    "delSuccessModal": true,
-                    "newMessageError": true,
-                  }
-                }
-                messages={
-                  Object {
-                    "draftError": true,
-                  }
-                }
-                noReply={undefined}
-                onArchiveClick={[Function]}
-                onDeleteClick={[Function]}
-                onUnarchiveClick={[Function]}
-                readFlag={false}
-                sentFlag={false}
-                threadFlag={false}
-              />
-            </div>,
-            <p
-              className="c-message__summary__account"
-            />,
-            undefined,
-            <p
-              className="c-message__summary__date"
-            />,
-          ],
-          "className": "c-message__summary",
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <div
-                  className="c-message__summary__head__title"
-                >
-                  <h2
-                    className="c-message__summary__head__title__subject c-message__summary__head__title__subject--read"
-                    id="subjectMsg"
-                  >
-                    <Link
-                      className="c-message__summary__head__title__subject__link"
-                      replace={false}
-                      to={
-                        Object {
-                          "messageDetail": Object {
-                            "account": Object {
-                              "number": "32236",
-                            },
-                            "getDateCreated": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getMessageBody": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getReference": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getSubject": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                                Array [],
-                              ],
-                            },
-                            "status": "READ",
-                          },
-                          "pathname": "/securemessages/view",
-                        }
-                      }
-                    />
-                  </h2>
-                  <p
-                    className="c-message__summary__head__title__ref"
-                  />
-                </div>,
-                <SecureMessageSummaryButtons
-                  content={
-                    Object {
-                      "back": "Back",
-                      "noSpecificAccount": "noSpecificAccount",
-                    }
-                  }
-                  dispatch={
-                    [MockFunction] {
-                      "calls": Array [
-                        Array [
-                          [Function],
-                        ],
-                      ],
-                    }
-                  }
-                  draftFlag={false}
-                  hasOnClick={false}
-                  listFlag={false}
-                  message={
-                    Object {
-                      "account": Object {
-                        "number": "32236",
-                      },
-                      "getDateCreated": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                        ],
-                      },
-                      "getMessageBody": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                        ],
-                      },
-                      "getReference": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                        ],
-                      },
-                      "getSubject": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                          Array [],
-                        ],
-                      },
-                      "status": "READ",
-                    }
-                  }
-                  messageDetail={
-                    Object {
-                      "delSuccessModal": true,
-                      "newMessageError": true,
-                    }
-                  }
-                  messages={
-                    Object {
-                      "draftError": true,
-                    }
-                  }
-                  noReply={undefined}
-                  onArchiveClick={[Function]}
-                  onDeleteClick={[Function]}
-                  onUnarchiveClick={[Function]}
-                  readFlag={false}
-                  sentFlag={false}
-                  threadFlag={false}
-                />,
-              ],
-              "className": "c-message__summary__head",
-            },
-            "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": Array [
-                    <h2
-                      className="c-message__summary__head__title__subject c-message__summary__head__title__subject--read"
-                      id="subjectMsg"
-                    >
-                      <Link
-                        className="c-message__summary__head__title__subject__link"
-                        replace={false}
-                        to={
-                          Object {
-                            "messageDetail": Object {
-                              "account": Object {
-                                "number": "32236",
-                              },
-                              "getDateCreated": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getMessageBody": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getReference": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getSubject": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                  Array [],
-                                ],
-                              },
-                              "status": "READ",
-                            },
-                            "pathname": "/securemessages/view",
-                          }
-                        }
-                      />
-                    </h2>,
-                    <p
-                      className="c-message__summary__head__title__ref"
-                    />,
-                  ],
-                  "className": "c-message__summary__head__title",
-                },
-                "ref": null,
-                "rendered": Array [
-                  Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "host",
-                    "props": Object {
-                      "children": <Link
-                        className="c-message__summary__head__title__subject__link"
-                        replace={false}
-                        to={
-                          Object {
-                            "messageDetail": Object {
-                              "account": Object {
-                                "number": "32236",
-                              },
-                              "getDateCreated": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getMessageBody": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getReference": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getSubject": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                  Array [],
-                                ],
-                              },
-                              "status": "READ",
-                            },
-                            "pathname": "/securemessages/view",
-                          }
-                        }
-                      />,
-                      "className": "c-message__summary__head__title__subject c-message__summary__head__title__subject--read",
-                      "id": "subjectMsg",
-                    },
-                    "ref": null,
-                    "rendered": Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "class",
-                      "props": Object {
-                        "children": undefined,
-                        "className": "c-message__summary__head__title__subject__link",
-                        "replace": false,
-                        "to": Object {
-                          "messageDetail": Object {
-                            "account": Object {
-                              "number": "32236",
-                            },
-                            "getDateCreated": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getMessageBody": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getReference": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getSubject": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                                Array [],
-                              ],
-                            },
-                            "status": "READ",
-                          },
-                          "pathname": "/securemessages/view",
-                        },
-                      },
-                      "ref": null,
-                      "rendered": null,
-                      "type": [Function],
-                    },
-                    "type": "h2",
-                  },
-                  Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "host",
-                    "props": Object {
-                      "children": undefined,
-                      "className": "c-message__summary__head__title__ref",
-                    },
-                    "ref": null,
-                    "rendered": null,
-                    "type": "p",
-                  },
-                ],
-                "type": "div",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "function",
-                "props": Object {
-                  "content": Object {
-                    "back": "Back",
-                    "noSpecificAccount": "noSpecificAccount",
-                  },
-                  "dispatch": [MockFunction] {
-                    "calls": Array [
-                      Array [
-                        [Function],
-                      ],
-                    ],
-                  },
-                  "draftFlag": false,
-                  "hasOnClick": false,
-                  "listFlag": false,
-                  "message": Object {
-                    "account": Object {
-                      "number": "32236",
-                    },
-                    "getDateCreated": [MockFunction] {
-                      "calls": Array [
-                        Array [],
-                      ],
-                    },
-                    "getMessageBody": [MockFunction] {
-                      "calls": Array [
-                        Array [],
-                      ],
-                    },
-                    "getReference": [MockFunction] {
-                      "calls": Array [
-                        Array [],
-                      ],
-                    },
-                    "getSubject": [MockFunction] {
-                      "calls": Array [
-                        Array [],
-                        Array [],
-                      ],
-                    },
-                    "status": "READ",
-                  },
-                  "messageDetail": Object {
-                    "delSuccessModal": true,
-                    "newMessageError": true,
-                  },
-                  "messages": Object {
-                    "draftError": true,
-                  },
-                  "noReply": undefined,
-                  "onArchiveClick": [Function],
-                  "onDeleteClick": [Function],
-                  "onUnarchiveClick": [Function],
-                  "readFlag": false,
-                  "sentFlag": false,
-                  "threadFlag": false,
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-            ],
-            "type": "div",
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": undefined,
-              "className": "c-message__summary__account",
-            },
-            "ref": null,
-            "rendered": null,
-            "type": "p",
-          },
-          undefined,
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": undefined,
-              "className": "c-message__summary__date",
-            },
-            "ref": null,
-            "rendered": null,
-            "type": "p",
-          },
-        ],
-        "type": "div",
-      },
-      false,
-      false,
-      false,
-    ],
-    "type": "div",
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+    "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "host",
+      "nodeType": "function",
       "props": Object {
-        "children": Array [
-          <span
-            className="c-message__icon"
-          >
-            <CommonGetIcon
-              height="24px"
-              id="icon-message-open"
-              width="24px"
-            />
-          </span>,
-          <div
-            className="c-message__summary"
-          >
-            <div
-              className="c-message__summary__head"
-            >
-              <div
-                className="c-message__summary__head__title"
-              >
-                <h2
-                  className="c-message__summary__head__title__subject c-message__summary__head__title__subject--read"
-                  id="subjectMsg"
-                >
-                  <Link
-                    className="c-message__summary__head__title__subject__link"
-                    replace={false}
-                    to={
-                      Object {
-                        "messageDetail": Object {
-                          "account": Object {
-                            "number": "32236",
-                          },
-                          "getDateCreated": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                            ],
-                          },
-                          "getMessageBody": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                            ],
-                          },
-                          "getReference": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                            ],
-                          },
-                          "getSubject": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                              Array [],
-                            ],
-                          },
-                          "status": "READ",
-                        },
-                        "pathname": "/securemessages/view",
-                      }
-                    }
-                  />
-                </h2>
-                <p
-                  className="c-message__summary__head__title__ref"
-                />
-              </div>
-              <SecureMessageSummaryButtons
-                content={
-                  Object {
-                    "back": "Back",
-                    "noSpecificAccount": "noSpecificAccount",
-                  }
-                }
-                dispatch={
-                  [MockFunction] {
-                    "calls": Array [
-                      Array [
-                        [Function],
-                      ],
-                    ],
-                  }
-                }
-                draftFlag={false}
-                hasOnClick={false}
-                listFlag={false}
-                message={
-                  Object {
-                    "account": Object {
-                      "number": "32236",
-                    },
-                    "getDateCreated": [MockFunction] {
-                      "calls": Array [
-                        Array [],
-                      ],
-                    },
-                    "getMessageBody": [MockFunction] {
-                      "calls": Array [
-                        Array [],
-                      ],
-                    },
-                    "getReference": [MockFunction] {
-                      "calls": Array [
-                        Array [],
-                      ],
-                    },
-                    "getSubject": [MockFunction] {
-                      "calls": Array [
-                        Array [],
-                        Array [],
-                      ],
-                    },
-                    "status": "READ",
-                  }
-                }
-                messageDetail={
-                  Object {
-                    "delSuccessModal": true,
-                    "newMessageError": true,
-                  }
-                }
-                messages={
-                  Object {
-                    "draftError": true,
-                  }
-                }
-                noReply={undefined}
-                onArchiveClick={[Function]}
-                onDeleteClick={[Function]}
-                onUnarchiveClick={[Function]}
-                readFlag={false}
-                sentFlag={false}
-                threadFlag={false}
-              />
-            </div>
-            <p
-              className="c-message__summary__account"
-            />
-            <p
-              className="c-message__summary__date"
-            />
-          </div>,
-          false,
-          false,
-          false,
-        ],
-        "className": "c-message c-message--read u-position-relative",
+        "children": <MailItem
+          archiveOnClick={null}
+          content={
+            Object {
+              "back": "Back",
+              "noSpecificAccount": "noSpecificAccount",
+            }
+          }
+          deleteOnClick={null}
+          dispatch={[MockFunction]}
+          id={undefined}
+          isArchived={false}
+          isRead={true}
+          mailDate={undefined}
+          mailOnClick={[Function]}
+          mailSubject="undefined "
+          mailSummary={undefined}
+          message={
+            Object {
+              "account": Object {
+                "number": "32236",
+              },
+              "getDateCreated": [MockFunction],
+              "getMessageBody": [MockFunction],
+              "getReference": [MockFunction],
+              "getSubject": [MockFunction],
+              "status": "READ",
+            }
+          }
+          messageDetail={
+            Object {
+              "delSuccessModal": true,
+              "newMessageError": true,
+            }
+          }
+          messages={
+            Object {
+              "draftError": true,
+            }
+          }
+          moveToInboxOnClick={null}
+          replyOnClick={null}
+        />,
       },
       "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": <CommonGetIcon
-              height="24px"
-              id="icon-message-open"
-              width="24px"
-            />,
-            "className": "c-message__icon",
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "archiveOnClick": null,
+          "content": Object {
+            "back": "Back",
+            "noSpecificAccount": "noSpecificAccount",
           },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "height": "24px",
-              "id": "icon-message-open",
-              "width": "24px",
+          "deleteOnClick": null,
+          "dispatch": [MockFunction],
+          "id": undefined,
+          "isArchived": false,
+          "isRead": true,
+          "mailDate": undefined,
+          "mailOnClick": [Function],
+          "mailSubject": "undefined ",
+          "mailSummary": undefined,
+          "message": Object {
+            "account": Object {
+              "number": "32236",
             },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
+            "getDateCreated": [MockFunction],
+            "getMessageBody": [MockFunction],
+            "getReference": [MockFunction],
+            "getSubject": [MockFunction],
+            "status": "READ",
           },
-          "type": "span",
+          "messageDetail": Object {
+            "delSuccessModal": true,
+            "newMessageError": true,
+          },
+          "messages": Object {
+            "draftError": true,
+          },
+          "moveToInboxOnClick": null,
+          "replyOnClick": null,
         },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              <div
-                className="c-message__summary__head"
-              >
-                <div
-                  className="c-message__summary__head__title"
-                >
-                  <h2
-                    className="c-message__summary__head__title__subject c-message__summary__head__title__subject--read"
-                    id="subjectMsg"
-                  >
-                    <Link
-                      className="c-message__summary__head__title__subject__link"
-                      replace={false}
-                      to={
-                        Object {
-                          "messageDetail": Object {
-                            "account": Object {
-                              "number": "32236",
-                            },
-                            "getDateCreated": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getMessageBody": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getReference": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getSubject": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                                Array [],
-                              ],
-                            },
-                            "status": "READ",
-                          },
-                          "pathname": "/securemessages/view",
-                        }
-                      }
-                    />
-                  </h2>
-                  <p
-                    className="c-message__summary__head__title__ref"
-                  />
-                </div>
-                <SecureMessageSummaryButtons
-                  content={
-                    Object {
-                      "back": "Back",
-                      "noSpecificAccount": "noSpecificAccount",
-                    }
-                  }
-                  dispatch={
-                    [MockFunction] {
-                      "calls": Array [
-                        Array [
-                          [Function],
-                        ],
-                      ],
-                    }
-                  }
-                  draftFlag={false}
-                  hasOnClick={false}
-                  listFlag={false}
-                  message={
-                    Object {
-                      "account": Object {
-                        "number": "32236",
-                      },
-                      "getDateCreated": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                        ],
-                      },
-                      "getMessageBody": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                        ],
-                      },
-                      "getReference": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                        ],
-                      },
-                      "getSubject": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                          Array [],
-                        ],
-                      },
-                      "status": "READ",
-                    }
-                  }
-                  messageDetail={
-                    Object {
-                      "delSuccessModal": true,
-                      "newMessageError": true,
-                    }
-                  }
-                  messages={
-                    Object {
-                      "draftError": true,
-                    }
-                  }
-                  noReply={undefined}
-                  onArchiveClick={[Function]}
-                  onDeleteClick={[Function]}
-                  onUnarchiveClick={[Function]}
-                  readFlag={false}
-                  sentFlag={false}
-                  threadFlag={false}
-                />
-              </div>,
-              <p
-                className="c-message__summary__account"
-              />,
-              undefined,
-              <p
-                className="c-message__summary__date"
-              />,
-            ],
-            "className": "c-message__summary",
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <div
-                    className="c-message__summary__head__title"
-                  >
-                    <h2
-                      className="c-message__summary__head__title__subject c-message__summary__head__title__subject--read"
-                      id="subjectMsg"
-                    >
-                      <Link
-                        className="c-message__summary__head__title__subject__link"
-                        replace={false}
-                        to={
-                          Object {
-                            "messageDetail": Object {
-                              "account": Object {
-                                "number": "32236",
-                              },
-                              "getDateCreated": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getMessageBody": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getReference": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getSubject": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                  Array [],
-                                ],
-                              },
-                              "status": "READ",
-                            },
-                            "pathname": "/securemessages/view",
-                          }
-                        }
-                      />
-                    </h2>
-                    <p
-                      className="c-message__summary__head__title__ref"
-                    />
-                  </div>,
-                  <SecureMessageSummaryButtons
-                    content={
-                      Object {
-                        "back": "Back",
-                        "noSpecificAccount": "noSpecificAccount",
-                      }
-                    }
-                    dispatch={
-                      [MockFunction] {
-                        "calls": Array [
-                          Array [
-                            [Function],
-                          ],
-                        ],
-                      }
-                    }
-                    draftFlag={false}
-                    hasOnClick={false}
-                    listFlag={false}
-                    message={
-                      Object {
-                        "account": Object {
-                          "number": "32236",
-                        },
-                        "getDateCreated": [MockFunction] {
-                          "calls": Array [
-                            Array [],
-                          ],
-                        },
-                        "getMessageBody": [MockFunction] {
-                          "calls": Array [
-                            Array [],
-                          ],
-                        },
-                        "getReference": [MockFunction] {
-                          "calls": Array [
-                            Array [],
-                          ],
-                        },
-                        "getSubject": [MockFunction] {
-                          "calls": Array [
-                            Array [],
-                            Array [],
-                          ],
-                        },
-                        "status": "READ",
-                      }
-                    }
-                    messageDetail={
-                      Object {
-                        "delSuccessModal": true,
-                        "newMessageError": true,
-                      }
-                    }
-                    messages={
-                      Object {
-                        "draftError": true,
-                      }
-                    }
-                    noReply={undefined}
-                    onArchiveClick={[Function]}
-                    onDeleteClick={[Function]}
-                    onUnarchiveClick={[Function]}
-                    readFlag={false}
-                    sentFlag={false}
-                    threadFlag={false}
-                  />,
-                ],
-                "className": "c-message__summary__head",
-              },
-              "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": Array [
-                      <h2
-                        className="c-message__summary__head__title__subject c-message__summary__head__title__subject--read"
-                        id="subjectMsg"
-                      >
-                        <Link
-                          className="c-message__summary__head__title__subject__link"
-                          replace={false}
-                          to={
-                            Object {
-                              "messageDetail": Object {
-                                "account": Object {
-                                  "number": "32236",
-                                },
-                                "getDateCreated": [MockFunction] {
-                                  "calls": Array [
-                                    Array [],
-                                  ],
-                                },
-                                "getMessageBody": [MockFunction] {
-                                  "calls": Array [
-                                    Array [],
-                                  ],
-                                },
-                                "getReference": [MockFunction] {
-                                  "calls": Array [
-                                    Array [],
-                                  ],
-                                },
-                                "getSubject": [MockFunction] {
-                                  "calls": Array [
-                                    Array [],
-                                    Array [],
-                                  ],
-                                },
-                                "status": "READ",
-                              },
-                              "pathname": "/securemessages/view",
-                            }
-                          }
-                        />
-                      </h2>,
-                      <p
-                        className="c-message__summary__head__title__ref"
-                      />,
-                    ],
-                    "className": "c-message__summary__head__title",
-                  },
-                  "ref": null,
-                  "rendered": Array [
-                    Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "host",
-                      "props": Object {
-                        "children": <Link
-                          className="c-message__summary__head__title__subject__link"
-                          replace={false}
-                          to={
-                            Object {
-                              "messageDetail": Object {
-                                "account": Object {
-                                  "number": "32236",
-                                },
-                                "getDateCreated": [MockFunction] {
-                                  "calls": Array [
-                                    Array [],
-                                  ],
-                                },
-                                "getMessageBody": [MockFunction] {
-                                  "calls": Array [
-                                    Array [],
-                                  ],
-                                },
-                                "getReference": [MockFunction] {
-                                  "calls": Array [
-                                    Array [],
-                                  ],
-                                },
-                                "getSubject": [MockFunction] {
-                                  "calls": Array [
-                                    Array [],
-                                    Array [],
-                                  ],
-                                },
-                                "status": "READ",
-                              },
-                              "pathname": "/securemessages/view",
-                            }
-                          }
-                        />,
-                        "className": "c-message__summary__head__title__subject c-message__summary__head__title__subject--read",
-                        "id": "subjectMsg",
-                      },
-                      "ref": null,
-                      "rendered": Object {
-                        "instance": null,
-                        "key": undefined,
-                        "nodeType": "class",
-                        "props": Object {
-                          "children": undefined,
-                          "className": "c-message__summary__head__title__subject__link",
-                          "replace": false,
-                          "to": Object {
-                            "messageDetail": Object {
-                              "account": Object {
-                                "number": "32236",
-                              },
-                              "getDateCreated": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getMessageBody": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getReference": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getSubject": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                  Array [],
-                                ],
-                              },
-                              "status": "READ",
-                            },
-                            "pathname": "/securemessages/view",
-                          },
-                        },
-                        "ref": null,
-                        "rendered": null,
-                        "type": [Function],
-                      },
-                      "type": "h2",
-                    },
-                    Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "host",
-                      "props": Object {
-                        "children": undefined,
-                        "className": "c-message__summary__head__title__ref",
-                      },
-                      "ref": null,
-                      "rendered": null,
-                      "type": "p",
-                    },
-                  ],
-                  "type": "div",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "function",
-                  "props": Object {
-                    "content": Object {
-                      "back": "Back",
-                      "noSpecificAccount": "noSpecificAccount",
-                    },
-                    "dispatch": [MockFunction] {
-                      "calls": Array [
-                        Array [
-                          [Function],
-                        ],
-                      ],
-                    },
-                    "draftFlag": false,
-                    "hasOnClick": false,
-                    "listFlag": false,
-                    "message": Object {
-                      "account": Object {
-                        "number": "32236",
-                      },
-                      "getDateCreated": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                        ],
-                      },
-                      "getMessageBody": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                        ],
-                      },
-                      "getReference": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                        ],
-                      },
-                      "getSubject": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                          Array [],
-                        ],
-                      },
-                      "status": "READ",
-                    },
-                    "messageDetail": Object {
-                      "delSuccessModal": true,
-                      "newMessageError": true,
-                    },
-                    "messages": Object {
-                      "draftError": true,
-                    },
-                    "noReply": undefined,
-                    "onArchiveClick": [Function],
-                    "onDeleteClick": [Function],
-                    "onUnarchiveClick": [Function],
-                    "readFlag": false,
-                    "sentFlag": false,
-                    "threadFlag": false,
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": [Function],
-                },
-              ],
-              "type": "div",
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": undefined,
-                "className": "c-message__summary__account",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": "p",
-            },
-            undefined,
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": undefined,
-                "className": "c-message__summary__date",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": "p",
-            },
-          ],
-          "type": "div",
-        },
-        false,
-        false,
-        false,
-      ],
-      "type": "div",
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      "type": [Function],
     },
   ],
   Symbol(enzyme.__options__): Object {
@@ -1515,44 +264,16 @@ ShallowWrapper {
         "noSpecificAccount": "noSpecificAccount",
       }
     }
-    dispatch={
-      [MockFunction] {
-        "calls": Array [
-          Array [
-            [Function],
-          ],
-        ],
-      }
-    }
-    draftFlag={false}
-    hasOnClick={false}
-    listFlag={false}
+    dispatch={[MockFunction]}
     message={
       Object {
         "account": Object {
           "number": undefined,
         },
-        "getDateCreated": [MockFunction] {
-          "calls": Array [
-            Array [],
-          ],
-        },
-        "getMessageBody": [MockFunction] {
-          "calls": Array [
-            Array [],
-          ],
-        },
-        "getReference": [MockFunction] {
-          "calls": Array [
-            Array [],
-          ],
-        },
-        "getSubject": [MockFunction] {
-          "calls": Array [
-            Array [],
-            Array [],
-          ],
-        },
+        "getDateCreated": [MockFunction],
+        "getMessageBody": [MockFunction],
+        "getReference": [MockFunction],
+        "getSubject": [MockFunction],
         "status": "DRAFT",
       }
     }
@@ -1567,9 +288,6 @@ ShallowWrapper {
         "draftError": true,
       }
     }
-    readFlag={false}
-    sentFlag={false}
-    threadFlag={false}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -1581,1355 +299,193 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "host",
+    "nodeType": "function",
     "props": Object {
-      "children": Array [
-        false,
-        <div
-          className="c-message__summary c-message__summary--no-icon"
-        >
-          <div
-            className="c-message__summary__head"
-          >
-            <div
-              className="c-message__summary__head__title c-message__summary__head__title--draft"
-            >
-              <h2
-                className="c-message__summary__head__title__subject c-message__summary__head__title__subject--read"
-                id="subjectMsg"
-              >
-                <Link
-                  aria-label="undefined"
-                  className="c-message__summary__head__title__subject__link"
-                  replace={false}
-                  to={
-                    Object {
-                      "messageDetail": Object {
-                        "account": Object {
-                          "number": undefined,
-                        },
-                        "getDateCreated": [MockFunction] {
-                          "calls": Array [
-                            Array [],
-                          ],
-                        },
-                        "getMessageBody": [MockFunction] {
-                          "calls": Array [
-                            Array [],
-                          ],
-                        },
-                        "getReference": [MockFunction] {
-                          "calls": Array [
-                            Array [],
-                          ],
-                        },
-                        "getSubject": [MockFunction] {
-                          "calls": Array [
-                            Array [],
-                            Array [],
-                          ],
-                        },
-                        "status": "DRAFT",
-                      },
-                      "pathname": "/securemessages/draft",
-                    }
-                  }
-                />
-              </h2>
-              <p
-                className="c-message__summary__head__title__ref"
-              />
-            </div>
-            <SecureMessageSummaryButtons
-              content={
-                Object {
-                  "back": "Back",
-                  "noSpecificAccount": "noSpecificAccount",
-                }
-              }
-              dispatch={
-                [MockFunction] {
-                  "calls": Array [
-                    Array [
-                      [Function],
-                    ],
-                  ],
-                }
-              }
-              draftFlag={false}
-              hasOnClick={false}
-              listFlag={false}
-              message={
-                Object {
-                  "account": Object {
-                    "number": undefined,
-                  },
-                  "getDateCreated": [MockFunction] {
-                    "calls": Array [
-                      Array [],
-                    ],
-                  },
-                  "getMessageBody": [MockFunction] {
-                    "calls": Array [
-                      Array [],
-                    ],
-                  },
-                  "getReference": [MockFunction] {
-                    "calls": Array [
-                      Array [],
-                    ],
-                  },
-                  "getSubject": [MockFunction] {
-                    "calls": Array [
-                      Array [],
-                      Array [],
-                    ],
-                  },
-                  "status": "DRAFT",
-                }
-              }
-              messageDetail={
-                Object {
-                  "delSuccessModal": true,
-                  "newMessageError": true,
-                }
-              }
-              messages={
-                Object {
-                  "draftError": true,
-                }
-              }
-              noReply={undefined}
-              onArchiveClick={[Function]}
-              onDeleteClick={[Function]}
-              onUnarchiveClick={[Function]}
-              readFlag={false}
-              sentFlag={false}
-              threadFlag={false}
-            />
-          </div>
-          <p
-            className="c-message__summary__account"
-          />
-          <p
-            className="c-message__summary__date"
-          />
-        </div>,
-        false,
-        false,
-        false,
-      ],
-      "className": "c-message u-position-relative",
+      "children": <MailItem
+        archiveOnClick={null}
+        content={
+          Object {
+            "back": "Back",
+            "noSpecificAccount": "noSpecificAccount",
+          }
+        }
+        deleteOnClick={null}
+        dispatch={[MockFunction]}
+        id={undefined}
+        isArchived={false}
+        isRead={true}
+        mailDate={undefined}
+        mailOnClick={[Function]}
+        mailSubject="undefined "
+        mailSummary={undefined}
+        message={
+          Object {
+            "account": Object {
+              "number": undefined,
+            },
+            "getDateCreated": [MockFunction],
+            "getMessageBody": [MockFunction],
+            "getReference": [MockFunction],
+            "getSubject": [MockFunction],
+            "status": "DRAFT",
+          }
+        }
+        messageDetail={
+          Object {
+            "delSuccessModal": true,
+            "newMessageError": true,
+          }
+        }
+        messages={
+          Object {
+            "draftError": true,
+          }
+        }
+        moveToInboxOnClick={null}
+        replyOnClick={null}
+      />,
     },
     "ref": null,
-    "rendered": Array [
-      false,
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            <div
-              className="c-message__summary__head"
-            >
-              <div
-                className="c-message__summary__head__title c-message__summary__head__title--draft"
-              >
-                <h2
-                  className="c-message__summary__head__title__subject c-message__summary__head__title__subject--read"
-                  id="subjectMsg"
-                >
-                  <Link
-                    aria-label="undefined"
-                    className="c-message__summary__head__title__subject__link"
-                    replace={false}
-                    to={
-                      Object {
-                        "messageDetail": Object {
-                          "account": Object {
-                            "number": undefined,
-                          },
-                          "getDateCreated": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                            ],
-                          },
-                          "getMessageBody": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                            ],
-                          },
-                          "getReference": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                            ],
-                          },
-                          "getSubject": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                              Array [],
-                            ],
-                          },
-                          "status": "DRAFT",
-                        },
-                        "pathname": "/securemessages/draft",
-                      }
-                    }
-                  />
-                </h2>
-                <p
-                  className="c-message__summary__head__title__ref"
-                />
-              </div>
-              <SecureMessageSummaryButtons
-                content={
-                  Object {
-                    "back": "Back",
-                    "noSpecificAccount": "noSpecificAccount",
-                  }
-                }
-                dispatch={
-                  [MockFunction] {
-                    "calls": Array [
-                      Array [
-                        [Function],
-                      ],
-                    ],
-                  }
-                }
-                draftFlag={false}
-                hasOnClick={false}
-                listFlag={false}
-                message={
-                  Object {
-                    "account": Object {
-                      "number": undefined,
-                    },
-                    "getDateCreated": [MockFunction] {
-                      "calls": Array [
-                        Array [],
-                      ],
-                    },
-                    "getMessageBody": [MockFunction] {
-                      "calls": Array [
-                        Array [],
-                      ],
-                    },
-                    "getReference": [MockFunction] {
-                      "calls": Array [
-                        Array [],
-                      ],
-                    },
-                    "getSubject": [MockFunction] {
-                      "calls": Array [
-                        Array [],
-                        Array [],
-                      ],
-                    },
-                    "status": "DRAFT",
-                  }
-                }
-                messageDetail={
-                  Object {
-                    "delSuccessModal": true,
-                    "newMessageError": true,
-                  }
-                }
-                messages={
-                  Object {
-                    "draftError": true,
-                  }
-                }
-                noReply={undefined}
-                onArchiveClick={[Function]}
-                onDeleteClick={[Function]}
-                onUnarchiveClick={[Function]}
-                readFlag={false}
-                sentFlag={false}
-                threadFlag={false}
-              />
-            </div>,
-            <p
-              className="c-message__summary__account"
-            />,
-            undefined,
-            <p
-              className="c-message__summary__date"
-            />,
-          ],
-          "className": "c-message__summary c-message__summary--no-icon",
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "archiveOnClick": null,
+        "content": Object {
+          "back": "Back",
+          "noSpecificAccount": "noSpecificAccount",
         },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <div
-                  className="c-message__summary__head__title c-message__summary__head__title--draft"
-                >
-                  <h2
-                    className="c-message__summary__head__title__subject c-message__summary__head__title__subject--read"
-                    id="subjectMsg"
-                  >
-                    <Link
-                      aria-label="undefined"
-                      className="c-message__summary__head__title__subject__link"
-                      replace={false}
-                      to={
-                        Object {
-                          "messageDetail": Object {
-                            "account": Object {
-                              "number": undefined,
-                            },
-                            "getDateCreated": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getMessageBody": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getReference": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getSubject": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                                Array [],
-                              ],
-                            },
-                            "status": "DRAFT",
-                          },
-                          "pathname": "/securemessages/draft",
-                        }
-                      }
-                    />
-                  </h2>
-                  <p
-                    className="c-message__summary__head__title__ref"
-                  />
-                </div>,
-                <SecureMessageSummaryButtons
-                  content={
-                    Object {
-                      "back": "Back",
-                      "noSpecificAccount": "noSpecificAccount",
-                    }
-                  }
-                  dispatch={
-                    [MockFunction] {
-                      "calls": Array [
-                        Array [
-                          [Function],
-                        ],
-                      ],
-                    }
-                  }
-                  draftFlag={false}
-                  hasOnClick={false}
-                  listFlag={false}
-                  message={
-                    Object {
-                      "account": Object {
-                        "number": undefined,
-                      },
-                      "getDateCreated": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                        ],
-                      },
-                      "getMessageBody": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                        ],
-                      },
-                      "getReference": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                        ],
-                      },
-                      "getSubject": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                          Array [],
-                        ],
-                      },
-                      "status": "DRAFT",
-                    }
-                  }
-                  messageDetail={
-                    Object {
-                      "delSuccessModal": true,
-                      "newMessageError": true,
-                    }
-                  }
-                  messages={
-                    Object {
-                      "draftError": true,
-                    }
-                  }
-                  noReply={undefined}
-                  onArchiveClick={[Function]}
-                  onDeleteClick={[Function]}
-                  onUnarchiveClick={[Function]}
-                  readFlag={false}
-                  sentFlag={false}
-                  threadFlag={false}
-                />,
-              ],
-              "className": "c-message__summary__head",
-            },
-            "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": Array [
-                    <h2
-                      className="c-message__summary__head__title__subject c-message__summary__head__title__subject--read"
-                      id="subjectMsg"
-                    >
-                      <Link
-                        aria-label="undefined"
-                        className="c-message__summary__head__title__subject__link"
-                        replace={false}
-                        to={
-                          Object {
-                            "messageDetail": Object {
-                              "account": Object {
-                                "number": undefined,
-                              },
-                              "getDateCreated": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getMessageBody": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getReference": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getSubject": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                  Array [],
-                                ],
-                              },
-                              "status": "DRAFT",
-                            },
-                            "pathname": "/securemessages/draft",
-                          }
-                        }
-                      />
-                    </h2>,
-                    <p
-                      className="c-message__summary__head__title__ref"
-                    />,
-                  ],
-                  "className": "c-message__summary__head__title c-message__summary__head__title--draft",
-                },
-                "ref": null,
-                "rendered": Array [
-                  Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "host",
-                    "props": Object {
-                      "children": <Link
-                        aria-label="undefined"
-                        className="c-message__summary__head__title__subject__link"
-                        replace={false}
-                        to={
-                          Object {
-                            "messageDetail": Object {
-                              "account": Object {
-                                "number": undefined,
-                              },
-                              "getDateCreated": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getMessageBody": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getReference": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getSubject": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                  Array [],
-                                ],
-                              },
-                              "status": "DRAFT",
-                            },
-                            "pathname": "/securemessages/draft",
-                          }
-                        }
-                      />,
-                      "className": "c-message__summary__head__title__subject c-message__summary__head__title__subject--read",
-                      "id": "subjectMsg",
-                    },
-                    "ref": null,
-                    "rendered": Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "class",
-                      "props": Object {
-                        "aria-label": "undefined",
-                        "children": undefined,
-                        "className": "c-message__summary__head__title__subject__link",
-                        "replace": false,
-                        "to": Object {
-                          "messageDetail": Object {
-                            "account": Object {
-                              "number": undefined,
-                            },
-                            "getDateCreated": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getMessageBody": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getReference": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getSubject": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                                Array [],
-                              ],
-                            },
-                            "status": "DRAFT",
-                          },
-                          "pathname": "/securemessages/draft",
-                        },
-                      },
-                      "ref": null,
-                      "rendered": null,
-                      "type": [Function],
-                    },
-                    "type": "h2",
-                  },
-                  Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "host",
-                    "props": Object {
-                      "children": undefined,
-                      "className": "c-message__summary__head__title__ref",
-                    },
-                    "ref": null,
-                    "rendered": null,
-                    "type": "p",
-                  },
-                ],
-                "type": "div",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "function",
-                "props": Object {
-                  "content": Object {
-                    "back": "Back",
-                    "noSpecificAccount": "noSpecificAccount",
-                  },
-                  "dispatch": [MockFunction] {
-                    "calls": Array [
-                      Array [
-                        [Function],
-                      ],
-                    ],
-                  },
-                  "draftFlag": false,
-                  "hasOnClick": false,
-                  "listFlag": false,
-                  "message": Object {
-                    "account": Object {
-                      "number": undefined,
-                    },
-                    "getDateCreated": [MockFunction] {
-                      "calls": Array [
-                        Array [],
-                      ],
-                    },
-                    "getMessageBody": [MockFunction] {
-                      "calls": Array [
-                        Array [],
-                      ],
-                    },
-                    "getReference": [MockFunction] {
-                      "calls": Array [
-                        Array [],
-                      ],
-                    },
-                    "getSubject": [MockFunction] {
-                      "calls": Array [
-                        Array [],
-                        Array [],
-                      ],
-                    },
-                    "status": "DRAFT",
-                  },
-                  "messageDetail": Object {
-                    "delSuccessModal": true,
-                    "newMessageError": true,
-                  },
-                  "messages": Object {
-                    "draftError": true,
-                  },
-                  "noReply": undefined,
-                  "onArchiveClick": [Function],
-                  "onDeleteClick": [Function],
-                  "onUnarchiveClick": [Function],
-                  "readFlag": false,
-                  "sentFlag": false,
-                  "threadFlag": false,
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-            ],
-            "type": "div",
+        "deleteOnClick": null,
+        "dispatch": [MockFunction],
+        "id": undefined,
+        "isArchived": false,
+        "isRead": true,
+        "mailDate": undefined,
+        "mailOnClick": [Function],
+        "mailSubject": "undefined ",
+        "mailSummary": undefined,
+        "message": Object {
+          "account": Object {
+            "number": undefined,
           },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": undefined,
-              "className": "c-message__summary__account",
-            },
-            "ref": null,
-            "rendered": null,
-            "type": "p",
-          },
-          undefined,
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": undefined,
-              "className": "c-message__summary__date",
-            },
-            "ref": null,
-            "rendered": null,
-            "type": "p",
-          },
-        ],
-        "type": "div",
+          "getDateCreated": [MockFunction],
+          "getMessageBody": [MockFunction],
+          "getReference": [MockFunction],
+          "getSubject": [MockFunction],
+          "status": "DRAFT",
+        },
+        "messageDetail": Object {
+          "delSuccessModal": true,
+          "newMessageError": true,
+        },
+        "messages": Object {
+          "draftError": true,
+        },
+        "moveToInboxOnClick": null,
+        "replyOnClick": null,
       },
-      false,
-      false,
-      false,
-    ],
-    "type": "div",
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+    "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "host",
+      "nodeType": "function",
       "props": Object {
-        "children": Array [
-          false,
-          <div
-            className="c-message__summary c-message__summary--no-icon"
-          >
-            <div
-              className="c-message__summary__head"
-            >
-              <div
-                className="c-message__summary__head__title c-message__summary__head__title--draft"
-              >
-                <h2
-                  className="c-message__summary__head__title__subject c-message__summary__head__title__subject--read"
-                  id="subjectMsg"
-                >
-                  <Link
-                    aria-label="undefined"
-                    className="c-message__summary__head__title__subject__link"
-                    replace={false}
-                    to={
-                      Object {
-                        "messageDetail": Object {
-                          "account": Object {
-                            "number": undefined,
-                          },
-                          "getDateCreated": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                            ],
-                          },
-                          "getMessageBody": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                            ],
-                          },
-                          "getReference": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                            ],
-                          },
-                          "getSubject": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                              Array [],
-                            ],
-                          },
-                          "status": "DRAFT",
-                        },
-                        "pathname": "/securemessages/draft",
-                      }
-                    }
-                  />
-                </h2>
-                <p
-                  className="c-message__summary__head__title__ref"
-                />
-              </div>
-              <SecureMessageSummaryButtons
-                content={
-                  Object {
-                    "back": "Back",
-                    "noSpecificAccount": "noSpecificAccount",
-                  }
-                }
-                dispatch={
-                  [MockFunction] {
-                    "calls": Array [
-                      Array [
-                        [Function],
-                      ],
-                    ],
-                  }
-                }
-                draftFlag={false}
-                hasOnClick={false}
-                listFlag={false}
-                message={
-                  Object {
-                    "account": Object {
-                      "number": undefined,
-                    },
-                    "getDateCreated": [MockFunction] {
-                      "calls": Array [
-                        Array [],
-                      ],
-                    },
-                    "getMessageBody": [MockFunction] {
-                      "calls": Array [
-                        Array [],
-                      ],
-                    },
-                    "getReference": [MockFunction] {
-                      "calls": Array [
-                        Array [],
-                      ],
-                    },
-                    "getSubject": [MockFunction] {
-                      "calls": Array [
-                        Array [],
-                        Array [],
-                      ],
-                    },
-                    "status": "DRAFT",
-                  }
-                }
-                messageDetail={
-                  Object {
-                    "delSuccessModal": true,
-                    "newMessageError": true,
-                  }
-                }
-                messages={
-                  Object {
-                    "draftError": true,
-                  }
-                }
-                noReply={undefined}
-                onArchiveClick={[Function]}
-                onDeleteClick={[Function]}
-                onUnarchiveClick={[Function]}
-                readFlag={false}
-                sentFlag={false}
-                threadFlag={false}
-              />
-            </div>
-            <p
-              className="c-message__summary__account"
-            />
-            <p
-              className="c-message__summary__date"
-            />
-          </div>,
-          false,
-          false,
-          false,
-        ],
-        "className": "c-message u-position-relative",
+        "children": <MailItem
+          archiveOnClick={null}
+          content={
+            Object {
+              "back": "Back",
+              "noSpecificAccount": "noSpecificAccount",
+            }
+          }
+          deleteOnClick={null}
+          dispatch={[MockFunction]}
+          id={undefined}
+          isArchived={false}
+          isRead={true}
+          mailDate={undefined}
+          mailOnClick={[Function]}
+          mailSubject="undefined "
+          mailSummary={undefined}
+          message={
+            Object {
+              "account": Object {
+                "number": undefined,
+              },
+              "getDateCreated": [MockFunction],
+              "getMessageBody": [MockFunction],
+              "getReference": [MockFunction],
+              "getSubject": [MockFunction],
+              "status": "DRAFT",
+            }
+          }
+          messageDetail={
+            Object {
+              "delSuccessModal": true,
+              "newMessageError": true,
+            }
+          }
+          messages={
+            Object {
+              "draftError": true,
+            }
+          }
+          moveToInboxOnClick={null}
+          replyOnClick={null}
+        />,
       },
       "ref": null,
-      "rendered": Array [
-        false,
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              <div
-                className="c-message__summary__head"
-              >
-                <div
-                  className="c-message__summary__head__title c-message__summary__head__title--draft"
-                >
-                  <h2
-                    className="c-message__summary__head__title__subject c-message__summary__head__title__subject--read"
-                    id="subjectMsg"
-                  >
-                    <Link
-                      aria-label="undefined"
-                      className="c-message__summary__head__title__subject__link"
-                      replace={false}
-                      to={
-                        Object {
-                          "messageDetail": Object {
-                            "account": Object {
-                              "number": undefined,
-                            },
-                            "getDateCreated": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getMessageBody": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getReference": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getSubject": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                                Array [],
-                              ],
-                            },
-                            "status": "DRAFT",
-                          },
-                          "pathname": "/securemessages/draft",
-                        }
-                      }
-                    />
-                  </h2>
-                  <p
-                    className="c-message__summary__head__title__ref"
-                  />
-                </div>
-                <SecureMessageSummaryButtons
-                  content={
-                    Object {
-                      "back": "Back",
-                      "noSpecificAccount": "noSpecificAccount",
-                    }
-                  }
-                  dispatch={
-                    [MockFunction] {
-                      "calls": Array [
-                        Array [
-                          [Function],
-                        ],
-                      ],
-                    }
-                  }
-                  draftFlag={false}
-                  hasOnClick={false}
-                  listFlag={false}
-                  message={
-                    Object {
-                      "account": Object {
-                        "number": undefined,
-                      },
-                      "getDateCreated": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                        ],
-                      },
-                      "getMessageBody": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                        ],
-                      },
-                      "getReference": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                        ],
-                      },
-                      "getSubject": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                          Array [],
-                        ],
-                      },
-                      "status": "DRAFT",
-                    }
-                  }
-                  messageDetail={
-                    Object {
-                      "delSuccessModal": true,
-                      "newMessageError": true,
-                    }
-                  }
-                  messages={
-                    Object {
-                      "draftError": true,
-                    }
-                  }
-                  noReply={undefined}
-                  onArchiveClick={[Function]}
-                  onDeleteClick={[Function]}
-                  onUnarchiveClick={[Function]}
-                  readFlag={false}
-                  sentFlag={false}
-                  threadFlag={false}
-                />
-              </div>,
-              <p
-                className="c-message__summary__account"
-              />,
-              undefined,
-              <p
-                className="c-message__summary__date"
-              />,
-            ],
-            "className": "c-message__summary c-message__summary--no-icon",
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "archiveOnClick": null,
+          "content": Object {
+            "back": "Back",
+            "noSpecificAccount": "noSpecificAccount",
           },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <div
-                    className="c-message__summary__head__title c-message__summary__head__title--draft"
-                  >
-                    <h2
-                      className="c-message__summary__head__title__subject c-message__summary__head__title__subject--read"
-                      id="subjectMsg"
-                    >
-                      <Link
-                        aria-label="undefined"
-                        className="c-message__summary__head__title__subject__link"
-                        replace={false}
-                        to={
-                          Object {
-                            "messageDetail": Object {
-                              "account": Object {
-                                "number": undefined,
-                              },
-                              "getDateCreated": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getMessageBody": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getReference": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getSubject": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                  Array [],
-                                ],
-                              },
-                              "status": "DRAFT",
-                            },
-                            "pathname": "/securemessages/draft",
-                          }
-                        }
-                      />
-                    </h2>
-                    <p
-                      className="c-message__summary__head__title__ref"
-                    />
-                  </div>,
-                  <SecureMessageSummaryButtons
-                    content={
-                      Object {
-                        "back": "Back",
-                        "noSpecificAccount": "noSpecificAccount",
-                      }
-                    }
-                    dispatch={
-                      [MockFunction] {
-                        "calls": Array [
-                          Array [
-                            [Function],
-                          ],
-                        ],
-                      }
-                    }
-                    draftFlag={false}
-                    hasOnClick={false}
-                    listFlag={false}
-                    message={
-                      Object {
-                        "account": Object {
-                          "number": undefined,
-                        },
-                        "getDateCreated": [MockFunction] {
-                          "calls": Array [
-                            Array [],
-                          ],
-                        },
-                        "getMessageBody": [MockFunction] {
-                          "calls": Array [
-                            Array [],
-                          ],
-                        },
-                        "getReference": [MockFunction] {
-                          "calls": Array [
-                            Array [],
-                          ],
-                        },
-                        "getSubject": [MockFunction] {
-                          "calls": Array [
-                            Array [],
-                            Array [],
-                          ],
-                        },
-                        "status": "DRAFT",
-                      }
-                    }
-                    messageDetail={
-                      Object {
-                        "delSuccessModal": true,
-                        "newMessageError": true,
-                      }
-                    }
-                    messages={
-                      Object {
-                        "draftError": true,
-                      }
-                    }
-                    noReply={undefined}
-                    onArchiveClick={[Function]}
-                    onDeleteClick={[Function]}
-                    onUnarchiveClick={[Function]}
-                    readFlag={false}
-                    sentFlag={false}
-                    threadFlag={false}
-                  />,
-                ],
-                "className": "c-message__summary__head",
-              },
-              "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": Array [
-                      <h2
-                        className="c-message__summary__head__title__subject c-message__summary__head__title__subject--read"
-                        id="subjectMsg"
-                      >
-                        <Link
-                          aria-label="undefined"
-                          className="c-message__summary__head__title__subject__link"
-                          replace={false}
-                          to={
-                            Object {
-                              "messageDetail": Object {
-                                "account": Object {
-                                  "number": undefined,
-                                },
-                                "getDateCreated": [MockFunction] {
-                                  "calls": Array [
-                                    Array [],
-                                  ],
-                                },
-                                "getMessageBody": [MockFunction] {
-                                  "calls": Array [
-                                    Array [],
-                                  ],
-                                },
-                                "getReference": [MockFunction] {
-                                  "calls": Array [
-                                    Array [],
-                                  ],
-                                },
-                                "getSubject": [MockFunction] {
-                                  "calls": Array [
-                                    Array [],
-                                    Array [],
-                                  ],
-                                },
-                                "status": "DRAFT",
-                              },
-                              "pathname": "/securemessages/draft",
-                            }
-                          }
-                        />
-                      </h2>,
-                      <p
-                        className="c-message__summary__head__title__ref"
-                      />,
-                    ],
-                    "className": "c-message__summary__head__title c-message__summary__head__title--draft",
-                  },
-                  "ref": null,
-                  "rendered": Array [
-                    Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "host",
-                      "props": Object {
-                        "children": <Link
-                          aria-label="undefined"
-                          className="c-message__summary__head__title__subject__link"
-                          replace={false}
-                          to={
-                            Object {
-                              "messageDetail": Object {
-                                "account": Object {
-                                  "number": undefined,
-                                },
-                                "getDateCreated": [MockFunction] {
-                                  "calls": Array [
-                                    Array [],
-                                  ],
-                                },
-                                "getMessageBody": [MockFunction] {
-                                  "calls": Array [
-                                    Array [],
-                                  ],
-                                },
-                                "getReference": [MockFunction] {
-                                  "calls": Array [
-                                    Array [],
-                                  ],
-                                },
-                                "getSubject": [MockFunction] {
-                                  "calls": Array [
-                                    Array [],
-                                    Array [],
-                                  ],
-                                },
-                                "status": "DRAFT",
-                              },
-                              "pathname": "/securemessages/draft",
-                            }
-                          }
-                        />,
-                        "className": "c-message__summary__head__title__subject c-message__summary__head__title__subject--read",
-                        "id": "subjectMsg",
-                      },
-                      "ref": null,
-                      "rendered": Object {
-                        "instance": null,
-                        "key": undefined,
-                        "nodeType": "class",
-                        "props": Object {
-                          "aria-label": "undefined",
-                          "children": undefined,
-                          "className": "c-message__summary__head__title__subject__link",
-                          "replace": false,
-                          "to": Object {
-                            "messageDetail": Object {
-                              "account": Object {
-                                "number": undefined,
-                              },
-                              "getDateCreated": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getMessageBody": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getReference": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getSubject": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                  Array [],
-                                ],
-                              },
-                              "status": "DRAFT",
-                            },
-                            "pathname": "/securemessages/draft",
-                          },
-                        },
-                        "ref": null,
-                        "rendered": null,
-                        "type": [Function],
-                      },
-                      "type": "h2",
-                    },
-                    Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "host",
-                      "props": Object {
-                        "children": undefined,
-                        "className": "c-message__summary__head__title__ref",
-                      },
-                      "ref": null,
-                      "rendered": null,
-                      "type": "p",
-                    },
-                  ],
-                  "type": "div",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "function",
-                  "props": Object {
-                    "content": Object {
-                      "back": "Back",
-                      "noSpecificAccount": "noSpecificAccount",
-                    },
-                    "dispatch": [MockFunction] {
-                      "calls": Array [
-                        Array [
-                          [Function],
-                        ],
-                      ],
-                    },
-                    "draftFlag": false,
-                    "hasOnClick": false,
-                    "listFlag": false,
-                    "message": Object {
-                      "account": Object {
-                        "number": undefined,
-                      },
-                      "getDateCreated": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                        ],
-                      },
-                      "getMessageBody": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                        ],
-                      },
-                      "getReference": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                        ],
-                      },
-                      "getSubject": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                          Array [],
-                        ],
-                      },
-                      "status": "DRAFT",
-                    },
-                    "messageDetail": Object {
-                      "delSuccessModal": true,
-                      "newMessageError": true,
-                    },
-                    "messages": Object {
-                      "draftError": true,
-                    },
-                    "noReply": undefined,
-                    "onArchiveClick": [Function],
-                    "onDeleteClick": [Function],
-                    "onUnarchiveClick": [Function],
-                    "readFlag": false,
-                    "sentFlag": false,
-                    "threadFlag": false,
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": [Function],
-                },
-              ],
-              "type": "div",
+          "deleteOnClick": null,
+          "dispatch": [MockFunction],
+          "id": undefined,
+          "isArchived": false,
+          "isRead": true,
+          "mailDate": undefined,
+          "mailOnClick": [Function],
+          "mailSubject": "undefined ",
+          "mailSummary": undefined,
+          "message": Object {
+            "account": Object {
+              "number": undefined,
             },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": undefined,
-                "className": "c-message__summary__account",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": "p",
-            },
-            undefined,
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": undefined,
-                "className": "c-message__summary__date",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": "p",
-            },
-          ],
-          "type": "div",
+            "getDateCreated": [MockFunction],
+            "getMessageBody": [MockFunction],
+            "getReference": [MockFunction],
+            "getSubject": [MockFunction],
+            "status": "DRAFT",
+          },
+          "messageDetail": Object {
+            "delSuccessModal": true,
+            "newMessageError": true,
+          },
+          "messages": Object {
+            "draftError": true,
+          },
+          "moveToInboxOnClick": null,
+          "replyOnClick": null,
         },
-        false,
-        false,
-        false,
-      ],
-      "type": "div",
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      "type": [Function],
     },
   ],
   Symbol(enzyme.__options__): Object {
@@ -2962,40 +518,16 @@ ShallowWrapper {
         "noSpecificAccount": "noSpecificAccount",
       }
     }
-    dispatch={
-      [MockFunction] {
-        "calls": Array [
-          Array [
-            [Function],
-          ],
-        ],
-      }
-    }
-    draftFlag={false}
-    hasOnClick={false}
-    listFlag={false}
+    dispatch={[MockFunction]}
     message={
       Object {
         "account": Object {
           "number": "32236",
         },
-        "getDateCreated": [MockFunction] {
-          "calls": Array [
-            Array [],
-          ],
-        },
+        "getDateCreated": [MockFunction],
         "getMessageBody": [MockFunction],
-        "getReference": [MockFunction] {
-          "calls": Array [
-            Array [],
-          ],
-        },
-        "getSubject": [MockFunction] {
-          "calls": Array [
-            Array [],
-            Array [],
-          ],
-        },
+        "getReference": [MockFunction],
+        "getSubject": [MockFunction],
         "status": "NEW",
       }
     }
@@ -3010,9 +542,6 @@ ShallowWrapper {
         "draftError": true,
       }
     }
-    readFlag={false}
-    sentFlag={false}
-    threadFlag={false}
     viewMessageFlag={true}
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -3025,1377 +554,197 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "host",
+    "nodeType": "function",
     "props": Object {
-      "children": Array [
-        <span
-          className="c-message__icon"
-        >
-          <CommonGetIcon
-            height="24px"
-            id="icon-envelope"
-            width="24px"
-          />
-        </span>,
-        <div
-          className="c-message__summary"
-        >
-          <div
-            className="c-message__summary__head"
-          >
-            <div
-              className="c-message__summary__head__title"
-            >
-              <h2
-                className="c-message__summary__head__title__subject"
-                id="subjectMsg"
-              >
-                <Link
-                  aria-label="undefined undefined"
-                  className="c-message__summary__head__title__subject__link"
-                  replace={false}
-                  to={
-                    Object {
-                      "messageDetail": Object {
-                        "account": Object {
-                          "number": "32236",
-                        },
-                        "getDateCreated": [MockFunction] {
-                          "calls": Array [
-                            Array [],
-                          ],
-                        },
-                        "getMessageBody": [MockFunction],
-                        "getReference": [MockFunction] {
-                          "calls": Array [
-                            Array [],
-                          ],
-                        },
-                        "getSubject": [MockFunction] {
-                          "calls": Array [
-                            Array [],
-                            Array [],
-                          ],
-                        },
-                        "status": "NEW",
-                      },
-                      "pathname": "/securemessages/view",
-                    }
-                  }
-                />
-              </h2>
-              <p
-                className="c-message__summary__head__title__ref"
-              />
-            </div>
-            <SecureMessageSummaryButtons
-              content={
-                Object {
-                  "back": "Back",
-                  "noSpecificAccount": "noSpecificAccount",
-                }
-              }
-              dispatch={
-                [MockFunction] {
-                  "calls": Array [
-                    Array [
-                      [Function],
-                    ],
-                  ],
-                }
-              }
-              draftFlag={false}
-              hasOnClick={false}
-              listFlag={false}
-              message={
-                Object {
-                  "account": Object {
-                    "number": "32236",
-                  },
-                  "getDateCreated": [MockFunction] {
-                    "calls": Array [
-                      Array [],
-                    ],
-                  },
-                  "getMessageBody": [MockFunction],
-                  "getReference": [MockFunction] {
-                    "calls": Array [
-                      Array [],
-                    ],
-                  },
-                  "getSubject": [MockFunction] {
-                    "calls": Array [
-                      Array [],
-                      Array [],
-                    ],
-                  },
-                  "status": "NEW",
-                }
-              }
-              messageDetail={
-                Object {
-                  "delSuccessModal": true,
-                  "newMessageError": true,
-                }
-              }
-              messages={
-                Object {
-                  "draftError": true,
-                }
-              }
-              noReply={undefined}
-              onArchiveClick={[Function]}
-              onDeleteClick={[Function]}
-              onUnarchiveClick={[Function]}
-              readFlag={false}
-              sentFlag={false}
-              threadFlag={false}
-              viewMessageFlag={true}
-            />
-          </div>
-          <p
-            className="c-message__summary__account"
-          >
-            Account : 
-            32236
-          </p>
-          <p
-            className="c-message__summary__date"
-          />
-        </div>,
-        false,
-        false,
-        false,
-      ],
-      "className": "c-message u-position-relative",
+      "children": <MailItem
+        archiveOnClick={null}
+        content={
+          Object {
+            "back": "Back",
+            "noSpecificAccount": "noSpecificAccount",
+          }
+        }
+        deleteOnClick={null}
+        dispatch={[MockFunction]}
+        id={undefined}
+        isArchived={false}
+        isRead={false}
+        mailDate={undefined}
+        mailOnClick={[Function]}
+        mailSubject="undefined "
+        mailSummary={undefined}
+        message={
+          Object {
+            "account": Object {
+              "number": "32236",
+            },
+            "getDateCreated": [MockFunction],
+            "getMessageBody": [MockFunction],
+            "getReference": [MockFunction],
+            "getSubject": [MockFunction],
+            "status": "NEW",
+          }
+        }
+        messageDetail={
+          Object {
+            "delSuccessModal": true,
+            "newMessageError": true,
+          }
+        }
+        messages={
+          Object {
+            "draftError": true,
+          }
+        }
+        moveToInboxOnClick={null}
+        replyOnClick={null}
+        viewMessageFlag={true}
+      />,
     },
     "ref": null,
-    "rendered": Array [
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": <CommonGetIcon
-            height="24px"
-            id="icon-envelope"
-            width="24px"
-          />,
-          "className": "c-message__icon",
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "archiveOnClick": null,
+        "content": Object {
+          "back": "Back",
+          "noSpecificAccount": "noSpecificAccount",
         },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "height": "24px",
-            "id": "icon-envelope",
-            "width": "24px",
+        "deleteOnClick": null,
+        "dispatch": [MockFunction],
+        "id": undefined,
+        "isArchived": false,
+        "isRead": false,
+        "mailDate": undefined,
+        "mailOnClick": [Function],
+        "mailSubject": "undefined ",
+        "mailSummary": undefined,
+        "message": Object {
+          "account": Object {
+            "number": "32236",
           },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
+          "getDateCreated": [MockFunction],
+          "getMessageBody": [MockFunction],
+          "getReference": [MockFunction],
+          "getSubject": [MockFunction],
+          "status": "NEW",
         },
-        "type": "span",
+        "messageDetail": Object {
+          "delSuccessModal": true,
+          "newMessageError": true,
+        },
+        "messages": Object {
+          "draftError": true,
+        },
+        "moveToInboxOnClick": null,
+        "replyOnClick": null,
+        "viewMessageFlag": true,
       },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            <div
-              className="c-message__summary__head"
-            >
-              <div
-                className="c-message__summary__head__title"
-              >
-                <h2
-                  className="c-message__summary__head__title__subject"
-                  id="subjectMsg"
-                >
-                  <Link
-                    aria-label="undefined undefined"
-                    className="c-message__summary__head__title__subject__link"
-                    replace={false}
-                    to={
-                      Object {
-                        "messageDetail": Object {
-                          "account": Object {
-                            "number": "32236",
-                          },
-                          "getDateCreated": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                            ],
-                          },
-                          "getMessageBody": [MockFunction],
-                          "getReference": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                            ],
-                          },
-                          "getSubject": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                              Array [],
-                            ],
-                          },
-                          "status": "NEW",
-                        },
-                        "pathname": "/securemessages/view",
-                      }
-                    }
-                  />
-                </h2>
-                <p
-                  className="c-message__summary__head__title__ref"
-                />
-              </div>
-              <SecureMessageSummaryButtons
-                content={
-                  Object {
-                    "back": "Back",
-                    "noSpecificAccount": "noSpecificAccount",
-                  }
-                }
-                dispatch={
-                  [MockFunction] {
-                    "calls": Array [
-                      Array [
-                        [Function],
-                      ],
-                    ],
-                  }
-                }
-                draftFlag={false}
-                hasOnClick={false}
-                listFlag={false}
-                message={
-                  Object {
-                    "account": Object {
-                      "number": "32236",
-                    },
-                    "getDateCreated": [MockFunction] {
-                      "calls": Array [
-                        Array [],
-                      ],
-                    },
-                    "getMessageBody": [MockFunction],
-                    "getReference": [MockFunction] {
-                      "calls": Array [
-                        Array [],
-                      ],
-                    },
-                    "getSubject": [MockFunction] {
-                      "calls": Array [
-                        Array [],
-                        Array [],
-                      ],
-                    },
-                    "status": "NEW",
-                  }
-                }
-                messageDetail={
-                  Object {
-                    "delSuccessModal": true,
-                    "newMessageError": true,
-                  }
-                }
-                messages={
-                  Object {
-                    "draftError": true,
-                  }
-                }
-                noReply={undefined}
-                onArchiveClick={[Function]}
-                onDeleteClick={[Function]}
-                onUnarchiveClick={[Function]}
-                readFlag={false}
-                sentFlag={false}
-                threadFlag={false}
-                viewMessageFlag={true}
-              />
-            </div>,
-            false,
-            <p
-              className="c-message__summary__account"
-            >
-              Account : 
-              32236
-            </p>,
-            <p
-              className="c-message__summary__date"
-            />,
-          ],
-          "className": "c-message__summary",
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <div
-                  className="c-message__summary__head__title"
-                >
-                  <h2
-                    className="c-message__summary__head__title__subject"
-                    id="subjectMsg"
-                  >
-                    <Link
-                      aria-label="undefined undefined"
-                      className="c-message__summary__head__title__subject__link"
-                      replace={false}
-                      to={
-                        Object {
-                          "messageDetail": Object {
-                            "account": Object {
-                              "number": "32236",
-                            },
-                            "getDateCreated": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getMessageBody": [MockFunction],
-                            "getReference": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getSubject": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                                Array [],
-                              ],
-                            },
-                            "status": "NEW",
-                          },
-                          "pathname": "/securemessages/view",
-                        }
-                      }
-                    />
-                  </h2>
-                  <p
-                    className="c-message__summary__head__title__ref"
-                  />
-                </div>,
-                <SecureMessageSummaryButtons
-                  content={
-                    Object {
-                      "back": "Back",
-                      "noSpecificAccount": "noSpecificAccount",
-                    }
-                  }
-                  dispatch={
-                    [MockFunction] {
-                      "calls": Array [
-                        Array [
-                          [Function],
-                        ],
-                      ],
-                    }
-                  }
-                  draftFlag={false}
-                  hasOnClick={false}
-                  listFlag={false}
-                  message={
-                    Object {
-                      "account": Object {
-                        "number": "32236",
-                      },
-                      "getDateCreated": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                        ],
-                      },
-                      "getMessageBody": [MockFunction],
-                      "getReference": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                        ],
-                      },
-                      "getSubject": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                          Array [],
-                        ],
-                      },
-                      "status": "NEW",
-                    }
-                  }
-                  messageDetail={
-                    Object {
-                      "delSuccessModal": true,
-                      "newMessageError": true,
-                    }
-                  }
-                  messages={
-                    Object {
-                      "draftError": true,
-                    }
-                  }
-                  noReply={undefined}
-                  onArchiveClick={[Function]}
-                  onDeleteClick={[Function]}
-                  onUnarchiveClick={[Function]}
-                  readFlag={false}
-                  sentFlag={false}
-                  threadFlag={false}
-                  viewMessageFlag={true}
-                />,
-              ],
-              "className": "c-message__summary__head",
-            },
-            "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": Array [
-                    <h2
-                      className="c-message__summary__head__title__subject"
-                      id="subjectMsg"
-                    >
-                      <Link
-                        aria-label="undefined undefined"
-                        className="c-message__summary__head__title__subject__link"
-                        replace={false}
-                        to={
-                          Object {
-                            "messageDetail": Object {
-                              "account": Object {
-                                "number": "32236",
-                              },
-                              "getDateCreated": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getMessageBody": [MockFunction],
-                              "getReference": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getSubject": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                  Array [],
-                                ],
-                              },
-                              "status": "NEW",
-                            },
-                            "pathname": "/securemessages/view",
-                          }
-                        }
-                      />
-                    </h2>,
-                    <p
-                      className="c-message__summary__head__title__ref"
-                    />,
-                  ],
-                  "className": "c-message__summary__head__title",
-                },
-                "ref": null,
-                "rendered": Array [
-                  Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "host",
-                    "props": Object {
-                      "children": <Link
-                        aria-label="undefined undefined"
-                        className="c-message__summary__head__title__subject__link"
-                        replace={false}
-                        to={
-                          Object {
-                            "messageDetail": Object {
-                              "account": Object {
-                                "number": "32236",
-                              },
-                              "getDateCreated": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getMessageBody": [MockFunction],
-                              "getReference": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getSubject": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                  Array [],
-                                ],
-                              },
-                              "status": "NEW",
-                            },
-                            "pathname": "/securemessages/view",
-                          }
-                        }
-                      />,
-                      "className": "c-message__summary__head__title__subject",
-                      "id": "subjectMsg",
-                    },
-                    "ref": null,
-                    "rendered": Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "class",
-                      "props": Object {
-                        "aria-label": "undefined undefined",
-                        "children": undefined,
-                        "className": "c-message__summary__head__title__subject__link",
-                        "replace": false,
-                        "to": Object {
-                          "messageDetail": Object {
-                            "account": Object {
-                              "number": "32236",
-                            },
-                            "getDateCreated": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getMessageBody": [MockFunction],
-                            "getReference": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getSubject": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                                Array [],
-                              ],
-                            },
-                            "status": "NEW",
-                          },
-                          "pathname": "/securemessages/view",
-                        },
-                      },
-                      "ref": null,
-                      "rendered": null,
-                      "type": [Function],
-                    },
-                    "type": "h2",
-                  },
-                  Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "host",
-                    "props": Object {
-                      "children": undefined,
-                      "className": "c-message__summary__head__title__ref",
-                    },
-                    "ref": null,
-                    "rendered": null,
-                    "type": "p",
-                  },
-                ],
-                "type": "div",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "function",
-                "props": Object {
-                  "content": Object {
-                    "back": "Back",
-                    "noSpecificAccount": "noSpecificAccount",
-                  },
-                  "dispatch": [MockFunction] {
-                    "calls": Array [
-                      Array [
-                        [Function],
-                      ],
-                    ],
-                  },
-                  "draftFlag": false,
-                  "hasOnClick": false,
-                  "listFlag": false,
-                  "message": Object {
-                    "account": Object {
-                      "number": "32236",
-                    },
-                    "getDateCreated": [MockFunction] {
-                      "calls": Array [
-                        Array [],
-                      ],
-                    },
-                    "getMessageBody": [MockFunction],
-                    "getReference": [MockFunction] {
-                      "calls": Array [
-                        Array [],
-                      ],
-                    },
-                    "getSubject": [MockFunction] {
-                      "calls": Array [
-                        Array [],
-                        Array [],
-                      ],
-                    },
-                    "status": "NEW",
-                  },
-                  "messageDetail": Object {
-                    "delSuccessModal": true,
-                    "newMessageError": true,
-                  },
-                  "messages": Object {
-                    "draftError": true,
-                  },
-                  "noReply": undefined,
-                  "onArchiveClick": [Function],
-                  "onDeleteClick": [Function],
-                  "onUnarchiveClick": [Function],
-                  "readFlag": false,
-                  "sentFlag": false,
-                  "threadFlag": false,
-                  "viewMessageFlag": true,
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-            ],
-            "type": "div",
-          },
-          false,
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                "Account : ",
-                "32236",
-              ],
-              "className": "c-message__summary__account",
-            },
-            "ref": null,
-            "rendered": Array [
-              "Account : ",
-              "32236",
-            ],
-            "type": "p",
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": undefined,
-              "className": "c-message__summary__date",
-            },
-            "ref": null,
-            "rendered": null,
-            "type": "p",
-          },
-        ],
-        "type": "div",
-      },
-      false,
-      false,
-      false,
-    ],
-    "type": "div",
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+    "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "host",
+      "nodeType": "function",
       "props": Object {
-        "children": Array [
-          <span
-            className="c-message__icon"
-          >
-            <CommonGetIcon
-              height="24px"
-              id="icon-envelope"
-              width="24px"
-            />
-          </span>,
-          <div
-            className="c-message__summary"
-          >
-            <div
-              className="c-message__summary__head"
-            >
-              <div
-                className="c-message__summary__head__title"
-              >
-                <h2
-                  className="c-message__summary__head__title__subject"
-                  id="subjectMsg"
-                >
-                  <Link
-                    aria-label="undefined undefined"
-                    className="c-message__summary__head__title__subject__link"
-                    replace={false}
-                    to={
-                      Object {
-                        "messageDetail": Object {
-                          "account": Object {
-                            "number": "32236",
-                          },
-                          "getDateCreated": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                            ],
-                          },
-                          "getMessageBody": [MockFunction],
-                          "getReference": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                            ],
-                          },
-                          "getSubject": [MockFunction] {
-                            "calls": Array [
-                              Array [],
-                              Array [],
-                            ],
-                          },
-                          "status": "NEW",
-                        },
-                        "pathname": "/securemessages/view",
-                      }
-                    }
-                  />
-                </h2>
-                <p
-                  className="c-message__summary__head__title__ref"
-                />
-              </div>
-              <SecureMessageSummaryButtons
-                content={
-                  Object {
-                    "back": "Back",
-                    "noSpecificAccount": "noSpecificAccount",
-                  }
-                }
-                dispatch={
-                  [MockFunction] {
-                    "calls": Array [
-                      Array [
-                        [Function],
-                      ],
-                    ],
-                  }
-                }
-                draftFlag={false}
-                hasOnClick={false}
-                listFlag={false}
-                message={
-                  Object {
-                    "account": Object {
-                      "number": "32236",
-                    },
-                    "getDateCreated": [MockFunction] {
-                      "calls": Array [
-                        Array [],
-                      ],
-                    },
-                    "getMessageBody": [MockFunction],
-                    "getReference": [MockFunction] {
-                      "calls": Array [
-                        Array [],
-                      ],
-                    },
-                    "getSubject": [MockFunction] {
-                      "calls": Array [
-                        Array [],
-                        Array [],
-                      ],
-                    },
-                    "status": "NEW",
-                  }
-                }
-                messageDetail={
-                  Object {
-                    "delSuccessModal": true,
-                    "newMessageError": true,
-                  }
-                }
-                messages={
-                  Object {
-                    "draftError": true,
-                  }
-                }
-                noReply={undefined}
-                onArchiveClick={[Function]}
-                onDeleteClick={[Function]}
-                onUnarchiveClick={[Function]}
-                readFlag={false}
-                sentFlag={false}
-                threadFlag={false}
-                viewMessageFlag={true}
-              />
-            </div>
-            <p
-              className="c-message__summary__account"
-            >
-              Account : 
-              32236
-            </p>
-            <p
-              className="c-message__summary__date"
-            />
-          </div>,
-          false,
-          false,
-          false,
-        ],
-        "className": "c-message u-position-relative",
+        "children": <MailItem
+          archiveOnClick={null}
+          content={
+            Object {
+              "back": "Back",
+              "noSpecificAccount": "noSpecificAccount",
+            }
+          }
+          deleteOnClick={null}
+          dispatch={[MockFunction]}
+          id={undefined}
+          isArchived={false}
+          isRead={false}
+          mailDate={undefined}
+          mailOnClick={[Function]}
+          mailSubject="undefined "
+          mailSummary={undefined}
+          message={
+            Object {
+              "account": Object {
+                "number": "32236",
+              },
+              "getDateCreated": [MockFunction],
+              "getMessageBody": [MockFunction],
+              "getReference": [MockFunction],
+              "getSubject": [MockFunction],
+              "status": "NEW",
+            }
+          }
+          messageDetail={
+            Object {
+              "delSuccessModal": true,
+              "newMessageError": true,
+            }
+          }
+          messages={
+            Object {
+              "draftError": true,
+            }
+          }
+          moveToInboxOnClick={null}
+          replyOnClick={null}
+          viewMessageFlag={true}
+        />,
       },
       "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": <CommonGetIcon
-              height="24px"
-              id="icon-envelope"
-              width="24px"
-            />,
-            "className": "c-message__icon",
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "archiveOnClick": null,
+          "content": Object {
+            "back": "Back",
+            "noSpecificAccount": "noSpecificAccount",
           },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "height": "24px",
-              "id": "icon-envelope",
-              "width": "24px",
+          "deleteOnClick": null,
+          "dispatch": [MockFunction],
+          "id": undefined,
+          "isArchived": false,
+          "isRead": false,
+          "mailDate": undefined,
+          "mailOnClick": [Function],
+          "mailSubject": "undefined ",
+          "mailSummary": undefined,
+          "message": Object {
+            "account": Object {
+              "number": "32236",
             },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
+            "getDateCreated": [MockFunction],
+            "getMessageBody": [MockFunction],
+            "getReference": [MockFunction],
+            "getSubject": [MockFunction],
+            "status": "NEW",
           },
-          "type": "span",
+          "messageDetail": Object {
+            "delSuccessModal": true,
+            "newMessageError": true,
+          },
+          "messages": Object {
+            "draftError": true,
+          },
+          "moveToInboxOnClick": null,
+          "replyOnClick": null,
+          "viewMessageFlag": true,
         },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              <div
-                className="c-message__summary__head"
-              >
-                <div
-                  className="c-message__summary__head__title"
-                >
-                  <h2
-                    className="c-message__summary__head__title__subject"
-                    id="subjectMsg"
-                  >
-                    <Link
-                      aria-label="undefined undefined"
-                      className="c-message__summary__head__title__subject__link"
-                      replace={false}
-                      to={
-                        Object {
-                          "messageDetail": Object {
-                            "account": Object {
-                              "number": "32236",
-                            },
-                            "getDateCreated": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getMessageBody": [MockFunction],
-                            "getReference": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                              ],
-                            },
-                            "getSubject": [MockFunction] {
-                              "calls": Array [
-                                Array [],
-                                Array [],
-                              ],
-                            },
-                            "status": "NEW",
-                          },
-                          "pathname": "/securemessages/view",
-                        }
-                      }
-                    />
-                  </h2>
-                  <p
-                    className="c-message__summary__head__title__ref"
-                  />
-                </div>
-                <SecureMessageSummaryButtons
-                  content={
-                    Object {
-                      "back": "Back",
-                      "noSpecificAccount": "noSpecificAccount",
-                    }
-                  }
-                  dispatch={
-                    [MockFunction] {
-                      "calls": Array [
-                        Array [
-                          [Function],
-                        ],
-                      ],
-                    }
-                  }
-                  draftFlag={false}
-                  hasOnClick={false}
-                  listFlag={false}
-                  message={
-                    Object {
-                      "account": Object {
-                        "number": "32236",
-                      },
-                      "getDateCreated": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                        ],
-                      },
-                      "getMessageBody": [MockFunction],
-                      "getReference": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                        ],
-                      },
-                      "getSubject": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                          Array [],
-                        ],
-                      },
-                      "status": "NEW",
-                    }
-                  }
-                  messageDetail={
-                    Object {
-                      "delSuccessModal": true,
-                      "newMessageError": true,
-                    }
-                  }
-                  messages={
-                    Object {
-                      "draftError": true,
-                    }
-                  }
-                  noReply={undefined}
-                  onArchiveClick={[Function]}
-                  onDeleteClick={[Function]}
-                  onUnarchiveClick={[Function]}
-                  readFlag={false}
-                  sentFlag={false}
-                  threadFlag={false}
-                  viewMessageFlag={true}
-                />
-              </div>,
-              false,
-              <p
-                className="c-message__summary__account"
-              >
-                Account : 
-                32236
-              </p>,
-              <p
-                className="c-message__summary__date"
-              />,
-            ],
-            "className": "c-message__summary",
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <div
-                    className="c-message__summary__head__title"
-                  >
-                    <h2
-                      className="c-message__summary__head__title__subject"
-                      id="subjectMsg"
-                    >
-                      <Link
-                        aria-label="undefined undefined"
-                        className="c-message__summary__head__title__subject__link"
-                        replace={false}
-                        to={
-                          Object {
-                            "messageDetail": Object {
-                              "account": Object {
-                                "number": "32236",
-                              },
-                              "getDateCreated": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getMessageBody": [MockFunction],
-                              "getReference": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getSubject": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                  Array [],
-                                ],
-                              },
-                              "status": "NEW",
-                            },
-                            "pathname": "/securemessages/view",
-                          }
-                        }
-                      />
-                    </h2>
-                    <p
-                      className="c-message__summary__head__title__ref"
-                    />
-                  </div>,
-                  <SecureMessageSummaryButtons
-                    content={
-                      Object {
-                        "back": "Back",
-                        "noSpecificAccount": "noSpecificAccount",
-                      }
-                    }
-                    dispatch={
-                      [MockFunction] {
-                        "calls": Array [
-                          Array [
-                            [Function],
-                          ],
-                        ],
-                      }
-                    }
-                    draftFlag={false}
-                    hasOnClick={false}
-                    listFlag={false}
-                    message={
-                      Object {
-                        "account": Object {
-                          "number": "32236",
-                        },
-                        "getDateCreated": [MockFunction] {
-                          "calls": Array [
-                            Array [],
-                          ],
-                        },
-                        "getMessageBody": [MockFunction],
-                        "getReference": [MockFunction] {
-                          "calls": Array [
-                            Array [],
-                          ],
-                        },
-                        "getSubject": [MockFunction] {
-                          "calls": Array [
-                            Array [],
-                            Array [],
-                          ],
-                        },
-                        "status": "NEW",
-                      }
-                    }
-                    messageDetail={
-                      Object {
-                        "delSuccessModal": true,
-                        "newMessageError": true,
-                      }
-                    }
-                    messages={
-                      Object {
-                        "draftError": true,
-                      }
-                    }
-                    noReply={undefined}
-                    onArchiveClick={[Function]}
-                    onDeleteClick={[Function]}
-                    onUnarchiveClick={[Function]}
-                    readFlag={false}
-                    sentFlag={false}
-                    threadFlag={false}
-                    viewMessageFlag={true}
-                  />,
-                ],
-                "className": "c-message__summary__head",
-              },
-              "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": Array [
-                      <h2
-                        className="c-message__summary__head__title__subject"
-                        id="subjectMsg"
-                      >
-                        <Link
-                          aria-label="undefined undefined"
-                          className="c-message__summary__head__title__subject__link"
-                          replace={false}
-                          to={
-                            Object {
-                              "messageDetail": Object {
-                                "account": Object {
-                                  "number": "32236",
-                                },
-                                "getDateCreated": [MockFunction] {
-                                  "calls": Array [
-                                    Array [],
-                                  ],
-                                },
-                                "getMessageBody": [MockFunction],
-                                "getReference": [MockFunction] {
-                                  "calls": Array [
-                                    Array [],
-                                  ],
-                                },
-                                "getSubject": [MockFunction] {
-                                  "calls": Array [
-                                    Array [],
-                                    Array [],
-                                  ],
-                                },
-                                "status": "NEW",
-                              },
-                              "pathname": "/securemessages/view",
-                            }
-                          }
-                        />
-                      </h2>,
-                      <p
-                        className="c-message__summary__head__title__ref"
-                      />,
-                    ],
-                    "className": "c-message__summary__head__title",
-                  },
-                  "ref": null,
-                  "rendered": Array [
-                    Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "host",
-                      "props": Object {
-                        "children": <Link
-                          aria-label="undefined undefined"
-                          className="c-message__summary__head__title__subject__link"
-                          replace={false}
-                          to={
-                            Object {
-                              "messageDetail": Object {
-                                "account": Object {
-                                  "number": "32236",
-                                },
-                                "getDateCreated": [MockFunction] {
-                                  "calls": Array [
-                                    Array [],
-                                  ],
-                                },
-                                "getMessageBody": [MockFunction],
-                                "getReference": [MockFunction] {
-                                  "calls": Array [
-                                    Array [],
-                                  ],
-                                },
-                                "getSubject": [MockFunction] {
-                                  "calls": Array [
-                                    Array [],
-                                    Array [],
-                                  ],
-                                },
-                                "status": "NEW",
-                              },
-                              "pathname": "/securemessages/view",
-                            }
-                          }
-                        />,
-                        "className": "c-message__summary__head__title__subject",
-                        "id": "subjectMsg",
-                      },
-                      "ref": null,
-                      "rendered": Object {
-                        "instance": null,
-                        "key": undefined,
-                        "nodeType": "class",
-                        "props": Object {
-                          "aria-label": "undefined undefined",
-                          "children": undefined,
-                          "className": "c-message__summary__head__title__subject__link",
-                          "replace": false,
-                          "to": Object {
-                            "messageDetail": Object {
-                              "account": Object {
-                                "number": "32236",
-                              },
-                              "getDateCreated": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getMessageBody": [MockFunction],
-                              "getReference": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                ],
-                              },
-                              "getSubject": [MockFunction] {
-                                "calls": Array [
-                                  Array [],
-                                  Array [],
-                                ],
-                              },
-                              "status": "NEW",
-                            },
-                            "pathname": "/securemessages/view",
-                          },
-                        },
-                        "ref": null,
-                        "rendered": null,
-                        "type": [Function],
-                      },
-                      "type": "h2",
-                    },
-                    Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "host",
-                      "props": Object {
-                        "children": undefined,
-                        "className": "c-message__summary__head__title__ref",
-                      },
-                      "ref": null,
-                      "rendered": null,
-                      "type": "p",
-                    },
-                  ],
-                  "type": "div",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "function",
-                  "props": Object {
-                    "content": Object {
-                      "back": "Back",
-                      "noSpecificAccount": "noSpecificAccount",
-                    },
-                    "dispatch": [MockFunction] {
-                      "calls": Array [
-                        Array [
-                          [Function],
-                        ],
-                      ],
-                    },
-                    "draftFlag": false,
-                    "hasOnClick": false,
-                    "listFlag": false,
-                    "message": Object {
-                      "account": Object {
-                        "number": "32236",
-                      },
-                      "getDateCreated": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                        ],
-                      },
-                      "getMessageBody": [MockFunction],
-                      "getReference": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                        ],
-                      },
-                      "getSubject": [MockFunction] {
-                        "calls": Array [
-                          Array [],
-                          Array [],
-                        ],
-                      },
-                      "status": "NEW",
-                    },
-                    "messageDetail": Object {
-                      "delSuccessModal": true,
-                      "newMessageError": true,
-                    },
-                    "messages": Object {
-                      "draftError": true,
-                    },
-                    "noReply": undefined,
-                    "onArchiveClick": [Function],
-                    "onDeleteClick": [Function],
-                    "onUnarchiveClick": [Function],
-                    "readFlag": false,
-                    "sentFlag": false,
-                    "threadFlag": false,
-                    "viewMessageFlag": true,
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": [Function],
-                },
-              ],
-              "type": "div",
-            },
-            false,
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  "Account : ",
-                  "32236",
-                ],
-                "className": "c-message__summary__account",
-              },
-              "ref": null,
-              "rendered": Array [
-                "Account : ",
-                "32236",
-              ],
-              "type": "p",
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": undefined,
-                "className": "c-message__summary__date",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": "p",
-            },
-          ],
-          "type": "div",
-        },
-        false,
-        false,
-        false,
-      ],
-      "type": "div",
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      "type": [Function],
     },
   ],
   Symbol(enzyme.__options__): Object {

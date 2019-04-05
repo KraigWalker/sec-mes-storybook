@@ -1,1470 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Dropdown snapshot returnMenuItem function test with accounts id and isFromDraftOrReply false 1`] = `
-ShallowWrapper {
-  Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <DropDownComponent
-    accessID="Subject"
-    accounts={
-      Object {
-        "accounts": Array [],
-      }
-    }
-    content={
-      Object {
-        "back": "Back",
-      }
-    }
-    dispatch={
-      [MockFunction] {
-        "calls": Array [
-          Array [
-            [Function],
-          ],
-          Array [
-            [Function],
-          ],
-        ],
-      }
-    }
-    id="accounts"
-    isFromDraftOrReply={false}
-    messageaccounts={
-      Object {
-        "accounts": Array [],
-      }
-    }
-    messages={
-      Object {
-        "messages": Array [],
-        "newMessageError": false,
-        "successModal": false,
-      }
-    }
-    messagesubjects={
-      Object {
-        "error": true,
-      }
-    }
-    selectSubject={[MockFunction]}
-  />,
-  Symbol(enzyme.__renderer__): Object {
-    "batchedUpdates": [Function],
-    "getNode": [Function],
-    "render": [Function],
-    "simulateEvent": [Function],
-    "unmount": [Function],
-  },
-  Symbol(enzyme.__node__): Object {
-    "instance": null,
-    "key": undefined,
-    "nodeType": "host",
-    "props": Object {
-      "children": Array [
-        <div>
-          <button
-            aria-label="Subject undefined"
-            className="c-field__input c-field__input--select c-dropdown u-cursor-pointer"
-            id={undefined}
-            onClick={[Function]}
-          />
-        </div>,
-        "",
-        "",
-        <ModalComponent
-          backdrop={true}
-          bsSize="medium"
-          closeButton={true}
-          customClass="c-modal c-modal--center"
-          modalInContainer={false}
-          modalbody={
-            <div>
-              <h3 />
-              <br />
-              <p />
-              <br />
-              <p />
-            </div>
-          }
-          modalfooter={
-            <div>
-              <button
-                className="c-btn c-btn--secondary c-modal__button"
-                onClick={[Function]}
-                type="button"
-              >
-                Back
-              </button>
-              <button
-                className="c-btn c-btn--default c-modal__button"
-                onClick={[Function]}
-                type="button"
-              />
-            </div>
-          }
-          modalheading=""
-          onHide={[Function]}
-          scope={undefined}
-          show={true}
-        />,
-      ],
-    },
-    "ref": null,
-    "rendered": Array [
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            <button
-              aria-label="Subject undefined"
-              className="c-field__input c-field__input--select c-dropdown u-cursor-pointer"
-              id={undefined}
-              onClick={[Function]}
-            />,
-            false,
-            false,
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "aria-label": "Subject undefined",
-              "children": undefined,
-              "className": "c-field__input c-field__input--select c-dropdown u-cursor-pointer",
-              "id": undefined,
-              "onClick": [Function],
-            },
-            "ref": null,
-            "rendered": null,
-            "type": "button",
-          },
-          false,
-          false,
-        ],
-        "type": "div",
-      },
-      "",
-      "",
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "backdrop": true,
-          "bsSize": "medium",
-          "closeButton": true,
-          "customClass": "c-modal c-modal--center",
-          "modalInContainer": false,
-          "modalbody": <div>
-            <h3 />
-            <br />
-            <p />
-            <br />
-            <p />
-          </div>,
-          "modalfooter": <div>
-            <button
-              className="c-btn c-btn--secondary c-modal__button"
-              onClick={[Function]}
-              type="button"
-            >
-              Back
-            </button>
-            <button
-              className="c-btn c-btn--default c-modal__button"
-              onClick={[Function]}
-              type="button"
-            />
-          </div>,
-          "modalheading": "",
-          "onHide": [Function],
-          "scope": undefined,
-          "show": true,
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-    ],
-    "type": "div",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": Array [
-          <div>
-            <button
-              aria-label="Subject undefined"
-              className="c-field__input c-field__input--select c-dropdown u-cursor-pointer"
-              id={undefined}
-              onClick={[Function]}
-            />
-          </div>,
-          "",
-          "",
-          <ModalComponent
-            backdrop={true}
-            bsSize="medium"
-            closeButton={true}
-            customClass="c-modal c-modal--center"
-            modalInContainer={false}
-            modalbody={
-              <div>
-                <h3 />
-                <br />
-                <p />
-                <br />
-                <p />
-              </div>
-            }
-            modalfooter={
-              <div>
-                <button
-                  className="c-btn c-btn--secondary c-modal__button"
-                  onClick={[Function]}
-                  type="button"
-                >
-                  Back
-                </button>
-                <button
-                  className="c-btn c-btn--default c-modal__button"
-                  onClick={[Function]}
-                  type="button"
-                />
-              </div>
-            }
-            modalheading=""
-            onHide={[Function]}
-            scope={undefined}
-            show={true}
-          />,
-        ],
-      },
-      "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              <button
-                aria-label="Subject undefined"
-                className="c-field__input c-field__input--select c-dropdown u-cursor-pointer"
-                id={undefined}
-                onClick={[Function]}
-              />,
-              false,
-              false,
-            ],
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "aria-label": "Subject undefined",
-                "children": undefined,
-                "className": "c-field__input c-field__input--select c-dropdown u-cursor-pointer",
-                "id": undefined,
-                "onClick": [Function],
-              },
-              "ref": null,
-              "rendered": null,
-              "type": "button",
-            },
-            false,
-            false,
-          ],
-          "type": "div",
-        },
-        "",
-        "",
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "backdrop": true,
-            "bsSize": "medium",
-            "closeButton": true,
-            "customClass": "c-modal c-modal--center",
-            "modalInContainer": false,
-            "modalbody": <div>
-              <h3 />
-              <br />
-              <p />
-              <br />
-              <p />
-            </div>,
-            "modalfooter": <div>
-              <button
-                className="c-btn c-btn--secondary c-modal__button"
-                onClick={[Function]}
-                type="button"
-              >
-                Back
-              </button>
-              <button
-                className="c-btn c-btn--default c-modal__button"
-                onClick={[Function]}
-                type="button"
-              />
-            </div>,
-            "modalheading": "",
-            "onHide": [Function],
-            "scope": undefined,
-            "show": true,
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-      ],
-      "type": "div",
-    },
-  ],
-  Symbol(enzyme.__options__): Object {
-    "adapter": ReactFifteenFourAdapter {
-      "options": Object {
-        "legacyContextMode": "parent",
-        "lifecycles": Object {
-          "componentDidUpdate": Object {
-            "prevContext": true,
-          },
-          "getChildContext": Object {
-            "calledByRenderer": true,
-          },
-        },
-        "supportPrevContextArgumentOfComponentDidUpdate": true,
-      },
-    },
-  },
-  Symbol(enzyme.__childContext__): null,
-}
-`;
-
-exports[`Dropdown snapshot returnMenuItem function test with accounts id and isFromDraftOrReply true 1`] = `
-ShallowWrapper {
-  Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <DropDownComponent
-    accessID="Subject"
-    accounts={
-      Object {
-        "accounts": Array [],
-      }
-    }
-    content={
-      Object {
-        "back": "Back",
-      }
-    }
-    dispatch={
-      [MockFunction] {
-        "calls": Array [
-          Array [
-            [Function],
-          ],
-          Array [
-            [Function],
-          ],
-        ],
-      }
-    }
-    id="accounts"
-    isFromDraftOrReply={true}
-    messageaccounts={
-      Object {
-        "accounts": Array [],
-      }
-    }
-    messages={
-      Object {
-        "messages": Array [],
-        "newMessageError": false,
-        "successModal": false,
-      }
-    }
-    messagesubjects={
-      Object {
-        "error": true,
-      }
-    }
-    selectSubject={[MockFunction]}
-    subjects={
-      Object {
-        "subjects": Array [],
-      }
-    }
-  />,
-  Symbol(enzyme.__renderer__): Object {
-    "batchedUpdates": [Function],
-    "getNode": [Function],
-    "render": [Function],
-    "simulateEvent": [Function],
-    "unmount": [Function],
-  },
-  Symbol(enzyme.__node__): Object {
-    "instance": null,
-    "key": undefined,
-    "nodeType": "host",
-    "props": Object {
-      "children": Array [
-        <div>
-          <button
-            aria-label="Subject undefined"
-            className="c-field__input c-field__input--select c-dropdown u-cursor-pointer"
-            id={undefined}
-            onClick={[Function]}
-          />
-        </div>,
-        "",
-        "",
-        <ModalComponent
-          backdrop={true}
-          bsSize="medium"
-          closeButton={true}
-          customClass="c-modal c-modal--center"
-          modalInContainer={false}
-          modalbody={
-            <div>
-              <h3 />
-              <br />
-              <p />
-              <br />
-              <p />
-            </div>
-          }
-          modalfooter={
-            <div>
-              <button
-                className="c-btn c-btn--secondary c-modal__button"
-                onClick={[Function]}
-                type="button"
-              >
-                Back
-              </button>
-              <button
-                className="c-btn c-btn--default c-modal__button"
-                onClick={[Function]}
-                type="button"
-              />
-            </div>
-          }
-          modalheading=""
-          onHide={[Function]}
-          scope={undefined}
-          show={true}
-        />,
-      ],
-    },
-    "ref": null,
-    "rendered": Array [
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            <button
-              aria-label="Subject undefined"
-              className="c-field__input c-field__input--select c-dropdown u-cursor-pointer"
-              id={undefined}
-              onClick={[Function]}
-            />,
-            false,
-            false,
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "aria-label": "Subject undefined",
-              "children": undefined,
-              "className": "c-field__input c-field__input--select c-dropdown u-cursor-pointer",
-              "id": undefined,
-              "onClick": [Function],
-            },
-            "ref": null,
-            "rendered": null,
-            "type": "button",
-          },
-          false,
-          false,
-        ],
-        "type": "div",
-      },
-      "",
-      "",
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "backdrop": true,
-          "bsSize": "medium",
-          "closeButton": true,
-          "customClass": "c-modal c-modal--center",
-          "modalInContainer": false,
-          "modalbody": <div>
-            <h3 />
-            <br />
-            <p />
-            <br />
-            <p />
-          </div>,
-          "modalfooter": <div>
-            <button
-              className="c-btn c-btn--secondary c-modal__button"
-              onClick={[Function]}
-              type="button"
-            >
-              Back
-            </button>
-            <button
-              className="c-btn c-btn--default c-modal__button"
-              onClick={[Function]}
-              type="button"
-            />
-          </div>,
-          "modalheading": "",
-          "onHide": [Function],
-          "scope": undefined,
-          "show": true,
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-    ],
-    "type": "div",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": Array [
-          <div>
-            <button
-              aria-label="Subject undefined"
-              className="c-field__input c-field__input--select c-dropdown u-cursor-pointer"
-              id={undefined}
-              onClick={[Function]}
-            />
-          </div>,
-          "",
-          "",
-          <ModalComponent
-            backdrop={true}
-            bsSize="medium"
-            closeButton={true}
-            customClass="c-modal c-modal--center"
-            modalInContainer={false}
-            modalbody={
-              <div>
-                <h3 />
-                <br />
-                <p />
-                <br />
-                <p />
-              </div>
-            }
-            modalfooter={
-              <div>
-                <button
-                  className="c-btn c-btn--secondary c-modal__button"
-                  onClick={[Function]}
-                  type="button"
-                >
-                  Back
-                </button>
-                <button
-                  className="c-btn c-btn--default c-modal__button"
-                  onClick={[Function]}
-                  type="button"
-                />
-              </div>
-            }
-            modalheading=""
-            onHide={[Function]}
-            scope={undefined}
-            show={true}
-          />,
-        ],
-      },
-      "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              <button
-                aria-label="Subject undefined"
-                className="c-field__input c-field__input--select c-dropdown u-cursor-pointer"
-                id={undefined}
-                onClick={[Function]}
-              />,
-              false,
-              false,
-            ],
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "aria-label": "Subject undefined",
-                "children": undefined,
-                "className": "c-field__input c-field__input--select c-dropdown u-cursor-pointer",
-                "id": undefined,
-                "onClick": [Function],
-              },
-              "ref": null,
-              "rendered": null,
-              "type": "button",
-            },
-            false,
-            false,
-          ],
-          "type": "div",
-        },
-        "",
-        "",
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "backdrop": true,
-            "bsSize": "medium",
-            "closeButton": true,
-            "customClass": "c-modal c-modal--center",
-            "modalInContainer": false,
-            "modalbody": <div>
-              <h3 />
-              <br />
-              <p />
-              <br />
-              <p />
-            </div>,
-            "modalfooter": <div>
-              <button
-                className="c-btn c-btn--secondary c-modal__button"
-                onClick={[Function]}
-                type="button"
-              >
-                Back
-              </button>
-              <button
-                className="c-btn c-btn--default c-modal__button"
-                onClick={[Function]}
-                type="button"
-              />
-            </div>,
-            "modalheading": "",
-            "onHide": [Function],
-            "scope": undefined,
-            "show": true,
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-      ],
-      "type": "div",
-    },
-  ],
-  Symbol(enzyme.__options__): Object {
-    "adapter": ReactFifteenFourAdapter {
-      "options": Object {
-        "legacyContextMode": "parent",
-        "lifecycles": Object {
-          "componentDidUpdate": Object {
-            "prevContext": true,
-          },
-          "getChildContext": Object {
-            "calledByRenderer": true,
-          },
-        },
-        "supportPrevContextArgumentOfComponentDidUpdate": true,
-      },
-    },
-  },
-  Symbol(enzyme.__childContext__): null,
-}
-`;
-
-exports[`Dropdown snapshot returnMenuItem function test with default case 1`] = `
-ShallowWrapper {
-  Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <DropDownComponent
-    accessID="Subject"
-    content={
-      Object {
-        "back": "Back",
-      }
-    }
-    dispatch={
-      [MockFunction] {
-        "calls": Array [
-          Array [
-            [Function],
-          ],
-          Array [
-            [Function],
-          ],
-        ],
-      }
-    }
-    id=""
-    isFromDraftOrReply={false}
-    messages={
-      Object {
-        "messages": Array [],
-        "newMessageError": false,
-        "successModal": false,
-      }
-    }
-    messagesubjects={
-      Object {
-        "error": true,
-      }
-    }
-    selectSubject={[MockFunction]}
-  />,
-  Symbol(enzyme.__renderer__): Object {
-    "batchedUpdates": [Function],
-    "getNode": [Function],
-    "render": [Function],
-    "simulateEvent": [Function],
-    "unmount": [Function],
-  },
-  Symbol(enzyme.__node__): Object {
-    "instance": null,
-    "key": undefined,
-    "nodeType": "host",
-    "props": Object {
-      "children": Array [
-        <div>
-          <button
-            aria-label="Subject undefined"
-            className="c-field__input c-field__input--select c-dropdown u-cursor-pointer"
-            id={undefined}
-            onClick={[Function]}
-          />
-        </div>,
-        "",
-        "",
-        <ModalComponent
-          backdrop={true}
-          bsSize="medium"
-          closeButton={true}
-          customClass="c-modal c-modal--center"
-          modalInContainer={false}
-          modalbody={
-            <div>
-              <h3 />
-              <br />
-              <p />
-              <br />
-              <p />
-            </div>
-          }
-          modalfooter={
-            <div>
-              <button
-                className="c-btn c-btn--secondary c-modal__button"
-                onClick={[Function]}
-                type="button"
-              >
-                Back
-              </button>
-              <button
-                className="c-btn c-btn--default c-modal__button"
-                onClick={[Function]}
-                type="button"
-              />
-            </div>
-          }
-          modalheading=""
-          onHide={[Function]}
-          scope={undefined}
-          show={true}
-        />,
-      ],
-    },
-    "ref": null,
-    "rendered": Array [
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            <button
-              aria-label="Subject undefined"
-              className="c-field__input c-field__input--select c-dropdown u-cursor-pointer"
-              id={undefined}
-              onClick={[Function]}
-            />,
-            false,
-            false,
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "aria-label": "Subject undefined",
-              "children": undefined,
-              "className": "c-field__input c-field__input--select c-dropdown u-cursor-pointer",
-              "id": undefined,
-              "onClick": [Function],
-            },
-            "ref": null,
-            "rendered": null,
-            "type": "button",
-          },
-          false,
-          false,
-        ],
-        "type": "div",
-      },
-      "",
-      "",
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "backdrop": true,
-          "bsSize": "medium",
-          "closeButton": true,
-          "customClass": "c-modal c-modal--center",
-          "modalInContainer": false,
-          "modalbody": <div>
-            <h3 />
-            <br />
-            <p />
-            <br />
-            <p />
-          </div>,
-          "modalfooter": <div>
-            <button
-              className="c-btn c-btn--secondary c-modal__button"
-              onClick={[Function]}
-              type="button"
-            >
-              Back
-            </button>
-            <button
-              className="c-btn c-btn--default c-modal__button"
-              onClick={[Function]}
-              type="button"
-            />
-          </div>,
-          "modalheading": "",
-          "onHide": [Function],
-          "scope": undefined,
-          "show": true,
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-    ],
-    "type": "div",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": Array [
-          <div>
-            <button
-              aria-label="Subject undefined"
-              className="c-field__input c-field__input--select c-dropdown u-cursor-pointer"
-              id={undefined}
-              onClick={[Function]}
-            />
-          </div>,
-          "",
-          "",
-          <ModalComponent
-            backdrop={true}
-            bsSize="medium"
-            closeButton={true}
-            customClass="c-modal c-modal--center"
-            modalInContainer={false}
-            modalbody={
-              <div>
-                <h3 />
-                <br />
-                <p />
-                <br />
-                <p />
-              </div>
-            }
-            modalfooter={
-              <div>
-                <button
-                  className="c-btn c-btn--secondary c-modal__button"
-                  onClick={[Function]}
-                  type="button"
-                >
-                  Back
-                </button>
-                <button
-                  className="c-btn c-btn--default c-modal__button"
-                  onClick={[Function]}
-                  type="button"
-                />
-              </div>
-            }
-            modalheading=""
-            onHide={[Function]}
-            scope={undefined}
-            show={true}
-          />,
-        ],
-      },
-      "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              <button
-                aria-label="Subject undefined"
-                className="c-field__input c-field__input--select c-dropdown u-cursor-pointer"
-                id={undefined}
-                onClick={[Function]}
-              />,
-              false,
-              false,
-            ],
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "aria-label": "Subject undefined",
-                "children": undefined,
-                "className": "c-field__input c-field__input--select c-dropdown u-cursor-pointer",
-                "id": undefined,
-                "onClick": [Function],
-              },
-              "ref": null,
-              "rendered": null,
-              "type": "button",
-            },
-            false,
-            false,
-          ],
-          "type": "div",
-        },
-        "",
-        "",
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "backdrop": true,
-            "bsSize": "medium",
-            "closeButton": true,
-            "customClass": "c-modal c-modal--center",
-            "modalInContainer": false,
-            "modalbody": <div>
-              <h3 />
-              <br />
-              <p />
-              <br />
-              <p />
-            </div>,
-            "modalfooter": <div>
-              <button
-                className="c-btn c-btn--secondary c-modal__button"
-                onClick={[Function]}
-                type="button"
-              >
-                Back
-              </button>
-              <button
-                className="c-btn c-btn--default c-modal__button"
-                onClick={[Function]}
-                type="button"
-              />
-            </div>,
-            "modalheading": "",
-            "onHide": [Function],
-            "scope": undefined,
-            "show": true,
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-      ],
-      "type": "div",
-    },
-  ],
-  Symbol(enzyme.__options__): Object {
-    "adapter": ReactFifteenFourAdapter {
-      "options": Object {
-        "legacyContextMode": "parent",
-        "lifecycles": Object {
-          "componentDidUpdate": Object {
-            "prevContext": true,
-          },
-          "getChildContext": Object {
-            "calledByRenderer": true,
-          },
-        },
-        "supportPrevContextArgumentOfComponentDidUpdate": true,
-      },
-    },
-  },
-  Symbol(enzyme.__childContext__): null,
-}
-`;
-
-exports[`Dropdown snapshot returnMenuItem function test with subjects id and isFromDraftOrReply false 1`] = `
-ShallowWrapper {
-  Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <DropDownComponent
-    accessID="Subject"
-    accounts={
-      Object {
-        "accounts": Array [],
-      }
-    }
-    content={
-      Object {
-        "back": "Back",
-      }
-    }
-    dispatch={
-      [MockFunction] {
-        "calls": Array [
-          Array [
-            [Function],
-          ],
-          Array [
-            [Function],
-          ],
-        ],
-      }
-    }
-    id="subjects"
-    isFromDraftOrReply={false}
-    messageaccounts={
-      Object {
-        "accounts": Array [],
-      }
-    }
-    messages={
-      Object {
-        "messages": Array [],
-        "newMessageError": false,
-        "successModal": false,
-      }
-    }
-    messagesubjects={
-      Object {
-        "error": true,
-      }
-    }
-    selectSubject={[MockFunction]}
-    subjects={
-      Object {
-        "subjects": Array [],
-      }
-    }
-  />,
-  Symbol(enzyme.__renderer__): Object {
-    "batchedUpdates": [Function],
-    "getNode": [Function],
-    "render": [Function],
-    "simulateEvent": [Function],
-    "unmount": [Function],
-  },
-  Symbol(enzyme.__node__): Object {
-    "instance": null,
-    "key": undefined,
-    "nodeType": "host",
-    "props": Object {
-      "children": Array [
-        <div>
-          <button
-            aria-label="Subject undefined"
-            className="c-field__input c-field__input--select c-dropdown u-cursor-pointer"
-            id={undefined}
-            onClick={[Function]}
-          />
-        </div>,
-        "",
-        "",
-        <ModalComponent
-          backdrop={true}
-          bsSize="medium"
-          closeButton={true}
-          customClass="c-modal c-modal--center"
-          modalInContainer={false}
-          modalbody={
-            <div>
-              <h3 />
-              <br />
-              <p />
-              <br />
-              <p />
-            </div>
-          }
-          modalfooter={
-            <div>
-              <button
-                className="c-btn c-btn--secondary c-modal__button"
-                onClick={[Function]}
-                type="button"
-              >
-                Back
-              </button>
-              <button
-                className="c-btn c-btn--default c-modal__button"
-                onClick={[Function]}
-                type="button"
-              />
-            </div>
-          }
-          modalheading=""
-          onHide={[Function]}
-          scope={undefined}
-          show={true}
-        />,
-      ],
-    },
-    "ref": null,
-    "rendered": Array [
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            <button
-              aria-label="Subject undefined"
-              className="c-field__input c-field__input--select c-dropdown u-cursor-pointer"
-              id={undefined}
-              onClick={[Function]}
-            />,
-            false,
-            false,
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "aria-label": "Subject undefined",
-              "children": undefined,
-              "className": "c-field__input c-field__input--select c-dropdown u-cursor-pointer",
-              "id": undefined,
-              "onClick": [Function],
-            },
-            "ref": null,
-            "rendered": null,
-            "type": "button",
-          },
-          false,
-          false,
-        ],
-        "type": "div",
-      },
-      "",
-      "",
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "backdrop": true,
-          "bsSize": "medium",
-          "closeButton": true,
-          "customClass": "c-modal c-modal--center",
-          "modalInContainer": false,
-          "modalbody": <div>
-            <h3 />
-            <br />
-            <p />
-            <br />
-            <p />
-          </div>,
-          "modalfooter": <div>
-            <button
-              className="c-btn c-btn--secondary c-modal__button"
-              onClick={[Function]}
-              type="button"
-            >
-              Back
-            </button>
-            <button
-              className="c-btn c-btn--default c-modal__button"
-              onClick={[Function]}
-              type="button"
-            />
-          </div>,
-          "modalheading": "",
-          "onHide": [Function],
-          "scope": undefined,
-          "show": true,
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-    ],
-    "type": "div",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": Array [
-          <div>
-            <button
-              aria-label="Subject undefined"
-              className="c-field__input c-field__input--select c-dropdown u-cursor-pointer"
-              id={undefined}
-              onClick={[Function]}
-            />
-          </div>,
-          "",
-          "",
-          <ModalComponent
-            backdrop={true}
-            bsSize="medium"
-            closeButton={true}
-            customClass="c-modal c-modal--center"
-            modalInContainer={false}
-            modalbody={
-              <div>
-                <h3 />
-                <br />
-                <p />
-                <br />
-                <p />
-              </div>
-            }
-            modalfooter={
-              <div>
-                <button
-                  className="c-btn c-btn--secondary c-modal__button"
-                  onClick={[Function]}
-                  type="button"
-                >
-                  Back
-                </button>
-                <button
-                  className="c-btn c-btn--default c-modal__button"
-                  onClick={[Function]}
-                  type="button"
-                />
-              </div>
-            }
-            modalheading=""
-            onHide={[Function]}
-            scope={undefined}
-            show={true}
-          />,
-        ],
-      },
-      "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              <button
-                aria-label="Subject undefined"
-                className="c-field__input c-field__input--select c-dropdown u-cursor-pointer"
-                id={undefined}
-                onClick={[Function]}
-              />,
-              false,
-              false,
-            ],
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "aria-label": "Subject undefined",
-                "children": undefined,
-                "className": "c-field__input c-field__input--select c-dropdown u-cursor-pointer",
-                "id": undefined,
-                "onClick": [Function],
-              },
-              "ref": null,
-              "rendered": null,
-              "type": "button",
-            },
-            false,
-            false,
-          ],
-          "type": "div",
-        },
-        "",
-        "",
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "backdrop": true,
-            "bsSize": "medium",
-            "closeButton": true,
-            "customClass": "c-modal c-modal--center",
-            "modalInContainer": false,
-            "modalbody": <div>
-              <h3 />
-              <br />
-              <p />
-              <br />
-              <p />
-            </div>,
-            "modalfooter": <div>
-              <button
-                className="c-btn c-btn--secondary c-modal__button"
-                onClick={[Function]}
-                type="button"
-              >
-                Back
-              </button>
-              <button
-                className="c-btn c-btn--default c-modal__button"
-                onClick={[Function]}
-                type="button"
-              />
-            </div>,
-            "modalheading": "",
-            "onHide": [Function],
-            "scope": undefined,
-            "show": true,
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-      ],
-      "type": "div",
-    },
-  ],
-  Symbol(enzyme.__options__): Object {
-    "adapter": ReactFifteenFourAdapter {
-      "options": Object {
-        "legacyContextMode": "parent",
-        "lifecycles": Object {
-          "componentDidUpdate": Object {
-            "prevContext": true,
-          },
-          "getChildContext": Object {
-            "calledByRenderer": true,
-          },
-        },
-        "supportPrevContextArgumentOfComponentDidUpdate": true,
-      },
-    },
-  },
-  Symbol(enzyme.__childContext__): null,
-}
-`;
-
 exports[`Dropdown snapshot should match to snapshot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <DropDownComponent
     accessID="Subject"
+    accounts={Array []}
     content={
       Object {
         "back": "Back",
       }
     }
-    dispatch={
+    id="subjects"
+    messages={Array []}
+    popupState={
       [MockFunction] {
         "calls": Array [
-          Array [
-            [Function],
-          ],
-          Array [
-            [Function],
-          ],
+          Array [],
         ],
       }
     }
-    id="subjects"
-    isFromDraftOrReply={true}
-    messageaccounts={
-      Object {
-        "accounts": Array [],
-      }
-    }
-    messages={
-      Object {
-        "messages": Array [],
-        "newMessageError": false,
-        "successModal": false,
-      }
-    }
-    messagesubjects={
-      Object {
-        "error": true,
-        "subjects": Array [],
-      }
-    }
     selectSubject={[MockFunction]}
-    showAccountError={true}
-    showSubjectError={true}
+    selectedAccountValue={null}
+    showAccountError={false}
+    showSubjectError={false}
+    subjectErrors={false}
+    subjects={Array []}
+    successModal={false}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -1479,60 +41,35 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        <div>
-          <button
-            aria-label="Subject undefined"
-            className="c-field__input c-field__input--select c-dropdown u-cursor-pointer"
-            id={undefined}
-            onClick={[Function]}
-          />
-        </div>,
-        <CalloutComponent
-          dClass="callout callout__error callout__inline-error"
-          pClass=""
-          paraText="Contrary to popular belief, Lorem Ipsum is not random text. It has roots in a piece of classical Latin literature from 45 BC, making it 2000 years old."
-        />,
-        <CalloutComponent
-          dClass="callout callout__error callout__inline-error"
-          pClass=""
-          paraText="Contrary to popular belief, Lorem Ipsum is not random text. It has roots in a piece of classical Latin literature from 45 BC, making it 2000 years old."
-        />,
-        <ModalComponent
-          backdrop={true}
-          bsSize="medium"
-          closeButton={true}
-          customClass="c-modal c-modal--center"
-          modalInContainer={false}
-          modalbody={
-            <div>
-              <h3 />
-              <br />
-              <p />
-              <br />
-              <p />
-            </div>
-          }
-          modalfooter={
-            <div>
-              <button
-                className="c-btn c-btn--secondary c-modal__button"
-                onClick={[Function]}
-                type="button"
-              >
-                Back
-              </button>
-              <button
-                className="c-btn c-btn--default c-modal__button"
-                onClick={[Function]}
-                type="button"
-              />
-            </div>
-          }
-          modalheading=""
-          onHide={[Function]}
-          scope={undefined}
-          show={true}
-        />,
+        <Column
+          className="u-padding-0"
+          ld={9}
+          md={9}
+          sm={24}
+          xs={24}
+        >
+          <TextBody>
+            <Select
+              defaultValue={undefined}
+              disabled={false}
+              iconSize="sm"
+              iconType="ChevronDownSolidSmall"
+              id={undefined}
+              onChange={[Function]}
+              options={
+                Array [
+                  Object {
+                    "label": undefined,
+                    "value": undefined,
+                  },
+                ]
+              }
+            />
+          </TextBody>
+        </Column>,
+        "",
+        "",
+        "",
       ],
     },
     "ref": null,
@@ -1540,107 +77,85 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "host",
+        "nodeType": "function",
         "props": Object {
-          "children": Array [
-            <button
-              aria-label="Subject undefined"
-              className="c-field__input c-field__input--select c-dropdown u-cursor-pointer"
+          "children": <TextBody>
+            <Select
+              defaultValue={undefined}
+              disabled={false}
+              iconSize="sm"
+              iconType="ChevronDownSolidSmall"
               id={undefined}
-              onClick={[Function]}
-            />,
-            false,
-            false,
-          ],
+              onChange={[Function]}
+              options={
+                Array [
+                  Object {
+                    "label": undefined,
+                    "value": undefined,
+                  },
+                ]
+              }
+            />
+          </TextBody>,
+          "className": "u-padding-0",
+          "ld": 9,
+          "md": 9,
+          "sm": 24,
+          "xs": 24,
         },
         "ref": null,
-        "rendered": Array [
-          Object {
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": <Select
+              defaultValue={undefined}
+              disabled={false}
+              iconSize="sm"
+              iconType="ChevronDownSolidSmall"
+              id={undefined}
+              onChange={[Function]}
+              options={
+                Array [
+                  Object {
+                    "label": undefined,
+                    "value": undefined,
+                  },
+                ]
+              }
+            />,
+          },
+          "ref": null,
+          "rendered": Object {
             "instance": null,
             "key": undefined,
-            "nodeType": "host",
+            "nodeType": "class",
             "props": Object {
-              "aria-label": "Subject undefined",
-              "children": undefined,
-              "className": "c-field__input c-field__input--select c-dropdown u-cursor-pointer",
+              "defaultValue": undefined,
+              "disabled": false,
+              "iconSize": "sm",
+              "iconType": "ChevronDownSolidSmall",
               "id": undefined,
-              "onClick": [Function],
+              "onChange": [Function],
+              "options": Array [
+                Object {
+                  "label": undefined,
+                  "value": undefined,
+                },
+              ],
             },
             "ref": null,
             "rendered": null,
-            "type": "button",
+            "type": [Function],
           },
-          false,
-          false,
-        ],
-        "type": "div",
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "dClass": "callout callout__error callout__inline-error",
-          "pClass": "",
-          "paraText": "Contrary to popular belief, Lorem Ipsum is not random text. It has roots in a piece of classical Latin literature from 45 BC, making it 2000 years old.",
+          "type": [Function],
         },
-        "ref": null,
-        "rendered": null,
         "type": [Function],
       },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "dClass": "callout callout__error callout__inline-error",
-          "pClass": "",
-          "paraText": "Contrary to popular belief, Lorem Ipsum is not random text. It has roots in a piece of classical Latin literature from 45 BC, making it 2000 years old.",
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "backdrop": true,
-          "bsSize": "medium",
-          "closeButton": true,
-          "customClass": "c-modal c-modal--center",
-          "modalInContainer": false,
-          "modalbody": <div>
-            <h3 />
-            <br />
-            <p />
-            <br />
-            <p />
-          </div>,
-          "modalfooter": <div>
-            <button
-              className="c-btn c-btn--secondary c-modal__button"
-              onClick={[Function]}
-              type="button"
-            >
-              Back
-            </button>
-            <button
-              className="c-btn c-btn--default c-modal__button"
-              onClick={[Function]}
-              type="button"
-            />
-          </div>,
-          "modalheading": "",
-          "onHide": [Function],
-          "scope": undefined,
-          "show": true,
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
+      "",
+      "",
+      "",
     ],
     "type": "div",
   },
@@ -1651,60 +166,35 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <div>
-            <button
-              aria-label="Subject undefined"
-              className="c-field__input c-field__input--select c-dropdown u-cursor-pointer"
-              id={undefined}
-              onClick={[Function]}
-            />
-          </div>,
-          <CalloutComponent
-            dClass="callout callout__error callout__inline-error"
-            pClass=""
-            paraText="Contrary to popular belief, Lorem Ipsum is not random text. It has roots in a piece of classical Latin literature from 45 BC, making it 2000 years old."
-          />,
-          <CalloutComponent
-            dClass="callout callout__error callout__inline-error"
-            pClass=""
-            paraText="Contrary to popular belief, Lorem Ipsum is not random text. It has roots in a piece of classical Latin literature from 45 BC, making it 2000 years old."
-          />,
-          <ModalComponent
-            backdrop={true}
-            bsSize="medium"
-            closeButton={true}
-            customClass="c-modal c-modal--center"
-            modalInContainer={false}
-            modalbody={
-              <div>
-                <h3 />
-                <br />
-                <p />
-                <br />
-                <p />
-              </div>
-            }
-            modalfooter={
-              <div>
-                <button
-                  className="c-btn c-btn--secondary c-modal__button"
-                  onClick={[Function]}
-                  type="button"
-                >
-                  Back
-                </button>
-                <button
-                  className="c-btn c-btn--default c-modal__button"
-                  onClick={[Function]}
-                  type="button"
-                />
-              </div>
-            }
-            modalheading=""
-            onHide={[Function]}
-            scope={undefined}
-            show={true}
-          />,
+          <Column
+            className="u-padding-0"
+            ld={9}
+            md={9}
+            sm={24}
+            xs={24}
+          >
+            <TextBody>
+              <Select
+                defaultValue={undefined}
+                disabled={false}
+                iconSize="sm"
+                iconType="ChevronDownSolidSmall"
+                id={undefined}
+                onChange={[Function]}
+                options={
+                  Array [
+                    Object {
+                      "label": undefined,
+                      "value": undefined,
+                    },
+                  ]
+                }
+              />
+            </TextBody>
+          </Column>,
+          "",
+          "",
+          "",
         ],
       },
       "ref": null,
@@ -1712,107 +202,85 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "host",
+          "nodeType": "function",
           "props": Object {
-            "children": Array [
-              <button
-                aria-label="Subject undefined"
-                className="c-field__input c-field__input--select c-dropdown u-cursor-pointer"
+            "children": <TextBody>
+              <Select
+                defaultValue={undefined}
+                disabled={false}
+                iconSize="sm"
+                iconType="ChevronDownSolidSmall"
                 id={undefined}
-                onClick={[Function]}
-              />,
-              false,
-              false,
-            ],
+                onChange={[Function]}
+                options={
+                  Array [
+                    Object {
+                      "label": undefined,
+                      "value": undefined,
+                    },
+                  ]
+                }
+              />
+            </TextBody>,
+            "className": "u-padding-0",
+            "ld": 9,
+            "md": 9,
+            "sm": 24,
+            "xs": 24,
           },
           "ref": null,
-          "rendered": Array [
-            Object {
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": <Select
+                defaultValue={undefined}
+                disabled={false}
+                iconSize="sm"
+                iconType="ChevronDownSolidSmall"
+                id={undefined}
+                onChange={[Function]}
+                options={
+                  Array [
+                    Object {
+                      "label": undefined,
+                      "value": undefined,
+                    },
+                  ]
+                }
+              />,
+            },
+            "ref": null,
+            "rendered": Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "host",
+              "nodeType": "class",
               "props": Object {
-                "aria-label": "Subject undefined",
-                "children": undefined,
-                "className": "c-field__input c-field__input--select c-dropdown u-cursor-pointer",
+                "defaultValue": undefined,
+                "disabled": false,
+                "iconSize": "sm",
+                "iconType": "ChevronDownSolidSmall",
                 "id": undefined,
-                "onClick": [Function],
+                "onChange": [Function],
+                "options": Array [
+                  Object {
+                    "label": undefined,
+                    "value": undefined,
+                  },
+                ],
               },
               "ref": null,
               "rendered": null,
-              "type": "button",
+              "type": [Function],
             },
-            false,
-            false,
-          ],
-          "type": "div",
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "dClass": "callout callout__error callout__inline-error",
-            "pClass": "",
-            "paraText": "Contrary to popular belief, Lorem Ipsum is not random text. It has roots in a piece of classical Latin literature from 45 BC, making it 2000 years old.",
+            "type": [Function],
           },
-          "ref": null,
-          "rendered": null,
           "type": [Function],
         },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "dClass": "callout callout__error callout__inline-error",
-            "pClass": "",
-            "paraText": "Contrary to popular belief, Lorem Ipsum is not random text. It has roots in a piece of classical Latin literature from 45 BC, making it 2000 years old.",
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "backdrop": true,
-            "bsSize": "medium",
-            "closeButton": true,
-            "customClass": "c-modal c-modal--center",
-            "modalInContainer": false,
-            "modalbody": <div>
-              <h3 />
-              <br />
-              <p />
-              <br />
-              <p />
-            </div>,
-            "modalfooter": <div>
-              <button
-                className="c-btn c-btn--secondary c-modal__button"
-                onClick={[Function]}
-                type="button"
-              >
-                Back
-              </button>
-              <button
-                className="c-btn c-btn--default c-modal__button"
-                onClick={[Function]}
-                type="button"
-              />
-            </div>,
-            "modalheading": "",
-            "onHide": [Function],
-            "scope": undefined,
-            "show": true,
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
+        "",
+        "",
+        "",
       ],
       "type": "div",
     },
