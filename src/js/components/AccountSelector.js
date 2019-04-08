@@ -1,10 +1,9 @@
 import React from 'react';
-import { AccountSelectorContainer } from 'document-management-web-ui';
+import {AccountSelectorContainer} from 'document-management-web-ui';
+import {Container, Row} from "web-ui-components/lib/global/layout";
 
-export const AccountSelector = (props) => (
-    <div className="web-ui-components centralised-container">
-        <div className="u-margin-bottom-c">   
-            <AccountSelectorContainer {...props} />
-        </div>
-    </div>
-);
+export const AccountSelector = (props) => <Container className="u-margin-top-6">
+    <Row>
+        <AccountSelectorContainer {...props} />
+    </Row>
+</Container>;
