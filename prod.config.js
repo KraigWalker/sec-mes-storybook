@@ -53,10 +53,12 @@ module.exports = {
 	optimization: {
 		minimizer: [
 			new UglifyJSPlugin({
-				sourceMap: false
+        sourceMap: false,
+        uglifyOptions: {
+          mangle: false
+        }
 			}),
-		]
-	},
+	]},
 	module: {
 	  rules: [
 		{
