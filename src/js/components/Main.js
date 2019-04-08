@@ -3,11 +3,11 @@ import { compose } from 'redux';
 import { withRouter, Link } from 'react-router-dom';
 import { TabCardBlock, TabCard } from "web-ui-components/lib/navigation/tab-cards";
 import { utils } from "document-management-web-ui";
+import { PageLayout } from 'web-ui-components/lib/global/layout';
 
 export class Main extends React.Component {
 	constructor(props) {
 		super(props);
-
 		this.handleSecureMessagesClick = this.handleSecureMessagesClick.bind(this);
 		this.handleDocumentPortalClick = this.handleDocumentPortalClick.bind(this);
 
@@ -26,7 +26,7 @@ export class Main extends React.Component {
 	render() {
 		const { location, isWebView, isDocumentLibraryEnabled } = this.props;
 		return (
-			<div className="container">
+			<PageLayout>
 				{ !isWebView && isDocumentLibraryEnabled &&
 					<div className="tab-container">
 						<TabCardBlock>
@@ -36,7 +36,7 @@ export class Main extends React.Component {
 					</div>
 				}
 				{ this.props.children }
-			</div>
+			</PageLayout>
 		);
 	}
 }
