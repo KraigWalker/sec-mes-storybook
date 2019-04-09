@@ -52,7 +52,6 @@ class AppRouter extends React.Component {
      */
     render() {
         const {isDocumentLibraryEnabled} = this.props;
-        console.log(isDocumentLibraryEnabled);
         return (
             <MemoryRouter>
                 <div>
@@ -61,7 +60,7 @@ class AppRouter extends React.Component {
                     )}/>
                     <AccessibilityMessage/>
                     <RouteWithLayout
-                        path={`/my-documents/:bankId(CB|YB|DYB)`}
+                        path={`/my-documents/`}
                         exact
                         Component={ListView}
                         session={this.props.session}
