@@ -3,7 +3,7 @@ import { ListViewContainer, PreferenceCardContainer } from 'document-management-
 import {Container, Row} from "web-ui-components/lib/global/layout";
 
 export const ListView = (props) => (
-    <Container className="u-margin-top-6">
+    <Container className="u-padding-left-0 u-padding-right-0">
         <Row>
             <ListViewContainer {...props} />
         </Row>

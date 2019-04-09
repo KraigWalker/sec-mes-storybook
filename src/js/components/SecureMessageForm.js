@@ -343,7 +343,7 @@ export class SecureMessageForm extends React.Component {
 			showAccountInvalid} = this.state;
 
 		return (
-			<Container className="u-margin-top-6">
+			<Container className="u-padding-left-0 u-padding-right-0">
 				<Row>
 					<Card>	
 						<Title size="h1">{title}</Title>
