@@ -17,7 +17,7 @@ module.exports = {
         filename: "[name].bundle.js",
         publicPath: '/',
         libraryTarget: "umd",
-        library: "cybgSecureMessagesUI",
+        library: "cybgSecureMessagingUI",
         libraryExport: "default"
     },
     plugins: [
