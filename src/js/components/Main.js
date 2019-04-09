@@ -3,7 +3,7 @@ import { compose } from 'redux';
 import { withRouter, Link } from 'react-router-dom';
 import { TabCardBlock, TabCard } from "web-ui-components/lib/navigation/tab-cards";
 import { utils } from "document-management-web-ui";
-import { PageLayout } from 'web-ui-components/lib/global/layout';
+import { PageLayout, Container } from 'web-ui-components/lib/global/layout';
 
 export class Main extends React.Component {
 	constructor(props) {
@@ -28,12 +28,12 @@ export class Main extends React.Component {
 		return (
 			<PageLayout>
 				{ !isWebView && isDocumentLibraryEnabled &&
-					<div className="tab-container">
+					<Container className="u-padding-1 u-margin-bottom-6">
 						<TabCardBlock>
 							<TabCard label="Secure Messages" onClick={this.handleSecureMessagesClick} iconType="MailBrandedSmall" isActive={location.pathname.includes("securemessages")} />
 							<TabCard label="Document Library" onClick={this.handleDocumentPortalClick} iconType="BriefcaseBrandedSmall" isActive={location.pathname.includes("my-documents")} />
 						</TabCardBlock>
-					</div>
+					</Container>
 				}
 				{ this.props.children }
 			</PageLayout>

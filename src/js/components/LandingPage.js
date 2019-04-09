@@ -45,7 +45,7 @@ export class LandingPage extends React.PureComponent {
         const {isWebView, readOnly} = this.props;
         
         return (
-            <Container className="u-margin-top-6">
+            <Container>
                 <Row>
                     <Card>
                         {!isWebView && !readOnly &&

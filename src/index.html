@@ -26,6 +26,12 @@
     <script type="text/javascript">
 
       (function () {
+
+        var normalisedBrandId = {
+          CB: "CB",
+          YB: "YB",
+          DYB: "B"
+        }
         function parseHash(hash) {
           return hash
             .split("&")
@@ -39,7 +45,7 @@
             var head = document.getElementsByTagName('head')[0];
             var element = document.createElement('link');
             element.rel = 'stylesheet';
-            element.href = path + "css/app." + hash.brandId.toLowerCase()+ ".css";
+            element.href = path + "css/app." + normalisedBrandId[hash.brandId].toLowerCase()+ ".css";
             head.appendChild(element);
         }
 

@@ -23,11 +23,8 @@ export function parseMessages(response) {
 
         if (message.document)
         {
-            messageEntity.setDocumentData({
-                id: message.document.id,
-                label: message.document.display_label,
-                fileSize: message.document.file_size
-            });
+            console.log(message.document);
+            messageEntity.setDocumentData(message.document);
         }
         messageEntity.setNoReply(message.no_reply)
         messages.push(messageEntity);
