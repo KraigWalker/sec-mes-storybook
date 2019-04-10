@@ -4,6 +4,7 @@ const paths = require("./paths");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
+const { presets, plugins } = require("./webpack.config.babel");
 console.log("**********************************************");
 console.log("Compiling");
 
@@ -61,11 +62,18 @@ module.exports = {
 	]},
 	module: {
 	  rules: [
-		{
-		  test: /\.js?$/,
-		  include: resolve(__dirname, "src"), // Avoid use of exclude
-		  loader: "babel-loader"
-		},
+			{
+        test: /\.jsx?$/,
+        include: resolve(__dirname, "src"), // Avoid use of exclude
+        use: {
+            loader: "babel-loader",
+            options: {
+                babelrc: false,
+                presets,
+                plugins,
+            },
+        },
+    },
 		{
 		  test: /\.json$/,
 		  exclude: ["/node_modules/"],
