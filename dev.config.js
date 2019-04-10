@@ -4,6 +4,7 @@ const { resolve } = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { presets, plugins } = require("./webpack.config.babel");
 
 console.log("**********************************************");
 console.log("Compiling");
@@ -51,14 +52,21 @@ module.exports = {
   ],
   module: {
     rules: [
-      {
-        test: /\.js?$/,
+    {
+        test: /\.jsx?$/,
         include: resolve(__dirname, "src"), // Avoid use of exclude
-        loader: "babel-loader"
-      },
-      {
+        use: {
+            loader: "babel-loader",
+            options: {
+                babelrc: false,
+                presets,
+                plugins,
+            },
+        },
+    },
+    {
 		test: /\.json$/,
-		exclude: ["/node_modules/"],
+		  exclude: ["/node_modules/"],
         loader: "json-loader"
       },
       {

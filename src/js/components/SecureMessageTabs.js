@@ -11,6 +11,7 @@ import _ from "lodash";
 
 import {TabGroup} from "web-ui-components/lib/navigation/tab-group";
 import {Row, Container} from "web-ui-components/lib/global/layout";
+import { withBreakpoints } from "../components/common/hoc/WithBreakpoint";
 
 export class SecureMessageTabs extends React.Component {
     constructor(props) {
@@ -25,7 +26,7 @@ export class SecureMessageTabs extends React.Component {
     };
 
     render() {
-        const {messages} = this.props;
+        const {messages, noPadding, containerSize} = this.props;
         const unreadInboxCount = getInboxUnreadCount(messages);
         const inboxTitle = getInboxTitle(unreadInboxCount);
 
@@ -34,8 +35,21 @@ export class SecureMessageTabs extends React.Component {
             this.props.messages
         );
 
+        let paddingProps = null;
+		if (noPadding)
+		{
+			paddingProps = {
+				className: "u-margin-top-2 u-padding-left-1",
+			}
+        }
+        else {
+            paddingProps = {
+				className: "u-margin-top-2 u-padding-left-2",
+			}
+        }
+
         return messages ? (
-            <Container className="u-margin-top-2">
+            <Container {...paddingProps} size={containerSize}>
                 <Row>
                     <TabGroup
                         activeTab={this.state.activeTab}
@@ -100,4 +114,4 @@ const getActiveTabMessages = (tab, messages) => {
 SecureMessageTabs.propTypes = {};
 SecureMessageTabs.defaultProps = {};
 
-export default SecureMessageTabs;
+export default withBreakpoints(SecureMessageTabs);

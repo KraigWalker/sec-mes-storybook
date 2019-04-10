@@ -130,13 +130,11 @@ class MessageEntity {
     }
 
     setDocumentData(document) {
-        if (document) {
-            this.document = {
-                id: document.id,
-                label: document.display_label,
-                fileSize: document.file_size
-            };
-        }
+        this.document = {
+            id: document.id,
+            label: document.display_label,
+            fileSize: document.file_size
+        };
     }
 
     setNoReply(noReply) {

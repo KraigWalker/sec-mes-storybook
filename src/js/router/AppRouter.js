@@ -4,7 +4,7 @@ import LandingPage from '../components/LandingPage';
 import Main from '../components/Main';
 import NewSecureMessage from '../components/NewSecureMessage';
 import ViewMessage from '../components/ViewMessage';
-import ReplySecuremessageNew from '../components/ReplySecureMessage';
+import ReplySecuremessage from '../components/ReplySecureMessage';
 import { withSubscription } from '../components/wrappers/GenericWrapper';
 import AccessibilityMessage from '../components/common/AccessibilityMessage';
 import ErrorPage from '../components/common/ErrorPage';
@@ -50,7 +50,7 @@ const RoutesWithLayout = (props) => (
         <RouteWithLayout
             exact
             path={`/securemessages/reply`}
-            Component={ReplySecuremessageNew}
+            Component={ReplySecuremessage}
             content={props.content}
             isDocumentLibraryEnabled={props.isDocumentLibraryEnabled}
             session={props.session}

@@ -8,6 +8,8 @@ import { BackButton } from 'web-ui-components/lib/molecules/navigation';
 import { Title, TextBody } from "web-ui-components/lib/atoms/text";
 import { ButtonGroup } from 'web-ui-components/lib/molecules/buttons'
 import { Button } from 'web-ui-components/lib/atoms/buttons';
+import { withBreakpoints } from "./hoc/WithBreakpoint";
+import { compose } from "redux";
 
 export class ErrorPage extends React.Component {
 
@@ -27,11 +29,19 @@ export class ErrorPage extends React.Component {
     }
 
     render() {
-        const { messages} = this.props;
+        const { messages, containerSize, noPadding} = this.props;
         const { content } = this.props.location;
+        
+		let paddingProps = null;
+		if (noPadding)
+		{
+			paddingProps = {
+				className: "u-padding-0",
+			}
+        }
 
         return (<LoadingLocalTakeover show={messages.fetching} title="loading.." >
-            <Container>
+            <Container {...paddingProps} size={containerSize}>
                 <Row>
                     <Card>
                         <TextBody>
@@ -65,4 +75,11 @@ const mapDispatchToProps = {
     fetchSecureMessages,
     getAccounts
 }
-export default connect(mapState, mapDispatchToProps)(ErrorPage);
+
+export default compose(
+    connect(
+      mapState,
+      mapDispatchToProps
+    ),
+    withBreakpoints
+  )(ErrorPage);
