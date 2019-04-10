@@ -1,32 +1,30 @@
-import { Switch, MemoryRouter, Route, Redirect, withRouter } from 'react-router-dom';
+import {Switch, MemoryRouter, Route, Redirect, withRouter} from 'react-router-dom';
 import React from 'react';
 import LandingPage from '../components/LandingPage';
 import Main from '../components/Main';
-import NewSecureMessage from '../components/NewSecureMessage';
 import ViewMessage from '../components/ViewMessage';
-import ReplySecuremessage from '../components/ReplySecureMessage';
-import { withSubscription,accessibilityWrapper } from '../components/wrappers/GenericWrapper';
-import DraftSecureMessage from '../components/DraftSecureMessage';
+import {withSubscription} from '../components/wrappers/GenericWrapper';
 import AccessibilityMessage from '../components/common/AccessibilityMessage';
 import ErrorPage from '../components/common/ErrorPage';
-import { FolderList } from '../components/FolderList';
-import { DocumentList } from '../components/DocumentList';
-import { DocumentView } from '../components/DocumentView';
+import {ListView} from '../components/ListView';
+import {DocumentView} from '../components/DocumentView';
 
 
-const RouteWithLayout = ({ Component, isDocumentLibraryEnabled, ...restProps }) => <Route {...restProps} render={(routeProps) => 
-    <Main isDocumentLibraryEnabled={isDocumentLibraryEnabled}>
-        <Component {...restProps} {...routeProps} />
-    </Main>
-} />
+const RouteWithLayout = ({Component, isDocumentLibraryEnabled, ...restProps}) => <Route {...restProps}
+                                                                                        render={(routeProps) =>
+                                                                                            <Main
+                                                                                                isDocumentLibraryEnabled={isDocumentLibraryEnabled}>
+                                                                                                <Component {...restProps} {...routeProps} />
+                                                                                            </Main>
+                                                                                        }/>
 
-/** 
- * @class AppRouter Class to initiate and route the application 
+/**
+ * @class AppRouter Class to initiate and route the application
  */
 
 const RoutesWithLayout = (props) => (
     <Switch>
-        <RouteWithLayout path='/securemessages/error' Component={ErrorPage} />
+        <RouteWithLayout path='/securemessages/error' Component={ErrorPage}/>
         <RouteWithLayout
             exact
             path={`/securemessages/view`}
@@ -49,36 +47,28 @@ const RoutesWithLayoutAndSubscription = withRouter(withSubscription(RoutesWithLa
 
 class AppRouter extends React.Component {
     /**
-    * Initiates the application in BrowserRouter. Please refer to react-router v4 docs.
-    * @return {ReactComponent} Displays the components wrapped around BrowserRouter and Routes the application.
-    */ 
-      render() {
-        const { isDocumentLibraryEnabled } = this.props;
+     * Initiates the application in BrowserRouter. Please refer to react-router v4 docs.
+     * @return {ReactComponent} Displays the components wrapped around BrowserRouter and Routes the application.
+     */
+    render() {
+        const {isDocumentLibraryEnabled} = this.props;
         return (
             <MemoryRouter>
                 <div>
                     <Route path={`/securemessages`} render={() => (
                         <RoutesWithLayoutAndSubscription {...this.props} />
-                    )} />
+                    )}/>
                     <AccessibilityMessage/>
                     <RouteWithLayout
-                        path={`my-documents`}
+                        path={`/my-documents/`}
                         exact
-                        Component={FolderList}
+                        Component={ListView}
                         session={this.props.session}
                         client={this.props.client}
                         isDocumentLibraryEnabled={isDocumentLibraryEnabled}
                     />
-                    <RouteWithLayout
-                        Component={DocumentList}
-                        session={this.props.session}
-                        client={this.props.client}
-                        path={`my-documents/:displayCategory`}
-                        isDocumentLibraryEnabled={isDocumentLibraryEnabled}
-                        exact
-                    />
-                    <Route path={`my-documents/:displayCategory/:documentId`} exact component={DocumentView} />
-                    <Redirect exact from = '/' to = {`securemessages`} key='redirect'/>
+                    <Route path={`my-documents/:displayCategory/:documentId`} exact component={DocumentView}/>
+                    <Redirect exact from='/' to={`securemessages`} key='redirect'/>
                 </div>
             </MemoryRouter>
         );

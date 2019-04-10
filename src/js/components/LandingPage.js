@@ -27,7 +27,7 @@ export class LandingPage extends React.PureComponent {
     }
     componentDidUpdate() {
         if (this.props.messages.error && this.props.messages.fetched) {
-            his.props.history.push({pathname:'/securemessages/error', content: this.props.content});
+            this.props.history.push({pathname:'/securemessages/error', content: this.props.content});
         }
     }
 

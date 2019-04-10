@@ -94,7 +94,7 @@
     "dev": "webpack --config ./dev.config.js",
     "test": "jest",
     "build": "npm run prod && npm run release",
-    "build:lib": "rollup rollup.config.js",
+    "build:lib": "rollup -c rollup.config.js",
     "release": "tar -C src/ -czf secure-messaging-1.0.0.tgz compiled",
     "test:watch": "npm test -- --watch",
     "lint": "eslint './src'",
