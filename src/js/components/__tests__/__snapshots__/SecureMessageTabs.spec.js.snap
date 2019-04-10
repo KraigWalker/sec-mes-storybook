@@ -77,7 +77,8 @@ ShallowWrapper {
           />
         </Row>,
       ],
-      "className": "u-margin-top-2",
+      "className": "u-margin-top-2 u-padding-left-2",
+      "size": undefined,
     },
     "ref": null,
     "rendered": Array [
@@ -241,7 +242,8 @@ ShallowWrapper {
             />
           </Row>,
         ],
-        "className": "u-margin-top-2",
+        "className": "u-margin-top-2 u-padding-left-2",
+        "size": undefined,
       },
       "ref": null,
       "rendered": Array [

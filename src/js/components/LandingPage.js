@@ -10,6 +10,8 @@ import {Container, Row} from "web-ui-components/lib/global/layout";
 import {Card} from "web-ui-components/lib/organisms/cards";
 import { Title, TextBody } from "web-ui-components/lib/atoms/text";
 import { getMessageSubjects, getActiveTab } from '../actions/AppActions';
+import { withBreakpoints } from "../components/common/hoc/WithBreakpoint";
+import { compose } from 'redux';
 
 /**
  * @class Landing Page
@@ -25,7 +27,7 @@ export class LandingPage extends React.PureComponent {
     }
     componentDidUpdate() {
         if (this.props.messages.error && this.props.messages.fetched) {
-            this.props.history.push('/securemessages/error');
+            his.props.history.push({pathname:'/securemessages/error', content: this.props.content});
         }
     }
 
@@ -42,10 +44,18 @@ export class LandingPage extends React.PureComponent {
     }
 
     render() {
-        const {isWebView, readOnly} = this.props;
-        
+        const {isWebView, readOnly, noPadding, containerSize} = this.props;
+  
+		let paddingProps = null;
+		if (noPadding)
+		{
+			paddingProps = {
+				className: "u-padding-0",
+			}
+        }
+     
         return (
-            <Container>
+            <Container {...paddingProps} size={containerSize}>
                 <Row>
                     <Card>
                         {!isWebView && !readOnly &&
@@ -93,4 +103,8 @@ const mapDispatchToProps = {
     getActiveTab
 }
 
-export default connect(mapState, mapDispatchToProps)(utils.withNativeBridge(window)(LandingPage));
+export default compose(
+    connect(mapState, mapDispatchToProps),
+	utils.withNativeBridge(window),
+	withBreakpoints
+)(LandingPage);

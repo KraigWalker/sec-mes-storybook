@@ -107,7 +107,7 @@ ShallowWrapper {
           />
         </Card>
       </Row>,
-      "className": "u-margin-top-6",
+      "size": undefined,
     },
     "ref": null,
     "rendered": Object {
@@ -342,7 +342,7 @@ ShallowWrapper {
             />
           </Card>
         </Row>,
-        "className": "u-margin-top-6",
+        "size": undefined,
       },
       "ref": null,
       "rendered": Object {
@@ -647,7 +647,7 @@ ShallowWrapper {
           />
         </Card>
       </Row>,
-      "className": "u-margin-top-6",
+      "size": undefined,
     },
     "ref": null,
     "rendered": Object {
@@ -882,7 +882,7 @@ ShallowWrapper {
             />
           </Card>
         </Row>,
-        "className": "u-margin-top-6",
+        "size": undefined,
       },
       "ref": null,
       "rendered": Object {

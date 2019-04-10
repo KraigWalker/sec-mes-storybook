@@ -19,6 +19,8 @@ const breakpoints = {
   xl: [1281, Infinity]
 };
 
+const mobileViews = ["xs", "sm"];
+
 const calculateBreakPoint = width =>
   Object.keys(breakpoints).reduce((prevValue, currentValue) => {
     const breakpoint = breakpoints[currentValue];
@@ -28,28 +30,36 @@ const calculateBreakPoint = width =>
     return prevValue;
   }, "xs");
 
+const getContainerSize = breakpoint => breakpoint === "xl" ? "lg" : breakpoint.substr(0,2);
+
+const getNoPadding = breakpoint => mobileViews.some(size => size === breakpoint);
+
 export const withBreakpoints = WrappedComponent =>
   class WithBreakpoints extends React.Component {
     constructor(props) {
       super(props);
       this.handleResize = this.handleResize.bind(this);
+      const breakpoint = calculateBreakPoint(window.innerWidth);
 
       window.addEventListener("resize", throttle(this.handleResize, 500));
       this.state = {
-        breakpoint: calculateBreakPoint(window.innerWidth)
+        breakpoint,
+        containerSize: getContainerSize(breakpoint),
+        noPadding: getNoPadding(breakpoint)
       };
     }
+
     componentWillUnmount() {
       window.removeEventListener("resize", this.handleResize);
     }
 
+   
     handleResize() {
-
-    console.log("breakpoints");
-    console.log(window.innerWidth);
-    console.log(calculateBreakPoint(window.innerWidth));
+      const breakpoint = calculateBreakPoint(window.innerWidth);
       this.setState({
-        breakpoint: calculateBreakPoint(window.innerWidth)
+        breakpoint,
+        noPadding: getNoPadding(breakpoint),
+        containerSize: getContainerSize(breakpoint)
       });
     }
 

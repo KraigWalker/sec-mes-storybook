@@ -17,6 +17,7 @@ import ErrorModal from "./common/ErrorModal";
 import { TextStyled } from 'web-ui-components/lib/atoms/text';
 import { Title } from "web-ui-components/lib/atoms/text";
 import PropTypes from 'prop-types';
+import { withBreakpoints } from "../components/common/hoc/WithBreakpoint";
 
 const CHARS_LEFT_DISPLAY_THRESHOLD = 300;
 const MAX_CHARS = 3000;
@@ -332,7 +333,10 @@ export class SecureMessageForm extends React.Component {
 	}
 
 	render() {
-		const { content, successModal, subjects, subjectErrors, messageError, accounts, title, messageText } = this.props;
+		const { content, successModal, subjects, subjectErrors, messageError, accounts, title
+			, messageText
+			, containerSize
+			, noPadding} = this.props;
 
 		const { showSendServiceErrorModal, 
 			showSaveServiceErrorModal, 
@@ -342,8 +346,18 @@ export class SecureMessageForm extends React.Component {
 			showSubjectInvalid,
 			showAccountInvalid} = this.state;
 
+
+		let paddingProps = null;
+		if (noPadding)
+		{
+			paddingProps = {
+				className: "u-padding-0",
+			}
+		}
+		
+
 		return (
-			<Container className="u-margin-top-6">
+			<Container {...paddingProps} size={containerSize}>
 				<Row>
 					<Card>	
 						<Title size="h1">{title}</Title>
@@ -485,5 +499,5 @@ SecureMessageForm.propTypes = {
 	buttonsDisabled: PropTypes.bool
 };
 
-export default SecureMessageForm;
+export default withBreakpoints(SecureMessageForm);
 

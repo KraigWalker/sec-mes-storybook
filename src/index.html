@@ -35,8 +35,20 @@
         function parseHash(hash) {
           return hash
             .split("&")
-            .map(v => v.split("="))
-            .reduce( (pre, [key, value]) => ({ ...pre, [key]: value }), {});
+            .map(function(v) {
+              return v.split("=")
+            })
+            .reduce( function(pre, keyValue) {
+              var current = {};
+              Object.keys(pre).forEach(function (k) {
+                console.log(pre[k]);
+                current[k] = pre[k]
+              });
+              var key = keyValue[0];
+              var value = keyValue[1];
+              current[key] = value;
+              return current;
+            }, {});
         }
         
         if (window.location.hash)
