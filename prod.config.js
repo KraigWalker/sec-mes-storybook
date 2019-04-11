@@ -10,8 +10,9 @@ console.log("Compiling");
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+const JSEntry = ["babel-polyfill", "./src/js/client.js"];
 module.exports = {
-	entry: "./src/js/client.js",
+	entry: [...JSEntry],
 	mode: "production",
 	output: {
 	  path: __dirname + "/src/compiled",
@@ -56,7 +57,8 @@ module.exports = {
 			new UglifyJSPlugin({
         sourceMap: false,
         uglifyOptions: {
-          mangle: false
+					keep_fnames: true,
+          mangle: true
         }
 			}),
 	]},
