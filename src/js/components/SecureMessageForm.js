@@ -192,11 +192,14 @@ export class SecureMessageForm extends React.Component {
 	}
 
 	saveDraftData() {
-		this.props.onSave(this.buildMessageData());
+		if (this.checkValidation())
+		{
+			this.props.onSave(this.buildMessageData());
 		
-		this.setState({ showPopup: false,
-						showDraftSuccessModal: true,
-						showSaveServiceErrorModal: true });
+			this.setState({ showPopup: false,
+							showDraftSuccessModal: true,
+							showSaveServiceErrorModal: true });
+		}
 	}
 
 	errorCloseClicked() {
@@ -354,8 +357,8 @@ export class SecureMessageForm extends React.Component {
 				className: "u-padding-0",
 			}
 		}
+	
 		
-
 		return (
 			<Container {...paddingProps} size={containerSize}>
 				<Row>
