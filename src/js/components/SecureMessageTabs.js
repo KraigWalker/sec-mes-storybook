@@ -39,43 +39,41 @@ export class SecureMessageTabs extends React.Component {
 		if (noPadding)
 		{
 			paddingProps = {
-				className: "u-margin-top-2 u-padding-left-1",
+				className: "u-margin-top-2 u-padding-left-0",
 			}
         }
         else {
             paddingProps = {
-				className: "u-margin-top-2 u-padding-left-2",
+				className: "u-margin-top-2 u-padding-left-0",
 			}
         }
 
         return messages ? (
             <Container {...paddingProps} size={containerSize}>
-                <Row>
-                    <TabGroup
-                        activeTab={this.state.activeTab}
-                        onChange={val => {
-                            this.setState({activeTab: val});
-                        }}
-                        tabButtons={[
-                            {
-                                title: inboxTitle,
-                                id: INBOX
-                            },
-                            {
-                                title: "Drafts",
-                                id: DRAFT
-                            },
-                            {
-                                title: "Sent",
-                                id: SENT
-                            },
-                            {
-                                title: "Archive",
-                                id: ARCHIVE
-                            }
-                        ]}
-                    />
-                </Row>
+                <TabGroup className="u-padding-left-0"
+                    activeTab={this.state.activeTab}
+                    onChange={val => {
+                        this.setState({activeTab: val});
+                    }}
+                    tabButtons={[
+                        {
+                            title: inboxTitle,
+                            id: INBOX
+                        },
+                        {
+                            title: "Drafts",
+                            id: DRAFT
+                        },
+                        {
+                            title: "Sent",
+                            id: SENT
+                        },
+                        {
+                            title: "Archive",
+                            id: ARCHIVE
+                        }
+                    ]}
+                />
                 <Row>
                     <SecureMessageList
                         messages={activeTabMessages}
