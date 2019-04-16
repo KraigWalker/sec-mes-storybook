@@ -2,7 +2,7 @@
 const content = {
 	DYB: {
 		landingPageTitle: 'Messages',
-		landingPageMessage: 'Want to talk to the team at B about your account? Safely share your details in a secure message to get all the help you need. We may also send you secure messages to let you know about your new letters and documents.',
+		landingPageMessage: 'Want to talk to the team at B about your account? Safely share your details in a secure message to get all the help you need. We may also send you secure messages to let you know about your new letters and documents. You can view your messages from the last 3 years.',
 		inboxPageTitle: 'Inbox Message',
 		sentPageTitle: 'Sent Message',
 		archivePageTitle: 'Archive Message',
@@ -66,7 +66,7 @@ const content = {
 
 	CB: {
 		landingPageTitle: 'Messages',
-		landingPageMessage: 'If you want to talk about something specific to you or your account, you can share your details in a secure message. It’s safe and simple, and you’ll get all the help you need.',
+		landingPageMessage: 'If you want to ask us a question relating to your accounts or products you can send us a secure message and we will respond with the help you need.  We may also send you secure messages to let you know about your new letters and documents.',
 		inboxPageTitle: 'Inbox Message',
 		sentPageTitle: 'Sent Message',
 		archivePageTitle: 'Archive Message',
