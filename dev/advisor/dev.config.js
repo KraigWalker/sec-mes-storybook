@@ -8,7 +8,7 @@ const { presets, plugins } = require("../../webpack.config.babel");
 
 console.log("**********************************************");
 console.log("Compiling");
-console.log(__dirname);
+
 const JSEntry = ["babel-polyfill", "whatwg-fetch", `${__dirname}/index.js`];
 module.exports = {
     entry: [...JSEntry],
