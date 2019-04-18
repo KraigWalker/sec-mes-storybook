@@ -25,7 +25,7 @@ export const App = ({ config }) => {
 
     const envConfig = {
         apiBaseUrl: config.bpiApiUrl,
-        apiBaseUrl2: config.ibApiUrl
+        apiBaseUrl2: config.ibApiUrl + "/ibapi/v2"
     }
 
     const staffHeaders = getStaffHeaders(session);
@@ -34,7 +34,7 @@ export const App = ({ config }) => {
 
     const deps = {
         native: dependencies.native,
-        api: dependencies.api,
+        api: new dependencies.Api(clientContext, session, {  apiBaseUrl: envConfig.apiBaseUrl2}),
         secureMessagesApi: new AppApi(envConfig, clientContext, session, apiUtils )
     }
 

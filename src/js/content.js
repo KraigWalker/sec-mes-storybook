@@ -39,7 +39,7 @@ const content = {
 		thatsallTextDraft: "That's all of them. Any new messages you save will show at the top of your drafts. Remember that only messages from the last 3 years are shown here.",
 		thatsallTextSend: "That's all of them. Any new messages you send will show at the top of your sent items. Remember that only messages from the last 3 years are shown here.",
 		thatsallTextArchived: "That's all of them. Any new messages you archive will show at the top of your archived items. Remember that only messages from the last 3 years are shown here.",
-		noMesssages: 'No messages.',
+		noMessages: 'No messages.',
 		deleteMessageHeading: 'Sure you want to delete this message?',
 		deleteMessageBody: "If you delete this message now, you won't be able to get it back.",
 		dontDelButton: "No, don't delete",

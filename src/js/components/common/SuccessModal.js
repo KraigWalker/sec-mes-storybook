@@ -11,7 +11,7 @@ const SuccessModal = props => {
   const bodyContent = (
     <div>
       <div>
-        <GetIcon id="icon-success" width="68px" height="68px" />
+        <GetIcon id="icon-success" width="68px" height="68px" fill="#9CDD00"/>
       </div>
       {props.bodyText}
     </div>

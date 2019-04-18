@@ -1,4 +1,5 @@
-import {Switch, MemoryRouter, Route, Redirect, withRouter} from 'react-router-dom';
+import {Switch, MemoryRouter, BrowserRouter,
+    Route, Redirect, withRouter} from 'react-router-dom';
 import React from 'react';
 import LandingPage from '../components/LandingPage';
 import Main from '../components/Main';
@@ -8,7 +9,6 @@ import AccessibilityMessage from '../components/common/AccessibilityMessage';
 import ErrorPage from '../components/common/ErrorPage';
 import {ListView} from '../components/ListView';
 import {DocumentView} from '../components/DocumentView';
-
 
 const RouteWithLayout = ({Component, isDocumentLibraryEnabled, ...restProps}) => <Route {...restProps}
                                                                                         render={(routeProps) =>
@@ -30,6 +30,8 @@ const RoutesWithLayout = (props) => (
             path={`/securemessages/view`}
             Component={ViewMessage}
             content={props.content}
+            client={props.client}
+            session={props.session}
             isDocumentLibraryEnabled={props.isDocumentLibraryEnabled}
             isReadOnly
         />
@@ -37,6 +39,8 @@ const RoutesWithLayout = (props) => (
             path={`/securemessages`}
             Component={LandingPage}
             content={props.content}
+            client={props.client}
+            session={props.session}
             isDocumentLibraryEnabled={props.isDocumentLibraryEnabled}
             isReadOnly
         />
@@ -59,16 +63,23 @@ class AppRouter extends React.Component {
                         <RoutesWithLayoutAndSubscription {...this.props} />
                     )}/>
                     <AccessibilityMessage/>
-                    <RouteWithLayout
-                        path={`/my-documents/`}
-                        exact
-                        Component={ListView}
-                        session={this.props.session}
-                        client={this.props.client}
-                        isDocumentLibraryEnabled={isDocumentLibraryEnabled}
-                    />
-                    <Route path={`my-documents/:displayCategory/:documentId`} exact component={DocumentView}/>
-                    <Redirect exact from='/' to={`securemessages`} key='redirect'/>
+
+                    <Switch>
+                        <Route 
+                                path={`/my-documents/:bankId(CB|YB|DYB)/:documentId`}
+                                component={DocumentView}
+                        />
+                        <RouteWithLayout
+                            path={`/my-documents/`}
+                            exact
+                            Component={ListView}
+                            session={this.props.session}
+                            client={this.props.client}
+                            isDocumentLibraryEnabled={isDocumentLibraryEnabled}
+                        />
+                        <Redirect exact from='/' to={`securemessages`} key='redirect'/>
+
+                    </Switch>
                 </div>
             </MemoryRouter>
         );

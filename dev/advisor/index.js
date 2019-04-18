@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { App } from "../../src/js/App.advisor";
+import "babel-polyfill";
+import "whatwg-fetch";
 
 const loadStyles = (brandId) => {
     var head = document.getElementsByTagName('head')[0];

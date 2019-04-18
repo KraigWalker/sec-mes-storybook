@@ -1,4 +1,5 @@
 import React from 'react';
+import { ConfirmationModal } from "web-ui-components/lib/organisms/modals";
 
 const ErrorModal = props => {
   const { content, onCloseClicked, onRetry } = props;

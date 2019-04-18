@@ -56,6 +56,7 @@ export class SecureMessageForm extends React.Component {
 			showAccountInvalid: false,
 			showSubjectInvalid: false,
 			disabled: props.buttonsDisabled,
+			dirty: false,
 			charError: false,
 			showModalBack: false,
 			subject: props.selectedSubject,
@@ -95,13 +96,15 @@ export class SecureMessageForm extends React.Component {
 			case 'accounts':
 				this.setState({
 					accountValue: data,
-					showAccountInvalid: !this.isAccountValid(data)
+					showAccountInvalid: !this.isAccountValid(data),
+					dirty: true
 				})
 				break;
 			case 'subjects':
 				this.setState({
 					subject: data,
-					showSubjectInvalid: !this.isSubjectValid(data)
+					showSubjectInvalid: !this.isSubjectValid(data),
+					dirty: true
 				})
 				break;
 			default:
@@ -135,7 +138,8 @@ export class SecureMessageForm extends React.Component {
 			disabled,
 			message,
 			chars_left,
-			charError
+			charError,
+			dirty: true
 			}
 		);
 		
@@ -232,16 +236,6 @@ export class SecureMessageForm extends React.Component {
 		});
 	}
 
-	determineBackAcption() {
-		if (this.state.disabled)
-		{
-			this.props.history.push("/securemessages")
-		}
-		else {
-			this.callBackModal();
-		}
-	}
-
 	returnModalComponent() {
 
 		const { showPopup } = this.state;
@@ -298,7 +292,7 @@ export class SecureMessageForm extends React.Component {
 	}
 
 	determineBackAction() {
-		if (this.state.disabled)
+		if (this.state.disabled || !this.state.dirty)
 		{
 			this.props.history.push("/securemessages")
 		}
