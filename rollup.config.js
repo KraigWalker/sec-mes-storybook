@@ -28,9 +28,6 @@ export default {
 		postcss({
 			plugins: [autoprefixer()],
 		}),
-		resolve({
-			only: ['shared'],
-		}),
 		babel({
 			babelrc: false,
 			exclude: 'node_modules/**',

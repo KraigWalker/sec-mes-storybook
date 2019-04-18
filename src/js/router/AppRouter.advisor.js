@@ -49,7 +49,6 @@ const RoutesWithLayout = (props) => (
 
 const RoutesWithLayoutAndSubscription = withRouter(withSubscription(RoutesWithLayout))
 
-
 class AppRouter extends React.Component {
     /**
      * Initiates the application in BrowserRouter. Please refer to react-router v4 docs.
@@ -57,8 +56,6 @@ class AppRouter extends React.Component {
      */
     render() {
         const {isDocumentLibraryEnabled} = this.props;
-
-
         return (
             <MemoryRouter>
                 <div>
