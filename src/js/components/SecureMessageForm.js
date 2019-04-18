@@ -416,7 +416,7 @@ export class SecureMessageForm extends React.Component {
 								{/* DEBT:  would like to use TextAreaCharacterCount, but no hook available to tie into change event and props not spread */}
 								<Textarea 
 									onChange={(e) => this.textChange(e.target.value)}
-									rows="10"
+									rows="20"
 									cols="20"
 									id="message"
 									maxLength='infinity'
