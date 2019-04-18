@@ -22,9 +22,7 @@
         const config = {
             bpiApiUrl: "http://localhost:8888",
             ibApiUrl: "http://localhost:8888",
-            bankId: "CB",
-            brandId: "CB",
-            accessToken: "fake-token",
+            accessToken: "access_token",
             baseURI: "",
             customerId: "",
             customerNumber: "1012121212",
@@ -32,7 +30,10 @@
             scope: "40",
             scopeCreatedDate: null,
             staffId: "SR0765",
-            appTitle: "MEO"
+            appTitle: "MEO",
+            bank_id: "CB",
+            brandId: "CB",
+            client_context: "CB%20Web"
         };
        typeof window.cybgSecureMessagingUI === "function" && window.cybgSecureMessagingUI(config, "secure-messaging");
     </script>

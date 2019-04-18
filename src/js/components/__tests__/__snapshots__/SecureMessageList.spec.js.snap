@@ -48,7 +48,6 @@ ShallowWrapper {
       >
         <TextBody />
       </LoadingLocalTakeover>,
-      "className": "u-padding-left-0",
       "xs": 24,
     },
     "ref": null,
@@ -98,7 +97,6 @@ ShallowWrapper {
         >
           <TextBody />
         </LoadingLocalTakeover>,
-        "className": "u-padding-left-0",
         "xs": 24,
       },
       "ref": null,
@@ -215,7 +213,6 @@ ShallowWrapper {
           />
         </TextBody>
       </LoadingLocalTakeover>,
-      "className": "u-padding-left-0",
       "xs": 24,
     },
     "ref": null,
@@ -290,7 +287,6 @@ ShallowWrapper {
             />
           </TextBody>
         </LoadingLocalTakeover>,
-        "className": "u-padding-left-0",
         "xs": 24,
       },
       "ref": null,

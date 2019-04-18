@@ -4,26 +4,25 @@ const { resolve } = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { presets, plugins } = require("../../webpack.config.babel");
 
 console.log("**********************************************");
 console.log("Compiling");
-const JSEntry = `${__dirname}/index.js`;
-
+console.log(__dirname);
+const JSEntry = ["babel-polyfill", "whatwg-fetch", `${__dirname}/index.js`];
 module.exports = {
-    entry: JSEntry,
+    entry: [...JSEntry],
     devtool: "inline-source-map",
+    mode: "development",
     output: {
-        path: resolve(__dirname, '../../dist'),
-        filename: "[name].bundle.js",
-        publicPath: '/',
-        libraryTarget: "umd",
-        library: "cybgSecureMessagingUI",
-        libraryExport: "default"
+      path: __dirname + "/compiled",
+      filename: "[name].bundle.js",
+      publicPath: "/",
+      libraryTarget: "umd",
+      library: "cybgSecureMessagingUI",
+      libraryExport: "default"
     },
     plugins: [
-        new webpack.DefinePlugin({
-            "process.env.NODE_ENV": JSON.stringify("development"),
-        }),
         new webpack.HotModuleReplacementPlugin(),
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
@@ -49,15 +48,22 @@ module.exports = {
         new HtmlWebpackPlugin({
             inject: false,
             template: `${__dirname}/index.html`,
-            excludeChunks: ["cb.main", "yb.main", "dyb.main", "undefined.main"]
+            excludeChunks: ["undefined.main"]
         }),
     ],
     module: {
         rules: [
             {
-                test: /\.js?$/,
-                include: [resolve(__dirname, '../../src'), __dirname], // Avoid use of exclude
-                loader: "babel-loader"
+                test: /\.jsx?$/,
+                include: [paths.resolveFromRoot("src"), __dirname], // Avoid use of exclude
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        babelrc: false,
+                        presets,
+                        plugins,
+                    },
+                },
             },
             {
                 test: /\.json$/,
@@ -76,21 +82,20 @@ module.exports = {
             },
         ]
     },
-
+    
     devServer: {
-        contentBase: resolve(__dirname, "../../dist"),
+        contentBase: __dirname + "/compiled/",
         open: true, // Open browser after compilation
-        historyApiFallback: {
-            rewrites: [
-                { from: /^\/$/, to: "index.html" }
-            ]
+         historyApiFallback: {
+          rewrites: [{ from: /^\/$/, to: "index.html" }]
         },
-        host: 'localhost',
-        port: 8080
+        host: "localhost",
+        port: 8080,
+        hot: true
     },
 
     resolve: {
         modules: [resolve(__dirname,"src"), "node_modules"],
-        extensions: ['.js', '.json'],
+        extensions: ['.js', '.json','.css',],
     }
 };

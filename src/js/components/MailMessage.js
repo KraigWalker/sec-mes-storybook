@@ -4,27 +4,13 @@ import { Mail } from "web-ui-components/lib/communication/messaging";
 import { ButtonGroup } from 'web-ui-components/lib/molecules/buttons';
 import withMessaging from "./common/WithMessaging";
 import {ARCHIVED} from '../constants/StringsConstants';
+import Attachment from "./common/Attachment";
+import {DocumentDownloadLink} from 'document-management-web-ui';
 
-const Attachments = ({ document, onClick }) => (
-	<div className="c-message--attachments">
-		<h4>Attachments</h4>
-		<ul>
-			<li>
-				<a href="javascript:void(0)" onClick={onClick}>{document.label}</a>
-			</li>
-		</ul>
-	</div>
-);
-
-const handleAttachmentClick = ({isWebView, session, message, client, getDocumentByIdNative}) => {
-  if (!isWebView) {
-    window.open(`/my-documents/${session.brand}/${message.document.id}#access_token=${session.access_token}&bank_id=${session.bank_id}&client_context=${
-      client.client.app_title
-      }&user_tracking_id=${client.client.user_tracking_id}&brandId=${session.bank_id}&state=${session.state}`);
-    }
-  else {
-    getDocumentByIdNative(message.document.id, message.document.fileSize);
-  }
+const attachmentLink = (props, document) => {
+  return (window.navigator && window.navigator.msSaveOrOpenBlob) 
+      ? <DocumentDownloadLink documentId={document.id} documentName={document.label} />
+      : <Attachment {...props} document={document}/>
 }
 
 const MailMessage = props => {
@@ -79,7 +65,7 @@ const MailMessage = props => {
       </Mail.Header>
       <Mail.Body>
         <p>{message.message}</p>
-        { hasAttachment && <Attachments document={message.document} onClick={() => handleAttachmentClick(props)}/> }
+        { hasAttachment && attachmentLink(props, message.document) }
         <ButtonGroup>
           <Button display="secondary" width="narrow" onClick={history.goBack}>
             {content.back}
