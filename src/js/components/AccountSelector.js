@@ -1,10 +1,24 @@
 import React from 'react';
-import { AccountSelectorContainer } from 'document-management-web-ui';
+import {AccountSelectorContainer} from 'document-management-web-ui';
+import {Container, Row} from "web-ui-components/lib/global/layout";
+import { withBreakpoints } from "../components/common/hoc/WithBreakpoint";
 
-export const AccountSelector = (props) => (
-    <div className="web-ui-components centralised-container">
-        <div className="u-margin-bottom-c">   
+const accounts = (props) =>  {
+    const { containerSize, noPadding } = props;
+    let paddingProps = null;
+    if (noPadding)
+    {
+        paddingProps = {
+            className: "u-padding-0",
+        }
+    }
+
+    return (<Container {...paddingProps} size={containerSize}>
+        <Row>
             <AccountSelectorContainer {...props} />
-        </div>
-    </div>
-);
+        </Row>
+    </Container>);
+}
+
+export const AccountSelector = withBreakpoints(accounts);
+

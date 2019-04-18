@@ -16,7 +16,6 @@ import {
 class DraftSecureMessage extends React.Component {
     constructor(props) {
         super(props);
-        this.onMount = this.onMount.bind(this);
         this.send = this.send.bind(this);
         this.save = this.save.bind(this);
     }

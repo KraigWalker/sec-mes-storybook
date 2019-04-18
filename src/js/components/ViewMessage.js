@@ -15,6 +15,7 @@ import {SubordinatePanel} from 'web-ui-components/lib/molecules/panels';
 import {SectionHeading} from 'web-ui-components/lib/molecules/text';
 import {Card} from "web-ui-components/lib/organisms/cards";
 import {Container, Row} from "web-ui-components/lib/global/layout";
+import { withBreakpoints } from "../components/common/hoc/WithBreakpoint";
 
 const getTitle = (status, content) =>
 {
@@ -77,13 +78,21 @@ export class ViewMessage extends React.Component {
 
         const hasAttachment = getHasAttachment(messageDetail);
 
-        const {readOnly, content} = this.props;
+        const {readOnly, content, containerSize, noPadding} = this.props;
         const messageStatus = (messageDetail.status === NEW && readOnly !== true)
             ? READ
             : messageDetail.status;
 
+        let paddingProps = null;
+        if (noPadding)
+        {
+            paddingProps = {
+                className: "u-padding-0",
+            }
+        }
+
         return (
-            <Container className="u-margin-top-6">
+            <Container {...paddingProps} size={containerSize}>
                 <Row>
                     <Card>
                         <SectionHeading
@@ -124,5 +133,6 @@ const mapDispatchToProps = {
 export default compose(
     connect(mapState, mapDispatchToProps),
     withRouter,
-    utils.withNativeBridge(window)
+    utils.withNativeBridge(window),
+    withBreakpoints
 )(ViewMessage);
