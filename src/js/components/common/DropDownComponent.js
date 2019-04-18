@@ -65,7 +65,7 @@ export class DropDownComponent extends React.Component {
 			case (id === 'accounts'):
 				items.push({value: noSpecificAccount, label: noSpecificAccount});
 				_.map(accounts, account => {
-					const name = (account.display_name !== null) ? account.display_name : account.name;
+					const name = account.display_name || account.name || account.product.name;
 					items.push({value: account.number,  label: `${name} (ending ${account.number.slice(-4)})`})}
 					)
 				break;
