@@ -44,7 +44,7 @@ export class Main extends React.Component {
 						<TabCardBlock>
 							<TabCard label="Secure Messages" onClick={this.handleSecureMessagesClick}
 									iconType="MailBrandedSmall" isActive={location.pathname.includes("securemessages")}/>
-							<TabCard label="Document Library" onClick={this.handleDocumentPortalClick}
+							<TabCard label="Letters and documents" onClick={this.handleDocumentPortalClick}
 									iconType="BriefcaseBrandedSmall"
 									isActive={location.pathname.includes("my-documents")}/>
 						</TabCardBlock>
