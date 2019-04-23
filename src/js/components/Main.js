@@ -42,7 +42,7 @@ export class Main extends React.Component {
 					{!isWebView && isDocumentLibraryEnabled &&
 					<Container {...paddingProps} size={containerSize} >
 						<TabCardBlock>
-							<TabCard label="Secure Messages" onClick={this.handleSecureMessagesClick}
+							<TabCard label="Secure messages" onClick={this.handleSecureMessagesClick}
 									iconType="MailBrandedSmall" isActive={location.pathname.includes("securemessages")}/>
 							<TabCard label="Letters and documents" onClick={this.handleDocumentPortalClick}
 									iconType="BriefcaseBrandedSmall"
