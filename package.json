@@ -98,7 +98,7 @@
     "test": "jest",
     "build": "npm run prod && npm run release",
     "build:lib": "rollup -c",
-    "release": "tar -C src/ -czf secure-messaging-1.0.0.tgz compiled",
+    "release": "./scripts/release.sh",
     "test:watch": "npm test -- --watch",
     "lint": "eslint './src'",
     "lint:fix": "eslint './src' --fix",
