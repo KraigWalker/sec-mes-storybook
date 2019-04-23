@@ -32,7 +32,9 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "function",
     "props": Object {
-      "children": <Container>
+      "children": <Container
+        size={undefined}
+      >
         <Row>
           <Card
             bordered={false}
@@ -137,6 +139,7 @@ ShallowWrapper {
             </ButtonGroup>
           </Card>
         </Row>,
+        "size": undefined,
       },
       "ref": null,
       "rendered": Object {
@@ -419,7 +422,9 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "function",
       "props": Object {
-        "children": <Container>
+        "children": <Container
+          size={undefined}
+        >
           <Row>
             <Card
               bordered={false}
@@ -524,6 +529,7 @@ ShallowWrapper {
               </ButtonGroup>
             </Card>
           </Row>,
+          "size": undefined,
         },
         "ref": null,
         "rendered": Object {

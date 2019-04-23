@@ -7,6 +7,9 @@ import createStore from './stores/AppStore';
 import ConfigUtils from './utils/ConfigUtils';
 import { WebUIThemeProvider } from "web-ui-components/lib/utilities/themes";
 import { buildClientContext } from './utils/ContextUtils';
+
+import "babel-polyfill";
+import "whatwg-fetch";
 import "css/main.css";
 
 svg4everybody();

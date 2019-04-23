@@ -33,93 +33,12 @@ ShallowWrapper {
     "nodeType": "function",
     "props": Object {
       "children": Array [
-        <Row>
-          <TabGroup
-            activeTab="INBOX"
-            onChange={[Function]}
-            tabButtons={
-              Array [
-                Object {
-                  "id": "INBOX",
-                  "title": "Inbox (true)",
-                },
-                Object {
-                  "id": "DRAFT",
-                  "title": "Drafts",
-                },
-                Object {
-                  "id": "SENT",
-                  "title": "Sent",
-                },
-                Object {
-                  "id": "ARCHIVED",
-                  "title": "Archive",
-                },
-              ]
-            }
-          />
-        </Row>,
-        <Row>
-          <Connect(SecureMessageList)
-            activeTab="INBOX"
-            content={
-              Object {
-                "back": "Back",
-              }
-            }
-            messages={
-              Array [
-                Object {
-                  "status": "NEW",
-                },
-              ]
-            }
-          />
-        </Row>,
-      ],
-      "className": "u-margin-top-2",
-    },
-    "ref": null,
-    "rendered": Array [
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "function",
-        "props": Object {
-          "children": <TabGroup
-            activeTab="INBOX"
-            onChange={[Function]}
-            tabButtons={
-              Array [
-                Object {
-                  "id": "INBOX",
-                  "title": "Inbox (true)",
-                },
-                Object {
-                  "id": "DRAFT",
-                  "title": "Drafts",
-                },
-                Object {
-                  "id": "SENT",
-                  "title": "Sent",
-                },
-                Object {
-                  "id": "ARCHIVED",
-                  "title": "Archive",
-                },
-              ]
-            }
-          />,
-        },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "function",
-          "props": Object {
-            "activeTab": "INBOX",
-            "onChange": [Function],
-            "tabButtons": Array [
+        <TabGroup
+          activeTab="INBOX"
+          className="u-padding-left-0"
+          onChange={[Function]}
+          tabButtons={
+            Array [
               Object {
                 "id": "INBOX",
                 "title": "Inbox (true)",
@@ -136,12 +55,61 @@ ShallowWrapper {
                 "id": "ARCHIVED",
                 "title": "Archive",
               },
-            ],
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
+            ]
+          }
+        />,
+        <Row>
+          <Connect(WithBreakpoints)
+            activeTab="INBOX"
+            content={
+              Object {
+                "back": "Back",
+              }
+            }
+            messages={
+              Array [
+                Object {
+                  "status": "NEW",
+                },
+              ]
+            }
+          />
+        </Row>,
+      ],
+      "className": "u-margin-top-2 u-padding-left-0",
+      "size": undefined,
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "activeTab": "INBOX",
+          "className": "u-padding-left-0",
+          "onChange": [Function],
+          "tabButtons": Array [
+            Object {
+              "id": "INBOX",
+              "title": "Inbox (true)",
+            },
+            Object {
+              "id": "DRAFT",
+              "title": "Drafts",
+            },
+            Object {
+              "id": "SENT",
+              "title": "Sent",
+            },
+            Object {
+              "id": "ARCHIVED",
+              "title": "Archive",
+            },
+          ],
         },
+        "ref": null,
+        "rendered": null,
         "type": [Function],
       },
       Object {
@@ -149,7 +117,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "children": <Connect(SecureMessageList)
+          "children": <Connect(WithBreakpoints)
             activeTab="INBOX"
             content={
               Object {
@@ -197,93 +165,12 @@ ShallowWrapper {
       "nodeType": "function",
       "props": Object {
         "children": Array [
-          <Row>
-            <TabGroup
-              activeTab="INBOX"
-              onChange={[Function]}
-              tabButtons={
-                Array [
-                  Object {
-                    "id": "INBOX",
-                    "title": "Inbox (true)",
-                  },
-                  Object {
-                    "id": "DRAFT",
-                    "title": "Drafts",
-                  },
-                  Object {
-                    "id": "SENT",
-                    "title": "Sent",
-                  },
-                  Object {
-                    "id": "ARCHIVED",
-                    "title": "Archive",
-                  },
-                ]
-              }
-            />
-          </Row>,
-          <Row>
-            <Connect(SecureMessageList)
-              activeTab="INBOX"
-              content={
-                Object {
-                  "back": "Back",
-                }
-              }
-              messages={
-                Array [
-                  Object {
-                    "status": "NEW",
-                  },
-                ]
-              }
-            />
-          </Row>,
-        ],
-        "className": "u-margin-top-2",
-      },
-      "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "function",
-          "props": Object {
-            "children": <TabGroup
-              activeTab="INBOX"
-              onChange={[Function]}
-              tabButtons={
-                Array [
-                  Object {
-                    "id": "INBOX",
-                    "title": "Inbox (true)",
-                  },
-                  Object {
-                    "id": "DRAFT",
-                    "title": "Drafts",
-                  },
-                  Object {
-                    "id": "SENT",
-                    "title": "Sent",
-                  },
-                  Object {
-                    "id": "ARCHIVED",
-                    "title": "Archive",
-                  },
-                ]
-              }
-            />,
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "activeTab": "INBOX",
-              "onChange": [Function],
-              "tabButtons": Array [
+          <TabGroup
+            activeTab="INBOX"
+            className="u-padding-left-0"
+            onChange={[Function]}
+            tabButtons={
+              Array [
                 Object {
                   "id": "INBOX",
                   "title": "Inbox (true)",
@@ -300,12 +187,61 @@ ShallowWrapper {
                   "id": "ARCHIVED",
                   "title": "Archive",
                 },
-              ],
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
+              ]
+            }
+          />,
+          <Row>
+            <Connect(WithBreakpoints)
+              activeTab="INBOX"
+              content={
+                Object {
+                  "back": "Back",
+                }
+              }
+              messages={
+                Array [
+                  Object {
+                    "status": "NEW",
+                  },
+                ]
+              }
+            />
+          </Row>,
+        ],
+        "className": "u-margin-top-2 u-padding-left-0",
+        "size": undefined,
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "activeTab": "INBOX",
+            "className": "u-padding-left-0",
+            "onChange": [Function],
+            "tabButtons": Array [
+              Object {
+                "id": "INBOX",
+                "title": "Inbox (true)",
+              },
+              Object {
+                "id": "DRAFT",
+                "title": "Drafts",
+              },
+              Object {
+                "id": "SENT",
+                "title": "Sent",
+              },
+              Object {
+                "id": "ARCHIVED",
+                "title": "Archive",
+              },
+            ],
           },
+          "ref": null,
+          "rendered": null,
           "type": [Function],
         },
         Object {
@@ -313,7 +249,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "children": <Connect(SecureMessageList)
+            "children": <Connect(WithBreakpoints)
               activeTab="INBOX"
               content={
                 Object {

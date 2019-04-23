@@ -1,5 +1,5 @@
 import React from 'react';
-import SecureMessageForm from '../SecureMessageForm';
+import { SecureMessageForm } from '../SecureMessageForm';
 import { shallow } from 'enzyme';
 
 describe("SecureMessageForm snapshot", () => {

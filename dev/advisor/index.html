@@ -11,7 +11,7 @@
     </head>
 
     <body>
-    <div id="base-web-app"></div>
+    <div id="secure-messaging"></div>
     <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
     <script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
     <% } %>
@@ -19,12 +19,10 @@
         var myDocuments = document.URL.lastIndexOf('my-documents') > 0 ? true : false;
         var path = document.URL.substr(0,document.URL.lastIndexOf(myDocuments ? 'my-documents' : 'securemessages'));
         window.path = path;
-        const meoConfig = {
+        const config = {
             bpiApiUrl: "http://localhost:8888",
             ibApiUrl: "http://localhost:8888",
-            bankId: "CB",
-            brandId: "CB",
-            accessToken: "fake-token",
+            accessToken: "access_token",
             baseURI: "",
             customerId: "",
             customerNumber: "1012121212",
@@ -32,9 +30,12 @@
             scope: "40",
             scopeCreatedDate: null,
             staffId: "SR0765",
-            appTitle: "MEO"
+            appTitle: "MEO",
+            bank_id: "CB",
+            brandId: "CB",
+            client_context: "CB%20Web"
         };
-        window.cybgSecureMessagesUI(meoConfig, "base-web-app");
+       typeof window.cybgSecureMessagingUI === "function" && window.cybgSecureMessagingUI(config, "secure-messaging");
     </script>
     </body>
 

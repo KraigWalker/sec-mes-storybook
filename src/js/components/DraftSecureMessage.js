@@ -16,7 +16,6 @@ import {
 class DraftSecureMessage extends React.Component {
     constructor(props) {
         super(props);
-        this.onMount = this.onMount.bind(this);
         this.send = this.send.bind(this);
         this.save = this.save.bind(this);
     }
@@ -51,7 +50,7 @@ class DraftSecureMessage extends React.Component {
             selectedAccount={messageDetail.account}
             selectedAccountValue={selectedAccountValue}
             messageText={messageDetail.message}
-            buttonsDisabled={true}/>;
+            buttonsDisabled={false}/>;
     }
 }
 

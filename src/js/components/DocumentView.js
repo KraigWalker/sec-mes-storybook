@@ -1,6 +1,6 @@
 import React from 'react';
 import {DocumentView as DocumentViewContainer} from 'document-management-web-ui';
-import {Container, Row} from "web-ui-components/lib/global/layout";
+import "../../css/DocumentView.css";
 
 class DocumentView extends React.Component {
     constructor(props) {
@@ -8,12 +8,9 @@ class DocumentView extends React.Component {
     }
 
     render() {
+
         return (
-            <Container className="u-margin-top-6">
-                <Row>
-                    <DocumentViewContainer {...this.props} />
-                </Row>
-            </Container>
+            <DocumentViewContainer {...this.props} />
         )
     }
 }

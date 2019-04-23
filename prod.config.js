@@ -4,11 +4,13 @@ const paths = require("./paths");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
+const { presets, plugins } = require("./webpack.config.babel");
 console.log("**********************************************");
 console.log("Compiling");
-const JSEntry = ["babel-polyfill", "whatwg-fetch", "./src/js/client.js"];
+
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+const JSEntry = ["babel-polyfill", "./src/js/client.js"];
 module.exports = {
 	entry: [...JSEntry],
 	mode: "production",
@@ -18,9 +20,6 @@ module.exports = {
 	  publicPath: ""
 	},
 	plugins: [
-	  new UglifyJSPlugin({
-			sourceMap: true
-		}),
 	  new MiniCssExtractPlugin({
 		// Options similar to the same options in webpackOptions.output
 		// both options are optional
@@ -53,13 +52,30 @@ module.exports = {
 		 "process.env.NODE_ENV": JSON.stringify("production"),
 	}),
 	],
+	optimization: {
+		minimizer: [
+			new UglifyJSPlugin({
+        sourceMap: false,
+        uglifyOptions: {
+					keep_fnames: true,
+          mangle: true
+        }
+			}),
+	]},
 	module: {
 	  rules: [
-		{
-		  test: /\.js?$/,
-		  include: resolve(__dirname, "src"), // Avoid use of exclude
-		  loader: "babel-loader"
-		},
+			{
+        test: /\.jsx?$/,
+        include: resolve(__dirname, "src"), // Avoid use of exclude
+        use: {
+            loader: "babel-loader",
+            options: {
+                babelrc: false,
+                presets,
+                plugins,
+            },
+        },
+    },
 		{
 		  test: /\.json$/,
 		  exclude: ["/node_modules/"],

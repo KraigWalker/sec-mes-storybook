@@ -20,6 +20,7 @@ ShallowWrapper {
         xlinkHref="undefined/images/icons.svg#undefined"
       />,
       "className": undefined,
+      "fill": undefined,
       "height": "32px",
       "role": "img",
       "viewBox": "0 0 32 32",
@@ -49,6 +50,7 @@ ShallowWrapper {
           xlinkHref="undefined/images/icons.svg#undefined"
         />,
         "className": undefined,
+        "fill": undefined,
         "height": "32px",
         "role": "img",
         "viewBox": "0 0 32 32",

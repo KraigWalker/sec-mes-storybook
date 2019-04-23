@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { App } from "../../src/js/App.advisor";
+import "babel-polyfill";
+import "whatwg-fetch";
 
 const loadStyles = (brandId) => {
     var head = document.getElementsByTagName('head')[0];
@@ -10,9 +12,9 @@ const loadStyles = (brandId) => {
     head.appendChild(element);
 };
 
-function cybgSecureMessagesUI(config, id) {
+function cybgSecureMessagingUI(config, id) {
     loadStyles(config.brandId);
     ReactDOM.render(<App config={config} />, document.getElementById(id));
 }
 
-export default cybgSecureMessagesUI;
+export default cybgSecureMessagingUI;

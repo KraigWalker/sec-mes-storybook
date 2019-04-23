@@ -4,7 +4,7 @@ import LandingPage from '../components/LandingPage';
 import Main from '../components/Main';
 import NewSecureMessage from '../components/NewSecureMessage';
 import ViewMessage from '../components/ViewMessage';
-import ReplySecuremessageNew from '../components/ReplySecureMessage';
+import ReplySecuremessage from '../components/ReplySecureMessage';
 import { withSubscription } from '../components/wrappers/GenericWrapper';
 import AccessibilityMessage from '../components/common/AccessibilityMessage';
 import ErrorPage from '../components/common/ErrorPage';
@@ -26,6 +26,11 @@ const RouteWithLayout = ({ Component, ...restProps }) => <Route {...restProps} r
 const RoutesWithLayout = (props) => (
     <Switch>
         <RouteWithLayout
+            path='/securemessages/error'
+            Component={ErrorPage}
+            content={props.content}
+        />
+        <RouteWithLayout
             exact
             path={`/securemessages/view`}
             Component={ViewMessage}
@@ -45,7 +50,7 @@ const RoutesWithLayout = (props) => (
         <RouteWithLayout
             exact
             path={`/securemessages/reply`}
-            Component={ReplySecuremessageNew}
+            Component={ReplySecuremessage}
             content={props.content}
             isDocumentLibraryEnabled={props.isDocumentLibraryEnabled}
             session={props.session}
@@ -90,7 +95,6 @@ class AppRouter extends React.Component {
                         <RoutesWithLayoutAndSubscription {...this.props} />
                     )} />
                     <AccessibilityMessage/>
-                    <RouteWithLayout path='/errormessage' Component={ErrorPage} />
                     <Switch>
                         <RouteWithLayout
                             path={`/my-documents/:bankId(CB|YB|DYB)`}

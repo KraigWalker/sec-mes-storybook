@@ -9,6 +9,9 @@ import { Row, Column } from "web-ui-components/lib/global/layout";
 import { TextBody } from "web-ui-components/lib/atoms/text";
 import { LoadingLocalTakeover } from 'web-ui-components/lib/organisms/takeovers';
 import { TextStyled } from 'web-ui-components/lib/atoms/text';
+import { Mail } from "web-ui-components/lib/communication/messaging";
+import { withBreakpoints } from "../components/common/hoc/WithBreakpoint";
+import { compose } from "redux";
 
 const MESSAGE_LIMIT = 20;
 
@@ -83,9 +86,11 @@ export class SecureMessageList extends React.Component {
 	renderNoMessagesText(isLoading) {
 		const { content } = this.props;
 		return (
-			<TextBody className="u-padding-top-10 u-text-align-center">
-				{isLoading ? "loading" : content.noMessages}
-			</TextBody>
+		
+				<Mail.Empty className="u-padding-left-1">
+					{isLoading ? "loading" : content.noMessages}
+				</Mail.Empty>
+		
 		);
 	}
 
@@ -110,9 +115,18 @@ export class SecureMessageList extends React.Component {
 	}
 
 	render() {
-		const { messagesFetched, messages, content } = this.props;
+		const { messagesFetched, messages, content, noPadding} = this.props;
+
+		let paddingProps = null;
+		if (noPadding)
+		{
+			paddingProps = {
+				className: "u-padding-left-1",
+			}
+        }
+
 		return (
-			<Column xs={24} className="u-padding-left-0">
+			<Column xs={24} {...paddingProps}>
 			
 				<LoadingLocalTakeover xs={24}
 					show={messagesFetched.fetching} 
@@ -144,4 +158,12 @@ const mapState = state => ({
 	messageaccounts: state.accounts,
 	messagesFetched: state.messages,
 });
-export default connect(mapState)(SecureMessageList);
+
+export default compose(
+    connect(
+      mapState
+    ),
+    withBreakpoints
+  )(SecureMessageList);
+
+
