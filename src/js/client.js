@@ -71,7 +71,7 @@ const loadStyles = () => {
   var head = document.getElementsByTagName('head')[0];
   var element = document.createElement('link');
     element.rel = 'stylesheet';
-    element.href = `${path}css/app.${brandId.toLowerCase()}.css`;
+    element.href = `${path}css/app.${normalisedBrandId.toLowerCase()}.css`;
     head.appendChild(element);
 }
 
