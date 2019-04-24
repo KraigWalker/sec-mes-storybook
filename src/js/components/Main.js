@@ -36,7 +36,7 @@ export class Main extends React.Component {
 				className: "u-margin-bottom-6 u-padding-left-1"
 			}
 		}
-		
+
         return (
             <PageLayout>
 					{!isWebView && isDocumentLibraryEnabled &&
@@ -51,7 +51,6 @@ export class Main extends React.Component {
 					</Container>
                     }
                     {this.props.children}
-              
             </PageLayout>
         );
     }
