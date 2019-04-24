@@ -46,9 +46,7 @@ export class LandingPage extends React.PureComponent {
 
     render() {
         const {isWebView, readOnly, noPadding, containerSize} = this.props;
-        const {isNativeView} = utils.native;
-        const isMobile = isNativeView(window);
-        const showBackLink = !isWebView && !readOnly || !isMobile;
+        const showBackLink = !isWebView || !readOnly;
         let paddingProps = null;
         if (noPadding) {
             paddingProps = {
