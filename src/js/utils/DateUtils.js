@@ -4,6 +4,7 @@
 import _ from  'lodash';
 import moment from 'moment';
 
+const friendlyDateFormat = "DD MMM YYYY HH:mm";
 
 	/**
 	 * Converts timestamp to Date as per the API requirement format
@@ -26,8 +27,18 @@ import moment from 'moment';
 	 * @param  {String} dateStr e.g. format - 'DD MMM YYYY hh:mm'
 	 */
 	export function getFriendlyDate(dateStr){
-		return moment(dateStr,  "YYYY-MM-DDTHH:mm").format("DD MMM YYYY HH:mm");
+		return moment(dateStr,  "YYYY-MM-DDTHH:mm").format(friendlyDateFormat);
 	};
 		
-	
+	export function isUnixDate(date) {
+		return moment.unix(date).isValid();
+	}
 
+	/**
+	 * Converts unix epoch date to string format 
+	 * @param  {String} dateStr e.g. format - 'DD MMM YYYY hh:mm'
+	 */
+	export function getFriendlyDateFromUnix(date){
+		return moment(date).utc(true).format(friendlyDateFormat);
+	};
+	

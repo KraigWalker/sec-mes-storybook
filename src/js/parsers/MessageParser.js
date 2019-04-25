@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import MessageEntity from '../entities/MessageEntity';
 import { sortArrayByDate } from '../utils/DateUtils';
+import { isNullOrUndefined } from "../utils/GeneralUtils";
 
 /**
  * 
@@ -32,8 +33,10 @@ export function parseMessages(response) {
 
 }
 
+
 export function parseDraft(data, status, name) {
-    if (data.id === undefined || null && data.number === undefined || null) {
+
+    if (isNullOrUndefined(data.id) && isNullOrUndefined(data.number)) {
         const requestData = {
             secure_message: {
                 subject: data.subject,
@@ -133,7 +136,7 @@ export function updateMessage(data, id, status) {
 
 export function deleteMessage(data, id, status) {
     let requestData = {};
-    if (data.account.accountId !== undefined || null) {
+    if (!isNullOrUndefined(data.account.accountId)) {
         requestData = {
             secure_message: {
                 subject: data.subject,
