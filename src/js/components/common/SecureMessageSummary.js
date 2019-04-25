@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import { NEW, ARCHIVED, DRAFT } from '../../constants/StringsConstants';
 import withMessaging from "../common/WithMessaging";
 import {Mail} from 'web-ui-components/lib/communication/messaging';
+import { truncateMessage } from "../../utils/SecureMessageUtils";
 
+const TEXT_LIMIT = 50;
 export const SecureMessageSummary = (props) => {
 
     const handleMailClick = () => {
@@ -33,7 +35,7 @@ export const SecureMessageSummary = (props) => {
                 {...props}
                 id={message.id}
                 mailSubject={`${message.subject} ${message.reference ? message.reference : ''}`}
-                mailSummary={message.message}
+                mailSummary={truncateMessage(message.message, TEXT_LIMIT)}
                 mailDate={message.dateCreated}
                 isRead={message.status !== NEW }
                 archiveOnClick={props.showArchive ? archiveClick : null}
