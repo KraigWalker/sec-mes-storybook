@@ -34,7 +34,7 @@ class NewSecureMessage extends React.Component {
   }
   sendMessageData(messageEntity, status) {
     const { customerDetails, accounts } = this.props;
-    const { name } = customerDetails.personal_details;
+    const { name } = customerDetails ? customerDetails.personal_details : '';
     const sendRequestMessage = BuildSendMessageRequestEntity(
       accounts,
       messageEntity
