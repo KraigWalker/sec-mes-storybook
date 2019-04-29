@@ -12,6 +12,8 @@ import "babel-polyfill";
 import "whatwg-fetch";
 import "css/main.css";
 
+{/*native*/}
+
 svg4everybody();
 
 const app = document.getElementById('app');
