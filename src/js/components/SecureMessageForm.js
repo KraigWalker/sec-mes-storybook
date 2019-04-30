@@ -17,6 +17,7 @@ import ErrorModal from "./common/ErrorModal";
 import { TextStyled } from 'web-ui-components/lib/atoms/text';
 import { Title } from "web-ui-components/lib/atoms/text";
 import PropTypes from 'prop-types';
+import { LoadingLocalTakeover } from 'web-ui-components/lib/organisms/takeovers';
 import { withBreakpoints } from "../components/common/hoc/WithBreakpoint";
 
 const CHARS_LEFT_DISPLAY_THRESHOLD = 300;
@@ -67,6 +68,7 @@ export class SecureMessageForm extends React.Component {
 
 	componentDidMount() {
 		this.props.onMount();
+		console.log("componentDidMount");
 		this.props.popupState();
 		window.scrollTo(0, 0);
 	}
@@ -209,6 +211,7 @@ export class SecureMessageForm extends React.Component {
 	errorCloseClicked() {
 		const { customerNameError } = this.props;
 		if (customerNameError) {
+			console.log("errorCLoseClicked");
 			this.props.popupState();
 		}
 		this.setState({ showSaveServiceErrorModal: false,
@@ -216,6 +219,7 @@ export class SecureMessageForm extends React.Component {
 	}
 	retryServiceCall() {
 		const { showSaveServiceErrorModal, showSendServiceErrorModal } = this.state;
+		console.log("retryServiceCall");
 		this.props.popupState();
 		if (showSaveServiceErrorModal) {
 			this.saveDraftData();
@@ -330,18 +334,30 @@ export class SecureMessageForm extends React.Component {
 	}
 
 	render() {
-		const { content, successModal, subjects, subjectErrors, messageError, accounts, title
-			, messageText
-			, containerSize
-			, noPadding} = this.props;
+		const {
+			content,
+			successModal,
+			subjects,
+			subjectErrors,
+			messageError,
+			accounts,
+			title,
+			messageText,
+			containerSize,
+			noPadding,
+			isUpdatingMessage,
+			isSavingDraft,
+		} = this.props;
 
-		const { showSendServiceErrorModal, 
+		const {
+			showSendServiceErrorModal, 
 			showSaveServiceErrorModal, 
 			showDraftSuccessModal, 
 			showSentMessageModal, 
 			showPopup,
 			showSubjectInvalid,
-			showAccountInvalid} = this.state;
+			showAccountInvalid
+	 	} = this.state;
 
 
 		let paddingProps = null;
@@ -351,126 +367,125 @@ export class SecureMessageForm extends React.Component {
 				className: "u-padding-0",
 			}
 		}
-	
-		
+
 		return (
-			<Container {...paddingProps} size={containerSize}>
+				<Container {...paddingProps} size={containerSize}>
+			<LoadingLocalTakeover show={isUpdatingMessage || isSavingDraft} title={isUpdatingMessage ? content.sendingMessage: content.savingMessage}>
 				<Row>
-					<Card>	
-						<Title size="h1">{title}</Title>
-						<TextBody>
-                		 	<BackButton onClick={this.determineBackAction} label={content.back}/>
-                		</TextBody>
-						<TextBody>
-							<Label
-								id="subjectTitle"
-								htmlFor="subjects"
-							>
-								{content.subject}
-							</Label>
-						</TextBody>
-						
-						<DropDownComponent
-							accessID="Subject"
-							subjects={subjects}
-							name="subjects"
-							id="subjects"
-							ddId="ddlSubject"
-							selectSubject={this.selectSubject}
-							showSubjectError={showSubjectInvalid}
-							subjectErrors={subjectErrors}
-							selectedValue={this.props.selectedSubject}
-							content={content}
-						/>
-						<TextBody>
-							<Label
-								id="relatesTitle"
-								htmlFor="subjects"
-							>
-								{content.messageRelatesTo}
-							</Label>
-						</TextBody>
-						<DropDownComponent
-							accessID="Message relates to"
-							accounts={accounts}
-							selectSubject={this.selectSubject}
-							name="accounts"
-							ddId="ddlAccount"
-							id="accounts"
-							showAccountError={showAccountInvalid}
-							selectedValue={this.props.selectedAccountValue}
-							content={content}
-						/>
-						<TextBody>
-							<Label
-								id="messageTitle"
-								htmlFor="subjects"
-							>
-								{content.message}
-							</Label>
-						</TextBody>
-						<TextBody>
-								<div className="u-visually-hidden off-screen" id="textAreaMaxMsg">
-									{content.maxCharLimit}
-								</div>
-								{/* DEBT:  would like to use TextAreaCharacterCount, but no hook available to tie into change event and props not spread */}
-								<Textarea 
-									onChange={(e) => this.textChange(e.target.value)}
-									rows="20"
-									cols="20"
-									id="message"
-									maxLength='infinity'
-									defaultValue={messageText} />
-							{this.renderRemainingChar()}
-						</TextBody>
-						<TextBody>
-							<ButtonGroup>
-								<Button
-									name="Back"
-									display="secondary"
-									width="flush"
-									onClick={this.determineBackAction}
-									disabled={false}
+						<Card>	
+							<Title size="h4">{title}</Title>
+							<TextBody>
+								<BackButton onClick={this.determineBackAction} label={content.back}/>
+							</TextBody>
+							<TextBody>
+								<Label
+									id="subjectTitle"
+									htmlFor="subjects"
 								>
-									{content.back}
-								</Button>
-								<Button
-									name="Save Draft"
-									display="primary"
-									width="flush"
-									onClick={this.saveDraftData}
-									disabled={this.state.disabled}
+									{content.subject}
+								</Label>
+							</TextBody>
+							
+							<DropDownComponent
+								accessID="Subject"
+								subjects={subjects}
+								name="subjects"
+								id="subjects"
+								ddId="ddlSubject"
+								selectSubject={this.selectSubject}
+								showSubjectError={showSubjectInvalid}
+								subjectErrors={subjectErrors}
+								selectedValue={this.props.selectedSubject}
+								content={content}
+							/>
+							<TextBody>
+								<Label
+									id="relatesTitle"
+									htmlFor="subjects"
 								>
-									{content.saveDraft}
-								</Button>
-								<Button
-									name="Send"
-									display="primary"	
-									width="flush"
-									onClick={this.sendData}
-									disabled={this.state.disabled}
+									{content.messageRelatesTo}
+								</Label>
+							</TextBody>
+							<DropDownComponent
+								accessID="Message relates to"
+								accounts={accounts}
+								selectSubject={this.selectSubject}
+								name="accounts"
+								ddId="ddlAccount"
+								id="accounts"
+								showAccountError={showAccountInvalid}
+								selectedValue={this.props.selectedAccountValue}
+								content={content}
+							/>
+							<TextBody>
+								<Label
+									id="messageTitle"
+									htmlFor="subjects"
 								>
-									{content.send}
-								</Button>
-							</ButtonGroup>
-						</TextBody>
-						{showPopup && this.returnModalComponent()}
-						{showSentMessageModal && successModal
-							? this.returnSentMessageModal()
-							: ''}
-						{showDraftSuccessModal &&
-							successModal &&
-							this.returnDraftModal()}
-						{messageError &&
-							showSaveServiceErrorModal &&
-							this.returnErrorModal()}
-						{messageError &&
-							showSendServiceErrorModal &&
-							this.returnErrorModal()}
-						{this.props.threads}	
-				</Card>
-			</Row>
-			</Container>
+									{content.message}
+								</Label>
+							</TextBody>
+							<TextBody>
+									<div className="u-visually-hidden off-screen" id="textAreaMaxMsg">
+										{content.maxCharLimit}
+									</div>
+									{/* DEBT:  would like to use TextAreaCharacterCount, but no hook available to tie into change event and props not spread */}
+									<Textarea 
+										onChange={(e) => this.textChange(e.target.value)}
+										rows="20"
+										cols="20"
+										id="message"
+										maxLength='infinity'
+										defaultValue={messageText} />
+								{this.renderRemainingChar()}
+							</TextBody>
+							<TextBody>
+								<ButtonGroup>
+									<Button
+										name="Back"
+										display="secondary"
+										width="flush"
+										onClick={this.determineBackAction}
+										disabled={false}
+									>
+										{content.back}
+									</Button>
+									<Button
+										name="Save Draft"
+										display="primary"
+										onClick={this.saveDraftData}
+										disabled={this.state.disabled}
+									>
+										{content.saveDraft}
+									</Button>
+									<Button
+										name="Send"
+										display="primary"	
+										onClick={this.sendData}
+										disabled={this.state.disabled}
+									>
+										{content.send}
+									</Button>
+								</ButtonGroup>
+							</TextBody>						
+						</Card>
+					</Row>
+					</LoadingLocalTakeover>
+					{showPopup && this.returnModalComponent()}
+					{showSentMessageModal && successModal
+						? this.returnSentMessageModal()
+						: ''}
+					{showDraftSuccessModal &&
+						successModal &&
+						this.returnDraftModal()}
+					{messageError &&
+						showSaveServiceErrorModal &&
+						this.returnErrorModal()}
+					{messageError &&
+						showSendServiceErrorModal &&
+						this.returnErrorModal()}
+					{this.props.threads}	
+				</Container>
 		);
 	}
 }

@@ -126,6 +126,9 @@ const content = {
 		replyUnread: 'Reply Unread',
 		deleteUnread: 'Delete Unread',
 		pending: 'Pending',
+		sendingMessage: "Sending message...",
+		savingMessage: "Saving draft...",
+
 	},
 };
 
