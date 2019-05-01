@@ -8,3 +8,4 @@ src/js/components/.DS_Store
 coverage/
 /lib
 dev/advisor/compiled/**/*
+dev/advisor/index.html

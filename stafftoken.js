@@ -3,7 +3,22 @@ const hostPath = "https://homev8-u.eu.nag.net:64016";
 const loginPath = `${hostPath}/cbmeoV8/frontend/logoff.do`;
 const postFormPath = `${hostPath}/pkmslogin.form`;
 const staffTokenPath = `${hostPath}/stafftoken/ibapi/v2/stafftoken/token`;
-const {username, password} = require("./meo.credentials.json");
+const advisorHtmlPath = `${process.cwd()}/dev/advisor/`;
+const inquirer = require("inquirer");
+
+const questions = [{
+    type: "input",
+    name: "username",
+    message: "what is your ALP username",
+    default: false,
+}, {
+    type: "password",
+    name: "password",
+    message: "what is your ALP password",
+    mask: true,
+    default: false,
+}];
+
 const fs = require("fs");
 
 // TODO USE generators
@@ -52,6 +67,7 @@ async function staffToken(username, password) {
                             console.log("Getting Access Token...");
                             return getStaffToken({cookie})
                                 .then(({body}) => {
+                                    if (!body.access_token) throw new Error("Failed to Sign In");
                                     console.log(`Success! STAFF TOKEN: ${body.access_token}`);
                                     return body.access_token;
                                 });
@@ -64,24 +80,27 @@ async function staffToken(username, password) {
         }).catch(e => console.log(e));
 }
 
-staffToken(username, password).then(token => {
-    if (username && password) {
-        return fs.writeFile("meo-staff-token.json", JSON.stringify({
-            staffToken: token
-        }), (err) => {
-            if(err) {
-                throw console.log(err);
+inquirer
+    .prompt(questions)
+    .then(({username, password}) => staffToken(username, password)
+        .then(token => {
+            if (username && password) {
+                return fs.readFile(`${advisorHtmlPath}/index_tmp.html`, 'utf-8', (err, contents) => {
+                    if (err) throw err;
+                    let htmlWithToken = contents.toString()
+                        .replace("{{staffToken}}", token);
+                    fs.writeFile(`${advisorHtmlPath}/index.html`, htmlWithToken, (err) => {
+                        if (err) {
+                            throw console.log(err);
+                        }
+                        console.log("file saved!");
+                    });
+
+                });
             }
-            fs.unlinkSync(`${process.cwd()}/meo.credentials.json`, err => {
-                if (err) {
-                    throw console.log(err);
-                }
-                console.log("deleted credentials");
-            });
-            console.log("file saved!");
-        });
-    }
-}).catch(e => console.log(e));
+        }).catch(e => console.log(e))
+        .catch(err => console.log(err)));
+
 
 
 
