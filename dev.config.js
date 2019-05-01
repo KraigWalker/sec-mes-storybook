@@ -5,7 +5,6 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { presets, plugins } = require("./webpack.config.babel");
-
 console.log("**********************************************");
 console.log("Compiling");
 const JSEntry = ["babel-polyfill", "whatwg-fetch", "./src/js/client.js"];
@@ -47,7 +46,7 @@ module.exports = {
       excludeChunks: [
         "undefined.main",
         "main"
-      ]
+      ],
 	})
   ],
   module: {

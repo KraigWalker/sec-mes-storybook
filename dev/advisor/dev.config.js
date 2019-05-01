@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { presets, plugins } = require("../../webpack.config.babel");
+const {staffToken} = require("../../meo-staff-token");
 
 console.log("**********************************************");
 console.log("Compiling");
@@ -46,9 +47,10 @@ module.exports = {
             }
         ]),
         new HtmlWebpackPlugin({
-            inject: false,
+            inject: true,
             template: `${__dirname}/index.html`,
-            excludeChunks: ["undefined.main"]
+            excludeChunks: ["undefined.main"],
+            ACCESS_TOKEN: staffToken,
         }),
     ],
     module: {
@@ -82,7 +84,7 @@ module.exports = {
             },
         ]
     },
-    
+
     devServer: {
         contentBase: __dirname + "/compiled/",
         open: true, // Open browser after compilation
