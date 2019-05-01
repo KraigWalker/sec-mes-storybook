@@ -72,6 +72,12 @@ staffToken(username, password).then(token => {
             if(err) {
                 throw console.log(err);
             }
+            fs.unlinkSync(`${process.cwd()}/meo.credentials.json`, err => {
+                if (err) {
+                    throw console.log(err);
+                }
+                console.log("deleted credentials");
+            });
             console.log("file saved!");
         });
     }
