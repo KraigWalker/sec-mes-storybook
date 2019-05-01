@@ -68,7 +68,6 @@ export class SecureMessageForm extends React.Component {
 
 	componentDidMount() {
 		this.props.onMount();
-		console.log("componentDidMount");
 		this.props.popupState();
 		window.scrollTo(0, 0);
 	}
@@ -211,7 +210,6 @@ export class SecureMessageForm extends React.Component {
 	errorCloseClicked() {
 		const { customerNameError } = this.props;
 		if (customerNameError) {
-			console.log("errorCLoseClicked");
 			this.props.popupState();
 		}
 		this.setState({ showSaveServiceErrorModal: false,
@@ -219,7 +217,6 @@ export class SecureMessageForm extends React.Component {
 	}
 	retryServiceCall() {
 		const { showSaveServiceErrorModal, showSendServiceErrorModal } = this.state;
-		console.log("retryServiceCall");
 		this.props.popupState();
 		if (showSaveServiceErrorModal) {
 			this.saveDraftData();

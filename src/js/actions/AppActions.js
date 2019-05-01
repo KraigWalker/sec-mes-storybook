@@ -270,7 +270,6 @@ export function sendMessageForAccessibiltiy(message) {
 }
 
 export function popupState() {
-  debugger;
   return function(dispatch) {
     const payload = {
       type: AppConstants.SET_POPUP_STATE

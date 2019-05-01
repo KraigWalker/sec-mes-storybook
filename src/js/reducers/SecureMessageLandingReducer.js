@@ -35,7 +35,6 @@ export default function reducer(state = {
 			return { ...state, activeTab: action.payload };
 		}
 		case AppConstants.UPDATE_SECURE_MESSAGE: {
-			console.log(action.status, "Executing action");
 			return { ...state, updating: action.status !== DRAFT, isSavingDraft: action.status === DRAFT  }
 		}
 		case AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS: {
