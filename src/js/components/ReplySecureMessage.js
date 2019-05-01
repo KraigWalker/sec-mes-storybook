@@ -23,7 +23,9 @@ import {
   getCustomerDetails,
   getCustomerError,
   getSubjectErrors,
-  getShowSuccessModal
+  getShowSuccessModal,
+  getUpdating,
+  getIsSavingDraft
 } from "../reducers";
 
 class ReplySecureMessage extends React.Component {
@@ -95,7 +97,7 @@ class ReplySecureMessage extends React.Component {
       ? this.props.location
 	  : this.props;
 	  
-	const { messages, content } = this.props;
+	const { messages, content, isUpdatingMessage, isSavingDraft } = this.props;
 	const selectedAccountValue = getMessageAccountValue(messageDetail, content);
 
     const threads = this.getThreads(messages, messageDetail);
@@ -108,9 +110,11 @@ class ReplySecureMessage extends React.Component {
         onMount={this.onMount}
         title={content.replyMessageTitle}
         selectedSubject={messageDetail.subject}
-		selectedAccount={messageDetail.account}
-		selectedAccountValue={selectedAccountValue}
-		buttonsDisabled={true}
+		    selectedAccount={messageDetail.account}
+		    selectedAccountValue={selectedAccountValue}
+        buttonsDisabled={true}
+        isUpdatingMessage={isUpdatingMessage}
+        isSavingDraft={isSavingDraft}
       />
     );
   }
@@ -126,7 +130,9 @@ const mapState = (state) => ({
   customerDetails: getCustomerDetails(state),
   customerNameError: getCustomerError(state),
   messageError: getMessageError(state, NEW),
-  successModal: getShowSuccessModal(state)
+  successModal: getShowSuccessModal(state),
+  isUpdatingMessage: getUpdating(state),
+  isSavingDraft: getIsSavingDraft(state),
 });
 
 const mapStateToProps = {

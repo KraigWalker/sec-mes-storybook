@@ -86,15 +86,22 @@ export function backButton() {
 }
 export function sendMessageData(requestData, status, name) {
   return function(dispatch, _, { secureMessagesApi }) {
+    const payload = {
+      type: AppConstants.UPDATE_SECURE_MESSAGE,
+      status
+    };
+    dispatch(payload);
     const success = response => {
       const payload = {
-        type: AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS
+        type: AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS,
+        status
       };
       dispatch(payload);
     };
     const error = error => {
       const payload = {
         type: AppConstants.UPDATE_NEW_SECURE_MESSAGE_FAILURE,
+        status,
         payload: error
       };
       dispatch(payload);
@@ -111,15 +118,22 @@ export function sendMessageData(requestData, status, name) {
 
 export function replyMessageData(requestData, ids, status, name) {
   return function(dispatch, _, { secureMessagesApi }) {
+    const payload = {
+      type: AppConstants.UPDATE_SECURE_MESSAGE,
+      status
+    };
+    dispatch(payload);
     const success = response => {
       const payload = {
-        type: AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS
+        type: AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS,
+        status,
       };
       dispatch(payload);
     };
     const error = error => {
       const payload = {
         type: AppConstants.UPDATE_NEW_SECURE_MESSAGE_FAILURE,
+        status,
         payload: error
       };
       dispatch(payload);
@@ -137,15 +151,22 @@ export function replyMessageData(requestData, ids, status, name) {
 
 export function updateMessageData(requestData, id, status) {
   return function(dispatch, _, { secureMessagesApi }) {
+    const payload = {
+      type: AppConstants.UPDATE_SECURE_MESSAGE,
+      status
+    };
+    dispatch(payload);
     const success = () => {
       const payload = {
-        type: AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS
+        type: AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS,
+        status,
       };
       dispatch(payload);
     };
     const error = error => {
       const payload = {
         type: AppConstants.UPDATE_SECURE_MESSAGE_DRAFT_FAILURE,
+        status,
         payload: error
       };
       dispatch(payload);

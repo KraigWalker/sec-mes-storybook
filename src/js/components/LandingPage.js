@@ -46,7 +46,7 @@ export class LandingPage extends React.PureComponent {
 
     render() {
         const {isWebView, readOnly, noPadding, containerSize} = this.props;
-        const showBackLink = !isWebView || !readOnly;
+        const showBackLink = (!(readOnly || isWebView));
         let paddingProps = null;
         if (noPadding) {
             paddingProps = {
@@ -62,7 +62,7 @@ export class LandingPage extends React.PureComponent {
                             <BackButton onClick={this.handleBackClick} label={this.props.content.backToAccounts}/>
                         </TextBody>
                         }
-                        <Title size="h1">{this.props.content.messages}</Title>
+                        <Title size="h4">{this.props.content.messages}</Title>
                         <TextBody>{this.props.content.landingPageMessage}</TextBody>
                         <TextBody>{this.props.content.faqLink}</TextBody>
                         {
