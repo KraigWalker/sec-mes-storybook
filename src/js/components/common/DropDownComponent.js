@@ -23,7 +23,6 @@ export class DropDownComponent extends React.Component {
 		};
 	}
 	componentDidMount() {
-		this.props.popupState();
 	}
 
 	errorCloseClicked() {

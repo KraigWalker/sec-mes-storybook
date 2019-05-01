@@ -10,7 +10,9 @@ import {
     getMessageError,
     getSubjects,
     getSubjectErrors,
-    getShowSuccessModal
+    getShowSuccessModal,
+    getUpdating,
+    getIsSavingDraft
   } from "../reducers";
   
 class DraftSecureMessage extends React.Component {
@@ -37,7 +39,7 @@ class DraftSecureMessage extends React.Component {
     render() {
 
         const { messageDetail } = this.props.location;
-        const { content } = this.props;
+        const { content, isUpdatingMessage, isSavingDraft } = this.props;
 
 	    const selectedAccountValue = getMessageAccountValue(messageDetail, content);
 
@@ -50,6 +52,8 @@ class DraftSecureMessage extends React.Component {
             selectedAccount={messageDetail.account}
             selectedAccountValue={selectedAccountValue}
             messageText={messageDetail.message}
+            isUpdatingMessage={isUpdatingMessage}
+            isSavingDraft={isSavingDraft}
             buttonsDisabled={false}/>;
     }
 }
@@ -60,7 +64,9 @@ const mapState = (state) => ({
     accounts: getAccounts(state),
     subjectErrors: getSubjectErrors(state),
     messageError: getMessageError(state, DRAFT),
-    successModal: getShowSuccessModal(state)
+    successModal: getShowSuccessModal(state),
+    isUpdatingMessage: getUpdating(state),
+    isSavingDraft: getIsSavingDraft(state),
 });
 
 const mapStateToProps = {
