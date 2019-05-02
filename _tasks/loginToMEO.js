@@ -36,7 +36,7 @@ async function staffToken(username, password) {
             if (headers.hasOwnProperty("set-cookie")) {
                 const data = {
                     cookie: headers["set-cookie"][0],
-                    username,
+                    username: username.toUpperCase(),
                     password,
                 };
                 console.log("Getting MEO Credentials...");
