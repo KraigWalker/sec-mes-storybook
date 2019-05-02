@@ -1,6 +1,5 @@
 /node_modules/
 npm-debug.log
-meo-staff-token.json
 package-lock.json
 .DS_Store
 src/compiled/
