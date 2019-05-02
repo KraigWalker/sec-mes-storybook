@@ -46,7 +46,6 @@ module.exports = {
             }
         ]),
         new HtmlWebpackPlugin({
-            inject: true,
             template: `${__dirname}/index.html`,
             excludeChunks: ["undefined.main"],
         }),
