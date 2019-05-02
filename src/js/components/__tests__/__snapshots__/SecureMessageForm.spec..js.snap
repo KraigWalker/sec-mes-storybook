@@ -112,7 +112,7 @@ ShallowWrapper {
               id="message"
               maxLength="infinity"
               onChange={[Function]}
-              rows="10"
+              rows="20"
             />
           </TextBody>
           <TextBody>
@@ -235,7 +235,7 @@ ShallowWrapper {
               id="message"
               maxLength="infinity"
               onChange={[Function]}
-              rows="10"
+              rows="20"
             />
           </TextBody>
           <TextBody>
@@ -355,7 +355,7 @@ ShallowWrapper {
                 id="message"
                 maxLength="infinity"
                 onChange={[Function]}
-                rows="10"
+                rows="20"
               />
             </TextBody>,
             <TextBody>
@@ -580,7 +580,7 @@ ShallowWrapper {
                   id="message"
                   maxLength="infinity"
                   onChange={[Function]}
-                  rows="10"
+                  rows="20"
                 />,
                 undefined,
               ],
@@ -611,7 +611,7 @@ ShallowWrapper {
                   "id": "message",
                   "maxLength": "infinity",
                   "onChange": [Function],
-                  "rows": "10",
+                  "rows": "20",
                 },
                 "ref": null,
                 "rendered": null,
@@ -854,7 +854,7 @@ ShallowWrapper {
                 id="message"
                 maxLength="infinity"
                 onChange={[Function]}
-                rows="10"
+                rows="20"
               />
             </TextBody>
             <TextBody>
@@ -977,7 +977,7 @@ ShallowWrapper {
                 id="message"
                 maxLength="infinity"
                 onChange={[Function]}
-                rows="10"
+                rows="20"
               />
             </TextBody>
             <TextBody>
@@ -1097,7 +1097,7 @@ ShallowWrapper {
                   id="message"
                   maxLength="infinity"
                   onChange={[Function]}
-                  rows="10"
+                  rows="20"
                 />
               </TextBody>,
               <TextBody>
@@ -1322,7 +1322,7 @@ ShallowWrapper {
                     id="message"
                     maxLength="infinity"
                     onChange={[Function]}
-                    rows="10"
+                    rows="20"
                   />,
                   undefined,
                 ],
@@ -1353,7 +1353,7 @@ ShallowWrapper {
                     "id": "message",
                     "maxLength": "infinity",
                     "onChange": [Function],
-                    "rows": "10",
+                    "rows": "20",
                   },
                   "ref": null,
                   "rendered": null,

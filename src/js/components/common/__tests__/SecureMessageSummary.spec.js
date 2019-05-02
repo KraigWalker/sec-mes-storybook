@@ -19,6 +19,7 @@ const setup = (setupProps) => {
       getReference: jest.fn(),
       getMessageBody: jest.fn(),
       getDateCreated: jest.fn(),
+      message: "Hello there",
       account: {
         number: '32236',
       }
@@ -61,7 +62,9 @@ describe("SecureMessageSummary snapshot", () => {
       getDateCreated: getDateCreated,
       account: {
         number: '32236',
-      }
+      },
+      message: "Hello there",
+
     },
     messages: {
       draftError: true,
@@ -95,7 +98,9 @@ describe("SecureMessageSummary snapshot", () => {
         getDateCreated: getDateCreated,
         account: {
           number: '32236',
-        }
+        },
+        message: 'Hello there'
+
       },
       messages: {
         draftError: true,
@@ -130,7 +135,8 @@ describe("SecureMessageSummary snapshot", () => {
         getDateCreated: getDateCreated,
         account: {
           number: undefined,
-        }
+        },
+        message: 'Hello there'
       },
       messages: {
         draftError: true,

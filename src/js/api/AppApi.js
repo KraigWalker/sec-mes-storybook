@@ -1,11 +1,9 @@
 import ApiUtils from "./ApiUtils";
 import {
-  parseDraft,
-  deleteMessage,
+  createNewMessage,
   replyMessage,
   updateMessage
 } from "../parsers/MessageParser";
-import StringsConstants from "../constants/StringsConstants";
 
 const _getMessageURLEndpoint = "/banks/{bank_id}/securemessages";
 const _getMessageSubjectsURL = "/banks/{bank_id}/securemessages/subjects";
@@ -65,7 +63,7 @@ class AppApi {
   }
 
   sendMessageData(requestData, status, name, success, error) {
-    const reqData = parseDraft(requestData, status, name);
+    const reqData = createNewMessage(requestData, status, name);
     this.apiUtils.makeRequest(
       {
         url: `${this.config.apiBaseUrl2}${_getMessageURLEndpoint}`,
@@ -98,27 +96,9 @@ class AppApi {
 
   updateMessageData(requestData, id, status, success, error) {
     const updateUrl = `${this.config.apiBaseUrl2}${_sendMessageURL}`;
-	const url = updateUrl.replace("{message_id}", id);
+	  const url = updateUrl.replace("{message_id}", id);
 
-    let reqData;
-    switch (status) {
-      case StringsConstants.DELETED:
-        reqData = deleteMessage(requestData, id, status);
-        break;
-      case StringsConstants.DRAFT:
-        reqData = updateMessage(requestData, id, status);
-        break;
-      case StringsConstants.PENDING:
-        reqData = updateMessage(requestData, id, status);
-        break;
-      case StringsConstants.READ:
-        reqData = deleteMessage(requestData, id, status);
-        break;
-	  case StringsConstants.ARCHIVED:
-        reqData = updateMessage(requestData, id, status);
-        break;
-      default:
-    }
+    const reqData = updateMessage(requestData, id, status);
     this.apiUtils.makeRequest(
       { url, method: "PUT", requestData: reqData, apiVersion: "1.2.0" },
       success,

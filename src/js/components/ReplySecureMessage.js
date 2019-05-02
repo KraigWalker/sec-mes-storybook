@@ -31,8 +31,7 @@ class ReplySecureMessage extends React.Component {
     super(props);
     this.onMount = this.onMount.bind(this);
     this.getThreads = this.getThreads.bind(this);
-    this.send = this.send.bind(this);
-    this.save = this.save.bind(this);
+    this.sendAction = this.sendAction.bind(this);
   }
 
   onMount() {
@@ -59,24 +58,13 @@ class ReplySecureMessage extends React.Component {
     });
   }
 
-  send(messageEntity) {
-    const { customerDetails, accounts } = this.props;
-    const { name } = customerDetails.personal_details;
+  sendAction(status, messageEntity) {
 
-    const sendRequestMessage = BuildSendMessageRequestEntity(
-      accounts,
-      messageEntity
-    );
-    this.props.sendMessageData(
-      sendRequestMessage.getMessageRequestData(),
-      PENDING,
-      name
-    );
-  }
-
-  save(messageEntity) {
     const { location, customerDetails, accounts } = this.props;
     const { name } = customerDetails.personal_details;
+
+    console.log("Ssave");
+    console.log(location.messageDetail);
 
     const sendRequestMessage = BuildSendMessageRequestEntity(
       accounts,
@@ -85,7 +73,7 @@ class ReplySecureMessage extends React.Component {
     this.props.replyMessageData(
       sendRequestMessage.getMessageRequestData(),
       location.messageDetail,
-      DRAFT,
+      status,
       name || {}
     );
   }
@@ -95,22 +83,22 @@ class ReplySecureMessage extends React.Component {
       ? this.props.location
 	  : this.props;
 	  
-	const { messages, content } = this.props;
-	const selectedAccountValue = getMessageAccountValue(messageDetail, content);
+    const { messages, content } = this.props;
+    const selectedAccountValue = getMessageAccountValue(messageDetail, content);
 
     const threads = this.getThreads(messages, messageDetail);
     return (
       <SecureMessageForm
         {...this.props}
         threads={threads}
-        onSend={this.send}
-        onSave={this.save}
+        onSend={(messageEntity) => this.sendAction(PENDING, messageEntity)}
+        onSave={(messageEntity) => this.sendAction(DRAFT, messageEntity)}
         onMount={this.onMount}
         title={content.replyMessageTitle}
         selectedSubject={messageDetail.subject}
-		selectedAccount={messageDetail.account}
-		selectedAccountValue={selectedAccountValue}
-		buttonsDisabled={true}
+        selectedAccount={messageDetail.account}
+        selectedAccountValue={selectedAccountValue}
+        buttonsDisabled={true}
       />
     );
   }
