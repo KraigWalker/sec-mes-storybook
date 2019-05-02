@@ -6,7 +6,7 @@ import AppConstants from '../constants/AppConstants';
  */
 
 export default function reducer(state = {
-    customerDetails: [],
+    customerDetails: {},
     fetching: false,
     fetched: false,
     error: false,

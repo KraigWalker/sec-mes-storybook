@@ -30,13 +30,13 @@ let hash;
 if (process.env.NODE_ENV !== 'production')
 {
   hash = {
-    access_token: "access_token",
+    access_token: "f970453f-8550-474a-af26-064a1670f15c",
   bank_id: "CB",
   brandId: "CB",
   client_context: "CB%20Web",
   isDocumentLibraryEnabled: "true",
-  state: "state",
-  user_tracking_id: "23453-34343-34343"
+  state: "ba55b632ba0e8a63ffdca4ef3926b4da",
+  user_tracking_id: "5173da20-6b30-11e9-804e-1d9cdacf2bd"
   }
 }
 else

@@ -46,9 +46,8 @@ module.exports = {
             }
         ]),
         new HtmlWebpackPlugin({
-            inject: false,
             template: `${__dirname}/index.html`,
-            excludeChunks: ["undefined.main"]
+            excludeChunks: ["undefined.main"],
         }),
     ],
     module: {
@@ -82,7 +81,7 @@ module.exports = {
             },
         ]
     },
-    
+
     devServer: {
         contentBase: __dirname + "/compiled/",
         open: true, // Open browser after compilation
