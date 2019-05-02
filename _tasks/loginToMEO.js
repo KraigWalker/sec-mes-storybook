@@ -10,22 +10,22 @@ async function getMEOSessionCookie() {
         .get(loginPath);
 }
 
-async function getLoginCookiesWithData(data) {
+async function getLoginCookiesWithData({cookie, username, password}) {
     return await new curl()
-        .setHeaders([`Cookie: ${data.cookie}`])
+        .setHeaders([`Cookie: ${cookie}`])
         .setBody(
             {
-                username: data.username,
-                password: data.password,
+                username: username,
+                password: password,
                 "login-form-type": "pwd",
                 logonID: ""
             })
         .post(postFormPath)
 }
 
-async function getStaffToken(data) {
+async function getStaffToken({cookie}) {
     return await new curl()
-        .setHeaders([`Cookie: ${data.cookie}`, 'Content-Type: application/json', 'Accept: */*'])
+        .setHeaders([`Cookie: ${cookie}`, 'Content-Type: application/json', 'Accept: */*'])
         .setBody("{ \"bank_id\": \"CB\", \"system_code\": \"MEO\" }")
         .post(staffTokenPath);
 }
@@ -62,4 +62,5 @@ async function staffToken(username, password) {
             throw `No cookie in ${loginPath}, Are you connected to CYBG VPN?`;
         }).catch(e => console.log(e));
 }
+
 exports.staffToken = staffToken;

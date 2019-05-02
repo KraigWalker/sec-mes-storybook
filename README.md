@@ -30,6 +30,24 @@ Example url:
 
 ### MEO 
 
+The app can be ran as an advisor to simulate the MEO environment. 
+This includes using session data from logging into the agent platform and getting staff access tokens.
+You can run this app as an advisor by running:
+
+    npm run start:advisor
+    
+**IMPORTANT**: this requires that you have Google Chrome installed (currently supports MacOS installs).
+All current instances of Google Chrome must be **stopped** so the advisor app can launch with specific configurations.
+
+After launching Chrome, the app will ask you for your ALP Username / Password
+
+    ?What is your ALP username?: <R/S Number>
+    ?What is your ALP password?: <8 digit ALP password>
+    
+This information will fetch your staff access token and run advisor webpack, loading html with your staff configuration.
+
+The MEO is imported for Advisor as below:
+
 ```javascript
 import { AdvisorApp as App } from "secure-messages-webapp";
 
