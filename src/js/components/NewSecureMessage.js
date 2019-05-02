@@ -18,7 +18,9 @@ import {
   getCustomerDetails,
   getCustomerError,
   getSubjectErrors,
-  getShowSuccessModal
+  getShowSuccessModal,
+  getUpdating,
+  getIsSavingDraft
 } from "../reducers";
 
 class NewSecureMessage extends React.Component {
@@ -52,7 +54,7 @@ class NewSecureMessage extends React.Component {
     this.sendMessageData(messageEntity, DRAFT);
   }
   render() {
-    const { content } = this.props;
+    const { content, isSavingDraft, isUpdatingMessage } = this.props;
     return (
       <SecureMessageForm
         {...this.props}
@@ -64,30 +66,34 @@ class NewSecureMessage extends React.Component {
         selectedSubject={content.pleaseSelect}
         selectedAccountValue={content.pleaseSelect}
         buttonsDisabled={true}
+        isSavingDraft={isSavingDraft}
+        isUpdatingMessage={isUpdatingMessage}
       />
     );
   }
 }
 
-const mapState = state => ({
+const mapStateToProps = state => ({
   subjects: getSubjects(state),
   messages: getMessages(state),
+  isUpdatingMessage: getUpdating(state),
+  isSavingDraft: getIsSavingDraft(state),
   accounts: getAccounts(state),
   subjectErrors: getSubjectErrors(state),
   messageDetail: getMessageDetail(state),
   customerID: getCustomerId(state),
   customerDetails: getCustomerDetails(state),
   customerNameError: getCustomerError(state),
-  successModal: getShowSuccessModal(state)
+  successModal: getShowSuccessModal(state),
 });
 
-const mapStateToProps = {
+const actionCreators = {
   popupState,
   getCustomerName,
   sendMessageData,
   sendMessageForAccessibiltiy
 };
 export default connect(
-  mapState,
-  mapStateToProps
+  mapStateToProps,
+  actionCreators
 )(NewSecureMessage);

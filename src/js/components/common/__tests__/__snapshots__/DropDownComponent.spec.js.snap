@@ -13,13 +13,7 @@ ShallowWrapper {
     }
     id="subjects"
     messages={Array []}
-    popupState={
-      [MockFunction] {
-        "calls": Array [
-          Array [],
-        ],
-      }
-    }
+    popupState={[MockFunction]}
     selectSubject={[MockFunction]}
     selectedAccountValue={null}
     showAccountError={false}

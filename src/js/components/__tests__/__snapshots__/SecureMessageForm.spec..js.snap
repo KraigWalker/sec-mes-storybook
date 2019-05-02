@@ -37,1011 +37,31 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "function",
     "props": Object {
-      "children": <Row>
-        <Card
-          bordered={false}
+      "children": Array [
+        <LoadingLocalTakeover
+          show={undefined}
+          title={undefined}
         >
-          <Title
-            size="h1"
-          />
-          <TextBody>
-            <BackButton
-              disabled={false}
-              label="Back"
-              onClick={[Function]}
-            />
-          </TextBody>
-          <TextBody>
-            <Label
-              htmlFor="subjects"
-              id="subjectTitle"
-            />
-          </TextBody>
-          <Connect(DropDownComponent)
-            accessID="Subject"
-            content={
-              Object {
-                "back": "Back",
-              }
-            }
-            ddId="ddlSubject"
-            id="subjects"
-            name="subjects"
-            selectSubject={[Function]}
-            selectedValue={undefined}
-            showSubjectError={false}
-            subjectErrors={undefined}
-            subjects={undefined}
-          />
-          <TextBody>
-            <Label
-              htmlFor="subjects"
-              id="relatesTitle"
-            />
-          </TextBody>
-          <Connect(DropDownComponent)
-            accessID="Message relates to"
-            accounts={undefined}
-            content={
-              Object {
-                "back": "Back",
-              }
-            }
-            ddId="ddlAccount"
-            id="accounts"
-            name="accounts"
-            selectSubject={[Function]}
-            selectedValue={undefined}
-            showAccountError={false}
-          />
-          <TextBody>
-            <Label
-              htmlFor="subjects"
-              id="messageTitle"
-            />
-          </TextBody>
-          <TextBody>
-            <div
-              className="u-visually-hidden off-screen"
-              id="textAreaMaxMsg"
-            />
-            <Textarea
-              cols="20"
-              defaultValue={undefined}
-              disabled={false}
-              id="message"
-              maxLength="infinity"
-              onChange={[Function]}
-              rows="20"
-            />
-          </TextBody>
-          <TextBody>
-            <ButtonGroup
-              alignment="left"
+          <Row>
+            <Card
+              bordered={false}
             >
-              <Button
-                disabled={false}
-                display="secondary"
-                isLoading={false}
-                name="Back"
-                onClick={[Function]}
-                size="md"
-                width="flush"
-              >
-                Back
-              </Button>
-              <Button
-                disabled={false}
-                display="primary"
-                isLoading={false}
-                name="Save Draft"
-                onClick={[Function]}
-                size="md"
-                width="flush"
-              />
-              <Button
-                disabled={false}
-                display="primary"
-                isLoading={false}
-                name="Send"
-                onClick={[Function]}
-                size="md"
-                width="flush"
-              />
-            </ButtonGroup>
-          </TextBody>
-          
-        </Card>
-      </Row>,
-      "size": undefined,
-    },
-    "ref": null,
-    "rendered": Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "function",
-      "props": Object {
-        "children": <Card
-          bordered={false}
-        >
-          <Title
-            size="h1"
-          />
-          <TextBody>
-            <BackButton
-              disabled={false}
-              label="Back"
-              onClick={[Function]}
-            />
-          </TextBody>
-          <TextBody>
-            <Label
-              htmlFor="subjects"
-              id="subjectTitle"
-            />
-          </TextBody>
-          <Connect(DropDownComponent)
-            accessID="Subject"
-            content={
-              Object {
-                "back": "Back",
-              }
-            }
-            ddId="ddlSubject"
-            id="subjects"
-            name="subjects"
-            selectSubject={[Function]}
-            selectedValue={undefined}
-            showSubjectError={false}
-            subjectErrors={undefined}
-            subjects={undefined}
-          />
-          <TextBody>
-            <Label
-              htmlFor="subjects"
-              id="relatesTitle"
-            />
-          </TextBody>
-          <Connect(DropDownComponent)
-            accessID="Message relates to"
-            accounts={undefined}
-            content={
-              Object {
-                "back": "Back",
-              }
-            }
-            ddId="ddlAccount"
-            id="accounts"
-            name="accounts"
-            selectSubject={[Function]}
-            selectedValue={undefined}
-            showAccountError={false}
-          />
-          <TextBody>
-            <Label
-              htmlFor="subjects"
-              id="messageTitle"
-            />
-          </TextBody>
-          <TextBody>
-            <div
-              className="u-visually-hidden off-screen"
-              id="textAreaMaxMsg"
-            />
-            <Textarea
-              cols="20"
-              defaultValue={undefined}
-              disabled={false}
-              id="message"
-              maxLength="infinity"
-              onChange={[Function]}
-              rows="20"
-            />
-          </TextBody>
-          <TextBody>
-            <ButtonGroup
-              alignment="left"
-            >
-              <Button
-                disabled={false}
-                display="secondary"
-                isLoading={false}
-                name="Back"
-                onClick={[Function]}
-                size="md"
-                width="flush"
-              >
-                Back
-              </Button>
-              <Button
-                disabled={false}
-                display="primary"
-                isLoading={false}
-                name="Save Draft"
-                onClick={[Function]}
-                size="md"
-                width="flush"
-              />
-              <Button
-                disabled={false}
-                display="primary"
-                isLoading={false}
-                name="Send"
-                onClick={[Function]}
-                size="md"
-                width="flush"
-              />
-            </ButtonGroup>
-          </TextBody>
-          
-        </Card>,
-      },
-      "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "function",
-        "props": Object {
-          "bordered": false,
-          "children": Array [
-            <Title
-              size="h1"
-            />,
-            <TextBody>
-              <BackButton
-                disabled={false}
-                label="Back"
-                onClick={[Function]}
-              />
-            </TextBody>,
-            <TextBody>
-              <Label
-                htmlFor="subjects"
-                id="subjectTitle"
-              />
-            </TextBody>,
-            <Connect(DropDownComponent)
-              accessID="Subject"
-              content={
-                Object {
-                  "back": "Back",
-                }
-              }
-              ddId="ddlSubject"
-              id="subjects"
-              name="subjects"
-              selectSubject={[Function]}
-              selectedValue={undefined}
-              showSubjectError={false}
-              subjectErrors={undefined}
-              subjects={undefined}
-            />,
-            <TextBody>
-              <Label
-                htmlFor="subjects"
-                id="relatesTitle"
-              />
-            </TextBody>,
-            <Connect(DropDownComponent)
-              accessID="Message relates to"
-              accounts={undefined}
-              content={
-                Object {
-                  "back": "Back",
-                }
-              }
-              ddId="ddlAccount"
-              id="accounts"
-              name="accounts"
-              selectSubject={[Function]}
-              selectedValue={undefined}
-              showAccountError={false}
-            />,
-            <TextBody>
-              <Label
-                htmlFor="subjects"
-                id="messageTitle"
-              />
-            </TextBody>,
-            <TextBody>
-              <div
-                className="u-visually-hidden off-screen"
-                id="textAreaMaxMsg"
-              />
-              <Textarea
-                cols="20"
-                defaultValue={undefined}
-                disabled={false}
-                id="message"
-                maxLength="infinity"
-                onChange={[Function]}
-                rows="20"
-              />
-            </TextBody>,
-            <TextBody>
-              <ButtonGroup
-                alignment="left"
-              >
-                <Button
-                  disabled={false}
-                  display="secondary"
-                  isLoading={false}
-                  name="Back"
-                  onClick={[Function]}
-                  size="md"
-                  width="flush"
-                >
-                  Back
-                </Button>
-                <Button
-                  disabled={false}
-                  display="primary"
-                  isLoading={false}
-                  name="Save Draft"
-                  onClick={[Function]}
-                  size="md"
-                  width="flush"
-                />
-                <Button
-                  disabled={false}
-                  display="primary"
-                  isLoading={false}
-                  name="Send"
-                  onClick={[Function]}
-                  size="md"
-                  width="flush"
-                />
-              </ButtonGroup>
-            </TextBody>,
-            false,
-            "",
-            false,
-            undefined,
-            undefined,
-            undefined,
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "children": undefined,
-              "size": "h1",
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "children": <BackButton
-                disabled={false}
-                label="Back"
-                onClick={[Function]}
-              />,
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "disabled": false,
-                "label": "Back",
-                "onClick": [Function],
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "children": <Label
-                htmlFor="subjects"
-                id="subjectTitle"
-              />,
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "children": undefined,
-                "htmlFor": "subjects",
-                "id": "subjectTitle",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "accessID": "Subject",
-              "content": Object {
-                "back": "Back",
-              },
-              "ddId": "ddlSubject",
-              "id": "subjects",
-              "name": "subjects",
-              "selectSubject": [Function],
-              "selectedValue": undefined,
-              "showSubjectError": false,
-              "subjectErrors": undefined,
-              "subjects": undefined,
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "children": <Label
-                htmlFor="subjects"
-                id="relatesTitle"
-              />,
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "children": undefined,
-                "htmlFor": "subjects",
-                "id": "relatesTitle",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "accessID": "Message relates to",
-              "accounts": undefined,
-              "content": Object {
-                "back": "Back",
-              },
-              "ddId": "ddlAccount",
-              "id": "accounts",
-              "name": "accounts",
-              "selectSubject": [Function],
-              "selectedValue": undefined,
-              "showAccountError": false,
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "children": <Label
-                htmlFor="subjects"
-                id="messageTitle"
-              />,
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "children": undefined,
-                "htmlFor": "subjects",
-                "id": "messageTitle",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "children": Array [
-                <div
-                  className="u-visually-hidden off-screen"
-                  id="textAreaMaxMsg"
-                />,
-                <Textarea
-                  cols="20"
-                  defaultValue={undefined}
-                  disabled={false}
-                  id="message"
-                  maxLength="infinity"
-                  onChange={[Function]}
-                  rows="20"
-                />,
-                undefined,
-              ],
-            },
-            "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": undefined,
-                  "className": "u-visually-hidden off-screen",
-                  "id": "textAreaMaxMsg",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "div",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "function",
-                "props": Object {
-                  "cols": "20",
-                  "defaultValue": undefined,
-                  "disabled": false,
-                  "id": "message",
-                  "maxLength": "infinity",
-                  "onChange": [Function],
-                  "rows": "20",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-              undefined,
-            ],
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "children": <ButtonGroup
-                alignment="left"
-              >
-                <Button
-                  disabled={false}
-                  display="secondary"
-                  isLoading={false}
-                  name="Back"
-                  onClick={[Function]}
-                  size="md"
-                  width="flush"
-                >
-                  Back
-                </Button>
-                <Button
-                  disabled={false}
-                  display="primary"
-                  isLoading={false}
-                  name="Save Draft"
-                  onClick={[Function]}
-                  size="md"
-                  width="flush"
-                />
-                <Button
-                  disabled={false}
-                  display="primary"
-                  isLoading={false}
-                  name="Send"
-                  onClick={[Function]}
-                  size="md"
-                  width="flush"
-                />
-              </ButtonGroup>,
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "alignment": "left",
-                "children": Array [
-                  <Button
-                    disabled={false}
-                    display="secondary"
-                    isLoading={false}
-                    name="Back"
-                    onClick={[Function]}
-                    size="md"
-                    width="flush"
-                  >
-                    Back
-                  </Button>,
-                  <Button
-                    disabled={false}
-                    display="primary"
-                    isLoading={false}
-                    name="Save Draft"
-                    onClick={[Function]}
-                    size="md"
-                    width="flush"
-                  />,
-                  <Button
-                    disabled={false}
-                    display="primary"
-                    isLoading={false}
-                    name="Send"
-                    onClick={[Function]}
-                    size="md"
-                    width="flush"
-                  />,
-                ],
-              },
-              "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "function",
-                  "props": Object {
-                    "children": "Back",
-                    "disabled": false,
-                    "display": "secondary",
-                    "isLoading": false,
-                    "name": "Back",
-                    "onClick": [Function],
-                    "size": "md",
-                    "width": "flush",
-                  },
-                  "ref": null,
-                  "rendered": "Back",
-                  "type": [Function],
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "function",
-                  "props": Object {
-                    "children": undefined,
-                    "disabled": false,
-                    "display": "primary",
-                    "isLoading": false,
-                    "name": "Save Draft",
-                    "onClick": [Function],
-                    "size": "md",
-                    "width": "flush",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": [Function],
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "function",
-                  "props": Object {
-                    "children": undefined,
-                    "disabled": false,
-                    "display": "primary",
-                    "isLoading": false,
-                    "name": "Send",
-                    "onClick": [Function],
-                    "size": "md",
-                    "width": "flush",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": [Function],
-                },
-              ],
-              "type": [Function],
-            },
-            "type": [Function],
-          },
-          false,
-          "",
-          false,
-          undefined,
-          undefined,
-          undefined,
-        ],
-        "type": [Function],
-      },
-      "type": [Function],
-    },
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "function",
-      "props": Object {
-        "children": <Row>
-          <Card
-            bordered={false}
-          >
-            <Title
-              size="h1"
-            />
-            <TextBody>
-              <BackButton
-                disabled={false}
-                label="Back"
-                onClick={[Function]}
-              />
-            </TextBody>
-            <TextBody>
-              <Label
-                htmlFor="subjects"
-                id="subjectTitle"
-              />
-            </TextBody>
-            <Connect(DropDownComponent)
-              accessID="Subject"
-              content={
-                Object {
-                  "back": "Back",
-                }
-              }
-              ddId="ddlSubject"
-              id="subjects"
-              name="subjects"
-              selectSubject={[Function]}
-              selectedValue={undefined}
-              showSubjectError={false}
-              subjectErrors={undefined}
-              subjects={undefined}
-            />
-            <TextBody>
-              <Label
-                htmlFor="subjects"
-                id="relatesTitle"
-              />
-            </TextBody>
-            <Connect(DropDownComponent)
-              accessID="Message relates to"
-              accounts={undefined}
-              content={
-                Object {
-                  "back": "Back",
-                }
-              }
-              ddId="ddlAccount"
-              id="accounts"
-              name="accounts"
-              selectSubject={[Function]}
-              selectedValue={undefined}
-              showAccountError={false}
-            />
-            <TextBody>
-              <Label
-                htmlFor="subjects"
-                id="messageTitle"
-              />
-            </TextBody>
-            <TextBody>
-              <div
-                className="u-visually-hidden off-screen"
-                id="textAreaMaxMsg"
-              />
-              <Textarea
-                cols="20"
-                defaultValue={undefined}
-                disabled={false}
-                id="message"
-                maxLength="infinity"
-                onChange={[Function]}
-                rows="20"
-              />
-            </TextBody>
-            <TextBody>
-              <ButtonGroup
-                alignment="left"
-              >
-                <Button
-                  disabled={false}
-                  display="secondary"
-                  isLoading={false}
-                  name="Back"
-                  onClick={[Function]}
-                  size="md"
-                  width="flush"
-                >
-                  Back
-                </Button>
-                <Button
-                  disabled={false}
-                  display="primary"
-                  isLoading={false}
-                  name="Save Draft"
-                  onClick={[Function]}
-                  size="md"
-                  width="flush"
-                />
-                <Button
-                  disabled={false}
-                  display="primary"
-                  isLoading={false}
-                  name="Send"
-                  onClick={[Function]}
-                  size="md"
-                  width="flush"
-                />
-              </ButtonGroup>
-            </TextBody>
-            
-          </Card>
-        </Row>,
-        "size": undefined,
-      },
-      "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "function",
-        "props": Object {
-          "children": <Card
-            bordered={false}
-          >
-            <Title
-              size="h1"
-            />
-            <TextBody>
-              <BackButton
-                disabled={false}
-                label="Back"
-                onClick={[Function]}
-              />
-            </TextBody>
-            <TextBody>
-              <Label
-                htmlFor="subjects"
-                id="subjectTitle"
-              />
-            </TextBody>
-            <Connect(DropDownComponent)
-              accessID="Subject"
-              content={
-                Object {
-                  "back": "Back",
-                }
-              }
-              ddId="ddlSubject"
-              id="subjects"
-              name="subjects"
-              selectSubject={[Function]}
-              selectedValue={undefined}
-              showSubjectError={false}
-              subjectErrors={undefined}
-              subjects={undefined}
-            />
-            <TextBody>
-              <Label
-                htmlFor="subjects"
-                id="relatesTitle"
-              />
-            </TextBody>
-            <Connect(DropDownComponent)
-              accessID="Message relates to"
-              accounts={undefined}
-              content={
-                Object {
-                  "back": "Back",
-                }
-              }
-              ddId="ddlAccount"
-              id="accounts"
-              name="accounts"
-              selectSubject={[Function]}
-              selectedValue={undefined}
-              showAccountError={false}
-            />
-            <TextBody>
-              <Label
-                htmlFor="subjects"
-                id="messageTitle"
-              />
-            </TextBody>
-            <TextBody>
-              <div
-                className="u-visually-hidden off-screen"
-                id="textAreaMaxMsg"
-              />
-              <Textarea
-                cols="20"
-                defaultValue={undefined}
-                disabled={false}
-                id="message"
-                maxLength="infinity"
-                onChange={[Function]}
-                rows="20"
-              />
-            </TextBody>
-            <TextBody>
-              <ButtonGroup
-                alignment="left"
-              >
-                <Button
-                  disabled={false}
-                  display="secondary"
-                  isLoading={false}
-                  name="Back"
-                  onClick={[Function]}
-                  size="md"
-                  width="flush"
-                >
-                  Back
-                </Button>
-                <Button
-                  disabled={false}
-                  display="primary"
-                  isLoading={false}
-                  name="Save Draft"
-                  onClick={[Function]}
-                  size="md"
-                  width="flush"
-                />
-                <Button
-                  disabled={false}
-                  display="primary"
-                  isLoading={false}
-                  name="Send"
-                  onClick={[Function]}
-                  size="md"
-                  width="flush"
-                />
-              </ButtonGroup>
-            </TextBody>
-            
-          </Card>,
-        },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "function",
-          "props": Object {
-            "bordered": false,
-            "children": Array [
               <Title
-                size="h1"
-              />,
+                size="h4"
+              />
               <TextBody>
                 <BackButton
                   disabled={false}
                   label="Back"
                   onClick={[Function]}
                 />
-              </TextBody>,
+              </TextBody>
               <TextBody>
                 <Label
                   htmlFor="subjects"
                   id="subjectTitle"
                 />
-              </TextBody>,
+              </TextBody>
               <Connect(DropDownComponent)
                 accessID="Subject"
                 content={
@@ -1057,13 +77,13 @@ ShallowWrapper {
                 showSubjectError={false}
                 subjectErrors={undefined}
                 subjects={undefined}
-              />,
+              />
               <TextBody>
                 <Label
                   htmlFor="subjects"
                   id="relatesTitle"
                 />
-              </TextBody>,
+              </TextBody>
               <Connect(DropDownComponent)
                 accessID="Message relates to"
                 accounts={undefined}
@@ -1078,13 +98,13 @@ ShallowWrapper {
                 selectSubject={[Function]}
                 selectedValue={undefined}
                 showAccountError={false}
-              />,
+              />
               <TextBody>
                 <Label
                   htmlFor="subjects"
                   id="messageTitle"
                 />
-              </TextBody>,
+              </TextBody>
               <TextBody>
                 <div
                   className="u-visually-hidden off-screen"
@@ -1099,7 +119,7 @@ ShallowWrapper {
                   onChange={[Function]}
                   rows="20"
                 />
-              </TextBody>,
+              </TextBody>
               <TextBody>
                 <ButtonGroup
                   alignment="left"
@@ -1122,7 +142,6 @@ ShallowWrapper {
                     name="Save Draft"
                     onClick={[Function]}
                     size="md"
-                    width="flush"
                   />
                   <Button
                     disabled={false}
@@ -1131,244 +150,108 @@ ShallowWrapper {
                     name="Send"
                     onClick={[Function]}
                     size="md"
-                    width="flush"
                   />
                 </ButtonGroup>
-              </TextBody>,
-              false,
-              "",
-              false,
-              undefined,
-              undefined,
-              undefined,
-            ],
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "children": undefined,
-                "size": "h1",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "children": <BackButton
+              </TextBody>
+            </Card>
+          </Row>
+        </LoadingLocalTakeover>,
+        false,
+        "",
+        false,
+        undefined,
+        undefined,
+        undefined,
+      ],
+      "size": undefined,
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": <Row>
+            <Card
+              bordered={false}
+            >
+              <Title
+                size="h4"
+              />
+              <TextBody>
+                <BackButton
                   disabled={false}
                   label="Back"
                   onClick={[Function]}
-                />,
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "function",
-                "props": Object {
-                  "disabled": false,
-                  "label": "Back",
-                  "onClick": [Function],
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "children": <Label
+                />
+              </TextBody>
+              <TextBody>
+                <Label
                   htmlFor="subjects"
                   id="subjectTitle"
-                />,
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "function",
-                "props": Object {
-                  "children": undefined,
-                  "htmlFor": "subjects",
-                  "id": "subjectTitle",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "accessID": "Subject",
-                "content": Object {
-                  "back": "Back",
-                },
-                "ddId": "ddlSubject",
-                "id": "subjects",
-                "name": "subjects",
-                "selectSubject": [Function],
-                "selectedValue": undefined,
-                "showSubjectError": false,
-                "subjectErrors": undefined,
-                "subjects": undefined,
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "children": <Label
+                />
+              </TextBody>
+              <Connect(DropDownComponent)
+                accessID="Subject"
+                content={
+                  Object {
+                    "back": "Back",
+                  }
+                }
+                ddId="ddlSubject"
+                id="subjects"
+                name="subjects"
+                selectSubject={[Function]}
+                selectedValue={undefined}
+                showSubjectError={false}
+                subjectErrors={undefined}
+                subjects={undefined}
+              />
+              <TextBody>
+                <Label
                   htmlFor="subjects"
                   id="relatesTitle"
-                />,
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "function",
-                "props": Object {
-                  "children": undefined,
-                  "htmlFor": "subjects",
-                  "id": "relatesTitle",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "accessID": "Message relates to",
-                "accounts": undefined,
-                "content": Object {
-                  "back": "Back",
-                },
-                "ddId": "ddlAccount",
-                "id": "accounts",
-                "name": "accounts",
-                "selectSubject": [Function],
-                "selectedValue": undefined,
-                "showAccountError": false,
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "children": <Label
+                />
+              </TextBody>
+              <Connect(DropDownComponent)
+                accessID="Message relates to"
+                accounts={undefined}
+                content={
+                  Object {
+                    "back": "Back",
+                  }
+                }
+                ddId="ddlAccount"
+                id="accounts"
+                name="accounts"
+                selectSubject={[Function]}
+                selectedValue={undefined}
+                showAccountError={false}
+              />
+              <TextBody>
+                <Label
                   htmlFor="subjects"
                   id="messageTitle"
-                />,
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "function",
-                "props": Object {
-                  "children": undefined,
-                  "htmlFor": "subjects",
-                  "id": "messageTitle",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "children": Array [
-                  <div
-                    className="u-visually-hidden off-screen"
-                    id="textAreaMaxMsg"
-                  />,
-                  <Textarea
-                    cols="20"
-                    defaultValue={undefined}
-                    disabled={false}
-                    id="message"
-                    maxLength="infinity"
-                    onChange={[Function]}
-                    rows="20"
-                  />,
-                  undefined,
-                ],
-              },
-              "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": undefined,
-                    "className": "u-visually-hidden off-screen",
-                    "id": "textAreaMaxMsg",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "div",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "function",
-                  "props": Object {
-                    "cols": "20",
-                    "defaultValue": undefined,
-                    "disabled": false,
-                    "id": "message",
-                    "maxLength": "infinity",
-                    "onChange": [Function],
-                    "rows": "20",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": [Function],
-                },
-                undefined,
-              ],
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "children": <ButtonGroup
+                />
+              </TextBody>
+              <TextBody>
+                <div
+                  className="u-visually-hidden off-screen"
+                  id="textAreaMaxMsg"
+                />
+                <Textarea
+                  cols="20"
+                  defaultValue={undefined}
+                  disabled={false}
+                  id="message"
+                  maxLength="infinity"
+                  onChange={[Function]}
+                  rows="20"
+                />
+              </TextBody>
+              <TextBody>
+                <ButtonGroup
                   alignment="left"
                 >
                   <Button
@@ -1389,7 +272,6 @@ ShallowWrapper {
                     name="Save Draft"
                     onClick={[Function]}
                     size="md"
-                    width="flush"
                   />
                   <Button
                     disabled={false}
@@ -1398,18 +280,218 @@ ShallowWrapper {
                     name="Send"
                     onClick={[Function]}
                     size="md"
-                    width="flush"
                   />
-                </ButtonGroup>,
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "function",
-                "props": Object {
-                  "alignment": "left",
-                  "children": Array [
+                </ButtonGroup>
+              </TextBody>
+            </Card>
+          </Row>,
+          "show": undefined,
+          "title": undefined,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": <Card
+              bordered={false}
+            >
+              <Title
+                size="h4"
+              />
+              <TextBody>
+                <BackButton
+                  disabled={false}
+                  label="Back"
+                  onClick={[Function]}
+                />
+              </TextBody>
+              <TextBody>
+                <Label
+                  htmlFor="subjects"
+                  id="subjectTitle"
+                />
+              </TextBody>
+              <Connect(DropDownComponent)
+                accessID="Subject"
+                content={
+                  Object {
+                    "back": "Back",
+                  }
+                }
+                ddId="ddlSubject"
+                id="subjects"
+                name="subjects"
+                selectSubject={[Function]}
+                selectedValue={undefined}
+                showSubjectError={false}
+                subjectErrors={undefined}
+                subjects={undefined}
+              />
+              <TextBody>
+                <Label
+                  htmlFor="subjects"
+                  id="relatesTitle"
+                />
+              </TextBody>
+              <Connect(DropDownComponent)
+                accessID="Message relates to"
+                accounts={undefined}
+                content={
+                  Object {
+                    "back": "Back",
+                  }
+                }
+                ddId="ddlAccount"
+                id="accounts"
+                name="accounts"
+                selectSubject={[Function]}
+                selectedValue={undefined}
+                showAccountError={false}
+              />
+              <TextBody>
+                <Label
+                  htmlFor="subjects"
+                  id="messageTitle"
+                />
+              </TextBody>
+              <TextBody>
+                <div
+                  className="u-visually-hidden off-screen"
+                  id="textAreaMaxMsg"
+                />
+                <Textarea
+                  cols="20"
+                  defaultValue={undefined}
+                  disabled={false}
+                  id="message"
+                  maxLength="infinity"
+                  onChange={[Function]}
+                  rows="20"
+                />
+              </TextBody>
+              <TextBody>
+                <ButtonGroup
+                  alignment="left"
+                >
+                  <Button
+                    disabled={false}
+                    display="secondary"
+                    isLoading={false}
+                    name="Back"
+                    onClick={[Function]}
+                    size="md"
+                    width="flush"
+                  >
+                    Back
+                  </Button>
+                  <Button
+                    disabled={false}
+                    display="primary"
+                    isLoading={false}
+                    name="Save Draft"
+                    onClick={[Function]}
+                    size="md"
+                  />
+                  <Button
+                    disabled={false}
+                    display="primary"
+                    isLoading={false}
+                    name="Send"
+                    onClick={[Function]}
+                    size="md"
+                  />
+                </ButtonGroup>
+              </TextBody>
+            </Card>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "bordered": false,
+              "children": Array [
+                <Title
+                  size="h4"
+                />,
+                <TextBody>
+                  <BackButton
+                    disabled={false}
+                    label="Back"
+                    onClick={[Function]}
+                  />
+                </TextBody>,
+                <TextBody>
+                  <Label
+                    htmlFor="subjects"
+                    id="subjectTitle"
+                  />
+                </TextBody>,
+                <Connect(DropDownComponent)
+                  accessID="Subject"
+                  content={
+                    Object {
+                      "back": "Back",
+                    }
+                  }
+                  ddId="ddlSubject"
+                  id="subjects"
+                  name="subjects"
+                  selectSubject={[Function]}
+                  selectedValue={undefined}
+                  showSubjectError={false}
+                  subjectErrors={undefined}
+                  subjects={undefined}
+                />,
+                <TextBody>
+                  <Label
+                    htmlFor="subjects"
+                    id="relatesTitle"
+                  />
+                </TextBody>,
+                <Connect(DropDownComponent)
+                  accessID="Message relates to"
+                  accounts={undefined}
+                  content={
+                    Object {
+                      "back": "Back",
+                    }
+                  }
+                  ddId="ddlAccount"
+                  id="accounts"
+                  name="accounts"
+                  selectSubject={[Function]}
+                  selectedValue={undefined}
+                  showAccountError={false}
+                />,
+                <TextBody>
+                  <Label
+                    htmlFor="subjects"
+                    id="messageTitle"
+                  />
+                </TextBody>,
+                <TextBody>
+                  <div
+                    className="u-visually-hidden off-screen"
+                    id="textAreaMaxMsg"
+                  />
+                  <Textarea
+                    cols="20"
+                    defaultValue={undefined}
+                    disabled={false}
+                    id="message"
+                    maxLength="infinity"
+                    onChange={[Function]}
+                    rows="20"
+                  />
+                </TextBody>,
+                <TextBody>
+                  <ButtonGroup
+                    alignment="left"
+                  >
                     <Button
                       disabled={false}
                       display="secondary"
@@ -1420,7 +502,7 @@ ShallowWrapper {
                       width="flush"
                     >
                       Back
-                    </Button>,
+                    </Button>
                     <Button
                       disabled={false}
                       display="primary"
@@ -1428,8 +510,7 @@ ShallowWrapper {
                       name="Save Draft"
                       onClick={[Function]}
                       size="md"
-                      width="flush"
-                    />,
+                    />
                     <Button
                       disabled={false}
                       display="primary"
@@ -1437,8 +518,193 @@ ShallowWrapper {
                       name="Send"
                       onClick={[Function]}
                       size="md"
-                      width="flush"
+                    />
+                  </ButtonGroup>
+                </TextBody>,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": undefined,
+                  "size": "h4",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": <BackButton
+                    disabled={false}
+                    label="Back"
+                    onClick={[Function]}
+                  />,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "disabled": false,
+                    "label": "Back",
+                    "onClick": [Function],
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": <Label
+                    htmlFor="subjects"
+                    id="subjectTitle"
+                  />,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "children": undefined,
+                    "htmlFor": "subjects",
+                    "id": "subjectTitle",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "accessID": "Subject",
+                  "content": Object {
+                    "back": "Back",
+                  },
+                  "ddId": "ddlSubject",
+                  "id": "subjects",
+                  "name": "subjects",
+                  "selectSubject": [Function],
+                  "selectedValue": undefined,
+                  "showSubjectError": false,
+                  "subjectErrors": undefined,
+                  "subjects": undefined,
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": <Label
+                    htmlFor="subjects"
+                    id="relatesTitle"
+                  />,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "children": undefined,
+                    "htmlFor": "subjects",
+                    "id": "relatesTitle",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "accessID": "Message relates to",
+                  "accounts": undefined,
+                  "content": Object {
+                    "back": "Back",
+                  },
+                  "ddId": "ddlAccount",
+                  "id": "accounts",
+                  "name": "accounts",
+                  "selectSubject": [Function],
+                  "selectedValue": undefined,
+                  "showAccountError": false,
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": <Label
+                    htmlFor="subjects"
+                    id="messageTitle"
+                  />,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "children": undefined,
+                    "htmlFor": "subjects",
+                    "id": "messageTitle",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": Array [
+                    <div
+                      className="u-visually-hidden off-screen"
+                      id="textAreaMaxMsg"
                     />,
+                    <Textarea
+                      cols="20"
+                      defaultValue={undefined}
+                      disabled={false}
+                      id="message"
+                      maxLength="infinity"
+                      onChange={[Function]}
+                      rows="20"
+                    />,
+                    undefined,
                   ],
                 },
                 "ref": null,
@@ -1446,73 +712,1045 @@ ShallowWrapper {
                   Object {
                     "instance": null,
                     "key": undefined,
-                    "nodeType": "function",
+                    "nodeType": "host",
                     "props": Object {
-                      "children": "Back",
-                      "disabled": false,
-                      "display": "secondary",
-                      "isLoading": false,
-                      "name": "Back",
-                      "onClick": [Function],
-                      "size": "md",
-                      "width": "flush",
+                      "children": undefined,
+                      "className": "u-visually-hidden off-screen",
+                      "id": "textAreaMaxMsg",
                     },
                     "ref": null,
-                    "rendered": "Back",
-                    "type": [Function],
+                    "rendered": null,
+                    "type": "div",
                   },
                   Object {
                     "instance": null,
                     "key": undefined,
                     "nodeType": "function",
                     "props": Object {
-                      "children": undefined,
+                      "cols": "20",
+                      "defaultValue": undefined,
                       "disabled": false,
-                      "display": "primary",
-                      "isLoading": false,
-                      "name": "Save Draft",
-                      "onClick": [Function],
-                      "size": "md",
-                      "width": "flush",
+                      "id": "message",
+                      "maxLength": "infinity",
+                      "onChange": [Function],
+                      "rows": "20",
                     },
                     "ref": null,
                     "rendered": null,
                     "type": [Function],
                   },
-                  Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "function",
-                    "props": Object {
-                      "children": undefined,
-                      "disabled": false,
-                      "display": "primary",
-                      "isLoading": false,
-                      "name": "Send",
-                      "onClick": [Function],
-                      "size": "md",
-                      "width": "flush",
-                    },
-                    "ref": null,
-                    "rendered": null,
-                    "type": [Function],
-                  },
+                  undefined,
                 ],
                 "type": [Function],
               },
-              "type": [Function],
-            },
-            false,
-            "",
-            false,
-            undefined,
-            undefined,
-            undefined,
-          ],
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": <ButtonGroup
+                    alignment="left"
+                  >
+                    <Button
+                      disabled={false}
+                      display="secondary"
+                      isLoading={false}
+                      name="Back"
+                      onClick={[Function]}
+                      size="md"
+                      width="flush"
+                    >
+                      Back
+                    </Button>
+                    <Button
+                      disabled={false}
+                      display="primary"
+                      isLoading={false}
+                      name="Save Draft"
+                      onClick={[Function]}
+                      size="md"
+                    />
+                    <Button
+                      disabled={false}
+                      display="primary"
+                      isLoading={false}
+                      name="Send"
+                      onClick={[Function]}
+                      size="md"
+                    />
+                  </ButtonGroup>,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "alignment": "left",
+                    "children": Array [
+                      <Button
+                        disabled={false}
+                        display="secondary"
+                        isLoading={false}
+                        name="Back"
+                        onClick={[Function]}
+                        size="md"
+                        width="flush"
+                      >
+                        Back
+                      </Button>,
+                      <Button
+                        disabled={false}
+                        display="primary"
+                        isLoading={false}
+                        name="Save Draft"
+                        onClick={[Function]}
+                        size="md"
+                      />,
+                      <Button
+                        disabled={false}
+                        display="primary"
+                        isLoading={false}
+                        name="Send"
+                        onClick={[Function]}
+                        size="md"
+                      />,
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "function",
+                      "props": Object {
+                        "children": "Back",
+                        "disabled": false,
+                        "display": "secondary",
+                        "isLoading": false,
+                        "name": "Back",
+                        "onClick": [Function],
+                        "size": "md",
+                        "width": "flush",
+                      },
+                      "ref": null,
+                      "rendered": "Back",
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "function",
+                      "props": Object {
+                        "children": undefined,
+                        "disabled": false,
+                        "display": "primary",
+                        "isLoading": false,
+                        "name": "Save Draft",
+                        "onClick": [Function],
+                        "size": "md",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "function",
+                      "props": Object {
+                        "children": undefined,
+                        "disabled": false,
+                        "display": "primary",
+                        "isLoading": false,
+                        "name": "Send",
+                        "onClick": [Function],
+                        "size": "md",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                  ],
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
           "type": [Function],
         },
         "type": [Function],
       },
+      false,
+      "",
+      false,
+      undefined,
+      undefined,
+      undefined,
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": Array [
+          <LoadingLocalTakeover
+            show={undefined}
+            title={undefined}
+          >
+            <Row>
+              <Card
+                bordered={false}
+              >
+                <Title
+                  size="h4"
+                />
+                <TextBody>
+                  <BackButton
+                    disabled={false}
+                    label="Back"
+                    onClick={[Function]}
+                  />
+                </TextBody>
+                <TextBody>
+                  <Label
+                    htmlFor="subjects"
+                    id="subjectTitle"
+                  />
+                </TextBody>
+                <Connect(DropDownComponent)
+                  accessID="Subject"
+                  content={
+                    Object {
+                      "back": "Back",
+                    }
+                  }
+                  ddId="ddlSubject"
+                  id="subjects"
+                  name="subjects"
+                  selectSubject={[Function]}
+                  selectedValue={undefined}
+                  showSubjectError={false}
+                  subjectErrors={undefined}
+                  subjects={undefined}
+                />
+                <TextBody>
+                  <Label
+                    htmlFor="subjects"
+                    id="relatesTitle"
+                  />
+                </TextBody>
+                <Connect(DropDownComponent)
+                  accessID="Message relates to"
+                  accounts={undefined}
+                  content={
+                    Object {
+                      "back": "Back",
+                    }
+                  }
+                  ddId="ddlAccount"
+                  id="accounts"
+                  name="accounts"
+                  selectSubject={[Function]}
+                  selectedValue={undefined}
+                  showAccountError={false}
+                />
+                <TextBody>
+                  <Label
+                    htmlFor="subjects"
+                    id="messageTitle"
+                  />
+                </TextBody>
+                <TextBody>
+                  <div
+                    className="u-visually-hidden off-screen"
+                    id="textAreaMaxMsg"
+                  />
+                  <Textarea
+                    cols="20"
+                    defaultValue={undefined}
+                    disabled={false}
+                    id="message"
+                    maxLength="infinity"
+                    onChange={[Function]}
+                    rows="20"
+                  />
+                </TextBody>
+                <TextBody>
+                  <ButtonGroup
+                    alignment="left"
+                  >
+                    <Button
+                      disabled={false}
+                      display="secondary"
+                      isLoading={false}
+                      name="Back"
+                      onClick={[Function]}
+                      size="md"
+                      width="flush"
+                    >
+                      Back
+                    </Button>
+                    <Button
+                      disabled={false}
+                      display="primary"
+                      isLoading={false}
+                      name="Save Draft"
+                      onClick={[Function]}
+                      size="md"
+                    />
+                    <Button
+                      disabled={false}
+                      display="primary"
+                      isLoading={false}
+                      name="Send"
+                      onClick={[Function]}
+                      size="md"
+                    />
+                  </ButtonGroup>
+                </TextBody>
+              </Card>
+            </Row>
+          </LoadingLocalTakeover>,
+          false,
+          "",
+          false,
+          undefined,
+          undefined,
+          undefined,
+        ],
+        "size": undefined,
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": <Row>
+              <Card
+                bordered={false}
+              >
+                <Title
+                  size="h4"
+                />
+                <TextBody>
+                  <BackButton
+                    disabled={false}
+                    label="Back"
+                    onClick={[Function]}
+                  />
+                </TextBody>
+                <TextBody>
+                  <Label
+                    htmlFor="subjects"
+                    id="subjectTitle"
+                  />
+                </TextBody>
+                <Connect(DropDownComponent)
+                  accessID="Subject"
+                  content={
+                    Object {
+                      "back": "Back",
+                    }
+                  }
+                  ddId="ddlSubject"
+                  id="subjects"
+                  name="subjects"
+                  selectSubject={[Function]}
+                  selectedValue={undefined}
+                  showSubjectError={false}
+                  subjectErrors={undefined}
+                  subjects={undefined}
+                />
+                <TextBody>
+                  <Label
+                    htmlFor="subjects"
+                    id="relatesTitle"
+                  />
+                </TextBody>
+                <Connect(DropDownComponent)
+                  accessID="Message relates to"
+                  accounts={undefined}
+                  content={
+                    Object {
+                      "back": "Back",
+                    }
+                  }
+                  ddId="ddlAccount"
+                  id="accounts"
+                  name="accounts"
+                  selectSubject={[Function]}
+                  selectedValue={undefined}
+                  showAccountError={false}
+                />
+                <TextBody>
+                  <Label
+                    htmlFor="subjects"
+                    id="messageTitle"
+                  />
+                </TextBody>
+                <TextBody>
+                  <div
+                    className="u-visually-hidden off-screen"
+                    id="textAreaMaxMsg"
+                  />
+                  <Textarea
+                    cols="20"
+                    defaultValue={undefined}
+                    disabled={false}
+                    id="message"
+                    maxLength="infinity"
+                    onChange={[Function]}
+                    rows="20"
+                  />
+                </TextBody>
+                <TextBody>
+                  <ButtonGroup
+                    alignment="left"
+                  >
+                    <Button
+                      disabled={false}
+                      display="secondary"
+                      isLoading={false}
+                      name="Back"
+                      onClick={[Function]}
+                      size="md"
+                      width="flush"
+                    >
+                      Back
+                    </Button>
+                    <Button
+                      disabled={false}
+                      display="primary"
+                      isLoading={false}
+                      name="Save Draft"
+                      onClick={[Function]}
+                      size="md"
+                    />
+                    <Button
+                      disabled={false}
+                      display="primary"
+                      isLoading={false}
+                      name="Send"
+                      onClick={[Function]}
+                      size="md"
+                    />
+                  </ButtonGroup>
+                </TextBody>
+              </Card>
+            </Row>,
+            "show": undefined,
+            "title": undefined,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": <Card
+                bordered={false}
+              >
+                <Title
+                  size="h4"
+                />
+                <TextBody>
+                  <BackButton
+                    disabled={false}
+                    label="Back"
+                    onClick={[Function]}
+                  />
+                </TextBody>
+                <TextBody>
+                  <Label
+                    htmlFor="subjects"
+                    id="subjectTitle"
+                  />
+                </TextBody>
+                <Connect(DropDownComponent)
+                  accessID="Subject"
+                  content={
+                    Object {
+                      "back": "Back",
+                    }
+                  }
+                  ddId="ddlSubject"
+                  id="subjects"
+                  name="subjects"
+                  selectSubject={[Function]}
+                  selectedValue={undefined}
+                  showSubjectError={false}
+                  subjectErrors={undefined}
+                  subjects={undefined}
+                />
+                <TextBody>
+                  <Label
+                    htmlFor="subjects"
+                    id="relatesTitle"
+                  />
+                </TextBody>
+                <Connect(DropDownComponent)
+                  accessID="Message relates to"
+                  accounts={undefined}
+                  content={
+                    Object {
+                      "back": "Back",
+                    }
+                  }
+                  ddId="ddlAccount"
+                  id="accounts"
+                  name="accounts"
+                  selectSubject={[Function]}
+                  selectedValue={undefined}
+                  showAccountError={false}
+                />
+                <TextBody>
+                  <Label
+                    htmlFor="subjects"
+                    id="messageTitle"
+                  />
+                </TextBody>
+                <TextBody>
+                  <div
+                    className="u-visually-hidden off-screen"
+                    id="textAreaMaxMsg"
+                  />
+                  <Textarea
+                    cols="20"
+                    defaultValue={undefined}
+                    disabled={false}
+                    id="message"
+                    maxLength="infinity"
+                    onChange={[Function]}
+                    rows="20"
+                  />
+                </TextBody>
+                <TextBody>
+                  <ButtonGroup
+                    alignment="left"
+                  >
+                    <Button
+                      disabled={false}
+                      display="secondary"
+                      isLoading={false}
+                      name="Back"
+                      onClick={[Function]}
+                      size="md"
+                      width="flush"
+                    >
+                      Back
+                    </Button>
+                    <Button
+                      disabled={false}
+                      display="primary"
+                      isLoading={false}
+                      name="Save Draft"
+                      onClick={[Function]}
+                      size="md"
+                    />
+                    <Button
+                      disabled={false}
+                      display="primary"
+                      isLoading={false}
+                      name="Send"
+                      onClick={[Function]}
+                      size="md"
+                    />
+                  </ButtonGroup>
+                </TextBody>
+              </Card>,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "bordered": false,
+                "children": Array [
+                  <Title
+                    size="h4"
+                  />,
+                  <TextBody>
+                    <BackButton
+                      disabled={false}
+                      label="Back"
+                      onClick={[Function]}
+                    />
+                  </TextBody>,
+                  <TextBody>
+                    <Label
+                      htmlFor="subjects"
+                      id="subjectTitle"
+                    />
+                  </TextBody>,
+                  <Connect(DropDownComponent)
+                    accessID="Subject"
+                    content={
+                      Object {
+                        "back": "Back",
+                      }
+                    }
+                    ddId="ddlSubject"
+                    id="subjects"
+                    name="subjects"
+                    selectSubject={[Function]}
+                    selectedValue={undefined}
+                    showSubjectError={false}
+                    subjectErrors={undefined}
+                    subjects={undefined}
+                  />,
+                  <TextBody>
+                    <Label
+                      htmlFor="subjects"
+                      id="relatesTitle"
+                    />
+                  </TextBody>,
+                  <Connect(DropDownComponent)
+                    accessID="Message relates to"
+                    accounts={undefined}
+                    content={
+                      Object {
+                        "back": "Back",
+                      }
+                    }
+                    ddId="ddlAccount"
+                    id="accounts"
+                    name="accounts"
+                    selectSubject={[Function]}
+                    selectedValue={undefined}
+                    showAccountError={false}
+                  />,
+                  <TextBody>
+                    <Label
+                      htmlFor="subjects"
+                      id="messageTitle"
+                    />
+                  </TextBody>,
+                  <TextBody>
+                    <div
+                      className="u-visually-hidden off-screen"
+                      id="textAreaMaxMsg"
+                    />
+                    <Textarea
+                      cols="20"
+                      defaultValue={undefined}
+                      disabled={false}
+                      id="message"
+                      maxLength="infinity"
+                      onChange={[Function]}
+                      rows="20"
+                    />
+                  </TextBody>,
+                  <TextBody>
+                    <ButtonGroup
+                      alignment="left"
+                    >
+                      <Button
+                        disabled={false}
+                        display="secondary"
+                        isLoading={false}
+                        name="Back"
+                        onClick={[Function]}
+                        size="md"
+                        width="flush"
+                      >
+                        Back
+                      </Button>
+                      <Button
+                        disabled={false}
+                        display="primary"
+                        isLoading={false}
+                        name="Save Draft"
+                        onClick={[Function]}
+                        size="md"
+                      />
+                      <Button
+                        disabled={false}
+                        display="primary"
+                        isLoading={false}
+                        name="Send"
+                        onClick={[Function]}
+                        size="md"
+                      />
+                    </ButtonGroup>
+                  </TextBody>,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "children": undefined,
+                    "size": "h4",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "children": <BackButton
+                      disabled={false}
+                      label="Back"
+                      onClick={[Function]}
+                    />,
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "function",
+                    "props": Object {
+                      "disabled": false,
+                      "label": "Back",
+                      "onClick": [Function],
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "children": <Label
+                      htmlFor="subjects"
+                      id="subjectTitle"
+                    />,
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "function",
+                    "props": Object {
+                      "children": undefined,
+                      "htmlFor": "subjects",
+                      "id": "subjectTitle",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "accessID": "Subject",
+                    "content": Object {
+                      "back": "Back",
+                    },
+                    "ddId": "ddlSubject",
+                    "id": "subjects",
+                    "name": "subjects",
+                    "selectSubject": [Function],
+                    "selectedValue": undefined,
+                    "showSubjectError": false,
+                    "subjectErrors": undefined,
+                    "subjects": undefined,
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "children": <Label
+                      htmlFor="subjects"
+                      id="relatesTitle"
+                    />,
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "function",
+                    "props": Object {
+                      "children": undefined,
+                      "htmlFor": "subjects",
+                      "id": "relatesTitle",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "accessID": "Message relates to",
+                    "accounts": undefined,
+                    "content": Object {
+                      "back": "Back",
+                    },
+                    "ddId": "ddlAccount",
+                    "id": "accounts",
+                    "name": "accounts",
+                    "selectSubject": [Function],
+                    "selectedValue": undefined,
+                    "showAccountError": false,
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "children": <Label
+                      htmlFor="subjects"
+                      id="messageTitle"
+                    />,
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "function",
+                    "props": Object {
+                      "children": undefined,
+                      "htmlFor": "subjects",
+                      "id": "messageTitle",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "children": Array [
+                      <div
+                        className="u-visually-hidden off-screen"
+                        id="textAreaMaxMsg"
+                      />,
+                      <Textarea
+                        cols="20"
+                        defaultValue={undefined}
+                        disabled={false}
+                        id="message"
+                        maxLength="infinity"
+                        onChange={[Function]}
+                        rows="20"
+                      />,
+                      undefined,
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": undefined,
+                        "className": "u-visually-hidden off-screen",
+                        "id": "textAreaMaxMsg",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": "div",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "function",
+                      "props": Object {
+                        "cols": "20",
+                        "defaultValue": undefined,
+                        "disabled": false,
+                        "id": "message",
+                        "maxLength": "infinity",
+                        "onChange": [Function],
+                        "rows": "20",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                    undefined,
+                  ],
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "children": <ButtonGroup
+                      alignment="left"
+                    >
+                      <Button
+                        disabled={false}
+                        display="secondary"
+                        isLoading={false}
+                        name="Back"
+                        onClick={[Function]}
+                        size="md"
+                        width="flush"
+                      >
+                        Back
+                      </Button>
+                      <Button
+                        disabled={false}
+                        display="primary"
+                        isLoading={false}
+                        name="Save Draft"
+                        onClick={[Function]}
+                        size="md"
+                      />
+                      <Button
+                        disabled={false}
+                        display="primary"
+                        isLoading={false}
+                        name="Send"
+                        onClick={[Function]}
+                        size="md"
+                      />
+                    </ButtonGroup>,
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "function",
+                    "props": Object {
+                      "alignment": "left",
+                      "children": Array [
+                        <Button
+                          disabled={false}
+                          display="secondary"
+                          isLoading={false}
+                          name="Back"
+                          onClick={[Function]}
+                          size="md"
+                          width="flush"
+                        >
+                          Back
+                        </Button>,
+                        <Button
+                          disabled={false}
+                          display="primary"
+                          isLoading={false}
+                          name="Save Draft"
+                          onClick={[Function]}
+                          size="md"
+                        />,
+                        <Button
+                          disabled={false}
+                          display="primary"
+                          isLoading={false}
+                          name="Send"
+                          onClick={[Function]}
+                          size="md"
+                        />,
+                      ],
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "function",
+                        "props": Object {
+                          "children": "Back",
+                          "disabled": false,
+                          "display": "secondary",
+                          "isLoading": false,
+                          "name": "Back",
+                          "onClick": [Function],
+                          "size": "md",
+                          "width": "flush",
+                        },
+                        "ref": null,
+                        "rendered": "Back",
+                        "type": [Function],
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "function",
+                        "props": Object {
+                          "children": undefined,
+                          "disabled": false,
+                          "display": "primary",
+                          "isLoading": false,
+                          "name": "Save Draft",
+                          "onClick": [Function],
+                          "size": "md",
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": [Function],
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "function",
+                        "props": Object {
+                          "children": undefined,
+                          "disabled": false,
+                          "display": "primary",
+                          "isLoading": false,
+                          "name": "Send",
+                          "onClick": [Function],
+                          "size": "md",
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": [Function],
+                      },
+                    ],
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        false,
+        "",
+        false,
+        undefined,
+        undefined,
+        undefined,
+      ],
       "type": [Function],
     },
   ],

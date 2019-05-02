@@ -22,6 +22,8 @@ export default combineReducers({
 export const getMessages = (state) => messageSelectors.getMessages(state.messages);
 export const getMessageError = (state, status) => messageSelectors.getMessageError(state,messages, status);
 export const getShowSuccessModal = (state) => messageSelectors.getShowSuccessModal(state.messages);
+export const getUpdating = (state) => messageSelectors.getUpdating(state.messages);
+export const getIsSavingDraft = (state) => messageSelectors.getIsSavingDraft(state.messages);
 
 export const getAccounts = (state) => accountSelectors.getAccounts(state.accounts);
 

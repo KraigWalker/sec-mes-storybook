@@ -5,7 +5,8 @@ import renderer from 'react-test-renderer';
 
 describe('>>>R E D U C E R --- Test AccessibilityReducer', () => {
     it('should return the initial state', () => {
-        expect(SecureMessageLandingReducer(undefined, {})).toEqual({ messages: [], fetching: false, fetched: false, error: false, successModal: false, activeTab: 'inbox', newMessageError: false, draftError: false });
+        expect(SecureMessageLandingReducer(undefined, {})).toEqual({ messages: [], fetching: false, fetched: false, error: false, 
+            successModal: false, activeTab: 'inbox', newMessageError: false, draftError: false, updated: false, updating: false });
     });
     it('+++ reducer for REQUEST_SECURE_MESSAGES', () => {
         let state = { messages: [], fetching: false, fetched: false, error: false, successModal: false, activeTab: 'inbox', newMessageError: false, draftError: false };
@@ -67,7 +68,8 @@ describe('>>>R E D U C E R --- Test AccessibilityReducer', () => {
     it('+++ reducer for UPDATE_SECURE_MESSAGE_SUCCESS', () => {
         let state = { messages: [], fetching: false, fetched: false, error: false, successModal: false, activeTab: 'inbox', newMessageError: false, draftError: false };
         state = SecureMessageLandingReducer(state, { type: "UPDATE_SECURE_MESSAGE_SUCCESS" });
-        expect(state).toEqual({ messages: [], fetching: false, fetched: false, error: false, successModal: true, activeTab: 'inbox', newMessageError: false, draftError: false });
+        expect(state).toEqual({ messages: [], fetching: false, fetched: false, error: false, successModal: true, 
+            isSavingDraft: false, updating: false, activeTab: 'inbox', newMessageError: false, draftError: false });
     });
     it('+++ reducer for ERROR_BACK_BUTTON', () => {
         let state = { messages: [], fetching: false, fetched: false, error: false, successModal: false, activeTab: 'inbox', newMessageError: false, draftError: false };
@@ -77,12 +79,14 @@ describe('>>>R E D U C E R --- Test AccessibilityReducer', () => {
     it('+++ reducer for UPDATE_SECURE_MESSAGE_DRAFT_FAILURE', () => {
         let state = { messages: [], fetching: false, fetched: false, error: false, successModal: false, activeTab: 'inbox', newMessageError: false, draftError: false };
         state = SecureMessageLandingReducer(state, { type: "UPDATE_SECURE_MESSAGE_DRAFT_FAILURE" });
-        expect(state).toEqual({ messages: [], fetching: false, fetched: true, error: false, successModal: false, activeTab: 'inbox', newMessageError: false, draftError: true });
+        expect(state).toEqual({ messages: [], fetching: false, fetched: true, error: false, successModal: false, 
+            isSavingDraft: false, activeTab: 'inbox', newMessageError: false, draftError: true });
     });
     it('+++ reducer for UPDATE_NEW_SECURE_MESSAGE_FAILURE', () => {
         let state = { messages: [], fetching: false, fetched: false, error: false, successModal: false, activeTab: 'inbox', newMessageError: false, draftError: false };
         state = SecureMessageLandingReducer(state, { type: "UPDATE_NEW_SECURE_MESSAGE_FAILURE" });
-        expect(state).toEqual({ messages: [], fetching: false, fetched: true, error: false, successModal: false, activeTab: 'inbox', newMessageError: true, draftError: false });
+        expect(state).toEqual({ messages: [], fetching: false, fetched: true, error: false, successModal: false, 
+            isSavingDraft: false, activeTab: 'inbox', newMessageError: true, draftError: false });
     });
     it('+++ reducer for SET_POPUP_STATE', () => {
         let state = { messages: [], fetching: false, fetched: false, error: false, successModal: false, activeTab: 'inbox', newMessageError: false, draftError: false };
