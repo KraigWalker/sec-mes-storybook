@@ -13,11 +13,10 @@ try {
             shell.exec(`${instructionPath} > /dev/null $`, {async: true});
             return shell.exit(0);
         }
-
         return shell.exec("echo Error Google Chrome application path not detected on your machine. This must be started with ignore certicate errors.").stdout && shell.exit(1);
     }
 } catch (err) {
-    console.error("ERROR Please use node > 10 to run MEO advisor dependencies. Re-run npm install once on node 10");
+    console.error("ERROR Please use node >= 10 to run MEO advisor dependencies. Re-run npm install once on node >= 10");
     throw err;
 }
 
