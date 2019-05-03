@@ -18,6 +18,6 @@ try {
     }
 } catch (err) {
     console.error("ERROR Please use node > 10 to run MEO advisor dependencies. Re-run npm install once on node 10");
-    throw err
+    throw err;
 }
 
