@@ -20,6 +20,7 @@ ShallowWrapper {
         "getMessageBody": [MockFunction],
         "getReference": [MockFunction],
         "getSubject": [MockFunction],
+        "message": "Hello there",
         "status": "READ",
       }
     }
@@ -63,7 +64,7 @@ ShallowWrapper {
         mailDate={undefined}
         mailOnClick={[Function]}
         mailSubject="undefined "
-        mailSummary={undefined}
+        mailSummary="Hello..."
         message={
           Object {
             "account": Object {
@@ -73,6 +74,7 @@ ShallowWrapper {
             "getMessageBody": [MockFunction],
             "getReference": [MockFunction],
             "getSubject": [MockFunction],
+            "message": "Hello there",
             "status": "READ",
           }
         }
@@ -110,7 +112,7 @@ ShallowWrapper {
         "mailDate": undefined,
         "mailOnClick": [Function],
         "mailSubject": "undefined ",
-        "mailSummary": undefined,
+        "mailSummary": "Hello...",
         "message": Object {
           "account": Object {
             "number": "32236",
@@ -119,6 +121,7 @@ ShallowWrapper {
           "getMessageBody": [MockFunction],
           "getReference": [MockFunction],
           "getSubject": [MockFunction],
+          "message": "Hello there",
           "status": "READ",
         },
         "messageDetail": Object {
@@ -159,7 +162,7 @@ ShallowWrapper {
           mailDate={undefined}
           mailOnClick={[Function]}
           mailSubject="undefined "
-          mailSummary={undefined}
+          mailSummary="Hello..."
           message={
             Object {
               "account": Object {
@@ -169,6 +172,7 @@ ShallowWrapper {
               "getMessageBody": [MockFunction],
               "getReference": [MockFunction],
               "getSubject": [MockFunction],
+              "message": "Hello there",
               "status": "READ",
             }
           }
@@ -206,7 +210,7 @@ ShallowWrapper {
           "mailDate": undefined,
           "mailOnClick": [Function],
           "mailSubject": "undefined ",
-          "mailSummary": undefined,
+          "mailSummary": "Hello...",
           "message": Object {
             "account": Object {
               "number": "32236",
@@ -215,6 +219,7 @@ ShallowWrapper {
             "getMessageBody": [MockFunction],
             "getReference": [MockFunction],
             "getSubject": [MockFunction],
+            "message": "Hello there",
             "status": "READ",
           },
           "messageDetail": Object {
@@ -274,6 +279,7 @@ ShallowWrapper {
         "getMessageBody": [MockFunction],
         "getReference": [MockFunction],
         "getSubject": [MockFunction],
+        "message": "Hello there",
         "status": "DRAFT",
       }
     }
@@ -317,7 +323,7 @@ ShallowWrapper {
         mailDate={undefined}
         mailOnClick={[Function]}
         mailSubject="undefined "
-        mailSummary={undefined}
+        mailSummary="Hello..."
         message={
           Object {
             "account": Object {
@@ -327,6 +333,7 @@ ShallowWrapper {
             "getMessageBody": [MockFunction],
             "getReference": [MockFunction],
             "getSubject": [MockFunction],
+            "message": "Hello there",
             "status": "DRAFT",
           }
         }
@@ -364,7 +371,7 @@ ShallowWrapper {
         "mailDate": undefined,
         "mailOnClick": [Function],
         "mailSubject": "undefined ",
-        "mailSummary": undefined,
+        "mailSummary": "Hello...",
         "message": Object {
           "account": Object {
             "number": undefined,
@@ -373,6 +380,7 @@ ShallowWrapper {
           "getMessageBody": [MockFunction],
           "getReference": [MockFunction],
           "getSubject": [MockFunction],
+          "message": "Hello there",
           "status": "DRAFT",
         },
         "messageDetail": Object {
@@ -413,7 +421,7 @@ ShallowWrapper {
           mailDate={undefined}
           mailOnClick={[Function]}
           mailSubject="undefined "
-          mailSummary={undefined}
+          mailSummary="Hello..."
           message={
             Object {
               "account": Object {
@@ -423,6 +431,7 @@ ShallowWrapper {
               "getMessageBody": [MockFunction],
               "getReference": [MockFunction],
               "getSubject": [MockFunction],
+              "message": "Hello there",
               "status": "DRAFT",
             }
           }
@@ -460,7 +469,7 @@ ShallowWrapper {
           "mailDate": undefined,
           "mailOnClick": [Function],
           "mailSubject": "undefined ",
-          "mailSummary": undefined,
+          "mailSummary": "Hello...",
           "message": Object {
             "account": Object {
               "number": undefined,
@@ -469,6 +478,7 @@ ShallowWrapper {
             "getMessageBody": [MockFunction],
             "getReference": [MockFunction],
             "getSubject": [MockFunction],
+            "message": "Hello there",
             "status": "DRAFT",
           },
           "messageDetail": Object {
@@ -528,6 +538,7 @@ ShallowWrapper {
         "getMessageBody": [MockFunction],
         "getReference": [MockFunction],
         "getSubject": [MockFunction],
+        "message": "Hello there",
         "status": "NEW",
       }
     }
@@ -572,7 +583,7 @@ ShallowWrapper {
         mailDate={undefined}
         mailOnClick={[Function]}
         mailSubject="undefined "
-        mailSummary={undefined}
+        mailSummary="Hello..."
         message={
           Object {
             "account": Object {
@@ -582,6 +593,7 @@ ShallowWrapper {
             "getMessageBody": [MockFunction],
             "getReference": [MockFunction],
             "getSubject": [MockFunction],
+            "message": "Hello there",
             "status": "NEW",
           }
         }
@@ -620,7 +632,7 @@ ShallowWrapper {
         "mailDate": undefined,
         "mailOnClick": [Function],
         "mailSubject": "undefined ",
-        "mailSummary": undefined,
+        "mailSummary": "Hello...",
         "message": Object {
           "account": Object {
             "number": "32236",
@@ -629,6 +641,7 @@ ShallowWrapper {
           "getMessageBody": [MockFunction],
           "getReference": [MockFunction],
           "getSubject": [MockFunction],
+          "message": "Hello there",
           "status": "NEW",
         },
         "messageDetail": Object {
@@ -670,7 +683,7 @@ ShallowWrapper {
           mailDate={undefined}
           mailOnClick={[Function]}
           mailSubject="undefined "
-          mailSummary={undefined}
+          mailSummary="Hello..."
           message={
             Object {
               "account": Object {
@@ -680,6 +693,7 @@ ShallowWrapper {
               "getMessageBody": [MockFunction],
               "getReference": [MockFunction],
               "getSubject": [MockFunction],
+              "message": "Hello there",
               "status": "NEW",
             }
           }
@@ -718,7 +732,7 @@ ShallowWrapper {
           "mailDate": undefined,
           "mailOnClick": [Function],
           "mailSubject": "undefined ",
-          "mailSummary": undefined,
+          "mailSummary": "Hello...",
           "message": Object {
             "account": Object {
               "number": "32236",
@@ -727,6 +741,7 @@ ShallowWrapper {
             "getMessageBody": [MockFunction],
             "getReference": [MockFunction],
             "getSubject": [MockFunction],
+            "message": "Hello there",
             "status": "NEW",
           },
           "messageDetail": Object {

@@ -13,13 +13,7 @@ ShallowWrapper {
     }
     id="subjects"
     messages={Array []}
-    popupState={
-      [MockFunction] {
-        "calls": Array [
-          Array [],
-        ],
-      }
-    }
+    popupState={[MockFunction]}
     selectSubject={[MockFunction]}
     selectedAccountValue={null}
     showAccountError={false}
@@ -52,8 +46,6 @@ ShallowWrapper {
             <Select
               defaultValue={undefined}
               disabled={false}
-              iconSize="sm"
-              iconType="ChevronDownSolidSmall"
               id={undefined}
               onChange={[Function]}
               options={
@@ -83,8 +75,6 @@ ShallowWrapper {
             <Select
               defaultValue={undefined}
               disabled={false}
-              iconSize="sm"
-              iconType="ChevronDownSolidSmall"
               id={undefined}
               onChange={[Function]}
               options={
@@ -112,8 +102,6 @@ ShallowWrapper {
             "children": <Select
               defaultValue={undefined}
               disabled={false}
-              iconSize="sm"
-              iconType="ChevronDownSolidSmall"
               id={undefined}
               onChange={[Function]}
               options={
@@ -134,8 +122,6 @@ ShallowWrapper {
             "props": Object {
               "defaultValue": undefined,
               "disabled": false,
-              "iconSize": "sm",
-              "iconType": "ChevronDownSolidSmall",
               "id": undefined,
               "onChange": [Function],
               "options": Array [
@@ -177,8 +163,6 @@ ShallowWrapper {
               <Select
                 defaultValue={undefined}
                 disabled={false}
-                iconSize="sm"
-                iconType="ChevronDownSolidSmall"
                 id={undefined}
                 onChange={[Function]}
                 options={
@@ -208,8 +192,6 @@ ShallowWrapper {
               <Select
                 defaultValue={undefined}
                 disabled={false}
-                iconSize="sm"
-                iconType="ChevronDownSolidSmall"
                 id={undefined}
                 onChange={[Function]}
                 options={
@@ -237,8 +219,6 @@ ShallowWrapper {
               "children": <Select
                 defaultValue={undefined}
                 disabled={false}
-                iconSize="sm"
-                iconType="ChevronDownSolidSmall"
                 id={undefined}
                 onChange={[Function]}
                 options={
@@ -259,8 +239,6 @@ ShallowWrapper {
               "props": Object {
                 "defaultValue": undefined,
                 "disabled": false,
-                "iconSize": "sm",
-                "iconType": "ChevronDownSolidSmall",
                 "id": undefined,
                 "onChange": [Function],
                 "options": Array [
