@@ -33,8 +33,7 @@ class ReplySecureMessage extends React.Component {
     super(props);
     this.onMount = this.onMount.bind(this);
     this.getThreads = this.getThreads.bind(this);
-    this.send = this.send.bind(this);
-    this.save = this.save.bind(this);
+    this.sendAction = this.handleSaveClick.bind(this);
   }
 
   onMount() {
@@ -61,22 +60,8 @@ class ReplySecureMessage extends React.Component {
     });
   }
 
-  send(messageEntity) {
-    const { customerDetails, accounts } = this.props;
-    const { name } = customerDetails.personal_details;
+  handleSaveClick(status, messageEntity) {
 
-    const sendRequestMessage = BuildSendMessageRequestEntity(
-      accounts,
-      messageEntity
-    );
-    this.props.sendMessageData(
-      sendRequestMessage.getMessageRequestData(),
-      PENDING,
-      name
-    );
-  }
-
-  save(messageEntity) {
     const { location, customerDetails, accounts } = this.props;
     const { name } = customerDetails.personal_details;
 
@@ -87,7 +72,7 @@ class ReplySecureMessage extends React.Component {
     this.props.replyMessageData(
       sendRequestMessage.getMessageRequestData(),
       location.messageDetail,
-      DRAFT,
+      status,
       name || {}
     );
   }
@@ -105,8 +90,8 @@ class ReplySecureMessage extends React.Component {
       <SecureMessageForm
         {...this.props}
         threads={threads}
-        onSend={this.send}
-        onSave={this.save}
+        onSend={(messageEntity) => this.handleSaveClick(PENDING, messageEntity)}
+        onSave={(messageEntity) => this.handleSaveClick(DRAFT, messageEntity)}
         onMount={this.onMount}
         title={content.replyMessageTitle}
         selectedSubject={messageDetail.subject}

@@ -54,7 +54,7 @@ ShallowWrapper {
             />
           </TextBody>
           <Title
-            size="h1"
+            size="h4"
           />
           <TextBody />
           <TextBody />
@@ -108,7 +108,7 @@ ShallowWrapper {
             />
           </TextBody>
           <Title
-            size="h1"
+            size="h4"
           />
           <TextBody />
           <TextBody />
@@ -159,7 +159,7 @@ ShallowWrapper {
               />
             </TextBody>,
             <Title
-              size="h1"
+              size="h4"
             />,
             <TextBody />,
             <TextBody />,
@@ -228,7 +228,7 @@ ShallowWrapper {
             "nodeType": "function",
             "props": Object {
               "children": undefined,
-              "size": "h1",
+              "size": "h4",
             },
             "ref": null,
             "rendered": null,
@@ -323,7 +323,7 @@ ShallowWrapper {
               />
             </TextBody>
             <Title
-              size="h1"
+              size="h4"
             />
             <TextBody />
             <TextBody />
@@ -377,7 +377,7 @@ ShallowWrapper {
               />
             </TextBody>
             <Title
-              size="h1"
+              size="h4"
             />
             <TextBody />
             <TextBody />
@@ -428,7 +428,7 @@ ShallowWrapper {
                 />
               </TextBody>,
               <Title
-                size="h1"
+                size="h4"
               />,
               <TextBody />,
               <TextBody />,
@@ -497,7 +497,7 @@ ShallowWrapper {
               "nodeType": "function",
               "props": Object {
                 "children": undefined,
-                "size": "h1",
+                "size": "h4",
               },
               "ref": null,
               "rendered": null,
