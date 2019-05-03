@@ -8,7 +8,7 @@ class ApiUtils {
       "x-bpi-client-context": JSON.stringify(clientContext),
       Authorization: `Bearer ${accessToken}`,
       "Content-Type": "application/json",
-      ...headers
+      ...headers,
     };
   }
   makeRequest(apiData, onSuccess, onFail) {

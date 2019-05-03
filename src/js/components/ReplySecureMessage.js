@@ -33,7 +33,7 @@ class ReplySecureMessage extends React.Component {
     super(props);
     this.onMount = this.onMount.bind(this);
     this.getThreads = this.getThreads.bind(this);
-    this.sendAction = this.sendAction.bind(this);
+    this.sendAction = this.handleSaveClick.bind(this);
   }
 
   onMount() {
@@ -60,7 +60,7 @@ class ReplySecureMessage extends React.Component {
     });
   }
 
-  sendAction(status, messageEntity) {
+  handleSaveClick(status, messageEntity) {
 
     const { location, customerDetails, accounts } = this.props;
     const { name } = customerDetails.personal_details;
@@ -90,8 +90,8 @@ class ReplySecureMessage extends React.Component {
       <SecureMessageForm
         {...this.props}
         threads={threads}
-        onSend={(messageEntity) => this.sendAction(PENDING, messageEntity)}
-        onSave={(messageEntity) => this.sendAction(DRAFT, messageEntity)}
+        onSend={(messageEntity) => this.handleSaveClick(PENDING, messageEntity)}
+        onSave={(messageEntity) => this.handleSaveClick(DRAFT, messageEntity)}
         onMount={this.onMount}
         title={content.replyMessageTitle}
         selectedSubject={messageDetail.subject}

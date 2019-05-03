@@ -82,16 +82,7 @@ function buildRequestAccount({accountId, number}) {
     };
 }
 
-function buildHeaders({name, value})
-{
-    return [
-        {
-            name,
-            value
-        }
-    ];
-    
-}
+const buildHeaders = ({name, value}) => [{name, value}];
 
 export function createNewMessage(data, status, name) {
     const requestUser = buildRequestUser(name);
