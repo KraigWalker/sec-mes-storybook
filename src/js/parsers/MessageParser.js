@@ -71,13 +71,13 @@ function buildRequestUser(name) {
     };
 }
 
-function buildRequestAccount({id, number}) {
+function buildRequestAccount({accountId, number}) {
 
-    if (isNullOrUndefined(id) && isNullOrUndefined(number)) {
+    if (isNullOrUndefined(accountId) && isNullOrUndefined(number)) {
         return undefined;
     }
     return {
-        id, 
+        id: accountId, 
         number
     };
 }
@@ -95,19 +95,19 @@ function buildHeaders({name, value})
 
 export function createNewMessage(data, status, name) {
     const requestUser = buildRequestUser(name);
-    const requestAccount = buildRequestAccount(data)
+    const requestAccount = buildRequestAccount(data.account)
     return buildRequest({...data, status, requestUser, requestAccount});
 }
 
 export function updateMessage(data, id, status) {
-    const requestAccount = buildRequestAccount(data);
+    const requestAccount = buildRequestAccount(data.account);
     const payloadHeaders = buildHeaders({name: "In-Reply-To", value: id});
     return buildRequest({...data, status, payloadHeaders, requestAccount});   
 }
 
 export function replyMessage(data, ids, status, name) {
     const requestUser = buildRequestUser(name);
-    const requestAccount = buildRequestAccount(data);
+    const requestAccount = buildRequestAccount(data.account);
     const payloadHeaders = buildHeaders({name: "In-Reply-To", value: ids.id});
     const threadID = isNullOrUndefined(ids.threadID) ? undefined : ids.threadID;
     return buildRequest({...data, status, threadID, requestUser, requestAccount, payloadHeaders});

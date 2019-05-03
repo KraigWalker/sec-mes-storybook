@@ -15,6 +15,10 @@ describe('createNewMessage Tests', () => {
     data = {
         subject: "Technical Support",
         message: "Some simple message text",
+        account: {
+            id: undefined,
+            number: undefined
+        }
     }
   })
 
@@ -24,9 +28,10 @@ describe('createNewMessage Tests', () => {
   });
 
   it('when there is an account then the message should contain the account details', () => {
-        data.number = "12345";
-        data.id = "98765";
-        
+        data.account = {
+            number: "12345",
+            accountId: "98765"
+        }
         const message = createNewMessage(data, DRAFT, name);
         const expectedMessage = {
             secure_message: {
@@ -41,8 +46,8 @@ describe('createNewMessage Tests', () => {
                 },
                 thread_id: undefined,
                 account: {
-                    number: data.number,
-                    id: data.id
+                    number: data.account.number,
+                    id: data.account.accountId
                 },
                 payload: {
                     body: {
@@ -70,6 +75,10 @@ describe('updateMessage Tests', () => {
       data = {
           subject: "Technical Support",
           message: "Some simple message text",
+          account: {
+              number: undefined,
+              accountId: undefined
+          }
       }
     })
   
@@ -105,16 +114,18 @@ describe('updateMessage Tests', () => {
     });
 
     it('has account then message has account detail', () => {
-        data.number = "123456";
-        data.id = "00212";
+        data.account = {
+            number: "123456",
+            accountId: "00212"
+        }
         const message = updateMessage(data, "C0122455", DRAFT);
         const expectedMessage = {
             secure_message: {
                 subject: data.subject,
                 thread_id: undefined,
                 account: {
-                    id: data.id,
-                    number: data.number
+                    id: data.account.accountId,
+                    number: data.account.number
                 },
                 payload: {
                     body: {
@@ -141,6 +152,10 @@ describe('updateMessage Tests', () => {
       data = {
           subject: "Technical Support",
           message: "Some simple message text",
+          account: {
+              number: undefined,
+              id: undefined
+          }
       }
     })
   
@@ -160,16 +175,19 @@ describe('updateMessage Tests', () => {
     });
 
     it('with account, name & threadID then the message appears correctly', () => {
-        data.number = "123456";
-        data.id = "00212";
+        data.account = {
+            number: "123456",
+            accountId: "00212"
+        }
+        
         const message = replyMessage(data, {id: "C0122455", threadID: "98765"}, DRAFT, name);
         const expectedMessage = {
             secure_message: {
                 subject: data.subject,
                 thread_id: "98765",
                 account: {
-                    id: data.id,
-                    number: data.number
+                    id: data.account.accountId,
+                    number: data.account.number
                 },
                 payload: {
                     body: {

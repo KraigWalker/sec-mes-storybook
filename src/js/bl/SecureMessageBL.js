@@ -70,7 +70,7 @@ export function BuildSendMessageRequestEntity(accounts, messageEntity ) {
         sendMessageRequestEntity.setName(accountNameNew);
         sendMessageRequestEntity.setAccountId(account.accountId);
         sendMessageRequestEntity.setAccountNumber(account.number);
-    }
+	}
     return sendMessageRequestEntity;
 }
 
