@@ -50,11 +50,15 @@ describe("SecureMessageForm snapshot", () => {
         expect(component.instance().state.showSaveServiceErrorModal).toBeFalsy();
     });
     it('textChange function test with no text', () => {
-        component.instance().textChange('');
+        component.instance().handleTextChange({target: {
+            value: ''
+        }}, 5);
         expect(component.instance().state.disabled).toBeTruthy();
     });
     it('textChange function test with text', () => {
-        component.instance().textChange('new message');
+        component.instance().handleTextChange({target: {
+            value: 'message'
+        }}, 5);
         expect(component.instance().state.disabled).toBeFalsy();
     });
     it('checkValidation function test with selectAccount', () => {
@@ -70,21 +74,6 @@ describe("SecureMessageForm snapshot", () => {
     it('retryServiceCall function test', () => {
         component.instance().retryServiceCall();
         expect(props.popupState).toBeCalled();
-    });
-    it('renderRemainingChar function test', () => {
-        component.instance().renderRemainingChar();
-        component.setState({ charError: true, chars_left: 3 });
-        expect(props.sendMessageForAccessibiltiy).toBeCalled();
-    });
-    it('renderRemainingChar function test', () => {
-        component.instance().renderRemainingChar();
-        component.setState({ charError: true, chars_left: 1 });
-        expect(props.sendMessageForAccessibiltiy).toBeCalled();
-    });
-    it('renderRemainingChar function test', () => {
-        component.instance().renderRemainingChar();
-        component.setState({ charError: true, chars_left: 0 });
-        expect(props.sendMessageForAccessibiltiy).toBeCalled();
     });
     it('returnModalComponent function test', () => {
         component.instance().returnModalComponent();

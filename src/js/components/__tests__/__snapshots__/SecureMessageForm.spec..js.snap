@@ -110,14 +110,19 @@ ShallowWrapper {
                   className="u-visually-hidden off-screen"
                   id="textAreaMaxMsg"
                 />
-                <Textarea
+                <TextAreaWrapper
+                  charsLeftDisplayThreshold={300}
                   cols="20"
-                  defaultValue={undefined}
-                  disabled={false}
+                  content={
+                    Object {
+                      "back": "Back",
+                    }
+                  }
                   id="message"
-                  maxLength="infinity"
+                  maxChars={3000}
                   onChange={[Function]}
                   rows="20"
+                  value={undefined}
                 />
               </TextBody>
               <TextBody>
@@ -240,14 +245,19 @@ ShallowWrapper {
                   className="u-visually-hidden off-screen"
                   id="textAreaMaxMsg"
                 />
-                <Textarea
+                <TextAreaWrapper
+                  charsLeftDisplayThreshold={300}
                   cols="20"
-                  defaultValue={undefined}
-                  disabled={false}
+                  content={
+                    Object {
+                      "back": "Back",
+                    }
+                  }
                   id="message"
-                  maxLength="infinity"
+                  maxChars={3000}
                   onChange={[Function]}
                   rows="20"
+                  value={undefined}
                 />
               </TextBody>
               <TextBody>
@@ -361,14 +371,19 @@ ShallowWrapper {
                   className="u-visually-hidden off-screen"
                   id="textAreaMaxMsg"
                 />
-                <Textarea
+                <TextAreaWrapper
+                  charsLeftDisplayThreshold={300}
                   cols="20"
-                  defaultValue={undefined}
-                  disabled={false}
+                  content={
+                    Object {
+                      "back": "Back",
+                    }
+                  }
                   id="message"
-                  maxLength="infinity"
+                  maxChars={3000}
                   onChange={[Function]}
                   rows="20"
+                  value={undefined}
                 />
               </TextBody>
               <TextBody>
@@ -478,14 +493,19 @@ ShallowWrapper {
                     className="u-visually-hidden off-screen"
                     id="textAreaMaxMsg"
                   />
-                  <Textarea
+                  <TextAreaWrapper
+                    charsLeftDisplayThreshold={300}
                     cols="20"
-                    defaultValue={undefined}
-                    disabled={false}
+                    content={
+                      Object {
+                        "back": "Back",
+                      }
+                    }
                     id="message"
-                    maxLength="infinity"
+                    maxChars={3000}
                     onChange={[Function]}
                     rows="20"
+                    value={undefined}
                   />
                 </TextBody>,
                 <TextBody>
@@ -695,16 +715,20 @@ ShallowWrapper {
                       className="u-visually-hidden off-screen"
                       id="textAreaMaxMsg"
                     />,
-                    <Textarea
+                    <TextAreaWrapper
+                      charsLeftDisplayThreshold={300}
                       cols="20"
-                      defaultValue={undefined}
-                      disabled={false}
+                      content={
+                        Object {
+                          "back": "Back",
+                        }
+                      }
                       id="message"
-                      maxLength="infinity"
+                      maxChars={3000}
                       onChange={[Function]}
                       rows="20"
+                      value={undefined}
                     />,
-                    undefined,
                   ],
                 },
                 "ref": null,
@@ -725,21 +749,23 @@ ShallowWrapper {
                   Object {
                     "instance": null,
                     "key": undefined,
-                    "nodeType": "function",
+                    "nodeType": "class",
                     "props": Object {
+                      "charsLeftDisplayThreshold": 300,
                       "cols": "20",
-                      "defaultValue": undefined,
-                      "disabled": false,
+                      "content": Object {
+                        "back": "Back",
+                      },
                       "id": "message",
-                      "maxLength": "infinity",
+                      "maxChars": 3000,
                       "onChange": [Function],
                       "rows": "20",
+                      "value": undefined,
                     },
                     "ref": null,
                     "rendered": null,
                     "type": [Function],
                   },
-                  undefined,
                 ],
                 "type": [Function],
               },
@@ -971,14 +997,19 @@ ShallowWrapper {
                     className="u-visually-hidden off-screen"
                     id="textAreaMaxMsg"
                   />
-                  <Textarea
+                  <TextAreaWrapper
+                    charsLeftDisplayThreshold={300}
                     cols="20"
-                    defaultValue={undefined}
-                    disabled={false}
+                    content={
+                      Object {
+                        "back": "Back",
+                      }
+                    }
                     id="message"
-                    maxLength="infinity"
+                    maxChars={3000}
                     onChange={[Function]}
                     rows="20"
+                    value={undefined}
                   />
                 </TextBody>
                 <TextBody>
@@ -1101,14 +1132,19 @@ ShallowWrapper {
                     className="u-visually-hidden off-screen"
                     id="textAreaMaxMsg"
                   />
-                  <Textarea
+                  <TextAreaWrapper
+                    charsLeftDisplayThreshold={300}
                     cols="20"
-                    defaultValue={undefined}
-                    disabled={false}
+                    content={
+                      Object {
+                        "back": "Back",
+                      }
+                    }
                     id="message"
-                    maxLength="infinity"
+                    maxChars={3000}
                     onChange={[Function]}
                     rows="20"
+                    value={undefined}
                   />
                 </TextBody>
                 <TextBody>
@@ -1222,14 +1258,19 @@ ShallowWrapper {
                     className="u-visually-hidden off-screen"
                     id="textAreaMaxMsg"
                   />
-                  <Textarea
+                  <TextAreaWrapper
+                    charsLeftDisplayThreshold={300}
                     cols="20"
-                    defaultValue={undefined}
-                    disabled={false}
+                    content={
+                      Object {
+                        "back": "Back",
+                      }
+                    }
                     id="message"
-                    maxLength="infinity"
+                    maxChars={3000}
                     onChange={[Function]}
                     rows="20"
+                    value={undefined}
                   />
                 </TextBody>
                 <TextBody>
@@ -1339,14 +1380,19 @@ ShallowWrapper {
                       className="u-visually-hidden off-screen"
                       id="textAreaMaxMsg"
                     />
-                    <Textarea
+                    <TextAreaWrapper
+                      charsLeftDisplayThreshold={300}
                       cols="20"
-                      defaultValue={undefined}
-                      disabled={false}
+                      content={
+                        Object {
+                          "back": "Back",
+                        }
+                      }
                       id="message"
-                      maxLength="infinity"
+                      maxChars={3000}
                       onChange={[Function]}
                       rows="20"
+                      value={undefined}
                     />
                   </TextBody>,
                   <TextBody>
@@ -1556,16 +1602,20 @@ ShallowWrapper {
                         className="u-visually-hidden off-screen"
                         id="textAreaMaxMsg"
                       />,
-                      <Textarea
+                      <TextAreaWrapper
+                        charsLeftDisplayThreshold={300}
                         cols="20"
-                        defaultValue={undefined}
-                        disabled={false}
+                        content={
+                          Object {
+                            "back": "Back",
+                          }
+                        }
                         id="message"
-                        maxLength="infinity"
+                        maxChars={3000}
                         onChange={[Function]}
                         rows="20"
+                        value={undefined}
                       />,
-                      undefined,
                     ],
                   },
                   "ref": null,
@@ -1586,21 +1636,23 @@ ShallowWrapper {
                     Object {
                       "instance": null,
                       "key": undefined,
-                      "nodeType": "function",
+                      "nodeType": "class",
                       "props": Object {
+                        "charsLeftDisplayThreshold": 300,
                         "cols": "20",
-                        "defaultValue": undefined,
-                        "disabled": false,
+                        "content": Object {
+                          "back": "Back",
+                        },
                         "id": "message",
-                        "maxLength": "infinity",
+                        "maxChars": 3000,
                         "onChange": [Function],
                         "rows": "20",
+                        "value": undefined,
                       },
                       "ref": null,
                       "rendered": null,
                       "type": [Function],
                     },
-                    undefined,
                   ],
                   "type": [Function],
                 },

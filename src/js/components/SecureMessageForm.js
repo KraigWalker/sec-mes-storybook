@@ -1,28 +1,25 @@
 import React from 'react';
 import DropDownComponent from './common/DropDownComponent';
-import RegexUtils from '../utils/RegexUtils';
-import { Textarea } from 'web-ui-components/lib/atoms/forms';
 import { Button } from 'web-ui-components/lib/atoms/buttons';
 import { ButtonGroup } from 'web-ui-components/lib/molecules/buttons';
 import { UnfinishedWorkModal } from 'web-ui-components/lib/organisms/modals';
 import MessageEntity from '../entities/MessageEntity';
-import { ValidationMessage } from 'web-ui-components/lib/molecules/forms';
 import { Container, Row } from 'web-ui-components/lib/global/layout';
 import { Card } from "web-ui-components/lib/organisms/cards";
 import { TextBody } from "web-ui-components/lib/atoms/text";
 import { Label } from 'web-ui-components/lib/atoms/forms';
 import { BackButton } from 'web-ui-components/lib/molecules/navigation';
+import TextAreaWrapper from './common/TextAreaWrapper';
 import SuccessMpdal from "./common/SuccessModal";
 import ErrorModal from "./common/ErrorModal";
-import { TextStyled } from 'web-ui-components/lib/atoms/text';
 import { Title } from "web-ui-components/lib/atoms/text";
 import PropTypes from 'prop-types';
 import { LoadingLocalTakeover } from 'web-ui-components/lib/organisms/takeovers';
 import { withBreakpoints } from "../components/common/hoc/WithBreakpoint";
+import { maskCardDetails } from "../bl/SecureMessageBL";
 
 const CHARS_LEFT_DISPLAY_THRESHOLD = 300;
 const MAX_CHARS = 3000;
-
 
 //DEBT : this component needs broken up considerably, now that is has been reduced from 
 //3 files into one shared across reply, draft & new. It's render method needs broken down considerably
@@ -30,7 +27,7 @@ const MAX_CHARS = 3000;
 export class SecureMessageForm extends React.Component {
 	constructor(props) {
 		super(props);
-		this.textChange = this.textChange.bind(this);
+		this.handleTextChange = this.handleTextChange.bind(this);
 		this.selectSubject = this.selectSubject.bind(this);
 		this.buildMessageData = this.buildMessageData.bind(this);
 		this.sendData = this.sendData.bind(this);
@@ -58,7 +55,6 @@ export class SecureMessageForm extends React.Component {
 			showSubjectInvalid: false,
 			disabled: props.buttonsDisabled,
 			dirty: false,
-			charError: false,
 			showModalBack: false,
 			subject: props.selectedSubject,
 			accountValue: props.selectedAccountValue,
@@ -111,43 +107,30 @@ export class SecureMessageForm extends React.Component {
 			default:
 		}
 	}
-	textChange(e) {
 
+	handleTextChange(e, chars_left) {
+		const value = e.target.value;
 		let disabled;
-		if (e === '') {
+		if (value === '') {
 			disabled = true;
 			window.top.postMessage('clearNewMessagePage', '*');
 		} else {
 			disabled = false
 			window.top.postMessage('newMessagePage', '*');
 		}
-		
-		const chars_left =  MAX_CHARS - e.length;
-		let charError = chars_left < 0;
 
-		const extractedString = RegexUtils.matchString(e);
-		let message;
-		if (extractedString !== null) {
-			const lastFour = RegexUtils.getLastFourDigits(extractedString);
-			message = e.replace(new RegExp(extractedString, 'g'), `************${lastFour}`);
-		}
-		else message = e; 
-		
-
+		const message = maskCardDetails(value);
 		this.setState({
 			showModalBack: true,
 			disabled,
 			message,
 			chars_left,
-			charError,
 			dirty: true
-			}
-		);
+		});
 		
 	}
 
 	sendData() {
-		this.renderRemainingChar();
 		if (this.checkValidation()) {
 			this.props.onSend(this.buildMessageData());
 			this.setState({ showSentMessageModal: true,
@@ -263,35 +246,6 @@ export class SecureMessageForm extends React.Component {
 				onConfirm={this.retryServiceCall} />;
 	}
 
-	
-	renderRemainingChar() {
-		const { chars_left, charError } = this.state;
-		const { content } = this.props;
-
-		if (chars_left < 0 && charError === true) {
-			return (
-				<div>
-					<TextBody>
-						<ValidationMessage
-							value={`${chars_left} ${content.charLeft}`}
-							hasIcon={false}
-						/>
-					</TextBody>
-					<TextBody>
-						<ValidationMessage
-							value={content.messageVal}
-						/>
-					</TextBody>
-				</div>				
-			);
-		}
-		else if (chars_left <= CHARS_LEFT_DISPLAY_THRESHOLD) {
-			return (
-				<TextStyled size="uist" className="u-padding-top-1">{chars_left} {content.charLeft}</TextStyled>
-			);
-		}
-	}
-
 	determineBackAction() {
 		if (this.state.disabled || !this.state.dirty)
 		{
@@ -318,14 +272,12 @@ export class SecureMessageForm extends React.Component {
 		&& chars_left >= 0;
 	}
 
-	isAccountValid(account)
-	{
+	isAccountValid(account) {
 		const { content } = this.props;
 		return account !== content.pleaseSelect;
 	}
 
-	isSubjectValid(subject)
-	{
+	isSubjectValid(subject){
 		const { content } = this.props;
 		return subject !== content.pleaseSelect;
 	}
@@ -427,14 +379,17 @@ export class SecureMessageForm extends React.Component {
 										{content.maxCharLimit}
 									</div>
 									{/* DEBT:  would like to use TextAreaCharacterCount, but no hook available to tie into change event and props not spread */}
-									<Textarea 
-										onChange={(e) => this.textChange(e.target.value)}
+									<TextAreaWrapper
+										onChange={this.handleTextChange}
 										rows="20"
 										cols="20"
 										id="message"
-										maxLength='infinity'
-										defaultValue={messageText} />
-								{this.renderRemainingChar()}
+										value={messageText}
+										content={content}
+										maxChars={MAX_CHARS}
+										charsLeftDisplayThreshold={CHARS_LEFT_DISPLAY_THRESHOLD}
+									/>
+
 							</TextBody>
 							<TextBody>
 								<ButtonGroup>
