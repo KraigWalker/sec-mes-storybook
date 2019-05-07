@@ -24,9 +24,47 @@
     
     </script>
     <script type="text/javascript">
-      if (_satellite !== undefined && _satellite.pageBottom !== undefined) {
-        _satellite.pageBottom();
-      }
+
+      (function () {
+
+        var normalisedBrandId = {
+          CB: "CB",
+          YB: "YB",
+          DYB: "B"
+        }
+        function parseHash(hash) {
+          return hash
+            .split("&")
+            .map(function(v) {
+              return v.split("=")
+            })
+            .reduce( function(pre, keyValue) {
+              var current = {};
+              Object.keys(pre).forEach(function (k) {
+                current[k] = pre[k]
+              });
+              var key = keyValue[0];
+              var value = keyValue[1];
+              current[key] = value;
+              return current;
+            }, {});
+        }
+        
+        if (window.location.hash)
+        {
+            var hash = parseHash(window.location.hash.substring(1));
+            var head = document.getElementsByTagName('head')[0];
+            var element = document.createElement('link');
+            element.rel = 'stylesheet';
+            element.href = path + "css/app." + normalisedBrandId[hash.brandId].toLowerCase()+ ".css";
+            head.appendChild(element);
+        }
+
+        if (_satellite !== undefined && _satellite.pageBottom !== undefined) {
+          _satellite.pageBottom();
+        }
+      })();
+      
     </script>
 
   </body>

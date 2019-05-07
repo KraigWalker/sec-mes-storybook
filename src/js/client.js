@@ -1,12 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from "react-redux";
+import { Provider, compose } from "react-redux";
 import svg4everybody from "svg4everybody";
 import AppRouter from './router/AppRouter';
 import createStore from './stores/AppStore';
 import ConfigUtils from './utils/ConfigUtils';
-import { getTheme, WebUIThemeProvider } from "web-ui-components/lib/utilities/themes";
+import { WebUIThemeProvider } from "web-ui-components/lib/utilities/themes";
 import { buildClientContext } from './utils/ContextUtils';
+
+import "babel-polyfill";
+import "whatwg-fetch";
+import "css/main.css";
+
+{/*native*/}
 
 svg4everybody();
 
@@ -20,10 +26,23 @@ const parseHash = hash => hash
   .map(v => v.split("="))
   .reduce( (pre, [key, value]) => ({ ...pre, [key]: value }), {} )
 
-const hash = parseHash(window.location.hash.substring(1));
-
-// clear hash parameters
-window.location.hash = '';
+let hash;
+if (process.env.NODE_ENV !== 'production')
+{
+  hash = {
+    access_token: "f970453f-8550-474a-af26-064a1670f15c",
+  bank_id: "CB",
+  brandId: "CB",
+  client_context: "CB%20Web",
+  isDocumentLibraryEnabled: "true",
+  state: "ba55b632ba0e8a63ffdca4ef3926b4da",
+  user_tracking_id: "5173da20-6b30-11e9-804e-1d9cdacf2bd"
+  }
+}
+else
+{
+  hash = parseHash(window.location.hash.substring(1));
+}
 
 const session = {
   access_token: hash.access_token,
@@ -40,22 +59,11 @@ const normalisedBrandId = {
   DYB: "B"
 }[brandId];
 
-const defaultTheme = getTheme(normalisedBrandId);
-const theme = {
-  ...defaultTheme,
-  fonts: {
-    ...defaultTheme.fonts,
-    display: {
-      bold: "CYBHouschkaAltProBold !important"
-    }
-  }
-};
-
 const startApp = () => {
   const store = createStore(session, clientContext, ConfigUtils.config)
   ReactDOM.render(
     <Provider store={store}>
-      <WebUIThemeProvider theme={theme}>
+      <WebUIThemeProvider brandID={normalisedBrandId}>
         <AppRouter session={session} client={clientContext} isDocumentLibraryEnabled={isDocumentLibraryEnabled} />
       </WebUIThemeProvider>
     </Provider>, app);
@@ -64,14 +72,20 @@ const startApp = () => {
 const loadStyles = () => {
   var head = document.getElementsByTagName('head')[0];
   var element = document.createElement('link');
-  element.rel = 'stylesheet';
-  element.href = `${path}${brandId.toLowerCase()}.main.css`;
-  head.appendChild(element);
+    element.rel = 'stylesheet';
+    element.href = `${path}css/app.${normalisedBrandId.toLowerCase()}.css`;
+    head.appendChild(element);
 }
 
 const initApp = () => {
     ConfigUtils.getConfig(startApp);
-    loadStyles()
+    //This is for hot reloading on dev, so css gets loaded when window has is empty
+    if (process.env.NODE_ENV !== 'production' && !window.location.hash)
+    {
+      loadStyles()
+    }
 }
-// DEBTxCYBG: this is not an ideal pattern for initialising an app.
-setTimeout(initApp, 50);
+initApp();
+
+// clear hash parameters
+window.location.hash = '';

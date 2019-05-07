@@ -1,5 +1,7 @@
 
 import AppConstants from '../constants/AppConstants';
+import { NEW, DRAFT } from "../constants/StringsConstants";
+import { strictEqual } from 'assert';
 /**
  *
  * @param {*} state
@@ -10,6 +12,8 @@ export default function reducer(state = {
 	messages: [],
 	fetching: false,
 	fetched: false,
+	updating: false,
+	updated: false,
 	error: false,
 	successModal: false,
 	activeTab: 'inbox',
@@ -17,6 +21,7 @@ export default function reducer(state = {
 	draftError: false,
 }, action) {
 	switch (action.type) {
+		
 		case AppConstants.REQUEST_SECURE_MESSAGES: {
 			return { ...state, fetching: true };
 		}
@@ -29,17 +34,20 @@ export default function reducer(state = {
 		case AppConstants.REQUEST_TAB_ACTIVE: {
 			return { ...state, activeTab: action.payload };
 		}
+		case AppConstants.UPDATE_SECURE_MESSAGE: {
+			return { ...state, updating: action.status !== DRAFT, isSavingDraft: action.status === DRAFT  }
+		}
 		case AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS: {
-			return { ...state, fetched: false, successModal: true };
+			return { ...state, fetched: false, successModal: true, updating: false, isSavingDraft: false };
 		}
 		case AppConstants.ERROR_BACK_BUTTON: {
 			return { ...state, error: false, fetched: false };
 		}
 		case AppConstants.UPDATE_SECURE_MESSAGE_DRAFT_FAILURE: {
-			return { ...state, draftError: true, fetched: true };
+			return { ...state, draftError: true, fetched: true, fetching: false, isSavingDraft: false };
 		}
 		case AppConstants.UPDATE_NEW_SECURE_MESSAGE_FAILURE: {
-			return { ...state, newMessageError: true, fetched: true };
+			return { ...state, newMessageError: true, fetched: true, fetching: false, isSavingDraft: false };
 		}
 		case AppConstants.SET_POPUP_STATE: {
 			return { ...state, error: false, successModal: false, newMessageError: false, draftError: false };
@@ -50,4 +58,31 @@ export default function reducer(state = {
 		default:
 			return state;
 	}
+}
+
+const getMessages = (state) => state.messages;
+
+const getUpdating = (state) => state.updating;
+
+const getIsSavingDraft = state => state.isSavingDraft;
+
+const getMessageError = (state, status) => {
+	switch(status)
+	{
+		case NEW:
+			return state.newMessageError;
+		case DRAFT:
+		default:
+			return state.draftError;
+	}
+}
+
+const getShowSuccessModal = (state) => state.successModal;
+
+export const selectors = {
+	getMessages,
+	getMessageError,
+	getShowSuccessModal,
+	getUpdating,
+	getIsSavingDraft
 }

@@ -1,51 +1,115 @@
-import React from 'react';
-import { Tabs, Tab, Grid, Row, Col } from 'react-bootstrap';
-import SecureMessageList from './SecureMessageList';
-import { DRAFT, SENT, INBOX, NEW } from '../constants/StringsConstants';
-import _ from 'lodash';
-const titleName = ['Inbox', 'Drafts', 'Sent'];
+import React from "react";
+import SecureMessageList from "./SecureMessageList";
+import {
+    DRAFT,
+    SENT,
+    INBOX,
+    NEW,
+    ARCHIVED as ARCHIVE
+} from "../constants/StringsConstants";
+import _ from "lodash";
+
+import {TabGroup} from "web-ui-components/lib/navigation/tab-group";
+import {Row, Container} from "web-ui-components/lib/global/layout";
+import { withBreakpoints } from "../components/common/hoc/WithBreakpoint";
 
 export class SecureMessageTabs extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			tab: 'inbox',
-		};
-	}
-	onclick = tab => {
-		this.setState({ tab });
-	}
-	render() {
-		const { messages } = this.props;
-		let newMessageCount = 0;
-		_.map(messages.inboxMessages, message => {
-			if (message.status === NEW) {
-				newMessageCount++;
+    constructor(props) {
+        super(props);
+        this.state = {
+            activeTab: INBOX
+        };
+    }
+
+    onclick = activeTab => {
+        this.setState({activeTab});
+    };
+
+    render() {
+        const {messages, noPadding, containerSize} = this.props;
+        const unreadInboxCount = getInboxUnreadCount(messages);
+        const inboxTitle = getInboxTitle(unreadInboxCount);
+
+        const activeTabMessages = getActiveTabMessages(
+            this.state.activeTab,
+            this.props.messages
+        );
+
+        let paddingProps = null;
+		if (noPadding)
+		{
+			paddingProps = {
+				className: "u-margin-top-2 u-padding-left-0",
 			}
-		});
-		const inboxTitle = `${titleName[0]} (${newMessageCount })`;
-		return (messages ?
-			<Tabs activeKey={this.state.tab} onSelect={this.onclick} id="secure_tabs" className="c-scroll-tabs">
-				<Tab eventKey="inbox" title={inboxTitle} aria-label={`${inboxTitle} unread messages`}>
-					<SecureMessageList messages={messages.inboxMessages} activeTab={INBOX} content={this.props.content} />
-				</Tab>
-				<Tab eventKey="drafts" title={titleName[1]} aria-label={titleName[1]}>
-					<SecureMessageList messages={messages.draftMessages} activeTab={DRAFT} content={this.props.content} />
-				</Tab>
-				<Tab eventKey="sent" title={titleName[2]} aria-label={titleName[2]}>
-					<SecureMessageList messages={messages.sentMessages} activeTab={SENT} content={this.props.content} />
-				</Tab>
-			</Tabs>
-			 : <p>Loading...</p>
-		);
-	}
+        }
+        else {
+            paddingProps = {
+				className: "u-margin-top-2 u-padding-left-0",
+			}
+        }
+
+        return messages ? (
+            <Container {...paddingProps} size={containerSize}>
+                <TabGroup className="u-padding-left-0"
+                    activeTab={this.state.activeTab}
+                    onChange={val => {
+                        this.setState({activeTab: val});
+                    }}
+                    tabButtons={[
+                        {
+                            title: inboxTitle,
+                            id: INBOX
+                        },
+                        {
+                            title: "Drafts",
+                            id: DRAFT
+                        },
+                        {
+                            title: "Sent",
+                            id: SENT
+                        },
+                        {
+                            title: "Archive",
+                            id: ARCHIVE
+                        }
+                    ]}
+                />
+                <Row>
+                    <SecureMessageList
+                        messages={activeTabMessages}
+                        activeTab={this.state.activeTab}
+                        content={this.props.content}
+                    />
+                </Row>
+            </Container>
+        ) : (
+            <p>Loading...</p>
+        );
+    }
 }
 
-SecureMessageTabs.propTypes = {
+const getInboxUnreadCount = messages =>
+    _.sumBy(messages.inboxMessages, message => message.status === NEW);
 
+const getInboxTitle = messageCount => {
+    return messageCount > 0 ? `Inbox (${messageCount})` : `Inbox`;
 };
-SecureMessageTabs.defaultProps = {
 
+const getActiveTabMessages = (tab, messages) => {
+    switch (tab) {
+        case DRAFT:
+            return messages.draftMessages;
+        case SENT:
+            return messages.sentMessages;
+        case ARCHIVE:
+            return messages.archivedMessages;
+        case INBOX:
+        default:
+            return messages.inboxMessages;
+    }
 };
 
-export default SecureMessageTabs;
+SecureMessageTabs.propTypes = {};
+SecureMessageTabs.defaultProps = {};
+
+export default withBreakpoints(SecureMessageTabs);

@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextAreaWrapper snapshot should match to snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <TextAreaWrapper
+    charsLeftDisplayThreshold={100}
+    cols={20}
+    content={Object {}}
+    id="TextArea"
+    maxChars={300}
+    onChange={[MockFunction]}
+    rows={20}
+    value="Some message value"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <Textarea
+          cols={20}
+          defaultValue="Some message value"
+          disabled={false}
+          id="TextArea"
+          maxLength="infinity"
+          onChange={[Function]}
+          rows={20}
+        />,
+        undefined,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "cols": 20,
+          "defaultValue": "Some message value",
+          "disabled": false,
+          "id": "TextArea",
+          "maxLength": "infinity",
+          "onChange": [Function],
+          "rows": 20,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      undefined,
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <Textarea
+            cols={20}
+            defaultValue="Some message value"
+            disabled={false}
+            id="TextArea"
+            maxLength="infinity"
+            onChange={[Function]}
+            rows={20}
+          />,
+          undefined,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "cols": 20,
+            "defaultValue": "Some message value",
+            "disabled": false,
+            "id": "TextArea",
+            "maxLength": "infinity",
+            "onChange": [Function],
+            "rows": 20,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        undefined,
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactFifteenFourAdapter {
+      "options": Object {
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "prevContext": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": true,
+          },
+        },
+        "supportPrevContextArgumentOfComponentDidUpdate": true,
+      },
+    },
+  },
+  Symbol(enzyme.__childContext__): null,
+}
+`;

@@ -13,6 +13,7 @@ const StringConstants = {
     DRAFT: 'DRAFT',
     INBOX: 'INBOX',
     READ_ONLY: 'READ_ONLY',
+    ARCHIVED: 'ARCHIVED',
 }
 
 export const PENDING = 'PENDING';
@@ -23,6 +24,6 @@ export const SENT = 'SENT';
 export const DRAFT = 'DRAFT';
 export const INBOX = 'INBOX';
 export const READ_ONLY = 'READ_ONLY';
-
+export const ARCHIVED = 'ARCHIVED';
 
 export default StringConstants

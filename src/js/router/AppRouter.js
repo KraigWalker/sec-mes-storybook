@@ -5,20 +5,19 @@ import Main from '../components/Main';
 import NewSecureMessage from '../components/NewSecureMessage';
 import ViewMessage from '../components/ViewMessage';
 import ReplySecuremessage from '../components/ReplySecureMessage';
-import { withSubscription,accessibilityWrapper } from '../components/wrappers/GenericWrapper';
-import DraftSecureMessage from '../components/DraftSecureMessage';
+import { withSubscription } from '../components/wrappers/GenericWrapper';
 import AccessibilityMessage from '../components/common/AccessibilityMessage';
 import ErrorPage from '../components/common/ErrorPage';
-import { FolderList } from '../components/FolderList';
-import { DocumentList } from '../components/DocumentList';
+import { ListView } from '../components/ListView';
+import { AccountSelector } from '../components/AccountSelector';
 import { DocumentView } from '../components/DocumentView';
-
+import DraftSecureMessage from '../components/DraftSecureMessage';
 
 const RouteWithLayout = ({ Component, ...restProps }) => <Route {...restProps} render={(routeProps) => 
     <Main {...restProps} >
         <Component {...restProps} {...routeProps} />
     </Main>
-} />
+} />;
 
 /** 
  * @class AppRouter Class to initiate and route the application 
@@ -27,12 +26,18 @@ const RouteWithLayout = ({ Component, ...restProps }) => <Route {...restProps} r
 const RoutesWithLayout = (props) => (
     <Switch>
         <RouteWithLayout
+            path='/securemessages/error'
+            Component={ErrorPage}
+            content={props.content}
+        />
+        <RouteWithLayout
             exact
             path={`/securemessages/view`}
             Component={ViewMessage}
             content={props.content}
             isDocumentLibraryEnabled={props.isDocumentLibraryEnabled}
             session={props.session}
+            client={props.client}
         />
         <RouteWithLayout
             exact
@@ -90,29 +95,29 @@ class AppRouter extends React.Component {
                         <RoutesWithLayoutAndSubscription {...this.props} />
                     )} />
                     <AccessibilityMessage/>
-                    <RouteWithLayout path='/errormessage' Component={ErrorPage} />
                     <Switch>
                         <RouteWithLayout
                             path={`/my-documents/:bankId(CB|YB|DYB)`}
                             exact
-                            Component={FolderList}
+                            Component={ListView}
                             session={this.props.session}
                             client={this.props.client}
                             isDocumentLibraryEnabled={isDocumentLibraryEnabled}
-                        />
-                        <RouteWithLayout
-                            Component={DocumentList}
-                            session={this.props.session}
-                            client={this.props.client}
-                            path={`/my-documents/:bankId(CB|YB|DYB)/:displayCategory`}
-                            isDocumentLibraryEnabled={isDocumentLibraryEnabled}
-                            exact
                         />
                         <Route 
-                            path={`/my-documents/:bankId(CB|YB|DYB)/:displayCategory/:documentId`}
+                            path={`/my-documents/:bankId(CB|YB|DYB)/:documentId`}
                             exact
                             component={DocumentView}
                         />
+                        <RouteWithLayout
+                            Component={AccountSelector}
+                            session={this.props.session}
+                            client={this.props.client}
+                            path={`/digital-statements/select-account`}
+                            isDocumentLibraryEnabled={isDocumentLibraryEnabled}
+                            exact
+                        />
+                        
                     </Switch>
                 </div>
             </BrowserRouter>

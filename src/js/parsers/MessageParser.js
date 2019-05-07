@@ -1,299 +1,105 @@
 import _ from 'lodash';
 import MessageEntity from '../entities/MessageEntity';
 import { sortArrayByDate } from '../utils/DateUtils';
+import { isNullOrUndefined } from "../utils/GeneralUtils";
 
 /**
  * 
  * @param {array of Messages} parses the service response 
  */
 export function parseMessages(response) {
+
     const messages = [];
     const sortedMessages = sortArrayByDate(response.secure_messages);
     _.forEach(sortedMessages, message => {
         const messageEntity = new MessageEntity();
         messageEntity.setId(message.id);
         messageEntity.setDateCreated(message.date_created);
-        // messageEntity.setAccount(message.account); // Account Entity to be hooked 
         messageEntity.setThreadId(message.thread_id);
         messageEntity.setReference(message.reference);
         messageEntity.setStatus(message.status);
         messageEntity.setSubject(message.subject);
         messageEntity.setAccount(message.account);
         messageEntity.setMessageBody(message.payload.body.data);
+
+        if (message.document)
+        {
+            messageEntity.setDocumentData(message.document);
+        }
+        messageEntity.setNoReply(message.no_reply)
         messages.push(messageEntity);
     });
     return messages;
 
 }
 
-export function parseDraft(data, status, name) {
-    if (data.id === undefined || null && data.number === undefined || null) {
-        const requestData = {
-            secure_message: {
-                subject: data.subject,
-                user: {
-                    name: {
-                        title: name.title,
-                        first_name: name.first_name,
-                        middle_name: name.middle_name,
-                        last_name: name.last_name
-                    }
-                },
-                payload: {
-                    body: {
-                        data: data.message,
-                    }
-                },
-                status: status,
-            }
-        }
-        return requestData;
-    } else {
-        const requestData = {
-            secure_message: {
-                subject: data.subject,
-                user: {
-                    name: {
-                        title: name.title,
-                        first_name: name.first_name,
-                        middle_name: name.middle_name,
-                        last_name: name.last_name
-                    }
-                },
-                account: {
-                    id: data.id,
-                    number: data.number,
-                },
-                payload: {
-                    body: {
-                        data: data.message,
-                    }
-                },
-                status: status,
-            }
-        }
+function buildRequest({status, 
+    subject,
+    message,
+    requestUser = undefined, 
+    requestAccount = undefined,
+    payloadHeaders = undefined,
+    threadID = undefined}) {
 
-        return requestData;
+    return {
+        secure_message: {
+            subject: subject,
+            user: requestUser,
+            thread_id: threadID,
+            account: requestAccount,
+            payload: {
+                body: {
+                    data: message,
+                },
+                headers: payloadHeaders
+            },
+            status: status,
+        }
+    };
+}
+
+
+function buildRequestUser(name) {
+    if (isNullOrUndefined(name)) {
+        return undefined;
     }
+
+    return {
+        name: {
+            ...name
+        }
+    };
+}
+
+function buildRequestAccount({accountId, number}) {
+
+    if (isNullOrUndefined(accountId) && isNullOrUndefined(number)) {
+        return undefined;
+    }
+    return {
+        id: accountId, 
+        number
+    };
+}
+
+const buildHeaders = ({name, value}) => [{name, value}];
+
+export function createNewMessage(data, status, name) {
+    const requestUser = buildRequestUser(name);
+    const requestAccount = buildRequestAccount(data.account)
+    return buildRequest({...data, status, requestUser, requestAccount});
 }
 
 export function updateMessage(data, id, status) {
-    let requestData = {};
-    if (data.id !== undefined) {
-        requestData = {
-            secure_message: {
-                subject: data.subject,
-                account: {
-                    id: data.id,
-                    number: data.number,
-                },
-                payload: {
-                    headers: [
-                        {
-                            name: "In-Reply-To",
-                            value: id,
-                        }
-                    ],
-                    body: {
-                        data: data.message,
-                    }
-                },
-                status: status,
-            }
-        }
-
-    } else {
-        requestData = {
-            secure_message: {
-                subject: data.subject,
-
-                payload: {
-                    headers: [
-                        {
-                            name: "In-Reply-To",
-                            value: id,
-                        }
-                    ],
-                    body: {
-                        data: data.message,
-                    }
-                },
-                status: status,
-            }
-        }
-    }
-    return requestData;
-}
-
-export function deleteMessage(data, id, status) {
-    let requestData = {};
-    if (data.account.accountId !== undefined || null) {
-        requestData = {
-            secure_message: {
-                subject: data.subject,
-                account: {
-                    id: data.account.accountId,
-                    number: data.account.number,
-                },
-                payload: {
-                    headers: [
-                        {
-                            name: "In-Reply-To",
-                            value: id,
-                        }
-                    ],
-                    body: {
-                        data: data.message,
-                    }
-                },
-                status: status,
-            }
-        }
-
-    } else {
-        requestData = {
-            secure_message: {
-                subject: data.subject,
-                payload: {
-                    headers: [
-                        {
-                            name: "In-Reply-To",
-                            value: id,
-                        }
-                    ],
-                    body: {
-                        data: data.message,
-                    }
-                },
-                status: status,
-            }
-        }
-    }
-    return requestData;
+    const requestAccount = buildRequestAccount(data.account);
+    const payloadHeaders = buildHeaders({name: "In-Reply-To", value: id});
+    return buildRequest({...data, status, payloadHeaders, requestAccount});   
 }
 
 export function replyMessage(data, ids, status, name) {
-    let requestData = {};
-    switch (true) {
-        case (data.id !== undefined && ids.threadID !== null):
-            requestData = {
-                secure_message: {
-                    subject: data.subject,
-                    user: {
-                        name: {
-                            title: name.title,
-                            first_name: name.first_name,
-                            middle_name: name.middle_name,
-                            last_name: name.last_name
-                        }
-                    },
-                    thread_id: ids.threadID,
-                    account: {
-                        id: data.id,
-                        number: data.number,
-                    },
-                    payload: {
-                        headers: [
-                            {
-                                name: "In-Reply-To",
-                                value: ids.id,
-                            }
-                        ],
-                        body: {
-                            data: data.message,
-                        }
-                    },
-                    status: status,
-                }
-            }
-            break;
-        case (data.id !== undefined && ids.threadID === null):
-            requestData = {
-                secure_message: {
-                    subject: data.subject,
-                    user: {
-                        name: {
-                            title: name.title,
-                            first_name: name.first_name,
-                            middle_name: name.middle_name,
-                            last_name: name.last_name
-                        }
-                    },
-                    account: {
-                        id: data.id,
-                        number: data.number,
-                    },
-                    payload: {
-                        headers: [
-                            {
-                                name: "In-Reply-To",
-                                value: ids.id,
-                            }
-                        ],
-                        body: {
-                            data: data.message,
-                        }
-                    },
-                    status: status,
-                }
-            }
-            break;
-        case (data.id === undefined && ids.threadID !== null):
-            requestData = {
-                secure_message: {
-                    subject: data.subject,
-                    user: {
-                        name: {
-                            title: name.title,
-                            first_name: name.first_name,
-                            middle_name: name.middle_name,
-                            last_name: name.last_name
-                        }
-                    },
-                    thread_id: ids.threadID,
-                    payload: {
-                        headers: [
-                            {
-                                name: "In-Reply-To",
-                                value: ids.id,
-                            }
-                        ],
-                        body: {
-                            data: data.message,
-                        }
-                    },
-                    status: status,
-                }
-            }
-            break;
-        case (data.id === undefined && ids.threadID === null):
-            requestData = {
-                secure_message: {
-                    subject: data.subject,
-                    user: {
-                        name: {
-                            title: name.title,
-                            first_name: name.first_name,
-                            middle_name: name.middle_name,
-                            last_name: name.last_name
-                        }
-                    },
-                    payload: {
-                        headers: [
-                            {
-                                name: "In-Reply-To",
-                                value: ids.id,
-                            }
-                        ],
-                        body: {
-                            data: data.message,
-                        }
-                    },
-                    status: status,
-                }
-            }
-            break;
-        default:
-    }
-    return requestData;
+    const requestUser = buildRequestUser(name);
+    const requestAccount = buildRequestAccount(data.account);
+    const payloadHeaders = buildHeaders({name: "In-Reply-To", value: ids.id});
+    const threadID = isNullOrUndefined(ids.threadID) ? undefined : ids.threadID;
+    return buildRequest({...data, status, threadID, requestUser, requestAccount, payloadHeaders});
 }

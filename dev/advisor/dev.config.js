@@ -1,120 +1,100 @@
-const webpack = require('webpack');
-const { resolve } = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const webpack = require("webpack");
+const paths = require("../../paths");
+const { resolve } = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-console.log("**********************************************");
-console.log(__dirname, resolve(__dirname, '../../src'), resolve(__dirname, '../../dist'))
-const brand = process.env.brand;
-console.log("Compiling for - "+brand+" Brand");
-const JSEntry = `${__dirname}/index.js`;
-const SCSSEntry = [`${__dirname}/../../src/scss/main.scss`, ...(brand ? [`${__dirname}/../../src/scss/web-components.${brand}.scss`] : [])];
-module.exports = [{
-	entry: JSEntry,
-	devtool: 'inline-source-map',
-	output: {
-		path: resolve(__dirname, '../../dist'),
-		filename: "[name].bundle.js",
-      publicPath: '/',
-        libraryTarget: "umd",
-        library: "cybgSecureMessagesUI",
-        libraryExport: "default"
-	},
-	plugins: [
-		new ExtractTextPlugin(`${brand}.main.css`, { allChunks: true }),
-		new CopyWebpackPlugin([{
-			  from: 'src/images',
-			  to:'images'
-		  }, {
-			  from: '_config',
-			  to: '_config'
-		  }
-		]),
-		new HtmlWebpackPlugin({
-			inject: false,
-			template: `${__dirname}/index.html`,
-			excludeChunks: ["cb.main", "yb.main", "dyb.main", "undefined.main"],
-		})
-	],
-	module: {
-		rules: [
-			{
-				test: /\.js?$/,
-				include: [resolve(__dirname, '../../src'), __dirname], // Avoid use of exclude
-				loader: 'babel-loader',
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { presets, plugins } = require("../../webpack.config.babel");
 
-			},
-			{
-			  test: /\.json$/,
-			  loader: 'json-loader'
-			},
-			{
-			  test: /\.(jpg|jpeg|gif|png|svg)$/,
-			  exclude: ['/node_modules/','src/fonts/'],
-			  include: resolve(__dirname, "../../src/images/"),
-			  loader:'file-loader?name=images/[name].[ext]'
-			}
-		]
-	},
-	
-	devServer: {
-		contentBase: resolve(__dirname, "../../dist"),
-		open: true, // Open browser after compilation
-		historyApiFallback: {
-			rewrites: [
-				{ from: /^\/$/, to: "index.html" }
-			]
-		},
-		host: 'localhost',
-		port: 8080
-	},
-	
-	resolve: {
-        modules: [`${__dirname}/../../src`, 'node_modules'],
-        extensions: ['.js', '.json', '.scss'],
-    },
-},
-{
-	entry: SCSSEntry,
-	module: {
-		rules: [
-			{
-				test: /\.scss$/,
-				include: resolve(__dirname, '../../src'),
-				use: ExtractTextPlugin.extract({
-				fallback: "style-loader",
-				use:[
-					{
-						loader: "css-loader"
-					},
-					{
-						loader:"sass-loader",
-						options: {
-						data: `$brand: ${brand};$env: prod;`
-					}
-				}]
-			}),
-		},
-		{
-			test: /\.(otf|ttf|eot|svg)$/,
-			exclude: ['/node_modules/','src/images/'],
-			include: resolve(__dirname, "../../src/fonts/"),
-			loader: 'file-loader?name=fonts/[name].[ext]'
-		},
-		{
-			test: /\.(jpg|jpeg|gif|png|svg)$/,
-			exclude: ['/node_modules/','src/fonts/'],
-			include: resolve(__dirname, "../../src/images/"),
-			loader:'file-loader?name=images/[name].[ext]'
-		}
-]
-},
-output: {
-	path: resolve(__dirname, '../../dist'),
-	filename: "[name]",
-	publicPath: '/',
-},
-plugins: [
-	new ExtractTextPlugin(`${brand}.main.css`, { allChunks: true }),
-]
-}]
+console.log("**********************************************");
+console.log("Compiling");
+
+const JSEntry = ["babel-polyfill", "whatwg-fetch", `${__dirname}/index.js`];
+module.exports = {
+    entry: [...JSEntry],
+    devtool: "inline-source-map",
+    mode: "development",
+    output: {
+      path: __dirname + "/compiled",
+      filename: "[name].bundle.js",
+      publicPath: "/",
+      libraryTarget: "umd",
+      library: "cybgSecureMessagingUI",
+      libraryExport: "default"
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+        new MiniCssExtractPlugin({
+            // Options similar to the same options in webpackOptions.output
+            // both options are optional
+            filename: "[name].css",
+            chunkFilename: "[id].css"
+        }),
+        new CopyWebpackPlugin([
+            {
+                context: paths.resolveFromRoot("node_modules/web-ui-components/lib"),
+                from: "**/*.css",
+                to: "css"
+            },
+            {
+                from: "src/images",
+                to: "images"
+            },
+            {
+                from: "_config",
+                to: "_config"
+            }
+        ]),
+        new HtmlWebpackPlugin({
+            template: `${__dirname}/index.html`,
+            excludeChunks: ["undefined.main"],
+        }),
+    ],
+    module: {
+        rules: [
+            {
+                test: /\.jsx?$/,
+                include: [paths.resolveFromRoot("src"), __dirname], // Avoid use of exclude
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        babelrc: false,
+                        presets,
+                        plugins,
+                    },
+                },
+            },
+            {
+                test: /\.json$/,
+                exclude: ["/node_modules/"],
+                loader: "json-loader"
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    {
+                        loader: "style-loader",
+                        options: {}
+                    },
+                    "css-loader"
+                ]
+            },
+        ]
+    },
+
+    devServer: {
+        contentBase: __dirname + "/compiled/",
+        open: true, // Open browser after compilation
+         historyApiFallback: {
+          rewrites: [{ from: /^\/$/, to: "index.html" }]
+        },
+        host: "localhost",
+        port: 8080,
+        hot: true
+    },
+
+    resolve: {
+        modules: [resolve(__dirname,"src"), "node_modules"],
+        extensions: ['.js', '.json','.css',],
+    }
+};

@@ -1,5 +1,5 @@
-import AccountEntity from './AccountEntity';
-import {getISODateString} from '../utils/DateUtils';
+import AccountEntity from "./AccountEntity";
+import { getFriendlyDate, isUnixDate, getFriendlyDateFromUnix } from "../utils/DateUtils";
 
 /**
  * @class MessageEntity  Class for getter setter changes
@@ -14,6 +14,9 @@ class MessageEntity {
         this.threadID = null;
         this.subject = null;
         this.message = null;
+        this.document = null;
+        this.noReply = false;
+
     }
     /**
      * @returns account mapped to message
@@ -75,7 +78,7 @@ class MessageEntity {
      * @param {Object} Account Entity related to the message
      */
     setAccount(account) {
-        if(account === null ) {
+        if(account === null || account === undefined) {
         this.account.setId();
         this.account.setAccountNumber();
         } else {
@@ -95,8 +98,15 @@ class MessageEntity {
      * @param {*} date 
      */
     setDateCreated(date) {
-        this.dateCreated = getISODateString(date);
+
+        if (isUnixDate(date)) {
+            this.dateCreated = getFriendlyDateFromUnix(date);
+        }
+        else {
+            this.dateCreated = getFriendlyDate(date);
+        }
     }
+
     /**
      * 
      * @param {String} status of the message
@@ -124,6 +134,18 @@ class MessageEntity {
      */
     setMessageBody(message) {
         this.message = message
+    }
+
+    setDocumentData(document) {
+        this.document = {
+            id: document.id,
+            label: document.display_label,
+            fileSize: document.file_size
+        };
+    }
+
+    setNoReply(noReply) {
+        this.noReply = noReply;
     }
 
 }

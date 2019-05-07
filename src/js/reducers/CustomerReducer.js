@@ -6,7 +6,7 @@ import AppConstants from '../constants/AppConstants';
  */
 
 export default function reducer(state = {
-    customerDetails: [],
+    customerDetails: {},
     fetching: false,
     fetched: false,
     error: false,
@@ -27,4 +27,13 @@ export default function reducer(state = {
         default:
             return state;
     }
+}
+
+const getCustomerDetails = (state) => state.customerDetails;
+
+const getCustomerError = (state) => state.error;
+
+export const selectors = {
+    getCustomerDetails,
+    getCustomerError
 }
