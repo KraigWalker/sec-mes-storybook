@@ -3,6 +3,7 @@ import moment from 'moment';
 import { NEW, READ, DRAFT, PENDING, SENT, ARCHIVED } from '../constants/StringsConstants';
 import SendMessageRequestEntity from "../entities/SendMessageRequestEntity";
 import { isNullOrUndefined } from '../utils/GeneralUtils';
+import RegexUtils from "../utils/RegexUtils"
 /**
  *
  * @param {array of Messages} parses all messages and creates 3 different arrays for INBOX/DRAFT/SENT.
@@ -79,4 +80,15 @@ export function getMessageAccountValue(message, content) {
 	return message.account && message.account.number
 		? message.account.number
 		: content.noSpecificAccount;
+}
+
+export const maskCardDetails = (message) => {
+	const matchCardDetails = RegexUtils.matchCardDetails(message);
+	let maskedMessage;
+	if (matchCardDetails !== null) {
+		const lastFour = RegexUtils.getLastFourDigits(matchCardDetails);
+		maskedMessage = message.replace(new RegExp(matchCardDetails, 'g'), `************${lastFour}`);
+	}
+	else maskedMessage = message; 
+	return maskedMessage;
 }
