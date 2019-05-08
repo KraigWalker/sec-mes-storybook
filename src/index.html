@@ -25,6 +25,37 @@
     </script>
     <script type="text/javascript">
 
+      function throttle(fn, wait) {
+        var time = Date.now();
+        return function() {
+          if (time + wait - Date.now() < 0) {
+            fn();
+            time = Date.now();
+          }
+        }
+      }
+
+      //Ensure parent APP using iframe resizes the iframe to accommodate changes in height
+      if (window.parent) {
+        (function resizeAtInterval() {
+          var lastvalue = undefined
+          setInterval(function() {
+              var height = document.body.scrollHeight;
+              if (height !== lastvalue) {
+                window.top.postMessage(height, "*");
+                lastvalue = height;
+              }
+          }, 200)}        
+        )();
+
+        function resizeParentIframe() {
+            window.top.postMessage(document.body.scrollHeight, "*");
+        }
+        window.onresize = throttle(resizeParentIframe, 500);
+        window.onload = throttle(resizeParentIframe, 500);
+      }
+      
+
       (function () {
 
         var normalisedBrandId = {
