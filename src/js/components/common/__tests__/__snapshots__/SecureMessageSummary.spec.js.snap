@@ -64,7 +64,7 @@ ShallowWrapper {
         mailDate={undefined}
         mailOnClick={[Function]}
         mailSubject="undefined "
-        mailSummary="Hello..."
+        mailSummary="Hello there"
         message={
           Object {
             "account": Object {
@@ -112,7 +112,7 @@ ShallowWrapper {
         "mailDate": undefined,
         "mailOnClick": [Function],
         "mailSubject": "undefined ",
-        "mailSummary": "Hello...",
+        "mailSummary": "Hello there",
         "message": Object {
           "account": Object {
             "number": "32236",
@@ -162,7 +162,7 @@ ShallowWrapper {
           mailDate={undefined}
           mailOnClick={[Function]}
           mailSubject="undefined "
-          mailSummary="Hello..."
+          mailSummary="Hello there"
           message={
             Object {
               "account": Object {
@@ -210,7 +210,7 @@ ShallowWrapper {
           "mailDate": undefined,
           "mailOnClick": [Function],
           "mailSubject": "undefined ",
-          "mailSummary": "Hello...",
+          "mailSummary": "Hello there",
           "message": Object {
             "account": Object {
               "number": "32236",
@@ -323,7 +323,7 @@ ShallowWrapper {
         mailDate={undefined}
         mailOnClick={[Function]}
         mailSubject="undefined "
-        mailSummary="Hello..."
+        mailSummary="Hello there"
         message={
           Object {
             "account": Object {
@@ -371,7 +371,7 @@ ShallowWrapper {
         "mailDate": undefined,
         "mailOnClick": [Function],
         "mailSubject": "undefined ",
-        "mailSummary": "Hello...",
+        "mailSummary": "Hello there",
         "message": Object {
           "account": Object {
             "number": undefined,
@@ -421,7 +421,7 @@ ShallowWrapper {
           mailDate={undefined}
           mailOnClick={[Function]}
           mailSubject="undefined "
-          mailSummary="Hello..."
+          mailSummary="Hello there"
           message={
             Object {
               "account": Object {
@@ -469,7 +469,7 @@ ShallowWrapper {
           "mailDate": undefined,
           "mailOnClick": [Function],
           "mailSubject": "undefined ",
-          "mailSummary": "Hello...",
+          "mailSummary": "Hello there",
           "message": Object {
             "account": Object {
               "number": undefined,
@@ -583,7 +583,7 @@ ShallowWrapper {
         mailDate={undefined}
         mailOnClick={[Function]}
         mailSubject="undefined "
-        mailSummary="Hello..."
+        mailSummary="Hello there"
         message={
           Object {
             "account": Object {
@@ -632,7 +632,7 @@ ShallowWrapper {
         "mailDate": undefined,
         "mailOnClick": [Function],
         "mailSubject": "undefined ",
-        "mailSummary": "Hello...",
+        "mailSummary": "Hello there",
         "message": Object {
           "account": Object {
             "number": "32236",
@@ -683,7 +683,7 @@ ShallowWrapper {
           mailDate={undefined}
           mailOnClick={[Function]}
           mailSubject="undefined "
-          mailSummary="Hello..."
+          mailSummary="Hello there"
           message={
             Object {
               "account": Object {
@@ -732,7 +732,7 @@ ShallowWrapper {
           "mailDate": undefined,
           "mailOnClick": [Function],
           "mailSubject": "undefined ",
-          "mailSummary": "Hello...",
+          "mailSummary": "Hello there",
           "message": Object {
             "account": Object {
               "number": "32236",
