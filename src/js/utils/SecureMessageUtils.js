@@ -1,4 +1,4 @@
- /**
+/**
  * @class DateUtils
  */
 
@@ -6,30 +6,31 @@
  * Retruns message type for Sent and Inbox tabs
  * @param  {String} dateStr e.g. format - 'YYYY-MM-DD'
  */
-export function getMessageType(type){
-    if(type == 'SENT' || type == 'PENDING'){
+export function getMessageType(type) {
+    if (type == 'SENT' || type == 'PENDING') {
         return 'SENT';
-    } else if(type == 'NEW' || type == 'READ'){
+    } else if (type == 'NEW' || type == 'READ') {
         return 'INBOX';
-    }
-    else if (type === 'ARCHIVED')
-    {
+    } else if (type === 'ARCHIVED') {
         return 'ARCHIVED';
     }
 }
 
-export function updateMessageStatus(message, status){
+export function updateMessageStatus(message, status) {
     message.status = status;
     return message;
 }
 
 /**
  * Truncates text where necessary, adding elipsis if text has been chopped off
- * @param {string} text 
- * @param {number} limit 
+ * @param {string} text
+ * @param {number} limit
  */
 export function truncateMessage(text, limit) {
     const newText = truncateText(text, limit);
+    if (text.length <= limit) {
+        return text;
+    }
     return (newText === text)
         ? text
         : `${newText}...`
@@ -37,9 +38,9 @@ export function truncateMessage(text, limit) {
 
 /**
  * Returns truncated text (split on space nearest limit, or limit if no spaces...)
- * 
- * @param {string} text 
- * @param {number} limit 
+ *
+ * @param {string} text
+ * @param {number} limit
  */
 export function truncateText(text, limit) {
     if (!text.includes(' ')) {
@@ -55,17 +56,16 @@ function findSpaceNearestToPosition(text, position) {
     }
     const spaceBeforeIdx = text.substring(0, position).lastIndexOf(" ");
     const spaceAfterIdx = text.indexOf(" ", position);
-    
-    if (spaceBeforeIdx !== -1 && spaceAfterIdx !== -1)
-    {
+
+    if (spaceBeforeIdx !== -1 && spaceAfterIdx !== -1) {
         const distanceToBefore = position - spaceBeforeIdx;
         const distanceToAfter = spaceAfterIdx - position;
-        return distanceToBefore < distanceToAfter 
+        return distanceToBefore < distanceToAfter
             ? spaceBeforeIdx
             : spaceAfterIdx;
     }
 
-    return spaceBeforeIdx !== -1 
+    return spaceBeforeIdx !== -1
         ? spaceBeforeIdx
         : spaceAfterIdx;
 }

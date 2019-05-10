@@ -4,8 +4,8 @@ import { NEW, ARCHIVED, DRAFT } from '../../constants/StringsConstants';
 import withMessaging from "../common/WithMessaging";
 import {Mail} from 'web-ui-components/lib/communication/messaging';
 import { truncateMessage } from "../../utils/SecureMessageUtils";
+import {TEXT_LIMIT} from "../../constants/NumericalConstants";
 
-const TEXT_LIMIT = 50;
 export const SecureMessageSummary = (props) => {
 
     const handleMailClick = () => {
@@ -28,7 +28,7 @@ export const SecureMessageSummary = (props) => {
     const replyClick = () => props.onReplyClick(props.message);
 
     const {message} = props;
-    
+
     return (
         <Mail.List>
             <Mail.Item

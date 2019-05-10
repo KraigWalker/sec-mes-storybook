@@ -4,11 +4,13 @@ import { Mail } from "web-ui-components/lib/communication/messaging";
 import { ButtonGroup } from 'web-ui-components/lib/molecules/buttons';
 import withMessaging from "./common/WithMessaging";
 import {ARCHIVED} from '../constants/StringsConstants';
+import {TEXT_LIMIT} from "../constants/NumericalConstants";
 import Attachment from "./common/Attachment";
 import {DocumentDownloadLink} from 'document-management-web-ui';
+import {truncateMessage} from "../utils/SecureMessageUtils";
 
 const attachmentLink = (props, document) => {
-  return (window.navigator && window.navigator.msSaveOrOpenBlob) 
+  return (window.navigator && window.navigator.msSaveOrOpenBlob)
       ? <DocumentDownloadLink documentId={document.id} documentName={document.label} />
       : <Attachment {...props} document={document}/>
 }
@@ -57,7 +59,7 @@ const MailMessage = props => {
         <Mail.Item
           id="0"
           mailSubject={message.subject}
-          mailSummary={message.message}
+          mailSummary={truncateMessage(message.message, TEXT_LIMIT)}
           mailDate={message.dateCreated}
 		  isRead
 		  mailOnClick={() => {}}
@@ -70,8 +72,8 @@ const MailMessage = props => {
           <Button display="secondary" width="narrow" onClick={history.goBack}>
             {content.back}
           </Button>
-           {showArchive ? <Button display="secondary" onClick={onArchiveClick} width='narrow'>{content.archive}</Button> : null} 
-           {showDelete ? <Button display="secondary" onClick={onDeleteClick} width='narrow'>{content.delete}</Button> : null} 
+           {showArchive ? <Button display="secondary" onClick={onArchiveClick} width='narrow'>{content.archive}</Button> : null}
+           {showDelete ? <Button display="secondary" onClick={onDeleteClick} width='narrow'>{content.delete}</Button> : null}
            {showUnarchive ? <Button display="secondary" onClick={onUnarchiveClick} width='narrow'>{content.moveToInbox}</Button> : null}
            {showReply ? <Button display="primary" onClick={onReplyClick} width='narrow'>{content.replyMessageTitle}</Button> : null}
         </ButtonGroup>

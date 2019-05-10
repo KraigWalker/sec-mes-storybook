@@ -27,13 +27,21 @@ describe('Truncate text', () => {
     expect(newText).toEqual("zzzzzzzzzzzzzzzzzzzz");
   });
 
+  it('does not truncate a short message', () => {
+    const TEXT_LIMIT = 20;
+    const text="zzzzzzzzzz";
+    const newText = truncateText(text, TEXT_LIMIT);
+    expect(newText).toHaveLength(10);
+    expect(newText).toEqual(text);
+  });
+
   it('is empty - return empty string', () => {
     const text="";
     const newText = truncateText(text, TEXT_LIMIT);
     expect(newText).toHaveLength(0);
     expect(newText).toEqual(text);
   });
- 
+
   it('is has a single space after the text limit', () => {
     const text="12345678901234567890 zzzzzzzzzzzzzzz";
     const newText = truncateText(text, TEXT_LIMIT);
@@ -95,7 +103,8 @@ describe('Truncate message' , () => {
   });
 
   it('needs truncated then add elipsis appropriately', () => {
-    const text="12345678901234567 90123 45678"
+    const TEXT_LIMIT = 20;
+    const text="12345678901234567 90123 45678";
     const newText = truncateMessage(text, TEXT_LIMIT);
     expect(newText).toHaveLength(26);
     expect(newText).toEqual("12345678901234567 90123...");
