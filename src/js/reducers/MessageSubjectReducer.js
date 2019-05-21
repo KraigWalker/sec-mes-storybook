@@ -21,7 +21,8 @@ function reducer(state = {
         case AppConstants.REQUEST_SUBJECTS_SUCCESS: {
             return {
                 ...state, fetching: false, fetched: true, subjects: action.payload
-                    .filter(({key}) => EXCLUDED_SUBJECTS.indexOf(key) < 0)
+                // TODO: DEBT x CYBG - backend to remove flyaway adding "ND".
+                    .filter(({key}) => EXCLUDED_SUBJECTS.indexOf(key))
             }
         }
         case AppConstants.REQUEST_SUBJECTS_FAILURE: {
