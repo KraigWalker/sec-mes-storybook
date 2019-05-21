@@ -25,5 +25,6 @@ export const DRAFT = 'DRAFT';
 export const INBOX = 'INBOX';
 export const READ_ONLY = 'READ_ONLY';
 export const ARCHIVED = 'ARCHIVED';
+export const EXCLUDED_SUBJECTS = ["ND"];
 
 export default StringConstants
