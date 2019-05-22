@@ -24,7 +24,7 @@
   "peerDependencies": {
     "react": "15.4.1",
     "react-dom": "15.4.1",
-    "web-ui-components": "20.0.0",
+    "web-ui-components": "21.0.0",
     "moment": "^2.19.2"
   },
   "optionalDependencies": {
