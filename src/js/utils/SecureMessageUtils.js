@@ -1,3 +1,4 @@
+import {EMPTY_MESSAGE_PLACEHOLDER} from "../constants/StringsConstants";
 /**
  * @class DateUtils
  */
@@ -36,6 +37,7 @@ export function truncateMessage(text, limit) {
             ? text
             : `${newText}...`
     }
+    return EMPTY_MESSAGE_PLACEHOLDER;
 }
 
 /**
@@ -52,6 +54,7 @@ export function truncateText(text, limit) {
         const nearestSpacePosition = findSpaceNearestToPosition(text, limit);
         return text.substring(0, nearestSpacePosition);
     }
+    return EMPTY_MESSAGE_PLACEHOLDER;
 }
 
 function findSpaceNearestToPosition(text, position) {

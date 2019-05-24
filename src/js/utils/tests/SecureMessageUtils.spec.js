@@ -42,7 +42,7 @@ describe('Truncate text', () => {
     expect(newText).toHaveLength(0);
     expect(newText).toEqual(text);
     expect(newMessage).toHaveLength(0);
-    expect(newMessage).equal(text);
+    expect(newMessage).toEqual(text);
   });
 
   it('is has a single space after the text limit', () => {

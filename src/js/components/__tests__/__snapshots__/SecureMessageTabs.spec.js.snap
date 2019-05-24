@@ -41,7 +41,7 @@ ShallowWrapper {
             Array [
               Object {
                 "id": "INBOX",
-                "title": "Inbox (true)",
+                "title": "Inbox (1)",
               },
               Object {
                 "id": "DRAFT",
@@ -92,7 +92,7 @@ ShallowWrapper {
           "tabButtons": Array [
             Object {
               "id": "INBOX",
-              "title": "Inbox (true)",
+              "title": "Inbox (1)",
             },
             Object {
               "id": "DRAFT",
@@ -173,7 +173,7 @@ ShallowWrapper {
               Array [
                 Object {
                   "id": "INBOX",
-                  "title": "Inbox (true)",
+                  "title": "Inbox (1)",
                 },
                 Object {
                   "id": "DRAFT",
@@ -224,7 +224,7 @@ ShallowWrapper {
             "tabButtons": Array [
               Object {
                 "id": "INBOX",
-                "title": "Inbox (true)",
+                "title": "Inbox (1)",
               },
               Object {
                 "id": "DRAFT",
