@@ -53,6 +53,9 @@ const session = {
 const clientContext = buildClientContext(decodeURIComponent(hash.client_context), hash.user_tracking_id, hash.state);
 
 const { brandId, isDocumentLibraryEnabled } = hash;
+
+const isDocumentLibraryEnabledFinal = isDocumentLibraryEnabled === "true"
+
 const normalisedBrandId = {
   CB: "CB",
   YB: "YB",
@@ -64,7 +67,7 @@ const startApp = () => {
   ReactDOM.render(
     <Provider store={store}>
       <WebUIThemeProvider brandID={normalisedBrandId}>
-        <AppRouter session={session} client={clientContext} isDocumentLibraryEnabled={isDocumentLibraryEnabled} />
+        <AppRouter session={session} client={clientContext} isDocumentLibraryEnabled={isDocumentLibraryEnabledFinal} />
       </WebUIThemeProvider>
     </Provider>, app);
 }

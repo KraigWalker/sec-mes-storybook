@@ -38,8 +38,11 @@ describe('Truncate text', () => {
   it('is empty - return empty string', () => {
     const text="";
     const newText = truncateText(text, TEXT_LIMIT);
+    const newMessage = truncateMessage(newText);
     expect(newText).toHaveLength(0);
     expect(newText).toEqual(text);
+    expect(newMessage).toHaveLength(0);
+    expect(newMessage).toEqual(text);
   });
 
   it('is has a single space after the text limit', () => {

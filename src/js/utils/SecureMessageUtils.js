@@ -1,3 +1,4 @@
+import {EMPTY_MESSAGE_PLACEHOLDER} from "../constants/StringsConstants";
 /**
  * @class DateUtils
  */
@@ -27,13 +28,16 @@ export function updateMessageStatus(message, status) {
  * @param {number} limit
  */
 export function truncateMessage(text, limit) {
-    const newText = truncateText(text, limit);
-    if (text.length <= limit) {
-        return text;
+    if (text) {
+        const newText = truncateText(text, limit);
+        if (text.length <= limit) {
+            return text;
+        }
+        return (newText === text)
+            ? text
+            : `${newText}...`
     }
-    return (newText === text)
-        ? text
-        : `${newText}...`
+    return EMPTY_MESSAGE_PLACEHOLDER;
 }
 
 /**
@@ -43,11 +47,14 @@ export function truncateMessage(text, limit) {
  * @param {number} limit
  */
 export function truncateText(text, limit) {
-    if (!text.includes(' ')) {
-        return text.substr(0, limit);
+    if (text) {
+        if (!text.includes(' ')) {
+            return text.substr(0, limit);
+        }
+        const nearestSpacePosition = findSpaceNearestToPosition(text, limit);
+        return text.substring(0, nearestSpacePosition);
     }
-    const nearestSpacePosition = findSpaceNearestToPosition(text, limit);
-    return text.substring(0, nearestSpacePosition);
+    return EMPTY_MESSAGE_PLACEHOLDER;
 }
 
 function findSpaceNearestToPosition(text, position) {

@@ -107,7 +107,7 @@ class AppRouter extends React.Component {
                         <Route 
                             path={`/my-documents/:bankId(CB|YB|DYB)/:documentId`}
                             exact
-                            component={DocumentView}
+                            render= {props => <DocumentView {...props} session={this.props.session} />}
                         />
                         <RouteWithLayout
                             Component={AccountSelector}
