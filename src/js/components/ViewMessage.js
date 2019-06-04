@@ -44,7 +44,7 @@ export class ViewMessage extends React.Component {
 
         // Below is to update New message to Read message status.
         if (messageDetail && messageDetail.status === 'NEW') {
-            if (!messages.mode === READ_ONLY) {
+            if (messages.mode !== READ_ONLY) {
                 this.props.updateMessageData(
                         messageDetail,
                         messageDetail.id,

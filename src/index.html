@@ -42,14 +42,14 @@
           setInterval(function() {
               var height = document.body.scrollHeight;
               if (height !== lastvalue) {
-                window.top.postMessage(height, "*");
                 lastvalue = height;
+                resizeParentIframe();
               }
           }, 200)}        
         )();
-
+  
         function resizeParentIframe() {
-            window.top.postMessage(document.body.scrollHeight, "*");
+          window.top.postMessage({type: 'resize', height: document.body.scrollHeight}, "*");
         }
         window.onresize = throttle(resizeParentIframe, 500);
         window.onload = throttle(resizeParentIframe, 500);
