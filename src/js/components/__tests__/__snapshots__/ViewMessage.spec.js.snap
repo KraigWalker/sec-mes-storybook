@@ -42,6 +42,7 @@ ShallowWrapper {
       }
     }
     successModal={true}
+    updateMessageData={[MockFunction]}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -104,6 +105,7 @@ ShallowWrapper {
               }
             }
             successModal={true}
+            updateMessageData={[MockFunction]}
           />
         </Card>
       </Row>,
@@ -163,6 +165,7 @@ ShallowWrapper {
               }
             }
             successModal={true}
+            updateMessageData={[MockFunction]}
           />
         </Card>,
       },
@@ -219,6 +222,7 @@ ShallowWrapper {
                 }
               }
               successModal={true}
+              updateMessageData={[MockFunction]}
             />,
             Array [],
           ],
@@ -272,6 +276,7 @@ ShallowWrapper {
                 ],
               },
               "successModal": true,
+              "updateMessageData": [MockFunction],
             },
             "ref": null,
             "rendered": null,
@@ -339,6 +344,7 @@ ShallowWrapper {
                 }
               }
               successModal={true}
+              updateMessageData={[MockFunction]}
             />
           </Card>
         </Row>,
@@ -398,6 +404,7 @@ ShallowWrapper {
                 }
               }
               successModal={true}
+              updateMessageData={[MockFunction]}
             />
           </Card>,
         },
@@ -454,6 +461,7 @@ ShallowWrapper {
                   }
                 }
                 successModal={true}
+                updateMessageData={[MockFunction]}
               />,
               Array [],
             ],
@@ -507,6 +515,7 @@ ShallowWrapper {
                   ],
                 },
                 "successModal": true,
+                "updateMessageData": [MockFunction],
               },
               "ref": null,
               "rendered": null,
@@ -582,6 +591,19 @@ ShallowWrapper {
         ],
       }
     }
+    updateMessageData={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "status": "NEW",
+            },
+            undefined,
+            "READ",
+          ],
+        ],
+      }
+    }
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -640,6 +662,19 @@ ShallowWrapper {
                     Object {
                       "status": "NEW",
                     },
+                  ],
+                ],
+              }
+            }
+            updateMessageData={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    Object {
+                      "status": "NEW",
+                    },
+                    undefined,
+                    "READ",
                   ],
                 ],
               }
@@ -703,6 +738,19 @@ ShallowWrapper {
                 ],
               }
             }
+            updateMessageData={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    Object {
+                      "status": "NEW",
+                    },
+                    undefined,
+                    "READ",
+                  ],
+                ],
+              }
+            }
           />
         </Card>,
       },
@@ -759,6 +807,19 @@ ShallowWrapper {
                   ],
                 }
               }
+              updateMessageData={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      Object {
+                        "status": "NEW",
+                      },
+                      undefined,
+                      "READ",
+                    ],
+                  ],
+                }
+              }
             />,
             Array [],
           ],
@@ -809,6 +870,17 @@ ShallowWrapper {
                     Object {
                       "status": "NEW",
                     },
+                  ],
+                ],
+              },
+              "updateMessageData": [MockFunction] {
+                "calls": Array [
+                  Array [
+                    Object {
+                      "status": "NEW",
+                    },
+                    undefined,
+                    "READ",
                   ],
                 ],
               },
@@ -879,6 +951,19 @@ ShallowWrapper {
                   ],
                 }
               }
+              updateMessageData={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      Object {
+                        "status": "NEW",
+                      },
+                      undefined,
+                      "READ",
+                    ],
+                  ],
+                }
+              }
             />
           </Card>
         </Row>,
@@ -934,6 +1019,19 @@ ShallowWrapper {
                       Object {
                         "status": "NEW",
                       },
+                    ],
+                  ],
+                }
+              }
+              updateMessageData={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      Object {
+                        "status": "NEW",
+                      },
+                      undefined,
+                      "READ",
                     ],
                   ],
                 }
@@ -994,6 +1092,19 @@ ShallowWrapper {
                     ],
                   }
                 }
+                updateMessageData={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        Object {
+                          "status": "NEW",
+                        },
+                        undefined,
+                        "READ",
+                      ],
+                    ],
+                  }
+                }
               />,
               Array [],
             ],
@@ -1044,6 +1155,17 @@ ShallowWrapper {
                       Object {
                         "status": "NEW",
                       },
+                    ],
+                  ],
+                },
+                "updateMessageData": [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      Object {
+                        "status": "NEW",
+                      },
+                      undefined,
+                      "READ",
                     ],
                   ],
                 },

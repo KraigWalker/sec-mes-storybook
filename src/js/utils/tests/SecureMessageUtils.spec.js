@@ -31,8 +31,8 @@ describe('Truncate text', () => {
     const TEXT_LIMIT = 20;
     const text="zzzzzzzzzz";
     const newText = truncateText(text, TEXT_LIMIT);
-    expect(newText).toHaveLength(10);
-    expect(newText).toEqual(text);
+    expect(newText).toHaveLength(0);
+    expect(newText).toEqual("");
   });
 
   it('is empty - return empty string', () => {
@@ -62,8 +62,8 @@ describe('Truncate text', () => {
   it('is has a single space 7 characters after the text limit', () => {
     const text="12345678901234567890123456 890";
     const newText = truncateText(text, TEXT_LIMIT);
-    expect(newText).toHaveLength(26);
-    expect(newText).toEqual("12345678901234567890123456");
+    expect(newText).toHaveLength(20);
+    expect(newText).toEqual("12345678901234567890");
   });
 
   it('has several spaces but space before limit is closer than space after', () => {
@@ -76,15 +76,15 @@ describe('Truncate text', () => {
   it('has several spaces but space after limit is nearer than space before', () => {
     const text="12345678901234567 901 2345678"
     const newText = truncateText(text, TEXT_LIMIT);
-    expect(newText).toHaveLength(21);
-    expect(newText).toEqual("12345678901234567 901");
+    expect(newText).toHaveLength(17);
+    expect(newText).toEqual("12345678901234567");
   });
 
   it('has several spaces - space before same distance as space after', () => {
     const text="12345678901234567 90123 45678"
     const newText = truncateText(text, TEXT_LIMIT);
-    expect(newText).toHaveLength(23);
-    expect(newText).toEqual("12345678901234567 90123");
+    expect(newText).toHaveLength(17);
+    expect(newText).toEqual("12345678901234567");
   });
 
   it('has many spaces - break in the appropriate location', () => {
@@ -109,7 +109,7 @@ describe('Truncate message' , () => {
     const TEXT_LIMIT = 20;
     const text="12345678901234567 90123 45678";
     const newText = truncateMessage(text, TEXT_LIMIT);
-    expect(newText).toHaveLength(26);
-    expect(newText).toEqual("12345678901234567 90123...");
+    expect(newText).toHaveLength(21);
+    expect(newText).toEqual("12345678901234567 ...");
   });
-})
+});
