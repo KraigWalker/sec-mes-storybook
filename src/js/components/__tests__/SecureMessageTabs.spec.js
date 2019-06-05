@@ -30,7 +30,7 @@ describe("New Secure message snapshot", () => {
         const {tabButtons} = component.find("TabGroup").props();
         expect(Array.isArray(tabButtons)).toBe(true);
         expect(tabButtons).toEqual(tabs);
-    });.
+    });
 
     it('onClick method test', () => {
         component.instance().onclick();

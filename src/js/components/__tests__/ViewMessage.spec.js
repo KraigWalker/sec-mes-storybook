@@ -26,7 +26,8 @@ describe("View Message snapshot", () => {
             successModal: false
         },
         dispatch: dispatch,
-        setViewMessageDetail : jest.fn()
+        setViewMessageDetail : jest.fn(),
+        updateMessageData: jest.fn(),
     };
     let component = shallow(<ViewMessage {...props} />);
     it('should match to snapshot', () => {
@@ -40,6 +41,7 @@ describe("View Message snapshot", () => {
                 sentPageTitle: 'sentPageTitle',
             },
             activeTab: 'SENT',
+            updateMessageData: jest.fn(),
             messages: {
                 draftError: true,
                 successModal: true,
@@ -73,6 +75,7 @@ describe("View Message snapshot", () => {
                 sentPageTitle: 'sentPageTitle',
             },
             activeTab: 'SENT',
+            updateMessageData: jest.fn(),
             messages: {
                 draftError: true,
                 successModal: true,
@@ -104,6 +107,7 @@ describe("View Message snapshot", () => {
                 sentPageTitle: 'sentPageTitle',
             },
             activeTab: 'SENT',
+            updateMessageData: jest.fn(),
             messages: {
                 draftError: true,
                 successModal: true,
@@ -136,6 +140,7 @@ describe("View Message snapshot", () => {
                 sentPageTitle: 'sentPageTitle',
             },
             activeTab: 'SENT',
+            updateMessageData: jest.fn(),
             messages: {
                 draftError: true,
                 successModal: true,
@@ -170,6 +175,7 @@ describe("Main snapshot", () => {
             sentPageTitle: 'sentPageTitle',
         },
         activeTab: 'SENT',
+        updateMessageData: jest.fn(),
         messages: {
             draftError: true,
             successModal: true,
