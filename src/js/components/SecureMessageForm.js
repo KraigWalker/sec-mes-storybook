@@ -21,7 +21,7 @@ import { maskCardDetails } from "../bl/SecureMessageBL";
 const CHARS_LEFT_DISPLAY_THRESHOLD = 300;
 const MAX_CHARS = 3000;
 
-//DEBT : this component needs broken up considerably, now that is has been reduced from 
+//DEBT : this component needs broken up considerably, now that is has been reduced from
 //3 files into one shared across reply, draft & new. It's render method needs broken down considerably
 //Textarea logic / state should be replaced with either a web ui component or a wrapping component
 export class SecureMessageForm extends React.Component {
@@ -127,7 +127,7 @@ export class SecureMessageForm extends React.Component {
 			chars_left,
 			dirty: true
 		});
-		
+
 	}
 
 	sendData() {
@@ -176,14 +176,13 @@ export class SecureMessageForm extends React.Component {
 		messageEntity.setSubject(subject);
 		messageEntity.setMessageBody(message);
 		return messageEntity;
-
 	}
 
 	saveDraftData() {
 		if (this.checkValidation())
 		{
 			this.props.onSave(this.buildMessageData());
-		
+
 			this.setState({ showPopup: false,
 							showDraftSuccessModal: true,
 							showSaveServiceErrorModal: true });
@@ -261,13 +260,13 @@ export class SecureMessageForm extends React.Component {
 
 		const accountValid = this.isAccountValid(accountValue);
 		const subjectValid = this.isSubjectValid(subject);
-		
+
 		this.setState({
 			showAccountInvalid: !accountValid,
 			showSubjectInvalid: !subjectValid
 		});
 
-		return accountValid 
+		return accountValid
 		&& subjectValid
 		&& chars_left >= 0;
 	}
@@ -299,10 +298,10 @@ export class SecureMessageForm extends React.Component {
 		} = this.props;
 
 		const {
-			showSendServiceErrorModal, 
-			showSaveServiceErrorModal, 
-			showDraftSuccessModal, 
-			showSentMessageModal, 
+			showSendServiceErrorModal,
+			showSaveServiceErrorModal,
+			showDraftSuccessModal,
+			showSentMessageModal,
 			showPopup,
 			showSubjectInvalid,
 			showAccountInvalid
@@ -321,7 +320,7 @@ export class SecureMessageForm extends React.Component {
 				<Container {...paddingProps} size={containerSize}>
 			<LoadingLocalTakeover show={isUpdatingMessage || isSavingDraft} title={isUpdatingMessage ? content.sendingMessage: content.savingMessage}>
 				<Row>
-						<Card>	
+						<Card>
 							<Title size="h4">{title}</Title>
 							<TextBody>
 								<BackButton onClick={this.determineBackAction} label={content.back}/>
@@ -334,7 +333,7 @@ export class SecureMessageForm extends React.Component {
 									{content.subject}
 								</Label>
 							</TextBody>
-							
+
 							<DropDownComponent
 								accessID="Subject"
 								subjects={subjects}
@@ -412,14 +411,14 @@ export class SecureMessageForm extends React.Component {
 									</Button>
 									<Button
 										name="Send"
-										display="primary"	
+										display="primary"
 										onClick={this.sendData}
 										disabled={this.state.disabled}
 									>
 										{content.send}
 									</Button>
 								</ButtonGroup>
-							</TextBody>						
+							</TextBody>
 						</Card>
 					</Row>
 					</LoadingLocalTakeover>
@@ -436,7 +435,7 @@ export class SecureMessageForm extends React.Component {
 					{messageError &&
 						showSendServiceErrorModal &&
 						this.returnErrorModal()}
-					{this.props.threads}	
+					{this.props.threads}
 				</Container>
 		);
 	}
