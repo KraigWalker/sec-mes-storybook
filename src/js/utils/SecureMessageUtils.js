@@ -1,4 +1,5 @@
 import {EMPTY_MESSAGE_PLACEHOLDER} from "../constants/StringsConstants";
+
 /**
  * @class DateUtils
  */
@@ -35,7 +36,7 @@ export function truncateMessage(text, limit) {
         }
         return (newText === text)
             ? text
-            : `${newText}...`
+            : `${newText} ...`
     }
     return EMPTY_MESSAGE_PLACEHOLDER;
 }
@@ -47,12 +48,13 @@ export function truncateMessage(text, limit) {
  * @param {number} limit
  */
 export function truncateText(text, limit) {
-    if (text) {
-        if (!text.includes(' ')) {
-            return text.substr(0, limit);
+    if (text && text.length >= limit) {
+        const subString = text.substr(0, limit);
+        const lastWord = subString.lastIndexOf(' ');
+        if (lastWord > -1) {
+            return subString.substring(0, lastWord);
         }
-        const nearestSpacePosition = findSpaceNearestToPosition(text, limit);
-        return text.substring(0, nearestSpacePosition);
+        return subString
     }
     return EMPTY_MESSAGE_PLACEHOLDER;
 }
