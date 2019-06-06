@@ -21,7 +21,7 @@ const getTitle = (status, content) =>
 {
     switch(status)
     {
-        case ARCHIVED: 
+        case ARCHIVED:
             return content.archivePageTitle;
         case SENT:
             return content.sentPageTitle;
@@ -40,7 +40,7 @@ export class ViewMessage extends React.Component {
         const {messageDetail} = this.props.location;
         const {isWebView, setMessagesMetaData, messages } = this.props;
 
-        messageDetail && this.props.setViewMessageDetail(messageDetail)
+        messageDetail && this.props.setViewMessageDetail(messageDetail);
 
         // Below is to update New message to Read message status.
         if (messageDetail && messageDetail.status === 'NEW') {
@@ -98,7 +98,7 @@ export class ViewMessage extends React.Component {
                         <SectionHeading
                             heading1={getTitle(messageDetail.status, content)}></SectionHeading>
 
-                        <MailMessage {...this.props} 
+                        <MailMessage {...this.props}
                             newMessageStatus={messageStatus}
                             hasAttachment={hasAttachment}/>
                         {messageDetail.threadID !== null &&
@@ -113,7 +113,7 @@ export class ViewMessage extends React.Component {
 }
 
 const getHasAttachment = (messageDetail) => {
-    return messageDetail.document && messageDetail.document.id !== undefined;    
+    return messageDetail.document && messageDetail.document.id !== undefined;
 }
 
 

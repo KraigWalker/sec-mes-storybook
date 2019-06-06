@@ -5,7 +5,7 @@ module.exports = {
         options: {
             search: "{/*native*/}",
             replace:
-                "window.AndroidInterface={downloadDocument(){console.log(`download document`)},setBackButtonData(){console.log(`set backbutton data`)}, webAppLoaded(){console.log(`web app loaded`)}}",
+                "window.AndroidInterface={setMessagesMetaData(){console.log(`setMessasgesMetaData`)},downloadDocument(){console.log(`download document`)},setBackButtonData(){console.log(`set backbutton data`)}, webAppLoaded(){console.log(`web app loaded`)}}",
             strict: true
         }
     }
