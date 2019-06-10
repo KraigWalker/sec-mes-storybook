@@ -33,17 +33,12 @@ class ReplySecureMessage extends React.Component {
     super(props);
     this.onMount = this.onMount.bind(this);
     this.getThreads = this.getThreads.bind(this);
-    this.sendAction = this.handleSaveClick.bind(this);
+    this.handleSaveClick = this.handleSaveClick.bind(this);
   }
 
   onMount() {
     const { customerID } = this.props;
     const { messageDetail } = this.props.location;
-    // Below is to update New message to Read message status.
-    //DEBT -copied over in refactor, message click on summary should set the status, not this component
-    if (messageDetail && messageDetail.status === NEW) {
-      this.props.updateMessageData(messageDetail, messageDetail.id, READ);
-    }
     this.props.getCustomerName(customerID);
   }
 
@@ -81,7 +76,7 @@ class ReplySecureMessage extends React.Component {
     const { messageDetail } = this.props.location.messageDetail
       ? this.props.location
 	  : this.props;
-	  
+
 	const { messages, content, isUpdatingMessage, isSavingDraft } = this.props;
 	const selectedAccountValue = getMessageAccountValue(messageDetail, content);
 
