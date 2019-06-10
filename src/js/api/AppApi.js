@@ -6,7 +6,6 @@ import {
 } from "../parsers/MessageParser";
 
 const _getMessageURLEndpoint = "/banks/{bank_id}/securemessages";
-const _newMessageURLEndpoint = "/banks/{bank_id}/securemessages/new";
 const _getMessageSubjectsURL = "/banks/{bank_id}/securemessages/subjects";
 const _getAccountsURL = "/banks/{bank_id}/accounts/default";
 const _sendMessageURL = "/banks/{bank_id}/securemessages/{message_id}";
@@ -67,7 +66,7 @@ class AppApi {
     const reqData = createNewMessage(requestData, status, name);
     this.apiUtils.makeRequest(
       {
-        url: `${this.config.apiBaseUrl2}${_newMessageURLEndpoint}`,
+        url: `${this.config.apiBaseUrl2}${_getMessageURLEndpoint}`,
         method: "POST",
         apiVersion: "1.2.0",
         requestData: reqData
@@ -85,7 +84,7 @@ class AppApi {
     const reqData = replyMessage(requestData, ids, status, name);
     this.apiUtils.makeRequest(
       {
-        url: `${this.config.apiBaseUrl2}${_newMessageURLEndpoint}`,
+        url: `${this.config.apiBaseUrl2}${_getMessageURLEndpoint}`,
         method: "POST",
         apiVersion: "1.2.0",
         requestData: reqData
