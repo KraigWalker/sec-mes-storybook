@@ -58,7 +58,7 @@ class ReplySecureMessage extends React.Component {
   handleSaveClick(status, messageEntity) {
 
     const { location, customerDetails, accounts } = this.props;
-    const { name } = customerDetails.personal_details;
+    const { name } = customerDetails ? customerDetails.personal_details : '';
 
     const sendRequestMessage = BuildSendMessageRequestEntity(
       accounts,
