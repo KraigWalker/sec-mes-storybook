@@ -2,7 +2,7 @@
 const content = {
 	DYB: {
 		landingPageTitle: 'Messages',
-		landingPageMessage: 'Want to talk to the team at B about your account? Safely share your details in a secure message to get all the help you need. We may also send you secure messages to let you know about your new letters and documents. You can view your messages from the last 3 years.',
+		landingPageMessage: "If you want to ask us a question relating to your accounts or products you can send us a secure message and we will respond with the help you need.  We may also send you secure messages to let you know about your new letters and documents. For urgent queries please call us.",
 		inboxPageTitle: 'Inbox Message',
 		sentPageTitle: 'Sent Message',
 		archivePageTitle: 'Archive Message',
@@ -47,7 +47,6 @@ const content = {
 		messageVal: 'Oops. Looks like your message has gone over the character limit. Try and cut it down a little then give it another go',
 		showMore: 'Show more messages',
 		backToAccounts: 'Back to accounts',
-		faqLink: 'You can view your secure messages from the last 3 years.',
 		pleaseSelect: 'Please select',
 		editSavedMessage: 'Edit saved message',
 		noSpecificAccount: 'No specific account',
@@ -66,7 +65,7 @@ const content = {
 
 	CB: {
 		landingPageTitle: 'Messages',
-		landingPageMessage: "If you want to ask us a question relating to your accounts or products you can send us a secure message and we will respond with the help you need.  We may also send you secure messages to let you know about your new letters and documents.",
+		landingPageMessage: "If you want to ask us a question relating to your accounts or products you can send us a secure message and we will respond with the help you need.  We may also send you secure messages to let you know about your new letters and documents. For urgent queries please call us.",
 		inboxPageTitle: 'Inbox Message',
 		sentPageTitle: 'Sent Message',
 		archivePageTitle: 'Archive Message',
@@ -111,7 +110,6 @@ const content = {
 		messageVal: 'Your message has exceeded the maximum character limit. Please reduce the length of your message then try and send it again.',
 		showMore: 'Show more messages',
 		backToAccounts: 'Back to accounts',
-		faqLink: 'You can view your secure messages from the last 3 years.',
 		pleaseSelect: 'Please select',
 		editSavedMessage: 'Edit saved message',
 		noSpecificAccount: 'No specific account',
