@@ -64,7 +64,6 @@ export class LandingPage extends React.PureComponent {
                         }
                         <Title size="h4">{this.props.content.messages}</Title>
                         <TextBody>{this.props.content.landingPageMessage}</TextBody>
-                        <TextBody>{this.props.content.faqLink}</TextBody>
                         {
                             !readOnly && <Button display="primary"
                                                  onClick={() => this.props.history.push('/securemessages/new')}>

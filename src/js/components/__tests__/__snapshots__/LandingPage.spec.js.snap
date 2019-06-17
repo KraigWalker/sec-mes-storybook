@@ -57,7 +57,6 @@ ShallowWrapper {
             size="h4"
           />
           <TextBody />
-          <TextBody />
           <Button
             disabled={false}
             display="primary"
@@ -111,7 +110,6 @@ ShallowWrapper {
             size="h4"
           />
           <TextBody />
-          <TextBody />
           <Button
             disabled={false}
             display="primary"
@@ -161,7 +159,6 @@ ShallowWrapper {
             <Title
               size="h4"
             />,
-            <TextBody />,
             <TextBody />,
             <Button
               disabled={false}
@@ -251,17 +248,6 @@ ShallowWrapper {
             "nodeType": "function",
             "props": Object {
               "children": undefined,
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "children": undefined,
               "disabled": false,
               "display": "primary",
               "isLoading": false,
@@ -326,7 +312,6 @@ ShallowWrapper {
               size="h4"
             />
             <TextBody />
-            <TextBody />
             <Button
               disabled={false}
               display="primary"
@@ -380,7 +365,6 @@ ShallowWrapper {
               size="h4"
             />
             <TextBody />
-            <TextBody />
             <Button
               disabled={false}
               display="primary"
@@ -430,7 +414,6 @@ ShallowWrapper {
               <Title
                 size="h4"
               />,
-              <TextBody />,
               <TextBody />,
               <Button
                 disabled={false}
@@ -520,17 +503,6 @@ ShallowWrapper {
               "nodeType": "function",
               "props": Object {
                 "children": undefined,
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "children": undefined,
                 "disabled": false,
                 "display": "primary",
                 "isLoading": false,
@@ -588,7 +560,9 @@ ShallowWrapper {
         "supportPrevContextArgumentOfComponentDidUpdate": true,
       },
     },
+    Symbol(enzyme.__providerValues__): undefined,
   },
+  Symbol(enzyme.__providerValues__): Map {},
   Symbol(enzyme.__childContext__): null,
 }
 `;
