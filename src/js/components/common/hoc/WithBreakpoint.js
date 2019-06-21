@@ -39,7 +39,9 @@ export const withBreakpoints = WrappedComponent =>
     constructor(props) {
       super(props);
       this.handleResize = this.handleResize.bind(this);
-      const breakpoint = calculateBreakPoint(window.innerWidth);
+      //IE 11 setting innerWidth incorrectly on load
+      const width = window.innerWidth ? window.innerWidth : window.outerWidth;
+      const breakpoint = calculateBreakPoint(width);
 
       window.addEventListener("resize", throttle(this.handleResize, 500));
       this.state = {
@@ -53,7 +55,7 @@ export const withBreakpoints = WrappedComponent =>
       window.removeEventListener("resize", this.handleResize);
     }
 
-   
+
     handleResize() {
       const breakpoint = calculateBreakPoint(window.innerWidth);
       this.setState({
