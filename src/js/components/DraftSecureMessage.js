@@ -27,9 +27,9 @@ class DraftSecureMessage extends React.Component {
         const {id} = location.messageDetail;
         const {name} = customerDetails ? customerDetails.personal_details : '';
         const sendRequestMessage = BuildSendMessageRequestEntity(accounts, messageEntity);
-        status === DRAFT ?
-            this.props.updateMessageData(sendRequestMessage.getMessageRequestData(), id, status) :
-            this.props.sendMessageData(sendRequestMessage.getMessageRequestData(), status, name);
+        
+        id ? this.props.updateMessageData(sendRequestMessage.getMessageRequestData(), id, status) 
+           :this.props.sendMessageData(sendRequestMessage.getMessageRequestData(), status, name);
     }
 
     send(messageEntity) {
