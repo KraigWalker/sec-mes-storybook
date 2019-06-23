@@ -1,6 +1,5 @@
 import React from "react";
 
-
 const Attachment = (props) => (
 	<div className="c-message--attachments">
 		<h4>Attachments</h4>
@@ -12,13 +11,15 @@ const Attachment = (props) => (
 	</div>
 );
 
-const handleAttachmentClick = ({isWebView, session, message, client, getDocumentByIdNative, history, readOnly}) => {
+const handleAttachmentClick = ({basePath, isWebView, session, message, client, getDocumentByIdNative, history, readOnly}) => {
 
+  console.log(message.document.id);
     if (!isWebView) {
-      let url = `/my-documents/${session.brand}/${message.document.id}#access_token=${session.access_token}&bank_id=${session.bank_id}&client_context=${
+
+      let url = `${basePath}/my-documents/${session.brand}/${message.document.id}#access_token=${session.access_token}&bank_id=${session.bank_id}&client_context=${
         client.client.app_title
         }&user_tracking_id=${client.client.user_tracking_id}&brandId=${session.bank_id}&state=${session.state}`;
-  
+
       if (readOnly) { //In MEO we need to open the document on the same page due to in memory routing
         history.push({        
             pathname: url,
