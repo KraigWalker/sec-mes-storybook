@@ -16,6 +16,7 @@ import {SectionHeading} from 'web-ui-components/lib/molecules/text';
 import {Card} from "web-ui-components/lib/organisms/cards";
 import {Container, Row} from "web-ui-components/lib/global/layout";
 import { withBreakpoints } from "../components/common/hoc/WithBreakpoint";
+import { getParentPath } from "../utils/GeneralUtils";
 
 const getTitle = (status, content) =>
 {
@@ -91,6 +92,8 @@ export class ViewMessage extends React.Component {
             }
         }
 
+        const basePath = `${window.location.origin}${getParentPath(window.location.pathname,2)}`;
+
         return (
             <Container {...paddingProps} size={containerSize}>
                 <Row>
@@ -100,7 +103,8 @@ export class ViewMessage extends React.Component {
 
                         <MailMessage {...this.props}
                             newMessageStatus={messageStatus}
-                            hasAttachment={hasAttachment}/>
+                            hasAttachment={hasAttachment}
+                            basePath={basePath}/>
                         {messageDetail.threadID !== null &&
                         this.getThreads(this.props.messages.messages, messageDetail)}
                     </Card>
