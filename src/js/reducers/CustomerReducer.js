@@ -19,7 +19,13 @@ export default function reducer(state = {
             return { ...state, fetching: false, fetched: true, customerDetails: action.payload };
         }
         case AppConstants.REQUEST_CUSTOMER_NAME_FAILURE: {
-            return { ...state, error: true, fetched: true, fetching: false };
+            //Name is not mandatory (endpoint fails for business users). Just ignore the error
+            return { ...state, 
+                error: false, 
+                fetched: true, 
+                fetching: false, 
+                customerDetails: null
+            };
         }
         case AppConstants.SET_POPUP_STATE: {
             return { ...state, error: false }
