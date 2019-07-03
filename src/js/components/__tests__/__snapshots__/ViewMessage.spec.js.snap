@@ -66,6 +66,7 @@ ShallowWrapper {
           />
           <Connect(withRouter(withMessaging))
             activeTab="SENT"
+            basePath="http://localhost"
             content={
               Object {
                 "sentPageTitle": "sentPageTitle",
@@ -126,6 +127,7 @@ ShallowWrapper {
           />
           <Connect(withRouter(withMessaging))
             activeTab="SENT"
+            basePath="http://localhost"
             content={
               Object {
                 "sentPageTitle": "sentPageTitle",
@@ -183,6 +185,7 @@ ShallowWrapper {
             />,
             <Connect(withRouter(withMessaging))
               activeTab="SENT"
+              basePath="http://localhost"
               content={
                 Object {
                   "sentPageTitle": "sentPageTitle",
@@ -247,6 +250,7 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "activeTab": "SENT",
+              "basePath": "http://localhost",
               "content": Object {
                 "sentPageTitle": "sentPageTitle",
               },
@@ -305,6 +309,7 @@ ShallowWrapper {
             />
             <Connect(withRouter(withMessaging))
               activeTab="SENT"
+              basePath="http://localhost"
               content={
                 Object {
                   "sentPageTitle": "sentPageTitle",
@@ -365,6 +370,7 @@ ShallowWrapper {
             />
             <Connect(withRouter(withMessaging))
               activeTab="SENT"
+              basePath="http://localhost"
               content={
                 Object {
                   "sentPageTitle": "sentPageTitle",
@@ -422,6 +428,7 @@ ShallowWrapper {
               />,
               <Connect(withRouter(withMessaging))
                 activeTab="SENT"
+                basePath="http://localhost"
                 content={
                   Object {
                     "sentPageTitle": "sentPageTitle",
@@ -486,6 +493,7 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "activeTab": "SENT",
+                "basePath": "http://localhost",
                 "content": Object {
                   "sentPageTitle": "sentPageTitle",
                 },
@@ -627,6 +635,7 @@ ShallowWrapper {
           />
           <Connect(withRouter(withMessaging))
             activeTab="SENT"
+            basePath="http://localhost"
             content={
               Object {
                 "back": "Back",
@@ -699,6 +708,7 @@ ShallowWrapper {
           />
           <Connect(withRouter(withMessaging))
             activeTab="SENT"
+            basePath="http://localhost"
             content={
               Object {
                 "back": "Back",
@@ -768,6 +778,7 @@ ShallowWrapper {
             />,
             <Connect(withRouter(withMessaging))
               activeTab="SENT"
+              basePath="http://localhost"
               content={
                 Object {
                   "back": "Back",
@@ -844,6 +855,7 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "activeTab": "SENT",
+              "basePath": "http://localhost",
               "content": Object {
                 "back": "Back",
               },
@@ -912,6 +924,7 @@ ShallowWrapper {
             />
             <Connect(withRouter(withMessaging))
               activeTab="SENT"
+              basePath="http://localhost"
               content={
                 Object {
                   "back": "Back",
@@ -984,6 +997,7 @@ ShallowWrapper {
             />
             <Connect(withRouter(withMessaging))
               activeTab="SENT"
+              basePath="http://localhost"
               content={
                 Object {
                   "back": "Back",
@@ -1053,6 +1067,7 @@ ShallowWrapper {
               />,
               <Connect(withRouter(withMessaging))
                 activeTab="SENT"
+                basePath="http://localhost"
                 content={
                   Object {
                     "back": "Back",
@@ -1129,6 +1144,7 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "activeTab": "SENT",
+                "basePath": "http://localhost",
                 "content": Object {
                   "back": "Back",
                 },
