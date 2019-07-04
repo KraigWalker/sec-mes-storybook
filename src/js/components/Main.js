@@ -16,13 +16,13 @@ export class Main extends React.Component {
     handleSecureMessagesClick() {
         const {history} = this.props;
         history.push(`/securemessages`);
-        window.top.postMessage("goToSecureMessages", "*")
+        window.top.postMessage("goToSecureMessages", "*");
     }
 
     handleDocumentPortalClick() {
         const {history, session} = this.props;
         history.push(`/my-documents/${session.brand}`);
-        window.top.postMessage("goToMyDocuments", "*")
+        window.top.postMessage("goToMyDocuments", "*");
     }
 
     render() {
