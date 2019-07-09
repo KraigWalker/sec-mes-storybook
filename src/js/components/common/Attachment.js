@@ -12,8 +12,6 @@ const Attachment = (props) => (
 );
 
 const handleAttachmentClick = ({basePath, isWebView, session, message, client, getDocumentByIdNative, history, readOnly}) => {
-
-  console.log(message.document.id);
     if (!isWebView) {
 
       let url = `${basePath}/my-documents/${session.brand}/${message.document.id}#access_token=${session.access_token}&bank_id=${session.bank_id}&client_context=${
@@ -21,7 +19,7 @@ const handleAttachmentClick = ({basePath, isWebView, session, message, client, g
         }&user_tracking_id=${client.client.user_tracking_id}&brandId=${session.bank_id}&state=${session.state}`;
 
       if (readOnly) { //In MEO we need to open the document on the same page due to in memory routing
-        history.push({        
+        history.push({
             pathname: url,
             backPath: '/securemessages/'});
       }
@@ -33,5 +31,5 @@ const handleAttachmentClick = ({basePath, isWebView, session, message, client, g
       getDocumentByIdNative(message.document.id, message.document.fileSize);
     }
   }
-  
+
   export default Attachment;

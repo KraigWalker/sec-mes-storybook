@@ -335,6 +335,16 @@ export function getCustomerName(id) {
   };
 }
 
+export function setSendingMessages(id) {
+  return function(dispatch) {
+    const payload = {
+      type: AppConstants.SENDING_MESSAGE,
+      payload: id,
+    };
+    dispatch(payload);
+  }
+}
+
 export function setMode(mode) {
   return {
     type: AppConstants.SET_MODE,

@@ -3,7 +3,7 @@ import SecureMessageForm from "./SecureMessageForm";
 import {connect} from "react-redux";
 import {PENDING, DRAFT} from "../constants/StringsConstants";
 import {BuildSendMessageRequestEntity, getMessageAccountValue} from '../bl/SecureMessageBL';
-import {popupState, sendMessageForAccessibiltiy, sendMessageData, updateMessageData} from "../actions/AppActions"
+import {popupState, sendMessageForAccessibiltiy, sendMessageData, updateMessageData, setSendingMessages} from "../actions/AppActions"
 import {
     getAccounts,
     getMessages,
@@ -12,7 +12,8 @@ import {
     getSubjectErrors,
     getShowSuccessModal,
     getUpdating,
-    getIsSavingDraft
+    getIsSavingDraft,
+    getSendingMessages,
 } from "../reducers";
 
 class DraftSecureMessage extends React.Component {
@@ -20,6 +21,7 @@ class DraftSecureMessage extends React.Component {
         super(props);
         this.send = this.send.bind(this);
         this.save = this.save.bind(this);
+
     }
 
     sendMessageData(messageEntity, status) {
@@ -27,8 +29,12 @@ class DraftSecureMessage extends React.Component {
         const {id} = location.messageDetail;
         const {name} = customerDetails ? customerDetails.personal_details : '';
         const sendRequestMessage = BuildSendMessageRequestEntity(accounts, messageEntity);
-        
-        id ? this.props.updateMessageData(sendRequestMessage.getMessageRequestData(), id, status) 
+
+        if (status === PENDING) {
+            this.props.setSendingMessages(id);
+        }
+
+        id ? this.props.updateMessageData(sendRequestMessage.getMessageRequestData(), id, status)
            :this.props.sendMessageData(sendRequestMessage.getMessageRequestData(), status, name);
     }
 
@@ -76,5 +82,6 @@ const mapStateToProps = {
     updateMessageData,
     sendMessageForAccessibiltiy,
     sendMessageData,
+    setSendingMessages,
 };
 export default connect(mapState, mapStateToProps)(DraftSecureMessage);

@@ -1,39 +1,21 @@
 import _ from 'lodash';
 import moment from 'moment';
-import { NEW, READ, DRAFT, PENDING, SENT, ARCHIVED } from '../constants/StringsConstants';
+import { NEW, DRAFT, PENDING, SENT, ARCHIVED } from '../constants/StringsConstants';
 import SendMessageRequestEntity from "../entities/SendMessageRequestEntity";
 import { isNullOrUndefined } from '../utils/GeneralUtils';
 import RegexUtils from "../utils/RegexUtils"
 /**
  *
- * @param {array of Messages} parses all messages and creates 3 different arrays for INBOX/DRAFT/SENT.
+ * @param messages Array parses all messages and creates 3 different arrays for INBOX/DRAFT/SENT.
+ * @param sendingMessages Array array of messages sent to backend for correct status to SENT (PENDING).
  */
 
-export function SecureMessageBL(response) {
-	const inboxMessages = [];
-	const sentMessages = [];
-	const draftMessages = [];
-	const archivedMessages = [];
-	_.map(response.messages, message => {
-		switch (message.status) {
-			case NEW:
-			case READ:
-				inboxMessages.push(message);
-				break;
-			case DRAFT:
-				draftMessages.push(message);
-				break;
-			case ARCHIVED:
-				archivedMessages.push(message);
-				break;
-			case PENDING:
-			case SENT:
-				sentMessages.push(message);
-				break;
-			default:
-		}
-	});
-	return { inboxMessages, sentMessages, draftMessages, archivedMessages };
+export function SecureMessageBL({messages, sendingMessages}) {
+	const inboxMessages = messages.filter(message => message.status === NEW);
+	const sentMessages = messages.filter(message => message.status === SENT || messages.status === PENDING || sendingMessages.indexOf(message.id) >= 0);
+	const draftMessages = messages.filter(message => message.status === DRAFT && sendingMessages.indexOf(message.id) < 0);
+	const archivedMessages = messages.filter(message => message.status === ARCHIVED);
+	return {inboxMessages, sentMessages, draftMessages, archivedMessages};
 }
 /**
  * to fetch all related threads on the cureent message.
@@ -64,7 +46,7 @@ export function BuildSendMessageRequestEntity(accounts, messageEntity ) {
     const sendMessageRequestEntity = new SendMessageRequestEntity();
     sendMessageRequestEntity.setUpdateSubject(subject);
 	sendMessageRequestEntity.setMessage(message);
-	
+
     if (!isNullOrUndefined(account) && !isNullOrUndefined(account.accountId)) {
 		const accName = getAccountName(account.accountId, accounts);
         const accountNameNew = accName.display_name || accName.name;
@@ -89,6 +71,6 @@ export const maskCardDetails = (message) => {
 		const lastFour = RegexUtils.getLastFourDigits(matchCardDetails);
 		maskedMessage = message.replace(new RegExp(matchCardDetails, 'g'), `************${lastFour}`);
 	}
-	else maskedMessage = message; 
+	else maskedMessage = message;
 	return maskedMessage;
 }
