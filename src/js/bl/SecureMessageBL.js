@@ -12,7 +12,8 @@ import RegexUtils from "../utils/RegexUtils"
 
 export function SecureMessageBL({messages, sendingMessages}) {
 	const inboxMessages = messages.filter(message => message.status === NEW);
-	const sentMessages = [...messages.filter(message => message.status === PENDING),
+	const sentMessages = [
+		...messages.filter(message => message.status === PENDING),
 		...messages.filter(message => message.status === SENT),
 		...messages.filter(message => sendingMessages.indexOf(message.id) >= 0)
 	];
