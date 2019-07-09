@@ -12,7 +12,10 @@ import RegexUtils from "../utils/RegexUtils"
 
 export function SecureMessageBL({messages, sendingMessages}) {
 	const inboxMessages = messages.filter(message => message.status === NEW);
-	const sentMessages = messages.filter(message => message.status === SENT || messages.status === PENDING || sendingMessages.indexOf(message.id) >= 0);
+	const sentMessages = [...messages.filter(message => message.status === PENDING),
+		...messages.filter(message => message.status === SENT),
+		...messages.filter(message => sendingMessages.indexOf(message.id) >= 0)
+	];
 	const draftMessages = messages.filter(message => message.status === DRAFT && sendingMessages.indexOf(message.id) < 0);
 	const archivedMessages = messages.filter(message => message.status === ARCHIVED);
 	return {inboxMessages, sentMessages, draftMessages, archivedMessages};

@@ -1,9 +1,8 @@
 import React from "react";
-import _ from "lodash";
 import SecureMessageSummary from "./common/SecureMessageSummary";
 import {sendMessageForAccessibiltiy as sendMessageForAccessibility} from "../actions/AppActions";
 import {connect} from "react-redux";
-import {SENT, DRAFT, ARCHIVED} from '../constants/StringsConstants';
+import {SENT, DRAFT, ARCHIVED, PENDING} from '../constants/StringsConstants';
 import {Button} from 'web-ui-components/lib/atoms/buttons';
 import {Column} from "web-ui-components/lib/global/layout";
 import {TextBody} from "web-ui-components/lib/atoms/text";
@@ -47,7 +46,7 @@ export class SecureMessageList extends React.Component {
         const listFlag = true;
         return messages
             .slice(0, this.state.showMoreLimit)
-            .map((message, index) => <SecureMessageSummary key={index} disabled={messagesFetched.sendingMessages.indexOf(message.id) >= 0}
+            .map((message, index) => <SecureMessageSummary key={index} disabled={messagesFetched.sendingMessages.indexOf(message.id) >= 0 || message.status === PENDING}
                                                            message={message} listFlag={listFlag} content={content}/>);
     }
 
