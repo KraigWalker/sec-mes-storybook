@@ -5,26 +5,22 @@ import SendMessageRequestEntity from "../entities/SendMessageRequestEntity";
 import { isNullOrUndefined } from '../utils/GeneralUtils';
 import RegexUtils from "../utils/RegexUtils"
 /**
- *
  * @param messages Array parses all messages and creates 3 different arrays for INBOX/DRAFT/SENT.
  * @param sendingMessages Array array of messages sent to backend for correct status to SENT (PENDING).
  */
-
-export function SecureMessageBL({messages, sendingMessages, deletingMessages}) {
-	console.log(deletingMessages);
+export function SecureMessageBL({messages, deletingMessages}) {
 	const activeMessages = messages.filter(message => deletingMessages.indexOf(message.id) < 0);
 	const inboxMessages = activeMessages.filter(message => message.status === NEW);
 	const sentMessages = [
 		...activeMessages.filter(message => message.status === PENDING),
 		...activeMessages.filter(message => message.status === SENT),
-		...activeMessages.filter(message => sendingMessages.indexOf(message.id) >= 0)
 	];
-	const draftMessages = activeMessages.filter(message => message.status === DRAFT && sendingMessages.indexOf(message.id) < 0);
+	const draftMessages = activeMessages.filter(message => message.status === DRAFT);
 	const archivedMessages = activeMessages.filter(message => message.status === ARCHIVED);
 	return {inboxMessages, sentMessages, draftMessages, archivedMessages};
 }
 /**
- * to fetch all related threads on the cureent message.
+ * to fetch all related threads on the current message.
  * @param {array} messages //total list of secure messages.
  * @param {object} currentMessage //current message.
  */

@@ -23,9 +23,6 @@ export default function reducer(state = {
     deletingMessages: [],
 }, action) {
     switch (action.type) {
-        case AppConstants.SENDING_MESSAGE: {
-            return {...state, sendingMessages: [...state.sendingMessages, action.payload]}
-        }
         case AppConstants.DELETING_MESSAGE: {
             console.log(state, action.payload)
             return {...state, deletingMessages: [...state.deletingMessages, action.payload]}
