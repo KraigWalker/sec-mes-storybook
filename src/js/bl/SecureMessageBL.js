@@ -6,7 +6,7 @@ import { isNullOrUndefined } from '../utils/GeneralUtils';
 import RegexUtils from "../utils/RegexUtils"
 /**
  * @param messages Array parses all messages and creates 3 different arrays for INBOX/DRAFT/SENT.
- * @param sendingMessages Array array of messages sent to backend for correct status to SENT (PENDING).
+ * @param deletingMessages Array array of messages sent to backend for correct status to DELETE (DELETE).
  */
 export function SecureMessageBL({messages, deletingMessages}) {
 	const activeMessages = messages.filter(message => deletingMessages.indexOf(message.id) < 0);

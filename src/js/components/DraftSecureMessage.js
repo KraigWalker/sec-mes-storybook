@@ -13,7 +13,6 @@ import {
     getShowSuccessModal,
     getUpdating,
     getIsSavingDraft,
-    getSendingMessages,
 } from "../reducers";
 
 class DraftSecureMessage extends React.Component {

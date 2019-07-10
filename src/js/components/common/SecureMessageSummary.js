@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import { NEW, ARCHIVED, DRAFT } from '../../constants/StringsConstants';
 import withMessaging from "../common/WithMessaging";
 import {Mail} from 'web-ui-components/lib/communication/messaging';
-import { LoadingLocalTakeover } from "web-ui-components/lib/organisms/takeovers";
-import { BlockField } from "web-ui-components/lib/global/layout";
 import { truncateMessage } from "../../utils/SecureMessageUtils";
 import {TEXT_LIMIT} from "../../constants/NumericalConstants";
 
@@ -30,11 +28,8 @@ export const SecureMessageSummary = (props) => {
     const deleteClick = () => props.onDeleteClick(props.message);
     const replyClick = () => props.onReplyClick(props.message);
 
-    const {message, disabled} = props;
-    const showTakeOver = disabled || message.status === "PENDING"
+    const {message} = props;
     return (
-        <LoadingLocalTakeover className="u-margin-top-2" title="...Sending" show={showTakeOver}>
-            {showTakeOver && <BlockField/>}
         <Mail.List>
             <Mail.Item
                 {...props}
@@ -51,9 +46,7 @@ export const SecureMessageSummary = (props) => {
                 mailOnClick={handleMailClick}
             />
         </Mail.List>
-        </LoadingLocalTakeover>
     );
-
 }
 
 const SecureMessageSummaryMessaging = withMessaging(SecureMessageSummary);
@@ -68,7 +61,6 @@ SecureMessageSummaryMessaging.propTypes = {
     showReply: PropTypes.bool,
     showDelete: PropTypes.bool,
     showUnarchive: PropTypes.bool,
-    disabled: PropTypes.bool,
-}
+};
 
 export default SecureMessageSummaryMessaging;
