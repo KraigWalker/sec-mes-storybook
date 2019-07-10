@@ -18,7 +18,6 @@ function reducer(state = {
 			return { ...state };
 		}
 		case AppConstants.DELETE_SECURE_MESSAGE_SUCCESS: {
-			console.log(DELETE_MODAL);
 			return { ...state, modalType: DELETE_MODAL};
 		}
 		case AppConstants.ARCHIVE_SECURE_MESSAGE_SUCCESS: {
