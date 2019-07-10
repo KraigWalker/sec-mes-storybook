@@ -20,10 +20,15 @@ export default function reducer(state = {
     newMessageError: false,
     draftError: false,
     sendingMessages: [],
+    deletingMessages: [],
 }, action) {
     switch (action.type) {
         case AppConstants.SENDING_MESSAGE: {
             return {...state, sendingMessages: [...state.sendingMessages, action.payload]}
+        }
+        case AppConstants.DELETING_MESSAGE: {
+            console.log(state, action.payload)
+            return {...state, deletingMessages: [...state.deletingMessages, action.payload]}
         }
         case AppConstants.REQUEST_SECURE_MESSAGES: {
             return {...state, fetching: true};
@@ -65,8 +70,6 @@ export default function reducer(state = {
 
 const getMessages = (state) => state.messages;
 
-const getSendingMessages = (state) => state.sendingMessages;
-
 const getUpdating = (state) => state.updating;
 
 const getIsSavingDraft = state => state.isSavingDraft;
@@ -89,5 +92,4 @@ export const selectors = {
     getShowSuccessModal,
     getUpdating,
     getIsSavingDraft,
-    getSendingMessages,
 };

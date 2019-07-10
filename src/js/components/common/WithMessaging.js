@@ -7,7 +7,8 @@ import {
     closeDelModal,
     archiveMessageData,
     unarchiveMessageData,
-    popupState
+    popupState,
+    setDeletingMessages,
 } from "../../actions/AppActions";
 import {
     NEW,
@@ -16,33 +17,13 @@ import {
     READ_ONLY,
     ARCHIVED
 } from "../../constants/StringsConstants";
-import {
-    DELETE_MODAL,
-    ARCHIVE_MODAL,
-    UNARCHIVE_MODAL
-} from "../../constants/ModalConstants";
+
 import {withRouter} from "react-router-dom";
 import PropTypes from "prop-types";
 import {ConfirmationModal} from "web-ui-components/lib/organisms/modals";
 import getOptionDisplayFunctions from "./MessageOptions";
 import {TextBody} from "web-ui-components/lib/atoms/text";
-import SuccessModal from "./SuccessModal";
 import ErrorModal from "./ErrorModal";
-
-const getSuccessModalMessage = (modalType, content) => {
-    switch (modalType) {
-        case ARCHIVE_MODAL: {
-            return content.messageArchived;
-        }
-        case UNARCHIVE_MODAL: {
-            return content.messageUnarchived;
-        }
-        case DELETE_MODAL:
-        default: {
-            return content.messageDeleted;
-        }
-    }
-};
 
 const WithMessaging = WrappedComponent =>
     class withMessaging extends Component {
@@ -52,7 +33,6 @@ const WithMessaging = WrappedComponent =>
                 showDeleteConfirmModal: false,
                 showSendServiceErrorModal: false,
                 modalType: 0,
-                showSuccessModal: false,
                 messageToDelete: {}
             };
             // singleton instance
@@ -130,8 +110,7 @@ const WithMessaging = WrappedComponent =>
             } else this.props.delMessageData(message, message.id, DELETED);
             this.setState({
                 showDeleteConfirmModal: false,
-                showSendServiceErrorModal: true
-            });
+            }, () => this.props.setDeletingMessages(message.id));
         }
 
         retryServiceCall() {
@@ -228,11 +207,6 @@ const WithMessaging = WrappedComponent =>
                         showReply={showReply}
                     />
                     {this.state.showDeleteConfirmModal && this.getDeleteConfirmModal()}
-                    {showSuccessModal && <SuccessModal
-                        onClick={this.closeAndReturn}
-                        bodyText={getSuccessModalMessage(messageDetail.modalType, content)}
-                        okText={content.ok}
-                    />}
                     {messages.draftError &&
                     this.state.showSendServiceErrorModal &&
                     this.returnErrorModal()}
@@ -262,6 +236,7 @@ const actionCreators = {
     updateMessageData,
     closeDelModal,
     popupState,
+    setDeletingMessages,
     unarchiveMessageData,
     archiveMessageData
 };

@@ -345,6 +345,16 @@ export function setSendingMessages(id) {
   }
 }
 
+export function setDeletingMessages(id) {
+  return function(dispatch) {
+    const payload = {
+      type: AppConstants.DELETING_MESSAGE,
+      payload: id,
+    };
+    dispatch(payload);
+  }
+}
+
 export function setMode(mode) {
   return {
     type: AppConstants.SET_MODE,

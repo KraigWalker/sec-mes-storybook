@@ -10,15 +10,17 @@ import RegexUtils from "../utils/RegexUtils"
  * @param sendingMessages Array array of messages sent to backend for correct status to SENT (PENDING).
  */
 
-export function SecureMessageBL({messages, sendingMessages}) {
-	const inboxMessages = messages.filter(message => message.status === NEW);
+export function SecureMessageBL({messages, sendingMessages, deletingMessages}) {
+	console.log(deletingMessages);
+	const activeMessages = messages.filter(message => deletingMessages.indexOf(message.id) < 0);
+	const inboxMessages = activeMessages.filter(message => message.status === NEW);
 	const sentMessages = [
-		...messages.filter(message => message.status === PENDING),
-		...messages.filter(message => message.status === SENT),
-		...messages.filter(message => sendingMessages.indexOf(message.id) >= 0)
+		...activeMessages.filter(message => message.status === PENDING),
+		...activeMessages.filter(message => message.status === SENT),
+		...activeMessages.filter(message => sendingMessages.indexOf(message.id) >= 0)
 	];
-	const draftMessages = messages.filter(message => message.status === DRAFT && sendingMessages.indexOf(message.id) < 0);
-	const archivedMessages = messages.filter(message => message.status === ARCHIVED);
+	const draftMessages = activeMessages.filter(message => message.status === DRAFT && sendingMessages.indexOf(message.id) < 0);
+	const archivedMessages = activeMessages.filter(message => message.status === ARCHIVED);
 	return {inboxMessages, sentMessages, draftMessages, archivedMessages};
 }
 /**
