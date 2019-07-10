@@ -2,7 +2,7 @@ import React from "react";
 import SecureMessageSummary from "./common/SecureMessageSummary";
 import {sendMessageForAccessibiltiy as sendMessageForAccessibility} from "../actions/AppActions";
 import {connect} from "react-redux";
-import {SENT, DRAFT, ARCHIVED, PENDING} from '../constants/StringsConstants';
+import {SENT, DRAFT, ARCHIVED} from '../constants/StringsConstants';
 import {Button} from 'web-ui-components/lib/atoms/buttons';
 import {Column} from "web-ui-components/lib/global/layout";
 import {TextBody} from "web-ui-components/lib/atoms/text";

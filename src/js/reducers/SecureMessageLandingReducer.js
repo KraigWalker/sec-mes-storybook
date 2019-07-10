@@ -19,7 +19,6 @@ export default function reducer(state = {
     activeTab: 'inbox',
     newMessageError: false,
     draftError: false,
-    sendingMessages: [],
     deletingMessages: [],
 }, action) {
     switch (action.type) {
