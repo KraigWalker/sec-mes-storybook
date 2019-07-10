@@ -23,7 +23,6 @@ export default function reducer(state = {
 }, action) {
     switch (action.type) {
         case AppConstants.DELETING_MESSAGE: {
-            console.log(state, action.payload)
             return {...state, deletingMessages: [...state.deletingMessages, action.payload]}
         }
         case AppConstants.REQUEST_SECURE_MESSAGES: {
