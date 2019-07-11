@@ -11,8 +11,8 @@ describe('SecureMessage Utils Check:', () => {
     expect(getMessageType("READ")).toEqual("INBOX");
   });
   it('updateMessageStatus - Should Update the status of the message in message object', () => {
-      const Test1 = updateMessageStatus(TestData.securemessages[0], 'DRAFT');
-      const Test2 = updateMessageStatus(TestData.securemessages[1], 'SENT');
+      const Test1 = updateMessageStatus(TestData.secure_messages[0], 'DRAFT');
+      const Test2 = updateMessageStatus(TestData.secure_messages[1], 'SENT');
       expect(Test1.status).toEqual("DRAFT");
       expect(Test2.status).toEqual("SENT");
   });

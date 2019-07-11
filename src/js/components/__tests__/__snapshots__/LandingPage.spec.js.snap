@@ -167,6 +167,7 @@ ShallowWrapper {
               onClick={[Function]}
               size="md"
             />,
+            false,
             <WithBreakpoints
               activeTab={undefined}
               content={
@@ -258,6 +259,7 @@ ShallowWrapper {
             "rendered": null,
             "type": [Function],
           },
+          false,
           Object {
             "instance": null,
             "key": undefined,
@@ -422,6 +424,7 @@ ShallowWrapper {
                 onClick={[Function]}
                 size="md"
               />,
+              false,
               <WithBreakpoints
                 activeTab={undefined}
                 content={
@@ -513,6 +516,7 @@ ShallowWrapper {
               "rendered": null,
               "type": [Function],
             },
+            false,
             Object {
               "instance": null,
               "key": undefined,

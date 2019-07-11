@@ -8,7 +8,7 @@ describe('Date Utils Check:', () => {
     expect(getISODateString("2017-10-17T10:56:43")).toBe("17-10-2017");
   });
   it('sortArrayByDate - Should return sorted array with most recent date', () => {
-    let SortedArray = sortArrayByDate(TestData.securemessages);
+    let SortedArray = sortArrayByDate(TestData.secure_messages);
     expect(SortedArray[0].date_created).toEqual('2017-10-19T10:56:43.511Z');
     expect(SortedArray[1].date_created).toEqual('2017-10-17T10:56:43.511Z');
     expect(SortedArray[2].date_created).toEqual('2017-09-17T10:56:43.511Z');

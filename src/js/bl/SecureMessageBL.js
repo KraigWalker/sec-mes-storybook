@@ -1,22 +1,28 @@
 import _ from 'lodash';
 import moment from 'moment';
-import { NEW, DRAFT, PENDING, SENT, ARCHIVED } from '../constants/StringsConstants';
+import { NEW, DRAFT, PENDING, SENT, ARCHIVED, READ } from '../constants/StringsConstants';
 import SendMessageRequestEntity from "../entities/SendMessageRequestEntity";
 import { isNullOrUndefined } from '../utils/GeneralUtils';
-import RegexUtils from "../utils/RegexUtils"
+import RegexUtils from "../utils/RegexUtils";
+
+const messageByStatusPredicate = (message, status) => message.status === status;
+
 /**
  * @param messages Array parses all messages and creates 3 different arrays for INBOX/DRAFT/SENT.
  * @param deletingMessages Array array of messages sent to backend for correct status to DELETE (DELETE).
  */
-export function SecureMessageBL({messages, deletingMessages}) {
+export function SecureMessageBL({messages =[], deletingMessages = []}) {
 	const activeMessages = messages.filter(message => deletingMessages.indexOf(message.id) < 0);
-	const inboxMessages = activeMessages.filter(message => message.status === NEW);
-	const sentMessages = [
-		...activeMessages.filter(message => message.status === PENDING),
-		...activeMessages.filter(message => message.status === SENT),
+	const inboxMessages = [
+		...activeMessages.filter(message => messageByStatusPredicate(message, NEW)),
+		...activeMessages.filter(message =>messageByStatusPredicate(message, READ)),
 	];
-	const draftMessages = activeMessages.filter(message => message.status === DRAFT);
-	const archivedMessages = activeMessages.filter(message => message.status === ARCHIVED);
+	const sentMessages = [
+		...activeMessages.filter(message => messageByStatusPredicate(message, PENDING)),
+		...activeMessages.filter(message => messageByStatusPredicate(message, READ)),
+	];
+	const draftMessages = activeMessages.filter(message => messageByStatusPredicate(message, DRAFT));
+	const archivedMessages = activeMessages.filter(message =>messageByStatusPredicate(message, ARCHIVED));
 	return {inboxMessages, sentMessages, draftMessages, archivedMessages};
 }
 /**

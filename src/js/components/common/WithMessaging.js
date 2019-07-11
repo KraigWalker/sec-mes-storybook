@@ -35,8 +35,6 @@ const WithMessaging = WrappedComponent =>
                 modalType: 0,
                 messageToDelete: {}
             };
-            // singleton instance
-            withMessaging.__singletonRef = this;
             // end of singleton
             this.showDeleteConfirm = this.showDeleteConfirm.bind(this);
             this.closeConfirmModal = this.closeConfirmModal.bind(this);
@@ -49,8 +47,6 @@ const WithMessaging = WrappedComponent =>
             this.returnErrorModal = this.returnErrorModal.bind(this);
             this.getDeleteConfirmModal = this.getDeleteConfirmModal.bind(this);
             this.closeAndReturn = this.closeAndReturn.bind(this);
-            this.__show = this.__show.bind(this);
-            this.__hide = this.__show.bind(this);
         }
 
         getOptionFunctions() {
@@ -155,39 +151,11 @@ const WithMessaging = WrappedComponent =>
             );
         }
 
-        componentWillReceiveProps(nextProps, nextContext) {
-            const {modalType} = this.state;
-            const {messageDetail} = nextProps;
-            if (modalType !== messageDetail.modalType) {
-                return withMessaging.show()
-            }
-        }
-        static show () {
-            withMessaging.__singletonRef.__show();
-        }
-        static hide () {
-            withMessaging.__singletonRef.__hide();
-        }
-        __show() {
-            this.setState({
-                showSuccessModal: true,
-            });
-        }
-
-        __hide() {
-            this.setState({
-                showSuccessModal: false,
-            });
-        }
-
         render() {
             const {
-                messageDetail,
                 messages,
-                content,
                 message,
             } = this.props;
-            const {showSuccessModal} = this.state;
             const optionFunctions = this.getOptionFunctions();
             const showDelete = optionFunctions.showDeleteButton(message.status);
             const showReply = optionFunctions.showReplyButton(message.status);

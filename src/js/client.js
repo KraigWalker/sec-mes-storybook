@@ -30,7 +30,7 @@ let hash;
 if (process.env.NODE_ENV !== 'production')
 {
     hash = {
-        access_token: "9f9fd2a7-3719-4685-88c7-1f04d8574209",
+        access_token: "1deee182-d56a-47e9-8d0a-e91f7c5123f0",
         bank_id: "YB",
         brandId: "YB",
         client_context: "CB%20Web",
