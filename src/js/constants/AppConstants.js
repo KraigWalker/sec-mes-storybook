@@ -33,4 +33,5 @@ export default keyMirror({
 	REQUEST_CUSTOMER_NAME_FAILURE: null,
 	SET_MODE: null,
 	DELETING_MESSAGE: null,
+	SENDING_MESSAGE: null,
 });
