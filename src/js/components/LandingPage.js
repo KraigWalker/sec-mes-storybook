@@ -9,15 +9,34 @@ import {BackButton} from 'web-ui-components/lib/molecules/navigation';
 import {Container, Row} from "web-ui-components/lib/global/layout";
 import {Card} from "web-ui-components/lib/organisms/cards";
 import {Title, TextBody} from "web-ui-components/lib/atoms/text";
-import {getMessageSubjects, getActiveTab} from '../actions/AppActions';
+import {getMessageSubjects, getActiveTab, popupState} from '../actions/AppActions';
 import {withBreakpoints} from "../components/common/hoc/WithBreakpoint";
 import {compose} from 'redux';
+import SuccessModal from "../components/common/SuccessModal";
+import {
+    DELETE_MODAL,
+    ARCHIVE_MODAL,
+    UNARCHIVE_MODAL
+} from "../constants/ModalConstants";
 
 /**
  * @class Landing Page
  * Landing Page of the application
  */
-
+const getSuccessModalMessage = (modalType, content) => {
+    switch (modalType) {
+        case ARCHIVE_MODAL: {
+            return content.messageArchived;
+        }
+        case UNARCHIVE_MODAL: {
+            return content.messageUnarchived;
+        }
+        case DELETE_MODAL:
+        default: {
+            return content.messageDeleted;
+        }
+    }
+};
 export class LandingPage extends React.PureComponent {
     componentDidMount() {
         window.top.postMessage('clearNewMessagePage', '*');
@@ -53,7 +72,6 @@ export class LandingPage extends React.PureComponent {
                 className: "u-padding-0",
             }
         }
-
         return (
             <Container {...paddingProps} size={containerSize}>
                 <Row>
@@ -70,6 +88,11 @@ export class LandingPage extends React.PureComponent {
                                 {this.props.content.newSecureMessage}
                             </Button>
                         }
+                        {this.props.modalType === 1 && <SuccessModal
+                            onClick={this.props.popupState}
+                            bodyText={getSuccessModalMessage(this.props.modalType, this.props.content)}
+                            okText={this.props.content.ok}
+                        />}
                         <SecureMessageTabs
                             location={this.props.location}
                             onClick={this.linkClick}
@@ -94,12 +117,14 @@ const mapState = state => ({
     messages: state.messages,
     accounts: state.accounts,
     activeTab: state.messages.activeTab,
+    modalType: state.viewMessage.modalType,
 });
 
 const mapDispatchToProps = {
     getMessageSubjects,
-    getActiveTab
-}
+    getActiveTab,
+    popupState,
+};
 
 export default compose(
     connect(mapState, mapDispatchToProps),

@@ -35,5 +35,5 @@ export const getMessageDetail = (state) => viewMessageSelectors.getMessageDetail
 export const getCustomerDetails = (state) => customerSelectors.getCustomerDetails(state.customerDetails);
 export const getCustomerError = (state) => customerSelectors.getCustomerError(state.customerDetails);
 
-export const getCustomerId = (state) => segmentDataSelectors.getCustomerId(state.segmentData)
+export const getCustomerId = (state) => segmentDataSelectors.getCustomerId(state.segmentData);
 

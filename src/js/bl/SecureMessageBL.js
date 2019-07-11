@@ -1,42 +1,32 @@
 import _ from 'lodash';
 import moment from 'moment';
-import { NEW, READ, DRAFT, PENDING, SENT, ARCHIVED } from '../constants/StringsConstants';
+import { NEW, DRAFT, PENDING, SENT, ARCHIVED, READ } from '../constants/StringsConstants';
 import SendMessageRequestEntity from "../entities/SendMessageRequestEntity";
 import { isNullOrUndefined } from '../utils/GeneralUtils';
-import RegexUtils from "../utils/RegexUtils"
-/**
- *
- * @param {array of Messages} parses all messages and creates 3 different arrays for INBOX/DRAFT/SENT.
- */
+import RegexUtils from "../utils/RegexUtils";
 
-export function SecureMessageBL(response) {
-	const inboxMessages = [];
-	const sentMessages = [];
-	const draftMessages = [];
-	const archivedMessages = [];
-	_.map(response.messages, message => {
-		switch (message.status) {
-			case NEW:
-			case READ:
-				inboxMessages.push(message);
-				break;
-			case DRAFT:
-				draftMessages.push(message);
-				break;
-			case ARCHIVED:
-				archivedMessages.push(message);
-				break;
-			case PENDING:
-			case SENT:
-				sentMessages.push(message);
-				break;
-			default:
-		}
-	});
-	return { inboxMessages, sentMessages, draftMessages, archivedMessages };
+const messageByStatusPredicate = (message, status) => message.status === status;
+
+/**
+ * @param messages Array parses all messages and creates 3 different arrays for INBOX/DRAFT/SENT.
+ * @param deletingMessages Array array of messages sent to backend for correct status to DELETE (DELETE).
+ */
+export function SecureMessageBL({messages =[], deletingMessages = []}) {
+	const activeMessages = messages.filter(message => deletingMessages.indexOf(message.id) < 0);
+	const inboxMessages = [
+		...activeMessages.filter(message => messageByStatusPredicate(message, NEW)),
+		...activeMessages.filter(message =>messageByStatusPredicate(message, READ)),
+	];
+	const sentMessages = [
+		...activeMessages.filter(message => messageByStatusPredicate(message, PENDING)),
+		...activeMessages.filter(message => messageByStatusPredicate(message, READ)),
+	];
+	const draftMessages = activeMessages.filter(message => messageByStatusPredicate(message, DRAFT));
+	const archivedMessages = activeMessages.filter(message =>messageByStatusPredicate(message, ARCHIVED));
+	return {inboxMessages, sentMessages, draftMessages, archivedMessages};
 }
 /**
- * to fetch all related threads on the cureent message.
+ * to fetch all related threads on the current message.
  * @param {array} messages //total list of secure messages.
  * @param {object} currentMessage //current message.
  */
@@ -64,7 +54,7 @@ export function BuildSendMessageRequestEntity(accounts, messageEntity ) {
     const sendMessageRequestEntity = new SendMessageRequestEntity();
     sendMessageRequestEntity.setUpdateSubject(subject);
 	sendMessageRequestEntity.setMessage(message);
-	
+
     if (!isNullOrUndefined(account) && !isNullOrUndefined(account.accountId)) {
 		const accName = getAccountName(account.accountId, accounts);
         const accountNameNew = accName.display_name || accName.name;
@@ -89,6 +79,6 @@ export const maskCardDetails = (message) => {
 		const lastFour = RegexUtils.getLastFourDigits(matchCardDetails);
 		maskedMessage = message.replace(new RegExp(matchCardDetails, 'g'), `************${lastFour}`);
 	}
-	else maskedMessage = message; 
+	else maskedMessage = message;
 	return maskedMessage;
 }

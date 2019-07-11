@@ -1,159 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`New Secure message snapshot New Secure message snapshot should match to snapshot 1`] = `
-ShallowWrapper {
-  Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <SecureMessageList
-    content={
-      Object {
-        "back": "Back",
-      }
-    }
-    dispatch={[MockFunction]}
-    messages={
-      Object {
-        "slice": [MockFunction] {
-          "calls": Array [
-            Array [
-              0,
-              20,
-            ],
-          ],
-        },
-      }
-    }
-    messagesFetched={
-      Object {
-        "fetching": true,
-        "successModal": true,
-      }
-    }
-  />,
-  Symbol(enzyme.__renderer__): Object {
-    "batchedUpdates": [Function],
-    "getNode": [Function],
-    "render": [Function],
-    "simulateEvent": [Function],
-    "unmount": [Function],
-  },
-  Symbol(enzyme.__node__): Object {
-    "instance": null,
-    "key": undefined,
-    "nodeType": "function",
-    "props": Object {
-      "children": <LoadingLocalTakeover
-        show={true}
-        title="loading.."
-        xs={24}
-      >
-        <TextBody />
-      </LoadingLocalTakeover>,
-      "xs": 24,
-    },
-    "ref": null,
-    "rendered": Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "function",
-      "props": Object {
-        "children": <TextBody />,
-        "show": true,
-        "title": "loading..",
-        "xs": 24,
-      },
-      "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "function",
-        "props": Object {
-          "children": Array [
-            Array [],
-            false,
-            false,
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          false,
-          false,
-        ],
-        "type": [Function],
-      },
-      "type": [Function],
-    },
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "function",
-      "props": Object {
-        "children": <LoadingLocalTakeover
-          show={true}
-          title="loading.."
-          xs={24}
-        >
-          <TextBody />
-        </LoadingLocalTakeover>,
-        "xs": 24,
-      },
-      "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "function",
-        "props": Object {
-          "children": <TextBody />,
-          "show": true,
-          "title": "loading..",
-          "xs": 24,
-        },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "function",
-          "props": Object {
-            "children": Array [
-              Array [],
-              false,
-              false,
-            ],
-          },
-          "ref": null,
-          "rendered": Array [
-            false,
-            false,
-          ],
-          "type": [Function],
-        },
-        "type": [Function],
-      },
-      "type": [Function],
-    },
-  ],
-  Symbol(enzyme.__options__): Object {
-    "adapter": ReactFifteenFourAdapter {
-      "options": Object {
-        "legacyContextMode": "parent",
-        "lifecycles": Object {
-          "componentDidUpdate": Object {
-            "prevContext": true,
-          },
-          "getChildContext": Object {
-            "calledByRenderer": true,
-          },
-        },
-        "supportPrevContextArgumentOfComponentDidUpdate": true,
-      },
-    },
-  },
-  Symbol(enzyme.__childContext__): null,
-}
-`;
-
 exports[`New Secure message snapshot should match to snapshot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
@@ -166,21 +12,95 @@ ShallowWrapper {
     }
     dispatch={[MockFunction]}
     messages={
-      Object {
-        "length": 10,
-        "slice": [MockFunction] {
-          "calls": Array [
-            Array [
-              0,
-              20,
-            ],
-            Array [
-              0,
-              20,
-            ],
-          ],
+      Array [
+        Object {
+          "account": Object {
+            "id": "$UUID",
+            "number": "111111-11111111",
+          },
+          "date_created": "2017-10-17T10:56:43.511Z",
+          "id": "1",
+          "payload": Object {
+            "body": Object {
+              "data": "Hi, 
+I am so so...",
+            },
+          },
+          "reference": "L09SDF09SDFSD",
+          "status": "PENDING",
+          "subject": "Payment Enquiries",
+          "thread_id": "24569088-5cf1-43ea-873f-a",
         },
-      }
+        Object {
+          "account": Object {
+            "id": "$UUID",
+            "name": "B Current",
+            "number": "222222-22222222",
+          },
+          "date_created": "2017-10-19T10:56:43.511Z",
+          "id": "2",
+          "payload": Object {
+            "body": Object {
+              "data": "A message sent by a customer to the bank",
+            },
+          },
+          "reference": "L09SDF09SDFSD",
+          "status": "DRAFT",
+          "subject": "Payment Enquiries",
+          "thread_id": "24569088-5cf1-43ea-873f-a",
+        },
+        Object {
+          "account": Object {
+            "id": "$UUID",
+            "number": "333333-33333333",
+          },
+          "date_created": "2017-01-17T10:56:43.511Z",
+          "id": "3",
+          "payload": Object {
+            "body": Object {
+              "data": "A message sent by a customer to the bank",
+            },
+          },
+          "reference": "L09SDF09SDFSD",
+          "status": "SENT",
+          "subject": "Payment Enquiries",
+          "thread_id": "24569088-5cf1-43ea-873f-b",
+        },
+        Object {
+          "account": Object {
+            "id": "$UUID",
+            "number": "444444-44444444",
+          },
+          "date_created": "2017-09-17T10:56:43.511Z",
+          "id": "4",
+          "payload": Object {
+            "body": Object {
+              "data": "A message sent by a customer to the bank",
+            },
+          },
+          "reference": "L09SDF09SDFSD",
+          "status": "NEW",
+          "subject": "Payment Enquiries",
+          "thread_id": "24569088-5cf1-43ea-873f-b",
+        },
+        Object {
+          "account": Object {
+            "id": "$UUID",
+            "number": "444444-44444444",
+          },
+          "date_created": "2017-09-17T10:56:43.511Z",
+          "id": "5",
+          "payload": Object {
+            "body": Object {
+              "data": "A message sent by a customer to the bank",
+            },
+          },
+          "reference": "L09SDF09SDFSD",
+          "status": "READ",
+          "subject": "Payment Enquiries",
+          "thread_id": "24569088-5cf1-43ea-873f-b",
+        },
+      ]
     }
     messagesFetched={
       Object {
@@ -207,6 +127,143 @@ ShallowWrapper {
         xs={24}
       >
         <TextBody>
+          <Connect(withRouter(withMessaging))
+            content={
+              Object {
+                "back": "Back",
+              }
+            }
+            listFlag={true}
+            message={
+              Object {
+                "account": Object {
+                  "id": "$UUID",
+                  "number": "111111-11111111",
+                },
+                "date_created": "2017-10-17T10:56:43.511Z",
+                "id": "1",
+                "payload": Object {
+                  "body": Object {
+                    "data": "Hi, 
+I am so so...",
+                  },
+                },
+                "reference": "L09SDF09SDFSD",
+                "status": "PENDING",
+                "subject": "Payment Enquiries",
+                "thread_id": "24569088-5cf1-43ea-873f-a",
+              }
+            }
+          />
+          <Connect(withRouter(withMessaging))
+            content={
+              Object {
+                "back": "Back",
+              }
+            }
+            listFlag={true}
+            message={
+              Object {
+                "account": Object {
+                  "id": "$UUID",
+                  "name": "B Current",
+                  "number": "222222-22222222",
+                },
+                "date_created": "2017-10-19T10:56:43.511Z",
+                "id": "2",
+                "payload": Object {
+                  "body": Object {
+                    "data": "A message sent by a customer to the bank",
+                  },
+                },
+                "reference": "L09SDF09SDFSD",
+                "status": "DRAFT",
+                "subject": "Payment Enquiries",
+                "thread_id": "24569088-5cf1-43ea-873f-a",
+              }
+            }
+          />
+          <Connect(withRouter(withMessaging))
+            content={
+              Object {
+                "back": "Back",
+              }
+            }
+            listFlag={true}
+            message={
+              Object {
+                "account": Object {
+                  "id": "$UUID",
+                  "number": "333333-33333333",
+                },
+                "date_created": "2017-01-17T10:56:43.511Z",
+                "id": "3",
+                "payload": Object {
+                  "body": Object {
+                    "data": "A message sent by a customer to the bank",
+                  },
+                },
+                "reference": "L09SDF09SDFSD",
+                "status": "SENT",
+                "subject": "Payment Enquiries",
+                "thread_id": "24569088-5cf1-43ea-873f-b",
+              }
+            }
+          />
+          <Connect(withRouter(withMessaging))
+            content={
+              Object {
+                "back": "Back",
+              }
+            }
+            listFlag={true}
+            message={
+              Object {
+                "account": Object {
+                  "id": "$UUID",
+                  "number": "444444-44444444",
+                },
+                "date_created": "2017-09-17T10:56:43.511Z",
+                "id": "4",
+                "payload": Object {
+                  "body": Object {
+                    "data": "A message sent by a customer to the bank",
+                  },
+                },
+                "reference": "L09SDF09SDFSD",
+                "status": "NEW",
+                "subject": "Payment Enquiries",
+                "thread_id": "24569088-5cf1-43ea-873f-b",
+              }
+            }
+          />
+          <Connect(withRouter(withMessaging))
+            content={
+              Object {
+                "back": "Back",
+              }
+            }
+            listFlag={true}
+            message={
+              Object {
+                "account": Object {
+                  "id": "$UUID",
+                  "number": "444444-44444444",
+                },
+                "date_created": "2017-09-17T10:56:43.511Z",
+                "id": "5",
+                "payload": Object {
+                  "body": Object {
+                    "data": "A message sent by a customer to the bank",
+                  },
+                },
+                "reference": "L09SDF09SDFSD",
+                "status": "READ",
+                "subject": "Payment Enquiries",
+                "thread_id": "24569088-5cf1-43ea-873f-b",
+              }
+            }
+          />
           <TextStyled
             className="u-padding-top-2"
             size="uist"
@@ -222,6 +279,143 @@ ShallowWrapper {
       "nodeType": "function",
       "props": Object {
         "children": <TextBody>
+          <Connect(withRouter(withMessaging))
+            content={
+              Object {
+                "back": "Back",
+              }
+            }
+            listFlag={true}
+            message={
+              Object {
+                "account": Object {
+                  "id": "$UUID",
+                  "number": "111111-11111111",
+                },
+                "date_created": "2017-10-17T10:56:43.511Z",
+                "id": "1",
+                "payload": Object {
+                  "body": Object {
+                    "data": "Hi, 
+I am so so...",
+                  },
+                },
+                "reference": "L09SDF09SDFSD",
+                "status": "PENDING",
+                "subject": "Payment Enquiries",
+                "thread_id": "24569088-5cf1-43ea-873f-a",
+              }
+            }
+          />
+          <Connect(withRouter(withMessaging))
+            content={
+              Object {
+                "back": "Back",
+              }
+            }
+            listFlag={true}
+            message={
+              Object {
+                "account": Object {
+                  "id": "$UUID",
+                  "name": "B Current",
+                  "number": "222222-22222222",
+                },
+                "date_created": "2017-10-19T10:56:43.511Z",
+                "id": "2",
+                "payload": Object {
+                  "body": Object {
+                    "data": "A message sent by a customer to the bank",
+                  },
+                },
+                "reference": "L09SDF09SDFSD",
+                "status": "DRAFT",
+                "subject": "Payment Enquiries",
+                "thread_id": "24569088-5cf1-43ea-873f-a",
+              }
+            }
+          />
+          <Connect(withRouter(withMessaging))
+            content={
+              Object {
+                "back": "Back",
+              }
+            }
+            listFlag={true}
+            message={
+              Object {
+                "account": Object {
+                  "id": "$UUID",
+                  "number": "333333-33333333",
+                },
+                "date_created": "2017-01-17T10:56:43.511Z",
+                "id": "3",
+                "payload": Object {
+                  "body": Object {
+                    "data": "A message sent by a customer to the bank",
+                  },
+                },
+                "reference": "L09SDF09SDFSD",
+                "status": "SENT",
+                "subject": "Payment Enquiries",
+                "thread_id": "24569088-5cf1-43ea-873f-b",
+              }
+            }
+          />
+          <Connect(withRouter(withMessaging))
+            content={
+              Object {
+                "back": "Back",
+              }
+            }
+            listFlag={true}
+            message={
+              Object {
+                "account": Object {
+                  "id": "$UUID",
+                  "number": "444444-44444444",
+                },
+                "date_created": "2017-09-17T10:56:43.511Z",
+                "id": "4",
+                "payload": Object {
+                  "body": Object {
+                    "data": "A message sent by a customer to the bank",
+                  },
+                },
+                "reference": "L09SDF09SDFSD",
+                "status": "NEW",
+                "subject": "Payment Enquiries",
+                "thread_id": "24569088-5cf1-43ea-873f-b",
+              }
+            }
+          />
+          <Connect(withRouter(withMessaging))
+            content={
+              Object {
+                "back": "Back",
+              }
+            }
+            listFlag={true}
+            message={
+              Object {
+                "account": Object {
+                  "id": "$UUID",
+                  "number": "444444-44444444",
+                },
+                "date_created": "2017-09-17T10:56:43.511Z",
+                "id": "5",
+                "payload": Object {
+                  "body": Object {
+                    "data": "A message sent by a customer to the bank",
+                  },
+                },
+                "reference": "L09SDF09SDFSD",
+                "status": "READ",
+                "subject": "Payment Enquiries",
+                "thread_id": "24569088-5cf1-43ea-873f-b",
+              }
+            }
+          />
           <TextStyled
             className="u-padding-top-2"
             size="uist"
@@ -238,7 +432,145 @@ ShallowWrapper {
         "nodeType": "function",
         "props": Object {
           "children": Array [
-            Array [],
+            Array [
+              <Connect(withRouter(withMessaging))
+                content={
+                  Object {
+                    "back": "Back",
+                  }
+                }
+                listFlag={true}
+                message={
+                  Object {
+                    "account": Object {
+                      "id": "$UUID",
+                      "number": "111111-11111111",
+                    },
+                    "date_created": "2017-10-17T10:56:43.511Z",
+                    "id": "1",
+                    "payload": Object {
+                      "body": Object {
+                        "data": "Hi, 
+I am so so...",
+                      },
+                    },
+                    "reference": "L09SDF09SDFSD",
+                    "status": "PENDING",
+                    "subject": "Payment Enquiries",
+                    "thread_id": "24569088-5cf1-43ea-873f-a",
+                  }
+                }
+              />,
+              <Connect(withRouter(withMessaging))
+                content={
+                  Object {
+                    "back": "Back",
+                  }
+                }
+                listFlag={true}
+                message={
+                  Object {
+                    "account": Object {
+                      "id": "$UUID",
+                      "name": "B Current",
+                      "number": "222222-22222222",
+                    },
+                    "date_created": "2017-10-19T10:56:43.511Z",
+                    "id": "2",
+                    "payload": Object {
+                      "body": Object {
+                        "data": "A message sent by a customer to the bank",
+                      },
+                    },
+                    "reference": "L09SDF09SDFSD",
+                    "status": "DRAFT",
+                    "subject": "Payment Enquiries",
+                    "thread_id": "24569088-5cf1-43ea-873f-a",
+                  }
+                }
+              />,
+              <Connect(withRouter(withMessaging))
+                content={
+                  Object {
+                    "back": "Back",
+                  }
+                }
+                listFlag={true}
+                message={
+                  Object {
+                    "account": Object {
+                      "id": "$UUID",
+                      "number": "333333-33333333",
+                    },
+                    "date_created": "2017-01-17T10:56:43.511Z",
+                    "id": "3",
+                    "payload": Object {
+                      "body": Object {
+                        "data": "A message sent by a customer to the bank",
+                      },
+                    },
+                    "reference": "L09SDF09SDFSD",
+                    "status": "SENT",
+                    "subject": "Payment Enquiries",
+                    "thread_id": "24569088-5cf1-43ea-873f-b",
+                  }
+                }
+              />,
+              <Connect(withRouter(withMessaging))
+                content={
+                  Object {
+                    "back": "Back",
+                  }
+                }
+                listFlag={true}
+                message={
+                  Object {
+                    "account": Object {
+                      "id": "$UUID",
+                      "number": "444444-44444444",
+                    },
+                    "date_created": "2017-09-17T10:56:43.511Z",
+                    "id": "4",
+                    "payload": Object {
+                      "body": Object {
+                        "data": "A message sent by a customer to the bank",
+                      },
+                    },
+                    "reference": "L09SDF09SDFSD",
+                    "status": "NEW",
+                    "subject": "Payment Enquiries",
+                    "thread_id": "24569088-5cf1-43ea-873f-b",
+                  }
+                }
+              />,
+              <Connect(withRouter(withMessaging))
+                content={
+                  Object {
+                    "back": "Back",
+                  }
+                }
+                listFlag={true}
+                message={
+                  Object {
+                    "account": Object {
+                      "id": "$UUID",
+                      "number": "444444-44444444",
+                    },
+                    "date_created": "2017-09-17T10:56:43.511Z",
+                    "id": "5",
+                    "payload": Object {
+                      "body": Object {
+                        "data": "A message sent by a customer to the bank",
+                      },
+                    },
+                    "reference": "L09SDF09SDFSD",
+                    "status": "READ",
+                    "subject": "Payment Enquiries",
+                    "thread_id": "24569088-5cf1-43ea-873f-b",
+                  }
+                }
+              />,
+            ],
             false,
             <TextStyled
               className="u-padding-top-2"
@@ -248,6 +580,163 @@ ShallowWrapper {
         },
         "ref": null,
         "rendered": Array [
+          Object {
+            "instance": null,
+            "key": "0",
+            "nodeType": "class",
+            "props": Object {
+              "content": Object {
+                "back": "Back",
+              },
+              "listFlag": true,
+              "message": Object {
+                "account": Object {
+                  "id": "$UUID",
+                  "number": "111111-11111111",
+                },
+                "date_created": "2017-10-17T10:56:43.511Z",
+                "id": "1",
+                "payload": Object {
+                  "body": Object {
+                    "data": "Hi, 
+I am so so...",
+                  },
+                },
+                "reference": "L09SDF09SDFSD",
+                "status": "PENDING",
+                "subject": "Payment Enquiries",
+                "thread_id": "24569088-5cf1-43ea-873f-a",
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "1",
+            "nodeType": "class",
+            "props": Object {
+              "content": Object {
+                "back": "Back",
+              },
+              "listFlag": true,
+              "message": Object {
+                "account": Object {
+                  "id": "$UUID",
+                  "name": "B Current",
+                  "number": "222222-22222222",
+                },
+                "date_created": "2017-10-19T10:56:43.511Z",
+                "id": "2",
+                "payload": Object {
+                  "body": Object {
+                    "data": "A message sent by a customer to the bank",
+                  },
+                },
+                "reference": "L09SDF09SDFSD",
+                "status": "DRAFT",
+                "subject": "Payment Enquiries",
+                "thread_id": "24569088-5cf1-43ea-873f-a",
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "2",
+            "nodeType": "class",
+            "props": Object {
+              "content": Object {
+                "back": "Back",
+              },
+              "listFlag": true,
+              "message": Object {
+                "account": Object {
+                  "id": "$UUID",
+                  "number": "333333-33333333",
+                },
+                "date_created": "2017-01-17T10:56:43.511Z",
+                "id": "3",
+                "payload": Object {
+                  "body": Object {
+                    "data": "A message sent by a customer to the bank",
+                  },
+                },
+                "reference": "L09SDF09SDFSD",
+                "status": "SENT",
+                "subject": "Payment Enquiries",
+                "thread_id": "24569088-5cf1-43ea-873f-b",
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "3",
+            "nodeType": "class",
+            "props": Object {
+              "content": Object {
+                "back": "Back",
+              },
+              "listFlag": true,
+              "message": Object {
+                "account": Object {
+                  "id": "$UUID",
+                  "number": "444444-44444444",
+                },
+                "date_created": "2017-09-17T10:56:43.511Z",
+                "id": "4",
+                "payload": Object {
+                  "body": Object {
+                    "data": "A message sent by a customer to the bank",
+                  },
+                },
+                "reference": "L09SDF09SDFSD",
+                "status": "NEW",
+                "subject": "Payment Enquiries",
+                "thread_id": "24569088-5cf1-43ea-873f-b",
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "4",
+            "nodeType": "class",
+            "props": Object {
+              "content": Object {
+                "back": "Back",
+              },
+              "listFlag": true,
+              "message": Object {
+                "account": Object {
+                  "id": "$UUID",
+                  "number": "444444-44444444",
+                },
+                "date_created": "2017-09-17T10:56:43.511Z",
+                "id": "5",
+                "payload": Object {
+                  "body": Object {
+                    "data": "A message sent by a customer to the bank",
+                  },
+                },
+                "reference": "L09SDF09SDFSD",
+                "status": "READ",
+                "subject": "Payment Enquiries",
+                "thread_id": "24569088-5cf1-43ea-873f-b",
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
           false,
           Object {
             "instance": null,
@@ -281,6 +770,143 @@ ShallowWrapper {
           xs={24}
         >
           <TextBody>
+            <Connect(withRouter(withMessaging))
+              content={
+                Object {
+                  "back": "Back",
+                }
+              }
+              listFlag={true}
+              message={
+                Object {
+                  "account": Object {
+                    "id": "$UUID",
+                    "number": "111111-11111111",
+                  },
+                  "date_created": "2017-10-17T10:56:43.511Z",
+                  "id": "1",
+                  "payload": Object {
+                    "body": Object {
+                      "data": "Hi, 
+I am so so...",
+                    },
+                  },
+                  "reference": "L09SDF09SDFSD",
+                  "status": "PENDING",
+                  "subject": "Payment Enquiries",
+                  "thread_id": "24569088-5cf1-43ea-873f-a",
+                }
+              }
+            />
+            <Connect(withRouter(withMessaging))
+              content={
+                Object {
+                  "back": "Back",
+                }
+              }
+              listFlag={true}
+              message={
+                Object {
+                  "account": Object {
+                    "id": "$UUID",
+                    "name": "B Current",
+                    "number": "222222-22222222",
+                  },
+                  "date_created": "2017-10-19T10:56:43.511Z",
+                  "id": "2",
+                  "payload": Object {
+                    "body": Object {
+                      "data": "A message sent by a customer to the bank",
+                    },
+                  },
+                  "reference": "L09SDF09SDFSD",
+                  "status": "DRAFT",
+                  "subject": "Payment Enquiries",
+                  "thread_id": "24569088-5cf1-43ea-873f-a",
+                }
+              }
+            />
+            <Connect(withRouter(withMessaging))
+              content={
+                Object {
+                  "back": "Back",
+                }
+              }
+              listFlag={true}
+              message={
+                Object {
+                  "account": Object {
+                    "id": "$UUID",
+                    "number": "333333-33333333",
+                  },
+                  "date_created": "2017-01-17T10:56:43.511Z",
+                  "id": "3",
+                  "payload": Object {
+                    "body": Object {
+                      "data": "A message sent by a customer to the bank",
+                    },
+                  },
+                  "reference": "L09SDF09SDFSD",
+                  "status": "SENT",
+                  "subject": "Payment Enquiries",
+                  "thread_id": "24569088-5cf1-43ea-873f-b",
+                }
+              }
+            />
+            <Connect(withRouter(withMessaging))
+              content={
+                Object {
+                  "back": "Back",
+                }
+              }
+              listFlag={true}
+              message={
+                Object {
+                  "account": Object {
+                    "id": "$UUID",
+                    "number": "444444-44444444",
+                  },
+                  "date_created": "2017-09-17T10:56:43.511Z",
+                  "id": "4",
+                  "payload": Object {
+                    "body": Object {
+                      "data": "A message sent by a customer to the bank",
+                    },
+                  },
+                  "reference": "L09SDF09SDFSD",
+                  "status": "NEW",
+                  "subject": "Payment Enquiries",
+                  "thread_id": "24569088-5cf1-43ea-873f-b",
+                }
+              }
+            />
+            <Connect(withRouter(withMessaging))
+              content={
+                Object {
+                  "back": "Back",
+                }
+              }
+              listFlag={true}
+              message={
+                Object {
+                  "account": Object {
+                    "id": "$UUID",
+                    "number": "444444-44444444",
+                  },
+                  "date_created": "2017-09-17T10:56:43.511Z",
+                  "id": "5",
+                  "payload": Object {
+                    "body": Object {
+                      "data": "A message sent by a customer to the bank",
+                    },
+                  },
+                  "reference": "L09SDF09SDFSD",
+                  "status": "READ",
+                  "subject": "Payment Enquiries",
+                  "thread_id": "24569088-5cf1-43ea-873f-b",
+                }
+              }
+            />
             <TextStyled
               className="u-padding-top-2"
               size="uist"
@@ -296,6 +922,143 @@ ShallowWrapper {
         "nodeType": "function",
         "props": Object {
           "children": <TextBody>
+            <Connect(withRouter(withMessaging))
+              content={
+                Object {
+                  "back": "Back",
+                }
+              }
+              listFlag={true}
+              message={
+                Object {
+                  "account": Object {
+                    "id": "$UUID",
+                    "number": "111111-11111111",
+                  },
+                  "date_created": "2017-10-17T10:56:43.511Z",
+                  "id": "1",
+                  "payload": Object {
+                    "body": Object {
+                      "data": "Hi, 
+I am so so...",
+                    },
+                  },
+                  "reference": "L09SDF09SDFSD",
+                  "status": "PENDING",
+                  "subject": "Payment Enquiries",
+                  "thread_id": "24569088-5cf1-43ea-873f-a",
+                }
+              }
+            />
+            <Connect(withRouter(withMessaging))
+              content={
+                Object {
+                  "back": "Back",
+                }
+              }
+              listFlag={true}
+              message={
+                Object {
+                  "account": Object {
+                    "id": "$UUID",
+                    "name": "B Current",
+                    "number": "222222-22222222",
+                  },
+                  "date_created": "2017-10-19T10:56:43.511Z",
+                  "id": "2",
+                  "payload": Object {
+                    "body": Object {
+                      "data": "A message sent by a customer to the bank",
+                    },
+                  },
+                  "reference": "L09SDF09SDFSD",
+                  "status": "DRAFT",
+                  "subject": "Payment Enquiries",
+                  "thread_id": "24569088-5cf1-43ea-873f-a",
+                }
+              }
+            />
+            <Connect(withRouter(withMessaging))
+              content={
+                Object {
+                  "back": "Back",
+                }
+              }
+              listFlag={true}
+              message={
+                Object {
+                  "account": Object {
+                    "id": "$UUID",
+                    "number": "333333-33333333",
+                  },
+                  "date_created": "2017-01-17T10:56:43.511Z",
+                  "id": "3",
+                  "payload": Object {
+                    "body": Object {
+                      "data": "A message sent by a customer to the bank",
+                    },
+                  },
+                  "reference": "L09SDF09SDFSD",
+                  "status": "SENT",
+                  "subject": "Payment Enquiries",
+                  "thread_id": "24569088-5cf1-43ea-873f-b",
+                }
+              }
+            />
+            <Connect(withRouter(withMessaging))
+              content={
+                Object {
+                  "back": "Back",
+                }
+              }
+              listFlag={true}
+              message={
+                Object {
+                  "account": Object {
+                    "id": "$UUID",
+                    "number": "444444-44444444",
+                  },
+                  "date_created": "2017-09-17T10:56:43.511Z",
+                  "id": "4",
+                  "payload": Object {
+                    "body": Object {
+                      "data": "A message sent by a customer to the bank",
+                    },
+                  },
+                  "reference": "L09SDF09SDFSD",
+                  "status": "NEW",
+                  "subject": "Payment Enquiries",
+                  "thread_id": "24569088-5cf1-43ea-873f-b",
+                }
+              }
+            />
+            <Connect(withRouter(withMessaging))
+              content={
+                Object {
+                  "back": "Back",
+                }
+              }
+              listFlag={true}
+              message={
+                Object {
+                  "account": Object {
+                    "id": "$UUID",
+                    "number": "444444-44444444",
+                  },
+                  "date_created": "2017-09-17T10:56:43.511Z",
+                  "id": "5",
+                  "payload": Object {
+                    "body": Object {
+                      "data": "A message sent by a customer to the bank",
+                    },
+                  },
+                  "reference": "L09SDF09SDFSD",
+                  "status": "READ",
+                  "subject": "Payment Enquiries",
+                  "thread_id": "24569088-5cf1-43ea-873f-b",
+                }
+              }
+            />
             <TextStyled
               className="u-padding-top-2"
               size="uist"
@@ -312,7 +1075,145 @@ ShallowWrapper {
           "nodeType": "function",
           "props": Object {
             "children": Array [
-              Array [],
+              Array [
+                <Connect(withRouter(withMessaging))
+                  content={
+                    Object {
+                      "back": "Back",
+                    }
+                  }
+                  listFlag={true}
+                  message={
+                    Object {
+                      "account": Object {
+                        "id": "$UUID",
+                        "number": "111111-11111111",
+                      },
+                      "date_created": "2017-10-17T10:56:43.511Z",
+                      "id": "1",
+                      "payload": Object {
+                        "body": Object {
+                          "data": "Hi, 
+I am so so...",
+                        },
+                      },
+                      "reference": "L09SDF09SDFSD",
+                      "status": "PENDING",
+                      "subject": "Payment Enquiries",
+                      "thread_id": "24569088-5cf1-43ea-873f-a",
+                    }
+                  }
+                />,
+                <Connect(withRouter(withMessaging))
+                  content={
+                    Object {
+                      "back": "Back",
+                    }
+                  }
+                  listFlag={true}
+                  message={
+                    Object {
+                      "account": Object {
+                        "id": "$UUID",
+                        "name": "B Current",
+                        "number": "222222-22222222",
+                      },
+                      "date_created": "2017-10-19T10:56:43.511Z",
+                      "id": "2",
+                      "payload": Object {
+                        "body": Object {
+                          "data": "A message sent by a customer to the bank",
+                        },
+                      },
+                      "reference": "L09SDF09SDFSD",
+                      "status": "DRAFT",
+                      "subject": "Payment Enquiries",
+                      "thread_id": "24569088-5cf1-43ea-873f-a",
+                    }
+                  }
+                />,
+                <Connect(withRouter(withMessaging))
+                  content={
+                    Object {
+                      "back": "Back",
+                    }
+                  }
+                  listFlag={true}
+                  message={
+                    Object {
+                      "account": Object {
+                        "id": "$UUID",
+                        "number": "333333-33333333",
+                      },
+                      "date_created": "2017-01-17T10:56:43.511Z",
+                      "id": "3",
+                      "payload": Object {
+                        "body": Object {
+                          "data": "A message sent by a customer to the bank",
+                        },
+                      },
+                      "reference": "L09SDF09SDFSD",
+                      "status": "SENT",
+                      "subject": "Payment Enquiries",
+                      "thread_id": "24569088-5cf1-43ea-873f-b",
+                    }
+                  }
+                />,
+                <Connect(withRouter(withMessaging))
+                  content={
+                    Object {
+                      "back": "Back",
+                    }
+                  }
+                  listFlag={true}
+                  message={
+                    Object {
+                      "account": Object {
+                        "id": "$UUID",
+                        "number": "444444-44444444",
+                      },
+                      "date_created": "2017-09-17T10:56:43.511Z",
+                      "id": "4",
+                      "payload": Object {
+                        "body": Object {
+                          "data": "A message sent by a customer to the bank",
+                        },
+                      },
+                      "reference": "L09SDF09SDFSD",
+                      "status": "NEW",
+                      "subject": "Payment Enquiries",
+                      "thread_id": "24569088-5cf1-43ea-873f-b",
+                    }
+                  }
+                />,
+                <Connect(withRouter(withMessaging))
+                  content={
+                    Object {
+                      "back": "Back",
+                    }
+                  }
+                  listFlag={true}
+                  message={
+                    Object {
+                      "account": Object {
+                        "id": "$UUID",
+                        "number": "444444-44444444",
+                      },
+                      "date_created": "2017-09-17T10:56:43.511Z",
+                      "id": "5",
+                      "payload": Object {
+                        "body": Object {
+                          "data": "A message sent by a customer to the bank",
+                        },
+                      },
+                      "reference": "L09SDF09SDFSD",
+                      "status": "READ",
+                      "subject": "Payment Enquiries",
+                      "thread_id": "24569088-5cf1-43ea-873f-b",
+                    }
+                  }
+                />,
+              ],
               false,
               <TextStyled
                 className="u-padding-top-2"
@@ -322,6 +1223,163 @@ ShallowWrapper {
           },
           "ref": null,
           "rendered": Array [
+            Object {
+              "instance": null,
+              "key": "0",
+              "nodeType": "class",
+              "props": Object {
+                "content": Object {
+                  "back": "Back",
+                },
+                "listFlag": true,
+                "message": Object {
+                  "account": Object {
+                    "id": "$UUID",
+                    "number": "111111-11111111",
+                  },
+                  "date_created": "2017-10-17T10:56:43.511Z",
+                  "id": "1",
+                  "payload": Object {
+                    "body": Object {
+                      "data": "Hi, 
+I am so so...",
+                    },
+                  },
+                  "reference": "L09SDF09SDFSD",
+                  "status": "PENDING",
+                  "subject": "Payment Enquiries",
+                  "thread_id": "24569088-5cf1-43ea-873f-a",
+                },
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": "1",
+              "nodeType": "class",
+              "props": Object {
+                "content": Object {
+                  "back": "Back",
+                },
+                "listFlag": true,
+                "message": Object {
+                  "account": Object {
+                    "id": "$UUID",
+                    "name": "B Current",
+                    "number": "222222-22222222",
+                  },
+                  "date_created": "2017-10-19T10:56:43.511Z",
+                  "id": "2",
+                  "payload": Object {
+                    "body": Object {
+                      "data": "A message sent by a customer to the bank",
+                    },
+                  },
+                  "reference": "L09SDF09SDFSD",
+                  "status": "DRAFT",
+                  "subject": "Payment Enquiries",
+                  "thread_id": "24569088-5cf1-43ea-873f-a",
+                },
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": "2",
+              "nodeType": "class",
+              "props": Object {
+                "content": Object {
+                  "back": "Back",
+                },
+                "listFlag": true,
+                "message": Object {
+                  "account": Object {
+                    "id": "$UUID",
+                    "number": "333333-33333333",
+                  },
+                  "date_created": "2017-01-17T10:56:43.511Z",
+                  "id": "3",
+                  "payload": Object {
+                    "body": Object {
+                      "data": "A message sent by a customer to the bank",
+                    },
+                  },
+                  "reference": "L09SDF09SDFSD",
+                  "status": "SENT",
+                  "subject": "Payment Enquiries",
+                  "thread_id": "24569088-5cf1-43ea-873f-b",
+                },
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": "3",
+              "nodeType": "class",
+              "props": Object {
+                "content": Object {
+                  "back": "Back",
+                },
+                "listFlag": true,
+                "message": Object {
+                  "account": Object {
+                    "id": "$UUID",
+                    "number": "444444-44444444",
+                  },
+                  "date_created": "2017-09-17T10:56:43.511Z",
+                  "id": "4",
+                  "payload": Object {
+                    "body": Object {
+                      "data": "A message sent by a customer to the bank",
+                    },
+                  },
+                  "reference": "L09SDF09SDFSD",
+                  "status": "NEW",
+                  "subject": "Payment Enquiries",
+                  "thread_id": "24569088-5cf1-43ea-873f-b",
+                },
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": "4",
+              "nodeType": "class",
+              "props": Object {
+                "content": Object {
+                  "back": "Back",
+                },
+                "listFlag": true,
+                "message": Object {
+                  "account": Object {
+                    "id": "$UUID",
+                    "number": "444444-44444444",
+                  },
+                  "date_created": "2017-09-17T10:56:43.511Z",
+                  "id": "5",
+                  "payload": Object {
+                    "body": Object {
+                      "data": "A message sent by a customer to the bank",
+                    },
+                  },
+                  "reference": "L09SDF09SDFSD",
+                  "status": "READ",
+                  "subject": "Payment Enquiries",
+                  "thread_id": "24569088-5cf1-43ea-873f-b",
+                },
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
             false,
             Object {
               "instance": null,

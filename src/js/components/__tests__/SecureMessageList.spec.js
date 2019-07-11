@@ -49,7 +49,7 @@ describe("New Secure message snapshot", () => {
                 successModal: false
             },
             messages: {
-                slice: slice,
+                slice: () => [1,2,3],
                 length: 10
             },
             dispatch: dispatch

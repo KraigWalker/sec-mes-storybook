@@ -12,7 +12,7 @@ import {
     getSubjectErrors,
     getShowSuccessModal,
     getUpdating,
-    getIsSavingDraft
+    getIsSavingDraft,
 } from "../reducers";
 
 class DraftSecureMessage extends React.Component {
@@ -20,6 +20,7 @@ class DraftSecureMessage extends React.Component {
         super(props);
         this.send = this.send.bind(this);
         this.save = this.save.bind(this);
+
     }
 
     sendMessageData(messageEntity, status) {
@@ -27,8 +28,8 @@ class DraftSecureMessage extends React.Component {
         const {id} = location.messageDetail;
         const {name} = customerDetails ? customerDetails.personal_details : '';
         const sendRequestMessage = BuildSendMessageRequestEntity(accounts, messageEntity);
-        
-        id ? this.props.updateMessageData(sendRequestMessage.getMessageRequestData(), id, status) 
+
+        id ? this.props.updateMessageData(sendRequestMessage.getMessageRequestData(), id, status)
            :this.props.sendMessageData(sendRequestMessage.getMessageRequestData(), status, name);
     }
 

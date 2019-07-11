@@ -1,6 +1,7 @@
 import React from 'react';
 import { SecureMessageList } from '../SecureMessageList';
 import { shallow } from 'enzyme';
+import TestData from '../../content/secureMessagesTestData.json'
 
 describe("New Secure message snapshot", () => {
     const dispatch = jest.fn();
@@ -10,10 +11,7 @@ describe("New Secure message snapshot", () => {
             back: 'Back',
         },
         activeTab: 'SENT',
-        messages: {
-            slice: slice,
-            length: 10
-        },
+        messages: TestData.secure_messages,
         messagesFetched: {
             fetching: false,
             successModal: false
@@ -32,8 +30,8 @@ describe("New Secure message snapshot", () => {
     });
     it('renderNoMessagesText function test', () => {
         component.instance().renderNoMessagesText();
-        component.setState({ showMoreLimit: 8 });
-        expect(component.instance().state.showMoreLimit).toBeLessThan(props.messages.length);
+        component.setState({ showMoreLimit: 5 });
+        expect(component.instance().state.showMoreLimit).toBe(props.messages.length);
     });
     describe("renderNoMessagesText with DRAFT", () => {
         const dispatch = jest.fn();

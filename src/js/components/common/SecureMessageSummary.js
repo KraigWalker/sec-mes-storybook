@@ -6,6 +6,7 @@ import {Mail} from 'web-ui-components/lib/communication/messaging';
 import { truncateMessage } from "../../utils/SecureMessageUtils";
 import {TEXT_LIMIT} from "../../constants/NumericalConstants";
 
+
 export const SecureMessageSummary = (props) => {
 
     const handleMailClick = () => {
@@ -28,7 +29,6 @@ export const SecureMessageSummary = (props) => {
     const replyClick = () => props.onReplyClick(props.message);
 
     const {message} = props;
-
     return (
         <Mail.List>
             <Mail.Item
@@ -47,7 +47,6 @@ export const SecureMessageSummary = (props) => {
             />
         </Mail.List>
     );
-
 }
 
 const SecureMessageSummaryMessaging = withMessaging(SecureMessageSummary);
@@ -61,7 +60,7 @@ SecureMessageSummaryMessaging.propTypes = {
     showArchive: PropTypes.bool,
     showReply: PropTypes.bool,
     showDelete: PropTypes.bool,
-    showUnarchive: PropTypes.bool
-}
+    showUnarchive: PropTypes.bool,
+};
 
 export default SecureMessageSummaryMessaging;
