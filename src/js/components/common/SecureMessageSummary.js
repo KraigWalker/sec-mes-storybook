@@ -30,9 +30,8 @@ export const SecureMessageSummary = (props) => {
     const replyClick = () => props.onReplyClick(props.message);
 
     const {message,  disabled} = props;
-    const showTakeOver = disabled;
     return (
-        <LoadingLocalTakeover className="u-margin-top-2" title="Sending" show={showTakeOver}>
+        <LoadingLocalTakeover className="u-margin-top-2" title="Sending" show={disabled}>
             <Mail.List>
                 <Mail.Item
                     {...props}
