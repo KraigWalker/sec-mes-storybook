@@ -21,7 +21,6 @@ export function SecureMessageBL({messages = [], deletingMessages = [], sendingMe
 		...activeMessages.filter(message => messageByStatusPredicate(message, SENT)),
 		...activeMessages.filter(message => messageByStatusPredicate(message, PENDING)),
 	];
-	console.log(sentMessages);
 	const draftMessages = [
 		...activeMessages.filter(message => messageByStatusPredicate(message, DRAFT)),
 		...activeMessages.filter( message => sendingMessages.indexOf(message.id) >= 0),
