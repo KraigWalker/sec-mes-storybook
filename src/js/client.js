@@ -29,15 +29,15 @@ const parseHash = hash => hash
 let hash;
 if (process.env.NODE_ENV !== 'production')
 {
-    hash = {
-        access_token: "1deee182-d56a-47e9-8d0a-e91f7c5123f0",
-        bank_id: "YB",
-        brandId: "YB",
-        client_context: "CB%20Web",
-        isDocumentLibraryEnabled: "true",
-        state: "ba55b632ba0e8a63ffdca4ef3926b4da",
-        user_tracking_id: "5173da20-6b30-11e9-804e-1d9cdacf2bd"
-    }
+  hash = {
+    access_token: "f970453f-8550-474a-af26-064a1670f15c",
+  bank_id: "CB",
+  brandId: "CB",
+  client_context: "CB%20Web",
+  isDocumentLibraryEnabled: "true",
+  state: "ba55b632ba0e8a63ffdca4ef3926b4da",
+  user_tracking_id: "5173da20-6b30-11e9-804e-1d9cdacf2bd"
+  }
 }
 else
 {

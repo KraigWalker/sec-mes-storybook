@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { NEW, ARCHIVED, DRAFT } from '../../constants/StringsConstants';
 import withMessaging from "../common/WithMessaging";
 import {Mail} from 'web-ui-components/lib/communication/messaging';
+import { LoadingLocalTakeover } from "web-ui-components/lib/organisms/takeovers";
 import { truncateMessage } from "../../utils/SecureMessageUtils";
 import {TEXT_LIMIT} from "../../constants/NumericalConstants";
 
@@ -28,24 +29,26 @@ export const SecureMessageSummary = (props) => {
     const deleteClick = () => props.onDeleteClick(props.message);
     const replyClick = () => props.onReplyClick(props.message);
 
-    const {message} = props;
+    const {message,  disabled} = props;
     return (
-        <Mail.List>
-            <Mail.Item
-                {...props}
-                id={message.id}
-                mailSubject={`${message.subject} ${message.reference ? message.reference : ''}`}
-                mailSummary={truncateMessage(message.message, TEXT_LIMIT)}
-                mailDate={message.dateCreated}
-                isRead={message.status !== NEW }
-                archiveOnClick={props.showArchive ? archiveClick : null}
-                replyOnClick={props.showReply ? replyClick : null}
-                deleteOnClick={props.showDelete ? deleteClick : null}
-                moveToInboxOnClick={props.showUnarchive ? unarchiveClick : null}
-                isArchived={message.status === ARCHIVED}
-                mailOnClick={handleMailClick}
-            />
-        </Mail.List>
+        <LoadingLocalTakeover className="u-margin-top-2" title="Sending" show={disabled}>
+            <Mail.List>
+                <Mail.Item
+                    {...props}
+                    id={message.id}
+                    mailSubject={`${message.subject} ${message.reference ? message.reference : ''}`}
+                    mailSummary={truncateMessage(message.message, TEXT_LIMIT)}
+                    mailDate={message.dateCreated}
+                    isRead={message.status !== NEW}
+                    archiveOnClick={props.showArchive ? archiveClick : null}
+                    replyOnClick={props.showReply ? replyClick : null}
+                    deleteOnClick={props.showDelete ? deleteClick : null}
+                    moveToInboxOnClick={props.showUnarchive ? unarchiveClick : null}
+                    isArchived={message.status === ARCHIVED}
+                    mailOnClick={handleMailClick}
+                />
+            </Mail.List>
+        </LoadingLocalTakeover>
     );
 }
 
@@ -61,6 +64,7 @@ SecureMessageSummaryMessaging.propTypes = {
     showReply: PropTypes.bool,
     showDelete: PropTypes.bool,
     showUnarchive: PropTypes.bool,
+    disabled: PropTypes.bool,
 };
 
 export default SecureMessageSummaryMessaging;

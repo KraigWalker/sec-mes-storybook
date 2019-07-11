@@ -11,17 +11,21 @@ const messageByStatusPredicate = (message, status) => message.status === status;
  * @param messages Array parses all messages and creates 3 different arrays for INBOX/DRAFT/SENT.
  * @param deletingMessages Array array of messages sent to backend for correct status to DELETE (DELETE).
  */
-export function SecureMessageBL({messages =[], deletingMessages = []}) {
+export function SecureMessageBL({messages = [], deletingMessages = [], sendingMessages = []}) {
 	const activeMessages = messages.filter(message => deletingMessages.indexOf(message.id) < 0);
 	const inboxMessages = [
 		...activeMessages.filter(message => messageByStatusPredicate(message, NEW)),
 		...activeMessages.filter(message =>messageByStatusPredicate(message, READ)),
 	];
 	const sentMessages = [
+		...activeMessages.filter(message => messageByStatusPredicate(message, SENT)),
 		...activeMessages.filter(message => messageByStatusPredicate(message, PENDING)),
-		...activeMessages.filter(message => messageByStatusPredicate(message, READ)),
 	];
-	const draftMessages = activeMessages.filter(message => messageByStatusPredicate(message, DRAFT));
+	const draftMessages = [
+		...activeMessages.filter(message => messageByStatusPredicate(message, DRAFT)),
+		...activeMessages.filter( message => sendingMessages.indexOf(message.id) >= 0),
+		]
+		.filter(message => sendingMessages.indexOf(message.id) < 0);
 	const archivedMessages = activeMessages.filter(message =>messageByStatusPredicate(message, ARCHIVED));
 	return {inboxMessages, sentMessages, draftMessages, archivedMessages};
 }

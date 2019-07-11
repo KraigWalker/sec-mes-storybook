@@ -42,11 +42,11 @@ export class SecureMessageList extends React.Component {
     }
 
     showMessages() {
-        const {messages, content} = this.props;
+        const {messages, content, messagesFetched} = this.props;
         const listFlag = true;
         return messages
             .slice(0, this.state.showMoreLimit)
-            .map((message, index) => <SecureMessageSummary key={index}
+            .map((message, index) => <SecureMessageSummary disabled={messagesFetched.sendingMessages.indexOf(message.id) >= 0} key={index}
                                                            message={message} listFlag={listFlag} content={content}/>);
     }
 
