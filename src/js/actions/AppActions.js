@@ -287,54 +287,6 @@ export function closeDelModal() {
   };
 }
 
-export function getCustomerID() {
-  return function(dispatch, _, { secureMessagesApi }) {
-    const payload = {
-      type: AppConstants.REQUEST_SEGMENT_DATA
-    };
-    dispatch(payload);
-    const success = response => {
-      const payload = {
-        type: AppConstants.REQUEST_SEGMENTS_SUCCESS,
-        payload: response
-      };
-      dispatch(payload);
-    };
-    const error = error => {
-      const payload = {
-        type: AppConstants.REQUEST_SECURE_MESSAGES_FAILURE,
-        payload: error
-      };
-      dispatch(payload);
-    };
-    secureMessagesApi.fetchAccountSegment(success, error);
-  };
-}
-
-export function getCustomerName(id) {
-  return function(dispatch, _, { secureMessagesApi }) {
-    const payload = {
-      type: AppConstants.REQUEST_CUSTOMER_NAME
-    };
-    dispatch(payload);
-    const success = response => {
-      const payload = {
-        type: AppConstants.REQUEST_CUSTOMER_NAME_SUCCESS,
-        payload: response
-      };
-      dispatch(payload);
-    };
-    const error = error => {
-      const payload = {
-        type: AppConstants.REQUEST_CUSTOMER_NAME_FAILURE,
-        payload: error
-      };
-      dispatch(payload);
-    };
-    secureMessagesApi.fetchCustomerDetails(success, error, id);
-  };
-}
-
 export function setDeletingMessages(id) {
   return function(dispatch) {
     const payload = {

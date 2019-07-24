@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import content from '../../content';
 
-import { fetchSecureMessages, getAccounts, getCustomerID } from '../../actions/AppActions';
+import { fetchSecureMessages, getAccounts } from '../../actions/AppActions';
 
 const getContent = (brand) => {
 	switch (brand) {
@@ -30,7 +30,6 @@ export function withSubscription(WrappedComponent) {
 		componentWillMount() {
 			const { dispatch, fetched } = this.props;
 			dispatch(getAccounts());
-			dispatch(getCustomerID());
 			!fetched && dispatch(fetchSecureMessages());
 		}
 		componentWillReceiveProps(nextProps) {

@@ -102,30 +102,6 @@ class AppApi {
       error
     );
   }
-
-  fetchAccountSegment(success, error) {
-    this.apiUtils.makeRequest(
-      {
-        url: `${this.config.apiBaseUrl2}${_getAccountSegmentEndpoint}`,
-        method: "GET",
-        apiVersion: "0.8.0"
-      },
-      success,
-      error
-    );
-  }
-
-  fetchCustomerDetails(success, error, id) {
-    const updateUrl = `${
-      this.config.apiBaseUrl2
-    }${_getCustomerDetailsEndpoint}`;
-    const url = updateUrl.replace("{customer_id}", id);
-    this.apiUtils.makeRequest(
-      { url, method: "GET", apiVersion: "0.8.0" },
-      success,
-      error
-    );
-  }
 }
 
 export default AppApi;

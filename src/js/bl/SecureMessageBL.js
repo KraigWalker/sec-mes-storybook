@@ -15,7 +15,7 @@ export function SecureMessageBL({messages = [], deletingMessages = [], sendingMe
 	const activeMessages = messages.filter(message => deletingMessages.indexOf(message.id) < 0);
 	const inboxMessages = [
 		...activeMessages.filter(message => messageByStatusPredicate(message, NEW)),
-		...activeMessages.filter(message =>messageByStatusPredicate(message, READ)),
+		...activeMessages.filter(message => messageByStatusPredicate(message, READ)),
 	];
 	const sentMessages = [
 		...activeMessages.filter(message => messageByStatusPredicate(message, SENT)),
