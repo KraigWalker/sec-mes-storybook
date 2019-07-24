@@ -48,100 +48,58 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "function",
     "props": Object {
-      "children": <MailItem
-        archiveOnClick={null}
-        content={
-          Object {
-            "back": "Back",
-            "noSpecificAccount": "noSpecificAccount",
+      "children": <MailList>
+        <MailItem
+          archiveOnClick={null}
+          content={
+            Object {
+              "back": "Back",
+              "noSpecificAccount": "noSpecificAccount",
+            }
           }
-        }
-        deleteOnClick={null}
-        dispatch={[MockFunction]}
-        id={undefined}
-        isArchived={false}
-        isRead={true}
-        mailDate={undefined}
-        mailOnClick={[Function]}
-        mailSubject="undefined "
-        mailSummary="Hello there"
-        message={
-          Object {
-            "account": Object {
-              "number": "32236",
-            },
-            "getDateCreated": [MockFunction],
-            "getMessageBody": [MockFunction],
-            "getReference": [MockFunction],
-            "getSubject": [MockFunction],
-            "message": "Hello there",
-            "status": "READ",
+          deleteOnClick={null}
+          dispatch={[MockFunction]}
+          id={undefined}
+          isArchived={false}
+          isRead={true}
+          mailDate={undefined}
+          mailOnClick={[Function]}
+          mailSubject="undefined "
+          mailSummary="Hello there"
+          message={
+            Object {
+              "account": Object {
+                "number": "32236",
+              },
+              "getDateCreated": [MockFunction],
+              "getMessageBody": [MockFunction],
+              "getReference": [MockFunction],
+              "getSubject": [MockFunction],
+              "message": "Hello there",
+              "status": "READ",
+            }
           }
-        }
-        messageDetail={
-          Object {
-            "delSuccessModal": true,
-            "newMessageError": true,
+          messageDetail={
+            Object {
+              "delSuccessModal": true,
+              "newMessageError": true,
+            }
           }
-        }
-        messages={
-          Object {
-            "draftError": true,
+          messages={
+            Object {
+              "draftError": true,
+            }
           }
-        }
-        moveToInboxOnClick={null}
-        replyOnClick={null}
-      />,
+          moveToInboxOnClick={null}
+          replyOnClick={null}
+        />
+      </MailList>,
+      "className": "u-margin-top-2",
+      "show": undefined,
+      "title": "Sending",
     },
     "ref": null,
     "rendered": Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "function",
-      "props": Object {
-        "archiveOnClick": null,
-        "content": Object {
-          "back": "Back",
-          "noSpecificAccount": "noSpecificAccount",
-        },
-        "deleteOnClick": null,
-        "dispatch": [MockFunction],
-        "id": undefined,
-        "isArchived": false,
-        "isRead": true,
-        "mailDate": undefined,
-        "mailOnClick": [Function],
-        "mailSubject": "undefined ",
-        "mailSummary": "Hello there",
-        "message": Object {
-          "account": Object {
-            "number": "32236",
-          },
-          "getDateCreated": [MockFunction],
-          "getMessageBody": [MockFunction],
-          "getReference": [MockFunction],
-          "getSubject": [MockFunction],
-          "message": "Hello there",
-          "status": "READ",
-        },
-        "messageDetail": Object {
-          "delSuccessModal": true,
-          "newMessageError": true,
-        },
-        "messages": Object {
-          "draftError": true,
-        },
-        "moveToInboxOnClick": null,
-        "replyOnClick": null,
-      },
-      "ref": null,
-      "rendered": null,
-      "type": [Function],
-    },
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
       "instance": null,
       "key": undefined,
       "nodeType": "function",
@@ -238,6 +196,164 @@ ShallowWrapper {
       },
       "type": [Function],
     },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": <MailList>
+          <MailItem
+            archiveOnClick={null}
+            content={
+              Object {
+                "back": "Back",
+                "noSpecificAccount": "noSpecificAccount",
+              }
+            }
+            deleteOnClick={null}
+            dispatch={[MockFunction]}
+            id={undefined}
+            isArchived={false}
+            isRead={true}
+            mailDate={undefined}
+            mailOnClick={[Function]}
+            mailSubject="undefined "
+            mailSummary="Hello there"
+            message={
+              Object {
+                "account": Object {
+                  "number": "32236",
+                },
+                "getDateCreated": [MockFunction],
+                "getMessageBody": [MockFunction],
+                "getReference": [MockFunction],
+                "getSubject": [MockFunction],
+                "message": "Hello there",
+                "status": "READ",
+              }
+            }
+            messageDetail={
+              Object {
+                "delSuccessModal": true,
+                "newMessageError": true,
+              }
+            }
+            messages={
+              Object {
+                "draftError": true,
+              }
+            }
+            moveToInboxOnClick={null}
+            replyOnClick={null}
+          />
+        </MailList>,
+        "className": "u-margin-top-2",
+        "show": undefined,
+        "title": "Sending",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": <MailItem
+            archiveOnClick={null}
+            content={
+              Object {
+                "back": "Back",
+                "noSpecificAccount": "noSpecificAccount",
+              }
+            }
+            deleteOnClick={null}
+            dispatch={[MockFunction]}
+            id={undefined}
+            isArchived={false}
+            isRead={true}
+            mailDate={undefined}
+            mailOnClick={[Function]}
+            mailSubject="undefined "
+            mailSummary="Hello there"
+            message={
+              Object {
+                "account": Object {
+                  "number": "32236",
+                },
+                "getDateCreated": [MockFunction],
+                "getMessageBody": [MockFunction],
+                "getReference": [MockFunction],
+                "getSubject": [MockFunction],
+                "message": "Hello there",
+                "status": "READ",
+              }
+            }
+            messageDetail={
+              Object {
+                "delSuccessModal": true,
+                "newMessageError": true,
+              }
+            }
+            messages={
+              Object {
+                "draftError": true,
+              }
+            }
+            moveToInboxOnClick={null}
+            replyOnClick={null}
+          />,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "archiveOnClick": null,
+            "content": Object {
+              "back": "Back",
+              "noSpecificAccount": "noSpecificAccount",
+            },
+            "deleteOnClick": null,
+            "dispatch": [MockFunction],
+            "id": undefined,
+            "isArchived": false,
+            "isRead": true,
+            "mailDate": undefined,
+            "mailOnClick": [Function],
+            "mailSubject": "undefined ",
+            "mailSummary": "Hello there",
+            "message": Object {
+              "account": Object {
+                "number": "32236",
+              },
+              "getDateCreated": [MockFunction],
+              "getMessageBody": [MockFunction],
+              "getReference": [MockFunction],
+              "getSubject": [MockFunction],
+              "message": "Hello there",
+              "status": "READ",
+            },
+            "messageDetail": Object {
+              "delSuccessModal": true,
+              "newMessageError": true,
+            },
+            "messages": Object {
+              "draftError": true,
+            },
+            "moveToInboxOnClick": null,
+            "replyOnClick": null,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      "type": [Function],
+    },
   ],
   Symbol(enzyme.__options__): Object {
     "adapter": ReactFifteenFourAdapter {
@@ -307,100 +423,58 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "function",
     "props": Object {
-      "children": <MailItem
-        archiveOnClick={null}
-        content={
-          Object {
-            "back": "Back",
-            "noSpecificAccount": "noSpecificAccount",
+      "children": <MailList>
+        <MailItem
+          archiveOnClick={null}
+          content={
+            Object {
+              "back": "Back",
+              "noSpecificAccount": "noSpecificAccount",
+            }
           }
-        }
-        deleteOnClick={null}
-        dispatch={[MockFunction]}
-        id={undefined}
-        isArchived={false}
-        isRead={true}
-        mailDate={undefined}
-        mailOnClick={[Function]}
-        mailSubject="undefined "
-        mailSummary="Hello there"
-        message={
-          Object {
-            "account": Object {
-              "number": undefined,
-            },
-            "getDateCreated": [MockFunction],
-            "getMessageBody": [MockFunction],
-            "getReference": [MockFunction],
-            "getSubject": [MockFunction],
-            "message": "Hello there",
-            "status": "DRAFT",
+          deleteOnClick={null}
+          dispatch={[MockFunction]}
+          id={undefined}
+          isArchived={false}
+          isRead={true}
+          mailDate={undefined}
+          mailOnClick={[Function]}
+          mailSubject="undefined "
+          mailSummary="Hello there"
+          message={
+            Object {
+              "account": Object {
+                "number": undefined,
+              },
+              "getDateCreated": [MockFunction],
+              "getMessageBody": [MockFunction],
+              "getReference": [MockFunction],
+              "getSubject": [MockFunction],
+              "message": "Hello there",
+              "status": "DRAFT",
+            }
           }
-        }
-        messageDetail={
-          Object {
-            "delSuccessModal": true,
-            "newMessageError": true,
+          messageDetail={
+            Object {
+              "delSuccessModal": true,
+              "newMessageError": true,
+            }
           }
-        }
-        messages={
-          Object {
-            "draftError": true,
+          messages={
+            Object {
+              "draftError": true,
+            }
           }
-        }
-        moveToInboxOnClick={null}
-        replyOnClick={null}
-      />,
+          moveToInboxOnClick={null}
+          replyOnClick={null}
+        />
+      </MailList>,
+      "className": "u-margin-top-2",
+      "show": undefined,
+      "title": "Sending",
     },
     "ref": null,
     "rendered": Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "function",
-      "props": Object {
-        "archiveOnClick": null,
-        "content": Object {
-          "back": "Back",
-          "noSpecificAccount": "noSpecificAccount",
-        },
-        "deleteOnClick": null,
-        "dispatch": [MockFunction],
-        "id": undefined,
-        "isArchived": false,
-        "isRead": true,
-        "mailDate": undefined,
-        "mailOnClick": [Function],
-        "mailSubject": "undefined ",
-        "mailSummary": "Hello there",
-        "message": Object {
-          "account": Object {
-            "number": undefined,
-          },
-          "getDateCreated": [MockFunction],
-          "getMessageBody": [MockFunction],
-          "getReference": [MockFunction],
-          "getSubject": [MockFunction],
-          "message": "Hello there",
-          "status": "DRAFT",
-        },
-        "messageDetail": Object {
-          "delSuccessModal": true,
-          "newMessageError": true,
-        },
-        "messages": Object {
-          "draftError": true,
-        },
-        "moveToInboxOnClick": null,
-        "replyOnClick": null,
-      },
-      "ref": null,
-      "rendered": null,
-      "type": [Function],
-    },
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
       "instance": null,
       "key": undefined,
       "nodeType": "function",
@@ -497,6 +571,164 @@ ShallowWrapper {
       },
       "type": [Function],
     },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": <MailList>
+          <MailItem
+            archiveOnClick={null}
+            content={
+              Object {
+                "back": "Back",
+                "noSpecificAccount": "noSpecificAccount",
+              }
+            }
+            deleteOnClick={null}
+            dispatch={[MockFunction]}
+            id={undefined}
+            isArchived={false}
+            isRead={true}
+            mailDate={undefined}
+            mailOnClick={[Function]}
+            mailSubject="undefined "
+            mailSummary="Hello there"
+            message={
+              Object {
+                "account": Object {
+                  "number": undefined,
+                },
+                "getDateCreated": [MockFunction],
+                "getMessageBody": [MockFunction],
+                "getReference": [MockFunction],
+                "getSubject": [MockFunction],
+                "message": "Hello there",
+                "status": "DRAFT",
+              }
+            }
+            messageDetail={
+              Object {
+                "delSuccessModal": true,
+                "newMessageError": true,
+              }
+            }
+            messages={
+              Object {
+                "draftError": true,
+              }
+            }
+            moveToInboxOnClick={null}
+            replyOnClick={null}
+          />
+        </MailList>,
+        "className": "u-margin-top-2",
+        "show": undefined,
+        "title": "Sending",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": <MailItem
+            archiveOnClick={null}
+            content={
+              Object {
+                "back": "Back",
+                "noSpecificAccount": "noSpecificAccount",
+              }
+            }
+            deleteOnClick={null}
+            dispatch={[MockFunction]}
+            id={undefined}
+            isArchived={false}
+            isRead={true}
+            mailDate={undefined}
+            mailOnClick={[Function]}
+            mailSubject="undefined "
+            mailSummary="Hello there"
+            message={
+              Object {
+                "account": Object {
+                  "number": undefined,
+                },
+                "getDateCreated": [MockFunction],
+                "getMessageBody": [MockFunction],
+                "getReference": [MockFunction],
+                "getSubject": [MockFunction],
+                "message": "Hello there",
+                "status": "DRAFT",
+              }
+            }
+            messageDetail={
+              Object {
+                "delSuccessModal": true,
+                "newMessageError": true,
+              }
+            }
+            messages={
+              Object {
+                "draftError": true,
+              }
+            }
+            moveToInboxOnClick={null}
+            replyOnClick={null}
+          />,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "archiveOnClick": null,
+            "content": Object {
+              "back": "Back",
+              "noSpecificAccount": "noSpecificAccount",
+            },
+            "deleteOnClick": null,
+            "dispatch": [MockFunction],
+            "id": undefined,
+            "isArchived": false,
+            "isRead": true,
+            "mailDate": undefined,
+            "mailOnClick": [Function],
+            "mailSubject": "undefined ",
+            "mailSummary": "Hello there",
+            "message": Object {
+              "account": Object {
+                "number": undefined,
+              },
+              "getDateCreated": [MockFunction],
+              "getMessageBody": [MockFunction],
+              "getReference": [MockFunction],
+              "getSubject": [MockFunction],
+              "message": "Hello there",
+              "status": "DRAFT",
+            },
+            "messageDetail": Object {
+              "delSuccessModal": true,
+              "newMessageError": true,
+            },
+            "messages": Object {
+              "draftError": true,
+            },
+            "moveToInboxOnClick": null,
+            "replyOnClick": null,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      "type": [Function],
+    },
   ],
   Symbol(enzyme.__options__): Object {
     "adapter": ReactFifteenFourAdapter {
@@ -567,102 +799,59 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "function",
     "props": Object {
-      "children": <MailItem
-        archiveOnClick={null}
-        content={
-          Object {
-            "back": "Back",
-            "noSpecificAccount": "noSpecificAccount",
+      "children": <MailList>
+        <MailItem
+          archiveOnClick={null}
+          content={
+            Object {
+              "back": "Back",
+              "noSpecificAccount": "noSpecificAccount",
+            }
           }
-        }
-        deleteOnClick={null}
-        dispatch={[MockFunction]}
-        id={undefined}
-        isArchived={false}
-        isRead={false}
-        mailDate={undefined}
-        mailOnClick={[Function]}
-        mailSubject="undefined "
-        mailSummary="Hello there"
-        message={
-          Object {
-            "account": Object {
-              "number": "32236",
-            },
-            "getDateCreated": [MockFunction],
-            "getMessageBody": [MockFunction],
-            "getReference": [MockFunction],
-            "getSubject": [MockFunction],
-            "message": "Hello there",
-            "status": "NEW",
+          deleteOnClick={null}
+          dispatch={[MockFunction]}
+          id={undefined}
+          isArchived={false}
+          isRead={false}
+          mailDate={undefined}
+          mailOnClick={[Function]}
+          mailSubject="undefined "
+          mailSummary="Hello there"
+          message={
+            Object {
+              "account": Object {
+                "number": "32236",
+              },
+              "getDateCreated": [MockFunction],
+              "getMessageBody": [MockFunction],
+              "getReference": [MockFunction],
+              "getSubject": [MockFunction],
+              "message": "Hello there",
+              "status": "NEW",
+            }
           }
-        }
-        messageDetail={
-          Object {
-            "delSuccessModal": true,
-            "newMessageError": true,
+          messageDetail={
+            Object {
+              "delSuccessModal": true,
+              "newMessageError": true,
+            }
           }
-        }
-        messages={
-          Object {
-            "draftError": true,
+          messages={
+            Object {
+              "draftError": true,
+            }
           }
-        }
-        moveToInboxOnClick={null}
-        replyOnClick={null}
-        viewMessageFlag={true}
-      />,
+          moveToInboxOnClick={null}
+          replyOnClick={null}
+          viewMessageFlag={true}
+        />
+      </MailList>,
+      "className": "u-margin-top-2",
+      "show": undefined,
+      "title": "Sending",
     },
     "ref": null,
     "rendered": Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "function",
-      "props": Object {
-        "archiveOnClick": null,
-        "content": Object {
-          "back": "Back",
-          "noSpecificAccount": "noSpecificAccount",
-        },
-        "deleteOnClick": null,
-        "dispatch": [MockFunction],
-        "id": undefined,
-        "isArchived": false,
-        "isRead": false,
-        "mailDate": undefined,
-        "mailOnClick": [Function],
-        "mailSubject": "undefined ",
-        "mailSummary": "Hello there",
-        "message": Object {
-          "account": Object {
-            "number": "32236",
-          },
-          "getDateCreated": [MockFunction],
-          "getMessageBody": [MockFunction],
-          "getReference": [MockFunction],
-          "getSubject": [MockFunction],
-          "message": "Hello there",
-          "status": "NEW",
-        },
-        "messageDetail": Object {
-          "delSuccessModal": true,
-          "newMessageError": true,
-        },
-        "messages": Object {
-          "draftError": true,
-        },
-        "moveToInboxOnClick": null,
-        "replyOnClick": null,
-        "viewMessageFlag": true,
-      },
-      "ref": null,
-      "rendered": null,
-      "type": [Function],
-    },
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
       "instance": null,
       "key": undefined,
       "nodeType": "function",
@@ -757,6 +946,167 @@ ShallowWrapper {
         },
         "ref": null,
         "rendered": null,
+        "type": [Function],
+      },
+      "type": [Function],
+    },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": <MailList>
+          <MailItem
+            archiveOnClick={null}
+            content={
+              Object {
+                "back": "Back",
+                "noSpecificAccount": "noSpecificAccount",
+              }
+            }
+            deleteOnClick={null}
+            dispatch={[MockFunction]}
+            id={undefined}
+            isArchived={false}
+            isRead={false}
+            mailDate={undefined}
+            mailOnClick={[Function]}
+            mailSubject="undefined "
+            mailSummary="Hello there"
+            message={
+              Object {
+                "account": Object {
+                  "number": "32236",
+                },
+                "getDateCreated": [MockFunction],
+                "getMessageBody": [MockFunction],
+                "getReference": [MockFunction],
+                "getSubject": [MockFunction],
+                "message": "Hello there",
+                "status": "NEW",
+              }
+            }
+            messageDetail={
+              Object {
+                "delSuccessModal": true,
+                "newMessageError": true,
+              }
+            }
+            messages={
+              Object {
+                "draftError": true,
+              }
+            }
+            moveToInboxOnClick={null}
+            replyOnClick={null}
+            viewMessageFlag={true}
+          />
+        </MailList>,
+        "className": "u-margin-top-2",
+        "show": undefined,
+        "title": "Sending",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": <MailItem
+            archiveOnClick={null}
+            content={
+              Object {
+                "back": "Back",
+                "noSpecificAccount": "noSpecificAccount",
+              }
+            }
+            deleteOnClick={null}
+            dispatch={[MockFunction]}
+            id={undefined}
+            isArchived={false}
+            isRead={false}
+            mailDate={undefined}
+            mailOnClick={[Function]}
+            mailSubject="undefined "
+            mailSummary="Hello there"
+            message={
+              Object {
+                "account": Object {
+                  "number": "32236",
+                },
+                "getDateCreated": [MockFunction],
+                "getMessageBody": [MockFunction],
+                "getReference": [MockFunction],
+                "getSubject": [MockFunction],
+                "message": "Hello there",
+                "status": "NEW",
+              }
+            }
+            messageDetail={
+              Object {
+                "delSuccessModal": true,
+                "newMessageError": true,
+              }
+            }
+            messages={
+              Object {
+                "draftError": true,
+              }
+            }
+            moveToInboxOnClick={null}
+            replyOnClick={null}
+            viewMessageFlag={true}
+          />,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "archiveOnClick": null,
+            "content": Object {
+              "back": "Back",
+              "noSpecificAccount": "noSpecificAccount",
+            },
+            "deleteOnClick": null,
+            "dispatch": [MockFunction],
+            "id": undefined,
+            "isArchived": false,
+            "isRead": false,
+            "mailDate": undefined,
+            "mailOnClick": [Function],
+            "mailSubject": "undefined ",
+            "mailSummary": "Hello there",
+            "message": Object {
+              "account": Object {
+                "number": "32236",
+              },
+              "getDateCreated": [MockFunction],
+              "getMessageBody": [MockFunction],
+              "getReference": [MockFunction],
+              "getSubject": [MockFunction],
+              "message": "Hello there",
+              "status": "NEW",
+            },
+            "messageDetail": Object {
+              "delSuccessModal": true,
+              "newMessageError": true,
+            },
+            "messages": Object {
+              "draftError": true,
+            },
+            "moveToInboxOnClick": null,
+            "replyOnClick": null,
+            "viewMessageFlag": true,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
         "type": [Function],
       },
       "type": [Function],

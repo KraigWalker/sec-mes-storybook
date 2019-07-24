@@ -6,7 +6,7 @@ import renderer from 'react-test-renderer';
 describe('>>>R E D U C E R --- Test AccessibilityReducer', () => {
     it('should return the initial state', () => {
         expect(SecureMessageLandingReducer(undefined, {})).toEqual({ messages: [], fetching: false, fetched: false, error: false,
-            successModal: false, activeTab: 'inbox', newMessageError: false, draftError: false, deletingMessages: [], updated: false, updating: false });
+            successModal: false, activeTab: 'inbox', newMessageError: false, sendingMessages: [], draftError: false, deletingMessages: [], updated: false, updating: false });
     });
     it('+++ reducer for REQUEST_SECURE_MESSAGES', () => {
         let state = { messages: [], fetching: false, fetched: false, error: false, successModal: false, activeTab: 'inbox', newMessageError: false, draftError: false, deletingMessages: [] };

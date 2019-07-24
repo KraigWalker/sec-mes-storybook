@@ -63,7 +63,6 @@ export class SecureMessageForm extends React.Component {
 	}
 
 	componentDidMount() {
-		this.props.onMount();
 		this.props.popupState();
 		window.scrollTo(0, 0);
 	}
@@ -445,7 +444,6 @@ SecureMessageForm.propTypes = {
     selectedAccount: PropTypes.object,
 	selectedSubject: PropTypes.string,
 	selectedAccountValue: PropTypes.string,
-    onMount: PropTypes.func,
     popupState: PropTypes.func,
 	sendData: PropTypes.func,
 	onSave: PropTypes.func,
