@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import {
   updateMessageData,
   popupState,
-  getCustomerName,
   sendMessageData,
   replyMessageData,
   sendMessageForAccessibiltiy
@@ -19,8 +18,6 @@ import {
   getMessageError,
   getSubjects,
   getMessageDetail,
-  getCustomerId,
-  getCustomerDetails,
   getCustomerError,
   getSubjectErrors,
   getShowSuccessModal,
@@ -34,12 +31,6 @@ class ReplySecureMessage extends React.Component {
     this.onMount = this.onMount.bind(this);
     this.getThreads = this.getThreads.bind(this);
     this.handleSaveClick = this.handleSaveClick.bind(this);
-  }
-
-  onMount() {
-    const { customerID } = this.props;
-    const { messageDetail } = this.props.location;
-    this.props.getCustomerName(customerID);
   }
 
   getThreads(messages, currentMessage) {
@@ -106,8 +97,6 @@ const mapState = (state) => ({
   messages: getMessages(state),
   accounts: getAccounts(state),
   messageDetail: getMessageDetail(state),
-  customerID: getCustomerId(state),
-  customerDetails: getCustomerDetails(state),
   customerNameError: getCustomerError(state),
   messageError: getMessageError(state, NEW),
   successModal: getShowSuccessModal(state),
@@ -118,7 +107,6 @@ const mapState = (state) => ({
 const mapStateToProps = {
   updateMessageData,
   popupState,
-  getCustomerName,
   sendMessageData,
   replyMessageData,
   sendMessageForAccessibiltiy

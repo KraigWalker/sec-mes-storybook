@@ -53,7 +53,7 @@ class AppApi {
   getAccounts(success, error) {
     this.apiUtils.makeRequest(
       {
-        url: `${this.config.apiBaseUrl2}${_getAccountsURL}`,
+        url: `//localhost:8888${_getAccountsURL}`,
         method: "GET",
         apiVersion: "0.8.0"
       },
@@ -98,30 +98,6 @@ class AppApi {
     const reqData = updateMessage(requestData, id, status);
     this.apiUtils.makeRequest(
       { url, method: "PUT", requestData: reqData, apiVersion: "1.2.0" },
-      success,
-      error
-    );
-  }
-
-  fetchAccountSegment(success, error) {
-    this.apiUtils.makeRequest(
-      {
-        url: `${this.config.apiBaseUrl2}${_getAccountSegmentEndpoint}`,
-        method: "GET",
-        apiVersion: "0.8.0"
-      },
-      success,
-      error
-    );
-  }
-
-  fetchCustomerDetails(success, error, id) {
-    const updateUrl = `${
-      this.config.apiBaseUrl2
-    }${_getCustomerDetailsEndpoint}`;
-    const url = updateUrl.replace("{customer_id}", id);
-    this.apiUtils.makeRequest(
-      { url, method: "GET", apiVersion: "0.8.0" },
       success,
       error
     );

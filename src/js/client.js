@@ -30,7 +30,7 @@ let hash;
 if (process.env.NODE_ENV !== 'production')
 {
   hash = {
-    access_token: "f970453f-8550-474a-af26-064a1670f15c",
+    access_token: "212142c8-a74e-4953-bcec-abd0442446f1",
   bank_id: "CB",
   brandId: "CB",
   client_context: "CB%20Web",
@@ -63,7 +63,7 @@ const normalisedBrandId = {
 }[brandId];
 
 const startApp = () => {
-  const store = createStore(session, clientContext, ConfigUtils.config)
+  const store = createStore(session, clientContext, ConfigUtils.config);
   ReactDOM.render(
     <Provider store={store}>
       <WebUIThemeProvider brandID={normalisedBrandId}>

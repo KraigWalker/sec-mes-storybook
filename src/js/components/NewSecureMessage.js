@@ -5,7 +5,6 @@ import { PENDING, DRAFT } from "../constants/StringsConstants";
 import { BuildSendMessageRequestEntity } from "../bl/SecureMessageBL";
 import {
   popupState,
-  getCustomerName,
   sendMessageData,
   sendMessageForAccessibiltiy
 } from "../actions/AppActions";
@@ -14,8 +13,6 @@ import {
   getMessages,
   getSubjects,
   getMessageDetail,
-  getCustomerId,
-  getCustomerDetails,
   getCustomerError,
   getSubjectErrors,
   getShowSuccessModal,
@@ -30,13 +27,8 @@ class NewSecureMessage extends React.Component {
     this.send = this.send.bind(this);
     this.save = this.save.bind(this);
   }
-  onMount() {
-    const { customerID } = this.props;
-    this.props.getCustomerName(customerID);
-  }
   sendMessageData(messageEntity, status) {
-    const { customerDetails, accounts } = this.props;
-    const { name } = customerDetails ? customerDetails.personal_details : '';
+    const { accounts } = this.props;
     const sendRequestMessage = BuildSendMessageRequestEntity(
       accounts,
       messageEntity
@@ -44,7 +36,6 @@ class NewSecureMessage extends React.Component {
     this.props.sendMessageData(
       sendRequestMessage.getMessageRequestData(),
       status,
-      name
     );
   }
   send(messageEntity) {
@@ -81,15 +72,12 @@ const mapStateToProps = state => ({
   accounts: getAccounts(state),
   subjectErrors: getSubjectErrors(state),
   messageDetail: getMessageDetail(state),
-  customerID: getCustomerId(state),
-  customerDetails: getCustomerDetails(state),
   customerNameError: getCustomerError(state),
   successModal: getShowSuccessModal(state),
 });
 
 const actionCreators = {
   popupState,
-  getCustomerName,
   sendMessageData,
   sendMessageForAccessibiltiy
 };
