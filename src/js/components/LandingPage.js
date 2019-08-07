@@ -13,30 +13,8 @@ import {getMessageSubjects, getActiveTab, popupState} from '../actions/AppAction
 import {withBreakpoints} from "../components/common/hoc/WithBreakpoint";
 import {compose} from 'redux';
 import SuccessModal from "../components/common/SuccessModal";
-import {
-    DELETE_MODAL,
-    ARCHIVE_MODAL,
-    UNARCHIVE_MODAL
-} from "../constants/ModalConstants";
+import { getSuccessModalMessage } from "../constants/ModalConstants";
 
-/**
- * @class Landing Page
- * Landing Page of the application
- */
-const getSuccessModalMessage = (modalType, content) => {
-    switch (modalType) {
-        case ARCHIVE_MODAL: {
-            return content.messageArchived;
-        }
-        case UNARCHIVE_MODAL: {
-            return content.messageUnarchived;
-        }
-        case DELETE_MODAL:
-        default: {
-            return content.messageDeleted;
-        }
-    }
-};
 export class LandingPage extends React.PureComponent {
     componentDidMount() {
         window.top.postMessage('clearNewMessagePage', '*');
@@ -88,7 +66,7 @@ export class LandingPage extends React.PureComponent {
                                 {this.props.content.newSecureMessage}
                             </Button>
                         }
-                        {this.props.modalType === 1 && <SuccessModal
+                        {this.props.modalType > 0 && <SuccessModal
                             onClick={this.props.popupState}
                             bodyText={getSuccessModalMessage(this.props.modalType, this.props.content)}
                             okText={this.props.content.ok}
