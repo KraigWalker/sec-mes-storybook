@@ -28,7 +28,6 @@ import {
 class ReplySecureMessage extends React.Component {
   constructor(props) {
     super(props);
-    this.onMount = this.onMount.bind(this);
     this.getThreads = this.getThreads.bind(this);
     this.handleSaveClick = this.handleSaveClick.bind(this);
   }
@@ -78,7 +77,6 @@ class ReplySecureMessage extends React.Component {
         threads={threads}
         onSend={(messageEntity) => this.handleSaveClick(PENDING, messageEntity)}
         onSave={(messageEntity) => this.handleSaveClick(DRAFT, messageEntity)}
-        onMount={this.onMount}
         title={content.replyMessageTitle}
         selectedSubject={messageDetail.subject}
 		    selectedAccount={messageDetail.account}

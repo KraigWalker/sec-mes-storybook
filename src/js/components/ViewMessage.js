@@ -17,6 +17,9 @@ import {Card} from "web-ui-components/lib/organisms/cards";
 import {Container, Row} from "web-ui-components/lib/global/layout";
 import { withBreakpoints } from "../components/common/hoc/WithBreakpoint";
 import { getParentPath } from "../utils/GeneralUtils";
+import { popupState } from '../actions/AppActions';
+import SuccessModal from "../components/common/SuccessModal";
+import { getSuccessModalMessage } from "../constants/ModalConstants";
 
 const getTitle = (status, content) =>
 {
@@ -79,7 +82,12 @@ export class ViewMessage extends React.Component {
 
         const hasAttachment = getHasAttachment(messageDetail);
 
-        const {readOnly, content, containerSize, noPadding} = this.props;
+        const {readOnly, 
+            content, 
+            containerSize, 
+            noPadding,
+            modalType,
+            popupState} = this.props;
         const messageStatus = (messageDetail.status === NEW && readOnly !== true)
             ? READ
             : messageDetail.status;
@@ -95,21 +103,30 @@ export class ViewMessage extends React.Component {
         const basePath = `${window.location.origin}${getParentPath(window.location.pathname,2)}`;
 
         return (
-            <Container {...paddingProps} size={containerSize}>
-                <Row>
-                    <Card>
-                        <SectionHeading
-                            heading1={getTitle(messageDetail.status, content)}></SectionHeading>
+            <div>
+                <Container {...paddingProps} size={containerSize}>
+                    <Row>
+                        <Card>
+                            <SectionHeading
+                                heading1={getTitle(messageDetail.status, content)}></SectionHeading>
 
-                        <MailMessage {...this.props}
-                            newMessageStatus={messageStatus}
-                            hasAttachment={hasAttachment}
-                            basePath={basePath}/>
-                        {messageDetail.threadID !== null &&
-                        this.getThreads(this.props.messages.messages, messageDetail)}
-                    </Card>
-                </Row>
-            </Container>
+                            <MailMessage {...this.props}
+                                newMessageStatus={messageStatus}
+                                hasAttachment={hasAttachment}
+                                basePath={basePath}/>
+                            {messageDetail.threadID !== null &&
+                            this.getThreads(this.props.messages.messages, messageDetail)}
+                        </Card>
+                    </Row>
+                </Container>
+                {modalType > 0 && <SuccessModal
+                    onClick={popupState}
+                    bodyText={getSuccessModalMessage(modalType, content)}
+                    okText={content.ok}
+                />}
+
+            </div>
+            
         );
 
 
@@ -126,12 +143,14 @@ const mapState = (state) => ({
     noReply: state.viewMessage.messageDetail.noReply,
     messages: state.messages,
     messageDetail: state.viewMessage.messageDetail,
+    modalType: state.viewMessage.modalType,
 });
 
 const mapDispatchToProps = {
     getDocumentByIdNative: documentActions.getDocumentByIdNative,
     updateMessageData,
-    setViewMessageDetail
+    setViewMessageDetail,
+    popupState
 }
 
 export default compose(
