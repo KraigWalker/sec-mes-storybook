@@ -61,7 +61,8 @@
         var normalisedBrandId = {
           CB: "CB",
           YB: "YB",
-          DYB: "B"
+          DYB: "B",
+		      VM: "VM"
         }
         function parseHash(hash) {
           return hash
@@ -81,13 +82,13 @@
             }, {});
         }
         
-        if (window.location.hash)
-        {
+        if (window.location.hash) {
             var hash = parseHash(window.location.hash.substring(1));
             var head = document.getElementsByTagName('head')[0];
             var element = document.createElement('link');
             element.rel = 'stylesheet';
-            element.href = path + "css/app." + normalisedBrandId[hash.brandId].toLowerCase()+ ".css";
+            let brandCss = hash.brandId ? hash.brandId.toUpperCase() : "VM";
+            element.href = path + "css/app." + normalisedBrandId[brandCss].toLowerCase()+ ".css";
             head.appendChild(element);
         }
 
