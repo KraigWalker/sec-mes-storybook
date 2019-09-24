@@ -9,6 +9,8 @@ const getContent = (brand) => {
 		case 'CB':
 		case 'YB':
 			return content.CB;
+		case 'VM':
+			return content.VM;
 		case 'DYB':
 			return content.DYB;
 	}

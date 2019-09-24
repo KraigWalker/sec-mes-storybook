@@ -21,7 +21,7 @@ export class Main extends React.Component {
 
     handleDocumentPortalClick() {
         const {history, session} = this.props;
-        history.push(`/my-documents/${session.brand}`);
+        history.push(`/my-documents/${session.bank_id}`);
         window.top.postMessage("goToMyDocuments", "*");
     }
 
