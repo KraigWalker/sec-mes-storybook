@@ -20,7 +20,7 @@ export const App = ({ config }) => {
         access_token: config.accessToken,
         bank_id: config.bankId,
         brand: config.brandId,
-        customer_id: config.customerNumber
+        customer_number: config.customerNumber
     };
 
     const envConfig = {
@@ -34,7 +34,7 @@ export const App = ({ config }) => {
 
     const deps = {
         native: dependencies.native,
-        api: new dependencies.Api(clientContext, session, {  apiBaseUrl: envConfig.apiBaseUrl2}),
+        api: new dependencies.InternalApi(clientContext, session, {  apiBaseUrl: envConfig.apiBaseUrl2}),
         secureMessagesApi: new AppApi(envConfig, clientContext, session, apiUtils )
     }
 

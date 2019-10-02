@@ -56,7 +56,7 @@ class ApiUtils {
 }
 
 export const getStaffHeaders = (session) => ({
-  "x-bpi-customer-id": session.customer_id,
+  "x-bpi-customer-id": session.customer_number,
   "x-bpi-trust-level": session.accessTokenScope || "40",
   "x-bpi-trust-created-dt": session.scopeCreatedDate || moment().format("YYYY-MM-DDTHH:mm:ss"),
   "x-bpi-customer-bank-id": session.bank_id

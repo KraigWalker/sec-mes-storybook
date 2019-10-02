@@ -4,6 +4,7 @@ const { resolve } = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const moment = require('moment');
 const { presets, plugins } = require("../../webpack.config.babel");
 
 console.log("**********************************************");
@@ -90,7 +91,21 @@ module.exports = {
         },
         host: "localhost",
         port: 8080,
-        hot: true
+        hot: true,
+        proxy: {
+            '/ibapi/**': {
+              target: 'https://int3ibapi.nonprod.obps.io',
+              changeOrigin: true,
+              secure: false,
+              headers: {
+                referer: 'http://localhost:8080/',
+                origin: 'http://localhost:8080',
+              },
+              onProxyReq: preq => {
+                preq.setHeader('x-bpi-trust-created-dt', moment().format('YYYY-MM-DDTHH:mm:ss'));
+              },
+            },
+          },
     },
 
     resolve: {
