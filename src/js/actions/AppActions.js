@@ -1,6 +1,7 @@
 import AppConstants from "../constants/AppConstants";
 import { parseMessages } from "../parsers/MessageParser";
 import { parseSubjects, parseAccounts } from "../parsers/MessageSubjectParser";
+import { buildFetchHandlers, buildUpdateHandlers, buildOptimisticUpdate } from "./common";
 
 export function fetchSecureMessages() {
   return function(dispatch, _, { secureMessagesApi }) {
@@ -8,60 +9,36 @@ export function fetchSecureMessages() {
       type: AppConstants.REQUEST_SECURE_MESSAGES
     };
     dispatch(payload);
-    const success = response => {
-      const parseData = response ? parseMessages(response) : [];
-      const payload = {
-        type: AppConstants.REQUEST_SECURE_MESSAGES_SUCCESS,
-        payload: parseData
-      };
-      dispatch(payload);
-    };
-    const error = error => {
-      const payload = {
-        type: AppConstants.REQUEST_SECURE_MESSAGES_FAILURE
-      };
-      dispatch(payload);
-    };
+    const { success, error } = buildFetchHandlers({
+      dispatch,
+      successActionType: AppConstants.REQUEST_SECURE_MESSAGES_SUCCESS,
+      errorActionType: AppConstants.REQUEST_SECURE_MESSAGES_FAILURE,
+      parseMethod: parseMessages
+    });
+
     secureMessagesApi.fetchSecureMessages(success, error);
   };
 }
 export function getMessageSubjects() {
   return function(dispatch, _, { secureMessagesApi }) {
-    const success = response => {
-      const parseData = parseSubjects(response);
-      const payload = {
-        type: AppConstants.REQUEST_SUBJECTS_SUCCESS,
-        payload: parseData
-      };
-      dispatch(payload);
-    };
-    const error = error => {
-      const payload = {
-        type: AppConstants.REQUEST_SUBJECTS_FAILURE,
-        payload: error
-      };
-      dispatch(payload);
-    };
+    const { success, error } = buildFetchHandlers({
+      dispatch,
+      successActionType: AppConstants.REQUEST_SUBJECTS_SUCCESS,
+      errorActionType: AppConstants.REQUEST_SUBJECTS_FAILURE,
+      parseMethod: parseSubjects
+    });
+
     secureMessagesApi.getSubjects(success, error);
   };
 }
 export function getAccounts() {
   return function(dispatch, _, { secureMessagesApi }) {
-    const success = response => {
-      const parseData = parseAccounts(response);
-      const payload = {
-        type: AppConstants.REQUEST_ACCOUNTS_SUCCESS,
-        payload: parseData
-      };
-      dispatch(payload);
-    };
-    const error = error => {
-      const payload = {
-        type: AppConstants.REQUEST_SECURE_MESSAGES_FAILURE,
-        payload: error
-      };
-      dispatch(payload);
-    };
+    const { success, error } = buildFetchHandlers({
+      dispatch,
+      successActionType: AppConstants.REQUEST_ACCOUNTS_SUCCESS,
+      errorActionType: AppConstants.REQUEST_ACCOUNTS_FAILURE,
+      parseMethod: parseAccounts
+    });
     secureMessagesApi.getAccounts(success, error);
   };
 }
@@ -76,110 +53,74 @@ export function getActiveTab(activeTab) {
   };
 }
 
-export function backButton() {
-  return function(dispatch) {
-    const payload = {
-      type: AppConstants.ERROR_BACK_BUTTON
-    };
-    dispatch(payload);
+const dispatchUpdating = ({ dispatch, status }) => {
+  const payload = {
+    type: AppConstants.UPDATE_SECURE_MESSAGE,
+    status
   };
-}
-export function sendMessageData(requestData, status, name) {
-  return function(dispatch, _, { secureMessagesApi }) {
-    const payload = {
-      type: AppConstants.UPDATE_SECURE_MESSAGE,
-      status
-    };
-    dispatch(payload);
-    const success = response => {
-      const payload = {
-        type: AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS,
-        status
-      };
-      dispatch(payload);
-    };
-    const error = error => {
-      const payload = {
-        type: AppConstants.UPDATE_NEW_SECURE_MESSAGE_FAILURE,
-        status,
-        payload: error
-      };
-      dispatch(payload);
-    };
-    secureMessagesApi.sendMessageData(
-      requestData,
-      status,
-      name,
-      success,
-      error
-    );
-  };
-}
+  dispatch(payload);
+};
 
-export function replyMessageData(requestData, ids, status, name) {
-  return function(dispatch, _, { secureMessagesApi }) {
-    const payload = {
-      type: AppConstants.UPDATE_SECURE_MESSAGE,
-      status
-    };
-    dispatch(payload);
-    const success = response => {
-      const payload = {
-        type: AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS,
-        status,
-      };
-      dispatch(payload);
-    };
-    const error = error => {
-      const payload = {
-        type: AppConstants.UPDATE_NEW_SECURE_MESSAGE_FAILURE,
-        status,
-        payload: error
-      };
-      dispatch(payload);
-    };
-    secureMessagesApi.replyMessageData(
-      requestData,
-      ids,
-      status,
-      name,
-      success,
-      error
-    );
-  };
-}
+const buildMessageUpdateAction = ({
+  id,
+  status,
+  successActionType,
+  errorActionType,
+  updateMethod
+}) => (dispatch, _, { secureMessagesApi }) => {
+  dispatchUpdating({ status, dispatch });
 
-export function updateMessageData(requestData, id, status) {
-  return function(dispatch, _, { secureMessagesApi }) {
-    const payload = {
-      type: AppConstants.UPDATE_SECURE_MESSAGE,
-      status
-    };
-    dispatch(payload);
-    const success = () => {
-      const payload = {
-        type: AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS,
+  const { success, error } = buildUpdateHandlers({
+    dispatch,
+    id,
+    status,
+    successActionType,
+    errorActionType,
+    onSuccess: () => dispatch(fetchSecureMessages())
+  });
+
+  updateMethod(secureMessagesApi, success, error);
+};
+
+export const createNewMessage = ({requestData, 
+  ids, 
+  status, 
+  name
+}) => 
+  buildMessageUpdateAction({
+    status,
+    successActionType: AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS,
+    errorActionType: AppConstants.UPDATE_NEW_SECURE_MESSAGE_FAILURE,
+    updateMethod: (secureMessagesApi, success, error) => {
+      secureMessagesApi.createNewMessage({
+        ids,
+        requestData,
         status,
-      };
-      dispatch(payload);
-    };
-    const error = error => {
-      const payload = {
-        type: AppConstants.UPDATE_SECURE_MESSAGE_DRAFT_FAILURE,
+        name,
+        success,
+        error
+      });
+    }
+  });
+
+export const updateDraftMessage = ({requestData, 
+  status
+}) => 
+  buildMessageUpdateAction({
+    id: requestData.id,
+    status,
+    successActionType: AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS,
+    errorActionType: AppConstants.UPDATE_SECURE_MESSAGE_DRAFT_FAILURE,
+    updateMethod: (secureMessagesApi, success, error) => {
+      secureMessagesApi.updateExistingMessage({
+        requestData,
         status,
-        payload: error
-      };
-      dispatch(payload);
-    };
-    secureMessagesApi.updateMessageData(
-      requestData,
-      id,
-      status,
-      success,
-      error
-    );
-  };
-}
+        success,
+        error
+      });
+    }
+  });
+
 export function setViewMessageDetail(messageDetail) {
   return function(dispatch) {
     const payload = {
@@ -190,74 +131,12 @@ export function setViewMessageDetail(messageDetail) {
   };
 }
 
-function buildHandler(dispatch, successActionType, errorActionType) {
-  return {
-    success: () => {
-      const payload = {
-        type: successActionType
-      };
-      dispatch(payload);
-    },
-    error: error => {
-      const payload = {
-        type: errorActionType,
-        payload: error
-      };
-      dispatch(payload);
-    }
-  };
-}
+export const delMessageData = buildOptimisticUpdate(AppConstants.DELETE_SECURE_MESSAGE);
+export const archiveMessageData = buildOptimisticUpdate(AppConstants.ARCHIVE_SECURE_MESSAGE);
+export const unarchiveMessageData = buildOptimisticUpdate(AppConstants.UNARCHIVE_SECURE_MESSAGE);
+export const setMessageRead = buildOptimisticUpdate(AppConstants.SET_SECURE_MESSAGE_READ);
 
-export function delMessageData(requestData, id, status) {
-  return function(dispatch, _, { secureMessagesApi }) {
-    const { success, error } = buildHandler(
-      dispatch,
-      AppConstants.DELETE_SECURE_MESSAGE_SUCCESS,
-      AppConstants.UPDATE_SECURE_MESSAGE_DRAFT_FAILURE
-    );
-    secureMessagesApi.updateMessageData(
-      requestData,
-      id,
-      status,
-      success,
-      error
-    );
-  };
-}
-
-export function archiveMessageData(requestData, id, status) {
-  return function(dispatch, _, { secureMessagesApi }) {
-    const { success, error } = buildHandler(
-      dispatch,
-      AppConstants.ARCHIVE_SECURE_MESSAGE_SUCCESS,
-      AppConstants.ARCHIVE_SECURE_MESSAGE_FAILURE
-    );
-    secureMessagesApi.updateMessageData(
-      requestData,
-      id,
-      status,
-      success,
-      error
-    );
-  };
-}
-
-export function unarchiveMessageData(requestData, id, status) {
-  return function(dispatch, _, { secureMessagesApi }) {
-    const { success, error } = buildHandler(
-      dispatch,
-      AppConstants.UNARCHIVE_SECURE_MESSAGE_SUCCESS,
-      AppConstants.UNARCHIVE_SECURE_MESSAGE_FAILURE
-    );
-    secureMessagesApi.updateMessageData(
-      requestData,
-      id,
-      status,
-      success,
-      error
-    );
-  };
-}
+export const retryUpdateRequest = (actionType, failedReq) => buildOptimisticUpdate(actionType)(failedReq);
 
 export function sendMessageForAccessibiltiy(message) {
   return function(dispatch) {
@@ -285,26 +164,6 @@ export function closeDelModal() {
     };
     dispatch(payload);
   };
-}
-
-export function setDeletingMessages(id) {
-  return function(dispatch) {
-    const payload = {
-      type: AppConstants.DELETING_MESSAGE,
-      payload: id,
-    };
-    dispatch(payload);
-  }
-}
-
-export function setSendingMessages(id) {
-  return function (dispatch) {
-    const payload = {
-      type: AppConstants.SENDING_MESSAGE,
-      payload: id,
-    };
-    dispatch(payload);
-  }
 }
 
 export function setMode(mode) {

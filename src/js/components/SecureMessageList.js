@@ -11,6 +11,7 @@ import {TextStyled} from 'web-ui-components/lib/atoms/text';
 import {Mail} from "web-ui-components/lib/communication/messaging";
 import {withBreakpoints} from "../components/common/hoc/WithBreakpoint";
 import {compose} from "redux";
+import { MessageSelectors } from "../reducers";
 
 const MESSAGE_LIMIT = 20;
 
@@ -42,12 +43,15 @@ export class SecureMessageList extends React.Component {
     }
 
     showMessages() {
-        const {messages, content, messagesFetched} = this.props;
+        const { messages, content } = this.props;
         const listFlag = true;
         return messages
             .slice(0, this.state.showMoreLimit)
-            .map((message, index) => <SecureMessageSummary disabled={messagesFetched.sendingMessages.indexOf(message.id) >= 0} key={index}
-                                                           message={message} listFlag={listFlag} content={content}/>);
+            .map((message, index) => 
+                <SecureMessageSummary key={index}
+                    message={message} 
+                    listFlag={listFlag} 
+                    content={content}/>);
     }
 
     showMoreClicked() {
@@ -109,7 +113,7 @@ export class SecureMessageList extends React.Component {
     }
 
     render() {
-        const {messagesFetched, messages, content, noPadding} = this.props;
+        const {messagesFetching, messages, content, noPadding} = this.props;
 
         let paddingProps = null;
         if (noPadding) {
@@ -122,11 +126,11 @@ export class SecureMessageList extends React.Component {
             <Column xs={24} {...paddingProps}>
 
                 <LoadingLocalTakeover xs={24}
-                                      show={messagesFetched.fetching}
+                                      show={messagesFetching}
                                       title="loading..">
                     <TextBody>
                         {messages.length === 0
-                            ? this.renderNoMessagesText(messagesFetched.fetching)
+                            ? this.renderNoMessagesText(messagesFetching)
                             : this.showMessages()}
                         {this.state.showMoreLimit < messages.length
                         && <Button display="primary" onClick={this.showMoreClicked}>{content.showMore}</Button>}
@@ -149,7 +153,7 @@ export class SecureMessageList extends React.Component {
 const mapState = state => ({
     messagesubjects: state.subjects,
     messageaccounts: state.accounts,
-    messagesFetched: state.messages,
+    messagesFetching: MessageSelectors.getFetching(state),
 });
 
 export default compose(

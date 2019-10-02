@@ -10,10 +10,7 @@ describe("New Secure message snapshot", () => {
             back: 'Back',
         },
         activeTab: 'SENT',
-        messages: {
-            slice: slice,
-            length: 10
-        },
+        messages: Array.from("1234567890"),
         messagesFetched: {
             fetching: false,
             successModal: false
@@ -37,7 +34,6 @@ describe("New Secure message snapshot", () => {
     });
     describe("renderNoMessagesText with DRAFT", () => {
         const dispatch = jest.fn();
-        const slice = jest.fn();
         let props = {
             content: {
                 noDraftMessages: 'noDraftMessages',
@@ -48,10 +44,7 @@ describe("New Secure message snapshot", () => {
                 fetching: false,
                 successModal: false
             },
-            messages: {
-                slice: () => [1,2,3],
-                length: 10
-            },
+            messages: Array.from("123456789"),
             dispatch: dispatch
         };
         it('renderNoMessagesText function test', () => {
@@ -68,9 +61,7 @@ describe("New Secure message snapshot", () => {
             content: {
                 back: 'Back',
             },
-            messages: {
-                slice: slice
-            },
+            messages: Array.from("1234567890"),
             messagesFetched: {
                 fetching: true,
                 successModal: true

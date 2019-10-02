@@ -1,4 +1,4 @@
-import { createNewMessage, updateMessage, replyMessage } from "../MessageParser";
+import { createNewMessage, updateExistingMessage } from "../MessageParser";
 import { DRAFT } from "../../constants/StringsConstants";
 
 const name = {
@@ -23,7 +23,10 @@ describe('createNewMessage Tests', () => {
   })
 
   it('when there is no account then the message should have undefined account', () => {
-    const message = createNewMessage(data, DRAFT, name);
+    const message = createNewMessage({
+        data, 
+        status: DRAFT, 
+        name});
     expect(message.account).toBe(undefined);
   });
 
@@ -32,7 +35,10 @@ describe('createNewMessage Tests', () => {
             number: "12345",
             accountId: "98765"
         }
-        const message = createNewMessage(data, DRAFT, name);
+        const message = createNewMessage({
+            data,
+            status: DRAFT, 
+            name});
         const expectedMessage = {
             secure_message: {
                 subject: data.subject,
@@ -63,16 +69,19 @@ describe('createNewMessage Tests', () => {
   });
 
   it('when there is no name then the user should be undefined', () => {
-    const message = createNewMessage(data, DRAFT, undefined);
+    const message = createNewMessage({
+        data, 
+        status: DRAFT});
     expect(message.user).toBe(undefined);
   });
 
 });
 
-describe('updateMessage Tests', () => {
+describe('update existing message tests', () => {
     let data;
     beforeEach(() => {
       data = {
+          id: "C0122455",
           subject: "Technical Support",
           message: "Some simple message text",
           account: {
@@ -83,7 +92,9 @@ describe('updateMessage Tests', () => {
     })
   
     it('has no-reply-to header with message id', () => {
-      const message = updateMessage(data, "C0122455", DRAFT);
+      const message = updateExistingMessage({
+          data, 
+          status: DRAFT});
       const expectedMessage = {
           secure_message: {
               subject: data.subject,
@@ -108,7 +119,9 @@ describe('updateMessage Tests', () => {
     });
 
     it('has no account then no account specified', () => {
-        const message = updateMessage(data, "C0122455", DRAFT);    
+        const message = updateExistingMessage({
+            data, 
+            status: DRAFT});    
         expect(message.account).toBe(undefined);
     
     });
@@ -118,7 +131,9 @@ describe('updateMessage Tests', () => {
             number: "123456",
             accountId: "00212"
         }
-        const message = updateMessage(data, "C0122455", DRAFT);
+        const message = updateExistingMessage({
+            data, 
+            status: DRAFT});
         const expectedMessage = {
             secure_message: {
                 subject: data.subject,
@@ -146,7 +161,7 @@ describe('updateMessage Tests', () => {
    
   });
 
-  describe('replyMessage tests', () => {
+  describe('reply tests', () => {
     let data;
     beforeEach(() => {
       data = {
@@ -160,17 +175,28 @@ describe('updateMessage Tests', () => {
     })
   
     it('has no name then user should be undefined', () => {
-      const message = replyMessage(data, {id: "C0122455", threadID: "12345"}, DRAFT, name);
+      const message = createNewMessage({
+          data, 
+          ids: {id: "C0122455", threadID: "12345"}, 
+          status: DRAFT, 
+          name});
       expect(message.user).toBe(undefined);  
     });
 
     it('has no account then user should be undefined', () => {
-        const message = replyMessage(data, {id: "C0122455", threadID: "12345"}, DRAFT, name);
+        const message = createNewMessage({data, 
+            ids: {id: "C0122455", threadID: "12345"}, 
+            status: DRAFT, 
+            name});
         expect(message.account).toBe(undefined);
     });
 
     it('has no threadID then threadID should be undefined', () => {
-        const message = replyMessage(data, {id: "C0122455", threadID: null}, DRAFT, name);
+        const message = createNewMessage({
+            data, 
+            ids: {id: "C0122455", threadID: null}, 
+            status: DRAFT, 
+            name});
         expect(message.threadID).toBe(undefined);
     });
 
@@ -180,7 +206,11 @@ describe('updateMessage Tests', () => {
             accountId: "00212"
         }
         
-        const message = replyMessage(data, {id: "C0122455", threadID: "98765"}, DRAFT, name);
+        const message = createNewMessage({
+            data,
+            ids: {id: "C0122455", threadID: "98765"}, 
+            status: DRAFT, 
+            name});
         const expectedMessage = {
             secure_message: {
                 subject: data.subject,

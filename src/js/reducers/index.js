@@ -19,16 +19,18 @@ export default combineReducers({
   documentManagement
 });
 
-export const getMessages = (state) => messageSelectors.getMessages(state.messages);
-export const getMessageError = (state, status) => messageSelectors.getMessageError(state,messages, status);
-export const getShowSuccessModal = (state) => messageSelectors.getShowSuccessModal(state.messages);
-export const getUpdating = (state) => messageSelectors.getUpdating(state.messages);
-export const getIsSavingDraft = (state) => messageSelectors.getIsSavingDraft(state.messages);
+//one for one mapping with methods in messageSelectors and functionality here
+export const MessageSelectors = Object.entries(messageSelectors)
+  .reduce((agg, current) => {
+    const [key, method] = current;
+    agg[key] = (state, status) => method(state.messages, status);
+    return agg;
+  }, {});
 
 export const getAccounts = (state) => accountSelectors.getAccounts(state.accounts);
 
 export const getSubjects = (state) => subjectSelectors.getSubjects(state.subjects);
-export const getSubjectErrors = (state) => subjectSelectors.getSubjectErrors(state);
+export const getSubjectErrors = (state) => subjectSelectors.getSubjectErrors(state.subjects);
 
 export const getMessageDetail = (state) => viewMessageSelectors.getMessageDetail(state.viewMessage);
 

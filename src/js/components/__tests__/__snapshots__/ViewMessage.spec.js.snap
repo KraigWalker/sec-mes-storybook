@@ -30,6 +30,7 @@ ShallowWrapper {
         "successModal": false,
       }
     }
+    setMessageRead={[MockFunction]}
     setViewMessageDetail={
       [MockFunction] {
         "calls": Array [
@@ -42,7 +43,6 @@ ShallowWrapper {
       }
     }
     successModal={true}
-    updateMessageData={[MockFunction]}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -54,378 +54,20 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "function",
+    "nodeType": "host",
     "props": Object {
-      "children": <Row>
-        <Card
-          bordered={false}
+      "children": Array [
+        <Container
+          size={undefined}
         >
-          <SectionHeading
-            className="u-margin-bottom-2"
-            heading1={undefined}
-          />
-          <Connect(withRouter(withMessaging))
-            activeTab="SENT"
-            basePath="http://localhost"
-            content={
-              Object {
-                "sentPageTitle": "sentPageTitle",
-              }
-            }
-            hasAttachment={undefined}
-            location={
-              Object {
-                "messageDetail": Object {
-                  "status": "sent",
-                },
-              }
-            }
-            messages={
-              Object {
-                "draftError": true,
-                "filter": [MockFunction],
-                "successModal": true,
-              }
-            }
-            messagesFetched={
-              Object {
-                "fetching": false,
-                "successModal": false,
-              }
-            }
-            newMessageStatus="sent"
-            setViewMessageDetail={
-              [MockFunction] {
-                "calls": Array [
-                  Array [
-                    Object {
-                      "status": "sent",
-                    },
-                  ],
-                ],
-              }
-            }
-            successModal={true}
-            updateMessageData={[MockFunction]}
-          />
-        </Card>
-      </Row>,
-      "size": undefined,
-    },
-    "ref": null,
-    "rendered": Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "function",
-      "props": Object {
-        "children": <Card
-          bordered={false}
-        >
-          <SectionHeading
-            className="u-margin-bottom-2"
-            heading1={undefined}
-          />
-          <Connect(withRouter(withMessaging))
-            activeTab="SENT"
-            basePath="http://localhost"
-            content={
-              Object {
-                "sentPageTitle": "sentPageTitle",
-              }
-            }
-            hasAttachment={undefined}
-            location={
-              Object {
-                "messageDetail": Object {
-                  "status": "sent",
-                },
-              }
-            }
-            messages={
-              Object {
-                "draftError": true,
-                "filter": [MockFunction],
-                "successModal": true,
-              }
-            }
-            messagesFetched={
-              Object {
-                "fetching": false,
-                "successModal": false,
-              }
-            }
-            newMessageStatus="sent"
-            setViewMessageDetail={
-              [MockFunction] {
-                "calls": Array [
-                  Array [
-                    Object {
-                      "status": "sent",
-                    },
-                  ],
-                ],
-              }
-            }
-            successModal={true}
-            updateMessageData={[MockFunction]}
-          />
-        </Card>,
-      },
-      "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "function",
-        "props": Object {
-          "bordered": false,
-          "children": Array [
-            <SectionHeading
-              className="u-margin-bottom-2"
-              heading1={undefined}
-            />,
-            <Connect(withRouter(withMessaging))
-              activeTab="SENT"
-              basePath="http://localhost"
-              content={
-                Object {
-                  "sentPageTitle": "sentPageTitle",
-                }
-              }
-              hasAttachment={undefined}
-              location={
-                Object {
-                  "messageDetail": Object {
-                    "status": "sent",
-                  },
-                }
-              }
-              messages={
-                Object {
-                  "draftError": true,
-                  "filter": [MockFunction],
-                  "successModal": true,
-                }
-              }
-              messagesFetched={
-                Object {
-                  "fetching": false,
-                  "successModal": false,
-                }
-              }
-              newMessageStatus="sent"
-              setViewMessageDetail={
-                [MockFunction] {
-                  "calls": Array [
-                    Array [
-                      Object {
-                        "status": "sent",
-                      },
-                    ],
-                  ],
-                }
-              }
-              successModal={true}
-              updateMessageData={[MockFunction]}
-            />,
-            Array [],
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "className": "u-margin-bottom-2",
-              "heading1": undefined,
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "activeTab": "SENT",
-              "basePath": "http://localhost",
-              "content": Object {
-                "sentPageTitle": "sentPageTitle",
-              },
-              "hasAttachment": undefined,
-              "location": Object {
-                "messageDetail": Object {
-                  "status": "sent",
-                },
-              },
-              "messages": Object {
-                "draftError": true,
-                "filter": [MockFunction],
-                "successModal": true,
-              },
-              "messagesFetched": Object {
-                "fetching": false,
-                "successModal": false,
-              },
-              "newMessageStatus": "sent",
-              "setViewMessageDetail": [MockFunction] {
-                "calls": Array [
-                  Array [
-                    Object {
-                      "status": "sent",
-                    },
-                  ],
-                ],
-              },
-              "successModal": true,
-              "updateMessageData": [MockFunction],
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-        ],
-        "type": [Function],
-      },
-      "type": [Function],
-    },
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "function",
-      "props": Object {
-        "children": <Row>
-          <Card
-            bordered={false}
-          >
-            <SectionHeading
-              className="u-margin-bottom-2"
-              heading1={undefined}
-            />
-            <Connect(withRouter(withMessaging))
-              activeTab="SENT"
-              basePath="http://localhost"
-              content={
-                Object {
-                  "sentPageTitle": "sentPageTitle",
-                }
-              }
-              hasAttachment={undefined}
-              location={
-                Object {
-                  "messageDetail": Object {
-                    "status": "sent",
-                  },
-                }
-              }
-              messages={
-                Object {
-                  "draftError": true,
-                  "filter": [MockFunction],
-                  "successModal": true,
-                }
-              }
-              messagesFetched={
-                Object {
-                  "fetching": false,
-                  "successModal": false,
-                }
-              }
-              newMessageStatus="sent"
-              setViewMessageDetail={
-                [MockFunction] {
-                  "calls": Array [
-                    Array [
-                      Object {
-                        "status": "sent",
-                      },
-                    ],
-                  ],
-                }
-              }
-              successModal={true}
-              updateMessageData={[MockFunction]}
-            />
-          </Card>
-        </Row>,
-        "size": undefined,
-      },
-      "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "function",
-        "props": Object {
-          "children": <Card
-            bordered={false}
-          >
-            <SectionHeading
-              className="u-margin-bottom-2"
-              heading1={undefined}
-            />
-            <Connect(withRouter(withMessaging))
-              activeTab="SENT"
-              basePath="http://localhost"
-              content={
-                Object {
-                  "sentPageTitle": "sentPageTitle",
-                }
-              }
-              hasAttachment={undefined}
-              location={
-                Object {
-                  "messageDetail": Object {
-                    "status": "sent",
-                  },
-                }
-              }
-              messages={
-                Object {
-                  "draftError": true,
-                  "filter": [MockFunction],
-                  "successModal": true,
-                }
-              }
-              messagesFetched={
-                Object {
-                  "fetching": false,
-                  "successModal": false,
-                }
-              }
-              newMessageStatus="sent"
-              setViewMessageDetail={
-                [MockFunction] {
-                  "calls": Array [
-                    Array [
-                      Object {
-                        "status": "sent",
-                      },
-                    ],
-                  ],
-                }
-              }
-              successModal={true}
-              updateMessageData={[MockFunction]}
-            />
-          </Card>,
-        },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "function",
-          "props": Object {
-            "bordered": false,
-            "children": Array [
+          <Row>
+            <Card
+              bordered={false}
+            >
               <SectionHeading
                 className="u-margin-bottom-2"
                 heading1={undefined}
-              />,
+              />
               <Connect(withRouter(withMessaging))
                 activeTab="SENT"
                 basePath="http://localhost"
@@ -435,6 +77,7 @@ ShallowWrapper {
                   }
                 }
                 hasAttachment={undefined}
+                justBeenRead={false}
                 location={
                   Object {
                     "messageDetail": Object {
@@ -456,6 +99,7 @@ ShallowWrapper {
                   }
                 }
                 newMessageStatus="sent"
+                setMessageRead={[MockFunction]}
                 setViewMessageDetail={
                   [MockFunction] {
                     "calls": Array [
@@ -468,73 +112,585 @@ ShallowWrapper {
                   }
                 }
                 successModal={true}
-                updateMessageData={[MockFunction]}
-              />,
-              Array [],
-            ],
+              />
+            </Card>
+          </Row>
+        </Container>,
+        false,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": <Row>
+            <Card
+              bordered={false}
+            >
+              <SectionHeading
+                className="u-margin-bottom-2"
+                heading1={undefined}
+              />
+              <Connect(withRouter(withMessaging))
+                activeTab="SENT"
+                basePath="http://localhost"
+                content={
+                  Object {
+                    "sentPageTitle": "sentPageTitle",
+                  }
+                }
+                hasAttachment={undefined}
+                justBeenRead={false}
+                location={
+                  Object {
+                    "messageDetail": Object {
+                      "status": "sent",
+                    },
+                  }
+                }
+                messages={
+                  Object {
+                    "draftError": true,
+                    "filter": [MockFunction],
+                    "successModal": true,
+                  }
+                }
+                messagesFetched={
+                  Object {
+                    "fetching": false,
+                    "successModal": false,
+                  }
+                }
+                newMessageStatus="sent"
+                setMessageRead={[MockFunction]}
+                setViewMessageDetail={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        Object {
+                          "status": "sent",
+                        },
+                      ],
+                    ],
+                  }
+                }
+                successModal={true}
+              />
+            </Card>
+          </Row>,
+          "size": undefined,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": <Card
+              bordered={false}
+            >
+              <SectionHeading
+                className="u-margin-bottom-2"
+                heading1={undefined}
+              />
+              <Connect(withRouter(withMessaging))
+                activeTab="SENT"
+                basePath="http://localhost"
+                content={
+                  Object {
+                    "sentPageTitle": "sentPageTitle",
+                  }
+                }
+                hasAttachment={undefined}
+                justBeenRead={false}
+                location={
+                  Object {
+                    "messageDetail": Object {
+                      "status": "sent",
+                    },
+                  }
+                }
+                messages={
+                  Object {
+                    "draftError": true,
+                    "filter": [MockFunction],
+                    "successModal": true,
+                  }
+                }
+                messagesFetched={
+                  Object {
+                    "fetching": false,
+                    "successModal": false,
+                  }
+                }
+                newMessageStatus="sent"
+                setMessageRead={[MockFunction]}
+                setViewMessageDetail={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        Object {
+                          "status": "sent",
+                        },
+                      ],
+                    ],
+                  }
+                }
+                successModal={true}
+              />
+            </Card>,
           },
           "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "className": "u-margin-bottom-2",
-                "heading1": undefined,
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "activeTab": "SENT",
-                "basePath": "http://localhost",
-                "content": Object {
-                  "sentPageTitle": "sentPageTitle",
-                },
-                "hasAttachment": undefined,
-                "location": Object {
-                  "messageDetail": Object {
-                    "status": "sent",
-                  },
-                },
-                "messages": Object {
-                  "draftError": true,
-                  "filter": [MockFunction],
-                  "successModal": true,
-                },
-                "messagesFetched": Object {
-                  "fetching": false,
-                  "successModal": false,
-                },
-                "newMessageStatus": "sent",
-                "setViewMessageDetail": [MockFunction] {
-                  "calls": Array [
-                    Array [
-                      Object {
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "bordered": false,
+              "children": Array [
+                <SectionHeading
+                  className="u-margin-bottom-2"
+                  heading1={undefined}
+                />,
+                <Connect(withRouter(withMessaging))
+                  activeTab="SENT"
+                  basePath="http://localhost"
+                  content={
+                    Object {
+                      "sentPageTitle": "sentPageTitle",
+                    }
+                  }
+                  hasAttachment={undefined}
+                  justBeenRead={false}
+                  location={
+                    Object {
+                      "messageDetail": Object {
                         "status": "sent",
                       },
-                    ],
-                  ],
-                },
-                "successModal": true,
-                "updateMessageData": [MockFunction],
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
+                    }
+                  }
+                  messages={
+                    Object {
+                      "draftError": true,
+                      "filter": [MockFunction],
+                      "successModal": true,
+                    }
+                  }
+                  messagesFetched={
+                    Object {
+                      "fetching": false,
+                      "successModal": false,
+                    }
+                  }
+                  newMessageStatus="sent"
+                  setMessageRead={[MockFunction]}
+                  setViewMessageDetail={
+                    [MockFunction] {
+                      "calls": Array [
+                        Array [
+                          Object {
+                            "status": "sent",
+                          },
+                        ],
+                      ],
+                    }
+                  }
+                  successModal={true}
+                />,
+                Array [],
+              ],
             },
-          ],
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "className": "u-margin-bottom-2",
+                  "heading1": undefined,
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "activeTab": "SENT",
+                  "basePath": "http://localhost",
+                  "content": Object {
+                    "sentPageTitle": "sentPageTitle",
+                  },
+                  "hasAttachment": undefined,
+                  "justBeenRead": false,
+                  "location": Object {
+                    "messageDetail": Object {
+                      "status": "sent",
+                    },
+                  },
+                  "messages": Object {
+                    "draftError": true,
+                    "filter": [MockFunction],
+                    "successModal": true,
+                  },
+                  "messagesFetched": Object {
+                    "fetching": false,
+                    "successModal": false,
+                  },
+                  "newMessageStatus": "sent",
+                  "setMessageRead": [MockFunction],
+                  "setViewMessageDetail": [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        Object {
+                          "status": "sent",
+                        },
+                      ],
+                    ],
+                  },
+                  "successModal": true,
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
           "type": [Function],
         },
         "type": [Function],
       },
-      "type": [Function],
+      false,
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <Container
+            size={undefined}
+          >
+            <Row>
+              <Card
+                bordered={false}
+              >
+                <SectionHeading
+                  className="u-margin-bottom-2"
+                  heading1={undefined}
+                />
+                <Connect(withRouter(withMessaging))
+                  activeTab="SENT"
+                  basePath="http://localhost"
+                  content={
+                    Object {
+                      "sentPageTitle": "sentPageTitle",
+                    }
+                  }
+                  hasAttachment={undefined}
+                  justBeenRead={false}
+                  location={
+                    Object {
+                      "messageDetail": Object {
+                        "status": "sent",
+                      },
+                    }
+                  }
+                  messages={
+                    Object {
+                      "draftError": true,
+                      "filter": [MockFunction],
+                      "successModal": true,
+                    }
+                  }
+                  messagesFetched={
+                    Object {
+                      "fetching": false,
+                      "successModal": false,
+                    }
+                  }
+                  newMessageStatus="sent"
+                  setMessageRead={[MockFunction]}
+                  setViewMessageDetail={
+                    [MockFunction] {
+                      "calls": Array [
+                        Array [
+                          Object {
+                            "status": "sent",
+                          },
+                        ],
+                      ],
+                    }
+                  }
+                  successModal={true}
+                />
+              </Card>
+            </Row>
+          </Container>,
+          false,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": <Row>
+              <Card
+                bordered={false}
+              >
+                <SectionHeading
+                  className="u-margin-bottom-2"
+                  heading1={undefined}
+                />
+                <Connect(withRouter(withMessaging))
+                  activeTab="SENT"
+                  basePath="http://localhost"
+                  content={
+                    Object {
+                      "sentPageTitle": "sentPageTitle",
+                    }
+                  }
+                  hasAttachment={undefined}
+                  justBeenRead={false}
+                  location={
+                    Object {
+                      "messageDetail": Object {
+                        "status": "sent",
+                      },
+                    }
+                  }
+                  messages={
+                    Object {
+                      "draftError": true,
+                      "filter": [MockFunction],
+                      "successModal": true,
+                    }
+                  }
+                  messagesFetched={
+                    Object {
+                      "fetching": false,
+                      "successModal": false,
+                    }
+                  }
+                  newMessageStatus="sent"
+                  setMessageRead={[MockFunction]}
+                  setViewMessageDetail={
+                    [MockFunction] {
+                      "calls": Array [
+                        Array [
+                          Object {
+                            "status": "sent",
+                          },
+                        ],
+                      ],
+                    }
+                  }
+                  successModal={true}
+                />
+              </Card>
+            </Row>,
+            "size": undefined,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": <Card
+                bordered={false}
+              >
+                <SectionHeading
+                  className="u-margin-bottom-2"
+                  heading1={undefined}
+                />
+                <Connect(withRouter(withMessaging))
+                  activeTab="SENT"
+                  basePath="http://localhost"
+                  content={
+                    Object {
+                      "sentPageTitle": "sentPageTitle",
+                    }
+                  }
+                  hasAttachment={undefined}
+                  justBeenRead={false}
+                  location={
+                    Object {
+                      "messageDetail": Object {
+                        "status": "sent",
+                      },
+                    }
+                  }
+                  messages={
+                    Object {
+                      "draftError": true,
+                      "filter": [MockFunction],
+                      "successModal": true,
+                    }
+                  }
+                  messagesFetched={
+                    Object {
+                      "fetching": false,
+                      "successModal": false,
+                    }
+                  }
+                  newMessageStatus="sent"
+                  setMessageRead={[MockFunction]}
+                  setViewMessageDetail={
+                    [MockFunction] {
+                      "calls": Array [
+                        Array [
+                          Object {
+                            "status": "sent",
+                          },
+                        ],
+                      ],
+                    }
+                  }
+                  successModal={true}
+                />
+              </Card>,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "bordered": false,
+                "children": Array [
+                  <SectionHeading
+                    className="u-margin-bottom-2"
+                    heading1={undefined}
+                  />,
+                  <Connect(withRouter(withMessaging))
+                    activeTab="SENT"
+                    basePath="http://localhost"
+                    content={
+                      Object {
+                        "sentPageTitle": "sentPageTitle",
+                      }
+                    }
+                    hasAttachment={undefined}
+                    justBeenRead={false}
+                    location={
+                      Object {
+                        "messageDetail": Object {
+                          "status": "sent",
+                        },
+                      }
+                    }
+                    messages={
+                      Object {
+                        "draftError": true,
+                        "filter": [MockFunction],
+                        "successModal": true,
+                      }
+                    }
+                    messagesFetched={
+                      Object {
+                        "fetching": false,
+                        "successModal": false,
+                      }
+                    }
+                    newMessageStatus="sent"
+                    setMessageRead={[MockFunction]}
+                    setViewMessageDetail={
+                      [MockFunction] {
+                        "calls": Array [
+                          Array [
+                            Object {
+                              "status": "sent",
+                            },
+                          ],
+                        ],
+                      }
+                    }
+                    successModal={true}
+                  />,
+                  Array [],
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "className": "u-margin-bottom-2",
+                    "heading1": undefined,
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "activeTab": "SENT",
+                    "basePath": "http://localhost",
+                    "content": Object {
+                      "sentPageTitle": "sentPageTitle",
+                    },
+                    "hasAttachment": undefined,
+                    "justBeenRead": false,
+                    "location": Object {
+                      "messageDetail": Object {
+                        "status": "sent",
+                      },
+                    },
+                    "messages": Object {
+                      "draftError": true,
+                      "filter": [MockFunction],
+                      "successModal": true,
+                    },
+                    "messagesFetched": Object {
+                      "fetching": false,
+                      "successModal": false,
+                    },
+                    "newMessageStatus": "sent",
+                    "setMessageRead": [MockFunction],
+                    "setViewMessageDetail": [MockFunction] {
+                      "calls": Array [
+                        Array [
+                          Object {
+                            "status": "sent",
+                          },
+                        ],
+                      ],
+                    },
+                    "successModal": true,
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        false,
+      ],
+      "type": "div",
     },
   ],
   Symbol(enzyme.__options__): Object {
@@ -590,7 +746,7 @@ ShallowWrapper {
         "successModal": false,
       }
     }
-    setViewMessageDetail={
+    setMessageRead={
       [MockFunction] {
         "calls": Array [
           Array [
@@ -601,15 +757,13 @@ ShallowWrapper {
         ],
       }
     }
-    updateMessageData={
+    setViewMessageDetail={
       [MockFunction] {
         "calls": Array [
           Array [
             Object {
               "status": "NEW",
             },
-            undefined,
-            "READ",
           ],
         ],
       }
@@ -625,448 +779,20 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "function",
+    "nodeType": "host",
     "props": Object {
-      "children": <Row>
-        <Card
-          bordered={false}
+      "children": Array [
+        <Container
+          size={undefined}
         >
-          <SectionHeading
-            className="u-margin-bottom-2"
-            heading1={undefined}
-          />
-          <Connect(withRouter(withMessaging))
-            activeTab="SENT"
-            basePath="http://localhost"
-            content={
-              Object {
-                "back": "Back",
-              }
-            }
-            dispatch={[MockFunction]}
-            hasAttachment={undefined}
-            location={
-              Object {
-                "messageDetail": Object {
-                  "status": "NEW",
-                },
-              }
-            }
-            messages={
-              Object {
-                "draftError": true,
-                "filter": [MockFunction],
-                "successModal": true,
-              }
-            }
-            messagesFetched={
-              Object {
-                "fetching": false,
-                "successModal": false,
-              }
-            }
-            newMessageStatus="READ"
-            setViewMessageDetail={
-              [MockFunction] {
-                "calls": Array [
-                  Array [
-                    Object {
-                      "status": "NEW",
-                    },
-                  ],
-                ],
-              }
-            }
-            updateMessageData={
-              [MockFunction] {
-                "calls": Array [
-                  Array [
-                    Object {
-                      "status": "NEW",
-                    },
-                    undefined,
-                    "READ",
-                  ],
-                ],
-              }
-            }
-          />
-        </Card>
-      </Row>,
-      "size": undefined,
-    },
-    "ref": null,
-    "rendered": Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "function",
-      "props": Object {
-        "children": <Card
-          bordered={false}
-        >
-          <SectionHeading
-            className="u-margin-bottom-2"
-            heading1={undefined}
-          />
-          <Connect(withRouter(withMessaging))
-            activeTab="SENT"
-            basePath="http://localhost"
-            content={
-              Object {
-                "back": "Back",
-              }
-            }
-            dispatch={[MockFunction]}
-            hasAttachment={undefined}
-            location={
-              Object {
-                "messageDetail": Object {
-                  "status": "NEW",
-                },
-              }
-            }
-            messages={
-              Object {
-                "draftError": true,
-                "filter": [MockFunction],
-                "successModal": true,
-              }
-            }
-            messagesFetched={
-              Object {
-                "fetching": false,
-                "successModal": false,
-              }
-            }
-            newMessageStatus="READ"
-            setViewMessageDetail={
-              [MockFunction] {
-                "calls": Array [
-                  Array [
-                    Object {
-                      "status": "NEW",
-                    },
-                  ],
-                ],
-              }
-            }
-            updateMessageData={
-              [MockFunction] {
-                "calls": Array [
-                  Array [
-                    Object {
-                      "status": "NEW",
-                    },
-                    undefined,
-                    "READ",
-                  ],
-                ],
-              }
-            }
-          />
-        </Card>,
-      },
-      "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "function",
-        "props": Object {
-          "bordered": false,
-          "children": Array [
-            <SectionHeading
-              className="u-margin-bottom-2"
-              heading1={undefined}
-            />,
-            <Connect(withRouter(withMessaging))
-              activeTab="SENT"
-              basePath="http://localhost"
-              content={
-                Object {
-                  "back": "Back",
-                }
-              }
-              dispatch={[MockFunction]}
-              hasAttachment={undefined}
-              location={
-                Object {
-                  "messageDetail": Object {
-                    "status": "NEW",
-                  },
-                }
-              }
-              messages={
-                Object {
-                  "draftError": true,
-                  "filter": [MockFunction],
-                  "successModal": true,
-                }
-              }
-              messagesFetched={
-                Object {
-                  "fetching": false,
-                  "successModal": false,
-                }
-              }
-              newMessageStatus="READ"
-              setViewMessageDetail={
-                [MockFunction] {
-                  "calls": Array [
-                    Array [
-                      Object {
-                        "status": "NEW",
-                      },
-                    ],
-                  ],
-                }
-              }
-              updateMessageData={
-                [MockFunction] {
-                  "calls": Array [
-                    Array [
-                      Object {
-                        "status": "NEW",
-                      },
-                      undefined,
-                      "READ",
-                    ],
-                  ],
-                }
-              }
-            />,
-            Array [],
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "className": "u-margin-bottom-2",
-              "heading1": undefined,
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "activeTab": "SENT",
-              "basePath": "http://localhost",
-              "content": Object {
-                "back": "Back",
-              },
-              "dispatch": [MockFunction],
-              "hasAttachment": undefined,
-              "location": Object {
-                "messageDetail": Object {
-                  "status": "NEW",
-                },
-              },
-              "messages": Object {
-                "draftError": true,
-                "filter": [MockFunction],
-                "successModal": true,
-              },
-              "messagesFetched": Object {
-                "fetching": false,
-                "successModal": false,
-              },
-              "newMessageStatus": "READ",
-              "setViewMessageDetail": [MockFunction] {
-                "calls": Array [
-                  Array [
-                    Object {
-                      "status": "NEW",
-                    },
-                  ],
-                ],
-              },
-              "updateMessageData": [MockFunction] {
-                "calls": Array [
-                  Array [
-                    Object {
-                      "status": "NEW",
-                    },
-                    undefined,
-                    "READ",
-                  ],
-                ],
-              },
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-        ],
-        "type": [Function],
-      },
-      "type": [Function],
-    },
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "function",
-      "props": Object {
-        "children": <Row>
-          <Card
-            bordered={false}
-          >
-            <SectionHeading
-              className="u-margin-bottom-2"
-              heading1={undefined}
-            />
-            <Connect(withRouter(withMessaging))
-              activeTab="SENT"
-              basePath="http://localhost"
-              content={
-                Object {
-                  "back": "Back",
-                }
-              }
-              dispatch={[MockFunction]}
-              hasAttachment={undefined}
-              location={
-                Object {
-                  "messageDetail": Object {
-                    "status": "NEW",
-                  },
-                }
-              }
-              messages={
-                Object {
-                  "draftError": true,
-                  "filter": [MockFunction],
-                  "successModal": true,
-                }
-              }
-              messagesFetched={
-                Object {
-                  "fetching": false,
-                  "successModal": false,
-                }
-              }
-              newMessageStatus="READ"
-              setViewMessageDetail={
-                [MockFunction] {
-                  "calls": Array [
-                    Array [
-                      Object {
-                        "status": "NEW",
-                      },
-                    ],
-                  ],
-                }
-              }
-              updateMessageData={
-                [MockFunction] {
-                  "calls": Array [
-                    Array [
-                      Object {
-                        "status": "NEW",
-                      },
-                      undefined,
-                      "READ",
-                    ],
-                  ],
-                }
-              }
-            />
-          </Card>
-        </Row>,
-        "size": undefined,
-      },
-      "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "function",
-        "props": Object {
-          "children": <Card
-            bordered={false}
-          >
-            <SectionHeading
-              className="u-margin-bottom-2"
-              heading1={undefined}
-            />
-            <Connect(withRouter(withMessaging))
-              activeTab="SENT"
-              basePath="http://localhost"
-              content={
-                Object {
-                  "back": "Back",
-                }
-              }
-              dispatch={[MockFunction]}
-              hasAttachment={undefined}
-              location={
-                Object {
-                  "messageDetail": Object {
-                    "status": "NEW",
-                  },
-                }
-              }
-              messages={
-                Object {
-                  "draftError": true,
-                  "filter": [MockFunction],
-                  "successModal": true,
-                }
-              }
-              messagesFetched={
-                Object {
-                  "fetching": false,
-                  "successModal": false,
-                }
-              }
-              newMessageStatus="READ"
-              setViewMessageDetail={
-                [MockFunction] {
-                  "calls": Array [
-                    Array [
-                      Object {
-                        "status": "NEW",
-                      },
-                    ],
-                  ],
-                }
-              }
-              updateMessageData={
-                [MockFunction] {
-                  "calls": Array [
-                    Array [
-                      Object {
-                        "status": "NEW",
-                      },
-                      undefined,
-                      "READ",
-                    ],
-                  ],
-                }
-              }
-            />
-          </Card>,
-        },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "function",
-          "props": Object {
-            "bordered": false,
-            "children": Array [
+          <Row>
+            <Card
+              bordered={false}
+            >
               <SectionHeading
                 className="u-margin-bottom-2"
                 heading1={undefined}
-              />,
+              />
               <Connect(withRouter(withMessaging))
                 activeTab="SENT"
                 basePath="http://localhost"
@@ -1077,6 +803,7 @@ ShallowWrapper {
                 }
                 dispatch={[MockFunction]}
                 hasAttachment={undefined}
+                justBeenRead={true}
                 location={
                   Object {
                     "messageDetail": Object {
@@ -1098,6 +825,17 @@ ShallowWrapper {
                   }
                 }
                 newMessageStatus="READ"
+                setMessageRead={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        Object {
+                          "status": "NEW",
+                        },
+                      ],
+                    ],
+                  }
+                }
                 setViewMessageDetail={
                   [MockFunction] {
                     "calls": Array [
@@ -1109,95 +847,671 @@ ShallowWrapper {
                     ],
                   }
                 }
-                updateMessageData={
+              />
+            </Card>
+          </Row>
+        </Container>,
+        false,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": <Row>
+            <Card
+              bordered={false}
+            >
+              <SectionHeading
+                className="u-margin-bottom-2"
+                heading1={undefined}
+              />
+              <Connect(withRouter(withMessaging))
+                activeTab="SENT"
+                basePath="http://localhost"
+                content={
+                  Object {
+                    "back": "Back",
+                  }
+                }
+                dispatch={[MockFunction]}
+                hasAttachment={undefined}
+                justBeenRead={true}
+                location={
+                  Object {
+                    "messageDetail": Object {
+                      "status": "NEW",
+                    },
+                  }
+                }
+                messages={
+                  Object {
+                    "draftError": true,
+                    "filter": [MockFunction],
+                    "successModal": true,
+                  }
+                }
+                messagesFetched={
+                  Object {
+                    "fetching": false,
+                    "successModal": false,
+                  }
+                }
+                newMessageStatus="READ"
+                setMessageRead={
                   [MockFunction] {
                     "calls": Array [
                       Array [
                         Object {
                           "status": "NEW",
                         },
-                        undefined,
-                        "READ",
                       ],
                     ],
                   }
                 }
-              />,
-              Array [],
-            ],
+                setViewMessageDetail={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        Object {
+                          "status": "NEW",
+                        },
+                      ],
+                    ],
+                  }
+                }
+              />
+            </Card>
+          </Row>,
+          "size": undefined,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": <Card
+              bordered={false}
+            >
+              <SectionHeading
+                className="u-margin-bottom-2"
+                heading1={undefined}
+              />
+              <Connect(withRouter(withMessaging))
+                activeTab="SENT"
+                basePath="http://localhost"
+                content={
+                  Object {
+                    "back": "Back",
+                  }
+                }
+                dispatch={[MockFunction]}
+                hasAttachment={undefined}
+                justBeenRead={true}
+                location={
+                  Object {
+                    "messageDetail": Object {
+                      "status": "NEW",
+                    },
+                  }
+                }
+                messages={
+                  Object {
+                    "draftError": true,
+                    "filter": [MockFunction],
+                    "successModal": true,
+                  }
+                }
+                messagesFetched={
+                  Object {
+                    "fetching": false,
+                    "successModal": false,
+                  }
+                }
+                newMessageStatus="READ"
+                setMessageRead={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        Object {
+                          "status": "NEW",
+                        },
+                      ],
+                    ],
+                  }
+                }
+                setViewMessageDetail={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        Object {
+                          "status": "NEW",
+                        },
+                      ],
+                    ],
+                  }
+                }
+              />
+            </Card>,
           },
           "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "className": "u-margin-bottom-2",
-                "heading1": undefined,
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "bordered": false,
+              "children": Array [
+                <SectionHeading
+                  className="u-margin-bottom-2"
+                  heading1={undefined}
+                />,
+                <Connect(withRouter(withMessaging))
+                  activeTab="SENT"
+                  basePath="http://localhost"
+                  content={
+                    Object {
+                      "back": "Back",
+                    }
+                  }
+                  dispatch={[MockFunction]}
+                  hasAttachment={undefined}
+                  justBeenRead={true}
+                  location={
+                    Object {
+                      "messageDetail": Object {
+                        "status": "NEW",
+                      },
+                    }
+                  }
+                  messages={
+                    Object {
+                      "draftError": true,
+                      "filter": [MockFunction],
+                      "successModal": true,
+                    }
+                  }
+                  messagesFetched={
+                    Object {
+                      "fetching": false,
+                      "successModal": false,
+                    }
+                  }
+                  newMessageStatus="READ"
+                  setMessageRead={
+                    [MockFunction] {
+                      "calls": Array [
+                        Array [
+                          Object {
+                            "status": "NEW",
+                          },
+                        ],
+                      ],
+                    }
+                  }
+                  setViewMessageDetail={
+                    [MockFunction] {
+                      "calls": Array [
+                        Array [
+                          Object {
+                            "status": "NEW",
+                          },
+                        ],
+                      ],
+                    }
+                  }
+                />,
+                Array [],
+              ],
             },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "activeTab": "SENT",
-                "basePath": "http://localhost",
-                "content": Object {
-                  "back": "Back",
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "className": "u-margin-bottom-2",
+                  "heading1": undefined,
                 },
-                "dispatch": [MockFunction],
-                "hasAttachment": undefined,
-                "location": Object {
-                  "messageDetail": Object {
-                    "status": "NEW",
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "activeTab": "SENT",
+                  "basePath": "http://localhost",
+                  "content": Object {
+                    "back": "Back",
+                  },
+                  "dispatch": [MockFunction],
+                  "hasAttachment": undefined,
+                  "justBeenRead": true,
+                  "location": Object {
+                    "messageDetail": Object {
+                      "status": "NEW",
+                    },
+                  },
+                  "messages": Object {
+                    "draftError": true,
+                    "filter": [MockFunction],
+                    "successModal": true,
+                  },
+                  "messagesFetched": Object {
+                    "fetching": false,
+                    "successModal": false,
+                  },
+                  "newMessageStatus": "READ",
+                  "setMessageRead": [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        Object {
+                          "status": "NEW",
+                        },
+                      ],
+                    ],
+                  },
+                  "setViewMessageDetail": [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        Object {
+                          "status": "NEW",
+                        },
+                      ],
+                    ],
                   },
                 },
-                "messages": Object {
-                  "draftError": true,
-                  "filter": [MockFunction],
-                  "successModal": true,
-                },
-                "messagesFetched": Object {
-                  "fetching": false,
-                  "successModal": false,
-                },
-                "newMessageStatus": "READ",
-                "setViewMessageDetail": [MockFunction] {
-                  "calls": Array [
-                    Array [
-                      Object {
-                        "status": "NEW",
-                      },
-                    ],
-                  ],
-                },
-                "updateMessageData": [MockFunction] {
-                  "calls": Array [
-                    Array [
-                      Object {
-                        "status": "NEW",
-                      },
-                      undefined,
-                      "READ",
-                    ],
-                  ],
-                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
               },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-          ],
+            ],
+            "type": [Function],
+          },
           "type": [Function],
         },
         "type": [Function],
       },
-      "type": [Function],
+      false,
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <Container
+            size={undefined}
+          >
+            <Row>
+              <Card
+                bordered={false}
+              >
+                <SectionHeading
+                  className="u-margin-bottom-2"
+                  heading1={undefined}
+                />
+                <Connect(withRouter(withMessaging))
+                  activeTab="SENT"
+                  basePath="http://localhost"
+                  content={
+                    Object {
+                      "back": "Back",
+                    }
+                  }
+                  dispatch={[MockFunction]}
+                  hasAttachment={undefined}
+                  justBeenRead={true}
+                  location={
+                    Object {
+                      "messageDetail": Object {
+                        "status": "NEW",
+                      },
+                    }
+                  }
+                  messages={
+                    Object {
+                      "draftError": true,
+                      "filter": [MockFunction],
+                      "successModal": true,
+                    }
+                  }
+                  messagesFetched={
+                    Object {
+                      "fetching": false,
+                      "successModal": false,
+                    }
+                  }
+                  newMessageStatus="READ"
+                  setMessageRead={
+                    [MockFunction] {
+                      "calls": Array [
+                        Array [
+                          Object {
+                            "status": "NEW",
+                          },
+                        ],
+                      ],
+                    }
+                  }
+                  setViewMessageDetail={
+                    [MockFunction] {
+                      "calls": Array [
+                        Array [
+                          Object {
+                            "status": "NEW",
+                          },
+                        ],
+                      ],
+                    }
+                  }
+                />
+              </Card>
+            </Row>
+          </Container>,
+          false,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": <Row>
+              <Card
+                bordered={false}
+              >
+                <SectionHeading
+                  className="u-margin-bottom-2"
+                  heading1={undefined}
+                />
+                <Connect(withRouter(withMessaging))
+                  activeTab="SENT"
+                  basePath="http://localhost"
+                  content={
+                    Object {
+                      "back": "Back",
+                    }
+                  }
+                  dispatch={[MockFunction]}
+                  hasAttachment={undefined}
+                  justBeenRead={true}
+                  location={
+                    Object {
+                      "messageDetail": Object {
+                        "status": "NEW",
+                      },
+                    }
+                  }
+                  messages={
+                    Object {
+                      "draftError": true,
+                      "filter": [MockFunction],
+                      "successModal": true,
+                    }
+                  }
+                  messagesFetched={
+                    Object {
+                      "fetching": false,
+                      "successModal": false,
+                    }
+                  }
+                  newMessageStatus="READ"
+                  setMessageRead={
+                    [MockFunction] {
+                      "calls": Array [
+                        Array [
+                          Object {
+                            "status": "NEW",
+                          },
+                        ],
+                      ],
+                    }
+                  }
+                  setViewMessageDetail={
+                    [MockFunction] {
+                      "calls": Array [
+                        Array [
+                          Object {
+                            "status": "NEW",
+                          },
+                        ],
+                      ],
+                    }
+                  }
+                />
+              </Card>
+            </Row>,
+            "size": undefined,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": <Card
+                bordered={false}
+              >
+                <SectionHeading
+                  className="u-margin-bottom-2"
+                  heading1={undefined}
+                />
+                <Connect(withRouter(withMessaging))
+                  activeTab="SENT"
+                  basePath="http://localhost"
+                  content={
+                    Object {
+                      "back": "Back",
+                    }
+                  }
+                  dispatch={[MockFunction]}
+                  hasAttachment={undefined}
+                  justBeenRead={true}
+                  location={
+                    Object {
+                      "messageDetail": Object {
+                        "status": "NEW",
+                      },
+                    }
+                  }
+                  messages={
+                    Object {
+                      "draftError": true,
+                      "filter": [MockFunction],
+                      "successModal": true,
+                    }
+                  }
+                  messagesFetched={
+                    Object {
+                      "fetching": false,
+                      "successModal": false,
+                    }
+                  }
+                  newMessageStatus="READ"
+                  setMessageRead={
+                    [MockFunction] {
+                      "calls": Array [
+                        Array [
+                          Object {
+                            "status": "NEW",
+                          },
+                        ],
+                      ],
+                    }
+                  }
+                  setViewMessageDetail={
+                    [MockFunction] {
+                      "calls": Array [
+                        Array [
+                          Object {
+                            "status": "NEW",
+                          },
+                        ],
+                      ],
+                    }
+                  }
+                />
+              </Card>,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "bordered": false,
+                "children": Array [
+                  <SectionHeading
+                    className="u-margin-bottom-2"
+                    heading1={undefined}
+                  />,
+                  <Connect(withRouter(withMessaging))
+                    activeTab="SENT"
+                    basePath="http://localhost"
+                    content={
+                      Object {
+                        "back": "Back",
+                      }
+                    }
+                    dispatch={[MockFunction]}
+                    hasAttachment={undefined}
+                    justBeenRead={true}
+                    location={
+                      Object {
+                        "messageDetail": Object {
+                          "status": "NEW",
+                        },
+                      }
+                    }
+                    messages={
+                      Object {
+                        "draftError": true,
+                        "filter": [MockFunction],
+                        "successModal": true,
+                      }
+                    }
+                    messagesFetched={
+                      Object {
+                        "fetching": false,
+                        "successModal": false,
+                      }
+                    }
+                    newMessageStatus="READ"
+                    setMessageRead={
+                      [MockFunction] {
+                        "calls": Array [
+                          Array [
+                            Object {
+                              "status": "NEW",
+                            },
+                          ],
+                        ],
+                      }
+                    }
+                    setViewMessageDetail={
+                      [MockFunction] {
+                        "calls": Array [
+                          Array [
+                            Object {
+                              "status": "NEW",
+                            },
+                          ],
+                        ],
+                      }
+                    }
+                  />,
+                  Array [],
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "className": "u-margin-bottom-2",
+                    "heading1": undefined,
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "activeTab": "SENT",
+                    "basePath": "http://localhost",
+                    "content": Object {
+                      "back": "Back",
+                    },
+                    "dispatch": [MockFunction],
+                    "hasAttachment": undefined,
+                    "justBeenRead": true,
+                    "location": Object {
+                      "messageDetail": Object {
+                        "status": "NEW",
+                      },
+                    },
+                    "messages": Object {
+                      "draftError": true,
+                      "filter": [MockFunction],
+                      "successModal": true,
+                    },
+                    "messagesFetched": Object {
+                      "fetching": false,
+                      "successModal": false,
+                    },
+                    "newMessageStatus": "READ",
+                    "setMessageRead": [MockFunction] {
+                      "calls": Array [
+                        Array [
+                          Object {
+                            "status": "NEW",
+                          },
+                        ],
+                      ],
+                    },
+                    "setViewMessageDetail": [MockFunction] {
+                      "calls": Array [
+                        Array [
+                          Object {
+                            "status": "NEW",
+                          },
+                        ],
+                      ],
+                    },
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        false,
+      ],
+      "type": "div",
     },
   ],
   Symbol(enzyme.__options__): Object {

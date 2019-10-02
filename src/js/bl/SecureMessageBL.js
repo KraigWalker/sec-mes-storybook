@@ -5,37 +5,96 @@ import SendMessageRequestEntity from "../entities/SendMessageRequestEntity";
 import { isNullOrUndefined } from '../utils/GeneralUtils';
 import RegexUtils from "../utils/RegexUtils";
 
-const messageByStatusPredicate = (message, status) => message.status === status;
+const INBOX_MESSAGES = 'inboxMessages';
+const SENT_MESSAGES = 'sentMessages';
+const DRAFT_MESSAGES = 'draftMessages';
+const ARCHIVED_MESSAGES = 'archivedMessages';
+
+const statusToStartQueue = {
+	[NEW]: INBOX_MESSAGES,
+	[READ]: INBOX_MESSAGES,
+	[SENT]: SENT_MESSAGES,
+	[PENDING]: SENT_MESSAGES,
+	[DRAFT]: DRAFT_MESSAGES,
+	[ARCHIVED]: ARCHIVED_MESSAGES
+}
+
+const assignMessageToQueueBuilder = ({
+	readingMessages = [],
+	archivingMessages = [],
+	unarchivingMessages = []
+}) => ({
+
+	[INBOX_MESSAGES]: (message) => {
+		let newMessage = message;
+		let queue = INBOX_MESSAGES;
+		if (archivingMessages.includes(message.id)) {
+			queue = ARCHIVED_MESSAGES;
+			newMessage = message.cloneWithUpdatedStatus(ARCHIVED);
+		} else if (readingMessages.includes(message.id)) {
+			newMessage = message.cloneWithUpdatedStatus(READ);
+		}
+		return { queue, message: newMessage }
+	},
+	[DRAFT_MESSAGES]: (message) => ({ queue: DRAFT_MESSAGES, message}),
+	[SENT_MESSAGES]: (message) => ({ queue: SENT_MESSAGES, message }),
+	[ARCHIVED_MESSAGES]: (message) => {
+
+		let queue, newMessage;
+		if (unarchivingMessages.includes(message.id)) {
+			queue = INBOX_MESSAGES;
+			newMessage = message.cloneWithUpdatedStatus(READ);
+		} else {
+			queue = ARCHIVED_MESSAGES;
+			newMessage = message;
+		}
+		return { queue, message: newMessage }
+
+	}
+});
 
 /**
- * @param messages Array parses all messages and creates 3 different arrays for INBOX/DRAFT/SENT.
- * @param deletingMessages Array array of messages sent to backend for correct status to DELETE (DELETE).
+ * Split messages into categories.
+ * Remove any messages that have been marked for deletion optimistically
+ * Add any messages marked for archive/unarchive optimistically
+ * Any messages that are marked as being READ should be returned as such
+ * Iteration performed through messages done only once
  */
-export function SecureMessageBL({messages = [], deletingMessages = [], sendingMessages = []}) {
-	const activeMessages = messages.filter(message => deletingMessages.indexOf(message.id) < 0);
-	const inboxMessages = [
-		...activeMessages.filter(message => messageByStatusPredicate(message, NEW)),
-		...activeMessages.filter(message => messageByStatusPredicate(message, READ)),
-	];
-	const sentMessages = [
-		...activeMessages.filter(message => messageByStatusPredicate(message, SENT)),
-		...activeMessages.filter(message => messageByStatusPredicate(message, PENDING)),
-	];
-	const draftMessages = [
-		...activeMessages.filter(message => messageByStatusPredicate(message, DRAFT)),
-		...activeMessages.filter( message => sendingMessages.indexOf(message.id) >= 0),
-		]
-		.filter(message => sendingMessages.indexOf(message.id) < 0);
-	const archivedMessages = activeMessages.filter(message =>messageByStatusPredicate(message, ARCHIVED));
-	return {inboxMessages, sentMessages, draftMessages, archivedMessages};
+export const SecureMessageBL = (messageState) => { 
+
+	const { deletingMessages = [], messages } = messageState;
+	const assignMessageToQueue = assignMessageToQueueBuilder(messageState);
+
+	return messages.reduce((agg, curr) => {
+		if (!deletingMessages.includes(curr.id)) {
+			const startQueue = statusToStartQueue[curr.status];
+			const { queue, message } = assignMessageToQueue[startQueue](curr);
+			agg[queue].push(message);
+		}
+		return agg;
+	}, {
+		[INBOX_MESSAGES]: [],
+		[SENT_MESSAGES]: [],
+		[DRAFT_MESSAGES]: [],
+		[ARCHIVED_MESSAGES]: []
+	});
 }
+
+
 /**
  * to fetch all related threads on the current message.
  * @param {array} messages //total list of secure messages.
  * @param {object} currentMessage //current message.
  */
-export function getThreadsBL(messages, currentMessage) {
-	return messages.filter(message => message.threadID === currentMessage.threadID && moment(message.dateCreated, 'DD-MMM-YYYY HH:mm').isBefore(moment(currentMessage.dateCreated, 'DD-MMM-YYYY HH:mm')));
+export function getThreadsBL({
+	messages = [], 
+	deletingMessages = [], 
+	currentMessage}) {
+	return messages
+		.filter(message => 
+			message.threadID === currentMessage.threadID &&
+			deletingMessages.indexOf(message.id) === -1 &&
+			moment(message.dateCreated, 'DD-MMM-YYYY HH:mm').isBefore(moment(currentMessage.dateCreated, 'DD-MMM-YYYY HH:mm')));
 }
 
 // Code for adding accounts name in draft

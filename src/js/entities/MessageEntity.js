@@ -148,6 +148,37 @@ class MessageEntity {
         this.noReply = noReply;
     }
 
+    clone() {
+        const newMessage = new MessageEntity();
+        newMessage.id = this.id;
+        newMessage.reference = this.reference;
+        newMessage.dateCreated = this.dateCreated;
+        newMessage.status = this.status;
+        newMessage.threadID = this.threadID;
+        newMessage.subject = this.subject;
+        newMessage.message = this.message;
+        newMessage.noReply = this.noReply;
+
+        if (this.document) {
+            const { id, label, fileSize } = this.document;
+            newMessage.document = {
+                id,
+                label,
+                fileSize
+            }
+        }
+        if (this.account) {
+            newMessage.account = this.account.clone();
+        }
+        return newMessage;
+    }
+
+    cloneWithUpdatedStatus(status) {
+        const newMessage = this.clone();
+        newMessage.status = status;
+        return newMessage;
+    }
+
 }
 
 export default MessageEntity;

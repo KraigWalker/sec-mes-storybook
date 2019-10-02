@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import content from '../../content';
 
 import { fetchSecureMessages, getAccounts } from '../../actions/AppActions';
+import { MessageSelectors } from '../../reducers';
 
 const getContent = (brand) => {
 	switch (brand) {
@@ -18,7 +19,7 @@ const getContent = (brand) => {
 
 export function withSubscription(WrappedComponent) {
 	const mapState = state => ({
-		fetched: state.messages.fetched,
+		fetched: MessageSelectors.getFetched(state),
 	});
 	return connect(mapState)(class extends React.PureComponent {
 		constructor(props) {
@@ -48,7 +49,7 @@ export function accessibilityWrapper(WrappedComponent) {
 	let currentMessage = '';
 	const mapState = state => ({
 		message: state.accessibilityReducer.accessibilityMessage,
-		fetched: state.messages.fetched,
+		fetched: MessageSelectors.getFetched(state),
 	});
 	return connect(mapState)(class extends React.Component {
 		componentDidUpdate(prevProps, prevState) {

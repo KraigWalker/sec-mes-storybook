@@ -1,16 +1,13 @@
 import ApiUtils from "./ApiUtils";
 import {
   createNewMessage,
-  replyMessage,
-  updateMessage
+  updateExistingMessage
 } from "../parsers/MessageParser";
 
 const _getMessageURLEndpoint = "/banks/{bank_id}/securemessages";
 const _getMessageSubjectsURL = "/banks/{bank_id}/securemessages/subjects";
 const _getAccountsURL = "/banks/{bank_id}/accounts/default";
 const _sendMessageURL = "/banks/{bank_id}/securemessages/{message_id}";
-const _getAccountSegmentEndpoint = "/banks/{bank_id}/customers";
-const _getCustomerDetailsEndpoint = "/banks/{bank_id}/customers/{customer_id}";
 
 class AppApi {
   constructor(
@@ -25,6 +22,7 @@ class AppApi {
   ) {
     this.config = config;
     this.apiUtils = apiUtils;
+    this.callAPI = this.callAPI.bind(this);
   }
   fetchSecureMessages(success, error) {
     this.apiUtils.makeRequest(
@@ -62,12 +60,20 @@ class AppApi {
     );
   }
 
-  sendMessageData(requestData, status, name, success, error) {
-    const reqData = createNewMessage(requestData, status, name);
+  callAPI({
+    action,
+    url,
+    reqData,
+    success,
+    error}) {
+
+    if (!url) {
+      url = `${this.config.apiBaseUrl2}${_getMessageURLEndpoint}`;
+    }
     this.apiUtils.makeRequest(
       {
-        url: `${this.config.apiBaseUrl2}${_getMessageURLEndpoint}`,
-        method: "POST",
+        url,
+        method: action,
         apiVersion: "1.2.0",
         requestData: reqData
       },
@@ -76,31 +82,43 @@ class AppApi {
     );
   }
 
-
-  replyMessageData(requestData, ids, status, name, success, error) {
-    const reqData = replyMessage(requestData, ids, status, name);
-    this.apiUtils.makeRequest(
-      {
-        url: `${this.config.apiBaseUrl2}${_getMessageURLEndpoint}`,
-        method: "POST",
-        apiVersion: "1.2.0",
-        requestData: reqData
-      },
+  createNewMessage({requestData, 
+    ids,
+    status, 
+    name, 
+    success, 
+    error}) {
+    const reqData = createNewMessage({
+      data: requestData, 
+      ids,
+      status, 
+      name
+    });
+    this.callAPI({
+      action: "POST",
+      reqData,
       success,
-      error
-    );
+      error});
   }
 
-  updateMessageData(requestData, id, status, success, error) {
+  updateExistingMessage({requestData, 
+    status, 
+    success, 
+    error
+  }) {
     const updateUrl = `${this.config.apiBaseUrl2}${_sendMessageURL}`;
-	  const url = updateUrl.replace("{message_id}", id);
-
-    const reqData = updateMessage(requestData, id, status);
-    this.apiUtils.makeRequest(
-      { url, method: "PUT", requestData: reqData, apiVersion: "1.2.0" },
+	  const url = updateUrl.replace("{message_id}", requestData.id);
+    const reqData = updateExistingMessage({
+      data: requestData, 
+      status
+    });
+    this.callAPI({
+      action: "PUT",
+      url,
+      reqData,
       success,
       error
-    );
+    });
   }
 }
 

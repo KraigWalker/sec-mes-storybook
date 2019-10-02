@@ -17,7 +17,8 @@ describe("Landing Page else snapshot", () => {
         fingerPrintID: '2344323434523',
         messages: {
             error: false,
-            fetched: false
+            fetched: false,
+            messages: []
         },
         dispatch: dispatch,
         getMessageSubjects: jest.fn(),
