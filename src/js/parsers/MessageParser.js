@@ -84,22 +84,37 @@ function buildRequestAccount({accountId, number}) {
 
 const buildHeaders = ({name, value}) => [{name, value}];
 
-export function createNewMessage(data, status, name) {
+export function createNewMessage({
+    data, 
+    status, 
+    name, 
+    ids
+}) {
     const requestUser = buildRequestUser(name);
     const requestAccount = buildRequestAccount(data.account)
-    return buildRequest({...data, status, requestUser, requestAccount});
+
+    const payloadHeaders = ids 
+            ? buildHeaders({name: "In-Reply-To", value: ids.id})
+            : undefined;
+
+    let threadID;
+    if (ids) {
+        threadID = isNullOrUndefined(ids.threadID) ? undefined : ids.threadID;
+    }
+
+    return buildRequest({...data, 
+        status, 
+        threadID, 
+        requestUser, 
+        requestAccount, 
+        payloadHeaders});
 }
 
-export function updateMessage(data, id, status) {
+export function updateExistingMessage({
+    data, 
+    status
+}) {
     const requestAccount = buildRequestAccount(data.account);
-    const payloadHeaders = buildHeaders({name: "In-Reply-To", value: id});
+    const payloadHeaders = buildHeaders({name: "In-Reply-To", value: data.id});
     return buildRequest({...data, status, payloadHeaders, requestAccount});   
-}
-
-export function replyMessage(data, ids, status, name) {
-    const requestUser = buildRequestUser(name);
-    const requestAccount = buildRequestAccount(data.account);
-    const payloadHeaders = buildHeaders({name: "In-Reply-To", value: ids.id});
-    const threadID = isNullOrUndefined(ids.threadID) ? undefined : ids.threadID;
-    return buildRequest({...data, status, threadID, requestUser, requestAccount, payloadHeaders});
 }

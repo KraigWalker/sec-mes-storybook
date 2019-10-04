@@ -9,11 +9,14 @@ import {BackButton} from 'web-ui-components/lib/molecules/navigation';
 import {Container, Row} from "web-ui-components/lib/global/layout";
 import {Card} from "web-ui-components/lib/organisms/cards";
 import {Title, TextBody} from "web-ui-components/lib/atoms/text";
-import {getMessageSubjects, getActiveTab, popupState} from '../actions/AppActions';
+import {getMessageSubjects, getActiveTab } from '../actions/AppActions';
 import {withBreakpoints} from "../components/common/hoc/WithBreakpoint";
 import {compose} from 'redux';
 import SuccessModal from "../components/common/SuccessModal";
 import { getSuccessModalMessage } from "../constants/ModalConstants";
+import { MessageSelectors } from '../reducers';
+import WithRetry from './common/WithRetry';
+import { popupState } from '../actions/AppActions';
 
 export class LandingPage extends React.PureComponent {
     componentDidMount() {
@@ -24,7 +27,7 @@ export class LandingPage extends React.PureComponent {
     }
 
     componentDidUpdate() {
-        if (this.props.messages.error && this.props.messages.fetched) {
+        if (this.props.fetchError && this.props.fetched) {
             this.props.history.push({pathname: '/securemessages/error', content: this.props.content});
         }
     }
@@ -74,6 +77,7 @@ export class LandingPage extends React.PureComponent {
                         <SecureMessageTabs
                             location={this.props.location}
                             onClick={this.linkClick}
+                            fetching={this.props.fetching}
                             messages={this.mapMessages(this.props.messages)}
                             activeTab={this.props.activeTab}
                             content={this.props.content}
@@ -91,10 +95,13 @@ export class LandingPage extends React.PureComponent {
  */
 
 const mapState = state => ({
-    readOnly: state.messages.mode === StringConstants.READ_ONLY,
-    messages: state.messages,
+    readOnly: MessageSelectors.getMode(state) === StringConstants.READ_ONLY,
+    fetchError: MessageSelectors.getFetchError(state),
+    fetched: MessageSelectors.getFetched(state),
+    fetching: MessageSelectors.getFetching(state),
+    messages: state.messages.messageData,
     accounts: state.accounts,
-    activeTab: state.messages.activeTab,
+    activeTab: MessageSelectors.getActiveTab(state),
     modalType: state.viewMessage.modalType,
 });
 
@@ -107,5 +114,6 @@ const mapDispatchToProps = {
 export default compose(
     connect(mapState, mapDispatchToProps),
     utils.withNativeBridge(window),
-    withBreakpoints
+    withBreakpoints,
+    WithRetry
 )(LandingPage);

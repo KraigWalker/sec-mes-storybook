@@ -5,7 +5,7 @@ import TestData from '../../content/secureMessagesTestData.json'
 
 describe("New Secure message snapshot", () => {
     const dispatch = jest.fn();
-    const slice = jest.fn();
+
     let props = {
         content: {
             back: 'Back',
@@ -16,6 +16,7 @@ describe("New Secure message snapshot", () => {
             fetching: false,
             successModal: false
         },
+        messagesFetching: false,
         dispatch: dispatch
     };
     let component = shallow(<SecureMessageList {...props} />);
@@ -35,7 +36,7 @@ describe("New Secure message snapshot", () => {
     });
     describe("renderNoMessagesText with DRAFT", () => {
         const dispatch = jest.fn();
-        const slice = jest.fn();
+
         let props = {
             content: {
                 noDraftMessages: 'noDraftMessages',
@@ -46,10 +47,7 @@ describe("New Secure message snapshot", () => {
                 fetching: false,
                 successModal: false
             },
-            messages: {
-                slice: slice,
-                length: 10
-            },
+            messages: Array.from("123456789"),
             dispatch: dispatch
         };
         it('renderNoMessagesText function test', () => {
@@ -61,14 +59,11 @@ describe("New Secure message snapshot", () => {
     });
     describe("New Secure message snapshot", () => {
         const dispatch = jest.fn();
-        const slice = jest.fn();
         let props = {
             content: {
                 back: 'Back',
             },
-            messages: {
-                slice: slice
-            },
+            messages: [],
             messagesFetched: {
                 fetching: true,
                 successModal: true

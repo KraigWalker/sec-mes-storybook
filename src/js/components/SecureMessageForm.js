@@ -63,7 +63,6 @@ export class SecureMessageForm extends React.Component {
 	}
 
 	componentDidMount() {
-		this.props.popupState();
 		window.scrollTo(0, 0);
 	}
 
@@ -189,10 +188,7 @@ export class SecureMessageForm extends React.Component {
 	}
 
 	errorCloseClicked() {
-		const { customerNameError } = this.props;
-		if (customerNameError) {
-			this.props.popupState();
-		}
+		this.props.popupState();
 		this.setState({ showSaveServiceErrorModal: false,
 						showSendServiceErrorModal: false });
 	}
@@ -240,8 +236,8 @@ export class SecureMessageForm extends React.Component {
 	returnErrorModal() {
 		const { content } = this.props;
 		return <ErrorModal content={content}
-				onClose={this.errorCloseClicked}
-				onConfirm={this.retryServiceCall} />;
+			onCloseClicked={this.errorCloseClicked}
+			onRetry={this.retryServiceCall} />;
 	}
 
 	determineBackAction() {
@@ -314,7 +310,7 @@ export class SecureMessageForm extends React.Component {
 				className: "u-padding-0",
 			}
 		}
-
+		
 		return (
 				<Container {...paddingProps} size={containerSize}>
 			<LoadingLocalTakeover show={isUpdatingMessage || isSavingDraft} title={isUpdatingMessage ? content.sendingMessage: content.savingMessage}>
@@ -448,7 +444,6 @@ SecureMessageForm.propTypes = {
 	sendData: PropTypes.func,
 	onSave: PropTypes.func,
 	saveDraftData: PropTypes.func,
-	sendMessageData: PropTypes.func,
 	successModal: PropTypes.bool,
 	accounts: PropTypes.array,
 	subjects: PropTypes.array,

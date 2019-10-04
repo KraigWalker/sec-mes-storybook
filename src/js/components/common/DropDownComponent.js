@@ -23,6 +23,9 @@ export class DropDownComponent extends React.Component {
 		};
 	}
 	componentDidMount() {
+		if (this.props.subjectErrors) {
+			this.setState({showErrorModal: true})
+		}
 	}
 
 	errorCloseClicked() {
@@ -37,8 +40,8 @@ export class DropDownComponent extends React.Component {
 
 		const { content } = this.props;
 		return <ErrorModal content={content}
-		onClose={this.errorCloseClicked}
-		onConfirm={this.retryServiceCall} />;
+			onCloseClicked={this.errorCloseClicked}
+			onRetry={this.retryServiceCall} />;
 	}
 
 	showList() {
@@ -83,7 +86,7 @@ export class DropDownComponent extends React.Component {
 		const { ddId, accessID, showAccountError, showSubjectError, subjectErrors, content } = this.props;
 		const { showErrorModal} = this.state;
 		const options = this.getOptions();
-	
+
 		return (
 			<div>
 				<Column xs={24} sm={24} md={9} ld={9} className="u-padding-0">

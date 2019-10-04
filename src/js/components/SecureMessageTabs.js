@@ -50,8 +50,10 @@ export class SecureMessageTabs extends React.Component {
         return messages ? (
             <Container {...paddingProps} size={containerSize}>
                 <TabGroup className="u-padding-left-0"
+                
                     activeTab={this.state.activeTab}
                     onChange={val => {
+                        !this.props.fetching &&
                         this.setState({activeTab: val});
                     }}
                     tabButtons={[

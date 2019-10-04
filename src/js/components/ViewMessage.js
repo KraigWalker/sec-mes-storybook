@@ -5,7 +5,7 @@ import _ from "lodash";
 import {connect} from "react-redux";
 import {
     setViewMessageDetail,
-    updateMessageData
+    setMessageRead
 } from "../actions/AppActions";
 import {getThreadsBL} from "../bl/SecureMessageBL";
 import {READ, NEW, READ_ONLY, ARCHIVED, SENT} from '../constants/StringsConstants';
@@ -20,6 +20,8 @@ import { getParentPath } from "../utils/GeneralUtils";
 import { popupState } from '../actions/AppActions';
 import SuccessModal from "../components/common/SuccessModal";
 import { getSuccessModalMessage } from "../constants/ModalConstants";
+import { MessageSelectors } from "../reducers";
+import withRetry from "../components/common/WithRetry";
 
 const getTitle = (status, content) =>
 {
@@ -38,33 +40,41 @@ export class ViewMessage extends React.Component {
     constructor(props) {
         super(props);
         this.getThreads = this.getThreads.bind(this);
+        this.handleCloseSuccessModal = this.handleCloseSuccessModal.bind(this);
+        this.state = {
+            justBeenRead: false
+        }
     }
 
     componentDidMount() {
         const {messageDetail} = this.props.location;
-        const {isWebView, setMessagesMetaData, messages } = this.props;
+        const {isWebView, setMessagesMetaData, messages, mode } = this.props;
 
         messageDetail && this.props.setViewMessageDetail(messageDetail);
 
         // Below is to update New message to Read message status.
         if (messageDetail && messageDetail.status === 'NEW') {
-            if (messages.mode !== READ_ONLY) {
-                this.props.updateMessageData(
-                        messageDetail,
-                        messageDetail.id,
-                        'READ'
-                    );
+            if (mode !== READ_ONLY) {
+                this.props.setMessageRead(messageDetail);
+                this.setState({
+                    justBeenRead: true
+                });
             }
             if (isWebView) {
-                const unreadMessageCount = messages.messages.filter(message => message.status === "NEW").length
+                const unreadMessageCount = messages.filter(message => message.status === "NEW").length
                 setMessagesMetaData({unread: unreadMessageCount - 1});
             }
         }
         window.scrollTo(0, 0);
     }
 
-    getThreads(messages, currentMessage) {
-        const threads = getThreadsBL(messages, currentMessage);
+    getThreads({messages, 
+        deletingMessages,
+        currentMessage}) {
+        const threads = getThreadsBL({
+            messages, 
+            deletingMessages,
+            currentMessage});
         return _.map(threads, (thread, index) => {
             return (
                 <SubordinatePanel key={index}>
@@ -72,6 +82,11 @@ export class ViewMessage extends React.Component {
                 </SubordinatePanel>
             );
         });
+    }
+
+    handleCloseSuccessModal() {
+        this.props.popupState();
+        this.props.history.push("/securemessages");
     }
 
     render() {
@@ -86,8 +101,7 @@ export class ViewMessage extends React.Component {
             content, 
             containerSize, 
             noPadding,
-            modalType,
-            popupState} = this.props;
+            modalType } = this.props;
         const messageStatus = (messageDetail.status === NEW && readOnly !== true)
             ? READ
             : messageDetail.status;
@@ -101,6 +115,7 @@ export class ViewMessage extends React.Component {
         }
 
         const basePath = `${window.location.origin}${getParentPath(window.location.pathname,2)}`;
+        const { messages, deletingMessages } = this.props;
 
         return (
             <div>
@@ -113,14 +128,18 @@ export class ViewMessage extends React.Component {
                             <MailMessage {...this.props}
                                 newMessageStatus={messageStatus}
                                 hasAttachment={hasAttachment}
+                                justBeenRead={this.state.justBeenRead}
                                 basePath={basePath}/>
                             {messageDetail.threadID !== null &&
-                            this.getThreads(this.props.messages.messages, messageDetail)}
+                            this.getThreads({
+                                messages, 
+                                deletingMessages,
+                                currentMessage: messageDetail})}
                         </Card>
                     </Row>
                 </Container>
                 {modalType > 0 && <SuccessModal
-                    onClick={popupState}
+                    onClick={this.handleCloseSuccessModal}
                     bodyText={getSuccessModalMessage(modalType, content)}
                     okText={content.ok}
                 />}
@@ -139,23 +158,27 @@ const getHasAttachment = (messageDetail) => {
 
 
 const mapState = (state) => ({
-    readOnly: state.messages.mode === READ_ONLY,
+    readOnly: MessageSelectors.getMode(state) === READ_ONLY,
     noReply: state.viewMessage.messageDetail.noReply,
-    messages: state.messages,
+    messages: MessageSelectors.getMessages(state),
+    readingMessages: MessageSelectors.getReadingMessages(state),
+    mode: MessageSelectors.getMode(state),
+    deletingMessages: MessageSelectors.getDeletingMessages(state),
     messageDetail: state.viewMessage.messageDetail,
     modalType: state.viewMessage.modalType,
 });
 
 const mapDispatchToProps = {
     getDocumentByIdNative: documentActions.getDocumentByIdNative,
-    updateMessageData,
+    setMessageRead,
     setViewMessageDetail,
-    popupState
+    popupState,
 }
 
 export default compose(
     connect(mapState, mapDispatchToProps),
     withRouter,
     utils.withNativeBridge(window),
-    withBreakpoints
+    withBreakpoints,
+    withRetry
 )(ViewMessage);

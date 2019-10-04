@@ -27,7 +27,7 @@ describe("View Message snapshot", () => {
         },
         dispatch: dispatch,
         setViewMessageDetail : jest.fn(),
-        updateMessageData: jest.fn(),
+        setMessageRead: jest.fn(),
     };
     let component = shallow(<ViewMessage {...props} />);
     it('should match to snapshot', () => {
@@ -36,12 +36,17 @@ describe("View Message snapshot", () => {
     });
 
     it("updates native app with new unread message count if within webView", () => {
+        const filter = jest.fn(() => {
+            return {
+                length: 3
+            }
+        });
         let props = {
             content: {
                 sentPageTitle: 'sentPageTitle',
             },
             activeTab: 'SENT',
-            updateMessageData: jest.fn(),
+            setMessageRead: jest.fn(),
             messages: {
                 draftError: true,
                 successModal: true,
@@ -75,7 +80,7 @@ describe("View Message snapshot", () => {
                 sentPageTitle: 'sentPageTitle',
             },
             activeTab: 'SENT',
-            updateMessageData: jest.fn(),
+            setMessageRead: jest.fn(),
             messages: {
                 draftError: true,
                 successModal: true,
@@ -107,7 +112,7 @@ describe("View Message snapshot", () => {
                 sentPageTitle: 'sentPageTitle',
             },
             activeTab: 'SENT',
-            updateMessageData: jest.fn(),
+            setMessageRead: jest.fn(),
             messages: {
                 draftError: true,
                 successModal: true,
@@ -140,7 +145,7 @@ describe("View Message snapshot", () => {
                 sentPageTitle: 'sentPageTitle',
             },
             activeTab: 'SENT',
-            updateMessageData: jest.fn(),
+            setMessageRead: jest.fn(),
             messages: {
                 draftError: true,
                 successModal: true,
@@ -175,7 +180,7 @@ describe("Main snapshot", () => {
             sentPageTitle: 'sentPageTitle',
         },
         activeTab: 'SENT',
-        updateMessageData: jest.fn(),
+        setMessageRead: jest.fn(),
         messages: {
             draftError: true,
             successModal: true,

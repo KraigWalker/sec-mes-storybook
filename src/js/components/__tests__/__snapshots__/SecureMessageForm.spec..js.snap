@@ -12,13 +12,7 @@ ShallowWrapper {
     messages={Array []}
     onMount={[Function]}
     onSave={[MockFunction]}
-    popupState={
-      [MockFunction] {
-        "calls": Array [
-          Array [],
-        ],
-      }
-    }
+    popupState={[MockFunction]}
     saveDraftData={[MockFunction]}
     sendData={[MockFunction]}
     sendMessageData={[MockFunction]}
