@@ -39,6 +39,14 @@ class AccountEntity {
     getAccountName() {
         return this.name;
     }
+
+    clone() {
+        const newAccount = new AccountEntity();
+        newAccount.accountId = this.accountId;
+        newAccount.number = this.number;
+        newAccount.name = this.name;
+        return newAccount;
+    }
 }
 
 export default AccountEntity;

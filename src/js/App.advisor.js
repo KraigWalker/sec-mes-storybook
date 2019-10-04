@@ -11,6 +11,7 @@ import StringConstants from './constants/StringsConstants';
 import { buildClientContext } from './utils/ContextUtils';
 import AppApi from './api/AppApi';
 import ApiUtils, { getStaffHeaders } from './api/ApiUtils';
+import "./polyfill";
 
 export const App = ({ config }) => {
 

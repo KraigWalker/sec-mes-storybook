@@ -3,16 +3,13 @@ import SecureMessageForm from "./SecureMessageForm";
 import {connect} from "react-redux";
 import {PENDING, DRAFT} from "../constants/StringsConstants";
 import {BuildSendMessageRequestEntity, getMessageAccountValue} from '../bl/SecureMessageBL';
-import {popupState, sendMessageForAccessibiltiy, sendMessageData, updateMessageData, setSendingMessages} from "../actions/AppActions"
+import {popupState, sendMessageForAccessibiltiy, createNewMessage, 
+    updateDraftMessage, setSendingMessages} from "../actions/AppActions"
 import {
-    getAccounts,
-    getMessages,
-    getMessageError,
-    getSubjects,
+    MessageSelectors,
     getSubjectErrors,
-    getShowSuccessModal,
-    getUpdating,
-    getIsSavingDraft,
+    getSubjects,
+    getAccounts
 } from "../reducers";
 
 class DraftSecureMessage extends React.Component {
@@ -20,7 +17,6 @@ class DraftSecureMessage extends React.Component {
         super(props);
         this.send = this.send.bind(this);
         this.save = this.save.bind(this);
-
     }
 
     sendMessageData(messageEntity, status) {
@@ -29,12 +25,16 @@ class DraftSecureMessage extends React.Component {
         const {name} = customerDetails ? customerDetails.personal_details : '';
         const sendRequestMessage = BuildSendMessageRequestEntity(accounts, messageEntity);
 
-        if (status === PENDING) {
-            this.props.setSendingMessages(id);
-        }
-
-        id ? this.props.updateMessageData(sendRequestMessage.getMessageRequestData(), id, status)
-           :this.props.sendMessageData(sendRequestMessage.getMessageRequestData(), status, name);
+        id ? this.props.updateDraftMessage({
+            requestData: {
+                ...sendRequestMessage.getMessageRequestData(), 
+                id
+            },
+            status})
+           :this.props.createNewMessage({
+                requestData: sendRequestMessage.getMessageRequestData(), 
+                status,
+                name });
     }
 
     send(messageEntity) {
@@ -67,20 +67,20 @@ class DraftSecureMessage extends React.Component {
 
 const mapState = (state) => ({
     subjects: getSubjects(state),
-    messages: getMessages(state),
-    accounts: getAccounts(state),
+    messages: MessageSelectors.getMessages(state),
+    accounts:  getAccounts(state),
     subjectErrors: getSubjectErrors(state),
-    messageError: getMessageError(state, DRAFT),
-    successModal: getShowSuccessModal(state),
-    isUpdatingMessage: getUpdating(state),
-    isSavingDraft: getIsSavingDraft(state),
+    messageError: MessageSelectors.getMessageError(state, DRAFT),
+    successModal: MessageSelectors.getShowSuccessModal(state),
+    isUpdatingMessage: MessageSelectors.getUpdating(state),
+    isSavingDraft: MessageSelectors.getIsSavingDraft(state),
 });
 
 const mapStateToProps = {
     popupState,
-    updateMessageData,
+    updateDraftMessage,
     sendMessageForAccessibiltiy,
-    sendMessageData,
+    createNewMessage,
     setSendingMessages,
 };
 export default connect(mapState, mapStateToProps)(DraftSecureMessage);

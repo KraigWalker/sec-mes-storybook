@@ -2,20 +2,17 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import {
-    updateMessageData,
+    setMessageRead,
     delMessageData,
     closeDelModal,
     archiveMessageData,
     unarchiveMessageData,
     popupState,
-    setDeletingMessages,
 } from "../../actions/AppActions";
 import {
     NEW,
     READ,
-    DELETED,
     READ_ONLY,
-    ARCHIVED
 } from "../../constants/StringsConstants";
 
 import {withRouter} from "react-router-dom";
@@ -23,7 +20,7 @@ import PropTypes from "prop-types";
 import {ConfirmationModal} from "web-ui-components/lib/organisms/modals";
 import getOptionDisplayFunctions from "./MessageOptions";
 import {TextBody} from "web-ui-components/lib/atoms/text";
-import ErrorModal from "./ErrorModal";
+import { MessageSelectors } from "../../reducers";
 
 const WithMessaging = WrappedComponent =>
     class withMessaging extends Component {
@@ -33,18 +30,16 @@ const WithMessaging = WrappedComponent =>
                 showDeleteConfirmModal: false,
                 showSendServiceErrorModal: false,
                 modalType: 0,
-                messageToDelete: {}
+                messageToDelete: {},
             };
             // end of singleton
             this.showDeleteConfirm = this.showDeleteConfirm.bind(this);
             this.closeConfirmModal = this.closeConfirmModal.bind(this);
             this.closeSuccessModal = this.closeSuccessModal.bind(this);
-            this.closeErrorClicked = this.closeErrorClicked.bind(this);
             this.deleteClick = this.deleteClick.bind(this);
             this.archiveClick = this.archiveClick.bind(this);
             this.unarchiveClick = this.unarchiveClick.bind(this);
             this.replyClick = this.replyClick.bind(this);
-            this.returnErrorModal = this.returnErrorModal.bind(this);
             this.getDeleteConfirmModal = this.getDeleteConfirmModal.bind(this);
             this.closeAndReturn = this.closeAndReturn.bind(this);
         }
@@ -56,10 +51,6 @@ const WithMessaging = WrappedComponent =>
             );
         }
 
-        componentDidMount() {
-            this.props.popupState();
-        }
-
         closeAndReturn() {
             this.closeSuccessModal();
             const {pathName} = this.props.location;
@@ -68,24 +59,12 @@ const WithMessaging = WrappedComponent =>
             }
         }
 
-        returnErrorModal() {
-            const {content} = this.props;
-
-            return (
-                <ErrorModal
-                    content={content}
-                    onClose={this.errorCloseClicked}
-                    onConfirm={this.retryServiceCall}
-                />
-            );
-        }
-
         archiveClick(message) {
-            this.props.archiveMessageData(message, message.id, ARCHIVED);
+            this.props.archiveMessageData(message);
         }
 
         unarchiveClick(message) {
-            this.props.unarchiveMessageData(message, message.id, READ);
+            this.props.unarchiveMessageData(message);
         }
 
         replyClick(message) {
@@ -99,19 +78,14 @@ const WithMessaging = WrappedComponent =>
         deleteClick() {
             const message = this.state.messageToDelete;
             if (message.status === NEW) {
-                this.props.updateMessageData(message, message.id, READ);
+                this.props.setMessageRead(message);
                 setTimeout(() => {
-                    this.props.delMessageData(message, message.id, DELETED);
+                    this.props.delMessageData(message);
                 }, 500);
-            } else this.props.delMessageData(message, message.id, DELETED);
+            } else this.props.delMessageData(message);
             this.setState({
                 showDeleteConfirmModal: false,
-            }, () => this.props.setDeletingMessages(message.id));
-        }
-
-        retryServiceCall() {
-            this.props.popupState();
-            this.deleteClick();
+            });
         }
 
         closeConfirmModal() {
@@ -120,11 +94,6 @@ const WithMessaging = WrappedComponent =>
 
         closeSuccessModal() {
             this.props.closeDelModal();
-        }
-
-        closeErrorClicked() {
-            this.props.popupState();
-            this.setState({showSendServiceErrorModal: false});
         }
 
         showDeleteConfirm(message) {
@@ -153,14 +122,14 @@ const WithMessaging = WrappedComponent =>
 
         render() {
             const {
-                messages,
-                message,
+                actualStatus
             } = this.props;
             const optionFunctions = this.getOptionFunctions();
-            const showDelete = optionFunctions.showDeleteButton(message.status);
-            const showReply = optionFunctions.showReplyButton(message.status);
-            const showArchive = optionFunctions.showArchiveButton(message.status);
-            const showUnarchive = optionFunctions.showUnarchiveButton(message.status);
+
+            const showDelete = optionFunctions.showDeleteButton(actualStatus);
+            const showReply = optionFunctions.showReplyButton(actualStatus);
+            const showArchive = optionFunctions.showArchiveButton(actualStatus);
+            const showUnarchive = optionFunctions.showUnarchiveButton(actualStatus);
             return (
                 <div className="u-full-width">
                     <WrappedComponent
@@ -175,9 +144,6 @@ const WithMessaging = WrappedComponent =>
                         showReply={showReply}
                     />
                     {this.state.showDeleteConfirmModal && this.getDeleteConfirmModal()}
-                    {messages.draftError &&
-                    this.state.showSendServiceErrorModal &&
-                    this.returnErrorModal()}
                 </div>
             );
         }
@@ -186,25 +152,28 @@ const WithMessaging = WrappedComponent =>
 WithMessaging.propTypes = {
     viewMessageFlag: PropTypes.bool,
     content: PropTypes.object,
-    messages: PropTypes.array,
     messageDetail: PropTypes.object
 };
 
-const mapState = (state, props) => ({
-    messages: state.messages,
-    messagesubjects: state.subjects,
-    accounts: state.accounts,
-    messageDetail: state.viewMessage,
-    readOnly: state.messages.mode === READ_ONLY,
-    message: props.message ? props.message : props.location.messageDetail
-});
+const mapState = (state, props) => {
+
+    const message = props.message ? props.message : props.location.messageDetail;
+    return {
+        messagesubjects: state.subjects,
+        accounts: state.accounts,
+        messageDetail: state.viewMessage,
+        readOnly: MessageSelectors.getMode(state) === READ_ONLY,
+        message,
+        actualStatus: props.justBeenRead ? READ : message.status
+    }
+   
+};
 
 const actionCreators = {
     delMessageData,
-    updateMessageData,
+    setMessageRead,
     closeDelModal,
     popupState,
-    setDeletingMessages,
     unarchiveMessageData,
     archiveMessageData
 };

@@ -10,6 +10,7 @@ import { ButtonGroup } from 'web-ui-components/lib/molecules/buttons'
 import { Button } from 'web-ui-components/lib/atoms/buttons';
 import { withBreakpoints } from "./hoc/WithBreakpoint";
 import { compose } from "redux";
+import { MessageSelectors } from '../../reducers/index';
 
 export class ErrorPage extends React.Component {
 
@@ -29,7 +30,7 @@ export class ErrorPage extends React.Component {
     }
 
     render() {
-        const { messages, containerSize, noPadding} = this.props;
+        const { fetching, containerSize, noPadding} = this.props;
         const { content } = this.props.location;
         
 		let paddingProps = null;
@@ -40,7 +41,7 @@ export class ErrorPage extends React.Component {
 			}
         }
 
-        return (<LoadingLocalTakeover show={messages.fetching} title="loading.." >
+        return (<LoadingLocalTakeover show={fetching} title="loading.." >
             <Container {...paddingProps} size={containerSize}>
                 <Row>
                     <Card>
@@ -67,7 +68,8 @@ export class ErrorPage extends React.Component {
 }
 const mapState = (state) => {
     return {
-        messages: state.messages,
+        fetching: MessageSelectors.getFetching(state),
+        fetched: MessageSelectors.getFetched(state)
     }
 };
 

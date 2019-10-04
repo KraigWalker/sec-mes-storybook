@@ -83,7 +83,7 @@ ShallowWrapper {
           </Card>
         </Row>
       </Container>,
-      "show": false,
+      "show": undefined,
       "title": "loading..",
     },
     "ref": null,
@@ -473,7 +473,7 @@ ShallowWrapper {
             </Card>
           </Row>
         </Container>,
-        "show": false,
+        "show": undefined,
         "title": "loading..",
       },
       "ref": null,

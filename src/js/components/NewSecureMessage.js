@@ -1,11 +1,11 @@
 import React from "react";
 import SecureMessageForm from "./SecureMessageForm";
 import { connect } from "react-redux";
-import { PENDING, DRAFT } from "../constants/StringsConstants";
+import { PENDING, DRAFT, NEW } from "../constants/StringsConstants";
 import { BuildSendMessageRequestEntity } from "../bl/SecureMessageBL";
 import {
   popupState,
-  sendMessageData,
+  createNewMessage,
   sendMessageForAccessibiltiy
 } from "../actions/AppActions";
 import {
@@ -15,9 +15,7 @@ import {
   getMessageDetail,
   getCustomerError,
   getSubjectErrors,
-  getShowSuccessModal,
-  getUpdating,
-  getIsSavingDraft
+  MessageSelectors
 } from "../reducers";
 
 class NewSecureMessage extends React.Component {
@@ -32,10 +30,10 @@ class NewSecureMessage extends React.Component {
       accounts,
       messageEntity
     );
-    this.props.sendMessageData(
-      sendRequestMessage.getMessageRequestData(),
+    this.props.createNewMessage({
+      requestData: sendRequestMessage.getMessageRequestData(),
       status,
-    );
+    });
   }
   send(messageEntity) {
     this.sendMessageData(messageEntity, PENDING);
@@ -44,14 +42,13 @@ class NewSecureMessage extends React.Component {
     this.sendMessageData(messageEntity, DRAFT);
   }
   render() {
-    const { content, isSavingDraft, isUpdatingMessage } = this.props;
+    const { content, isSavingDraft, isUpdatingMessage, messageError } = this.props;
     return (
       <SecureMessageForm
         {...this.props}
         onSend={this.send}
         onSave={this.save}
         onMount={this.onMount}
-        messageError={false}
         title={content.newMessagePageTitle}
         selectedSubject={content.pleaseSelect}
         selectedAccountValue={content.pleaseSelect}
@@ -65,19 +62,20 @@ class NewSecureMessage extends React.Component {
 
 const mapStateToProps = state => ({
   subjects: getSubjects(state),
-  messages: getMessages(state),
-  isUpdatingMessage: getUpdating(state),
-  isSavingDraft: getIsSavingDraft(state),
+  messages: MessageSelectors.getMessages(state),
+  isUpdatingMessage: MessageSelectors.getUpdating(state),
+  isSavingDraft:  MessageSelectors.getIsSavingDraft(state),
   accounts: getAccounts(state),
   subjectErrors: getSubjectErrors(state),
   messageDetail: getMessageDetail(state),
   customerNameError: getCustomerError(state),
-  successModal: getShowSuccessModal(state),
+  successModal: MessageSelectors.getShowSuccessModal(state),
+  messageError: MessageSelectors.getMessageError(state, NEW),
 });
 
 const actionCreators = {
   popupState,
-  sendMessageData,
+  createNewMessage,
   sendMessageForAccessibiltiy
 };
 export default connect(
