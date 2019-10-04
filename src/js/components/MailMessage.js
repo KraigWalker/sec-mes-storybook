@@ -69,9 +69,6 @@ const MailMessage = props => {
         <p>{message.message}</p>
         { hasAttachment && attachmentLink(props, message.document) }
         <ButtonGroup>
-          <Button display="secondary" width="narrow" onClick={history.goBack}>
-            {content.back}
-          </Button>
            {showArchive ? <Button display="secondary" onClick={onArchiveClick} width='narrow'>{content.archive}</Button> : null}
            {showDelete ? <Button display="secondary" onClick={onDeleteClick} width='narrow'>{content.delete}</Button> : null}
            {showUnarchive ? <Button display="secondary" onClick={onUnarchiveClick} width='narrow'>{content.moveToInbox}</Button> : null}

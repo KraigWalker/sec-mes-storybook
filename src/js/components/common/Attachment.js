@@ -1,13 +1,14 @@
 import React from "react";
+import { DocumentLink } from 'web-ui-components/lib/documents/navigation';
 
 const Attachment = (props) => (
 	<div className="c-message--attachments">
 		<h4>Attachments</h4>
-		<ul>
-			<li>
-				<a href="javascript:void(0)" onClick={() => handleAttachmentClick(props)}>{props.document.label}</a>
-			</li>
-		</ul>
+        <DocumentLink 
+            linkText={props.document.label}
+            onClick={() => handleAttachmentClick(props)}
+            hasIcon
+        />
 	</div>
 );
 

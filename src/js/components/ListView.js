@@ -2,24 +2,18 @@ import React from 'react';
 import { ListViewContainer, PreferenceCardContainer } from 'document-management-web-ui';
 import {Container, Row} from "web-ui-components/lib/global/layout";
 import { withBreakpoints } from "../components/common/hoc/WithBreakpoint";
+import { getPaddingProps, getRowMarginProps } from "../utils/GeneralUtils"
 
 const listview = (props) => {
 
     const { containerSize, noPadding } = props;
-    let paddingProps = null;
-    if (noPadding)
-    {
-        paddingProps = {
-            className: "u-padding-0",
-        }
-    }
 
     return (
-        <Container {...paddingProps} size={containerSize}>
-            <Row>
+        <Container {...getPaddingProps(noPadding)} size={containerSize}>
+            <Row {...getRowMarginProps(noPadding)}>
                 <ListViewContainer {...props} />
             </Row>
-            <Row>
+            <Row {...getRowMarginProps(noPadding)}>
                 <PreferenceCardContainer {...props} />
             </Row>
         </Container>

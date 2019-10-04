@@ -22,6 +22,7 @@ import SuccessModal from "../components/common/SuccessModal";
 import { getSuccessModalMessage } from "../constants/ModalConstants";
 import { MessageSelectors } from "../reducers";
 import withRetry from "../components/common/WithRetry";
+import { getPaddingProps, getRowMarginProps } from "../utils/GeneralUtils"
 
 const getTitle = (status, content) =>
 {
@@ -106,21 +107,13 @@ export class ViewMessage extends React.Component {
             ? READ
             : messageDetail.status;
 
-        let paddingProps = null;
-        if (noPadding)
-        {
-            paddingProps = {
-                className: "u-padding-0",
-            }
-        }
-
         const basePath = `${window.location.origin}${getParentPath(window.location.pathname,2)}`;
         const { messages, deletingMessages } = this.props;
 
         return (
             <div>
-                <Container {...paddingProps} size={containerSize}>
-                    <Row>
+                <Container {...getPaddingProps(noPadding)} size={containerSize}>
+                    <Row {...getRowMarginProps(noPadding)}>
                         <Card>
                             <SectionHeading
                                 heading1={getTitle(messageDetail.status, content)}></SectionHeading>
