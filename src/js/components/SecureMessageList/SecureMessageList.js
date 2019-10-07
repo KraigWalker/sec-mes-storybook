@@ -1,19 +1,18 @@
 import React from "react";
-import SecureMessageSummary from "./common/SecureMessageSummary";
-import {sendMessageForAccessibiltiy as sendMessageForAccessibility} from "../actions/AppActions";
+import SecureMessageSummary from "../common/SecureMessageSummary";
+import {sendMessageForAccessibiltiy as sendMessageForAccessibility} from "../../actions/AppActions";
 import {connect} from "react-redux";
-import {SENT, DRAFT, ARCHIVED} from '../constants/StringsConstants';
+import {SENT, DRAFT, ARCHIVED} from '../../constants/StringsConstants';
 import {Button} from 'web-ui-components/lib/atoms/buttons';
 import {Column} from "web-ui-components/lib/global/layout";
 import {TextBody} from "web-ui-components/lib/atoms/text";
 import {LoadingLocalTakeover} from 'web-ui-components/lib/organisms/takeovers';
 import {TextStyled} from 'web-ui-components/lib/atoms/text';
 import {Mail} from "web-ui-components/lib/communication/messaging";
-import {withBreakpoints} from "../components/common/hoc/WithBreakpoint";
+import {withBreakpoints} from "../common/hoc/WithBreakpoint";
 import {compose} from "redux";
-import { MessageSelectors } from "../reducers";
-
-const MESSAGE_LIMIT = 20;
+import { MessageSelectors } from "../../reducers";
+import { LIMITS, shouldShowThatsAllMessage, getNextLimit} from "./limits";
 
 export class SecureMessageList extends React.Component {
     constructor(props) {
@@ -21,18 +20,19 @@ export class SecureMessageList extends React.Component {
         this.showMoreClicked = this.showMoreClicked.bind(this);
         this.sendAccessibilityMessage = this.sendAccessibilityMessage.bind(this);
         this.state = {
-            showMoreLimit: MESSAGE_LIMIT,
+            currentMessageLimit: LIMITS[0],
             showThatsAllMessage: false,
         };
     }
 
     componentWillReceiveProps(props) {
-        const {messages} = props;
-        if (messages.length === 0 || messages.length > MESSAGE_LIMIT) {
-            this.setState({showThatsAllMessage: false});
-        } else {
-            this.setState({showThatsAllMessage: true});
-        }
+        const { messages } = props;
+        this.setState({
+            showThatsAllMessage: shouldShowThatsAllMessage({
+                currentLimit: this.state.currentMessageLimit,
+                messageCount: messages.length
+            })
+        });
     }
 
     componentDidMount() {
@@ -46,7 +46,7 @@ export class SecureMessageList extends React.Component {
         const { messages, content } = this.props;
         const listFlag = true;
         return messages
-            .slice(0, this.state.showMoreLimit)
+            .slice(0, this.state.currentMessageLimit)
             .map((message, index) => 
                 <SecureMessageSummary key={index}
                     message={message} 
@@ -57,10 +57,17 @@ export class SecureMessageList extends React.Component {
     showMoreClicked() {
         const {messages, dispatch, activeTab} = this.props;
         dispatch(sendMessageForAccessibility(`Next 20 messages loaded ${activeTab}`));
-        let limit = messages.length;
-        this.setState({
-            showMoreLimit: limit,
-            showThatsAllMessage: true,
+        this.setState(prevState => {
+            const newLimit = getNextLimit({
+                currentLimit: prevState.currentMessageLimit,
+                messageCount: messages.length 
+            });
+            return {
+                currentMessageLimit: newLimit,
+                showThatsAllMessage: shouldShowThatsAllMessage({
+                    currentLimit: newLimit, 
+                    messageCount: messages.length})
+            }
         });
     }
 
