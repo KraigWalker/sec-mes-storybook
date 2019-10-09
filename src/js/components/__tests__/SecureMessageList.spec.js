@@ -1,5 +1,5 @@
 import React from 'react';
-import { SecureMessageList } from '../SecureMessageList';
+import { SecureMessageList } from '../SecureMessageList/SecureMessageList';
 import { shallow } from 'enzyme';
 
 describe("New Secure message snapshot", () => {
