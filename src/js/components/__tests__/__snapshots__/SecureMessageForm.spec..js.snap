@@ -40,16 +40,9 @@ ShallowWrapper {
             <Card
               bordered={false}
             >
-              <Title
-                size="h4"
+              <SubHeading
+                isFlush={false}
               />
-              <TextBody>
-                <BackButton
-                  disabled={false}
-                  label="Back"
-                  onClick={[Function]}
-                />
-              </TextBody>
               <TextBody>
                 <Label
                   htmlFor="subjects"
@@ -132,11 +125,14 @@ ShallowWrapper {
                     size="md"
                     width="flush"
                   >
+                    <WithTheme(Icon)
+                      iconType="ChevronLeftLarge"
+                    />
                     Back
                   </Button>
                   <Button
                     disabled={false}
-                    display="primary"
+                    display="secondary"
                     isLoading={false}
                     name="Save Draft"
                     onClick={[Function]}
@@ -175,16 +171,9 @@ ShallowWrapper {
             <Card
               bordered={false}
             >
-              <Title
-                size="h4"
+              <SubHeading
+                isFlush={false}
               />
-              <TextBody>
-                <BackButton
-                  disabled={false}
-                  label="Back"
-                  onClick={[Function]}
-                />
-              </TextBody>
               <TextBody>
                 <Label
                   htmlFor="subjects"
@@ -267,11 +256,14 @@ ShallowWrapper {
                     size="md"
                     width="flush"
                   >
+                    <WithTheme(Icon)
+                      iconType="ChevronLeftLarge"
+                    />
                     Back
                   </Button>
                   <Button
                     disabled={false}
-                    display="primary"
+                    display="secondary"
                     isLoading={false}
                     name="Save Draft"
                     onClick={[Function]}
@@ -301,16 +293,9 @@ ShallowWrapper {
             "children": <Card
               bordered={false}
             >
-              <Title
-                size="h4"
+              <SubHeading
+                isFlush={false}
               />
-              <TextBody>
-                <BackButton
-                  disabled={false}
-                  label="Back"
-                  onClick={[Function]}
-                />
-              </TextBody>
               <TextBody>
                 <Label
                   htmlFor="subjects"
@@ -393,11 +378,14 @@ ShallowWrapper {
                     size="md"
                     width="flush"
                   >
+                    <WithTheme(Icon)
+                      iconType="ChevronLeftLarge"
+                    />
                     Back
                   </Button>
                   <Button
                     disabled={false}
-                    display="primary"
+                    display="secondary"
                     isLoading={false}
                     name="Save Draft"
                     onClick={[Function]}
@@ -423,16 +411,9 @@ ShallowWrapper {
             "props": Object {
               "bordered": false,
               "children": Array [
-                <Title
-                  size="h4"
+                <SubHeading
+                  isFlush={false}
                 />,
-                <TextBody>
-                  <BackButton
-                    disabled={false}
-                    label="Back"
-                    onClick={[Function]}
-                  />
-                </TextBody>,
                 <TextBody>
                   <Label
                     htmlFor="subjects"
@@ -515,11 +496,14 @@ ShallowWrapper {
                       size="md"
                       width="flush"
                     >
+                      <WithTheme(Icon)
+                        iconType="ChevronLeftLarge"
+                      />
                       Back
                     </Button>
                     <Button
                       disabled={false}
-                      display="primary"
+                      display="secondary"
                       isLoading={false}
                       name="Save Draft"
                       onClick={[Function]}
@@ -545,37 +529,10 @@ ShallowWrapper {
                 "nodeType": "function",
                 "props": Object {
                   "children": undefined,
-                  "size": "h4",
+                  "isFlush": false,
                 },
                 "ref": null,
                 "rendered": null,
-                "type": [Function],
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "function",
-                "props": Object {
-                  "children": <BackButton
-                    disabled={false}
-                    label="Back"
-                    onClick={[Function]}
-                  />,
-                },
-                "ref": null,
-                "rendered": Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "function",
-                  "props": Object {
-                    "disabled": false,
-                    "label": "Back",
-                    "onClick": [Function],
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": [Function],
-                },
                 "type": [Function],
               },
               Object {
@@ -780,11 +737,14 @@ ShallowWrapper {
                       size="md"
                       width="flush"
                     >
+                      <WithTheme(Icon)
+                        iconType="ChevronLeftLarge"
+                      />
                       Back
                     </Button>
                     <Button
                       disabled={false}
-                      display="primary"
+                      display="secondary"
                       isLoading={false}
                       name="Save Draft"
                       onClick={[Function]}
@@ -817,11 +777,14 @@ ShallowWrapper {
                         size="md"
                         width="flush"
                       >
+                        <WithTheme(Icon)
+                          iconType="ChevronLeftLarge"
+                        />
                         Back
                       </Button>,
                       <Button
                         disabled={false}
-                        display="primary"
+                        display="secondary"
                         isLoading={false}
                         name="Save Draft"
                         onClick={[Function]}
@@ -844,7 +807,12 @@ ShallowWrapper {
                       "key": undefined,
                       "nodeType": "class",
                       "props": Object {
-                        "children": "Back",
+                        "children": Array [
+                          <WithTheme(Icon)
+                            iconType="ChevronLeftLarge"
+                          />,
+                          "Back",
+                        ],
                         "disabled": false,
                         "display": "secondary",
                         "isLoading": false,
@@ -854,7 +822,20 @@ ShallowWrapper {
                         "width": "flush",
                       },
                       "ref": null,
-                      "rendered": "Back",
+                      "rendered": Array [
+                        Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "class",
+                          "props": Object {
+                            "iconType": "ChevronLeftLarge",
+                          },
+                          "ref": null,
+                          "rendered": null,
+                          "type": [Function],
+                        },
+                        "Back",
+                      ],
                       "type": [Function],
                     },
                     Object {
@@ -864,7 +845,7 @@ ShallowWrapper {
                       "props": Object {
                         "children": undefined,
                         "disabled": false,
-                        "display": "primary",
+                        "display": "secondary",
                         "isLoading": false,
                         "name": "Save Draft",
                         "onClick": [Function],
@@ -927,16 +908,9 @@ ShallowWrapper {
               <Card
                 bordered={false}
               >
-                <Title
-                  size="h4"
+                <SubHeading
+                  isFlush={false}
                 />
-                <TextBody>
-                  <BackButton
-                    disabled={false}
-                    label="Back"
-                    onClick={[Function]}
-                  />
-                </TextBody>
                 <TextBody>
                   <Label
                     htmlFor="subjects"
@@ -1019,11 +993,14 @@ ShallowWrapper {
                       size="md"
                       width="flush"
                     >
+                      <WithTheme(Icon)
+                        iconType="ChevronLeftLarge"
+                      />
                       Back
                     </Button>
                     <Button
                       disabled={false}
-                      display="primary"
+                      display="secondary"
                       isLoading={false}
                       name="Save Draft"
                       onClick={[Function]}
@@ -1062,16 +1039,9 @@ ShallowWrapper {
               <Card
                 bordered={false}
               >
-                <Title
-                  size="h4"
+                <SubHeading
+                  isFlush={false}
                 />
-                <TextBody>
-                  <BackButton
-                    disabled={false}
-                    label="Back"
-                    onClick={[Function]}
-                  />
-                </TextBody>
                 <TextBody>
                   <Label
                     htmlFor="subjects"
@@ -1154,11 +1124,14 @@ ShallowWrapper {
                       size="md"
                       width="flush"
                     >
+                      <WithTheme(Icon)
+                        iconType="ChevronLeftLarge"
+                      />
                       Back
                     </Button>
                     <Button
                       disabled={false}
-                      display="primary"
+                      display="secondary"
                       isLoading={false}
                       name="Save Draft"
                       onClick={[Function]}
@@ -1188,16 +1161,9 @@ ShallowWrapper {
               "children": <Card
                 bordered={false}
               >
-                <Title
-                  size="h4"
+                <SubHeading
+                  isFlush={false}
                 />
-                <TextBody>
-                  <BackButton
-                    disabled={false}
-                    label="Back"
-                    onClick={[Function]}
-                  />
-                </TextBody>
                 <TextBody>
                   <Label
                     htmlFor="subjects"
@@ -1280,11 +1246,14 @@ ShallowWrapper {
                       size="md"
                       width="flush"
                     >
+                      <WithTheme(Icon)
+                        iconType="ChevronLeftLarge"
+                      />
                       Back
                     </Button>
                     <Button
                       disabled={false}
-                      display="primary"
+                      display="secondary"
                       isLoading={false}
                       name="Save Draft"
                       onClick={[Function]}
@@ -1310,16 +1279,9 @@ ShallowWrapper {
               "props": Object {
                 "bordered": false,
                 "children": Array [
-                  <Title
-                    size="h4"
+                  <SubHeading
+                    isFlush={false}
                   />,
-                  <TextBody>
-                    <BackButton
-                      disabled={false}
-                      label="Back"
-                      onClick={[Function]}
-                    />
-                  </TextBody>,
                   <TextBody>
                     <Label
                       htmlFor="subjects"
@@ -1402,11 +1364,14 @@ ShallowWrapper {
                         size="md"
                         width="flush"
                       >
+                        <WithTheme(Icon)
+                          iconType="ChevronLeftLarge"
+                        />
                         Back
                       </Button>
                       <Button
                         disabled={false}
-                        display="primary"
+                        display="secondary"
                         isLoading={false}
                         name="Save Draft"
                         onClick={[Function]}
@@ -1432,37 +1397,10 @@ ShallowWrapper {
                   "nodeType": "function",
                   "props": Object {
                     "children": undefined,
-                    "size": "h4",
+                    "isFlush": false,
                   },
                   "ref": null,
                   "rendered": null,
-                  "type": [Function],
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "function",
-                  "props": Object {
-                    "children": <BackButton
-                      disabled={false}
-                      label="Back"
-                      onClick={[Function]}
-                    />,
-                  },
-                  "ref": null,
-                  "rendered": Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "function",
-                    "props": Object {
-                      "disabled": false,
-                      "label": "Back",
-                      "onClick": [Function],
-                    },
-                    "ref": null,
-                    "rendered": null,
-                    "type": [Function],
-                  },
                   "type": [Function],
                 },
                 Object {
@@ -1667,11 +1605,14 @@ ShallowWrapper {
                         size="md"
                         width="flush"
                       >
+                        <WithTheme(Icon)
+                          iconType="ChevronLeftLarge"
+                        />
                         Back
                       </Button>
                       <Button
                         disabled={false}
-                        display="primary"
+                        display="secondary"
                         isLoading={false}
                         name="Save Draft"
                         onClick={[Function]}
@@ -1704,11 +1645,14 @@ ShallowWrapper {
                           size="md"
                           width="flush"
                         >
+                          <WithTheme(Icon)
+                            iconType="ChevronLeftLarge"
+                          />
                           Back
                         </Button>,
                         <Button
                           disabled={false}
-                          display="primary"
+                          display="secondary"
                           isLoading={false}
                           name="Save Draft"
                           onClick={[Function]}
@@ -1731,7 +1675,12 @@ ShallowWrapper {
                         "key": undefined,
                         "nodeType": "class",
                         "props": Object {
-                          "children": "Back",
+                          "children": Array [
+                            <WithTheme(Icon)
+                              iconType="ChevronLeftLarge"
+                            />,
+                            "Back",
+                          ],
                           "disabled": false,
                           "display": "secondary",
                           "isLoading": false,
@@ -1741,7 +1690,20 @@ ShallowWrapper {
                           "width": "flush",
                         },
                         "ref": null,
-                        "rendered": "Back",
+                        "rendered": Array [
+                          Object {
+                            "instance": null,
+                            "key": undefined,
+                            "nodeType": "class",
+                            "props": Object {
+                              "iconType": "ChevronLeftLarge",
+                            },
+                            "ref": null,
+                            "rendered": null,
+                            "type": [Function],
+                          },
+                          "Back",
+                        ],
                         "type": [Function],
                       },
                       Object {
@@ -1751,7 +1713,7 @@ ShallowWrapper {
                         "props": Object {
                           "children": undefined,
                           "disabled": false,
-                          "display": "primary",
+                          "display": "secondary",
                           "isLoading": false,
                           "name": "Save Draft",
                           "onClick": [Function],

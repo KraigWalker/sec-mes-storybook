@@ -54,8 +54,8 @@ ShallowWrapper {
               onClick={[Function]}
             />
           </TextBody>
-          <Title
-            size="h4"
+          <SubHeading
+            isFlush={false}
           />
           <TextBody />
           <Button
@@ -108,8 +108,8 @@ ShallowWrapper {
               onClick={[Function]}
             />
           </TextBody>
-          <Title
-            size="h4"
+          <SubHeading
+            isFlush={false}
           />
           <TextBody />
           <Button
@@ -159,8 +159,8 @@ ShallowWrapper {
                 onClick={[Function]}
               />
             </TextBody>,
-            <Title
-              size="h4"
+            <SubHeading
+              isFlush={false}
             />,
             <TextBody />,
             <Button
@@ -230,7 +230,7 @@ ShallowWrapper {
             "nodeType": "function",
             "props": Object {
               "children": undefined,
-              "size": "h4",
+              "isFlush": false,
             },
             "ref": null,
             "rendered": null,
@@ -315,8 +315,8 @@ ShallowWrapper {
                 onClick={[Function]}
               />
             </TextBody>
-            <Title
-              size="h4"
+            <SubHeading
+              isFlush={false}
             />
             <TextBody />
             <Button
@@ -369,8 +369,8 @@ ShallowWrapper {
                 onClick={[Function]}
               />
             </TextBody>
-            <Title
-              size="h4"
+            <SubHeading
+              isFlush={false}
             />
             <TextBody />
             <Button
@@ -420,8 +420,8 @@ ShallowWrapper {
                   onClick={[Function]}
                 />
               </TextBody>,
-              <Title
-                size="h4"
+              <SubHeading
+                isFlush={false}
               />,
               <TextBody />,
               <Button
@@ -491,7 +491,7 @@ ShallowWrapper {
               "nodeType": "function",
               "props": Object {
                 "children": undefined,
-                "size": "h4",
+                "isFlush": false,
               },
               "ref": null,
               "rendered": null,

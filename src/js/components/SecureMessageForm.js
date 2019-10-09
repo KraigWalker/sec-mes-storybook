@@ -7,12 +7,12 @@ import MessageEntity from '../entities/MessageEntity';
 import { Container, Row } from 'web-ui-components/lib/global/layout';
 import { Card } from "web-ui-components/lib/organisms/cards";
 import { TextBody } from "web-ui-components/lib/atoms/text";
+import { Icon } from 'web-ui-components/lib/atoms/iconography';
 import { Label } from 'web-ui-components/lib/atoms/forms';
-import { BackButton } from 'web-ui-components/lib/molecules/navigation';
+import { SubHeading } from 'web-ui-components/lib/typography/headings';
 import TextAreaWrapper from './common/TextAreaWrapper';
 import SuccessMpdal from "./common/SuccessModal";
 import ErrorModal from "./common/ErrorModal";
-import { Title } from "web-ui-components/lib/atoms/text";
 import PropTypes from 'prop-types';
 import { LoadingLocalTakeover } from 'web-ui-components/lib/organisms/takeovers';
 import { withBreakpoints } from "../components/common/hoc/WithBreakpoint";
@@ -316,10 +316,7 @@ export class SecureMessageForm extends React.Component {
 			<LoadingLocalTakeover show={isUpdatingMessage || isSavingDraft} title={isUpdatingMessage ? content.sendingMessage: content.savingMessage}>
 				<Row>
 						<Card>
-							<Title size="h4">{title}</Title>
-							<TextBody>
-								<BackButton onClick={this.determineBackAction} label={content.back}/>
-							</TextBody>
+							<SubHeading>{title}</SubHeading>
 							<TextBody>
 								<Label
 									id="subjectTitle"
@@ -394,11 +391,12 @@ export class SecureMessageForm extends React.Component {
 										onClick={this.determineBackAction}
 										disabled={false}
 									>
+										<Icon iconType="ChevronLeftLarge" />
 										{content.back}
 									</Button>
 									<Button
 										name="Save Draft"
-										display="primary"
+										display="secondary"
 										onClick={this.saveDraftData}
 										disabled={this.state.disabled}
 									>
