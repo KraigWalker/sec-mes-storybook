@@ -9,6 +9,7 @@ import { Card } from "web-ui-components/lib/organisms/cards";
 import { TextBody } from "web-ui-components/lib/atoms/text";
 import { Icon } from 'web-ui-components/lib/atoms/iconography';
 import { Label } from 'web-ui-components/lib/atoms/forms';
+import { BackButton } from 'web-ui-components/lib/molecules/navigation';
 import { SubHeading } from 'web-ui-components/lib/typography/headings';
 import TextAreaWrapper from './common/TextAreaWrapper';
 import SuccessMpdal from "./common/SuccessModal";
@@ -317,6 +318,9 @@ export class SecureMessageForm extends React.Component {
 				<Row>
 						<Card>
 							<SubHeading>{title}</SubHeading>
+							<TextBody>
+								<BackButton onClick={this.determineBackAction} label={content.back}/>
+							</TextBody>
 							<TextBody>
 								<Label
 									id="subjectTitle"
