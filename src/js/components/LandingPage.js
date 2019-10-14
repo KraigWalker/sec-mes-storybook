@@ -8,7 +8,8 @@ import {Button} from 'web-ui-components/lib/atoms/buttons';
 import {BackButton} from 'web-ui-components/lib/molecules/navigation';
 import {Container, Row} from "web-ui-components/lib/global/layout";
 import {Card} from "web-ui-components/lib/organisms/cards";
-import {Title, TextBody} from "web-ui-components/lib/atoms/text";
+import { TextBody } from "web-ui-components/lib/atoms/text";
+import { SubHeading } from 'web-ui-components/lib/typography/headings';
 import {getMessageSubjects, getActiveTab } from '../actions/AppActions';
 import {withBreakpoints} from "../components/common/hoc/WithBreakpoint";
 import {compose} from 'redux';
@@ -61,7 +62,7 @@ export class LandingPage extends React.PureComponent {
                             <BackButton onClick={this.handleBackClick} label={this.props.content.backToAccounts}/>
                         </TextBody>
                         }
-                        <Title size="h4">{this.props.content.messages}</Title>
+                        <SubHeading>{this.props.content.messages}</SubHeading>
                         <TextBody>{this.props.content.landingPageMessage}</TextBody>
                         {
                             !readOnly && <Button display="primary"
