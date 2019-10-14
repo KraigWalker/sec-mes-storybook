@@ -5,9 +5,10 @@ import { LoadingLocalTakeover } from 'web-ui-components/lib/organisms/takeovers'
 import { Container, Row } from "web-ui-components/lib/global/layout";
 import { Card } from "web-ui-components/lib/organisms/cards";
 import { BackButton } from 'web-ui-components/lib/molecules/navigation';
-import { Title, TextBody } from "web-ui-components/lib/atoms/text";
+import { TextBody } from "web-ui-components/lib/atoms/text";
 import { ButtonGroup } from 'web-ui-components/lib/molecules/buttons'
 import { Button } from 'web-ui-components/lib/atoms/buttons';
+import { PageHeading, SubHeading } from 'web-ui-components/lib/typography/headings';
 import { withBreakpoints } from "./hoc/WithBreakpoint";
 import { compose } from "redux";
 import { MessageSelectors } from '../../reducers/index';
@@ -48,12 +49,8 @@ export class ErrorPage extends React.Component {
                         <TextBody>
                             <BackButton onClick={this.handleBackButton} label={content.backToAccounts}/>
                         </TextBody>
-                        <TextBody>
-                            <Title size="h1">{content.messages}</Title>
-                        </TextBody>
-                        <TextBody>
-                            <Title size="h2">{content.sorryHeader}</Title>
-                        </TextBody>
+                        <PageHeading>{content.messages}</PageHeading>
+                        <SubHeading>{content.sorryHeader}</SubHeading>
                         <TextBody>{content.tryAgain}</TextBody>
                         <TextBody>{content.getInTouch}</TextBody>
                         <ButtonGroup>

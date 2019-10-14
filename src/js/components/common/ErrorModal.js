@@ -1,26 +1,22 @@
 import React from 'react';
 import { ConfirmationModal } from "web-ui-components/lib/organisms/modals";
+import { SubHeading } from 'web-ui-components/lib/typography/headings';
+import { StandardBody } from 'web-ui-components/lib/typography/body';
 
 const ErrorModal = props => {
   const { content, onCloseClicked, onRetry } = props;
-  const bodyContent = (
-    <div>
-      <h3>{content.sorryHeader}</h3>
-      <br />
-      <p>{content.tryAgain}</p>
-      <br />
-      <p>{content.getInTouch}</p>
-    </div>
-  );
   return (
     <ConfirmationModal
-      title={bodyContent}
+      title={content.sorryHeader}
       onConfirm={onRetry}
       isOpen={true}
       onClose={onCloseClicked}
       dismissButtonText={content.back}
       confirmButtonText={content.retry}
-    />
+    >
+      <StandardBody>{content.tryAgain}</StandardBody>
+      <StandardBody>{content.getInTouch}</StandardBody>
+    </ConfirmationModal>
   );
 };
 

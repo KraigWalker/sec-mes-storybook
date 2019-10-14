@@ -46,16 +46,12 @@ ShallowWrapper {
                 onClick={[Function]}
               />
             </TextBody>
-            <TextBody>
-              <Title
-                size="h1"
-              />
-            </TextBody>
-            <TextBody>
-              <Title
-                size="h2"
-              />
-            </TextBody>
+            <PageHeading
+              isFlush={false}
+            />
+            <SubHeading
+              isFlush={false}
+            />
             <TextBody />
             <TextBody />
             <ButtonGroup
@@ -103,16 +99,12 @@ ShallowWrapper {
                 onClick={[Function]}
               />
             </TextBody>
-            <TextBody>
-              <Title
-                size="h1"
-              />
-            </TextBody>
-            <TextBody>
-              <Title
-                size="h2"
-              />
-            </TextBody>
+            <PageHeading
+              isFlush={false}
+            />
+            <SubHeading
+              isFlush={false}
+            />
             <TextBody />
             <TextBody />
             <ButtonGroup
@@ -157,16 +149,12 @@ ShallowWrapper {
                 onClick={[Function]}
               />
             </TextBody>
-            <TextBody>
-              <Title
-                size="h1"
-              />
-            </TextBody>
-            <TextBody>
-              <Title
-                size="h2"
-              />
-            </TextBody>
+            <PageHeading
+              isFlush={false}
+            />
+            <SubHeading
+              isFlush={false}
+            />
             <TextBody />
             <TextBody />
             <ButtonGroup
@@ -208,16 +196,12 @@ ShallowWrapper {
                   onClick={[Function]}
                 />
               </TextBody>,
-              <TextBody>
-                <Title
-                  size="h1"
-                />
-              </TextBody>,
-              <TextBody>
-                <Title
-                  size="h2"
-                />
-              </TextBody>,
+              <PageHeading
+                isFlush={false}
+              />,
+              <SubHeading
+                isFlush={false}
+              />,
               <TextBody />,
               <TextBody />,
               <ButtonGroup
@@ -278,23 +262,11 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "function",
               "props": Object {
-                "children": <Title
-                  size="h1"
-                />,
+                "children": undefined,
+                "isFlush": false,
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "function",
-                "props": Object {
-                  "children": undefined,
-                  "size": "h1",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
+              "rendered": null,
               "type": [Function],
             },
             Object {
@@ -302,23 +274,11 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "function",
               "props": Object {
-                "children": <Title
-                  size="h2"
-                />,
+                "children": undefined,
+                "isFlush": false,
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "function",
-                "props": Object {
-                  "children": undefined,
-                  "size": "h2",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
+              "rendered": null,
               "type": [Function],
             },
             Object {
@@ -436,16 +396,12 @@ ShallowWrapper {
                   onClick={[Function]}
                 />
               </TextBody>
-              <TextBody>
-                <Title
-                  size="h1"
-                />
-              </TextBody>
-              <TextBody>
-                <Title
-                  size="h2"
-                />
-              </TextBody>
+              <PageHeading
+                isFlush={false}
+              />
+              <SubHeading
+                isFlush={false}
+              />
               <TextBody />
               <TextBody />
               <ButtonGroup
@@ -493,16 +449,12 @@ ShallowWrapper {
                   onClick={[Function]}
                 />
               </TextBody>
-              <TextBody>
-                <Title
-                  size="h1"
-                />
-              </TextBody>
-              <TextBody>
-                <Title
-                  size="h2"
-                />
-              </TextBody>
+              <PageHeading
+                isFlush={false}
+              />
+              <SubHeading
+                isFlush={false}
+              />
               <TextBody />
               <TextBody />
               <ButtonGroup
@@ -547,16 +499,12 @@ ShallowWrapper {
                   onClick={[Function]}
                 />
               </TextBody>
-              <TextBody>
-                <Title
-                  size="h1"
-                />
-              </TextBody>
-              <TextBody>
-                <Title
-                  size="h2"
-                />
-              </TextBody>
+              <PageHeading
+                isFlush={false}
+              />
+              <SubHeading
+                isFlush={false}
+              />
               <TextBody />
               <TextBody />
               <ButtonGroup
@@ -598,16 +546,12 @@ ShallowWrapper {
                     onClick={[Function]}
                   />
                 </TextBody>,
-                <TextBody>
-                  <Title
-                    size="h1"
-                  />
-                </TextBody>,
-                <TextBody>
-                  <Title
-                    size="h2"
-                  />
-                </TextBody>,
+                <PageHeading
+                  isFlush={false}
+                />,
+                <SubHeading
+                  isFlush={false}
+                />,
                 <TextBody />,
                 <TextBody />,
                 <ButtonGroup
@@ -668,23 +612,11 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "function",
                 "props": Object {
-                  "children": <Title
-                    size="h1"
-                  />,
+                  "children": undefined,
+                  "isFlush": false,
                 },
                 "ref": null,
-                "rendered": Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "function",
-                  "props": Object {
-                    "children": undefined,
-                    "size": "h1",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": [Function],
-                },
+                "rendered": null,
                 "type": [Function],
               },
               Object {
@@ -692,23 +624,11 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "function",
                 "props": Object {
-                  "children": <Title
-                    size="h2"
-                  />,
+                  "children": undefined,
+                  "isFlush": false,
                 },
                 "ref": null,
-                "rendered": Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "function",
-                  "props": Object {
-                    "children": undefined,
-                    "size": "h2",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": [Function],
-                },
+                "rendered": null,
                 "type": [Function],
               },
               Object {
