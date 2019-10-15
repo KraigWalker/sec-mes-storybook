@@ -139,7 +139,7 @@ export class SecureMessageList extends React.Component {
                         {messages.length === 0
                             ? this.renderNoMessagesText(messagesFetching)
                             : this.showMessages()}
-                        {this.state.showMoreLimit < messages.length
+                        {this.state.currentMessageLimit < messages.length
                         && <Button display="primary" onClick={this.showMoreClicked}>{content.showMore}</Button>}
                         {this.state.showThatsAllMessage && this.renderThatsAllText()}
                     </TextBody>
