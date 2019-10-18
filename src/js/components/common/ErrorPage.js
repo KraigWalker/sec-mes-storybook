@@ -12,6 +12,7 @@ import { PageHeading, SubHeading } from 'web-ui-components/lib/typography/headin
 import { withBreakpoints } from "./hoc/WithBreakpoint";
 import { compose } from "redux";
 import { MessageSelectors } from '../../reducers/index';
+import { getPaddingProps, getRowMarginProps } from "../../utils/GeneralUtils";
 
 export class ErrorPage extends React.Component {
 
@@ -33,18 +34,10 @@ export class ErrorPage extends React.Component {
     render() {
         const { fetching, containerSize, noPadding} = this.props;
         const { content } = this.props.location;
-        
-		let paddingProps = null;
-		if (noPadding)
-		{
-			paddingProps = {
-				className: "u-padding-0",
-			}
-        }
 
         return (<LoadingLocalTakeover show={fetching} title="loading.." >
-            <Container {...paddingProps} size={containerSize}>
-                <Row>
+            <Container {...getPaddingProps(noPadding)} size={containerSize}>
+                <Row {...getRowMarginProps(noPadding)}>
                     <Card>
                         <TextBody>
                             <BackButton onClick={this.handleBackButton} label={content.backToAccounts}/>

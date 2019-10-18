@@ -18,6 +18,7 @@ import PropTypes from 'prop-types';
 import { LoadingLocalTakeover } from 'web-ui-components/lib/organisms/takeovers';
 import { withBreakpoints } from "../components/common/hoc/WithBreakpoint";
 import { maskCardDetails } from "../bl/SecureMessageBL";
+import { getPaddingProps, getRowMarginProps } from "../utils/GeneralUtils"
 
 const CHARS_LEFT_DISPLAY_THRESHOLD = 300;
 const MAX_CHARS = 3000;
@@ -303,19 +304,10 @@ export class SecureMessageForm extends React.Component {
 			showAccountInvalid
 	 	} = this.state;
 
-
-		let paddingProps = null;
-		if (noPadding)
-		{
-			paddingProps = {
-				className: "u-padding-0",
-			}
-		}
-		
 		return (
-				<Container {...paddingProps} size={containerSize}>
+				<Container {...getPaddingProps(noPadding)} size={containerSize}>
 			<LoadingLocalTakeover show={isUpdatingMessage || isSavingDraft} title={isUpdatingMessage ? content.sendingMessage: content.savingMessage}>
-				<Row>
+				<Row {...getRowMarginProps(noPadding)}>
 						<Card>
 							<SubHeading>{title}</SubHeading>
 							<TextBody>
