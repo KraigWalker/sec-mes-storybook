@@ -18,6 +18,7 @@ import { getSuccessModalMessage } from "../constants/ModalConstants";
 import { MessageSelectors } from '../reducers';
 import WithRetry from './common/WithRetry';
 import { popupState } from '../actions/AppActions';
+import { getPaddingProps, getRowMarginProps } from "../utils/GeneralUtils"
 
 export class LandingPage extends React.PureComponent {
     componentDidMount() {
@@ -48,15 +49,10 @@ export class LandingPage extends React.PureComponent {
     render() {
         const {isWebView, readOnly, noPadding, containerSize} = this.props;
         const showBackLink = (!(readOnly || isWebView));
-        let paddingProps = null;
-        if (noPadding) {
-            paddingProps = {
-                className: "u-padding-0",
-            }
-        }
+
         return (
-            <Container {...paddingProps} size={containerSize}>
-                <Row>
+            <Container {...getPaddingProps(noPadding)} size={containerSize}>
+                <Row {...getRowMarginProps(noPadding)}>
                     <Card>
                         {showBackLink && <TextBody className="c-step-header__crumbs">
                             <BackButton onClick={this.handleBackClick} label={this.props.content.backToAccounts}/>

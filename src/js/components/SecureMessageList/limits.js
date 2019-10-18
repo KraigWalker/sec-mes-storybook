@@ -1,5 +1,6 @@
 export const LIMITS = [
     20,
+    150,
     500
 ]
 

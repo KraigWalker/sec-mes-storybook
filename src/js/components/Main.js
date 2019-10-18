@@ -5,6 +5,7 @@ import {TabCardBlock, TabCard} from "web-ui-components/lib/navigation/tab-cards"
 import {utils} from "document-management-web-ui";
 import {PageLayout, Container} from 'web-ui-components/lib/global/layout';
 import { withBreakpoints } from "../components/common/hoc/WithBreakpoint";
+import { preventWindowZoom } from "../utils/GeneralUtils";
 
 export class Main extends React.Component {
     constructor(props) {
@@ -23,6 +24,12 @@ export class Main extends React.Component {
         const {history, session} = this.props;
         history.push(`/my-documents/${session.bank_id}`);
         window.top.postMessage("goToMyDocuments", "*");
+    }
+
+    componentDidMount() {
+        if (this.props.isWebView) {
+            preventWindowZoom();
+        }
     }
 
     render() {
