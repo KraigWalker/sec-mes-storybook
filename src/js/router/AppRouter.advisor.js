@@ -66,8 +66,8 @@ class AppRouter extends React.Component {
 
                     <Switch>
                         <Route 
-                                path={`/my-documents/:bankId(CB|YB|DYB)/:documentId`}
-                                component={DocumentView}
+                            path={`/my-documents/:bankId(CB|YB)/:documentId`}
+                            component={DocumentView}
                         />
                         <RouteWithLayout
                             path={`/my-documents/`}
