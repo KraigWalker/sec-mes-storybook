@@ -97,7 +97,7 @@ class AppRouter extends React.Component {
                     <AccessibilityMessage/>
                     <Switch>
                         <RouteWithLayout
-                            path={`/my-documents/:bankId(CB|YB|DYB)`}
+                            path={`/my-documents/:bankId(CB|YB)`}
                             exact
                             Component={ListView}
                             session={this.props.session}
@@ -105,7 +105,7 @@ class AppRouter extends React.Component {
                             isDocumentLibraryEnabled={isDocumentLibraryEnabled}
                         />
                         <Route 
-                            path={`/my-documents/:bankId(CB|YB|DYB)/:documentId`}
+                            path={`/my-documents/:bankId(CB|YB)/:documentId`}
                             exact
                             render= {props => <DocumentView {...props} session={this.props.session} />}
                         />
