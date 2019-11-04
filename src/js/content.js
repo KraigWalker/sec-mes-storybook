@@ -93,7 +93,7 @@ const content = {
 		charLeft: 'characters left',
 		sorryHeader: "Something's gone wrong",
 		tryAgain: "Hmm. Looks like there's been a technical problem. Why not give it another go?",
-		getInTouch: 'Still not working? Try another way to get in touch with the team at B.',
+		getInTouch: 'Still not working? Try another way to get in touch with us.',
 		retry: 'Try again',
 		leavePage: 'Leave page',
 		accError: "Oops. You'll have to choose what account your message is about. General enquiry? Just choose ‘No specific account'.",
