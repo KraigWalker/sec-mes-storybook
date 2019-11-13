@@ -99,7 +99,7 @@ const content = {
 		accError: "Oops. You'll have to choose what account your message is about. General enquiry? Just choose ‘No specific account'.",
 		subError: "Oops. You'll have to choose a subject for your secure message. ",
 		newSecureMessage: 'New secure message',
-		thatsallTextInbox: "That's all of them. Any new messages the we send you will show at the top of your inbox. Remember that only messages from the last 3 years are shown here.",
+		thatsallTextInbox: "That's all of them. Any new messages we send you will show at the top of your inbox. Remember that only messages from the last 3 years are shown here.",
 		thatsallTextDraft: "That's all of them. Any new messages you save will show at the top of your drafts. Remember that only messages from the last 3 years are shown here.",
 		thatsallTextSend: "That's all of them. Any new messages you send will show at the top of your sent items. Remember that only messages from the last 3 years are shown here.",
 		thatsallTextArchived: "That's all of them. Any new messages you archive will show at the top of your archived items. Remember that only messages from the last 3 years are shown here.",
