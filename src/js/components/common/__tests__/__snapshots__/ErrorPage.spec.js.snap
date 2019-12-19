@@ -40,8 +40,7 @@ ShallowWrapper {
             bordered={false}
           >
             <TextBody>
-              <BackButton
-                disabled={false}
+              <WithTheme(BackButton)
                 label="Back to accounts"
                 onClick={[Function]}
               />
@@ -57,24 +56,18 @@ ShallowWrapper {
             <ButtonGroup
               alignment="left"
             >
-              <Button
-                disabled={false}
+              <WithTheme(Button)
                 display="secondary"
-                isLoading={false}
                 onClick={[Function]}
-                size="md"
               >
                 Back
-              </Button>
-              <Button
-                disabled={false}
+              </WithTheme(Button)>
+              <WithTheme(Button)
                 display="primary"
-                isLoading={false}
                 onClick={[Function]}
-                size="md"
               >
                 Retry
-              </Button>
+              </WithTheme(Button)>
             </ButtonGroup>
           </Card>
         </Row>
@@ -93,8 +86,7 @@ ShallowWrapper {
             bordered={false}
           >
             <TextBody>
-              <BackButton
-                disabled={false}
+              <WithTheme(BackButton)
                 label="Back to accounts"
                 onClick={[Function]}
               />
@@ -110,24 +102,18 @@ ShallowWrapper {
             <ButtonGroup
               alignment="left"
             >
-              <Button
-                disabled={false}
+              <WithTheme(Button)
                 display="secondary"
-                isLoading={false}
                 onClick={[Function]}
-                size="md"
               >
                 Back
-              </Button>
-              <Button
-                disabled={false}
+              </WithTheme(Button)>
+              <WithTheme(Button)
                 display="primary"
-                isLoading={false}
                 onClick={[Function]}
-                size="md"
               >
                 Retry
-              </Button>
+              </WithTheme(Button)>
             </ButtonGroup>
           </Card>
         </Row>,
@@ -143,8 +129,7 @@ ShallowWrapper {
             bordered={false}
           >
             <TextBody>
-              <BackButton
-                disabled={false}
+              <WithTheme(BackButton)
                 label="Back to accounts"
                 onClick={[Function]}
               />
@@ -160,24 +145,18 @@ ShallowWrapper {
             <ButtonGroup
               alignment="left"
             >
-              <Button
-                disabled={false}
+              <WithTheme(Button)
                 display="secondary"
-                isLoading={false}
                 onClick={[Function]}
-                size="md"
               >
                 Back
-              </Button>
-              <Button
-                disabled={false}
+              </WithTheme(Button)>
+              <WithTheme(Button)
                 display="primary"
-                isLoading={false}
                 onClick={[Function]}
-                size="md"
               >
                 Retry
-              </Button>
+              </WithTheme(Button)>
             </ButtonGroup>
           </Card>,
         },
@@ -190,8 +169,7 @@ ShallowWrapper {
             "bordered": false,
             "children": Array [
               <TextBody>
-                <BackButton
-                  disabled={false}
+                <WithTheme(BackButton)
                   label="Back to accounts"
                   onClick={[Function]}
                 />
@@ -207,24 +185,18 @@ ShallowWrapper {
               <ButtonGroup
                 alignment="left"
               >
-                <Button
-                  disabled={false}
+                <WithTheme(Button)
                   display="secondary"
-                  isLoading={false}
                   onClick={[Function]}
-                  size="md"
                 >
                   Back
-                </Button>
-                <Button
-                  disabled={false}
+                </WithTheme(Button)>
+                <WithTheme(Button)
                   display="primary"
-                  isLoading={false}
                   onClick={[Function]}
-                  size="md"
                 >
                   Retry
-                </Button>
+                </WithTheme(Button)>
               </ButtonGroup>,
             ],
           },
@@ -235,8 +207,7 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "function",
               "props": Object {
-                "children": <BackButton
-                  disabled={false}
+                "children": <WithTheme(BackButton)
                   label="Back to accounts"
                   onClick={[Function]}
                 />,
@@ -245,9 +216,8 @@ ShallowWrapper {
               "rendered": Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
-                  "disabled": false,
                   "label": "Back to accounts",
                   "onClick": [Function],
                 },
@@ -310,24 +280,18 @@ ShallowWrapper {
               "props": Object {
                 "alignment": "left",
                 "children": Array [
-                  <Button
-                    disabled={false}
+                  <WithTheme(Button)
                     display="secondary"
-                    isLoading={false}
                     onClick={[Function]}
-                    size="md"
                   >
                     Back
-                  </Button>,
-                  <Button
-                    disabled={false}
+                  </WithTheme(Button)>,
+                  <WithTheme(Button)
                     display="primary"
-                    isLoading={false}
                     onClick={[Function]}
-                    size="md"
                   >
                     Retry
-                  </Button>,
+                  </WithTheme(Button)>,
                 ],
               },
               "ref": null,
@@ -338,11 +302,8 @@ ShallowWrapper {
                   "nodeType": "class",
                   "props": Object {
                     "children": "Back",
-                    "disabled": false,
                     "display": "secondary",
-                    "isLoading": false,
                     "onClick": [Function],
-                    "size": "md",
                   },
                   "ref": null,
                   "rendered": "Back",
@@ -354,11 +315,8 @@ ShallowWrapper {
                   "nodeType": "class",
                   "props": Object {
                     "children": "Retry",
-                    "disabled": false,
                     "display": "primary",
-                    "isLoading": false,
                     "onClick": [Function],
-                    "size": "md",
                   },
                   "ref": null,
                   "rendered": "Retry",
@@ -390,8 +348,7 @@ ShallowWrapper {
               bordered={false}
             >
               <TextBody>
-                <BackButton
-                  disabled={false}
+                <WithTheme(BackButton)
                   label="Back to accounts"
                   onClick={[Function]}
                 />
@@ -407,24 +364,18 @@ ShallowWrapper {
               <ButtonGroup
                 alignment="left"
               >
-                <Button
-                  disabled={false}
+                <WithTheme(Button)
                   display="secondary"
-                  isLoading={false}
                   onClick={[Function]}
-                  size="md"
                 >
                   Back
-                </Button>
-                <Button
-                  disabled={false}
+                </WithTheme(Button)>
+                <WithTheme(Button)
                   display="primary"
-                  isLoading={false}
                   onClick={[Function]}
-                  size="md"
                 >
                   Retry
-                </Button>
+                </WithTheme(Button)>
               </ButtonGroup>
             </Card>
           </Row>
@@ -443,8 +394,7 @@ ShallowWrapper {
               bordered={false}
             >
               <TextBody>
-                <BackButton
-                  disabled={false}
+                <WithTheme(BackButton)
                   label="Back to accounts"
                   onClick={[Function]}
                 />
@@ -460,24 +410,18 @@ ShallowWrapper {
               <ButtonGroup
                 alignment="left"
               >
-                <Button
-                  disabled={false}
+                <WithTheme(Button)
                   display="secondary"
-                  isLoading={false}
                   onClick={[Function]}
-                  size="md"
                 >
                   Back
-                </Button>
-                <Button
-                  disabled={false}
+                </WithTheme(Button)>
+                <WithTheme(Button)
                   display="primary"
-                  isLoading={false}
                   onClick={[Function]}
-                  size="md"
                 >
                   Retry
-                </Button>
+                </WithTheme(Button)>
               </ButtonGroup>
             </Card>
           </Row>,
@@ -493,8 +437,7 @@ ShallowWrapper {
               bordered={false}
             >
               <TextBody>
-                <BackButton
-                  disabled={false}
+                <WithTheme(BackButton)
                   label="Back to accounts"
                   onClick={[Function]}
                 />
@@ -510,24 +453,18 @@ ShallowWrapper {
               <ButtonGroup
                 alignment="left"
               >
-                <Button
-                  disabled={false}
+                <WithTheme(Button)
                   display="secondary"
-                  isLoading={false}
                   onClick={[Function]}
-                  size="md"
                 >
                   Back
-                </Button>
-                <Button
-                  disabled={false}
+                </WithTheme(Button)>
+                <WithTheme(Button)
                   display="primary"
-                  isLoading={false}
                   onClick={[Function]}
-                  size="md"
                 >
                   Retry
-                </Button>
+                </WithTheme(Button)>
               </ButtonGroup>
             </Card>,
           },
@@ -540,8 +477,7 @@ ShallowWrapper {
               "bordered": false,
               "children": Array [
                 <TextBody>
-                  <BackButton
-                    disabled={false}
+                  <WithTheme(BackButton)
                     label="Back to accounts"
                     onClick={[Function]}
                   />
@@ -557,24 +493,18 @@ ShallowWrapper {
                 <ButtonGroup
                   alignment="left"
                 >
-                  <Button
-                    disabled={false}
+                  <WithTheme(Button)
                     display="secondary"
-                    isLoading={false}
                     onClick={[Function]}
-                    size="md"
                   >
                     Back
-                  </Button>
-                  <Button
-                    disabled={false}
+                  </WithTheme(Button)>
+                  <WithTheme(Button)
                     display="primary"
-                    isLoading={false}
                     onClick={[Function]}
-                    size="md"
                   >
                     Retry
-                  </Button>
+                  </WithTheme(Button)>
                 </ButtonGroup>,
               ],
             },
@@ -585,8 +515,7 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "function",
                 "props": Object {
-                  "children": <BackButton
-                    disabled={false}
+                  "children": <WithTheme(BackButton)
                     label="Back to accounts"
                     onClick={[Function]}
                   />,
@@ -595,9 +524,8 @@ ShallowWrapper {
                 "rendered": Object {
                   "instance": null,
                   "key": undefined,
-                  "nodeType": "function",
+                  "nodeType": "class",
                   "props": Object {
-                    "disabled": false,
                     "label": "Back to accounts",
                     "onClick": [Function],
                   },
@@ -660,24 +588,18 @@ ShallowWrapper {
                 "props": Object {
                   "alignment": "left",
                   "children": Array [
-                    <Button
-                      disabled={false}
+                    <WithTheme(Button)
                       display="secondary"
-                      isLoading={false}
                       onClick={[Function]}
-                      size="md"
                     >
                       Back
-                    </Button>,
-                    <Button
-                      disabled={false}
+                    </WithTheme(Button)>,
+                    <WithTheme(Button)
                       display="primary"
-                      isLoading={false}
                       onClick={[Function]}
-                      size="md"
                     >
                       Retry
-                    </Button>,
+                    </WithTheme(Button)>,
                   ],
                 },
                 "ref": null,
@@ -688,11 +610,8 @@ ShallowWrapper {
                     "nodeType": "class",
                     "props": Object {
                       "children": "Back",
-                      "disabled": false,
                       "display": "secondary",
-                      "isLoading": false,
                       "onClick": [Function],
-                      "size": "md",
                     },
                     "ref": null,
                     "rendered": "Back",
@@ -704,11 +623,8 @@ ShallowWrapper {
                     "nodeType": "class",
                     "props": Object {
                       "children": "Retry",
-                      "disabled": false,
                       "display": "primary",
-                      "isLoading": false,
                       "onClick": [Function],
-                      "size": "md",
                     },
                     "ref": null,
                     "rendered": "Retry",
