@@ -16,7 +16,7 @@ describe("SecureMessageList > limits, messagelimits tests", () => {
             const nextLimit = getNextLimit({
                 currentLimit: 20, 
                 messageCount: 21});
-            expect(nextLimit).toBe(500);
+            expect(nextLimit).toBe(150);
         })
 
         it('current limit is 500, but there are more messages', () => {
