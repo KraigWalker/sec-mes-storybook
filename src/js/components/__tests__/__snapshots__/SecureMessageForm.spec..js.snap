@@ -122,29 +122,35 @@ ShallowWrapper {
                 <ButtonGroup
                   alignment="left"
                 >
-                  <WithTheme(Button)
+                  <Button
                     disabled={false}
                     display="secondary"
+                    isLoading={false}
                     name="Back"
                     onClick={[Function]}
+                    size="md"
                     width="flush"
                   >
                     <WithTheme(Icon)
                       iconType="ChevronLeftLarge"
                     />
                     Back
-                  </WithTheme(Button)>
-                  <WithTheme(Button)
-                    disabled={undefined}
+                  </Button>
+                  <Button
+                    disabled={false}
                     display="secondary"
+                    isLoading={false}
                     name="Save Draft"
                     onClick={[Function]}
+                    size="md"
                   />
-                  <WithTheme(Button)
-                    disabled={undefined}
+                  <Button
+                    disabled={false}
                     display="primary"
+                    isLoading={false}
                     name="Send"
                     onClick={[Function]}
+                    size="md"
                   />
                 </ButtonGroup>
               </TextBody>
@@ -253,29 +259,35 @@ ShallowWrapper {
                 <ButtonGroup
                   alignment="left"
                 >
-                  <WithTheme(Button)
+                  <Button
                     disabled={false}
                     display="secondary"
+                    isLoading={false}
                     name="Back"
                     onClick={[Function]}
+                    size="md"
                     width="flush"
                   >
                     <WithTheme(Icon)
                       iconType="ChevronLeftLarge"
                     />
                     Back
-                  </WithTheme(Button)>
-                  <WithTheme(Button)
-                    disabled={undefined}
+                  </Button>
+                  <Button
+                    disabled={false}
                     display="secondary"
+                    isLoading={false}
                     name="Save Draft"
                     onClick={[Function]}
+                    size="md"
                   />
-                  <WithTheme(Button)
-                    disabled={undefined}
+                  <Button
+                    disabled={false}
                     display="primary"
+                    isLoading={false}
                     name="Send"
                     onClick={[Function]}
+                    size="md"
                   />
                 </ButtonGroup>
               </TextBody>
@@ -375,29 +387,35 @@ ShallowWrapper {
                 <ButtonGroup
                   alignment="left"
                 >
-                  <WithTheme(Button)
+                  <Button
                     disabled={false}
                     display="secondary"
+                    isLoading={false}
                     name="Back"
                     onClick={[Function]}
+                    size="md"
                     width="flush"
                   >
                     <WithTheme(Icon)
                       iconType="ChevronLeftLarge"
                     />
                     Back
-                  </WithTheme(Button)>
-                  <WithTheme(Button)
-                    disabled={undefined}
+                  </Button>
+                  <Button
+                    disabled={false}
                     display="secondary"
+                    isLoading={false}
                     name="Save Draft"
                     onClick={[Function]}
+                    size="md"
                   />
-                  <WithTheme(Button)
-                    disabled={undefined}
+                  <Button
+                    disabled={false}
                     display="primary"
+                    isLoading={false}
                     name="Send"
                     onClick={[Function]}
+                    size="md"
                   />
                 </ButtonGroup>
               </TextBody>
@@ -493,29 +511,35 @@ ShallowWrapper {
                   <ButtonGroup
                     alignment="left"
                   >
-                    <WithTheme(Button)
+                    <Button
                       disabled={false}
                       display="secondary"
+                      isLoading={false}
                       name="Back"
                       onClick={[Function]}
+                      size="md"
                       width="flush"
                     >
                       <WithTheme(Icon)
                         iconType="ChevronLeftLarge"
                       />
                       Back
-                    </WithTheme(Button)>
-                    <WithTheme(Button)
-                      disabled={undefined}
+                    </Button>
+                    <Button
+                      disabled={false}
                       display="secondary"
+                      isLoading={false}
                       name="Save Draft"
                       onClick={[Function]}
+                      size="md"
                     />
-                    <WithTheme(Button)
-                      disabled={undefined}
+                    <Button
+                      disabled={false}
                       display="primary"
+                      isLoading={false}
                       name="Send"
                       onClick={[Function]}
+                      size="md"
                     />
                   </ButtonGroup>
                 </TextBody>,
@@ -753,29 +777,35 @@ ShallowWrapper {
                   "children": <ButtonGroup
                     alignment="left"
                   >
-                    <WithTheme(Button)
+                    <Button
                       disabled={false}
                       display="secondary"
+                      isLoading={false}
                       name="Back"
                       onClick={[Function]}
+                      size="md"
                       width="flush"
                     >
                       <WithTheme(Icon)
                         iconType="ChevronLeftLarge"
                       />
                       Back
-                    </WithTheme(Button)>
-                    <WithTheme(Button)
-                      disabled={undefined}
+                    </Button>
+                    <Button
+                      disabled={false}
                       display="secondary"
+                      isLoading={false}
                       name="Save Draft"
                       onClick={[Function]}
+                      size="md"
                     />
-                    <WithTheme(Button)
-                      disabled={undefined}
+                    <Button
+                      disabled={false}
                       display="primary"
+                      isLoading={false}
                       name="Send"
                       onClick={[Function]}
+                      size="md"
                     />
                   </ButtonGroup>,
                 },
@@ -787,29 +817,35 @@ ShallowWrapper {
                   "props": Object {
                     "alignment": "left",
                     "children": Array [
-                      <WithTheme(Button)
+                      <Button
                         disabled={false}
                         display="secondary"
+                        isLoading={false}
                         name="Back"
                         onClick={[Function]}
+                        size="md"
                         width="flush"
                       >
                         <WithTheme(Icon)
                           iconType="ChevronLeftLarge"
                         />
                         Back
-                      </WithTheme(Button)>,
-                      <WithTheme(Button)
-                        disabled={undefined}
+                      </Button>,
+                      <Button
+                        disabled={false}
                         display="secondary"
+                        isLoading={false}
                         name="Save Draft"
                         onClick={[Function]}
+                        size="md"
                       />,
-                      <WithTheme(Button)
-                        disabled={undefined}
+                      <Button
+                        disabled={false}
                         display="primary"
+                        isLoading={false}
                         name="Send"
                         onClick={[Function]}
+                        size="md"
                       />,
                     ],
                   },
@@ -828,8 +864,10 @@ ShallowWrapper {
                         ],
                         "disabled": false,
                         "display": "secondary",
+                        "isLoading": false,
                         "name": "Back",
                         "onClick": [Function],
+                        "size": "md",
                         "width": "flush",
                       },
                       "ref": null,
@@ -855,10 +893,12 @@ ShallowWrapper {
                       "nodeType": "class",
                       "props": Object {
                         "children": undefined,
-                        "disabled": undefined,
+                        "disabled": false,
                         "display": "secondary",
+                        "isLoading": false,
                         "name": "Save Draft",
                         "onClick": [Function],
+                        "size": "md",
                       },
                       "ref": null,
                       "rendered": null,
@@ -870,10 +910,12 @@ ShallowWrapper {
                       "nodeType": "class",
                       "props": Object {
                         "children": undefined,
-                        "disabled": undefined,
+                        "disabled": false,
                         "display": "primary",
+                        "isLoading": false,
                         "name": "Send",
                         "onClick": [Function],
+                        "size": "md",
                       },
                       "ref": null,
                       "rendered": null,
@@ -997,29 +1039,35 @@ ShallowWrapper {
                   <ButtonGroup
                     alignment="left"
                   >
-                    <WithTheme(Button)
+                    <Button
                       disabled={false}
                       display="secondary"
+                      isLoading={false}
                       name="Back"
                       onClick={[Function]}
+                      size="md"
                       width="flush"
                     >
                       <WithTheme(Icon)
                         iconType="ChevronLeftLarge"
                       />
                       Back
-                    </WithTheme(Button)>
-                    <WithTheme(Button)
-                      disabled={undefined}
+                    </Button>
+                    <Button
+                      disabled={false}
                       display="secondary"
+                      isLoading={false}
                       name="Save Draft"
                       onClick={[Function]}
+                      size="md"
                     />
-                    <WithTheme(Button)
-                      disabled={undefined}
+                    <Button
+                      disabled={false}
                       display="primary"
+                      isLoading={false}
                       name="Send"
                       onClick={[Function]}
+                      size="md"
                     />
                   </ButtonGroup>
                 </TextBody>
@@ -1128,29 +1176,35 @@ ShallowWrapper {
                   <ButtonGroup
                     alignment="left"
                   >
-                    <WithTheme(Button)
+                    <Button
                       disabled={false}
                       display="secondary"
+                      isLoading={false}
                       name="Back"
                       onClick={[Function]}
+                      size="md"
                       width="flush"
                     >
                       <WithTheme(Icon)
                         iconType="ChevronLeftLarge"
                       />
                       Back
-                    </WithTheme(Button)>
-                    <WithTheme(Button)
-                      disabled={undefined}
+                    </Button>
+                    <Button
+                      disabled={false}
                       display="secondary"
+                      isLoading={false}
                       name="Save Draft"
                       onClick={[Function]}
+                      size="md"
                     />
-                    <WithTheme(Button)
-                      disabled={undefined}
+                    <Button
+                      disabled={false}
                       display="primary"
+                      isLoading={false}
                       name="Send"
                       onClick={[Function]}
+                      size="md"
                     />
                   </ButtonGroup>
                 </TextBody>
@@ -1250,29 +1304,35 @@ ShallowWrapper {
                   <ButtonGroup
                     alignment="left"
                   >
-                    <WithTheme(Button)
+                    <Button
                       disabled={false}
                       display="secondary"
+                      isLoading={false}
                       name="Back"
                       onClick={[Function]}
+                      size="md"
                       width="flush"
                     >
                       <WithTheme(Icon)
                         iconType="ChevronLeftLarge"
                       />
                       Back
-                    </WithTheme(Button)>
-                    <WithTheme(Button)
-                      disabled={undefined}
+                    </Button>
+                    <Button
+                      disabled={false}
                       display="secondary"
+                      isLoading={false}
                       name="Save Draft"
                       onClick={[Function]}
+                      size="md"
                     />
-                    <WithTheme(Button)
-                      disabled={undefined}
+                    <Button
+                      disabled={false}
                       display="primary"
+                      isLoading={false}
                       name="Send"
                       onClick={[Function]}
+                      size="md"
                     />
                   </ButtonGroup>
                 </TextBody>
@@ -1368,29 +1428,35 @@ ShallowWrapper {
                     <ButtonGroup
                       alignment="left"
                     >
-                      <WithTheme(Button)
+                      <Button
                         disabled={false}
                         display="secondary"
+                        isLoading={false}
                         name="Back"
                         onClick={[Function]}
+                        size="md"
                         width="flush"
                       >
                         <WithTheme(Icon)
                           iconType="ChevronLeftLarge"
                         />
                         Back
-                      </WithTheme(Button)>
-                      <WithTheme(Button)
-                        disabled={undefined}
+                      </Button>
+                      <Button
+                        disabled={false}
                         display="secondary"
+                        isLoading={false}
                         name="Save Draft"
                         onClick={[Function]}
+                        size="md"
                       />
-                      <WithTheme(Button)
-                        disabled={undefined}
+                      <Button
+                        disabled={false}
                         display="primary"
+                        isLoading={false}
                         name="Send"
                         onClick={[Function]}
+                        size="md"
                       />
                     </ButtonGroup>
                   </TextBody>,
@@ -1628,29 +1694,35 @@ ShallowWrapper {
                     "children": <ButtonGroup
                       alignment="left"
                     >
-                      <WithTheme(Button)
+                      <Button
                         disabled={false}
                         display="secondary"
+                        isLoading={false}
                         name="Back"
                         onClick={[Function]}
+                        size="md"
                         width="flush"
                       >
                         <WithTheme(Icon)
                           iconType="ChevronLeftLarge"
                         />
                         Back
-                      </WithTheme(Button)>
-                      <WithTheme(Button)
-                        disabled={undefined}
+                      </Button>
+                      <Button
+                        disabled={false}
                         display="secondary"
+                        isLoading={false}
                         name="Save Draft"
                         onClick={[Function]}
+                        size="md"
                       />
-                      <WithTheme(Button)
-                        disabled={undefined}
+                      <Button
+                        disabled={false}
                         display="primary"
+                        isLoading={false}
                         name="Send"
                         onClick={[Function]}
+                        size="md"
                       />
                     </ButtonGroup>,
                   },
@@ -1662,29 +1734,35 @@ ShallowWrapper {
                     "props": Object {
                       "alignment": "left",
                       "children": Array [
-                        <WithTheme(Button)
+                        <Button
                           disabled={false}
                           display="secondary"
+                          isLoading={false}
                           name="Back"
                           onClick={[Function]}
+                          size="md"
                           width="flush"
                         >
                           <WithTheme(Icon)
                             iconType="ChevronLeftLarge"
                           />
                           Back
-                        </WithTheme(Button)>,
-                        <WithTheme(Button)
-                          disabled={undefined}
+                        </Button>,
+                        <Button
+                          disabled={false}
                           display="secondary"
+                          isLoading={false}
                           name="Save Draft"
                           onClick={[Function]}
+                          size="md"
                         />,
-                        <WithTheme(Button)
-                          disabled={undefined}
+                        <Button
+                          disabled={false}
                           display="primary"
+                          isLoading={false}
                           name="Send"
                           onClick={[Function]}
+                          size="md"
                         />,
                       ],
                     },
@@ -1703,8 +1781,10 @@ ShallowWrapper {
                           ],
                           "disabled": false,
                           "display": "secondary",
+                          "isLoading": false,
                           "name": "Back",
                           "onClick": [Function],
+                          "size": "md",
                           "width": "flush",
                         },
                         "ref": null,
@@ -1730,10 +1810,12 @@ ShallowWrapper {
                         "nodeType": "class",
                         "props": Object {
                           "children": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "display": "secondary",
+                          "isLoading": false,
                           "name": "Save Draft",
                           "onClick": [Function],
+                          "size": "md",
                         },
                         "ref": null,
                         "rendered": null,
@@ -1745,10 +1827,12 @@ ShallowWrapper {
                         "nodeType": "class",
                         "props": Object {
                           "children": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "display": "primary",
+                          "isLoading": false,
                           "name": "Send",
                           "onClick": [Function],
+                          "size": "md",
                         },
                         "ref": null,
                         "rendered": null,

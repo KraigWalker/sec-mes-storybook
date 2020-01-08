@@ -57,9 +57,12 @@ ShallowWrapper {
             isFlush={false}
           />
           <TextBody />
-          <WithTheme(Button)
+          <Button
+            disabled={false}
             display="primary"
+            isLoading={false}
             onClick={[Function]}
+            size="md"
           />
           <WithBreakpoints
             activeTab={undefined}
@@ -107,9 +110,12 @@ ShallowWrapper {
             isFlush={false}
           />
           <TextBody />
-          <WithTheme(Button)
+          <Button
+            disabled={false}
             display="primary"
+            isLoading={false}
             onClick={[Function]}
+            size="md"
           />
           <WithBreakpoints
             activeTab={undefined}
@@ -154,9 +160,12 @@ ShallowWrapper {
               isFlush={false}
             />,
             <TextBody />,
-            <WithTheme(Button)
+            <Button
+              disabled={false}
               display="primary"
+              isLoading={false}
               onClick={[Function]}
+              size="md"
             />,
             false,
             <WithBreakpoints
@@ -239,8 +248,11 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "children": undefined,
+              "disabled": false,
               "display": "primary",
+              "isLoading": false,
               "onClick": [Function],
+              "size": "md",
             },
             "ref": null,
             "rendered": null,
@@ -301,9 +313,12 @@ ShallowWrapper {
               isFlush={false}
             />
             <TextBody />
-            <WithTheme(Button)
+            <Button
+              disabled={false}
               display="primary"
+              isLoading={false}
               onClick={[Function]}
+              size="md"
             />
             <WithBreakpoints
               activeTab={undefined}
@@ -351,9 +366,12 @@ ShallowWrapper {
               isFlush={false}
             />
             <TextBody />
-            <WithTheme(Button)
+            <Button
+              disabled={false}
               display="primary"
+              isLoading={false}
               onClick={[Function]}
+              size="md"
             />
             <WithBreakpoints
               activeTab={undefined}
@@ -398,9 +416,12 @@ ShallowWrapper {
                 isFlush={false}
               />,
               <TextBody />,
-              <WithTheme(Button)
+              <Button
+                disabled={false}
                 display="primary"
+                isLoading={false}
                 onClick={[Function]}
+                size="md"
               />,
               false,
               <WithBreakpoints
@@ -483,8 +504,11 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "children": undefined,
+                "disabled": false,
                 "display": "primary",
+                "isLoading": false,
                 "onClick": [Function],
+                "size": "md",
               },
               "ref": null,
               "rendered": null,
