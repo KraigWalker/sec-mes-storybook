@@ -43,10 +43,8 @@ ShallowWrapper {
           xs={24}
         >
           <TextBody>
-            <Select
-              defaultLabelText="Please select"
+            <WithTheme(Select)
               defaultValue={undefined}
-              disabled={false}
               id={undefined}
               onChange={[Function]}
               options={
@@ -73,10 +71,8 @@ ShallowWrapper {
         "nodeType": "function",
         "props": Object {
           "children": <TextBody>
-            <Select
-              defaultLabelText="Please select"
+            <WithTheme(Select)
               defaultValue={undefined}
-              disabled={false}
               id={undefined}
               onChange={[Function]}
               options={
@@ -101,10 +97,8 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "children": <Select
-              defaultLabelText="Please select"
+            "children": <WithTheme(Select)
               defaultValue={undefined}
-              disabled={false}
               id={undefined}
               onChange={[Function]}
               options={
@@ -123,9 +117,7 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
-              "defaultLabelText": "Please select",
               "defaultValue": undefined,
-              "disabled": false,
               "id": undefined,
               "onChange": [Function],
               "options": Array [
@@ -164,10 +156,8 @@ ShallowWrapper {
             xs={24}
           >
             <TextBody>
-              <Select
-                defaultLabelText="Please select"
+              <WithTheme(Select)
                 defaultValue={undefined}
-                disabled={false}
                 id={undefined}
                 onChange={[Function]}
                 options={
@@ -194,10 +184,8 @@ ShallowWrapper {
           "nodeType": "function",
           "props": Object {
             "children": <TextBody>
-              <Select
-                defaultLabelText="Please select"
+              <WithTheme(Select)
                 defaultValue={undefined}
-                disabled={false}
                 id={undefined}
                 onChange={[Function]}
                 options={
@@ -222,10 +210,8 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "function",
             "props": Object {
-              "children": <Select
-                defaultLabelText="Please select"
+              "children": <WithTheme(Select)
                 defaultValue={undefined}
-                disabled={false}
                 id={undefined}
                 onChange={[Function]}
                 options={
@@ -244,9 +230,7 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
-                "defaultLabelText": "Please select",
                 "defaultValue": undefined,
-                "disabled": false,
                 "id": undefined,
                 "onChange": [Function],
                 "options": Array [

@@ -48,8 +48,7 @@ ShallowWrapper {
           <TextBody
             className="c-step-header__crumbs"
           >
-            <BackButton
-              disabled={false}
+            <WithTheme(BackButton)
               label="Back to accounts"
               onClick={[Function]}
             />
@@ -58,12 +57,9 @@ ShallowWrapper {
             isFlush={false}
           />
           <TextBody />
-          <Button
-            disabled={false}
+          <WithTheme(Button)
             display="primary"
-            isLoading={false}
             onClick={[Function]}
-            size="md"
           />
           <WithBreakpoints
             activeTab={undefined}
@@ -102,8 +98,7 @@ ShallowWrapper {
           <TextBody
             className="c-step-header__crumbs"
           >
-            <BackButton
-              disabled={false}
+            <WithTheme(BackButton)
               label="Back to accounts"
               onClick={[Function]}
             />
@@ -112,12 +107,9 @@ ShallowWrapper {
             isFlush={false}
           />
           <TextBody />
-          <Button
-            disabled={false}
+          <WithTheme(Button)
             display="primary"
-            isLoading={false}
             onClick={[Function]}
-            size="md"
           />
           <WithBreakpoints
             activeTab={undefined}
@@ -153,8 +145,7 @@ ShallowWrapper {
             <TextBody
               className="c-step-header__crumbs"
             >
-              <BackButton
-                disabled={false}
+              <WithTheme(BackButton)
                 label="Back to accounts"
                 onClick={[Function]}
               />
@@ -163,12 +154,9 @@ ShallowWrapper {
               isFlush={false}
             />,
             <TextBody />,
-            <Button
-              disabled={false}
+            <WithTheme(Button)
               display="primary"
-              isLoading={false}
               onClick={[Function]}
-              size="md"
             />,
             false,
             <WithBreakpoints
@@ -201,8 +189,7 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "function",
             "props": Object {
-              "children": <BackButton
-                disabled={false}
+              "children": <WithTheme(BackButton)
                 label="Back to accounts"
                 onClick={[Function]}
               />,
@@ -212,9 +199,8 @@ ShallowWrapper {
             "rendered": Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "function",
+              "nodeType": "class",
               "props": Object {
-                "disabled": false,
                 "label": "Back to accounts",
                 "onClick": [Function],
               },
@@ -253,11 +239,8 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "children": undefined,
-              "disabled": false,
               "display": "primary",
-              "isLoading": false,
               "onClick": [Function],
-              "size": "md",
             },
             "ref": null,
             "rendered": null,
@@ -309,8 +292,7 @@ ShallowWrapper {
             <TextBody
               className="c-step-header__crumbs"
             >
-              <BackButton
-                disabled={false}
+              <WithTheme(BackButton)
                 label="Back to accounts"
                 onClick={[Function]}
               />
@@ -319,12 +301,9 @@ ShallowWrapper {
               isFlush={false}
             />
             <TextBody />
-            <Button
-              disabled={false}
+            <WithTheme(Button)
               display="primary"
-              isLoading={false}
               onClick={[Function]}
-              size="md"
             />
             <WithBreakpoints
               activeTab={undefined}
@@ -363,8 +342,7 @@ ShallowWrapper {
             <TextBody
               className="c-step-header__crumbs"
             >
-              <BackButton
-                disabled={false}
+              <WithTheme(BackButton)
                 label="Back to accounts"
                 onClick={[Function]}
               />
@@ -373,12 +351,9 @@ ShallowWrapper {
               isFlush={false}
             />
             <TextBody />
-            <Button
-              disabled={false}
+            <WithTheme(Button)
               display="primary"
-              isLoading={false}
               onClick={[Function]}
-              size="md"
             />
             <WithBreakpoints
               activeTab={undefined}
@@ -414,8 +389,7 @@ ShallowWrapper {
               <TextBody
                 className="c-step-header__crumbs"
               >
-                <BackButton
-                  disabled={false}
+                <WithTheme(BackButton)
                   label="Back to accounts"
                   onClick={[Function]}
                 />
@@ -424,12 +398,9 @@ ShallowWrapper {
                 isFlush={false}
               />,
               <TextBody />,
-              <Button
-                disabled={false}
+              <WithTheme(Button)
                 display="primary"
-                isLoading={false}
                 onClick={[Function]}
-                size="md"
               />,
               false,
               <WithBreakpoints
@@ -462,8 +433,7 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "function",
               "props": Object {
-                "children": <BackButton
-                  disabled={false}
+                "children": <WithTheme(BackButton)
                   label="Back to accounts"
                   onClick={[Function]}
                 />,
@@ -473,9 +443,8 @@ ShallowWrapper {
               "rendered": Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
-                  "disabled": false,
                   "label": "Back to accounts",
                   "onClick": [Function],
                 },
@@ -514,11 +483,8 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "children": undefined,
-                "disabled": false,
                 "display": "primary",
-                "isLoading": false,
                 "onClick": [Function],
-                "size": "md",
               },
               "ref": null,
               "rendered": null,
