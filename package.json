@@ -95,6 +95,13 @@
     "webpack-cli": "3.1.2",
     "webpack-dev-server": "3.1.14"
   },
+  "platformDependencies": [
+    "com.bank.apigateway:api-gateway:+",
+    "com.bank.opplatform:cybservices-url:+",
+    "com.bank.ms:base-microservice-bom:+",
+    "com.bank.ms:ib-web-https-certs:+",
+    "com.bank.ms:api-gateway-vars:+"
+  ],
   "scripts": {
     "nocss": "cross-env brand= webpack --config ./dev.config.js",
     "prod": "webpack --config ./prod.config.js",
@@ -105,6 +112,7 @@
     "start:android": "webpack-dev-server --config ./dev.config.js --env.APP_CONTEXT=android",
     "dev": "webpack --config ./dev.config.js",
     "test": "jest",
+    "deploy": "deployist",
     "build": "npm run prod && npm run release",
     "build:lib": "rollup -c",
     "release": "./scripts/release.sh",

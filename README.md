@@ -64,8 +64,8 @@ In order to test locally you can use the document-management-web-ui library stub
 
 ```javascript
 {
-    "apiBaseUrl": "http://localhost:8888/ibapi/v2",
-    "apiBaseUrl2": "http://localhost:8888/ibapi/v2"
+    "libertyBaseApiUrl": "http://localhost:8888/ibapi/v2",
+    "paasBaseApiUrl": "http://localhost:8888/ibapi/v2"
 }
 
 ```

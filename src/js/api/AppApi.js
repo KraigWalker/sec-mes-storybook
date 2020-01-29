@@ -27,7 +27,7 @@ class AppApi {
   fetchSecureMessages(success, error) {
     this.apiUtils.makeRequest(
       {
-        url: `${this.config.apiBaseUrl2}${_getMessageURLEndpoint}`,
+        url: `${this.config.paasBaseApiUrl}${_getMessageURLEndpoint}`,
         method: "GET",
         apiVersion: "1.2.0"
       },
@@ -39,7 +39,7 @@ class AppApi {
   getSubjects(success, error) {
     this.apiUtils.makeRequest(
       {
-        url: `${this.config.apiBaseUrl2}${_getMessageSubjectsURL}`,
+        url: `${this.config.paasBaseApiUrl}${_getMessageSubjectsURL}`,
         method: "GET",
         apiVersion: "1.2.0"
       },
@@ -51,7 +51,7 @@ class AppApi {
   getAccounts(success, error) {
     this.apiUtils.makeRequest(
       {
-        url: `${this.config.apiBaseUrl2}${_getAccountsURL}`,
+        url: `${this.config.paasBaseApiUrl}${_getAccountsURL}`,
         method: "GET",
         apiVersion: "0.8.0"
       },
@@ -68,7 +68,7 @@ class AppApi {
     error}) {
 
     if (!url) {
-      url = `${this.config.apiBaseUrl2}${_getMessageURLEndpoint}`;
+      url = `${this.config.paasBaseApiUrl}${_getMessageURLEndpoint}`;
     }
     this.apiUtils.makeRequest(
       {
@@ -106,7 +106,7 @@ class AppApi {
     success, 
     error
   }) {
-    const updateUrl = `${this.config.apiBaseUrl2}${_sendMessageURL}`;
+    const updateUrl = `${this.config.paasBaseApiUrl}${_sendMessageURL}`;
 	  const url = updateUrl.replace("{message_id}", requestData.id);
     const reqData = updateExistingMessage({
       data: requestData, 

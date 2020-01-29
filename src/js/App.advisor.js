@@ -25,8 +25,8 @@ export const App = ({ config }) => {
     };
 
     const envConfig = {
-        apiBaseUrl: config.bpiApiUrl,
-        apiBaseUrl2: config.ibApiUrl + "/ibapi/v2"
+        libertyBaseApiUrl: config.bpiApiUrl,
+        paasBaseApiUrl: config.ibApiUrl + "/ibapi/v2"
     }
 
     const staffHeaders = getStaffHeaders(session);
@@ -35,7 +35,7 @@ export const App = ({ config }) => {
 
     const deps = {
         native: dependencies.native,
-        api: new dependencies.InternalApi(clientContext, session, {  apiBaseUrl: envConfig.apiBaseUrl2}),
+        api: new dependencies.InternalApi(clientContext, session, {  libertyBaseApiUrl: envConfig.paasBaseApiUrl}),
         secureMessagesApi: new AppApi(envConfig, clientContext, session, apiUtils )
     }
 

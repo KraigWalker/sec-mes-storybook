@@ -42,8 +42,8 @@ module.exports = {
                 to: "images"
             },
             {
-                from: "_config",
-                to: "_config"
+                from: "config",
+                to: "config"
             }
         ]),
         new HtmlWebpackPlugin({

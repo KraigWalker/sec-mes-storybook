@@ -10,12 +10,12 @@ const composeEnhancers = (process.env.NODE_ENV !== 'production' && window.__REDU
 const middleware = (session, clientContext, config, dependencies = {
     native: docDependencies.native,
     api: new docDependencies.Api(clientContext, session, {
-        apiBaseUrl: config.apiBaseUrl2
+        libertyBaseApiUrl: config.paasBaseApiUrl
     }), // documentManagmentApi
     secureMessagesApi: new AppApi(config, clientContext, session)
 }) => {
     return applyMiddleware(
-        buildMiddleware(clientContext, session, { apiBaseUrl: config.apiBaseUrl2 }, dependencies)
+        buildMiddleware(clientContext, session, { libertyBaseApiUrl: config.paasBaseApiUrl }, dependencies)
     );
 };
 

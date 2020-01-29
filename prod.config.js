@@ -15,7 +15,7 @@ module.exports = {
 	entry: [...JSEntry],
 	mode: "production",
 	output: {
-	  path: __dirname + "/src/compiled",
+	  path: __dirname + "/build",
 	  filename: "[name].bundle.js",
 	  publicPath: ""
 	},
@@ -37,8 +37,8 @@ module.exports = {
 		  to: "images"
 		},
 		{
-		  from: "_config",
-		  to: "_config"
+		  from: "config",
+		  to: "config"
 		}
 	  ]),
 	  new HtmlWebpackPlugin({
