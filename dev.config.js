@@ -78,9 +78,9 @@ module.exports = (env) => {
                     to: "images"
                 },
                 {
-                    from: "config",
-                    to: "config"
-                }
+                    from: "dev/config.json",
+                    to: "config.json"
+                },
             ]),
             new HtmlWebpackPlugin({
                 template: "src/index.html",

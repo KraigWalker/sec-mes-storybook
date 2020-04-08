@@ -6,5 +6,6 @@ src/compiled/
 src/js/components/.DS_Store
 coverage/
 /lib
+/build
 dev/advisor/compiled/**/*
 dev/advisor/index.html
