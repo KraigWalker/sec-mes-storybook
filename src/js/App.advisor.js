@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from "react-redux";
 import AppRouter from './router/AppRouter.advisor';
-import { dependencies } from "document-management-web-ui";
+import { dependencies } from "document-management-lib";
 
 import createStore from './stores/AppStore';
 import { WebUIThemeProvider } from "web-ui-components/lib/utilities/themes";

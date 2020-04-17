@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListViewContainer, PreferenceCardContainer } from 'document-management-web-ui';
+import { ListViewContainer, PreferenceCardContainer } from 'document-management-lib';
 import {Container, Row} from "web-ui-components/lib/global/layout";
 import { withBreakpoints } from "../components/common/hoc/WithBreakpoint";
 import { getPaddingProps, getRowMarginProps } from "../utils/GeneralUtils"

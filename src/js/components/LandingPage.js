@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {utils} from "document-management-web-ui";
+import {utils} from "document-management-lib";
 import StringConstants from "../constants/StringsConstants";
 import SecureMessageTabs from './SecureMessageTabs';
 import {SecureMessageBL} from '../bl/SecureMessageBL'

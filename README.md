@@ -58,7 +58,7 @@ For secure messages to be used in MEO you need to deploy it as library to nexus 
 
 ## Local testing
 
-In order to test locally you can use the document-management-web-ui library stubs. This will provide stub responses for both secure messages and documents.
+In order to test locally you can use the document-management-lib library stubs. This will provide stub responses for both secure messages and documents.
 
 * Change config.env.json file to point to the following 2 Urls
 

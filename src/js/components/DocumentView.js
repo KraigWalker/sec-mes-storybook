@@ -1,5 +1,5 @@
 import React from 'react';
-import {DocumentView as DocumentViewContainer} from 'document-management-web-ui';
+import {DocumentView as DocumentViewContainer} from 'document-management-lib';
 import "../../css/DocumentView.css";
 
 class DocumentView extends React.Component {

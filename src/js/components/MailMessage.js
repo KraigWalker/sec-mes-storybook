@@ -6,7 +6,7 @@ import withMessaging from "./common/WithMessaging";
 import {ARCHIVED} from '../constants/StringsConstants';
 import {TEXT_LIMIT} from "../constants/NumericalConstants";
 import Attachment from "./common/Attachment";
-import {DocumentDownloadLink} from 'document-management-web-ui';
+import {DocumentDownloadLink} from 'document-management-lib';
 import {truncateMessage} from "../utils/SecureMessageUtils";
 
 const attachmentLink = (props, document) => {
