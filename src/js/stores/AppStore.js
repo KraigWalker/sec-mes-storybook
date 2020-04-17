@@ -1,5 +1,5 @@
 import { applyMiddleware, createStore, compose } from "redux"
-import { buildMiddleware, dependencies as docDependencies } from "document-management-web-ui";
+import { buildMiddleware, dependencies as docDependencies } from "document-management-lib";
 import AppApi from "../api/AppApi";
 import reducer from "../reducers";
 

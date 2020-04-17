@@ -1,6 +1,6 @@
 import React from "react";
 import {compose} from "redux";
-import { utils, actions as documentActions } from "document-management-web-ui";
+import { utils, actions as documentActions } from "document-management-lib";
 import _ from "lodash";
 import {connect} from "react-redux";
 import {

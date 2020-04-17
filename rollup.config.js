@@ -30,6 +30,7 @@ export default {
 		}),
 		babel({
 			babelrc: false,
+			externalHelpers: true,
 			exclude: 'node_modules/**',
 			presets: [
 				'react',
@@ -50,7 +51,7 @@ export default {
 					},
 				],
 			],
-			plugins: ['transform-object-rest-spread', 'transform-class-properties', 'transform-export-extensions'],
+			plugins: ['external-helpers', 'transform-object-rest-spread', 'transform-class-properties', 'transform-export-extensions'],
 		}),
 		commonjs(),
 	],

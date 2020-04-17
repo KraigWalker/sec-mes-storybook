@@ -2,7 +2,7 @@
 
 ## Getting started
 
-_Note: You must be on the vpn in order to install `web-ui-components` and `document-management-web-ui`_
+_Note: You must be on the vpn in order to install `web-ui-components` and `document-management-lib`_
 
 clone the Repository and follow the steps:
 1. `npm install`

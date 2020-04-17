@@ -6,7 +6,7 @@ import viewMessage, {selectors as viewMessageSelectors} from "./ViewMessageReduc
 import accessibilityReducer from "./AccessibilityReducer";
 import segmentData, {selectors as segmentDataSelectors} from "./SegmentsReducer";
 import customerDetails, {selectors as customerSelectors } from "./CustomerReducer";
-import { reducer as documentManagement } from "document-management-web-ui";
+import { reducer as documentManagement } from "document-management-lib";
 
 export default combineReducers({
   messages,
