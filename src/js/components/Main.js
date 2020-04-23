@@ -1,6 +1,6 @@
 import React from 'react';
 import {compose} from 'redux';
-import {withRouter, Link} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import {TabCardBlock, TabCard} from "web-ui-components/lib/navigation/tab-cards";
 import {utils} from "document-management-lib";
 import {PageLayout, Container} from 'web-ui-components/lib/global/layout';
