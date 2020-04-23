@@ -1,4 +1,4 @@
-import {Switch, MemoryRouter, BrowserRouter,
+import {Switch, MemoryRouter,
     Route, Redirect, withRouter} from 'react-router-dom';
 import React from 'react';
 import LandingPage from '../components/LandingPage';
