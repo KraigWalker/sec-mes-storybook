@@ -1,17 +1,17 @@
-import babel from 'rollup-plugin-babel';
-import commonjs from 'rollup-plugin-commonjs';
-import resolve from 'rollup-plugin-node-resolve';
-import autoprefixer from 'autoprefixer';
-import postcss from 'rollup-plugin-postcss';
+import babel from 'rollup-plugin-babel'
+import commonjs from 'rollup-plugin-commonjs'
+import resolve from 'rollup-plugin-node-resolve'
+import autoprefixer from 'autoprefixer'
+import postcss from 'rollup-plugin-postcss'
 
-import pkg from './package.json';
+import pkg from './package.json'
 
 const externals = [
   ...Object.keys(pkg.dependencies || {}),
   ...Object.keys(pkg.peerDependencies || {}),
   ...Object.keys(pkg.devDependencies || {}),
-];
-const verifyIfExternal = (moduleName) => externals.some((lib) => moduleName.startsWith(lib));
+]
+const verifyIfExternal = (moduleName) => externals.some((lib) => moduleName.startsWith(lib))
 
 export default {
   input: `${__dirname}/src/index.js`,
@@ -57,4 +57,4 @@ export default {
     file: 'lib/index.js',
     format: 'cjs',
   },
-};
+}

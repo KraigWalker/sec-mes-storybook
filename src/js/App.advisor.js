@@ -1,65 +1,63 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Provider } from "react-redux";
+import { Provider } from 'react-redux';
 import AppRouter from './router/AppRouter.advisor';
-import { dependencies } from "document-management-lib";
-
+import { dependencies } from 'document-management-lib';
 import createStore from './stores/AppStore';
-import { WebUIThemeProvider } from "web-ui-components/lib/utilities/themes";
+import { WebUIThemeProvider } from 'web-ui-components/lib/utilities/themes';
 import { setMode } from './actions/AppActions';
 import StringConstants from './constants/StringsConstants';
 import { buildClientContext } from './utils/ContextUtils';
 import AppApi from './api/AppApi';
 import ApiUtils, { getStaffHeaders } from './api/ApiUtils';
-import "./polyfill";
+import './polyfill';
 
 export const App = ({ config }) => {
+  const clientContext = buildClientContext(config.appTitle, config.userTrackingId, config.state);
 
-    const clientContext = buildClientContext(config.appTitle, config.userTrackingId, config.state);
+  const session = {
+    access_token: config.accessToken,
+    bank_id: config.bankId,
+    brand: config.brandId,
+    customer_number: config.customerNumber,
+  };
 
-    const session = {
-        access_token: config.accessToken,
-        bank_id: config.bankId,
-        brand: config.brandId,
-        customer_number: config.customerNumber
-    };
+  const envConfig = {
+    libertyBaseApiUrl: config.bpiApiUrl,
+    paasBaseApiUrl: config.ibApiUrl + '/ibapi/v2',
+  };
 
-    const envConfig = {
-        libertyBaseApiUrl: config.bpiApiUrl,
-        paasBaseApiUrl: config.ibApiUrl + "/ibapi/v2"
-    }
+  const staffHeaders = getStaffHeaders(session);
 
-    const staffHeaders = getStaffHeaders(session);
+  const apiUtils = new ApiUtils(clientContext, session.access_token, session.bank_id, staffHeaders);
 
-    const apiUtils = new ApiUtils(clientContext, session.access_token, session.bank_id, staffHeaders);
+  const deps = {
+    native: dependencies.native,
+    api: new dependencies.InternalApi(clientContext, session, { libertyBaseApiUrl: envConfig.paasBaseApiUrl }),
+    secureMessagesApi: new AppApi(envConfig, clientContext, session, apiUtils),
+  };
 
-    const deps = {
-        native: dependencies.native,
-        api: new dependencies.InternalApi(clientContext, session, {  libertyBaseApiUrl: envConfig.paasBaseApiUrl}),
-        secureMessagesApi: new AppApi(envConfig, clientContext, session, apiUtils )
-    }
+  const store = createStore(session, clientContext, envConfig, deps);
+  store.dispatch(setMode(StringConstants.READ_ONLY));
 
-    const store = createStore(session, clientContext, envConfig, deps);
-    store.dispatch(setMode(StringConstants.READ_ONLY));
-
-    return (
-        <Provider store={store}>
-            <WebUIThemeProvider brandID={config.brandId}>
-                <AppRouter session={session} client={clientContext}/>
-            </WebUIThemeProvider>
-        </Provider>
-    )
+  return (
+    <Provider store={store}>
+      <WebUIThemeProvider brandID={config.brandId}>
+        <AppRouter session={session} client={clientContext} />
+      </WebUIThemeProvider>
+    </Provider>
+  );
 };
 
-App.PropTypes = {
-    config: PropTypes.shape({
-        bankId: PropTypes.string.isRequired,
-        brandId: PropTypes.string.isRequired,
-        staffId: PropTypes.string.isRequired,
-        staffBranchSortCode: PropTypes.string.isRequired,
-        appTitle: PropTypes.string.isRequired,
-        bpiApiUrl: PropTypes.string.isRequired,
-        ibApiUrl: PropTypes.string.isRequired,
-        staffTokenServiceUrl: PropTypes.string.isRequired,
-    }).isRequired,
-}
+App.propTypes = {
+  config: PropTypes.shape({
+    bankId: PropTypes.string.isRequired,
+    brandId: PropTypes.string.isRequired,
+    staffId: PropTypes.string.isRequired,
+    staffBranchSortCode: PropTypes.string.isRequired,
+    appTitle: PropTypes.string.isRequired,
+    bpiApiUrl: PropTypes.string.isRequired,
+    ibApiUrl: PropTypes.string.isRequired,
+    staffTokenServiceUrl: PropTypes.string.isRequired,
+  }).isRequired,
+};

@@ -1,4 +1,4 @@
-import {EMPTY_MESSAGE_PLACEHOLDER} from "../constants/StringsConstants";
+import { EMPTY_MESSAGE_PLACEHOLDER } from '../constants/StringsConstants';
 
 /**
  * @class DateUtils
@@ -9,18 +9,18 @@ import {EMPTY_MESSAGE_PLACEHOLDER} from "../constants/StringsConstants";
  * @param  {String} dateStr e.g. format - 'YYYY-MM-DD'
  */
 export function getMessageType(type) {
-    if (type == 'SENT' || type == 'PENDING') {
-        return 'SENT';
-    } else if (type == 'NEW' || type == 'READ') {
-        return 'INBOX';
-    } else if (type === 'ARCHIVED') {
-        return 'ARCHIVED';
-    }
+  if (type === 'SENT' || type === 'PENDING') {
+    return 'SENT';
+  } else if (type === 'NEW' || type === 'READ') {
+    return 'INBOX';
+  } else if (type === 'ARCHIVED') {
+    return 'ARCHIVED';
+  }
 }
 
 export function updateMessageStatus(message, status) {
-    message.status = status;
-    return message;
+  message.status = status;
+  return message;
 }
 
 /**
@@ -29,16 +29,14 @@ export function updateMessageStatus(message, status) {
  * @param {number} limit
  */
 export function truncateMessage(text, limit) {
-    if (text) {
-        const newText = truncateText(text, limit);
-        if (text.length <= limit) {
-            return text;
-        }
-        return (newText === text)
-            ? text
-            : `${newText} ...`
+  if (text) {
+    const newText = truncateText(text, limit);
+    if (text.length <= limit) {
+      return text;
     }
-    return EMPTY_MESSAGE_PLACEHOLDER;
+    return newText === text ? text : `${newText} ...`;
+  }
+  return EMPTY_MESSAGE_PLACEHOLDER;
 }
 
 /**
@@ -48,33 +46,13 @@ export function truncateMessage(text, limit) {
  * @param {number} limit
  */
 export function truncateText(text, limit) {
-    if (text && text.length >= limit) {
-        const subString = text.substr(0, limit);
-        const lastWord = subString.lastIndexOf(' ');
-        if (lastWord > -1) {
-            return subString.substring(0, lastWord);
-        }
-        return subString
+  if (text && text.length >= limit) {
+    const subString = text.substr(0, limit);
+    const lastWord = subString.lastIndexOf(' ');
+    if (lastWord > -1) {
+      return subString.substring(0, lastWord);
     }
-    return EMPTY_MESSAGE_PLACEHOLDER;
-}
-
-function findSpaceNearestToPosition(text, position) {
-    if (text[position] === ' ') {
-        return position;
-    }
-    const spaceBeforeIdx = text.substring(0, position).lastIndexOf(" ");
-    const spaceAfterIdx = text.indexOf(" ", position);
-
-    if (spaceBeforeIdx !== -1 && spaceAfterIdx !== -1) {
-        const distanceToBefore = position - spaceBeforeIdx;
-        const distanceToAfter = spaceAfterIdx - position;
-        return distanceToBefore < distanceToAfter
-            ? spaceBeforeIdx
-            : spaceAfterIdx;
-    }
-
-    return spaceBeforeIdx !== -1
-        ? spaceBeforeIdx
-        : spaceAfterIdx;
+    return subString;
+  }
+  return EMPTY_MESSAGE_PLACEHOLDER;
 }

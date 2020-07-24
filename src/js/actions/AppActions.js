@@ -1,19 +1,19 @@
-import AppConstants from "../constants/AppConstants";
-import { parseMessages } from "../parsers/MessageParser";
-import { parseSubjects, parseAccounts } from "../parsers/MessageSubjectParser";
-import { buildFetchHandlers, buildUpdateHandlers, buildOptimisticUpdate } from "./common";
+import AppConstants from '../constants/AppConstants';
+import { parseMessages } from '../parsers/MessageParser';
+import { parseSubjects, parseAccounts } from '../parsers/MessageSubjectParser';
+import { buildFetchHandlers, buildUpdateHandlers, buildOptimisticUpdate } from './common';
 
 export function fetchSecureMessages() {
   return function(dispatch, _, { secureMessagesApi }) {
     const payload = {
-      type: AppConstants.REQUEST_SECURE_MESSAGES
+      type: AppConstants.REQUEST_SECURE_MESSAGES,
     };
     dispatch(payload);
     const { success, error } = buildFetchHandlers({
       dispatch,
       successActionType: AppConstants.REQUEST_SECURE_MESSAGES_SUCCESS,
       errorActionType: AppConstants.REQUEST_SECURE_MESSAGES_FAILURE,
-      parseMethod: parseMessages
+      parseMethod: parseMessages,
     });
 
     secureMessagesApi.fetchSecureMessages(success, error);
@@ -25,7 +25,7 @@ export function getMessageSubjects() {
       dispatch,
       successActionType: AppConstants.REQUEST_SUBJECTS_SUCCESS,
       errorActionType: AppConstants.REQUEST_SUBJECTS_FAILURE,
-      parseMethod: parseSubjects
+      parseMethod: parseSubjects,
     });
 
     secureMessagesApi.getSubjects(success, error);
@@ -37,7 +37,7 @@ export function getAccounts() {
       dispatch,
       successActionType: AppConstants.REQUEST_ACCOUNTS_SUCCESS,
       errorActionType: AppConstants.REQUEST_ACCOUNTS_FAILURE,
-      parseMethod: parseAccounts
+      parseMethod: parseAccounts,
     });
     secureMessagesApi.getAccounts(success, error);
   };
@@ -47,7 +47,7 @@ export function getActiveTab(activeTab) {
   return function(dispatch) {
     const payload = {
       type: AppConstants.REQUEST_TAB_ACTIVE,
-      payload: activeTab
+      payload: activeTab,
     };
     dispatch(payload);
   };
@@ -56,18 +56,12 @@ export function getActiveTab(activeTab) {
 const dispatchUpdating = ({ dispatch, status }) => {
   const payload = {
     type: AppConstants.UPDATE_SECURE_MESSAGE,
-    status
+    status,
   };
   dispatch(payload);
 };
 
-const buildMessageUpdateAction = ({
-  id,
-  status,
-  successActionType,
-  errorActionType,
-  updateMethod
-}) => (dispatch, _, { secureMessagesApi }) => {
+const buildMessageUpdateAction = ({ id, status, successActionType, errorActionType, updateMethod }) => (dispatch, _, { secureMessagesApi }) => {
   dispatchUpdating({ status, dispatch });
 
   const { success, error } = buildUpdateHandlers({
@@ -76,17 +70,13 @@ const buildMessageUpdateAction = ({
     status,
     successActionType,
     errorActionType,
-    onSuccess: () => dispatch(fetchSecureMessages())
+    onSuccess: () => dispatch(fetchSecureMessages()),
   });
 
   updateMethod(secureMessagesApi, success, error);
 };
 
-export const createNewMessage = ({requestData, 
-  ids, 
-  status, 
-  name
-}) => 
+export const createNewMessage = ({ requestData, ids, status, name }) =>
   buildMessageUpdateAction({
     status,
     successActionType: AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS,
@@ -98,14 +88,12 @@ export const createNewMessage = ({requestData,
         status,
         name,
         success,
-        error
+        error,
       });
-    }
+    },
   });
 
-export const updateDraftMessage = ({requestData, 
-  status
-}) => 
+export const updateDraftMessage = ({ requestData, status }) =>
   buildMessageUpdateAction({
     id: requestData.id,
     status,
@@ -116,16 +104,16 @@ export const updateDraftMessage = ({requestData,
         requestData,
         status,
         success,
-        error
+        error,
       });
-    }
+    },
   });
 
 export function setViewMessageDetail(messageDetail) {
   return function(dispatch) {
     const payload = {
       payload: messageDetail,
-      type: AppConstants.SET_VIEW_MESSAGE_DETAIL
+      type: AppConstants.SET_VIEW_MESSAGE_DETAIL,
     };
     dispatch(payload);
   };
@@ -142,7 +130,7 @@ export function sendMessageForAccessibiltiy(message) {
   return function(dispatch) {
     const payload = {
       payload: message,
-      type: AppConstants.SEND_MESSAGE_FOR_ACCESSIBILITY
+      type: AppConstants.SEND_MESSAGE_FOR_ACCESSIBILITY,
     };
     dispatch(payload);
   };
@@ -151,7 +139,7 @@ export function sendMessageForAccessibiltiy(message) {
 export function popupState() {
   return function(dispatch) {
     const payload = {
-      type: AppConstants.SET_POPUP_STATE
+      type: AppConstants.SET_POPUP_STATE,
     };
     dispatch(payload);
   };
@@ -160,7 +148,7 @@ export function popupState() {
 export function closeDelModal() {
   return function(dispatch) {
     const payload = {
-      type: AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS
+      type: AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS,
     };
     dispatch(payload);
   };
@@ -169,6 +157,6 @@ export function closeDelModal() {
 export function setMode(mode) {
   return {
     type: AppConstants.SET_MODE,
-    payload: mode
+    payload: mode,
   };
 }
