@@ -1,22 +1,10 @@
-import React from "react";
-import SecureMessageForm from "./SecureMessageForm";
-import { connect } from "react-redux";
-import { PENDING, DRAFT, NEW } from "../constants/StringsConstants";
-import { BuildSendMessageRequestEntity } from "../bl/SecureMessageBL";
-import {
-  popupState,
-  createNewMessage,
-  sendMessageForAccessibiltiy
-} from "../actions/AppActions";
-import {
-  getAccounts,
-  getMessages,
-  getSubjects,
-  getMessageDetail,
-  getCustomerError,
-  getSubjectErrors,
-  MessageSelectors
-} from "../reducers";
+import React from 'react';
+import SecureMessageForm from './SecureMessageForm';
+import { connect } from 'react-redux';
+import { PENDING, DRAFT, NEW } from '../constants/StringsConstants';
+import { BuildSendMessageRequestEntity } from '../bl/SecureMessageBL';
+import { popupState, createNewMessage, sendMessageForAccessibiltiy } from '../actions/AppActions';
+import { getAccounts, getSubjects, getMessageDetail, getCustomerError, getSubjectErrors, MessageSelectors } from '../reducers';
 
 class NewSecureMessage extends React.Component {
   constructor(props) {
@@ -26,10 +14,7 @@ class NewSecureMessage extends React.Component {
   }
   sendMessageData(messageEntity, status) {
     const { accounts } = this.props;
-    const sendRequestMessage = BuildSendMessageRequestEntity(
-      accounts,
-      messageEntity
-    );
+    const sendRequestMessage = BuildSendMessageRequestEntity(accounts, messageEntity);
     this.props.createNewMessage({
       requestData: sendRequestMessage.getMessageRequestData(),
       status,
@@ -42,7 +27,7 @@ class NewSecureMessage extends React.Component {
     this.sendMessageData(messageEntity, DRAFT);
   }
   render() {
-    const { content, isSavingDraft, isUpdatingMessage, messageError } = this.props;
+    const { content, isSavingDraft, isUpdatingMessage } = this.props;
     return (
       <SecureMessageForm
         {...this.props}
@@ -64,7 +49,7 @@ const mapStateToProps = state => ({
   subjects: getSubjects(state),
   messages: MessageSelectors.getMessages(state),
   isUpdatingMessage: MessageSelectors.getUpdating(state),
-  isSavingDraft:  MessageSelectors.getIsSavingDraft(state),
+  isSavingDraft: MessageSelectors.getIsSavingDraft(state),
   accounts: getAccounts(state),
   subjectErrors: getSubjectErrors(state),
   messageDetail: getMessageDetail(state),
@@ -76,7 +61,7 @@ const mapStateToProps = state => ({
 const actionCreators = {
   popupState,
   createNewMessage,
-  sendMessageForAccessibiltiy
+  sendMessageForAccessibiltiy,
 };
 export default connect(
   mapStateToProps,

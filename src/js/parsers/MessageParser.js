@@ -1,120 +1,93 @@
 import _ from 'lodash';
 import MessageEntity from '../entities/MessageEntity';
 import { sortArrayByDate } from '../utils/DateUtils';
-import { isNullOrUndefined } from "../utils/GeneralUtils";
+import { isNullOrUndefined } from '../utils/GeneralUtils';
 
 /**
- * 
- * @param {array of Messages} parses the service response 
+ *
+ * @param {array of Messages} parses the service response
  */
 export function parseMessages(response) {
+  const messages = [];
+  const sortedMessages = sortArrayByDate(response.secure_messages);
+  _.forEach(sortedMessages, message => {
+    const messageEntity = new MessageEntity();
+    messageEntity.setId(message.id);
+    messageEntity.setDateCreated(message.date_created);
+    messageEntity.setThreadId(message.thread_id);
+    messageEntity.setReference(message.reference);
+    messageEntity.setStatus(message.status);
+    messageEntity.setSubject(message.subject);
+    messageEntity.setAccount(message.account);
+    messageEntity.setMessageBody(message.payload.body.data);
 
-    const messages = [];
-    const sortedMessages = sortArrayByDate(response.secure_messages);
-    _.forEach(sortedMessages, message => {
-        const messageEntity = new MessageEntity();
-        messageEntity.setId(message.id);
-        messageEntity.setDateCreated(message.date_created);
-        messageEntity.setThreadId(message.thread_id);
-        messageEntity.setReference(message.reference);
-        messageEntity.setStatus(message.status);
-        messageEntity.setSubject(message.subject);
-        messageEntity.setAccount(message.account);
-        messageEntity.setMessageBody(message.payload.body.data);
-
-        if (message.document)
-        {
-            messageEntity.setDocumentData(message.document);
-        }
-        messageEntity.setNoReply(message.no_reply)
-        messages.push(messageEntity);
-    });
-    return messages;
-
+    if (message.document) {
+      messageEntity.setDocumentData(message.document);
+    }
+    messageEntity.setNoReply(message.no_reply);
+    messages.push(messageEntity);
+  });
+  return messages;
 }
 
-function buildRequest({status, 
-    subject,
-    message,
-    requestUser = undefined, 
-    requestAccount = undefined,
-    payloadHeaders = undefined,
-    threadID = undefined}) {
-
-    return {
-        secure_message: {
-            subject: subject,
-            user: requestUser,
-            thread_id: threadID,
-            account: requestAccount,
-            payload: {
-                body: {
-                    data: message,
-                },
-                headers: payloadHeaders
-            },
-            status: status,
-        }
-    };
+function buildRequest({ status, subject, message, requestUser = undefined, requestAccount = undefined, payloadHeaders = undefined, threadID = undefined }) {
+  return {
+    secure_message: {
+      subject: subject,
+      user: requestUser,
+      thread_id: threadID,
+      account: requestAccount,
+      payload: {
+        body: {
+          data: message,
+        },
+        headers: payloadHeaders,
+      },
+      status: status,
+    },
+  };
 }
-
 
 function buildRequestUser(name) {
-    if (isNullOrUndefined(name)) {
-        return undefined;
-    }
+  if (isNullOrUndefined(name)) {
+    return undefined;
+  }
 
-    return {
-        name: {
-            ...name
-        }
-    };
+  return {
+    name: {
+      ...name,
+    },
+  };
 }
 
-function buildRequestAccount({accountId, number}) {
-
-    if (isNullOrUndefined(accountId) && isNullOrUndefined(number)) {
-        return undefined;
-    }
-    return {
-        id: accountId, 
-        number
-    };
+function buildRequestAccount({ accountId, number }) {
+  if (isNullOrUndefined(accountId) && isNullOrUndefined(number)) {
+    return undefined;
+  }
+  return {
+    id: accountId,
+    number,
+  };
 }
 
-const buildHeaders = ({name, value}) => [{name, value}];
+const buildHeaders = ({ name, value }) => [{ name, value }];
 
-export function createNewMessage({
-    data, 
-    status, 
-    name, 
-    ids
-}) {
-    const requestUser = buildRequestUser(name);
-    const requestAccount = buildRequestAccount(data.account)
+export function createNewMessage({ data, status, name, ids }) {
+  const requestUser = buildRequestUser(name);
+  const requestAccount = buildRequestAccount(data.account);
 
-    const payloadHeaders = ids 
-            ? buildHeaders({name: "In-Reply-To", value: ids.id})
-            : undefined;
+  const payloadHeaders = ids ? buildHeaders({ name: 'In-Reply-To', value: ids.id }) : undefined;
 
-    let threadID;
-    if (ids) {
-        threadID = isNullOrUndefined(ids.threadID) ? undefined : ids.threadID;
-    }
+  let threadID;
+  if (ids) {
+    threadID = isNullOrUndefined(ids.threadID) ? undefined : ids.threadID;
+  }
 
-    return buildRequest({...data, 
-        status, 
-        threadID, 
-        requestUser, 
-        requestAccount, 
-        payloadHeaders});
+  return buildRequest({ ...data, status, threadID, requestUser, requestAccount, payloadHeaders });
 }
 
-export function updateExistingMessage({
-    data, 
-    status
-}) {
-    const requestAccount = buildRequestAccount(data.account);
-    const payloadHeaders = buildHeaders({name: "In-Reply-To", value: data.id});
-    return buildRequest({...data, status, payloadHeaders, requestAccount});   
+export function updateExistingMessage({ data, status }) {
+  const requestAccount = buildRequestAccount(data.account);
+  const payloadHeaders = buildHeaders({ name: 'In-Reply-To', value: data.id });
+  return buildRequest({ ...data, status, payloadHeaders, requestAccount });
 }
