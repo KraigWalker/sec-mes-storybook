@@ -1,6 +1,6 @@
 {
   "name": "secure-messages-webapp",
-  "version": "2.7.0",
+  "version": "2.8.0",
   "description": "Secure Message Web application",
   "main": "lib/index.js",
   "dependencies": {
