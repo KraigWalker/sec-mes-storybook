@@ -3,15 +3,15 @@ import GetIcon from './GetIcon';
 import { Button } from 'web-ui-components/lib/atoms/buttons';
 import { ButtonGroup } from 'web-ui-components/lib/molecules/buttons';
 import { CentredModal } from 'web-ui-components/lib/organisms/modals';
-import { TextBody } from "web-ui-components/lib/atoms/text";
+import { TextBody } from 'web-ui-components/lib/atoms/text';
 
 const SuccessModal = props => {
-  window.top.postMessage("clearNewMessagePage", "*");
+  window.top.postMessage('clearNewMessagePage', '*');
 
   const bodyContent = (
     <div>
       <div>
-        <GetIcon id="icon-success" width="68px" height="68px" fill="#9CDD00"/>
+        <GetIcon id="icon-success" width="68px" height="68px" fill="#9CDD00" />
       </div>
       {props.bodyText}
     </div>
@@ -20,10 +20,7 @@ const SuccessModal = props => {
   const footerButtons = (
     <TextBody>
       <ButtonGroup alignment="center">
-        <Button
-          display="primary"
-          onClick={props.onClick}
-        >
+        <Button display="primary" onClick={props.onClick}>
           {props.okText}
         </Button>
       </ButtonGroup>
@@ -31,12 +28,7 @@ const SuccessModal = props => {
   );
 
   return (
-    <CentredModal
-      isOpen={true}
-      title=""
-      buttonNode={footerButtons}
-      onClose={props.onClick}
-    >
+    <CentredModal isOpen={true} title="" buttonNode={footerButtons} onClose={props.onClick}>
       <TextBody>{bodyContent}</TextBody>
     </CentredModal>
   );

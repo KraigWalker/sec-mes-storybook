@@ -1,5 +1,5 @@
 /* eslint no-magic-numbers:0 */
-import React from "react";
+import React from 'react';
 
 const throttle = (fn, wait) => {
   let time = Date.now();
@@ -16,10 +16,10 @@ const breakpoints = {
   sm: [321, 640],
   md: [641, 959],
   lg: [960, 1280],
-  xl: [1281, Infinity]
+  xl: [1281, Infinity],
 };
 
-const mobileViews = ["xs", "sm"];
+const mobileViews = ['xs', 'sm'];
 
 const calculateBreakPoint = width =>
   Object.keys(breakpoints).reduce((prevValue, currentValue) => {
@@ -28,9 +28,9 @@ const calculateBreakPoint = width =>
       return currentValue;
     }
     return prevValue;
-  }, "xs");
+  }, 'xs');
 
-const getContainerSize = breakpoint => breakpoint === "xl" ? "lg" : breakpoint.substr(0,2);
+const getContainerSize = breakpoint => (breakpoint === 'xl' ? 'lg' : breakpoint.substr(0, 2));
 
 const getNoPadding = breakpoint => mobileViews.some(size => size === breakpoint);
 
@@ -43,25 +43,24 @@ export const withBreakpoints = WrappedComponent =>
       const width = window.innerWidth ? window.innerWidth : window.outerWidth;
       const breakpoint = calculateBreakPoint(width);
 
-      window.addEventListener("resize", throttle(this.handleResize, 500));
+      window.addEventListener('resize', throttle(this.handleResize, 500));
       this.state = {
         breakpoint,
         containerSize: getContainerSize(breakpoint),
-        noPadding: getNoPadding(breakpoint)
+        noPadding: getNoPadding(breakpoint),
       };
     }
 
     componentWillUnmount() {
-      window.removeEventListener("resize", this.handleResize);
+      window.removeEventListener('resize', this.handleResize);
     }
-
 
     handleResize() {
       const breakpoint = calculateBreakPoint(window.innerWidth);
       this.setState({
         breakpoint,
         noPadding: getNoPadding(breakpoint),
-        containerSize: getContainerSize(breakpoint)
+        containerSize: getContainerSize(breakpoint),
       });
     }
 

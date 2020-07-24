@@ -1,45 +1,32 @@
-import { DELETED, ARCHIVED, READ } from "../constants/StringsConstants";
-import AppConstants from "../constants/AppConstants";
+import { DELETED, ARCHIVED, READ } from '../constants/StringsConstants';
+import AppConstants from '../constants/AppConstants';
 
-export const buildFetchHandlers = ({
-  dispatch,
-  successActionType,
-  errorActionType,
-  parseMethod
-}) => ({
+export const buildFetchHandlers = ({ dispatch, successActionType, errorActionType, parseMethod }) => ({
   success: response => {
     const parseData = response ? parseMethod(response) : [];
     const payload = {
       type: successActionType,
-      payload: parseData
+      payload: parseData,
     };
     dispatch(payload);
   },
   error: error => {
     const payload = {
       type: errorActionType,
-      payload: error
+      payload: error,
     };
     dispatch(payload);
-  }
+  },
 });
 
-export const buildUpdateHandlers = ({
-  id,
-  dispatch,
-  requestData,
-  status,
-  successActionType,
-  errorActionType,
-  onSuccess = () => {}
-}) => ({
+export const buildUpdateHandlers = ({ id, dispatch, requestData, status, successActionType, errorActionType, onSuccess = () => {} }) => ({
   success: response => {
     const payload = {
       type: successActionType,
       payload: {
         status,
-        id
-      }
+        id,
+      },
     };
     dispatch(payload);
     onSuccess();
@@ -50,37 +37,33 @@ export const buildUpdateHandlers = ({
       type: errorActionType,
       payload: {
         error,
-        requestData
-      }
+        requestData,
+      },
     };
     dispatch(payload);
-  }
+  },
 });
 
 const statusMap = {
-    [AppConstants.ARCHIVE_SECURE_MESSAGE]: ARCHIVED,
-    [AppConstants.UNARCHIVE_SECURE_MESSAGE]: READ,
-    [AppConstants.DELETE_SECURE_MESSAGE]: DELETED,
-    [AppConstants.SET_SECURE_MESSAGE_READ] : READ
-  };
+  [AppConstants.ARCHIVE_SECURE_MESSAGE]: ARCHIVED,
+  [AppConstants.UNARCHIVE_SECURE_MESSAGE]: READ,
+  [AppConstants.DELETE_SECURE_MESSAGE]: DELETED,
+  [AppConstants.SET_SECURE_MESSAGE_READ]: READ,
+};
 
-export const buildOptimisticUpdate = action => requestData => (
-  dispatch,
-  _,
-  { secureMessagesApi }
-) => {
+export const buildOptimisticUpdate = action => requestData => (dispatch, _, { secureMessagesApi }) => {
   const { success, error } = buildUpdateHandlers({
     id: requestData.id,
     requestData,
     dispatch,
     successActionType: `${action}_SUCCESS`,
-    errorActionType: `${action}_FAILURE`
+    errorActionType: `${action}_FAILURE`,
   });
 
   secureMessagesApi.updateExistingMessage({
     requestData,
     status: statusMap[action],
     success,
-    error
+    error,
   });
 };

@@ -1,44 +1,8 @@
-
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import { SecureMessageSummary } from '../SecureMessageSummary';
 
-const setup = (setupProps) => {
-  const props = {
-    content: {
-      back: 'Back',
-      noSpecificAccount: 'noSpecificAccount'
-    },
-    messageDetail: {
-      newMessageError: true,
-      delSuccessModal: true,
-    },
-    message: {
-      status: 'READ',
-      getSubject: jest.fn(),
-      getReference: jest.fn(),
-      getMessageBody: jest.fn(),
-      getDateCreated: jest.fn(),
-      message: "Hello there",
-      account: {
-        number: '32236',
-      }
-    },
-    messages: {
-      draftError: true,
-    },
-    dispatch: jest.fn(),
-    ...setupProps
-  }
-  const wrapper = shallow(<SecureMessageSummary {...props} />);
-  return {
-    wrapper,
-    props
-  }
-}
-
-
-describe("SecureMessageSummary snapshot", () => {
+describe('SecureMessageSummary snapshot', () => {
   const dispatch = jest.fn();
   const getSubject = jest.fn();
   const getReference = jest.fn();
@@ -47,7 +11,7 @@ describe("SecureMessageSummary snapshot", () => {
   let props = {
     content: {
       back: 'Back',
-      noSpecificAccount: 'noSpecificAccount'
+      noSpecificAccount: 'noSpecificAccount',
     },
     viewMessageFlag: true,
     messageDetail: {
@@ -63,19 +27,18 @@ describe("SecureMessageSummary snapshot", () => {
       account: {
         number: '32236',
       },
-      message: "Hello there",
-
+      message: 'Hello there',
     },
     messages: {
       draftError: true,
     },
-    dispatch: dispatch
+    dispatch: dispatch,
   };
   let component = shallow(<SecureMessageSummary {...props} />);
   it('should match to snapshot', () => {
     expect(component).toMatchSnapshot();
   });
-  describe("SecureMessageSummary snapshot", () => {
+  describe('SecureMessageSummary snapshot', () => {
     const dispatch = jest.fn();
     const getSubject = jest.fn();
     const getReference = jest.fn();
@@ -84,7 +47,7 @@ describe("SecureMessageSummary snapshot", () => {
     let props = {
       content: {
         back: 'Back',
-        noSpecificAccount: 'noSpecificAccount'
+        noSpecificAccount: 'noSpecificAccount',
       },
       messageDetail: {
         newMessageError: true,
@@ -99,20 +62,19 @@ describe("SecureMessageSummary snapshot", () => {
         account: {
           number: '32236',
         },
-        message: 'Hello there'
-
+        message: 'Hello there',
       },
       messages: {
         draftError: true,
       },
-      dispatch: dispatch
+      dispatch: dispatch,
     };
     let component = shallow(<SecureMessageSummary {...props} />);
     it('should match to snapshot', () => {
       expect(component).toMatchSnapshot();
     });
   });
-  describe("SecureMessageSummary snapshot", () => {
+  describe('SecureMessageSummary snapshot', () => {
     const dispatch = jest.fn();
     const getSubject = jest.fn();
     const getReference = jest.fn();
@@ -121,7 +83,7 @@ describe("SecureMessageSummary snapshot", () => {
     let props = {
       content: {
         back: 'Back',
-        noSpecificAccount: 'noSpecificAccount'
+        noSpecificAccount: 'noSpecificAccount',
       },
       messageDetail: {
         newMessageError: true,
@@ -136,12 +98,12 @@ describe("SecureMessageSummary snapshot", () => {
         account: {
           number: undefined,
         },
-        message: 'Hello there'
+        message: 'Hello there',
       },
       messages: {
         draftError: true,
       },
-      dispatch: dispatch
+      dispatch: dispatch,
     };
     let component = shallow(<SecureMessageSummary {...props} />);
     it('should match to snapshot', () => {
