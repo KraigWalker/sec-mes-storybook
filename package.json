@@ -1,5 +1,5 @@
 {
-  "name": "secure-messaging",
+  "name": "secure-messages-webapp",
   "version": "2.7.0",
   "description": "Secure Message Web application",
   "main": "lib/index.js",
@@ -101,7 +101,8 @@
     "com.bank.opplatform:cybservices-url:+",
     "com.bank.ms:base-microservice-bom:+",
     "com.bank.ms:ib-web-https-certs:+",
-    "com.bank.ms:api-gateway-vars:+"
+    "com.bank.ms:api-gateway-vars:+",
+    "com.bank.webapp:secure-messages-webapp-metadata:+"
   ],
   "scripts": {
     "nocss": "cross-env brand= webpack --config ./dev.config.js",

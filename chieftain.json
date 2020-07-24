@@ -1,48 +1,48 @@
 {
-    "appdynamics": {
-        "accesskey": "{{ base_microservice_bom.appdynamics.accesskey }}",
-        "hostname": "{{ base_microservice_bom.appdynamics.hostname }}",
-        "port": "{{ base_microservice_bom.appdynamics.port }}",
-        "sslenabled": "{{ base_microservice_bom.appdynamics.sslenabled }}"
-    },
-    "cluster_registry": "{{ base_microservice_bom.cluster_registry }}",
-    "component_type": "secure_messages_webapp",
-    "default_scale": 1,
-    "default_selection": "new",
-    "deployment_config_name": "secure-messages-webapp",
-    "expose_service": "true",
-    "dns_name": "secure-messages",
-    "external_b_url": "{{ secure_messages_webapp_metadata.urls.external_b_url }}",
-    "external_cb_url": "{{ secure_messages_webapp_metadata.urls.external_cb_url }}",
-    "external_yb_url": "{{ secure_messages_webapp_metadata.urls.external_yb_url }}",
-    "external_vm_url": "{{ secure_messages_webapp_metadata.urls.external_vm_url }}",
-    "internal_url": "{{ secure_messages_webapp_metadata.urls.internal_url }}",
-    "image_name": "secure-messages-webapp",
-    "java_heap_size": "{{ base_microservice_bom.java_heap_size }}",
-    "name": "secure-messages-webapp",
-    "namespace": "{{ base_microservice_bom.namespace }}",
-    "network_segment": "corporate",
-    "openshift_deployer_token": "{{ base_microservice_bom.service_account_token }}",
-    "openshift_login_url": "{{ base_microservice_bom.openshift_login_url }}",
-    "openshift_service": "secure-messages-webapp",
-    "openshift_service_port": "8443",
-    "openshift_service_type": "loadbalancer",
-    "pipeline_type": "openshift_application",
-    "propertySources": [
-        {
-            "name": "{{ name }}",
-            "source": {}
-        }
-    ],
-    "provisioner_token": "{{ base_microservice_bom.provisioner_token }}",
-    "registry_storage_nfs_directory": "{{ base_microservice_bom.registry_storage_nfs_directory }}",
-    "registry_url": "docker-registry.default.svc.cluster.local:5000",
-    "route_url": "{{ dns_name }}.{{ namespace }}.{{ base_microservice_bom.environment }}",
-    "runtime_config": {
-        "libertyBaseApiUrl": "{{ cybservices_url.api_url_https }}",
-        "paasBaseApiUrl": "{{ api_gateway_vars.external_url}}/ibapi/v2"
-    },
-    "sslcerts": "{{ ib_web_https_certs.sslcerts }}",
-    "sslkey": "{{ ib_web_https_certs.sslkey }}",
-    "sslkeypassword": "{{ ib_web_https_certs.sslkeypassword }}"
+  "appdynamics": {
+    "accesskey": "{{ base_microservice_bom.appdynamics.accesskey }}",
+    "hostname": "{{ base_microservice_bom.appdynamics.hostname }}",
+    "port": "{{ base_microservice_bom.appdynamics.port }}",
+    "sslenabled": "{{ base_microservice_bom.appdynamics.sslenabled }}"
+  },
+  "cluster_registry": "{{ base_microservice_bom.cluster_registry }}",
+  "component_type": "secure_messages_webapp",
+  "default_scale": 1,
+  "default_selection": "new",
+  "deployment_config_name": "secure-messages-webapp",
+  "expose_service": "true",
+  "dns_name": "secure-messages",
+  "external_b_url": "{{ secure_messages_webapp_metadata.urls.external_b_url }}",
+  "external_cb_url": "{{ secure_messages_webapp_metadata.urls.external_cb_url }}",
+  "external_yb_url": "{{ secure_messages_webapp_metadata.urls.external_yb_url }}",
+  "external_vm_url": "{{ secure_messages_webapp_metadata.urls.external_vm_url }}",
+  "internal_url": "{{ secure_messages_webapp_metadata.urls.internal_url }}",
+  "image_name": "secure-messages-webapp",
+  "java_heap_size": "{{ base_microservice_bom.java_heap_size }}",
+  "name": "secure-messages-webapp",
+  "namespace": "{{ base_microservice_bom.namespace }}",
+  "network_segment": "corporate",
+  "openshift_deployer_token": "{{ base_microservice_bom.service_account_token }}",
+  "openshift_login_url": "{{ base_microservice_bom.openshift_login_url }}",
+  "openshift_service": "secure-messages-webapp",
+  "openshift_service_port": "8443",
+  "openshift_service_type": "loadbalancer",
+  "pipeline_type": "openshift_application",
+  "propertySources": [
+    {
+      "name": "{{ name }}",
+      "source": {}
+    }
+  ],
+  "provisioner_token": "{{ base_microservice_bom.provisioner_token }}",
+  "registry_storage_nfs_directory": "{{ base_microservice_bom.registry_storage_nfs_directory }}",
+  "registry_url": "docker-registry.default.svc.cluster.local:5000",
+  "route_url": "{{ dns_name }}.{{ namespace }}.{{ base_microservice_bom.environment }}",
+  "runtime_config": {
+    "libertyBaseApiUrl": "{{ cybservices_url.api_url_https }}",
+    "paasBaseApiUrl": "{{ api_gateway_vars.external_url}}/ibapi/v2"
+  },
+  "sslcerts": "{{ ib_web_https_certs.sslcerts }}",
+  "sslkey": "{{ ib_web_https_certs.sslkey }}",
+  "sslkeypassword": "{{ ib_web_https_certs.sslkeypassword }}"
 }
