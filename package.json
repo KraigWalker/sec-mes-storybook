@@ -123,6 +123,7 @@
     "start:android": "webpack-dev-server --config ./dev.config.js --env.APP_CONTEXT=android",
     "dev": "webpack --config ./dev.config.js",
     "test": "jest",
+    "test:ci": "jest",
     "deploy": "deployist",
     "build": "npm run prod",
     "build:lib": "rollup -c",
