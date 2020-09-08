@@ -85,6 +85,8 @@
         
         if (window.location.hash) {
             var hash = parseHash(window.location.hash.substring(1));
+            window.customHashParam = hash;
+            window.location.hash = '';
             var head = document.getElementsByTagName('head')[0];
             var element = document.createElement('link');
             element.rel = 'stylesheet';
