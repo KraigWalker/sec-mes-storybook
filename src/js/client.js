@@ -18,16 +18,10 @@ const app = document.getElementById('app');
  * Starts the application with the Provider Wrapper from Redux
  * @return {ReactComponent} AppRouter which initiates the application.
  */
-const parseHash = hash =>
-  hash
-    .split('&')
-    .map(v => v.split('='))
-    .reduce((pre, [key, value]) => ({ ...pre, [key]: value }), {});
 
-let hash = parseHash(window.location.hash.substring(1));
-
-// clear hash parameters
-window.location.hash = '';
+ // clear hash parameters
+let hash = window.customHashParam || {};
+window.customHashParam = null;
 
 if (process.env.NODE_ENV !== 'production' && Object.keys(hash).length <= 1) {
   hash = {
