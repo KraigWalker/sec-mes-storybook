@@ -12,12 +12,13 @@ const middleware = (
   dependencies = {
     native: docDependencies.native,
     api: new docDependencies.Api(clientContext, session, {
-      libertyBaseApiUrl: config.paasBaseApiUrl,
+      apiBaseUrlPAAS: config.paasBaseApiUrl,
+      apiBaseUrl: config.libertyBaseApiUrl,
     }), // documentManagmentApi
     secureMessagesApi: new AppApi(config, clientContext, session),
   }
 ) => {
-  return applyMiddleware(buildMiddleware(clientContext, session, { libertyBaseApiUrl: config.paasBaseApiUrl }, dependencies));
+  return applyMiddleware(buildMiddleware(clientContext, session, { apiBaseUrlPAAS: config.paasBaseApiUrl, apiBaseUrl: config.libertyBaseApiUrl }, dependencies));
 };
 
 export default (session, clientContext, config, dependencies) => createStore(reducer, composeEnhancers(middleware(session, clientContext, config, dependencies)));
