@@ -1,18 +1,28 @@
-import { Switch, MemoryRouter, Route, Redirect, withRouter } from 'react-router-dom';
-import React from 'react';
+import React, { Component } from 'react';
+import {
+  Switch,
+  MemoryRouter,
+  Route,
+  Redirect,
+  withRouter,
+} from 'react-router-dom';
 import LandingPage from '../components/LandingPage';
 import Main from '../components/Main';
-import ViewMessage from '../components/ViewMessage';
+import { ViewMessage } from '../components/ViewMessage';
 import { withSubscription } from '../components/wrappers/GenericWrapper';
 import AccessibilityMessage from '../components/common/AccessibilityMessage';
 import ErrorPage from '../components/common/ErrorPage';
 import { ListView } from '../components/ListView';
 import { DocumentView } from '../components/DocumentView';
 
-const RouteWithLayout = ({ Component, isDocumentLibraryEnabled, ...restProps }) => (
+const RouteWithLayout = ({
+  Component,
+  isDocumentLibraryEnabled,
+  ...restProps
+}) => (
   <Route
     {...restProps}
-    render={routeProps => (
+    render={(routeProps) => (
       <Main isDocumentLibraryEnabled={isDocumentLibraryEnabled}>
         <Component {...restProps} {...routeProps} />
       </Main>
@@ -24,7 +34,7 @@ const RouteWithLayout = ({ Component, isDocumentLibraryEnabled, ...restProps }) 
  * @class AppRouter Class to initiate and route the application
  */
 
-const RoutesWithLayout = props => (
+const RoutesWithLayout = (props) => (
   <Switch>
     <RouteWithLayout path="/securemessages/error" Component={ErrorPage} />
     <RouteWithLayout
@@ -49,9 +59,11 @@ const RoutesWithLayout = props => (
   </Switch>
 );
 
-const RoutesWithLayoutAndSubscription = withRouter(withSubscription(RoutesWithLayout));
+const RoutesWithLayoutAndSubscription = withRouter(
+  withSubscription(RoutesWithLayout)
+);
 
-class AppRouter extends React.Component {
+class AppRouter extends Component {
   /**
    * Initiates the application in BrowserRouter. Please refer to react-router v4 docs.
    * @return {ReactComponent} Displays the components wrapped around BrowserRouter and Routes the application.
@@ -61,11 +73,17 @@ class AppRouter extends React.Component {
     return (
       <MemoryRouter>
         <div>
-          <Route path={`/securemessages`} render={() => <RoutesWithLayoutAndSubscription {...this.props} />} />
+          <Route
+            path={`/securemessages`}
+            render={() => <RoutesWithLayoutAndSubscription {...this.props} />}
+          />
           <AccessibilityMessage />
 
           <Switch>
-            <Route path={`/my-documents/:bankId(CB|YB)/:documentId`} component={DocumentView} />
+            <Route
+              path={`/my-documents/:bankId(CB|YB)/:documentId`}
+              component={DocumentView}
+            />
             <RouteWithLayout
               path={`/my-documents/`}
               exact
@@ -82,4 +100,4 @@ class AppRouter extends React.Component {
   }
 }
 
-export default AppRouter;
+export { AppRouter };

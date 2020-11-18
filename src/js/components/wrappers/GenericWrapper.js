@@ -5,20 +5,21 @@ import content from '../../content';
 import { fetchSecureMessages, getAccounts } from '../../actions/AppActions';
 import { MessageSelectors } from '../../reducers';
 
-const getContent = brand => {
+const getContent = (brand) => {
   switch (brand) {
-    case 'CB':
-    case 'YB':
-      return content.CB;
     case 'VM':
       return content.VM;
     case 'DYB':
       return content.DYB;
+    case 'CB':
+    case 'YB':
+    default:
+      return content.CB;
   }
 };
 
 export function withSubscription(WrappedComponent) {
-  const mapState = state => ({
+  const mapState = (state) => ({
     fetched: MessageSelectors.getFetched(state),
   });
   return connect(mapState)(
@@ -31,23 +32,32 @@ export function withSubscription(WrappedComponent) {
           content: getContent(brand),
         };
       }
+
       componentWillMount() {
         const { dispatch, fetched } = this.props;
         dispatch(getAccounts());
         !fetched && dispatch(fetchSecureMessages());
       }
+
       componentWillReceiveProps(nextProps) {
         !nextProps.fetched && this.props.dispatch(fetchSecureMessages());
       }
       render() {
-        return <WrappedComponent content={this.state.content} token={this.state.token} {...this.props} />;
+        return (
+          <WrappedComponent
+            content={this.state.content}
+            token={this.state.token}
+            {...this.props}
+          />
+        );
       }
     }
   );
 }
+
 export function accessibilityWrapper(WrappedComponent) {
   let currentMessage = '';
-  const mapState = state => ({
+  const mapState = (state) => ({
     message: state.accessibilityReducer.accessibilityMessage,
     fetched: MessageSelectors.getFetched(state),
   });
@@ -64,8 +74,17 @@ export function accessibilityWrapper(WrappedComponent) {
         currentMessage = this.props.message;
         return (
           <div>
-            <div className="u-visually-hidden off-screen" role="status" aria-live="polite" aria-atomic="true">
-              {currentMessage && this.props.fetched ? <span>{currentMessage}</span> : ''}
+            <div
+              className="u-visually-hidden off-screen"
+              role="status"
+              aria-live="polite"
+              aria-atomic="true"
+            >
+              {currentMessage && this.props.fetched ? (
+                <span>{currentMessage}</span>
+              ) : (
+                ''
+              )}
             </div>
             <WrappedComponent />
           </div>

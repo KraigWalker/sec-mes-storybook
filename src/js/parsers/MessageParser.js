@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import MessageEntity from '../entities/MessageEntity';
 import { sortArrayByDate } from '../utils/DateUtils';
 import { isNullOrUndefined } from '../utils/GeneralUtils';
@@ -8,11 +7,11 @@ import { isNullOrUndefined } from '../utils/GeneralUtils';
  * @param {array of Messages} parses the service response
  */
 export function parseMessages(response) {
-  const messages = [];
   const sortedMessages = sortArrayByDate(response.secure_messages);
-  _.forEach(sortedMessages, message => {
+  return sortedMessages.map((message) => {
     const messageEntity = new MessageEntity();
     messageEntity.setId(message.id);
+    message.category && messageEntity.setCategory(message.category);
     messageEntity.setDateCreated(message.date_created);
     messageEntity.setThreadId(message.thread_id);
     messageEntity.setReference(message.reference);
@@ -25,12 +24,20 @@ export function parseMessages(response) {
       messageEntity.setDocumentData(message.document);
     }
     messageEntity.setNoReply(message.no_reply);
-    messages.push(messageEntity);
+
+    return messageEntity;
   });
-  return messages;
 }
 
-function buildRequest({ status, subject, message, requestUser = undefined, requestAccount = undefined, payloadHeaders = undefined, threadID = undefined }) {
+function buildRequest({
+  status,
+  subject,
+  message,
+  requestUser = undefined,
+  requestAccount = undefined,
+  payloadHeaders = undefined,
+  threadID = undefined,
+}) {
   return {
     secure_message: {
       subject: subject,
@@ -76,14 +83,23 @@ export function createNewMessage({ data, status, name, ids }) {
   const requestUser = buildRequestUser(name);
   const requestAccount = buildRequestAccount(data.account);
 
-  const payloadHeaders = ids ? buildHeaders({ name: 'In-Reply-To', value: ids.id }) : undefined;
+  const payloadHeaders = ids
+    ? buildHeaders({ name: 'In-Reply-To', value: ids.id })
+    : undefined;
 
   let threadID;
   if (ids) {
     threadID = isNullOrUndefined(ids.threadID) ? undefined : ids.threadID;
   }
 
-  return buildRequest({ ...data, status, threadID, requestUser, requestAccount, payloadHeaders });
+  return buildRequest({
+    ...data,
+    status,
+    threadID,
+    requestUser,
+    requestAccount,
+    payloadHeaders,
+  });
 }
 
 export function updateExistingMessage({ data, status }) {

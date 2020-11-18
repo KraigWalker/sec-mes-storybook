@@ -1,5 +1,5 @@
 import React from 'react';
-import _ from 'lodash';
+import { find } from 'lodash-es';
 import DropDownComponent from './common/DropDownComponent';
 import { Button } from 'web-ui-components/lib/atoms/buttons';
 import { ButtonGroup } from 'web-ui-components/lib/molecules/buttons';
@@ -73,9 +73,12 @@ export class SecureMessageForm extends React.Component {
     const { chars_left } = this.state;
     const { content } = this.props;
     if (chars_left <= CHARS_LEFT_DISPLAY_THRESHOLD) {
-      chars_left === 3 && this.props.sendMessageForAccessibiltiy(content.threeCharLeft);
-      chars_left === 1 && this.props.sendMessageForAccessibiltiy(content.oneCharLeft);
-      chars_left === 0 && this.props.sendMessageForAccessibiltiy(content.maxCharLimit);
+      chars_left === 3 &&
+        this.props.sendMessageForAccessibiltiy(content.threeCharLeft);
+      chars_left === 1 &&
+        this.props.sendMessageForAccessibiltiy(content.oneCharLeft);
+      chars_left === 0 &&
+        this.props.sendMessageForAccessibiltiy(content.maxCharLimit);
     }
   }
 
@@ -128,7 +131,10 @@ export class SecureMessageForm extends React.Component {
   sendData() {
     if (this.checkValidation()) {
       this.props.onSend(this.buildMessageData());
-      this.setState({ showSentMessageModal: true, showSendServiceErrorModal: true });
+      this.setState({
+        showSentMessageModal: true,
+        showSendServiceErrorModal: true,
+      });
     }
   }
 
@@ -138,7 +144,9 @@ export class SecureMessageForm extends React.Component {
 
   getSuccessModal(body) {
     const { content } = this.props;
-    return <SuccessMpdal onClick={this.goHome} bodyText={body} okText={content.ok} />;
+    return (
+      <SuccessMpdal onClick={this.goHome} bodyText={body} okText={content.ok} />
+    );
   }
 
   returnSentMessageModal() {
@@ -157,9 +165,15 @@ export class SecureMessageForm extends React.Component {
     const { accounts } = this.props;
     const messageEntity = new MessageEntity();
 
-    const actualAccount = _.find(accounts, account => account.number === accountValue);
+    const actualAccount = find(
+      accounts,
+      (account) => account.number === accountValue
+    );
     if (actualAccount) {
-      messageEntity.setAccount({ id: actualAccount.accountId, number: actualAccount.number });
+      messageEntity.setAccount({
+        id: actualAccount.accountId,
+        number: actualAccount.number,
+      });
     }
     messageEntity.setSubject(subject);
     messageEntity.setMessageBody(message);
@@ -170,13 +184,20 @@ export class SecureMessageForm extends React.Component {
     if (this.checkValidation()) {
       this.props.onSave(this.buildMessageData());
 
-      this.setState({ showPopup: false, showDraftSuccessModal: true, showSaveServiceErrorModal: true });
+      this.setState({
+        showPopup: false,
+        showDraftSuccessModal: true,
+        showSaveServiceErrorModal: true,
+      });
     }
   }
 
   errorCloseClicked() {
     this.props.popupState();
-    this.setState({ showSaveServiceErrorModal: false, showSendServiceErrorModal: false });
+    this.setState({
+      showSaveServiceErrorModal: false,
+      showSendServiceErrorModal: false,
+    });
   }
   retryServiceCall() {
     const { showSaveServiceErrorModal, showSendServiceErrorModal } = this.state;
@@ -224,7 +245,13 @@ export class SecureMessageForm extends React.Component {
 
   returnErrorModal() {
     const { content } = this.props;
-    return <ErrorModal content={content} onCloseClicked={this.errorCloseClicked} onRetry={this.retryServiceCall} />;
+    return (
+      <ErrorModal
+        content={content}
+        onCloseClicked={this.errorCloseClicked}
+        onRetry={this.retryServiceCall}
+      />
+    );
   }
 
   determineBackAction() {
@@ -260,18 +287,47 @@ export class SecureMessageForm extends React.Component {
   }
 
   render() {
-    const { content, successModal, subjects, subjectErrors, messageError, accounts, title, messageText, containerSize, noPadding, isUpdatingMessage, isSavingDraft } = this.props;
+    const {
+      content,
+      successModal,
+      subjects,
+      subjectErrors,
+      messageError,
+      accounts,
+      title,
+      messageText,
+      containerSize,
+      noPadding,
+      isUpdatingMessage,
+      isSavingDraft,
+    } = this.props;
 
-    const { showSendServiceErrorModal, showSaveServiceErrorModal, showDraftSuccessModal, showSentMessageModal, showPopup, showSubjectInvalid, showAccountInvalid } = this.state;
+    const {
+      showSendServiceErrorModal,
+      showSaveServiceErrorModal,
+      showDraftSuccessModal,
+      showSentMessageModal,
+      showPopup,
+      showSubjectInvalid,
+      showAccountInvalid,
+    } = this.state;
 
     return (
       <Container {...getPaddingProps(noPadding)} size={containerSize}>
-        <LoadingLocalTakeover show={isUpdatingMessage || isSavingDraft} title={isUpdatingMessage ? content.sendingMessage : content.savingMessage}>
+        <LoadingLocalTakeover
+          show={isUpdatingMessage || isSavingDraft}
+          title={
+            isUpdatingMessage ? content.sendingMessage : content.savingMessage
+          }
+        >
           <Row {...getRowMarginProps(noPadding)}>
             <Card>
               <SubHeading>{title}</SubHeading>
               <TextBody>
-                <BackButton onClick={this.determineBackAction} label={content.back} />
+                <BackButton
+                  onClick={this.determineBackAction}
+                  label={content.back}
+                />
               </TextBody>
               <TextBody>
                 <Label id="subjectTitle" htmlFor="subjects">
@@ -313,7 +369,10 @@ export class SecureMessageForm extends React.Component {
                 </Label>
               </TextBody>
               <TextBody>
-                <div className="u-visually-hidden off-screen" id="textAreaMaxMsg">
+                <div
+                  className="u-visually-hidden off-screen"
+                  id="textAreaMaxMsg"
+                >
                   {content.maxCharLimit}
                 </div>
                 {/* DEBT:  would like to use TextAreaCharacterCount, but no hook available to tie into change event and props not spread */}
@@ -330,14 +389,30 @@ export class SecureMessageForm extends React.Component {
               </TextBody>
               <TextBody>
                 <ButtonGroup>
-                  <Button name="Back" display="secondary" width="flush" onClick={this.determineBackAction} disabled={false}>
+                  <Button
+                    name="Back"
+                    display="secondary"
+                    width="flush"
+                    onClick={this.determineBackAction}
+                    disabled={false}
+                  >
                     <Icon iconType="ChevronLeftLarge" />
                     {content.back}
                   </Button>
-                  <Button name="Save Draft" display="secondary" onClick={this.saveDraftData} disabled={this.state.disabled}>
+                  <Button
+                    name="Save Draft"
+                    display="secondary"
+                    onClick={this.saveDraftData}
+                    disabled={this.state.disabled}
+                  >
                     {content.saveDraft}
                   </Button>
-                  <Button name="Send" display="primary" onClick={this.sendData} disabled={this.state.disabled}>
+                  <Button
+                    name="Send"
+                    display="primary"
+                    onClick={this.sendData}
+                    disabled={this.state.disabled}
+                  >
                     {content.send}
                   </Button>
                 </ButtonGroup>
@@ -346,7 +421,9 @@ export class SecureMessageForm extends React.Component {
           </Row>
         </LoadingLocalTakeover>
         {showPopup && this.returnModalComponent()}
-        {showSentMessageModal && successModal ? this.returnSentMessageModal() : ''}
+        {showSentMessageModal && successModal
+          ? this.returnSentMessageModal()
+          : ''}
         {showDraftSuccessModal && successModal && this.returnDraftModal()}
         {messageError && showSaveServiceErrorModal && this.returnErrorModal()}
         {messageError && showSendServiceErrorModal && this.returnErrorModal()}

@@ -1,5 +1,10 @@
 import AppConstants from '../constants/AppConstants';
-import { NO_MODAL, DELETE_MODAL, ARCHIVE_MODAL, UNARCHIVE_MODAL } from '../constants/ModalConstants';
+import {
+  NO_MODAL,
+  DELETE_MODAL,
+  ARCHIVE_MODAL,
+  UNARCHIVE_MODAL,
+} from '../constants/ModalConstants';
 /**
  *
  * @param {*} state
@@ -41,7 +46,7 @@ function reducer(
 }
 export default reducer;
 
-const getMessageDetail = state => state.messageDetail;
+const getMessageDetail = (state) => state.messageDetail;
 
 export const selectors = {
   getMessageDetail,

@@ -6,7 +6,7 @@
 		<meta http-equiv="expires" content="0">
 		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />		
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="description", content="Secure messaging">
+    <meta name="description" content="Secure messaging">
     <script src="//assets.adobedtm.com/6677ad16b0484ad2b930d0b209e41c1e96798d52/satelliteLib-0b518e76cb70a8d49d37f81f2983c22dad7c11ff.js"></script>
     <title>Secure Messaging</title>
 </head>
@@ -19,6 +19,11 @@
     window.pathValue = path;
     window.baseURl = window.location.pathname.substr(0, window.location.pathname.lastIndexOf(myDocuments ? '/my-documents' : '/securemessages'))
 
+
+    /**
+     * @todo
+     * Creates a script element here for some reason? - probably to let the code above work first...
+     */  
     var element = document.createElement('script');
     element.src = path + 'main.bundle.js';
     document.body.appendChild(element);
@@ -86,7 +91,7 @@
         if (window.location.hash) {
             var hash = parseHash(window.location.hash.substring(1));
             window.customHashParam = hash;
-            window.location.hash = '';
+           // window.location.hash = '';
             var head = document.getElementsByTagName('head')[0];
             var element = document.createElement('link');
             element.rel = 'stylesheet';

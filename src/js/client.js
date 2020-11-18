@@ -7,7 +7,7 @@ import createStore from './stores/AppStore';
 import ConfigUtils from './utils/ConfigUtils';
 import { WebUIThemeProvider } from 'web-ui-components/lib/utilities/themes';
 import { buildClientContext } from './utils/ContextUtils';
-import 'babel-polyfill';
+import '@babel/polyfill';
 import 'whatwg-fetch';
 import 'css/main.css';
 
@@ -19,7 +19,7 @@ const app = document.getElementById('app');
  * @return {ReactComponent} AppRouter which initiates the application.
  */
 
- // clear hash parameters
+// clear hash parameters
 let hash = window.customHashParam || {};
 window.customHashParam = null;
 
@@ -41,7 +41,12 @@ const session = {
   brand: hash.brandId ? hash.brandId.toUpperCase() : 'VM',
   state: hash.state,
 };
-const clientContext = buildClientContext(decodeURIComponent(hash.client_context), hash.user_tracking_id, hash.state);
+
+const clientContext = buildClientContext(
+  decodeURIComponent(hash.client_context),
+  hash.user_tracking_id,
+  hash.state
+);
 
 const { isDocumentLibraryEnabled } = hash;
 
@@ -54,31 +59,38 @@ const normalisedBrandId = {
   VM: 'VM',
 }[session.brand];
 
-const startApp = () => {
+function startApp() {
   const store = createStore(session, clientContext, ConfigUtils.config);
+
   ReactDOM.render(
     <Provider store={store}>
       <WebUIThemeProvider brandID={normalisedBrandId}>
-        <AppRouter session={session} client={clientContext} isDocumentLibraryEnabled={isDocumentLibraryEnabledFinal} />
+        <AppRouter
+          session={session}
+          client={clientContext}
+          isDocumentLibraryEnabled={isDocumentLibraryEnabledFinal}
+        />
       </WebUIThemeProvider>
     </Provider>,
     app
   );
-};
+}
 
-const loadStyles = () => {
+function loadStyles() {
   const head = document.getElementsByTagName('head')[0];
   const element = document.createElement('link');
   element.rel = 'stylesheet';
   element.href = `/css/app.${normalisedBrandId.toLowerCase()}.css`;
   head.appendChild(element);
-};
+}
 
-const initApp = () => {
+function initApp() {
   ConfigUtils.getConfig(startApp);
-  //This is for hot reloading on dev, so css gets loaded when window has is empty
+
+  // This is for hot reloading on dev, so css gets loaded when window has is empty
   if (process.env.NODE_ENV !== 'production' && !window.location.hash) {
     loadStyles();
   }
-};
+}
+
 initApp();

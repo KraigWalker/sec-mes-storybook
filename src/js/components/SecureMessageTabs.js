@@ -1,6 +1,12 @@
 import React from 'react';
 import SecureMessageList from './SecureMessageList/SecureMessageList';
-import { DRAFT, SENT, INBOX, NEW, ARCHIVED as ARCHIVE } from '../constants/StringsConstants';
+import {
+  DRAFT,
+  SENT,
+  INBOX,
+  NEW,
+  ARCHIVED as ARCHIVE,
+} from '../constants/StringsConstants';
 import { TabGroup } from 'web-ui-components/lib/navigation/tab-group';
 import { Row, Container } from 'web-ui-components/lib/global/layout';
 import { withBreakpoints } from '../components/common/hoc/WithBreakpoint';
@@ -13,7 +19,7 @@ export class SecureMessageTabs extends React.Component {
     };
   }
 
-  onclick = activeTab => {
+  onclick = (activeTab) => {
     this.setState({ activeTab });
   };
 
@@ -21,7 +27,10 @@ export class SecureMessageTabs extends React.Component {
     const { messages, noPadding, containerSize } = this.props;
     const unreadInboxCount = getInboxUnreadCount(messages);
     const inboxTitle = getInboxTitle(unreadInboxCount);
-    const activeTabMessages = getActiveTabMessages(this.state.activeTab, this.props.messages);
+    const activeTabMessages = getActiveTabMessages(
+      this.state.activeTab,
+      this.props.messages
+    );
 
     let paddingProps = null;
     if (noPadding) {
@@ -39,7 +48,7 @@ export class SecureMessageTabs extends React.Component {
         <TabGroup
           className="u-padding-left-0"
           activeTab={this.state.activeTab}
-          onChange={val => {
+          onChange={(val) => {
             !this.props.fetching && this.setState({ activeTab: val });
           }}
           tabButtons={[
@@ -62,7 +71,11 @@ export class SecureMessageTabs extends React.Component {
           ]}
         />
         <Row>
-          <SecureMessageList messages={activeTabMessages} activeTab={this.state.activeTab} content={this.props.content} />
+          <SecureMessageList
+            messages={activeTabMessages}
+            activeTab={this.state.activeTab}
+            content={this.props.content}
+          />
         </Row>
       </Container>
     ) : (
@@ -71,14 +84,15 @@ export class SecureMessageTabs extends React.Component {
   }
 }
 
-const getInboxUnreadCount = messages => {
+const getInboxUnreadCount = (messages) => {
   if (messages.inboxMessages.length) {
-    return messages.inboxMessages.filter(message => message.status === NEW).length;
+    return messages.inboxMessages.filter((message) => message.status === NEW)
+      .length;
   }
   return 0;
 };
 
-const getInboxTitle = messageCount => {
+const getInboxTitle = (messageCount) => {
   return messageCount > 0 ? `Inbox (${messageCount})` : `Inbox`;
 };
 
@@ -95,8 +109,5 @@ const getActiveTabMessages = (tab, messages) => {
       return messages.inboxMessages;
   }
 };
-
-SecureMessageTabs.propTypes = {};
-SecureMessageTabs.defaultProps = {};
 
 export default withBreakpoints(SecureMessageTabs);

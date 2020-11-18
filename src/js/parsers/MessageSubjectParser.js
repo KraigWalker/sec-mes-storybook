@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { forEach } from 'lodash-es';
 import MessageSubjectEntity from '../entities/MessageSubjectEntity';
 import MessageAccountEntity from '../entities/MessageAccountEntity';
 
@@ -9,7 +9,7 @@ import MessageAccountEntity from '../entities/MessageAccountEntity';
 export function parseSubjects(response) {
   const subjects = [];
   const messageSubjectEntity = new MessageSubjectEntity();
-  _.forEach(response.subjects, subject => {
+  forEach(response.subjects, (subject) => {
     messageSubjectEntity.setSubjects(subject.value);
     subjects.push(subject);
   });
@@ -17,7 +17,7 @@ export function parseSubjects(response) {
 }
 export function parseAccounts(response) {
   const messageAccountEntity = new MessageAccountEntity();
-  _.forEach(response.accounts, account => {
+  forEach(response.accounts, (account) => {
     messageAccountEntity.setAccounts(account);
   });
   return messageAccountEntity.getAccounts();

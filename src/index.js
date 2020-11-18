@@ -1,3 +1,1 @@
-import { App } from './js/App.advisor';
-
-export { App as AdvisorApp };
+export { AdvisorApp } from './js/AdvisorApp';

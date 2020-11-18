@@ -18,7 +18,12 @@ export default function reducer(
       return { ...state, fetching: true };
     }
     case AppConstants.REQUEST_SEGMENTS_SUCCESS: {
-      return { ...state, fetching: false, fetched: true, segmentData: action.payload };
+      return {
+        ...state,
+        fetching: false,
+        fetched: true,
+        segmentData: action.payload,
+      };
     }
     default:
       return state;
