@@ -2,9 +2,22 @@ import React from 'react';
 import SecureMessageForm from './SecureMessageForm';
 import { connect } from 'react-redux';
 import { PENDING, DRAFT } from '../constants/StringsConstants';
-import { BuildSendMessageRequestEntity, getMessageAccountValue } from '../bl/SecureMessageBL';
-import { popupState, sendMessageForAccessibiltiy, createNewMessage, updateDraftMessage, setSendingMessages } from '../actions/AppActions';
-import { MessageSelectors, getSubjectErrors, getSubjects, getAccounts } from '../reducers';
+import {
+  BuildSendMessageRequestEntity,
+  getMessageAccountValue,
+} from '../bl/SecureMessageBL';
+import {
+  popupState,
+  sendMessageForAccessibiltiy,
+  createNewMessage,
+  updateDraftMessage,
+} from '../actions/AppActions';
+import {
+  MessageSelectors,
+  getSubjectErrors,
+  getSubjects,
+  getAccounts,
+} from '../reducers';
 
 class DraftSecureMessage extends React.Component {
   constructor(props) {
@@ -17,7 +30,10 @@ class DraftSecureMessage extends React.Component {
     const { accounts, location, customerDetails } = this.props;
     const { id } = location.messageDetail;
     const { name } = customerDetails ? customerDetails.personal_details : '';
-    const sendRequestMessage = BuildSendMessageRequestEntity(accounts, messageEntity);
+    const sendRequestMessage = BuildSendMessageRequestEntity(
+      accounts,
+      messageEntity
+    );
 
     id
       ? this.props.updateDraftMessage({
@@ -65,7 +81,7 @@ class DraftSecureMessage extends React.Component {
   }
 }
 
-const mapState = state => ({
+const mapState = (state) => ({
   subjects: getSubjects(state),
   messages: MessageSelectors.getMessages(state),
   accounts: getAccounts(state),
@@ -81,9 +97,5 @@ const mapStateToProps = {
   updateDraftMessage,
   sendMessageForAccessibiltiy,
   createNewMessage,
-  setSendingMessages,
 };
-export default connect(
-  mapState,
-  mapStateToProps
-)(DraftSecureMessage);
+export default connect(mapState, mapStateToProps)(DraftSecureMessage);

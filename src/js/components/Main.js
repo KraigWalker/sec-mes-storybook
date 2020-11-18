@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
-import { TabCardBlock, TabCard } from 'web-ui-components/lib/navigation/tab-cards';
+import {
+  TabCardBlock,
+  TabCard,
+} from 'web-ui-components/lib/navigation/tab-cards';
 import { utils } from 'document-management-lib';
 import { PageLayout, Container } from 'web-ui-components/lib/global/layout';
 import { withBreakpoints } from '../components/common/hoc/WithBreakpoint';
 import { preventWindowZoom } from '../utils/GeneralUtils';
 
-export class Main extends React.Component {
+export class Main extends Component {
   constructor(props) {
     super(props);
     this.handleSecureMessagesClick = this.handleSecureMessagesClick.bind(this);
@@ -33,7 +36,12 @@ export class Main extends React.Component {
   }
 
   render() {
-    const { location, isWebView, isDocumentLibraryEnabled, noPadding, containerSize } = this.props;
+    const {
+      isWebView,
+      isDocumentLibraryEnabled,
+      noPadding,
+      containerSize,
+    } = this.props;
     let paddingProps = null;
     if (noPadding) {
       paddingProps = {
@@ -50,7 +58,12 @@ export class Main extends React.Component {
         {!isWebView && isDocumentLibraryEnabled && (
           <Container {...paddingProps} size={containerSize}>
             <TabCardBlock>
-              <TabCard label="Secure messages" onClick={this.handleSecureMessagesClick} iconType="MailBrandedSmall" isActive={location.pathname.includes('securemessages')} />
+              <TabCard
+                label="Secure messages"
+                onClick={this.handleSecureMessagesClick}
+                iconType="MailBrandedSmall"
+                isActive={location.pathname.includes('securemessages')}
+              />
               <TabCard
                 label="Letters and documents"
                 onClick={this.handleDocumentPortalClick}

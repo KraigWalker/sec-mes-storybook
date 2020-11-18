@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { sortBy } from 'lodash-es';
 
 class MessageAccountEntity {
   constructor() {
@@ -14,7 +14,7 @@ class MessageAccountEntity {
     });
   }
   getAccounts() {
-    return _.sortBy(this.accounts, ['display_order']);
+    return sortBy(this.accounts, ['display_order']);
   }
 }
 export default MessageAccountEntity;

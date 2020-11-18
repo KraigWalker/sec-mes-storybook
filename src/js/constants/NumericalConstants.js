@@ -1,2 +1,1 @@
-const TEXT_LIMIT = 50;
-export { TEXT_LIMIT };
+export const TEXT_LIMIT = 50;

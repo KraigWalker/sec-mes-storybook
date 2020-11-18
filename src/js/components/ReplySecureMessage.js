@@ -1,13 +1,24 @@
 import React from 'react';
-import _ from 'lodash';
+import { map } from 'lodash-es';
 import SecureMessageForm from './SecureMessageForm';
 import { connect } from 'react-redux';
-import { popupState, createNewMessage, sendMessageForAccessibiltiy } from '../actions/AppActions';
+import {
+  popupState,
+  createNewMessage,
+  sendMessageForAccessibiltiy,
+} from '../actions/AppActions';
 import { getThreadsBL, getMessageAccountValue } from '../bl/SecureMessageBL';
 import { PENDING, NEW, DRAFT } from '../constants/StringsConstants';
 import SecureMessageSummary from './common/SecureMessageSummary';
 import { BuildSendMessageRequestEntity } from '../bl/SecureMessageBL';
-import { getAccounts, getSubjects, getMessageDetail, getCustomerError, getSubjectErrors, MessageSelectors } from '../reducers';
+import {
+  getAccounts,
+  getSubjects,
+  getMessageDetail,
+  getCustomerError,
+  getSubjectErrors,
+  MessageSelectors,
+} from '../reducers';
 
 class ReplySecureMessage extends React.Component {
   constructor(props) {
@@ -22,8 +33,14 @@ class ReplySecureMessage extends React.Component {
       deletingMessages,
       currentMessage,
     });
-    return _.map(threads, (thread, index) => {
-      return <SecureMessageSummary key={index} message={{ ...thread }} content={this.props.content} />;
+    return map(threads, (thread, index) => {
+      return (
+        <SecureMessageSummary
+          key={index}
+          message={{ ...thread }}
+          content={this.props.content}
+        />
+      );
     });
   }
 
@@ -31,7 +48,10 @@ class ReplySecureMessage extends React.Component {
     const { location, customerDetails, accounts } = this.props;
     const { name } = customerDetails ? customerDetails.personal_details : '';
 
-    const sendRequestMessage = BuildSendMessageRequestEntity(accounts, messageEntity);
+    const sendRequestMessage = BuildSendMessageRequestEntity(
+      accounts,
+      messageEntity
+    );
     this.props.createNewMessage({
       requestData: sendRequestMessage.getMessageRequestData(),
       ids: location.messageDetail,
@@ -41,19 +61,31 @@ class ReplySecureMessage extends React.Component {
   }
 
   render() {
-    const { messageDetail } = this.props.location.messageDetail ? this.props.location : this.props;
+    const { messageDetail } = this.props.location.messageDetail
+      ? this.props.location
+      : this.props;
 
-    const { messages, deletingMessages, content, isUpdatingMessage, isSavingDraft } = this.props;
+    const {
+      messages,
+      deletingMessages,
+      content,
+      isUpdatingMessage,
+      isSavingDraft,
+    } = this.props;
     const selectedAccountValue = getMessageAccountValue(messageDetail, content);
 
-    const threads = this.getThreads({ messages, deletingMessages, currentMessage: messageDetail });
+    const threads = this.getThreads({
+      messages,
+      deletingMessages,
+      currentMessage: messageDetail,
+    });
 
     return (
       <SecureMessageForm
         {...this.props}
         threads={threads}
-        onSend={messageEntity => this.handleSaveClick(PENDING, messageEntity)}
-        onSave={messageEntity => this.handleSaveClick(DRAFT, messageEntity)}
+        onSend={(messageEntity) => this.handleSaveClick(PENDING, messageEntity)}
+        onSave={(messageEntity) => this.handleSaveClick(DRAFT, messageEntity)}
         title={content.replyMessageTitle}
         selectedSubject={messageDetail.subject}
         selectedAccount={messageDetail.account}
@@ -66,7 +98,7 @@ class ReplySecureMessage extends React.Component {
   }
 }
 
-const mapState = state => ({
+const mapState = (state) => ({
   subjects: getSubjects(state),
   subjectErrors: getSubjectErrors(state),
   messages: MessageSelectors.getMessages(state),
@@ -85,7 +117,4 @@ const mapStateToProps = {
   createNewMessage,
   sendMessageForAccessibiltiy,
 };
-export default connect(
-  mapState,
-  mapStateToProps
-)(ReplySecureMessage);
+export default connect(mapState, mapStateToProps)(ReplySecureMessage);

@@ -1,7 +1,7 @@
 /**
  * @class DateUtils
  */
-import _ from 'lodash';
+import { sortBy } from 'lodash-es';
 import moment from 'moment';
 
 const friendlyDateFormat = 'DD MMM YYYY HH:mm';
@@ -19,7 +19,7 @@ export function getISODateString(dateStr) {
  * @param  {Array} arrayData
  */
 export function sortArrayByDate(arrayData) {
-  return _.sortBy(arrayData, ['date_created']).reverse();
+  return sortBy(arrayData, ['date_created']).reverse();
 }
 
 /**
@@ -39,7 +39,5 @@ export function isUnixDate(date) {
  * @param  {String} dateStr e.g. format - 'DD MMM YYYY hh:mm'
  */
 export function getFriendlyDateFromUnix(date) {
-  return moment(date)
-    .utc(true)
-    .format(friendlyDateFormat);
+  return moment(date).utc(true).format(friendlyDateFormat);
 }

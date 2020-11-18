@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
-import AppRouter from './router/AppRouter.advisor';
 import { dependencies } from 'document-management-lib';
-import createStore from './stores/AppStore';
 import { WebUIThemeProvider } from 'web-ui-components/lib/utilities/themes';
+import AppRouter from './router/AppRouter.advisor';
+import createStore from './stores/AppStore';
 import { setMode } from './actions/AppActions';
 import StringConstants from './constants/StringsConstants';
 import { buildClientContext } from './utils/ContextUtils';
@@ -13,7 +13,11 @@ import ApiUtils, { getStaffHeaders } from './api/ApiUtils';
 import './polyfill';
 
 export const App = ({ config }) => {
-  const clientContext = buildClientContext(config.appTitle, config.userTrackingId, config.state);
+  const clientContext = buildClientContext(
+    config.appTitle,
+    config.userTrackingId,
+    config.state
+  );
 
   const session = {
     access_token: config.accessToken,
@@ -29,11 +33,18 @@ export const App = ({ config }) => {
 
   const staffHeaders = getStaffHeaders(session);
 
-  const apiUtils = new ApiUtils(clientContext, session.access_token, session.bank_id, staffHeaders);
+  const apiUtils = new ApiUtils(
+    clientContext,
+    session.access_token,
+    session.bank_id,
+    staffHeaders
+  );
 
   const deps = {
     native: dependencies.native,
-    api: new dependencies.InternalApi(clientContext, session, { libertyBaseApiUrl: envConfig.paasBaseApiUrl }),
+    api: new dependencies.InternalApi(clientContext, session, {
+      libertyBaseApiUrl: envConfig.paasBaseApiUrl,
+    }),
     secureMessagesApi: new AppApi(envConfig, clientContext, session, apiUtils),
   };
 

@@ -1,5 +1,9 @@
 import AccountEntity from './AccountEntity';
-import { getFriendlyDate, isUnixDate, getFriendlyDateFromUnix } from '../utils/DateUtils';
+import {
+  getFriendlyDate,
+  isUnixDate,
+  getFriendlyDateFromUnix,
+} from '../utils/DateUtils';
 
 /**
  * @class MessageEntity  Class for getter setter changes
@@ -8,6 +12,7 @@ class MessageEntity {
   constructor() {
     this.id = null;
     this.account = new AccountEntity();
+    this.category = null;
     this.reference = null;
     this.dateCreated = null;
     this.status = null;
@@ -29,6 +34,14 @@ class MessageEntity {
   getAccount() {
     return this.account;
   }
+
+  /**
+   * @returns category field of the message ("Letters", "Statements" etc.)
+   */
+  getCategory() {
+    return this.category;
+  }
+
   /**
    * @returns message reference
    */
@@ -75,7 +88,7 @@ class MessageEntity {
   }
   /**
    *
-   * @param {Object} Account Entity related to the message
+   * @param {Object} account Entity related to the message
    */
   setAccount(account) {
     if (account === null || account === undefined) {
@@ -86,6 +99,14 @@ class MessageEntity {
       this.account.setAccountNumber(account.number);
     }
   }
+
+  /**
+   * @param {String} category The category of the secure message attachment
+   */
+  setCategory(category) {
+    this.category = category;
+  }
+
   /**
    *
    * @param {String} reference of the secure message
@@ -152,6 +173,7 @@ class MessageEntity {
     newMessage.reference = this.reference;
     newMessage.dateCreated = this.dateCreated;
     newMessage.status = this.status;
+    newMessage.category = this.category;
     newMessage.threadID = this.threadID;
     newMessage.subject = this.subject;
     newMessage.message = this.message;

@@ -1,5 +1,8 @@
 import ApiUtils from './ApiUtils';
-import { createNewMessage, updateExistingMessage } from '../parsers/MessageParser';
+import {
+  createNewMessage,
+  updateExistingMessage,
+} from '../parsers/MessageParser';
 
 const _getMessageURLEndpoint = '/banks/{bank_id}/securemessages';
 const _getMessageSubjectsURL = '/banks/{bank_id}/securemessages/subjects';
@@ -7,11 +10,21 @@ const _getAccountsURL = '/banks/{bank_id}/accounts/default';
 const _sendMessageURL = '/banks/{bank_id}/securemessages/{message_id}';
 
 class AppApi {
-  constructor(config, clientContext, session, apiUtils = new ApiUtils(clientContext, session.access_token, session.bank_id)) {
+  constructor(
+    config,
+    clientContext,
+    session,
+    apiUtils = new ApiUtils(
+      clientContext,
+      session.access_token,
+      session.bank_id
+    )
+  ) {
     this.config = config;
     this.apiUtils = apiUtils;
     this.callAPI = this.callAPI.bind(this);
   }
+
   fetchSecureMessages(success, error) {
     this.apiUtils.makeRequest(
       {

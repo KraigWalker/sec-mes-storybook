@@ -1,71 +1,81 @@
 try {
-    const curl = require("curl-request");
-    const hostPath = "https://homev8-u.eu.nag.net:64016";
-    const loginPath = `${hostPath}/cbmeoV8/frontend/logoff.do`;
-    const postFormPath = `${hostPath}/pkmslogin.form`;
-    const staffTokenPath = `${hostPath}/stafftoken/ibapi/v2/stafftoken/token`;
+  const { curly } = require('node-libcurl');
+  const hostPath = 'https://homev8-u.eu.nag.net:64016';
+  const loginPath = `${hostPath}/cbmeoV8/frontend/logoff.do`;
+  const postFormPath = `${hostPath}/pkmslogin.form`;
+  const staffTokenPath = `${hostPath}/stafftoken/ibapi/v2/stafftoken/token`;
 
-// TODO USE generators
-    async function getMEOSessionCookie() {
-        return await new curl()
-            .get(loginPath);
-    }
+  // TODO USE generators
+  async function getMEOSessionCookie() {
+    return await new curly().get(loginPath);
+  }
 
-    async function getLoginCookiesWithData({cookie, username, password}) {
-        return await new curl()
-            .setHeaders([`Cookie: ${cookie}`])
-            .setBody(
-                {
-                    username: username,
-                    password: password,
-                    "login-form-type": "pwd",
-                    logonID: ""
-                })
-            .post(postFormPath)
-    }
+  async function getLoginCookiesWithData({ cookie, username, password }) {
+    return await new curly()
+      .setHeaders([`Cookie: ${cookie}`])
+      .setBody({
+        username: username,
+        password: password,
+        'login-form-type': 'pwd',
+        logonID: '',
+      })
+      .post(postFormPath);
+  }
 
-    async function getStaffToken({cookie}) {
-        return await new curl()
-            .setHeaders([`Cookie: ${cookie}`, 'Content-Type: application/json', 'Accept: */*'])
-            .setBody("{ \"bank_id\": \"CB\", \"system_code\": \"MEO\" }")
-            .post(staffTokenPath);
-    }
+  async function getStaffToken({ cookie }) {
+    return await new curly()
+      .setHeaders([
+        `Cookie: ${cookie}`,
+        'Content-Type: application/json',
+        'Accept: */*',
+      ])
+      .setBody('{ "bank_id": "CB", "system_code": "MEO" }')
+      .post(staffTokenPath);
+  }
 
-    async function staffToken(username, password) {
-        return getMEOSessionCookie()
-            .then(({headers}) => {
-                if (headers.hasOwnProperty("set-cookie")) {
-                    const data = {
-                        cookie: headers["set-cookie"][0],
-                        username: username.toUpperCase(),
-                        password,
-                    };
-                    console.log("Getting MEO Credentials...");
-                    return getLoginCookiesWithData(data)
-                        .then(({headers}) => {
-                            if (headers.hasOwnProperty("set-cookie")) {
-                                const headerStrings = headers["set-cookie"].map(cookie => cookie.substring(0, cookie.indexOf(";")));
-                                const cookie = headerStrings.reduce((prev, curr) => {
-                                    return `${prev} ${curr};`
-                                }, "");
-                                console.log("Getting Access Token...");
-                                return getStaffToken({cookie})
-                                    .then(({body}) => {
-                                        if (!body.access_token) throw new Error("Failed to Sign In");
-                                        console.log(`Success! STAFF TOKEN: ${body.access_token}`);
-                                        return body.access_token;
-                                    });
-                            }
-                            throw `No cookie in ${postFormPath}, Are you connected to CYBG VPN?`;
-                        })
-                        .catch(e => console.log(e))
-                }
-                throw `No cookie in ${loginPath}, Are you connected to CYBG VPN?`;
-            }).catch(e => console.log(e));
-    }
+  async function staffToken(username, password) {
+    return getMEOSessionCookie()
+      .then(({ headers }) => {
+        if (headers.hasOwnProperty('set-cookie')) {
+          const data = {
+            cookie: headers['set-cookie'][0],
+            username: username.toUpperCase(),
+            password,
+          };
+          console.log('Getting MEO Credentials...');
+          return getLoginCookiesWithData(data)
+            .then(({ headers }) => {
+              if (headers.hasOwnProperty('set-cookie')) {
+                const headerStrings = headers['set-cookie'].map((cookie) =>
+                  cookie.substring(0, cookie.indexOf(';'))
+                );
+                const cookie = headerStrings.reduce((prev, curr) => {
+                  return `${prev} ${curr};`;
+                }, '');
+                console.log('Getting Access Token...');
+                return getStaffToken({ cookie }).then(({ body }) => {
+                  if (!body.access_token) throw new Error('Failed to Sign In');
+                  console.log(`Success! STAFF TOKEN: ${body.access_token}`);
+                  return body.access_token;
+                });
+              }
+              throw new Error(
+                `No cookie in ${postFormPath}, Are you connected to CYBG VPN?`
+              );
+            })
+            .catch((e) => console.log(e));
+        }
+        throw new Error(
+          `No cookie in ${loginPath}, Are you connected to CYBG VPN?`
+        );
+      })
+      .catch((e) => console.log(e));
+  }
 
-    exports.staffToken = staffToken;
+  exports.staffToken = staffToken;
 } catch (err) {
-    console.warn("ERROR Please use node >= 10 to run MEO advisor dependencies. Re-run npm install once on node >= 10")
-    throw err;
+  console.warn(
+    'ERROR Please use node >= 10 to run MEO advisor dependencies. Re-run npm install once on node >= 10'
+  );
+  throw err;
 }

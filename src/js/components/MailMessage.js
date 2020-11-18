@@ -11,14 +11,26 @@ import { truncateMessage } from '../utils/SecureMessageUtils';
 
 const attachmentLink = (props, document) => {
   return window.navigator && window.navigator.msSaveOrOpenBlob ? (
-    <DocumentDownloadLink documentId={document.id} documentName={document.label} />
+    <DocumentDownloadLink
+      documentId={document.id}
+      documentName={document.label}
+    />
   ) : (
     <Attachment {...props} document={document} />
   );
 };
 
-const MailMessage = props => {
-  const { hasAttachment, content, history, message, showDelete, showArchive, showUnarchive, showReply } = props;
+const MailMessage = (props) => {
+  const {
+    hasAttachment,
+    content,
+    history,
+    message,
+    showDelete,
+    showArchive,
+    showUnarchive,
+    showReply,
+  } = props;
 
   const onArchiveClick = () => props.onArchiveClick(message);
   const onUnarchiveClick = () => props.onUnarchiveClick(message);
@@ -37,7 +49,14 @@ const MailMessage = props => {
         labelOnClick={history.goBack}
       />
       <Mail.Header>
-        <Mail.Item id="0" mailSubject={message.subject} mailSummary={truncateMessage(message.message, TEXT_LIMIT)} mailDate={message.dateCreated} isRead mailOnClick={() => {}} />
+        <Mail.Item
+          id="0"
+          mailSubject={message.subject}
+          mailSummary={truncateMessage(message.message, TEXT_LIMIT)}
+          mailDate={message.dateCreated}
+          isRead
+          mailOnClick={() => {}}
+        />
       </Mail.Header>
       <Mail.Body>
         <p>{message.message}</p>
@@ -54,7 +73,11 @@ const MailMessage = props => {
             </Button>
           ) : null}
           {showUnarchive ? (
-            <Button display="secondary" onClick={onUnarchiveClick} width="narrow">
+            <Button
+              display="secondary"
+              onClick={onUnarchiveClick}
+              width="narrow"
+            >
               {content.moveToInbox}
             </Button>
           ) : null}

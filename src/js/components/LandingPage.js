@@ -30,11 +30,14 @@ export class LandingPage extends React.PureComponent {
 
   componentDidUpdate() {
     if (this.props.fetchError && this.props.fetched) {
-      this.props.history.push({ pathname: '/securemessages/error', content: this.props.content });
+      this.props.history.push({
+        pathname: '/securemessages/error',
+        content: this.props.content,
+      });
     }
   }
 
-  linkClick = activeTab => {
+  linkClick = (activeTab) => {
     this.props.getActiveTab(activeTab);
   };
 
@@ -56,18 +59,31 @@ export class LandingPage extends React.PureComponent {
           <Card>
             {showBackLink && (
               <TextBody className="c-step-header__crumbs">
-                <BackButton onClick={this.handleBackClick} label={this.props.content.backToAccounts} />
+                <BackButton
+                  onClick={this.handleBackClick}
+                  label={this.props.content.backToAccounts}
+                />
               </TextBody>
             )}
             <SubHeading>{this.props.content.messages}</SubHeading>
             <TextBody>{this.props.content.landingPageMessage}</TextBody>
             {!readOnly && (
-              <Button display="primary" onClick={() => this.props.history.push('/securemessages/new')}>
+              <Button
+                display="primary"
+                onClick={() => this.props.history.push('/securemessages/new')}
+              >
                 {this.props.content.newSecureMessage}
               </Button>
             )}
             {this.props.modalType > 0 && (
-              <SuccessModal onClick={this.props.popupState} bodyText={getSuccessModalMessage(this.props.modalType, this.props.content)} okText={this.props.content.ok} />
+              <SuccessModal
+                onClick={this.props.popupState}
+                bodyText={getSuccessModalMessage(
+                  this.props.modalType,
+                  this.props.content
+                )}
+                okText={this.props.content.ok}
+              />
             )}
             <SecureMessageTabs
               location={this.props.location}
@@ -89,7 +105,7 @@ export class LandingPage extends React.PureComponent {
  * @param {object} state. State of the application
  */
 
-const mapState = state => ({
+const mapState = (state) => ({
   readOnly: MessageSelectors.getMode(state) === StringConstants.READ_ONLY,
   fetchError: MessageSelectors.getFetchError(state),
   fetched: MessageSelectors.getFetched(state),
@@ -106,12 +122,11 @@ const mapDispatchToProps = {
   popupState,
 };
 
-export default compose(
-  connect(
-    mapState,
-    mapDispatchToProps
-  ),
+const ConnectedLandingPage = compose(
+  connect(mapState, mapDispatchToProps),
   utils.withNativeBridge(window),
   withBreakpoints,
   WithRetry
 )(LandingPage);
+
+export { ConnectedLandingPage };
