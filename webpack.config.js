@@ -1,6 +1,7 @@
 exports.presets = [
-  'react',
-  ['env',
+  '@babel/preset-react',
+  [
+    '@babel/preset-env',
     {
       targets: {
         browsers: [
@@ -15,10 +16,9 @@ exports.presets = [
       },
     },
   ],
-]
+];
 
 exports.plugins = [
-  'transform-object-rest-spread',
-  'transform-es2015-destructuring',
-  'transform-class-properties'
-]
+  '@babel/proposal-object-rest-spread',
+  '@babel/proposal-class-properties',
+];

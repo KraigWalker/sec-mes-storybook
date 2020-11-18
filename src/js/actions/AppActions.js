@@ -1,10 +1,14 @@
 import AppConstants from '../constants/AppConstants';
 import { parseMessages } from '../parsers/MessageParser';
 import { parseSubjects, parseAccounts } from '../parsers/MessageSubjectParser';
-import { buildFetchHandlers, buildUpdateHandlers, buildOptimisticUpdate } from './common';
+import {
+  buildFetchHandlers,
+  buildUpdateHandlers,
+  buildOptimisticUpdate,
+} from './common';
 
 export function fetchSecureMessages() {
-  return function(dispatch, _, { secureMessagesApi }) {
+  return function (dispatch, _, { secureMessagesApi }) {
     const payload = {
       type: AppConstants.REQUEST_SECURE_MESSAGES,
     };
@@ -20,7 +24,7 @@ export function fetchSecureMessages() {
   };
 }
 export function getMessageSubjects() {
-  return function(dispatch, _, { secureMessagesApi }) {
+  return function (dispatch, _, { secureMessagesApi }) {
     const { success, error } = buildFetchHandlers({
       dispatch,
       successActionType: AppConstants.REQUEST_SUBJECTS_SUCCESS,
@@ -32,7 +36,7 @@ export function getMessageSubjects() {
   };
 }
 export function getAccounts() {
-  return function(dispatch, _, { secureMessagesApi }) {
+  return function (dispatch, _, { secureMessagesApi }) {
     const { success, error } = buildFetchHandlers({
       dispatch,
       successActionType: AppConstants.REQUEST_ACCOUNTS_SUCCESS,
@@ -44,7 +48,7 @@ export function getAccounts() {
 }
 
 export function getActiveTab(activeTab) {
-  return function(dispatch) {
+  return function (dispatch) {
     const payload = {
       type: AppConstants.REQUEST_TAB_ACTIVE,
       payload: activeTab,
@@ -61,7 +65,13 @@ const dispatchUpdating = ({ dispatch, status }) => {
   dispatch(payload);
 };
 
-const buildMessageUpdateAction = ({ id, status, successActionType, errorActionType, updateMethod }) => (dispatch, _, { secureMessagesApi }) => {
+const buildMessageUpdateAction = ({
+  id,
+  status,
+  successActionType,
+  errorActionType,
+  updateMethod,
+}) => (dispatch, _, { secureMessagesApi }) => {
   dispatchUpdating({ status, dispatch });
 
   const { success, error } = buildUpdateHandlers({
@@ -110,7 +120,7 @@ export const updateDraftMessage = ({ requestData, status }) =>
   });
 
 export function setViewMessageDetail(messageDetail) {
-  return function(dispatch) {
+  return function (dispatch) {
     const payload = {
       payload: messageDetail,
       type: AppConstants.SET_VIEW_MESSAGE_DETAIL,
@@ -119,15 +129,24 @@ export function setViewMessageDetail(messageDetail) {
   };
 }
 
-export const delMessageData = buildOptimisticUpdate(AppConstants.DELETE_SECURE_MESSAGE);
-export const archiveMessageData = buildOptimisticUpdate(AppConstants.ARCHIVE_SECURE_MESSAGE);
-export const unarchiveMessageData = buildOptimisticUpdate(AppConstants.UNARCHIVE_SECURE_MESSAGE);
-export const setMessageRead = buildOptimisticUpdate(AppConstants.SET_SECURE_MESSAGE_READ);
+export const delMessageData = buildOptimisticUpdate(
+  AppConstants.DELETE_SECURE_MESSAGE
+);
+export const archiveMessageData = buildOptimisticUpdate(
+  AppConstants.ARCHIVE_SECURE_MESSAGE
+);
+export const unarchiveMessageData = buildOptimisticUpdate(
+  AppConstants.UNARCHIVE_SECURE_MESSAGE
+);
+export const setMessageRead = buildOptimisticUpdate(
+  AppConstants.SET_SECURE_MESSAGE_READ
+);
 
-export const retryUpdateRequest = (actionType, failedReq) => buildOptimisticUpdate(actionType)(failedReq);
+export const retryUpdateRequest = (actionType, failedReq) =>
+  buildOptimisticUpdate(actionType)(failedReq);
 
 export function sendMessageForAccessibiltiy(message) {
-  return function(dispatch) {
+  return function (dispatch) {
     const payload = {
       payload: message,
       type: AppConstants.SEND_MESSAGE_FOR_ACCESSIBILITY,
@@ -137,7 +156,7 @@ export function sendMessageForAccessibiltiy(message) {
 }
 
 export function popupState() {
-  return function(dispatch) {
+  return function (dispatch) {
     const payload = {
       type: AppConstants.SET_POPUP_STATE,
     };
@@ -146,7 +165,7 @@ export function popupState() {
 }
 
 export function closeDelModal() {
-  return function(dispatch) {
+  return function (dispatch) {
     const payload = {
       type: AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS,
     };

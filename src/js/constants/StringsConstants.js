@@ -1,9 +1,3 @@
-// StringConstants.js
-/**
- * @module StringConstants
- *
- */
-
 const StringConstants = {
   PENDING: 'PENDING',
   DELETED: 'DELETED',

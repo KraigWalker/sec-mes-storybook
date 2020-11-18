@@ -1,8 +1,13 @@
 import { DELETED, ARCHIVED, READ } from '../constants/StringsConstants';
 import AppConstants from '../constants/AppConstants';
 
-export const buildFetchHandlers = ({ dispatch, successActionType, errorActionType, parseMethod }) => ({
-  success: response => {
+export const buildFetchHandlers = ({
+  dispatch,
+  successActionType,
+  errorActionType,
+  parseMethod,
+}) => ({
+  success: (response) => {
     const parseData = response ? parseMethod(response) : [];
     const payload = {
       type: successActionType,
@@ -10,7 +15,7 @@ export const buildFetchHandlers = ({ dispatch, successActionType, errorActionTyp
     };
     dispatch(payload);
   },
-  error: error => {
+  error: (error) => {
     const payload = {
       type: errorActionType,
       payload: error,
@@ -19,8 +24,16 @@ export const buildFetchHandlers = ({ dispatch, successActionType, errorActionTyp
   },
 });
 
-export const buildUpdateHandlers = ({ id, dispatch, requestData, status, successActionType, errorActionType, onSuccess = () => {} }) => ({
-  success: response => {
+export const buildUpdateHandlers = ({
+  id,
+  dispatch,
+  requestData,
+  status,
+  successActionType,
+  errorActionType,
+  onSuccess = () => {},
+}) => ({
+  success: (response) => {
     const payload = {
       type: successActionType,
       payload: {
@@ -31,7 +44,7 @@ export const buildUpdateHandlers = ({ id, dispatch, requestData, status, success
     dispatch(payload);
     onSuccess();
   },
-  error: error => {
+  error: (error) => {
     console.log(error);
     const payload = {
       type: errorActionType,
@@ -51,7 +64,11 @@ const statusMap = {
   [AppConstants.SET_SECURE_MESSAGE_READ]: READ,
 };
 
-export const buildOptimisticUpdate = action => requestData => (dispatch, _, { secureMessagesApi }) => {
+export const buildOptimisticUpdate = (action) => (requestData) => (
+  dispatch,
+  _,
+  { secureMessagesApi }
+) => {
   const { success, error } = buildUpdateHandlers({
     id: requestData.id,
     requestData,

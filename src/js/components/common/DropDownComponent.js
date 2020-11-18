@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import _ from 'lodash';
+import { map } from 'lodash-es';
 import { getMessageSubjects, popupState } from '../../actions/AppActions';
 import { Select } from 'web-ui-components/lib/atoms/forms';
 import { ValidationMessage } from 'web-ui-components/lib/molecules/forms';
@@ -38,7 +38,13 @@ export class DropDownComponent extends React.Component {
 
   returnErrorModal() {
     const { content } = this.props;
-    return <ErrorModal content={content} onCloseClicked={this.errorCloseClicked} onRetry={this.retryServiceCall} />;
+    return (
+      <ErrorModal
+        content={content}
+        onCloseClicked={this.errorCloseClicked}
+        onRetry={this.retryServiceCall}
+      />
+    );
   }
 
   showList() {
@@ -63,15 +69,19 @@ export class DropDownComponent extends React.Component {
     switch (true) {
       case id === 'accounts':
         items.push({ value: noSpecificAccount, label: noSpecificAccount });
-        _.map(accounts, account => {
-          const name = account.display_name || account.name || account.product.name;
-          items.push({ value: account.number, label: `${name} (ending ${account.number.slice(-4)})` });
+        map(accounts, (account) => {
+          const name =
+            account.display_name || account.name || account.product.name;
+          items.push({
+            value: account.number,
+            label: `${name} (ending ${account.number.slice(-4)})`,
+          });
         });
         break;
       case id === 'subjects':
-        _.map(
+        map(
           subjects,
-          subject => {
+          (subject) => {
             items.push({ value: subject.value, label: subject.value });
           },
           false
@@ -83,7 +93,14 @@ export class DropDownComponent extends React.Component {
   }
 
   render() {
-    const { ddId, accessID, showAccountError, showSubjectError, subjectErrors, content } = this.props;
+    const {
+      ddId,
+      accessID,
+      showAccountError,
+      showSubjectError,
+      subjectErrors,
+      content,
+    } = this.props;
     const { showErrorModal } = this.state;
     const options = this.getOptions();
 
@@ -91,7 +108,14 @@ export class DropDownComponent extends React.Component {
       <div>
         <Column xs={24} sm={24} md={9} ld={9} className="u-padding-0">
           <TextBody>
-            <Select defaultValue={this.props.selectedValue} id={ddId} options={options} onChange={e => this.props.selectSubject(this.props.id, e.target.value)} />
+            <Select
+              defaultValue={this.props.selectedValue}
+              id={ddId}
+              options={options}
+              onChange={(e) =>
+                this.props.selectSubject(this.props.id, e.target.value)
+              }
+            />
           </TextBody>
         </Column>
 
@@ -109,7 +133,9 @@ export class DropDownComponent extends React.Component {
         ) : (
           ''
         )}
-        {subjectErrors && showErrorModal && accessID === 'Subject' ? this.returnErrorModal() : ''}
+        {subjectErrors && showErrorModal && accessID === 'Subject'
+          ? this.returnErrorModal()
+          : ''}
       </div>
     );
   }
@@ -120,7 +146,4 @@ const mapDispatchToProps = {
   getMessageSubjects,
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(DropDownComponent);
+export default connect(null, mapDispatchToProps)(DropDownComponent);

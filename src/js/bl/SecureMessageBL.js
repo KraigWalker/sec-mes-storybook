@@ -1,6 +1,13 @@
-import _ from 'lodash';
+import { find } from 'lodash-es';
 import moment from 'moment';
-import { NEW, DRAFT, PENDING, SENT, ARCHIVED, READ } from '../constants/StringsConstants';
+import {
+  NEW,
+  DRAFT,
+  PENDING,
+  SENT,
+  ARCHIVED,
+  READ,
+} from '../constants/StringsConstants';
 import SendMessageRequestEntity from '../entities/SendMessageRequestEntity';
 import { isNullOrUndefined } from '../utils/GeneralUtils';
 import RegexUtils from '../utils/RegexUtils';
@@ -19,8 +26,12 @@ const statusToStartQueue = {
   [ARCHIVED]: ARCHIVED_MESSAGES,
 };
 
-const assignMessageToQueueBuilder = ({ readingMessages = [], archivingMessages = [], unarchivingMessages = [] }) => ({
-  [INBOX_MESSAGES]: message => {
+const assignMessageToQueueBuilder = ({
+  readingMessages = [],
+  archivingMessages = [],
+  unarchivingMessages = [],
+}) => ({
+  [INBOX_MESSAGES]: (message) => {
     let newMessage = message;
     let queue = INBOX_MESSAGES;
     if (archivingMessages.includes(message.id)) {
@@ -31,9 +42,9 @@ const assignMessageToQueueBuilder = ({ readingMessages = [], archivingMessages =
     }
     return { queue, message: newMessage };
   },
-  [DRAFT_MESSAGES]: message => ({ queue: DRAFT_MESSAGES, message }),
-  [SENT_MESSAGES]: message => ({ queue: SENT_MESSAGES, message }),
-  [ARCHIVED_MESSAGES]: message => {
+  [DRAFT_MESSAGES]: (message) => ({ queue: DRAFT_MESSAGES, message }),
+  [SENT_MESSAGES]: (message) => ({ queue: SENT_MESSAGES, message }),
+  [ARCHIVED_MESSAGES]: (message) => {
     let queue, newMessage;
     if (unarchivingMessages.includes(message.id)) {
       queue = INBOX_MESSAGES;
@@ -53,7 +64,7 @@ const assignMessageToQueueBuilder = ({ readingMessages = [], archivingMessages =
  * Any messages that are marked as being READ should be returned as such
  * Iteration performed through messages done only once
  */
-export const SecureMessageBL = messageState => {
+export const SecureMessageBL = (messageState) => {
   const { deletingMessages = [], messages } = messageState;
   const assignMessageToQueue = assignMessageToQueueBuilder(messageState);
 
@@ -80,19 +91,25 @@ export const SecureMessageBL = messageState => {
  * @param {array} messages //total list of secure messages.
  * @param {object} currentMessage //current message.
  */
-export function getThreadsBL({ messages = [], deletingMessages = [], currentMessage }) {
+export function getThreadsBL({
+  messages = [],
+  deletingMessages = [],
+  currentMessage,
+}) {
   return messages.filter(
-    message =>
+    (message) =>
       message.threadID === currentMessage.threadID &&
       deletingMessages.indexOf(message.id) === -1 &&
-      moment(message.dateCreated, 'DD-MMM-YYYY HH:mm').isBefore(moment(currentMessage.dateCreated, 'DD-MMM-YYYY HH:mm'))
+      moment(message.dateCreated, 'DD-MMM-YYYY HH:mm').isBefore(
+        moment(currentMessage.dateCreated, 'DD-MMM-YYYY HH:mm')
+      )
   );
 }
 
 // Code for adding accounts name in draft
 export function getAccountName(id, accounts) {
   if (id) {
-    return _.find(accounts, accData => {
+    return find(accounts, (accData) => {
       if (accData.accountId === id) {
         const name = accData.display_name || accData.name;
         return name;
@@ -120,15 +137,20 @@ export function BuildSendMessageRequestEntity(accounts, messageEntity) {
 }
 
 export function getMessageAccountValue(message, content) {
-  return message.account && message.account.number ? message.account.number : content.noSpecificAccount;
+  return message.account && message.account.number
+    ? message.account.number
+    : content.noSpecificAccount;
 }
 
-export const maskCardDetails = message => {
+export const maskCardDetails = (message) => {
   const matchCardDetails = RegexUtils.matchCardDetails(message);
   let maskedMessage;
   if (matchCardDetails !== null) {
     const lastFour = RegexUtils.getLastFourDigits(matchCardDetails);
-    maskedMessage = message.replace(new RegExp(matchCardDetails, 'g'), `************${lastFour}`);
+    maskedMessage = message.replace(
+      new RegExp(matchCardDetails, 'g'),
+      `************${lastFour}`
+    );
   } else maskedMessage = message;
   return maskedMessage;
 };

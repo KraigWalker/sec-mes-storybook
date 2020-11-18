@@ -18,14 +18,19 @@ export default function reducer(
       return { ...state, fetching: true };
     }
     case AppConstants.REQUEST_ACCOUNTS_SUCCESS: {
-      return { ...state, accounts: action.payload, fetched: true, fetching: false };
+      return {
+        ...state,
+        accounts: action.payload,
+        fetched: true,
+        fetching: false,
+      };
     }
     default:
       return state;
   }
 }
 
-const getAccounts = state => state.accounts;
+const getAccounts = (state) => state.accounts;
 
 export const selectors = {
   getAccounts,

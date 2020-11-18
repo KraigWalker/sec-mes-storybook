@@ -8,7 +8,12 @@ const BrowserUtils = {
   },
 
   getUserLocale() {
-    return navigator.userLanguage || navigator.language || navigator.browserLanguage || navigator.systemLanguage;
+    return (
+      navigator.userLanguage ||
+      navigator.language ||
+      navigator.browserLanguage ||
+      navigator.systemLanguage
+    );
   },
 };
 
