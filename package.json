@@ -1,6 +1,6 @@
 {
   "name": "secure-messages-webapp",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Secure Message Web application",
   "author": "",
   "license": "UNLICENSED",
@@ -34,6 +34,9 @@
     "react-dom": "15.4.1",
     "web-ui-components": "^27.4.1",
     "moment": "^2.21.0"
+  },
+  "optionalDependencies": {
+    "node-libcurl": "1.3.3"
   },
   "devDependencies": {
     "@babel/core": "7.12.3",
@@ -85,7 +88,6 @@
     "json-loader": "0.5.7",
     "lint-staged": "10.5.1",
     "mini-css-extract-plugin": "1.3.1",
-    "node-libcurl": "1.3.3",
     "nyc": "15.1.0",
     "postcss": "8.1.7",
     "postcss-url": "10.1.0",
