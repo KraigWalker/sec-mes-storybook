@@ -10,7 +10,7 @@ import accounts, { selectors as accountSelectors } from './AccountsReducer';
 import viewMessage, {
   selectors as viewMessageSelectors,
 } from './ViewMessageReducer';
-import accessibilityReducer from './AccessibilityReducer';
+import { accessibilityReducer as accessibility } from './accessibilityReducer';
 import segmentData from './SegmentsReducer';
 import customerDetails, {
   selectors as customerSelectors,
@@ -46,7 +46,7 @@ export default combineReducers({
   subjects,
   accounts,
   viewMessage,
-  accessibilityReducer,
+  accessibility,
   segmentData,
   customerDetails,
   documentManagement,

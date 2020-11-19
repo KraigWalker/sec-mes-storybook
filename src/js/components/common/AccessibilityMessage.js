@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { sendMessageForAccessibiltiy } from '../../actions/AppActions';
 // import AccessibilityStore from '../../stores/AccessibilityStore';
 let currentMessage = '';
-class AccessibilityMessage extends React.Component {
+class AccessibilityMessage extends Component {
   componentDidUpdate() {
     if (currentMessage) {
       setTimeout(() => {
@@ -32,7 +32,8 @@ class AccessibilityMessage extends React.Component {
  */
 const mapState = (state) => {
   return {
-    message: state.accessibilityReducer.accessibilityMessage,
+    message: state.accessibility.message,
   };
 };
+
 export default connect(mapState)(AccessibilityMessage);

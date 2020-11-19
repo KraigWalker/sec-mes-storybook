@@ -1,17 +1,24 @@
-import AccessibilityReducer from '../AccessibilityReducer';
+import { accessibilityReducer } from '../AccessibilityReducer';
 
-describe('>>>R E D U C E R --- Test AccessibilityReducer', () => {
+describe('accessibilityReducer', () => {
   it('should return the initial state', () => {
-    expect(AccessibilityReducer(undefined, {})).toEqual({ accessibilityMessage: '' });
+    expect(accessibilityReducer(undefined, {})).toEqual({
+      message: '',
+    });
   });
+
   it('+++ reducer for SEND_MESSAGE_FOR_ACCESSIBILITY', () => {
-    let state = { accessibilityMessage: '' };
-    state = AccessibilityReducer(state, { type: 'SEND_MESSAGE_FOR_ACCESSIBILITY', payload: 'New SecureMessage' });
-    expect(state).toEqual({ accessibilityMessage: 'New SecureMessage' });
+    let state = { message: '' };
+    state = accessibilityReducer(state, {
+      type: 'SEND_MESSAGE_FOR_ACCESSIBILITY',
+      payload: 'New SecureMessage',
+    });
+    expect(state).toEqual({ message: 'New SecureMessage' });
   });
+
   it('+++ reducer for SEND_MESSAGE_FOR_ACCESSIBILITY', () => {
-    let state = { accessibilityMessage: '' };
-    state = AccessibilityReducer(state, { type: '' });
-    expect(state).toEqual({ accessibilityMessage: '' });
+    let state = { message: '' };
+    state = accessibilityReducer(state, { type: '' });
+    expect(state).toEqual({ message: '' });
   });
 });
