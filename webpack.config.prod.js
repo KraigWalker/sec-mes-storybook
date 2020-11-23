@@ -25,7 +25,7 @@ module.exports = {
     // TODO: remove this when upgrading to webpack 5
     futureEmitAssets: true,
     chunkFilename: '[name].[contenthash:8].chunk.js',
-    publicPath: '.',
+    publicPath: '..',
     // Prevents conflicts when multiple webpack runtimes (from different apps)
     // are used on the same page.
     jsonpFunction: `webpackJsonp$securemessageswebapp`,
@@ -154,6 +154,14 @@ module.exports = {
             plugins: [
               '@babel/proposal-object-rest-spread',
               '@babel/proposal-class-properties',
+              [
+                '@babel/plugin-transform-runtime',
+                {
+                  corejs: 3,
+                  absoluteRuntime: true,
+                  version: '7.12.5',
+                },
+              ],
             ],
           },
         },
