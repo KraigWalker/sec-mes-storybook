@@ -1,6 +1,6 @@
 {
   "name": "secure-messages-webapp",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "description": "Secure Message Web application",
   "author": "",
   "license": "UNLICENSED",
@@ -129,7 +129,7 @@
     "start:android": "webpack-dev-server --config ./webpack.config.dev.js --env.APP_CONTEXT=android",
     "dev": "webpack --config ./webpack.config.dev.js",
     "test": "node --experimental-vm-modules node_modules/.bin/jest",
-    "test:ci": "node --experimental-vm-modules node_modules/.bin/jest",
+    "test:ci": "node --experimental-vm-modules node_modules/.bin/jest --watchAll=false --ci --reporters=default --runInBand --no-cache",
     "deploy": "deployist",
     "build:lib": "rollup -c",
     "test:watch": "npm test -- --watch",
