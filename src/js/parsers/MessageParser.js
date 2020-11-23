@@ -26,6 +26,10 @@ export function parseMessages(response) {
     messageEntity.setMessageBody(message.payload.body.data);
 
     if (message.document) {
+      if (message.document.category) {
+        console.log('category found in document:' + message.category);
+        messageEntity.setCategory(message.category);
+      }
       messageEntity.setDocumentData(message.document);
     }
     messageEntity.setNoReply(message.no_reply);
