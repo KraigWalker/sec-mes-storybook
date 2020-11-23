@@ -27,8 +27,8 @@ export function parseMessages(response) {
 
     if (message.document) {
       if (message.document.category) {
-        console.log('category found in document:' + message.category);
-        messageEntity.setCategory(message.category);
+        console.log('category found in document:' + message.document.category);
+        messageEntity.setCategory(message.document.category);
       }
       messageEntity.setDocumentData(message.document);
     }
