@@ -7,11 +7,16 @@ import { isNullOrUndefined } from '../utils/GeneralUtils';
  * @param {array of Messages} parses the service response
  */
 export function parseMessages(response) {
+  console.log('parse message response');
+  console.dir(response);
   const sortedMessages = sortArrayByDate(response.secure_messages);
   return sortedMessages.map((message) => {
     const messageEntity = new MessageEntity();
     messageEntity.setId(message.id);
-    message.category && messageEntity.setCategory(message.category);
+    if (message.category) {
+      console.log('category found:' + message.category);
+      messageEntity.setCategory(message.category);
+    }
     messageEntity.setDateCreated(message.date_created);
     messageEntity.setThreadId(message.thread_id);
     messageEntity.setReference(message.reference);
