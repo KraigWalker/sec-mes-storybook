@@ -25,7 +25,7 @@ module.exports = {
     // TODO: remove this when upgrading to webpack 5
     futureEmitAssets: true,
     chunkFilename: '[name].[contenthash:8].chunk.js',
-    publicPath: '..',
+    publicPath: '../..',
     // Prevents conflicts when multiple webpack runtimes (from different apps)
     // are used on the same page.
     jsonpFunction: `webpackJsonp$securemessageswebapp`,
