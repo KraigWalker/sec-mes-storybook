@@ -23,6 +23,7 @@ module.exports = {
       filename: '[name].css',
       chunkFilename: '[id].css',
     }),
+    /** @todo dynamically import the correct theme */
     new CopyWebpackPlugin({
       patterns: [
         {

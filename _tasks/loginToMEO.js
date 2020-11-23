@@ -1,16 +1,16 @@
-try {
-  const { curly } = require('node-libcurl');
+/*try {
+  // const { curly } = require('node-libcurl');
   const hostPath = 'https://homev8-u.eu.nag.net:64016';
   const loginPath = `${hostPath}/cbmeoV8/frontend/logoff.do`;
   const postFormPath = `${hostPath}/pkmslogin.form`;
-  const staffTokenPath = `${hostPath}/stafftoken/ibapi/v2/stafftoken/token`;
+  //const staffTokenPath = `${hostPath}/stafftoken/ibapi/v2/stafftoken/token`;
 
   // TODO USE generators
-  async function getMEOSessionCookie() {
+  /* async function getMEOSessionCookie() {
     return await new curly().get(loginPath);
-  }
+  }*/
 
-  async function getLoginCookiesWithData({ cookie, username, password }) {
+/*async function getLoginCookiesWithData({ cookie, username, password }) {
     return await new curly()
       .setHeaders([`Cookie: ${cookie}`])
       .setBody({
@@ -20,20 +20,20 @@ try {
         logonID: '',
       })
       .post(postFormPath);
-  }
+  }*/
 
-  async function getStaffToken({ cookie }) {
+/* async function getStaffToken({ cookie }) {
     return await new curly()
       .setHeaders([
         `Cookie: ${cookie}`,
-        'Content-Type: application/json',
-        'Accept: */*',
-      ])
+        'Content-Type: application/json',*/
+//   'Accept: */*',
+/* ])
       .setBody('{ "bank_id": "CB", "system_code": "MEO" }')
       .post(staffTokenPath);
-  }
+  }*/
 
-  async function staffToken(username, password) {
+/*async function staffToken(username, password) {
     return getMEOSessionCookie()
       .then(({ headers }) => {
         if (headers.hasOwnProperty('set-cookie')) {
@@ -79,3 +79,4 @@ try {
   );
   throw err;
 }
+*/
