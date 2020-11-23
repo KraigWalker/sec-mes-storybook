@@ -1,6 +1,6 @@
 {
   "name": "secure-messages-webapp",
-  "version": "3.0.12",
+  "version": "3.0.13",
   "description": "Secure Message Web application",
   "author": "",
   "license": "UNLICENSED",
@@ -130,7 +130,7 @@
     "build:lib": "rollup -c",
     "test:watch": "npm test -- --watch",
     "lint": "eslint './src'",
-    "lint:fix": "eslint './src' --fix",
+    "lint:fix": "node --max_old_space_size=4096 ./node_modules/eslint/bin/eslint.jseslint './src' --fix",
     "format": "prettier 'src/**/*.js' 'src/**/*.jsx' 'scripts/**.*'",
     "format:fix": "prettier --write 'src/**/*.js' 'src/**/*.jsx' 'scripts/**.*'",
     "test:coverage": "jest --coverage --u",
@@ -153,14 +153,12 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx}": [
-      "npm run lint:fix",
-      "npm run format:fix",
-      "git add"
+      "npm run format:fix"
     ]
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && npm run test:ci"
+      "pre-commit": "npm run test:ci"
     }
   },
   "auto-changelog": {

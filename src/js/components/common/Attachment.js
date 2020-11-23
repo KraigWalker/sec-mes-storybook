@@ -57,6 +57,7 @@ const handleAttachmentClick = ({
     category,
     document: { id },
   } = message;
+  console.dir(message);
 
   // FIXME: Removed history.push in MEO as it wasn't working, need to revisit
   // if (readOnly) { //In MEO we need to open the document on the same page due to in memory routing
