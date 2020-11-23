@@ -11,6 +11,7 @@
 <body>
   <div id="app"></div>
   <script>
+    console.log('secure-messages-webapp 3.0.7');
     var myDocuments = document.URL.lastIndexOf('my-documents') > 0 ? true : false;
     var path = document.URL.substr(0,document.URL.lastIndexOf(myDocuments ? 'my-documents' : 'securemessages'));
     window.pathValue = path;
@@ -95,6 +96,7 @@
           _satellite.pageBottom();
         }
       })();
+      console.log('reached end of html entry successfully');
     </script>
   </body>
 </html>
