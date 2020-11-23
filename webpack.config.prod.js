@@ -1,20 +1,34 @@
+const path = require('path');
+const fs = require('fs');
+
 const webpack = require('webpack');
-const { resolve } = require('path');
+const { resolve } = path;
 const paths = require('./paths');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const JSEntry = ['whatwg-fetch', './src/js/client.js'];
+const appDirectory = fs.realpathSync(process.cwd());
+
+const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath);
+
+const JSEntry = ['./src/js/client.js'];
 
 module.exports = {
   entry: [...JSEntry],
   mode: 'production',
   output: {
-    path: __dirname + '/build',
-    filename: '[name].bundle.js',
+    path: resolveApp('build'),
+    pathinfo: false,
+    filename: '[name].[contenthash:8].js',
+    // TODO: remove this when upgrading to webpack 5
+    futureEmitAssets: true,
+    chunkFilename: '[name].[contenthash:8].chunk.js',
     publicPath: '',
+    // Prevents conflicts when multiple webpack runtimes (from different apps)
+    // are used on the same page.
+    jsonpFunction: `webpackJsonp$securemessageswebapp`,
   },
   plugins: [
     new MiniCssExtractPlugin({
@@ -37,10 +51,32 @@ module.exports = {
         },
       ],
     }),
-    new HtmlWebpackPlugin({
-      template: 'src/index.html',
-      excludeChunks: ['undefined.main', 'main'],
-    }),
+    // Generates an `index.html` file with the <script> injected.
+    new HtmlWebpackPlugin(
+      Object.assign(
+        {},
+        {
+          inject: true,
+          /** @todo: change to a "public" folder to mirror CRA */
+          template: resolveApp('src/index.html'),
+        },
+        {
+          minify: {
+            removeComments: true,
+            collapseWhitespace: true,
+            removeRedundantAttributes: true,
+            useShortDoctype: true,
+            removeEmptyAttributes: true,
+            removeStyleLinkTypeAttributes: true,
+            keepClosingSlash: true,
+            minifyJS: true,
+            minifyCSS: true,
+            minifyURLs: true,
+          },
+        }
+      )
+    ),
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
@@ -48,6 +84,7 @@ module.exports = {
   optimization: {
     splitChunks: {
       chunks: 'all',
+      name: false,
       minSize: 1,
       minChunks: 1,
       maxAsyncRequests: Infinity,
@@ -56,11 +93,32 @@ module.exports = {
     minimize: true,
     minimizer: [
       new TerserPlugin({
-        sourceMap: false,
         terserOptions: {
+          parse: {
+            ecma: 8,
+          },
+          compress: {
+            ecma: 5,
+            warnings: false,
+            comparisons: false,
+            inline: 2,
+          },
+          mangle: {
+            safari10: false,
+          },
+          format: {
+            comments: false,
+          },
+          keep_classnames: true,
           keep_fnames: true,
-          mangle: false,
+          output: {
+            ecma: 5,
+            comments: false,
+            ascii_only: true,
+          },
         },
+        sourceMap: false,
+        extractComments: false,
       }),
     ],
   },
