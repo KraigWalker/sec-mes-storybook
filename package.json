@@ -6,7 +6,7 @@
   "license": "UNLICENSED",
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/about-here/secure-message-webapp"
+    "url": "https://github.obps.io/DigitalServicing/secure-messages-webapp.git"
   },
   "main": "lib/secure-messages-webapp.cjs.js",
   "module": "lib/secure-messages-webapp.esm.js",
@@ -159,11 +159,6 @@
   "husky": {
     "hooks": {
       "pre-commit": "npm run test:ci"
-    }
-  },
-  "auto-changelog": {
-    "replaceText": {
-      "[\\(]([a-zA-z]+-+\\d+)[\\)]": "([`$1`](https://abouthere.atlassian.net/browse/$1))"
     }
   }
 }
