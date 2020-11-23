@@ -1,14 +1,13 @@
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import svg4everybody from 'svg4everybody';
 import AppRouter from './router/AppRouter';
 import createStore from './stores/AppStore';
-import ConfigUtils from './utils/ConfigUtils';
 import { WebUIThemeProvider } from 'web-ui-components/lib/utilities/themes';
 import { buildClientContext } from './utils/ContextUtils';
-import '@babel/polyfill';
-import 'whatwg-fetch';
 import 'css/main.css';
 
 svg4everybody();
@@ -59,8 +58,8 @@ const normalisedBrandId = {
   VM: 'VM',
 }[session.brand];
 
-function startApp() {
-  const store = createStore(session, clientContext, ConfigUtils.config);
+function startApp(config) {
+  const store = createStore(session, clientContext, config);
 
   ReactDOM.render(
     <Provider store={store}>
@@ -85,12 +84,19 @@ function loadStyles() {
 }
 
 function initApp() {
-  ConfigUtils.getConfig(startApp);
+  fetch(`/config.json`)
+    .then((response) => response.json())
+    .then((data) => {
+      console.dir(data);
+      startApp(data);
+    });
 
   // This is for hot reloading on dev, so css gets loaded when window has is empty
   if (process.env.NODE_ENV !== 'production' && !window.location.hash) {
     loadStyles();
   }
 }
+
+console.log('init app');
 
 initApp();

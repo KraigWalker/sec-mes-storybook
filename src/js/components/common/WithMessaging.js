@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { setMessageRead, delMessageData, closeDelModal, archiveMessageData, unarchiveMessageData, popupState } from '../../actions/AppActions';
+import {
+  setMessageRead,
+  delMessageData,
+  closeDelModal,
+  archiveMessageData,
+  unarchiveMessageData,
+  popupState,
+} from '../../actions/AppActions';
 import { NEW, READ, READ_ONLY } from '../../constants/StringsConstants';
 
 import { withRouter } from 'react-router-dom';
@@ -11,7 +18,7 @@ import getOptionDisplayFunctions from './MessageOptions';
 import { TextBody } from 'web-ui-components/lib/atoms/text';
 import { MessageSelectors } from '../../reducers';
 
-const WithMessaging = WrappedComponent =>
+const WithMessaging = (WrappedComponent) =>
   class withMessaging extends Component {
     constructor(props) {
       super(props);
@@ -34,7 +41,10 @@ const WithMessaging = WrappedComponent =>
     }
 
     getOptionFunctions() {
-      return getOptionDisplayFunctions(this.props.readOnly, this.props.message.noReply);
+      return getOptionDisplayFunctions(
+        this.props.readOnly,
+        this.props.message.noReply
+      );
     }
 
     closeAndReturn() {
@@ -161,10 +171,7 @@ const actionCreators = {
 };
 
 const composedWithMessaging = compose(
-  connect(
-    mapState,
-    actionCreators
-  ),
+  connect(mapState, actionCreators),
   withRouter,
   WithMessaging
 );

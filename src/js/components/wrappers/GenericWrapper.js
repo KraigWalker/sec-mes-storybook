@@ -58,7 +58,7 @@ export function withSubscription(WrappedComponent) {
 export function accessibilityWrapper(WrappedComponent) {
   let currentMessage = '';
   const mapState = (state) => ({
-    message: state.accessibilityReducer.accessibilityMessage,
+    message: state.accessibility.message,
     fetched: MessageSelectors.getFetched(state),
   });
   return connect(mapState)(

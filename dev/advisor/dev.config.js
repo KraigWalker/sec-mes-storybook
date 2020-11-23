@@ -10,7 +10,7 @@ const { presets, plugins } = require('../../webpack.config.babel');
 console.log('**********************************************');
 console.log('Compiling');
 
-const JSEntry = ['@babel/polyfill', 'whatwg-fetch', `${__dirname}/index.js`];
+const JSEntry = ['whatwg-fetch', `${__dirname}/index.js`];
 module.exports = {
   entry: [...JSEntry],
   devtool: 'inline-source-map',

@@ -6,7 +6,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const JSEntry = ['@babel/polyfill', './src/js/client.js'];
+const JSEntry = ['whatwg-fetch', './src/js/client.js'];
 
 module.exports = {
   entry: [...JSEntry],
