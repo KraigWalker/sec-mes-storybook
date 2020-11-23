@@ -11,14 +11,11 @@
 <body>
   <div id="app"></div>
   <script>
-    console.log('secure-messages-webapp 3.0.7');
+    console.log('secure-messages-webapp 3.0.9');
     var myDocuments = document.URL.lastIndexOf('my-documents') > 0 ? true : false;
     var path = document.URL.substr(0,document.URL.lastIndexOf(myDocuments ? 'my-documents' : 'securemessages'));
     window.pathValue = path;
     window.baseURl = window.location.pathname.substr(0, window.location.pathname.lastIndexOf(myDocuments ? '/my-documents' : '/securemessages'))
-    var element = document.createElement('script');
-    element.src = path + 'main.bundle.js';
-    document.body.appendChild(element);
     </script>
     <script type="text/javascript">
 
