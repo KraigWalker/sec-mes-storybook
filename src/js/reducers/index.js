@@ -10,7 +10,7 @@ import accounts, { selectors as accountSelectors } from './AccountsReducer';
 import viewMessage, {
   selectors as viewMessageSelectors,
 } from './ViewMessageReducer';
-import { accessibilityReducer as accessibility } from './accessibilityReducer';
+import { accessibilityReducer as accessibility } from './AccessibilityReducer';
 import segmentData from './SegmentsReducer';
 import customerDetails, {
   selectors as customerSelectors,
