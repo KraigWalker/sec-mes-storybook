@@ -160,7 +160,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "lint-staged && npm run test:ci"
+      "pre-commit": "lint-staged && npm run test:ci"
     }
   },
   "auto-changelog": {
