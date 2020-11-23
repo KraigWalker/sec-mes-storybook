@@ -11,8 +11,8 @@
   "main": "lib/secure-messages-webapp.cjs.js",
   "module": "lib/secure-messages-webapp.esm.js",
   "dependencies": {
-    "@babel/polyfill": "7.12.1",
     "axios": "0.20.0",
+    "core-js": "3.7.0",
     "document-management-lib": "9.0.2-rc.0",
     "key-mirror": "^1.0.1",
     "lodash-es": "4.17.15",
@@ -25,6 +25,7 @@
     "react-router-dom": "^4.2.2",
     "redux": "3.7.2",
     "redux-thunk": "2.3.0",
+    "regenerator-runtime": "0.13.7",
     "svg4everybody": "2.1.9",
     "web-ui-components": "27.4.1",
     "whatwg-fetch": "3.5.0"

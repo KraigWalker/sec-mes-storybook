@@ -1,7 +1,7 @@
 /node_modules/
 npm-debug.log
-package-lock.json
 .DS_Store
+.nyc_output
 src/compiled/
 src/js/components/.DS_Store
 coverage/
