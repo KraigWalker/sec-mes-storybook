@@ -1,6 +1,6 @@
 {
   "name": "secure-messages-webapp",
-  "version": "3.0.27",
+  "version": "3.0.28",
   "description": "Secure Message Web application",
   "author": "",
   "license": "UNLICENSED",
@@ -15,7 +15,7 @@
     "@loadable/component": "5.14.1",
     "axios": "0.21.0",
     "core-js": "3.7.0",
-    "document-management-lib": "9.0.2-rc.3",
+    "document-management-lib": "9.0.2-rc.4",
     "key-mirror": "1.0.1",
     "lodash-es": "4.17.15",
     "moment": "2.21.0",
