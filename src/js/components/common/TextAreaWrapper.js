@@ -22,7 +22,14 @@ class TextAreaWrapper extends React.Component {
   render() {
     return (
       <div>
-        <Textarea onChange={this.handleChange} rows={this.props.rows} cols={this.props.cols} id={this.props.id} maxLength="infinity" defaultValue={this.props.value} />
+        <Textarea
+          onChange={this.handleChange}
+          rows={this.props.rows}
+          cols={this.props.cols}
+          id={this.props.id}
+          maxLength="infinity"
+          defaultValue={this.props.value}
+        />
         {this.renderRemainingChar()}
       </div>
     );
@@ -36,7 +43,10 @@ class TextAreaWrapper extends React.Component {
       return (
         <div>
           <TextBody>
-            <ValidationMessage value={`${charsLeft} ${content.charLeft}`} hasIcon={false} />
+            <ValidationMessage
+              value={`${charsLeft} ${content.charLeft}`}
+              hasIcon={false}
+            />
           </TextBody>
           <TextBody>
             <ValidationMessage value={content.messageVal} />

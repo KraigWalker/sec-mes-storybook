@@ -14,7 +14,7 @@ import { NEW, READ, READ_ONLY } from '../../constants/StringsConstants';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { ConfirmationModal } from 'web-ui-components/lib/organisms/modals';
-import getOptionDisplayFunctions from './MessageOptions';
+import { getOptionDisplayFunctions } from './MessageOptions';
 import { TextBody } from 'web-ui-components/lib/atoms/text';
 import { MessageSelectors } from '../../reducers';
 
@@ -36,15 +36,7 @@ const WithMessaging = (WrappedComponent) =>
       this.archiveClick = this.archiveClick.bind(this);
       this.unarchiveClick = this.unarchiveClick.bind(this);
       this.replyClick = this.replyClick.bind(this);
-      this.getDeleteConfirmModal = this.getDeleteConfirmModal.bind(this);
       this.closeAndReturn = this.closeAndReturn.bind(this);
-    }
-
-    getOptionFunctions() {
-      return getOptionDisplayFunctions(
-        this.props.readOnly,
-        this.props.message.noReply
-      );
     }
 
     closeAndReturn() {
@@ -99,45 +91,49 @@ const WithMessaging = (WrappedComponent) =>
       });
     }
 
-    getDeleteConfirmModal(message) {
-      const { content } = this.props;
-
-      return (
-        <ConfirmationModal
-          title={content.delete}
-          onConfirm={() => this.deleteClick(message)}
-          isOpen={true}
-          onClose={this.closeConfirmModal}
-          dismissButtonText={content.dontDelButton}
-          confirmButtonText={content.delButton}
-        >
-          <TextBody>{content.deleteMessageBody}</TextBody>
-        </ConfirmationModal>
-      );
-    }
-
     render() {
-      const { actualStatus } = this.props;
-      const optionFunctions = this.getOptionFunctions();
+      const { content, actualStatus } = this.props;
 
-      const showDelete = optionFunctions.showDeleteButton(actualStatus);
-      const showReply = optionFunctions.showReplyButton(actualStatus);
-      const showArchive = optionFunctions.showArchiveButton(actualStatus);
-      const showUnarchive = optionFunctions.showUnarchiveButton(actualStatus);
+      const {
+        showDeleteButton,
+        showReplyButton,
+        showArchiveButton,
+        showUnarchiveButton,
+      } = getOptionDisplayFunctions(
+        this.props.readOnly,
+        this.props.message.noReply
+      );
+
+      const showDelete = showDeleteButton(actualStatus);
+      const showReply = showReplyButton(actualStatus);
+      const showArchive = showArchiveButton(actualStatus);
+      const showUnarchive = showUnarchiveButton(actualStatus);
+
       return (
         <div className="u-full-width">
           <WrappedComponent
             {...this.props}
-            onArchiveClick={showArchive ? this.archiveClick : null}
-            onReplyClick={showReply ? this.replyClick : null}
-            onDeleteClick={showDelete ? this.showDeleteConfirm : null}
-            onUnarchiveClick={showUnarchive ? this.unarchiveClick : null}
             showArchive={showArchive}
             showDelete={showDelete}
             showUnarchive={showUnarchive}
             showReply={showReply}
+            onArchiveClick={showArchive ? this.archiveClick : null}
+            onReplyClick={showReply ? this.replyClick : null}
+            onDeleteClick={showDelete ? this.showDeleteConfirm : null}
+            onUnarchiveClick={showUnarchive ? this.unarchiveClick : null}
           />
-          {this.state.showDeleteConfirmModal && this.getDeleteConfirmModal()}
+          {this.state.showDeleteConfirmModal && (
+            <ConfirmationModal
+              title={content.delete}
+              onConfirm={this.deleteClick}
+              isOpen={true}
+              onClose={this.closeConfirmModal}
+              dismissButtonText={content.dontDelButton}
+              confirmButtonText={content.delButton}
+            >
+              <TextBody>{content.deleteMessageBody}</TextBody>
+            </ConfirmationModal>
+          )}
         </div>
       );
     }

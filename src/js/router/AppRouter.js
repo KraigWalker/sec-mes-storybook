@@ -5,6 +5,7 @@ import {
   Route,
   Redirect,
   withRouter,
+  useLocation,
 } from 'react-router-dom';
 import { ConnectedLandingPage } from '../components/LandingPage';
 import Main from '../components/Main';
@@ -18,6 +19,10 @@ import { ListView } from '../components/ListView';
 import { AccountSelector } from '../components/AccountSelector';
 import { DocumentView } from '../components/DocumentView';
 import DraftSecureMessage from '../components/DraftSecureMessage';
+
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
 
 function RouteWithLayout({ Component, ...restProps }) {
   return (
@@ -120,9 +125,16 @@ class AppRouter extends Component {
             <Route
               path={`/my-documents/:bankId(CB|YB)/:documentId`}
               exact
-              render={(props) => (
-                <DocumentView {...props} session={this.props.session} />
-              )}
+              render={(props) => {
+                let query = useQuery();
+                return (
+                  <DocumentView
+                    {...props}
+                    category={query.get('category')}
+                    session={this.props.session}
+                  />
+                );
+              }}
             />
             <RouteWithLayout
               Component={AccountSelector}

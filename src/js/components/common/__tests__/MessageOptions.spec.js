@@ -1,5 +1,12 @@
-import getOptionDisplayFunctions from '../MessageOptions';
-import { NEW, READ, PENDING, ARCHIVED, SENT, DRAFT } from '../../../constants/StringsConstants';
+import { getOptionDisplayFunctions } from '../MessageOptions';
+import {
+  NEW,
+  READ,
+  PENDING,
+  ARCHIVED,
+  SENT,
+  DRAFT,
+} from '../../../constants/StringsConstants';
 
 describe('when in readonly mode & no reply message', () => {
   const messageFunctions = getOptionDisplayFunctions(true, true);
