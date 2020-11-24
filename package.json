@@ -12,6 +12,7 @@
   "module": "lib/secure-messages-webapp.esm.js",
   "dependencies": {
     "@babel/runtime": "7.12.5",
+    "@loadable/component": "5.14.1",
     "axios": "0.21.0",
     "core-js": "3.7.0",
     "document-management-lib": "9.0.2-rc.2",
