@@ -1,11 +1,16 @@
 const webpack = require('webpack');
 const paths = require('./paths');
-const { resolve } = require('path');
+const path = require('path');
+const fs = require('fs');
+const { resolve } = path;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const JSEntry = ['whatwg-fetch', './src/js/client.js'];
+const appDirectory = fs.realpathSync(process.cwd());
+const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath);
+
+const JSEntry = ['./src/js/client.js'];
 
 module.exports = (env) => {
   const rules = [
@@ -80,7 +85,7 @@ module.exports = (env) => {
     output: {
       path: __dirname + '/src/compiled',
       filename: '[name].bundle.js',
-      publicPath: '',
+      publicPath: '../../',
     },
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
@@ -109,13 +114,33 @@ module.exports = (env) => {
           },
         ],
       }),
-      new HtmlWebpackPlugin({
-        template: 'src/index.html',
-        excludeChunks: ['undefined.main', 'main'],
-      }),
+      new HtmlWebpackPlugin(
+        Object.assign(
+          {},
+          {
+            inject: true,
+            /** @todo: change to a "public" folder to mirror CRA */
+            template: resolveApp('src/index.html'),
+          },
+          {
+            minify: {
+              removeComments: true,
+              collapseWhitespace: true,
+              removeRedundantAttributes: true,
+              useShortDoctype: true,
+              removeEmptyAttributes: true,
+              removeStyleLinkTypeAttributes: true,
+              keepClosingSlash: true,
+              minifyJS: true,
+              minifyCSS: true,
+              minifyURLs: true,
+            },
+          }
+        )
+      ),
     ],
     devServer: {
-      contentBase: __dirname + '/build',
+      contentBase: __dirname + '/src/compiled',
       open: true, // Open browser after compilation
       openPage:
         'securemessages/cb#access_token=access_token&bank_id=cb&client_context=CB%20Web&user_tracking_id=23453-34343-34343&brandId=vm&state=state&isDocumentLibraryEnabled=true',

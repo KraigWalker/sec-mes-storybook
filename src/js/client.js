@@ -3,6 +3,7 @@ import 'regenerator-runtime/runtime';
 import 'whatwg-fetch';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import svg4everybody from 'svg4everybody';
 import AppRouter from './router/AppRouter';
 import createStore from './stores/AppStore';
@@ -62,15 +63,17 @@ function startApp(config) {
   const store = createStore(session, clientContext, config);
 
   ReactDOM.render(
-    <Provider store={store}>
-      <WebUIThemeProvider brandID={normalisedBrandId}>
-        <AppRouter
-          session={session}
-          client={clientContext}
-          isDocumentLibraryEnabled={isDocumentLibraryEnabledFinal}
-        />
-      </WebUIThemeProvider>
-    </Provider>,
+    <BrowserRouter basename={window.baseURl}>
+      <Provider store={store}>
+        <WebUIThemeProvider brandID={normalisedBrandId}>
+          <AppRouter
+            session={session}
+            client={clientContext}
+            isDocumentLibraryEnabled={isDocumentLibraryEnabledFinal}
+          />
+        </WebUIThemeProvider>
+      </Provider>
+    </BrowserRouter>,
     app
   );
 }

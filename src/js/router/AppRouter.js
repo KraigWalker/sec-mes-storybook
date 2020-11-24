@@ -1,8 +1,7 @@
-import { Component, Suspense, useEffect } from 'react';
+import { Suspense } from 'react';
 import { lazy } from '@loadable/component';
 import {
   Switch,
-  BrowserRouter,
   Route,
   Redirect,
   withRouter,
@@ -20,12 +19,6 @@ import AccessibilityMessage from '../components/common/AccessibilityMessage';
 // import { AccountSelector } from '../components/AccountSelector';
 // import { DocumentView } from '../components/DocumentView';
 //import DraftSecureMessage from '../components/DraftSecureMessage';
-
-function useQuery() {
-  useEffect(() => {
-    return new URLSearchParams(useLocation().search);
-  });
-}
 
 function RouteWithLayout({ Component, ...restProps }) {
   return (
@@ -140,58 +133,54 @@ const RoutesWithLayoutAndSubscription = withRouter(
   withSubscription(RoutesWithLayout)
 );
 
-class AppRouter extends Component {
-  /**
-   * Initiates the application in BrowserRouter. Please refer to react-router v4 docs.
-   * @return {ReactComponent} Displays the components wrapped around BrowserRouter and Routes the application.
-   */
-
-  render() {
-    const { isDocumentLibraryEnabled } = this.props;
-    let query = useQuery();
-    return (
-      <BrowserRouter basename={window.baseURl}>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Route
-            path={`/securemessages`}
-            render={() => <RoutesWithLayoutAndSubscription {...this.props} />}
-          />
-          <AccessibilityMessage />
-          <Switch>
-            <RouteWithLayout
-              path={`/my-documents/:bankId(CB|YB)`}
-              exact
-              Component={ListView}
-              session={this.props.session}
-              client={this.props.client}
-              isDocumentLibraryEnabled={isDocumentLibraryEnabled}
-            />
-            <Route
-              path={`/my-documents/:bankId(CB|YB)/:documentId`}
-              exact
-              render={(props) => {
-                return (
-                  <DocumentView
-                    {...props}
-                    category={query.get('category')}
-                    session={this.props.session}
-                  />
-                );
-              }}
-            />
-            <RouteWithLayout
-              Component={AccountSelector}
-              session={this.props.session}
-              client={this.props.client}
-              path={`/digital-statements/select-account`}
-              isDocumentLibraryEnabled={isDocumentLibraryEnabled}
-              exact
-            />
-          </Switch>
-        </Suspense>
-      </BrowserRouter>
-    );
-  }
+/**
+ * Initiates the application in BrowserRouter. Please refer to react-router v4 docs.
+ * @return {ReactComponent} Displays the components wrapped around BrowserRouter and Routes the application.
+ */
+function AppRouter(props) {
+  const { isDocumentLibraryEnabled } = props;
+  let location = useLocation();
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Route
+        path={`/securemessages`}
+        render={() => <RoutesWithLayoutAndSubscription {...props} />}
+      />
+      <AccessibilityMessage />
+      <Switch>
+        <RouteWithLayout
+          path={`/my-documents/:bankId(CB|YB)`}
+          exact
+          Component={ListView}
+          session={props.session}
+          client={props.client}
+          isDocumentLibraryEnabled={isDocumentLibraryEnabled}
+        />
+        <Route
+          path={`/my-documents/:bankId(CB|YB)/:documentId`}
+          exact
+          render={() => {
+            let query = new URLSearchParams(location.search);
+            return (
+              <DocumentView
+                {...props}
+                category={query.get('category')}
+                session={props.session}
+              />
+            );
+          }}
+        />
+        <RouteWithLayout
+          Component={AccountSelector}
+          session={props.session}
+          client={props.client}
+          path={`/digital-statements/select-account`}
+          isDocumentLibraryEnabled={isDocumentLibraryEnabled}
+          exact
+        />
+      </Switch>
+    </Suspense>
+  );
 }
 
 export default AppRouter;
