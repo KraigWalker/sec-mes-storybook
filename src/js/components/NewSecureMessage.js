@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import SecureMessageForm from './SecureMessageForm';
 import { connect } from 'react-redux';
 import { PENDING, DRAFT, NEW } from '../constants/StringsConstants';

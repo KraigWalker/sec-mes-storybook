@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import { connect } from 'react-redux';
 import { map } from 'lodash-es';
 import { getMessageSubjects, popupState } from '../../actions/AppActions';
@@ -10,7 +10,7 @@ import { Column } from 'web-ui-components/lib/global/layout';
 
 //DEBT: refactor the business logic out of this component. It does not belong here.
 //The values to render should be passed not determined based on a string...
-export class DropDownComponent extends React.Component {
+export class DropDownComponent extends Component {
   constructor(props) {
     super(props);
     this.showList = this.showList.bind(this);

@@ -1,4 +1,3 @@
-import React from 'react';
 import { ConfirmationModal } from 'web-ui-components/lib/organisms/modals';
 import { StandardBody } from 'web-ui-components/lib/typography/body';
 

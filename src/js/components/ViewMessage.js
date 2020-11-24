@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { compose } from 'redux';
 import { utils, actions as documentActions } from 'document-management-lib';
 import { map } from 'lodash-es';

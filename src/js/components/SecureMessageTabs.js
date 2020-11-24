@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import SecureMessageList from './SecureMessageList/SecureMessageList';
 import {
   DRAFT,
@@ -11,7 +11,7 @@ import { TabGroup } from 'web-ui-components/lib/navigation/tab-group';
 import { Row, Container } from 'web-ui-components/lib/global/layout';
 import { withBreakpoints } from '../components/common/hoc/WithBreakpoint';
 
-export class SecureMessageTabs extends React.Component {
+export class SecureMessageTabs extends Component {
   constructor(props) {
     super(props);
     this.state = {

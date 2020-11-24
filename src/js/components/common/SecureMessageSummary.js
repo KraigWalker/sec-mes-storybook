@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { NEW, ARCHIVED, DRAFT } from '../../constants/StringsConstants';
 import withMessaging from '../common/WithMessaging';

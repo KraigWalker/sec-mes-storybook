@@ -1,4 +1,3 @@
-import React from 'react';
 import { shallow } from 'enzyme';
 import TextAreaWrapper from '../TextAreaWrapper';
 import { TextStyled } from 'web-ui-components/lib/atoms/text';

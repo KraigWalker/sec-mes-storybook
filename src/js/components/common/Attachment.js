@@ -1,4 +1,3 @@
-import React from 'react';
 import { DocumentLink } from 'web-ui-components/lib/documents/navigation';
 
 function Attachment({

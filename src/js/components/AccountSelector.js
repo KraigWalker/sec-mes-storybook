@@ -1,4 +1,3 @@
-import React from 'react';
 import { AccountSelectorContainer } from 'document-management-lib';
 import { Container, Row } from 'web-ui-components/lib/global/layout';
 import { withBreakpoints } from '../components/common/hoc/WithBreakpoint';
