@@ -162,7 +162,9 @@ function AppRouter(props) {
         <Route
           path={`/my-documents/:bankId(CB|YB)/:documentId`}
           exact
-          render={({ match, ...restProps }) => {
+          render={({ match, location, ...restProps }) => {
+            console.log('location');
+            console.dir(location);
             console.log('restProps');
             console.dir(restProps);
             console.log('route props');
@@ -176,7 +178,7 @@ function AppRouter(props) {
                 {...props}
                 match={match}
                 category={category}
-                documentId={params.documentId}
+                documentId={match.params.documentId}
                 session={props.session}
               />
             );

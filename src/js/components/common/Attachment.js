@@ -67,9 +67,9 @@ const handleAttachmentClick = ({
   // }
   // else {
   window.open(
-    `${basePath}/my-documents/${bank_id}/${id}#access_token=${access_token}&bank_id=${bank_id}&client_context=${app_title}&user_tracking_id=${user_tracking_id}&brandId=${brand}&state=${state}${
+    `${basePath}/my-documents/${bank_id}/${id}?bank_id=${bank_id}&client_context=${app_title}&user_tracking_id=${user_tracking_id}&brandId=${brand}&state=${state}${
       category ? `&category=${category}` : ''
-    }`
+    }#access_token=${access_token}`
   );
   // }
 };
