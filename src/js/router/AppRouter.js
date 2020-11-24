@@ -105,47 +105,45 @@ class AppRouter extends Component {
 
   render() {
     const { isDocumentLibraryEnabled } = this.props;
+    let query = useQuery();
     return (
       <BrowserRouter basename={window.baseURl}>
-        <div>
-          <Route
-            path={`/securemessages`}
-            render={() => <RoutesWithLayoutAndSubscription {...this.props} />}
+        <Route
+          path={`/securemessages`}
+          render={() => <RoutesWithLayoutAndSubscription {...this.props} />}
+        />
+        <AccessibilityMessage />
+        <Switch>
+          <RouteWithLayout
+            path={`/my-documents/:bankId(CB|YB)`}
+            exact
+            Component={ListView}
+            session={this.props.session}
+            client={this.props.client}
+            isDocumentLibraryEnabled={isDocumentLibraryEnabled}
           />
-          <AccessibilityMessage />
-          <Switch>
-            <RouteWithLayout
-              path={`/my-documents/:bankId(CB|YB)`}
-              exact
-              Component={ListView}
-              session={this.props.session}
-              client={this.props.client}
-              isDocumentLibraryEnabled={isDocumentLibraryEnabled}
-            />
-            <Route
-              path={`/my-documents/:bankId(CB|YB)/:documentId`}
-              exact
-              render={(props) => {
-                let query = useQuery();
-                return (
-                  <DocumentView
-                    {...props}
-                    category={query.get('category')}
-                    session={this.props.session}
-                  />
-                );
-              }}
-            />
-            <RouteWithLayout
-              Component={AccountSelector}
-              session={this.props.session}
-              client={this.props.client}
-              path={`/digital-statements/select-account`}
-              isDocumentLibraryEnabled={isDocumentLibraryEnabled}
-              exact
-            />
-          </Switch>
-        </div>
+          <Route
+            path={`/my-documents/:bankId(CB|YB)/:documentId`}
+            exact
+            render={(props) => {
+              return (
+                <DocumentView
+                  {...props}
+                  category={query.get('category')}
+                  session={this.props.session}
+                />
+              );
+            }}
+          />
+          <RouteWithLayout
+            Component={AccountSelector}
+            session={this.props.session}
+            client={this.props.client}
+            path={`/digital-statements/select-account`}
+            isDocumentLibraryEnabled={isDocumentLibraryEnabled}
+            exact
+          />
+        </Switch>
       </BrowserRouter>
     );
   }
