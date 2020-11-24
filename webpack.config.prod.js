@@ -132,7 +132,12 @@ module.exports = {
           options: {
             babelrc: false,
             presets: [
-              '@babel/preset-react',
+              [
+                '@babel/preset-react',
+                {
+                  runtime: 'automatic',
+                },
+              ],
               [
                 '@babel/preset-env',
                 {
