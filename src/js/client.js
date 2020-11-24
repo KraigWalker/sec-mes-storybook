@@ -13,8 +13,6 @@ import 'css/main.css';
 
 svg4everybody();
 
-console.log('loaded cluent.js');
-
 const app = document.getElementById('app');
 /**
  * Starts the application with the Provider Wrapper from Redux
@@ -87,7 +85,6 @@ function loadStyles() {
 }
 
 function initApp() {
-  console.log('try init app');
   fetch(`/config.json`)
     .then((response) => response.json())
     .then((data) => {
@@ -103,7 +100,5 @@ function initApp() {
     loadStyles();
   }
 }
-
-console.log('init app');
 
 initApp();

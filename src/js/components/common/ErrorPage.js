@@ -8,7 +8,10 @@ import { BackButton } from 'web-ui-components/lib/molecules/navigation';
 import { TextBody } from 'web-ui-components/lib/atoms/text';
 import { ButtonGroup } from 'web-ui-components/lib/molecules/buttons';
 import { Button } from 'web-ui-components/lib/atoms/buttons';
-import { PageHeading, SubHeading } from 'web-ui-components/lib/typography/headings';
+import {
+  PageHeading,
+  SubHeading,
+} from 'web-ui-components/lib/typography/headings';
 import { withBreakpoints } from './hoc/WithBreakpoint';
 import { compose } from 'redux';
 import { MessageSelectors } from '../../reducers/index';
@@ -31,8 +34,8 @@ export class ErrorPage extends React.Component {
   };
 
   render() {
-    const { fetching, containerSize, noPadding } = this.props;
-    const { content } = this.props.location;
+    const { fetching, containerSize, noPadding, location } = this.props;
+    const { content } = location;
 
     return (
       <LoadingLocalTakeover show={fetching} title="loading..">
@@ -40,7 +43,10 @@ export class ErrorPage extends React.Component {
           <Row {...getRowMarginProps(noPadding)}>
             <Card>
               <TextBody>
-                <BackButton onClick={this.handleBackButton} label={content.backToAccounts} />
+                <BackButton
+                  onClick={this.handleBackButton}
+                  label={content.backToAccounts}
+                />
               </TextBody>
               <PageHeading>{content.messages}</PageHeading>
               <SubHeading>{content.sorryHeader}</SubHeading>
@@ -61,7 +67,7 @@ export class ErrorPage extends React.Component {
     );
   }
 }
-const mapState = state => {
+const mapState = (state) => {
   return {
     fetching: MessageSelectors.getFetching(state),
     fetched: MessageSelectors.getFetched(state),
@@ -74,9 +80,6 @@ const mapDispatchToProps = {
 };
 
 export default compose(
-  connect(
-    mapState,
-    mapDispatchToProps
-  ),
+  connect(mapState, mapDispatchToProps),
   withBreakpoints
 )(ErrorPage);

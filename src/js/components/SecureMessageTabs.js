@@ -24,7 +24,7 @@ export class SecureMessageTabs extends React.Component {
   };
 
   render() {
-    const { messages, noPadding, containerSize } = this.props;
+    const { messages, containerSize } = this.props;
     const unreadInboxCount = getInboxUnreadCount(messages);
     const inboxTitle = getInboxTitle(unreadInboxCount);
     const activeTabMessages = getActiveTabMessages(
@@ -32,19 +32,11 @@ export class SecureMessageTabs extends React.Component {
       this.props.messages
     );
 
-    let paddingProps = null;
-    if (noPadding) {
-      paddingProps = {
-        className: 'u-margin-top-2 u-padding-left-0',
-      };
-    } else {
-      paddingProps = {
-        className: 'u-margin-top-2 u-padding-left-0',
-      };
-    }
-
     return messages ? (
-      <Container {...paddingProps} size={containerSize}>
+      <Container
+        className={'u-margin-top-2 u-padding-left-0'}
+        size={containerSize}
+      >
         <TabGroup
           className="u-padding-left-0"
           activeTab={this.state.activeTab}
