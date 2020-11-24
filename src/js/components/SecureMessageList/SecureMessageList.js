@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import SecureMessageSummary from '../common/SecureMessageSummary';
 import { sendMessageForAccessibiltiy as sendMessageForAccessibility } from '../../actions/AppActions';
 import { connect } from 'react-redux';
@@ -14,7 +14,7 @@ import { compose } from 'redux';
 import { MessageSelectors } from '../../reducers';
 import { LIMITS, shouldShowThatsAllMessage, getNextLimit } from './limits';
 
-export class SecureMessageList extends React.Component {
+export class SecureMessageList extends Component {
   constructor(props) {
     super(props);
     this.showMoreClicked = this.showMoreClicked.bind(this);

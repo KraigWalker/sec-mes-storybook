@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import SecureMessageForm from './SecureMessageForm';
 import { connect } from 'react-redux';
 import { PENDING, DRAFT } from '../constants/StringsConstants';
@@ -19,7 +19,7 @@ import {
   getAccounts,
 } from '../reducers';
 
-class DraftSecureMessage extends React.Component {
+class DraftSecureMessage extends Component {
   constructor(props) {
     super(props);
     this.send = this.send.bind(this);

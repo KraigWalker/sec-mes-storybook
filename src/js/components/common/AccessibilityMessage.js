@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { connect } from 'react-redux';
 import { sendMessageForAccessibiltiy } from '../../actions/AppActions';
 // import AccessibilityStore from '../../stores/AccessibilityStore';

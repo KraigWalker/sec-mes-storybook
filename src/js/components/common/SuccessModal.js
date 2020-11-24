@@ -1,4 +1,3 @@
-import React from 'react';
 import GetIcon from './GetIcon';
 import { Button } from 'web-ui-components/lib/atoms/buttons';
 import { ButtonGroup } from 'web-ui-components/lib/molecules/buttons';

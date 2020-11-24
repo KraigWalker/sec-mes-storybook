@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import { map } from 'lodash-es';
 import SecureMessageForm from './SecureMessageForm';
 import { connect } from 'react-redux';
@@ -20,7 +20,7 @@ import {
   MessageSelectors,
 } from '../reducers';
 
-class ReplySecureMessage extends React.Component {
+class ReplySecureMessage extends Component {
   constructor(props) {
     super(props);
     this.getThreads = this.getThreads.bind(this);

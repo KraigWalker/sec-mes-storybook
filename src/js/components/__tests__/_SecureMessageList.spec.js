@@ -1,4 +1,3 @@
-import React from 'react';
 import { SecureMessageList } from '../SecureMessageList/SecureMessageList';
 import { shallow } from 'enzyme';
 import TestData from '../../content/secureMessagesTestData.json';

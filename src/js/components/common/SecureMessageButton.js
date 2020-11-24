@@ -1,4 +1,3 @@
-import React from 'react';
 import GetIcon from './GetIcon';
 import { Link } from 'react-router-dom';
 

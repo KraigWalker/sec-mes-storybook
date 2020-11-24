@@ -1,4 +1,3 @@
-import React from 'react';
 import { withBreakpoints } from '../hoc/WithBreakpoint';
 import { shallow } from 'enzyme';
 

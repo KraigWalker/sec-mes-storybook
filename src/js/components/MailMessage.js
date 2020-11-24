@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button } from 'web-ui-components/lib/atoms/buttons';
 import { Mail } from 'web-ui-components/lib/communication/messaging';
 import { ButtonGroup } from 'web-ui-components/lib/molecules/buttons';

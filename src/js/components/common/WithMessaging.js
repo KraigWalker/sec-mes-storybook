@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import {
@@ -19,7 +19,7 @@ import { TextBody } from 'web-ui-components/lib/atoms/text';
 import { MessageSelectors } from '../../reducers';
 
 const WithMessaging = (WrappedComponent) =>
-  class withMessaging extends Component {
+  (class withMessaging extends Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -137,7 +137,7 @@ const WithMessaging = (WrappedComponent) =>
         </div>
       );
     }
-  };
+  });
 
 WithMessaging.propTypes = {
   viewMessageFlag: PropTypes.bool,

@@ -1,4 +1,4 @@
-import React from 'react';
+import { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { utils } from 'document-management-lib';
 import StringConstants from '../constants/StringsConstants';
@@ -20,7 +20,7 @@ import WithRetry from './common/WithRetry';
 import { popupState } from '../actions/AppActions';
 import { getPaddingProps, getRowMarginProps } from '../utils/GeneralUtils';
 
-export class LandingPage extends React.PureComponent {
+export class LandingPage extends PureComponent {
   componentDidMount() {
     window.top.postMessage('clearNewMessagePage', '*');
     window.scrollTo(0, 0);

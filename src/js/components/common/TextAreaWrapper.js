@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import { Textarea } from 'web-ui-components/lib/atoms/forms';
 import { ValidationMessage } from 'web-ui-components/lib/molecules/forms';
 import { TextBody } from 'web-ui-components/lib/atoms/text';
@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 const calcCharsLeft = (maxChars, length) => maxChars - length;
 
-class TextAreaWrapper extends React.Component {
+class TextAreaWrapper extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);

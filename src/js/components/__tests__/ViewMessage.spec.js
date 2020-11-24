@@ -1,4 +1,3 @@
-import React from 'react';
 import { ViewMessage } from '../ViewMessage';
 import { shallow } from 'enzyme';
 jest.mock('../../bl/SecureMessageBL');

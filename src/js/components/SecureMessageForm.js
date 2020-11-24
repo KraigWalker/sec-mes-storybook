@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import { find } from 'lodash-es';
 import DropDownComponent from './common/DropDownComponent';
 import { Button } from 'web-ui-components/lib/atoms/buttons';
@@ -27,7 +27,7 @@ const MAX_CHARS = 3000;
 //DEBT : this component needs broken up considerably, now that is has been reduced from
 //3 files into one shared across reply, draft & new. It's render method needs broken down considerably
 //Textarea logic / state should be replaced with either a web ui component or a wrapping component
-export class SecureMessageForm extends React.Component {
+export class SecureMessageForm extends Component {
   constructor(props) {
     super(props);
     this.handleTextChange = this.handleTextChange.bind(this);

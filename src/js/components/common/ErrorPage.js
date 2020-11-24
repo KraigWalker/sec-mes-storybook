@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchSecureMessages, getAccounts } from '../../actions/AppActions';
 import { LoadingLocalTakeover } from 'web-ui-components/lib/organisms/takeovers';
@@ -17,7 +17,7 @@ import { compose } from 'redux';
 import { MessageSelectors } from '../../reducers/index';
 import { getPaddingProps, getRowMarginProps } from '../../utils/GeneralUtils';
 
-export class ErrorPage extends React.Component {
+export class ErrorPage extends Component {
   constructor(props) {
     super(props);
     this.handleBackButton = this.handleBackButton.bind(this);

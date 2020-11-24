@@ -1,5 +1,5 @@
 /* eslint no-magic-numbers:0 */
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 const breakpoints = {
   xs: [0, 320],

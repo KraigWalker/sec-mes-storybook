@@ -1,4 +1,3 @@
-import React from 'react';
 import { SecureMessageTabs } from '../SecureMessageTabs';
 import { shallow } from 'enzyme';
 

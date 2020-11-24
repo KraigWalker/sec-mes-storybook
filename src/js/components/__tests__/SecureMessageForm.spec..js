@@ -1,4 +1,3 @@
-import React from 'react';
 import { SecureMessageForm } from '../SecureMessageForm';
 import { shallow } from 'enzyme';
 
