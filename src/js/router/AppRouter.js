@@ -8,6 +8,7 @@ import {
   useLocation,
   useParams,
 } from 'react-router-dom';
+import queryString from 'query-string';
 // import { ConnectedLandingPage } from '../components/LandingPage';
 // import Main from '../components/Main';
 //import NewSecureMessage from '../components/NewSecureMessage';
@@ -166,14 +167,15 @@ function AppRouter(props) {
             console.dir(restProps);
             console.log('route props');
             console.dir(props);
-            let query = new URLSearchParams(location.search);
-            console.log('query:');
+            const query = queryString.parse(location.search);
+            console.log('query');
             console.dir(query);
+            const { category } = query;
             return (
               <DocumentView
                 {...props}
                 match={match}
-                category={query.get('category')}
+                category={category}
                 documentId={params.documentId}
                 session={props.session}
               />
