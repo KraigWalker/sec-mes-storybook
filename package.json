@@ -14,7 +14,7 @@
     "@babel/runtime": "7.12.5",
     "axios": "0.21.0",
     "core-js": "3.7.0",
-    "document-management-lib": "9.0.2-rc.1",
+    "document-management-lib": "9.0.2-rc.2",
     "key-mirror": "1.0.1",
     "lodash-es": "4.17.15",
     "moment": "2.21.0",
