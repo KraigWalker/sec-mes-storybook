@@ -161,8 +161,14 @@ function AppRouter(props) {
         <Route
           path={`/my-documents/:bankId(CB|YB)/:documentId`}
           exact
-          render={({ match }) => {
+          render={({ match, ...restProps }) => {
+            console.log('restProps');
+            console.dir(restProps);
+            console.log('route props');
+            console.dir(props);
             let query = new URLSearchParams(location.search);
+            console.log('query:');
+            console.dir(query);
             return (
               <DocumentView
                 {...props}
