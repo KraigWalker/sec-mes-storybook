@@ -22,34 +22,63 @@ export default function reducer(
     case AppConstants.ARCHIVE_SECURE_MESSAGE_SUCCESS: {
       return {
         ...state,
-        unarchivingMessages: state.unarchivingMessages.filter(m => m.id === action.payload.id),
+        unarchivingMessages: state.unarchivingMessages.filter(
+          (m) => m.id === action.payload.id
+        ),
         archivingMessages: [...state.archivingMessages, action.payload.id],
       };
     }
     case AppConstants.UNARCHIVE_SECURE_MESSAGE_SUCCESS: {
       return {
         ...state,
-        archivingMessages: state.archivingMessages.filter(m => m.id === action.payload.id),
+        archivingMessages: state.archivingMessages.filter(
+          (m) => m.id === action.payload.id
+        ),
         unarchivingMessages: [...state.unarchivingMessages, action.payload.id],
       };
     }
     case AppConstants.DELETE_SECURE_MESSAGE_SUCCESS: {
-      return { ...state, deletingMessages: [...state.deletingMessages, action.payload.id] };
+      return {
+        ...state,
+        deletingMessages: [...state.deletingMessages, action.payload.id],
+      };
     }
     case AppConstants.UPDATE_SECURE_MESSAGE: {
-      return { ...state, updating: action.status !== DRAFT, isSavingDraft: action.status === DRAFT };
+      return {
+        ...state,
+        updating: action.status !== DRAFT,
+        isSavingDraft: action.status === DRAFT,
+      };
     }
     case AppConstants.UPDATE_SECURE_MESSAGE_SUCCESS: {
-      return { ...state, successModal: true, updating: false, fetched: false, isSavingDraft: false };
+      return {
+        ...state,
+        successModal: true,
+        updating: false,
+        fetched: false,
+        isSavingDraft: false,
+      };
     }
     case AppConstants.SET_SECURE_MESSAGE_READ_SUCCESS: {
-      return { ...state, readingMessages: [...state.readingMessages, action.payload.id] };
+      return {
+        ...state,
+        readingMessages: [...state.readingMessages, action.payload.id],
+      };
     }
     case AppConstants.REQUEST_SECURE_MESSAGES: {
       return { ...state, fetching: true };
     }
     case AppConstants.REQUEST_SECURE_MESSAGES_SUCCESS: {
-      return { ...state, fetching: false, fetched: true, deletingMessages: [], archivingMessages: [], unarchivingMessages: [], readingMessages: [], messages: action.payload };
+      return {
+        ...state,
+        fetching: false,
+        fetched: true,
+        deletingMessages: [],
+        archivingMessages: [],
+        unarchivingMessages: [],
+        readingMessages: [],
+        messages: action.payload,
+      };
     }
     case AppConstants.REQUEST_SECURE_MESSAGES_FAILURE:
     case AppConstants.REQUEST_ACCOUNTS_FAILURE: {
@@ -73,25 +102,25 @@ export default function reducer(
   }
 }
 
-const getMessages = state => state.messages;
+const getMessages = (state) => state.messages;
 
-const getUpdating = state => state.updating;
+const getUpdating = (state) => state.updating;
 
-const getIsSavingDraft = state => state.isSavingDraft;
+const getIsSavingDraft = (state) => state.isSavingDraft;
 
-const getShowSuccessModal = state => state.successModal;
+const getShowSuccessModal = (state) => state.successModal;
 
-const getFetching = state => state.fetching;
+const getFetching = (state) => state.fetching;
 
-const getFetched = state => state.fetched;
+const getFetched = (state) => state.fetched;
 
-const getDeletingMessages = state => state.deletingMessages;
-const getArchivingMessages = state => state.archivingMessages;
-const getUnarchivingMessages = state => state.unarchivingMessages;
-const getReadingMessages = state => state.readingMessages;
+const getDeletingMessages = (state) => state.deletingMessages;
+const getArchivingMessages = (state) => state.archivingMessages;
+const getUnarchivingMessages = (state) => state.unarchivingMessages;
+const getReadingMessages = (state) => state.readingMessages;
 
-const getMode = state => state.mode;
-const getActiveTab = state => state.activeTab;
+const getMode = (state) => state.mode;
+const getActiveTab = (state) => state.activeTab;
 
 export const selectors = {
   getMessages,

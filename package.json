@@ -1,12 +1,12 @@
 {
   "name": "secure-messages-webapp",
-  "version": "3.0.17",
+  "version": "3.0.18",
   "description": "Secure Message Web application",
   "author": "",
   "license": "UNLICENSED",
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/about-here/secure-message-webapp"
+    "url": "https://github.obps.io/DigitalServicing/secure-messages-webapp.git"
   },
   "main": "lib/secure-messages-webapp.cjs.js",
   "module": "lib/secure-messages-webapp.esm.js",
@@ -14,25 +14,24 @@
     "@babel/runtime": "7.12.5",
     "axios": "0.21.0",
     "core-js": "3.7.0",
-    "document-management-lib": "9.0.2-rc.0",
+    "document-management-lib": "9.0.2-rc.1",
     "key-mirror": "1.0.1",
     "lodash-es": "4.17.15",
     "moment": "2.21.0",
     "prop-types": "15.7.2",
-    "react": "15.4.1",
-    "react-dom": "15.4.1",
-    "react-redux": "4.4.1",
-    "react-router-dom": "4.2.2",
-    "redux": "3.7.2",
-    "redux-thunk": "2.3.0",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
+    "react-redux": "7.2.2",
+    "react-router-dom": "5.2.0",
+    "redux": "4.0.5",
     "regenerator-runtime": "0.13.7",
     "svg4everybody": "2.1.9",
     "web-ui-components": "27.4.1",
     "whatwg-fetch": "3.5.0"
   },
   "peerDependencies": {
-    "react": "15.4.1",
-    "react-dom": "15.4.1",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
     "web-ui-components": "27.4.1",
     "moment": "2.21.0"
   },
@@ -64,7 +63,7 @@
     "cypress": "5.4.0",
     "deployist": "1.4.1",
     "enzyme": "3.11.0",
-    "enzyme-adapter-react-15.4": "1.4.2",
+    "enzyme-adapter-react-16": "1.15.5",
     "enzyme-to-json": "3.6.1",
     "eslint": "7.13.0",
     "eslint-config-airbnb": "18.2.1",
@@ -159,11 +158,6 @@
   "husky": {
     "hooks": {
       "pre-commit": "npm run test:ci"
-    }
-  },
-  "auto-changelog": {
-    "replaceText": {
-      "[\\(]([a-zA-z]+-+\\d+)[\\)]": "([`$1`](https://abouthere.atlassian.net/browse/$1))"
     }
   }
 }

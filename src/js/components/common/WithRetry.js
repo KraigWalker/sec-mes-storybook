@@ -6,7 +6,7 @@ import ErrorModal from './ErrorModal';
 import { popupState, retryUpdateRequest } from '../../actions/AppActions';
 import { MessageSelectors } from '../../reducers';
 
-export const WithRetry = WrappedComponent =>
+export const WithRetry = (WrappedComponent) =>
   class WithRetry extends Component {
     constructor(props) {
       super(props);
@@ -18,7 +18,13 @@ export const WithRetry = WrappedComponent =>
     returnErrorModal() {
       const { content } = this.props;
 
-      return <ErrorModal content={content} onCloseClicked={this.errorCloseClicked} onRetry={this.retryServiceCall} />;
+      return (
+        <ErrorModal
+          content={content}
+          onCloseClicked={this.errorCloseClicked}
+          onRetry={this.retryServiceCall}
+        />
+      );
     }
 
     errorCloseClicked() {
@@ -26,7 +32,12 @@ export const WithRetry = WrappedComponent =>
     }
 
     retryServiceCall() {
-      const { failedReq, failedUpdatetype, retryUpdateRequest, popupState } = this.props;
+      const {
+        failedReq,
+        failedUpdatetype,
+        retryUpdateRequest,
+        popupState,
+      } = this.props;
 
       popupState();
       retryUpdateRequest(failedUpdatetype, failedReq);
@@ -49,7 +60,7 @@ WithRetry.propTypes = {
   retryUpdateRequest: PropTypes.func,
 };
 
-const mapState = state => ({
+const mapState = (state) => ({
   failedReq: MessageSelectors.getFailedReq(state),
   failedUpdatetype: MessageSelectors.getFailedUpdateType(state),
 });
@@ -59,12 +70,6 @@ const actionCreators = {
   retryUpdateRequest,
 };
 
-const composedWithRetry = compose(
-  connect(
-    mapState,
-    actionCreators
-  ),
-  WithRetry
-);
+const composedWithRetry = compose(connect(mapState, actionCreators), WithRetry);
 
 export default composedWithRetry;

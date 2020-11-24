@@ -5,7 +5,7 @@ import { ButtonGroup } from 'web-ui-components/lib/molecules/buttons';
 import { CentredModal } from 'web-ui-components/lib/organisms/modals';
 import { TextBody } from 'web-ui-components/lib/atoms/text';
 
-const SuccessModal = props => {
+const SuccessModal = (props) => {
   window.top.postMessage('clearNewMessagePage', '*');
 
   const bodyContent = (
@@ -28,7 +28,12 @@ const SuccessModal = props => {
   );
 
   return (
-    <CentredModal isOpen={true} title="" buttonNode={footerButtons} onClose={props.onClick}>
+    <CentredModal
+      isOpen={true}
+      title=""
+      buttonNode={footerButtons}
+      onClose={props.onClick}
+    >
       <TextBody>{bodyContent}</TextBody>
     </CentredModal>
   );

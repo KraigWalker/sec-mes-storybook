@@ -45,13 +45,24 @@ export class SecureMessageList extends React.Component {
   showMessages() {
     const { messages, content } = this.props;
     const listFlag = true;
-    return messages.slice(0, this.state.currentMessageLimit).map((message, index) => <SecureMessageSummary key={index} message={message} listFlag={listFlag} content={content} />);
+    return messages
+      .slice(0, this.state.currentMessageLimit)
+      .map((message, index) => (
+        <SecureMessageSummary
+          key={index}
+          message={message}
+          listFlag={listFlag}
+          content={content}
+        />
+      ));
   }
 
   showMoreClicked() {
     const { messages, dispatch, activeTab } = this.props;
-    dispatch(sendMessageForAccessibility(`Next 20 messages loaded ${activeTab}`));
-    this.setState(prevState => {
+    dispatch(
+      sendMessageForAccessibility(`Next 20 messages loaded ${activeTab}`)
+    );
+    this.setState((prevState) => {
       const newLimit = getNextLimit({
         currentLimit: prevState.currentMessageLimit,
         messageCount: messages.length,
@@ -85,7 +96,11 @@ export class SecureMessageList extends React.Component {
 
   renderNoMessagesText(isLoading) {
     const { content } = this.props;
-    return <Mail.Empty className="u-padding-left-1">{isLoading ? 'loading' : content.noMessages}</Mail.Empty>;
+    return (
+      <Mail.Empty className="u-padding-left-1">
+        {isLoading ? 'loading' : content.noMessages}
+      </Mail.Empty>
+    );
   }
 
   sendAccessibilityMessage() {
@@ -120,9 +135,15 @@ export class SecureMessageList extends React.Component {
       <Column xs={24} {...paddingProps}>
         <LoadingLocalTakeover xs={24} show={messagesFetching} title="loading..">
           <TextBody>
-            {messages.length === 0 ? this.renderNoMessagesText(messagesFetching) : this.showMessages()}
+            {messages.length === 0
+              ? this.renderNoMessagesText(messagesFetching)
+              : this.showMessages()}
             {this.state.currentMessageLimit < messages.length && (
-              <Button className="u-margin-top-2" display="primary" onClick={this.showMoreClicked}>
+              <Button
+                className="u-margin-top-2"
+                display="primary"
+                onClick={this.showMoreClicked}
+              >
                 {content.showMore}
               </Button>
             )}
@@ -139,13 +160,10 @@ export class SecureMessageList extends React.Component {
  * Maps the state of the component to the state of the redux store
  * @param {object} state. State of the application
  */
-const mapState = state => ({
+const mapState = (state) => ({
   messagesubjects: state.subjects,
   messageaccounts: state.accounts,
   messagesFetching: MessageSelectors.getFetching(state),
 });
 
-export default compose(
-  connect(mapState),
-  withBreakpoints
-)(SecureMessageList);
+export default compose(connect(mapState), withBreakpoints)(SecureMessageList);

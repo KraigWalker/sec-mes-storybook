@@ -11,15 +11,8 @@
 <body>
   <div id="app"></div>
   <script>
-    console.log('secure-messages-webapp 3.0.9');
-    var myDocuments = document.URL.lastIndexOf('my-documents') > 0 ? true : false;
-    var path = document.URL.substr(0,document.URL.lastIndexOf(myDocuments ? 'my-documents' : 'securemessages'));
-    window.pathValue = path;
-    window.baseURl = window.location.pathname.substr(0, window.location.pathname.lastIndexOf(myDocuments ? '/my-documents' : '/securemessages'))
-    </script>
-    <script type="text/javascript">
 
-      function throttle(fn, wait) {
+    function throttle(fn, wait) {
         var time = Date.now();
         return function() {
           if (time + wait - Date.now() < 0) {
@@ -28,6 +21,11 @@
           }
         }
       }
+
+    var myDocuments = document.URL.lastIndexOf('my-documents') > 0 ? true : false;
+    var path = document.URL.substr(0,document.URL.lastIndexOf(myDocuments ? 'my-documents' : 'securemessages'));
+    window.pathValue = path;
+    window.baseURl = window.location.pathname.substr(0, window.location.pathname.lastIndexOf(myDocuments ? '/my-documents' : '/securemessages'))
 
       // Ensure parent App using iframe resizes the iframe to accommodate changes in height
       if (window.parent) {
@@ -92,7 +90,6 @@
           _satellite.pageBottom();
         }
       })();
-      console.log('reached end of html entry successfully');
     </script>
   </body>
 </html>
