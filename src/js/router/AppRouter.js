@@ -6,6 +6,7 @@ import {
   Redirect,
   withRouter,
   useLocation,
+  useParams,
 } from 'react-router-dom';
 // import { ConnectedLandingPage } from '../components/LandingPage';
 // import Main from '../components/Main';
@@ -140,6 +141,7 @@ const RoutesWithLayoutAndSubscription = withRouter(
 function AppRouter(props) {
   const { isDocumentLibraryEnabled } = props;
   let location = useLocation();
+  let params = useParams();
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Route
@@ -159,12 +161,14 @@ function AppRouter(props) {
         <Route
           path={`/my-documents/:bankId(CB|YB)/:documentId`}
           exact
-          render={() => {
+          render={({ match }) => {
             let query = new URLSearchParams(location.search);
             return (
               <DocumentView
                 {...props}
+                match={match}
                 category={query.get('category')}
+                documentId={params.documentId}
                 session={props.session}
               />
             );
