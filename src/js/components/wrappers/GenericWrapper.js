@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import content from '../../content';
 
@@ -23,13 +23,12 @@ export function withSubscription(WrappedComponent) {
     fetched: MessageSelectors.getFetched(state),
   });
   return connect(mapState)(
-    class extends React.PureComponent {
+    class extends Component {
       constructor(props) {
         super(props);
-        const { brand } = props.session;
 
         this.state = {
-          content: getContent(brand),
+          content: getContent(props.session.brand),
         };
       }
 
@@ -39,9 +38,10 @@ export function withSubscription(WrappedComponent) {
         !fetched && dispatch(fetchSecureMessages());
       }
 
-      componentWillReceiveProps(nextProps) {
+      UNSAFE_componentWillReceiveProps(nextProps) {
         !nextProps.fetched && this.props.dispatch(fetchSecureMessages());
       }
+
       render() {
         return (
           <WrappedComponent
@@ -62,7 +62,7 @@ export function accessibilityWrapper(WrappedComponent) {
     fetched: MessageSelectors.getFetched(state),
   });
   return connect(mapState)(
-    class extends React.Component {
+    class extends Component {
       componentDidUpdate(prevProps, prevState) {
         if (currentMessage) {
           setTimeout(() => {

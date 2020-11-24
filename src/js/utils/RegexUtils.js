@@ -5,7 +5,11 @@ const regexForValidPastedData = /[0-9A-Za-z&.?'" ]/g;
 
 const RegexUtils = {
   matchCardDetails(text) {
-    return text.match(regexForPAN) || text.match(regexSeparatedBySpacePAN) || text.match(regexSeparatedByHipenPAN);
+    return (
+      text.match(regexForPAN) ||
+      text.match(regexSeparatedBySpacePAN) ||
+      text.match(regexSeparatedByHipenPAN)
+    );
   },
   getLastFourDigits(text) {
     return String(text).substr(text.length - 5);

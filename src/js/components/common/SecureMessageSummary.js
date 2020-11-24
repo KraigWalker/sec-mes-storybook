@@ -6,13 +6,16 @@ import { Mail } from 'web-ui-components/lib/communication/messaging';
 import { truncateMessage } from '../../utils/SecureMessageUtils';
 import { TEXT_LIMIT } from '../../constants/NumericalConstants';
 
-export const SecureMessageSummary = props => {
+const SecureMessageSummary = (props) => {
   const handleMailClick = () => {
     const { message, threadFlag } = props;
     if (threadFlag) {
       return;
     }
-    const path = message.status === DRAFT ? `/securemessages/draft` : `/securemessages/view`;
+    const path =
+      message.status === DRAFT
+        ? `/securemessages/draft`
+        : `/securemessages/view`;
 
     props.history.push({ pathname: path, messageDetail: message });
   };
@@ -28,7 +31,9 @@ export const SecureMessageSummary = props => {
       <Mail.Item
         {...props}
         id={message.id}
-        mailSubject={`${message.subject} ${message.reference ? message.reference : ''}`}
+        mailSubject={`${message.subject} ${
+          message.reference ? message.reference : ''
+        }`}
         mailSummary={truncateMessage(message.message, TEXT_LIMIT)}
         mailDate={message.dateCreated}
         isRead={message.status !== NEW}
@@ -57,4 +62,5 @@ SecureMessageSummaryMessaging.propTypes = {
   showUnarchive: PropTypes.bool,
 };
 
+export { SecureMessageSummary };
 export default SecureMessageSummaryMessaging;

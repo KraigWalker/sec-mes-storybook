@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   Switch,
   MemoryRouter,
@@ -63,41 +63,39 @@ const RoutesWithLayoutAndSubscription = withRouter(
   withSubscription(RoutesWithLayout)
 );
 
-class AppRouter extends Component {
-  /**
-   * Initiates the application in BrowserRouter. Please refer to react-router v4 docs.
-   * @return {ReactComponent} Displays the components wrapped around BrowserRouter and Routes the application.
-   */
-  render() {
-    const { isDocumentLibraryEnabled } = this.props;
-    return (
-      <MemoryRouter>
-        <div>
-          <Route
-            path={`/securemessages`}
-            render={() => <RoutesWithLayoutAndSubscription {...this.props} />}
-          />
-          <AccessibilityMessage />
+/**
+ * Initiates the application in BrowserRouter. Please refer to react-router v4 docs.
+ * @todo original description claims to initiate app in BrowserRouter. But here it is clearly in a MemoryRouter.
+ * @return {ReactComponent} Displays the components wrapped around BrowserRouter and Routes the application.
+ */
+function AppRouter(props) {
+  const { isDocumentLibraryEnabled } = props;
+  return (
+    <MemoryRouter>
+      <Route
+        path={`/securemessages`}
+        /** @todo be more specific about props. Don't just spread everyhting... */
+        render={() => <RoutesWithLayoutAndSubscription {...props} />}
+      />
+      <AccessibilityMessage />
 
-          <Switch>
-            <Route
-              path={`/my-documents/:bankId(CB|YB)/:documentId`}
-              component={DocumentView}
-            />
-            <RouteWithLayout
-              path={`/my-documents/`}
-              exact
-              Component={ListView}
-              session={this.props.session}
-              client={this.props.client}
-              isDocumentLibraryEnabled={isDocumentLibraryEnabled}
-            />
-            <Redirect exact from="/" to={`securemessages`} key="redirect" />
-          </Switch>
-        </div>
-      </MemoryRouter>
-    );
-  }
+      <Switch>
+        <Route
+          path={`/my-documents/:bankId(CB|YB)/:documentId`}
+          component={DocumentView}
+        />
+        <RouteWithLayout
+          path={`/my-documents/`}
+          exact
+          Component={ListView}
+          session={this.props.session}
+          client={this.props.client}
+          isDocumentLibraryEnabled={isDocumentLibraryEnabled}
+        />
+        <Redirect exact from="/" to={`securemessages`} key="redirect" />
+      </Switch>
+    </MemoryRouter>
+  );
 }
 
 export { AppRouter };

@@ -2,3 +2,4 @@ lib/**
 build/**
 .nyc_output/**
 coverage/**
+src/compiled
