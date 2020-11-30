@@ -2,7 +2,9 @@ import { shallow } from 'enzyme';
 import GetIcon from '../GetIcon';
 
 describe('GetIcon Component Check', () => {
-  const componentWrap = shallow(<GetIcon className="sampletext" width="24px" height="24px" id="someid" />);
+  const componentWrap = shallow(
+    <GetIcon className="sampletext" width="24px" height="24px" id="someid" />
+  );
 
   it('GetIcon component should mount', () => {
     expect(typeof componentWrap).toBe('object');
@@ -13,7 +15,9 @@ describe('GetIcon Component Check', () => {
     expect(componentWrap.props().height).toEqual('24px');
   });
   it('SVG URL verification', () => {
-    expect(componentWrap.find("[xlinkHref='../../images/icons.svg#someid']")).toHaveLength(0);
+    expect(
+      componentWrap.find("[xlinkHref='../../images/icons.svg#someid']")
+    ).toHaveLength(0);
   });
   it('should render correctly', () => {
     const tree = shallow(<GetIcon />);

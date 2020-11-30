@@ -188,7 +188,12 @@ describe('reply tests', () => {
   });
 
   it('has no account then user should be undefined', () => {
-    const message = createNewMessage({ data, ids: { id: 'C0122455', threadID: '12345' }, status: DRAFT, name });
+    const message = createNewMessage({
+      data,
+      ids: { id: 'C0122455', threadID: '12345' },
+      status: DRAFT,
+      name,
+    });
     expect(message.account).toBe(undefined);
   });
 

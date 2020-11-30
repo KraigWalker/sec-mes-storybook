@@ -1,4 +1,9 @@
-import { getISODateString, sortArrayByDate, getFriendlyDateFromUnix, isUnixDate } from '../DateUtils';
+import {
+  getISODateString,
+  sortArrayByDate,
+  getFriendlyDateFromUnix,
+  isUnixDate,
+} from '../DateUtils';
 import TestData from '../../content/secureMessagesTestData.json';
 
 describe('Date Utils Check:', () => {
