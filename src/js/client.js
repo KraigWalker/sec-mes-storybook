@@ -2,6 +2,7 @@ import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 import 'whatwg-fetch';
 import ReactDOM from 'react-dom';
+import { Suspense } from 'react';
 import { Provider } from 'react-redux';
 import { lazy } from '@loadable/component';
 import { BrowserRouter } from 'react-router-dom';
@@ -10,7 +11,6 @@ import AppRouter from './router/AppRouter';
 import createStore from './stores/AppStore';
 import { buildClientContext } from './utils/ContextUtils';
 import 'css/main.css';
-import { Suspense } from 'react';
 
 svg4everybody();
 
