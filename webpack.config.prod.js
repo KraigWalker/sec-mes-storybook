@@ -82,9 +82,10 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
-    //  new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
   ],
   optimization: {
+    concatenateModules: true,
     splitChunks: {
       chunks: 'all',
       name: false,
@@ -92,6 +93,20 @@ module.exports = {
       minChunks: 1,
       maxAsyncRequests: Infinity,
       maxInitialRequests: Infinity,
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name(module) {
+            // get the name. E.g. node_modules/packageName/not/this/part.js
+            // or node_modules/packageName
+            const packageName = module.context.match(
+              /[\\/]node_modules[\\/](.*?)([\\/]|$)/
+            )[1];
+
+            return `${packageName.replace('@', '')}`;
+          },
+        },
+      },
     },
     minimize: true,
     minimizer: [

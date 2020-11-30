@@ -140,7 +140,11 @@ module.exports = (env) => {
       ),
     ],
     devServer: {
-      contentBase: __dirname + '/src/compiled',
+      static: {
+        directory: `${__dirname}/src/compiled`,
+        staticOptions: {},
+        watch: true,
+      },
       open: true, // Open browser after compilation
       openPage:
         'securemessages/cb#access_token=access_token&bank_id=cb&client_context=CB%20Web&user_tracking_id=23453-34343-34343&brandId=vm&state=state&isDocumentLibraryEnabled=true',
@@ -149,7 +153,6 @@ module.exports = (env) => {
       },
       host: 'localhost',
       port: 8080,
-      hot: true,
     },
     module: {
       rules,
