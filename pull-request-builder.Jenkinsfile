@@ -1,3 +1,7 @@
+// This config file is heavily bias towards Cypress, as it's been taken from api-connector-lib
+// for this reason, some sections have been commented out.
+// Todo: Replace Jest unit tests with Cypress Unit/Integration tests
+
 pipeline {
     agent { label 'nodejs12' }
     options {
@@ -39,12 +43,12 @@ pipeline {
        //     }
        // }
     }
-    post {
-        always {
-            // Publish JUnit Results
-            junit allowEmptyResults: false, testResults: '*junit.xml,**/cypress/results/*.junit.xml'
-        }
-    }
+   // post {
+   //    always {
+   //         // Publish JUnit Results
+   //         junit allowEmptyResults: false, testResults: '*junit.xml,**/cypress/results/*.junit.xml'
+   //     }
+   // }
 }
 
 def getCypressVersion() {
