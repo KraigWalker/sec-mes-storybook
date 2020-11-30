@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import DropDownComponent from './common/DropDownComponent';
 import MessageEntity from '../entities/MessageEntity';
 
-import { TextBody } from 'web-ui-components/lib/atoms/text';
+import { StandardBody } from 'web-ui-components/lib/typography/body';
 import { Icon } from 'web-ui-components/lib/atoms/iconography';
 import { Label } from 'web-ui-components/lib/atoms/forms';
 import { Button } from 'web-ui-components/lib/atoms/buttons';
@@ -331,18 +331,17 @@ export class SecureMessageForm extends Component {
             <Row {...getRowMarginProps(noPadding)}>
               <Card>
                 <SubHeading>{title}</SubHeading>
-                <TextBody>
+                <StandardBody>
                   <BackButton
                     onClick={this.determineBackAction}
                     label={content.back}
                   />
-                </TextBody>
-                <TextBody>
+                </StandardBody>
+                <StandardBody>
                   <Label id="subjectTitle" htmlFor="subjects">
                     {content.subject}
                   </Label>
-                </TextBody>
-
+                </StandardBody>
                 <DropDownComponent
                   accessID="Subject"
                   subjects={subjects}
@@ -355,11 +354,11 @@ export class SecureMessageForm extends Component {
                   selectedValue={this.props.selectedSubject}
                   content={content}
                 />
-                <TextBody>
+                <StandardBody>
                   <Label id="relatesTitle" htmlFor="subjects">
                     {content.messageRelatesTo}
                   </Label>
-                </TextBody>
+                </StandardBody>
                 <DropDownComponent
                   accessID="Message relates to"
                   accounts={accounts}
@@ -371,12 +370,12 @@ export class SecureMessageForm extends Component {
                   selectedValue={this.props.selectedAccountValue}
                   content={content}
                 />
-                <TextBody>
+                <StandardBody>
                   <Label id="messageTitle" htmlFor="subjects">
                     {content.message}
                   </Label>
-                </TextBody>
-                <TextBody>
+                </StandardBody>
+                <StandardBody>
                   <div
                     className="u-visually-hidden off-screen"
                     id="textAreaMaxMsg"
@@ -394,8 +393,8 @@ export class SecureMessageForm extends Component {
                     maxChars={MAX_CHARS}
                     charsLeftDisplayThreshold={CHARS_LEFT_DISPLAY_THRESHOLD}
                   />
-                </TextBody>
-                <TextBody>
+                </StandardBody>
+                <StandardBody>
                   <ButtonGroup>
                     <Button
                       name="Back"
@@ -424,7 +423,7 @@ export class SecureMessageForm extends Component {
                       {content.send}
                     </Button>
                   </ButtonGroup>
-                </TextBody>
+                </StandardBody>
               </Card>
             </Row>
           </LoadingLocalTakeover>

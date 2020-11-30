@@ -1,6 +1,12 @@
 import reducer from './MessageUpdatesReducer';
 import AppConstants from '../../constants/AppConstants';
-import { READ, ARCHIVED, DRAFT, PENDING, NEW } from '../../constants/StringsConstants';
+import {
+  READ,
+  ARCHIVED,
+  DRAFT,
+  PENDING,
+  NEW,
+} from '../../constants/StringsConstants';
 
 describe('MessageUpdatesReducer', () => {
   const initialState = {
@@ -18,14 +24,14 @@ describe('MessageUpdatesReducer', () => {
     readingMessages: [],
   };
 
-  const archiveSuccessAction = id => ({
+  const archiveSuccessAction = (id) => ({
     type: AppConstants.ARCHIVE_SECURE_MESSAGE_SUCCESS,
     payload: {
       id,
     },
   });
 
-  const unarchiveSuccessAction = id => ({
+  const unarchiveSuccessAction = (id) => ({
     type: AppConstants.UNARCHIVE_SECURE_MESSAGE_SUCCESS,
     payload: {
       id,

@@ -5,7 +5,7 @@ import { LoadingLocalTakeover } from 'web-ui-components/lib/organisms/takeovers'
 import { Container, Row } from 'web-ui-components/lib/global/layout';
 import { Card } from 'web-ui-components/lib/organisms/cards';
 import { BackButton } from 'web-ui-components/lib/molecules/navigation';
-import { TextBody } from 'web-ui-components/lib/atoms/text';
+import { StandardBody } from 'web-ui-components/lib/typography/body';
 import { ButtonGroup } from 'web-ui-components/lib/molecules/buttons';
 import { Button } from 'web-ui-components/lib/atoms/buttons';
 import {
@@ -42,16 +42,20 @@ export class ErrorPage extends Component {
         <Container {...getPaddingProps(noPadding)} size={containerSize}>
           <Row {...getRowMarginProps(noPadding)}>
             <Card>
-              <TextBody>
+              <StandardBody>
                 <BackButton
                   onClick={this.handleBackButton}
                   label={content.backToAccounts}
                 />
-              </TextBody>
+              </StandardBody>
               <PageHeading>{content.messages}</PageHeading>
               <SubHeading>{content.sorryHeader}</SubHeading>
-              <TextBody>{content.tryAgain}</TextBody>
-              <TextBody>{content.getInTouch}</TextBody>
+              <StandardBody>
+                <p>{content.tryAgain}</p>
+              </StandardBody>
+              <StandardBody>
+                <p>{content.getInTouch}</p>
+              </StandardBody>
               <ButtonGroup>
                 <Button display="secondary" onClick={this.handleBackButton}>
                   {content.back}

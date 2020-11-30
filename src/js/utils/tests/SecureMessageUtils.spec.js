@@ -1,4 +1,9 @@
-import { getMessageType, updateMessageStatus, truncateText, truncateMessage } from '../SecureMessageUtils';
+import {
+  getMessageType,
+  updateMessageStatus,
+  truncateText,
+  truncateMessage,
+} from '../SecureMessageUtils';
 import TestData from '../../content/secureMessagesTestData.json';
 
 describe('SecureMessage Utils Check:', () => {
@@ -86,7 +91,8 @@ describe('Truncate text', () => {
   });
 
   it('has many spaces - break in the appropriate location', () => {
-    const text = 'A new document is available for you to view, download and/or print in the Document library';
+    const text =
+      'A new document is available for you to view, download and/or print in the Document library';
     const newText = truncateText(text, TEXT_LIMIT);
     expect(newText).toHaveLength(17);
     expect(newText).toEqual('A new document is');

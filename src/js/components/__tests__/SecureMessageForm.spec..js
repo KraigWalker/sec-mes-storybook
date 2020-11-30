@@ -111,7 +111,13 @@ describe('Secure Message From', () => {
 
   it('returnErrorModal function test', () => {
     const wrapper = shallow(<SecureMessageForm {...props} />);
-    wrapper.setState({ showSaveServiceErrorModal: true, showSendServiceErrorModal: true, showDraftSuccessModal: true, showSentMessageModal: true, disabled: false });
+    wrapper.setState({
+      showSaveServiceErrorModal: true,
+      showSendServiceErrorModal: true,
+      showDraftSuccessModal: true,
+      showSentMessageModal: true,
+      disabled: false,
+    });
     expect(wrapper.instance().state.showSendServiceErrorModal).toBeTruthy();
   });
 });

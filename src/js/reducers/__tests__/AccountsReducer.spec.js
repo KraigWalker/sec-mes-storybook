@@ -2,7 +2,11 @@ import AccountsReducer from '../AccountsReducer';
 
 describe('>>>R E D U C E R --- Test AccountsReducer', () => {
   it('should return the initial state', () => {
-    expect(AccountsReducer(undefined, {})).toEqual({ accounts: [], fetching: false, fetched: false });
+    expect(AccountsReducer(undefined, {})).toEqual({
+      accounts: [],
+      fetching: false,
+      fetched: false,
+    });
   });
   it('+++ reducer for REQUEST_SECURE_MESSAGES', () => {
     let state = { accounts: [], fetching: false, fetched: false };

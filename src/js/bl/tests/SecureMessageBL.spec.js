@@ -1,10 +1,17 @@
 import { SecureMessageBL, getThreadsBL } from '../SecureMessageBL';
 import TestData from '../../content/secureMessagesTestData.json';
-import { NEW, ARCHIVED, SENT, PENDING, READ, DRAFT } from '../../constants/StringsConstants';
+import {
+  NEW,
+  ARCHIVED,
+  SENT,
+  PENDING,
+  READ,
+  DRAFT,
+} from '../../constants/StringsConstants';
 import MessageEntity from '../../entities/MessageEntity';
 import AccountEntity from '../../entities/AccountEntity';
 
-const BuildMessageEntity = message => {
+const BuildMessageEntity = (message) => {
   const newMessage = new MessageEntity();
   newMessage.setDocumentData({
     id: '1234',
@@ -23,7 +30,7 @@ const BuildMessageEntity = message => {
   return newMessage;
 };
 
-const BuildMessageEntities = messages => messages.map(BuildMessageEntity);
+const BuildMessageEntities = (messages) => messages.map(BuildMessageEntity);
 
 describe('Business Logic Check:', () => {
   it('getISODateString - Should return Inbox, Drafts and Sent Arrays (3 different arrayas in object Status of "NEW" AND "READ" will go under Inbox, Status of "PENDING" AND "SENT" will go under Sent and  Status of "DRAFT" will go under Draft )', () => {
@@ -33,8 +40,14 @@ describe('Business Logic Check:', () => {
     expect(SortedArray.draftMessages).toHaveLength(1);
   });
   it('getThreadsBL - Should return all matching', () => {
-    const Test1 = getThreadsBL({ messages: TestData.getThreadsBL, currentMessage: TestData.getThreadsBL[4] });
-    const Test2 = getThreadsBL({ messages: TestData.getThreadsBL, currentMessage: TestData.getThreadsBL[1] });
+    const Test1 = getThreadsBL({
+      messages: TestData.getThreadsBL,
+      currentMessage: TestData.getThreadsBL[4],
+    });
+    const Test2 = getThreadsBL({
+      messages: TestData.getThreadsBL,
+      currentMessage: TestData.getThreadsBL[1],
+    });
     expect(Test1[0].threadID).toEqual(TestData.getThreadsBL[4].threadID);
     expect(Test1[0].id).toEqual('3');
     expect(Test2[0].threadID).toEqual(TestData.getThreadsBL[1].threadID);

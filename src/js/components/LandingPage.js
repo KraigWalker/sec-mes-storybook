@@ -8,7 +8,7 @@ import { Button } from 'web-ui-components/lib/atoms/buttons';
 import { BackButton } from 'web-ui-components/lib/molecules/navigation';
 import { Container, Row } from 'web-ui-components/lib/global/layout';
 import { Card } from 'web-ui-components/lib/organisms/cards';
-import { TextBody } from 'web-ui-components/lib/atoms/text';
+import { StandardBody } from 'web-ui-components/lib/typography/body';
 import { SubHeading } from 'web-ui-components/lib/typography/headings';
 import { getMessageSubjects, getActiveTab } from '../actions/AppActions';
 import { withBreakpoints } from '../components/common/hoc/WithBreakpoint';
@@ -58,15 +58,17 @@ export class LandingPage extends PureComponent {
         <Row {...getRowMarginProps(noPadding)}>
           <Card>
             {showBackLink && (
-              <TextBody className="c-step-header__crumbs">
+              <StandardBody>
                 <BackButton
                   onClick={this.handleBackClick}
                   label={this.props.content.backToAccounts}
                 />
-              </TextBody>
+              </StandardBody>
             )}
             <SubHeading>{this.props.content.messages}</SubHeading>
-            <TextBody>{this.props.content.landingPageMessage}</TextBody>
+            <StandardBody>
+              <p>{this.props.content.landingPageMessage}</p>
+            </StandardBody>
             {!readOnly && (
               <Button
                 display="primary"

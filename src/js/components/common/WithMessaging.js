@@ -15,11 +15,11 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { ConfirmationModal } from 'web-ui-components/lib/organisms/modals';
 import { getOptionDisplayFunctions } from './MessageOptions';
-import { TextBody } from 'web-ui-components/lib/atoms/text';
+import { StandardBody } from 'web-ui-components/lib/typography/body';
 import { MessageSelectors } from '../../reducers';
 
 const WithMessaging = (WrappedComponent) =>
-  (class withMessaging extends Component {
+  class withMessaging extends Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -131,13 +131,15 @@ const WithMessaging = (WrappedComponent) =>
               dismissButtonText={content.dontDelButton}
               confirmButtonText={content.delButton}
             >
-              <TextBody>{content.deleteMessageBody}</TextBody>
+              <StandardBody>
+                <p>{content.deleteMessageBody}</p>
+              </StandardBody>
             </ConfirmationModal>
           )}
         </div>
       );
     }
-  });
+  };
 
 WithMessaging.propTypes = {
   viewMessageFlag: PropTypes.bool,

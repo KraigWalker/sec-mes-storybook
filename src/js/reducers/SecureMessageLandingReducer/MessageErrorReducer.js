@@ -17,13 +17,25 @@ export default function reducer(
 ) {
   switch (action.type) {
     case AppConstants.ARCHIVE_SECURE_MESSAGE_FAILURE: {
-      return { ...state, failedUpdateType: AppConstants.ARCHIVE_SECURE_MESSAGE, failedReq: action.payload.requestData };
+      return {
+        ...state,
+        failedUpdateType: AppConstants.ARCHIVE_SECURE_MESSAGE,
+        failedReq: action.payload.requestData,
+      };
     }
     case AppConstants.UNARCHIVE_SECURE_MESSAGE_FAILURE: {
-      return { ...state, failedUpdateType: AppConstants.UNARCHIVE_SECURE_MESSAGE, failedReq: action.payload.requestData };
+      return {
+        ...state,
+        failedUpdateType: AppConstants.UNARCHIVE_SECURE_MESSAGE,
+        failedReq: action.payload.requestData,
+      };
     }
     case AppConstants.DELETE_SECURE_MESSAGE_FAILURE: {
-      return { ...state, failedUpdateType: AppConstants.DELETE_SECURE_MESSAGE, failedReq: action.payload.requestData };
+      return {
+        ...state,
+        failedUpdateType: AppConstants.DELETE_SECURE_MESSAGE,
+        failedReq: action.payload.requestData,
+      };
     }
     case AppConstants.REQUEST_SECURE_MESSAGES_SUCCESS: {
       return { ...state, error: false };
@@ -60,9 +72,9 @@ const getMessageError = (state, status) => {
   }
 };
 
-const getFailedUpdateType = state => state.failedUpdateType;
-const getFailedReq = state => state.failedReq;
-const getFetchError = state => state.error;
+const getFailedUpdateType = (state) => state.failedUpdateType;
+const getFailedReq = (state) => state.failedReq;
+const getFetchError = (state) => state.error;
 
 export const selectors = {
   getMessageError,

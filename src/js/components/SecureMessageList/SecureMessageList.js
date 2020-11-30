@@ -5,9 +5,8 @@ import { connect } from 'react-redux';
 import { SENT, DRAFT, ARCHIVED } from '../../constants/StringsConstants';
 import { Button } from 'web-ui-components/lib/atoms/buttons';
 import { Column } from 'web-ui-components/lib/global/layout';
-import { TextBody } from 'web-ui-components/lib/atoms/text';
+import { StandardBody } from 'web-ui-components/lib/typography/body';
 import { LoadingLocalTakeover } from 'web-ui-components/lib/organisms/takeovers';
-import { TextStyled } from 'web-ui-components/lib/atoms/text';
 import { Mail } from 'web-ui-components/lib/communication/messaging';
 import { withBreakpoints } from '../common/hoc/WithBreakpoint';
 import { compose } from 'redux';
@@ -88,9 +87,9 @@ export class SecureMessageList extends Component {
       thatsallText = content.thatsallTextDraft;
     }
     return (
-      <TextStyled size="uist" className="u-padding-top-2">
-        {thatsallText}
-      </TextStyled>
+      <StandardBody>
+        <p>{thatsallText}</p>
+      </StandardBody>
     );
   }
 
@@ -134,7 +133,7 @@ export class SecureMessageList extends Component {
     return (
       <Column xs={24} {...paddingProps}>
         <LoadingLocalTakeover xs={24} show={messagesFetching} title="loading..">
-          <TextBody>
+          <StandardBody>
             {messages.length === 0
               ? this.renderNoMessagesText(messagesFetching)
               : this.showMessages()}
@@ -148,7 +147,7 @@ export class SecureMessageList extends Component {
               </Button>
             )}
             {this.state.showThatsAllMessage && this.renderThatsAllText()}
-          </TextBody>
+          </StandardBody>
         </LoadingLocalTakeover>
       </Column>
     );

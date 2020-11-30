@@ -1,12 +1,12 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { map } from 'lodash-es';
-import { getMessageSubjects, popupState } from '../../actions/AppActions';
 import { Select } from 'web-ui-components/lib/atoms/forms';
 import { ValidationMessage } from 'web-ui-components/lib/molecules/forms';
-import ErrorModal from './ErrorModal';
-import { TextBody } from 'web-ui-components/lib/atoms/text';
+import { StandardBody } from 'web-ui-components/lib/typography/body';
 import { Column } from 'web-ui-components/lib/global/layout';
+import { getMessageSubjects, popupState } from '../../actions/AppActions';
+import ErrorModal from './ErrorModal';
 
 //DEBT: refactor the business logic out of this component. It does not belong here.
 //The values to render should be passed not determined based on a string...
@@ -107,7 +107,7 @@ export class DropDownComponent extends Component {
     return (
       <div>
         <Column xs={24} sm={24} md={9} ld={9} className="u-padding-0">
-          <TextBody>
+          <StandardBody>
             <Select
               defaultValue={this.props.selectedValue}
               id={ddId}
@@ -116,20 +116,20 @@ export class DropDownComponent extends Component {
                 this.props.selectSubject(this.props.id, e.target.value)
               }
             />
-          </TextBody>
+          </StandardBody>
         </Column>
 
         {showAccountError ? (
-          <TextBody>
+          <StandardBody>
             <ValidationMessage value={content.accError} />
-          </TextBody>
+          </StandardBody>
         ) : (
           ''
         )}
         {showSubjectError ? (
-          <TextBody>
+          <StandardBody>
             <ValidationMessage value={content.subError} />
-          </TextBody>
+          </StandardBody>
         ) : (
           ''
         )}

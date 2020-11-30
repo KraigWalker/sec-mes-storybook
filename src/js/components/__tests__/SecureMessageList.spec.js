@@ -28,7 +28,9 @@ describe('New Secure message snapshot', () => {
   it('renderNoMessagesText function test', () => {
     component.instance().renderNoMessagesText();
     component.setState({ showMoreLimit: 8 });
-    expect(component.instance().state.showMoreLimit).toBeLessThan(props.messages.length);
+    expect(component.instance().state.showMoreLimit).toBeLessThan(
+      props.messages.length
+    );
   });
   describe('renderNoMessagesText with DRAFT', () => {
     const dispatch = jest.fn();
@@ -49,7 +51,9 @@ describe('New Secure message snapshot', () => {
       let component = shallow(<SecureMessageList {...props} />);
       component.instance().renderNoMessagesText();
       component.setState({ showMoreLimit: 8 });
-      expect(component.instance().state.showMoreLimit).toBeLessThan(props.messages.length);
+      expect(component.instance().state.showMoreLimit).toBeLessThan(
+        props.messages.length
+      );
     });
   });
   describe('New Secure message snapshot', () => {

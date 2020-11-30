@@ -2,7 +2,7 @@ import GetIcon from './GetIcon';
 import { Button } from 'web-ui-components/lib/atoms/buttons';
 import { ButtonGroup } from 'web-ui-components/lib/molecules/buttons';
 import { CentredModal } from 'web-ui-components/lib/organisms/modals';
-import { TextBody } from 'web-ui-components/lib/atoms/text';
+import { StandardBody } from 'web-ui-components/lib/typography/body';
 
 const SuccessModal = (props) => {
   window.top.postMessage('clearNewMessagePage', '*');
@@ -17,13 +17,13 @@ const SuccessModal = (props) => {
   );
 
   const footerButtons = (
-    <TextBody>
+    <StandardBody>
       <ButtonGroup alignment="center">
         <Button display="primary" onClick={props.onClick}>
           {props.okText}
         </Button>
       </ButtonGroup>
-    </TextBody>
+    </StandardBody>
   );
 
   return (
@@ -33,7 +33,9 @@ const SuccessModal = (props) => {
       buttonNode={footerButtons}
       onClose={props.onClick}
     >
-      <TextBody>{bodyContent}</TextBody>
+      <StandardBody>
+        <p>{bodyContent}</p>
+      </StandardBody>
     </CentredModal>
   );
 };

@@ -24,13 +24,8 @@ module.exports = {
     path: resolveApp('build'),
     pathinfo: false,
     filename: '[name].[contenthash:8].js',
-    // TODO: remove this when upgrading to webpack 5
-    futureEmitAssets: true,
     chunkFilename: '[name].[contenthash:8].chunk.js',
     publicPath: '../../',
-    // Prevents conflicts when multiple webpack runtimes (from different apps)
-    // are used on the same page.
-    jsonpFunction: `webpackJsonp$securemessageswebapp`,
   },
   plugins: [
     new MiniCssExtractPlugin({
@@ -82,9 +77,10 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
-    //  new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
   ],
   optimization: {
+    concatenateModules: true,
     splitChunks: {
       chunks: 'all',
       name: false,
@@ -109,9 +105,6 @@ module.exports = {
           mangle: {
             safari10: false,
           },
-          format: {
-            comments: false,
-          },
           keep_classnames: true,
           keep_fnames: true,
           output: {
@@ -120,7 +113,6 @@ module.exports = {
             ascii_only: true,
           },
         },
-        sourceMap: false,
         extractComments: false,
       }),
     ],

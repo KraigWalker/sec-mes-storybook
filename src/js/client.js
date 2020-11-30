@@ -2,16 +2,23 @@ import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 import 'whatwg-fetch';
 import ReactDOM from 'react-dom';
+import { Suspense } from 'react';
 import { Provider } from 'react-redux';
+import { lazy } from '@loadable/component';
 import { BrowserRouter } from 'react-router-dom';
 import svg4everybody from 'svg4everybody';
 import AppRouter from './router/AppRouter';
 import createStore from './stores/AppStore';
-import { WebUIThemeProvider } from 'web-ui-components/lib/utilities/themes';
 import { buildClientContext } from './utils/ContextUtils';
 import 'css/main.css';
 
 svg4everybody();
+
+const WebUIThemeProvider = lazy(() =>
+  import(
+    /* webpackPreload: true */ 'web-ui-components/lib/utilities/themes'
+  ).then((mod) => mod.WebUIThemeProvider)
+);
 
 const app = document.getElementById('app');
 /**
@@ -65,13 +72,15 @@ function startApp(config) {
   ReactDOM.render(
     <BrowserRouter basename={window.baseURl}>
       <Provider store={store}>
-        <WebUIThemeProvider brandID={normalisedBrandId}>
-          <AppRouter
-            session={session}
-            client={clientContext}
-            isDocumentLibraryEnabled={isDocumentLibraryEnabledFinal}
-          />
-        </WebUIThemeProvider>
+        <Suspense fallback={null}>
+          <WebUIThemeProvider brandID={normalisedBrandId}>
+            <AppRouter
+              session={session}
+              client={clientContext}
+              isDocumentLibraryEnabled={isDocumentLibraryEnabledFinal}
+            />
+          </WebUIThemeProvider>
+        </Suspense>
       </Provider>
     </BrowserRouter>,
     app
