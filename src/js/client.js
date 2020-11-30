@@ -15,9 +15,9 @@ import 'css/main.css';
 svg4everybody();
 
 const WebUIThemeProvider = lazy(() =>
-  import('web-ui-components/lib/utilities/themes').then(
-    (mod) => mod.WebUIThemeProvider
-  )
+  import(
+    /* webpackPreload: true */ 'web-ui-components/lib/utilities/themes'
+  ).then((mod) => mod.WebUIThemeProvider)
 );
 
 const app = document.getElementById('app');
