@@ -1,8 +1,7 @@
 import { Component } from 'react';
 import { Textarea } from 'web-ui-components/lib/atoms/forms';
 import { ValidationMessage } from 'web-ui-components/lib/molecules/forms';
-import { TextBody } from 'web-ui-components/lib/atoms/text';
-import { TextStyled } from 'web-ui-components/lib/atoms/text';
+import { StandardBody } from 'web-ui-components/lib/typography/body';
 import PropTypes from 'prop-types';
 
 const calcCharsLeft = (maxChars, length) => maxChars - length;
@@ -41,23 +40,25 @@ class TextAreaWrapper extends Component {
 
     if (charsLeft < 0) {
       return (
-        <div>
-          <TextBody>
+        <>
+          <StandardBody>
             <ValidationMessage
               value={`${charsLeft} ${content.charLeft}`}
               hasIcon={false}
             />
-          </TextBody>
-          <TextBody>
+          </StandardBody>
+          <StandardBody>
             <ValidationMessage value={content.messageVal} />
-          </TextBody>
-        </div>
+          </StandardBody>
+        </>
       );
     } else if (charsLeft <= charsLeftDisplayThreshold) {
       return (
-        <TextStyled size="uist" className="u-padding-top-1">
-          {charsLeft} {content.charLeft}
-        </TextStyled>
+        <StandardBody>
+          <p>
+            {charsLeft} {content.charLeft}
+          </p>
+        </StandardBody>
       );
     }
   }

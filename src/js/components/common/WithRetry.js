@@ -7,7 +7,7 @@ import { popupState, retryUpdateRequest } from '../../actions/AppActions';
 import { MessageSelectors } from '../../reducers';
 
 export const WithRetry = (WrappedComponent) =>
-  (class WithRetry extends Component {
+  class WithRetry extends Component {
     constructor(props) {
       super(props);
       this.returnErrorModal = this.returnErrorModal.bind(this);
@@ -51,7 +51,7 @@ export const WithRetry = (WrappedComponent) =>
         </div>
       );
     }
-  });
+  };
 
 WithRetry.propTypes = {
   failedReq: PropTypes.object,
