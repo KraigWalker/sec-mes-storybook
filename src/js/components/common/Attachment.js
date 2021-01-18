@@ -71,7 +71,9 @@ const handleAttachmentClick = ({
   // else {
   window.open(
     `${basePath}/my-documents/${bank_id}/${id}?bank_id=${bank_id}&client_context=${app_title}&user_tracking_id=${user_tracking_id}&brandId=${brand}&state=${state}${
-      category && enableCategoryAttachmentParam ? `&category=${category}` : ''
+      category && category === 'Statements' && enableCategoryAttachmentParam
+        ? '&category=Statements' // Because adding the category param can throw off other types of attachments, we hardcode Statements
+        : ''
     }#access_token=${access_token}`
   );
   // }
