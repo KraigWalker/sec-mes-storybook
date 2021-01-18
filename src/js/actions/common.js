@@ -45,7 +45,6 @@ export const buildUpdateHandlers = ({
     onSuccess();
   },
   error: (error) => {
-    console.log(error);
     const payload = {
       type: errorActionType,
       payload: {

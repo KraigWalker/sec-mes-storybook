@@ -27,6 +27,8 @@ function Attachment({
               getDocumentByIdNative,
               history,
               readOnly,
+              enableCategoryAttachmentParam:
+                window.flagContext.enableCategoryAttachmentParam || false,
             });
           } else {
             getDocumentByIdNative(
@@ -40,11 +42,13 @@ function Attachment({
     </div>
   );
 }
+
 const handleAttachmentClick = ({
   basePath,
   session,
   message,
   client,
+  enableCategoryAttachmentParam,
   // history,
   // readOnly,
 }) => {
@@ -56,7 +60,6 @@ const handleAttachmentClick = ({
     category,
     document: { id },
   } = message;
-  console.dir(message);
 
   // FIXME: Removed history.push in MEO as it wasn't working, need to revisit
   // if (readOnly) { //In MEO we need to open the document on the same page due to in memory routing
@@ -68,7 +71,7 @@ const handleAttachmentClick = ({
   // else {
   window.open(
     `${basePath}/my-documents/${bank_id}/${id}?bank_id=${bank_id}&client_context=${app_title}&user_tracking_id=${user_tracking_id}&brandId=${brand}&state=${state}${
-      category ? `&category=${category}` : ''
+      category && enableCategoryAttachmentParam ? `&category=${category}` : ''
     }#access_token=${access_token}`
   );
   // }

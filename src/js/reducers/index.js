@@ -26,20 +26,25 @@ export const MessageSelectors = Object.entries(messageSelectors).reduce(
   {}
 );
 
-export const getAccounts = (state) =>
-  accountSelectors.getAccounts(state.accounts);
+export function getAccounts(state) {
+  return accountSelectors.getAccounts(state.accounts);
+}
 
-export const getSubjects = (state) =>
-  subjectSelectors.getSubjects(state.subjects);
+export function getSubjects(state) {
+  return subjectSelectors.getSubjects(state.subjects);
+}
 
-export const getSubjectErrors = (state) =>
-  subjectSelectors.getSubjectErrors(state.subjects);
+export function getSubjectErrors(state) {
+  return subjectSelectors.getSubjectErrors(state.subjects);
+}
 
-export const getMessageDetail = (state) =>
-  viewMessageSelectors.getMessageDetail(state.viewMessage);
+export function getMessageDetail(state) {
+  return viewMessageSelectors.getMessageDetail(state.viewMessage);
+}
 
-export const getCustomerError = (state) =>
-  customerSelectors.getCustomerError(state.customerDetails);
+export function getCustomerError(state) {
+  return customerSelectors.getCustomerError(state.customerDetails);
+}
 
 export default combineReducers({
   messages,
