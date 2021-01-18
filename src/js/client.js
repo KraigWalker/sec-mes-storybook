@@ -95,17 +95,18 @@ function loadStyles() {
   head.appendChild(element);
 }
 
-function initApp() {
-  fetch(`/config.json`)
-    .then((response) => response.json())
-    .then((data) => {
-      startApp(data);
-    });
+fetch(`/config.json`)
+  .then((response) => response.json())
+  .then((data) => {
+    window.flagContext = {
+      enableCategoryAttachmentParam:
+        data.enableCategoryAttachmentParam || false,
+    };
+    startApp(data);
+  })
+  .catch((err) => console.log(err));
 
-  // This is for hot reloading on dev, so css gets loaded when window has is empty
-  if (process.env.NODE_ENV !== 'production' && !window.location.hash) {
-    loadStyles();
-  }
+// This is for hot reloading on dev, so css gets loaded when window has is empty
+if (process.env.NODE_ENV !== 'production' && !window.location.hash) {
+  loadStyles();
 }
-
-initApp();

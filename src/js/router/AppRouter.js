@@ -1,26 +1,9 @@
 import { Suspense } from 'react';
 import { lazy } from '@loadable/component';
-import {
-  Switch,
-  Route,
-  Redirect,
-  withRouter,
-  useLocation,
-  useParams,
-} from 'react-router-dom';
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import queryString from 'query-string';
-// import { ConnectedLandingPage } from '../components/LandingPage';
-// import Main from '../components/Main';
-//import NewSecureMessage from '../components/NewSecureMessage';
-//import { ViewMessage } from '../components/ViewMessage';
-// import ReplySecuremessage from '../components/ReplySecureMessage';
 import { withSubscription } from '../components/wrappers/GenericWrapper';
 import AccessibilityMessage from '../components/common/AccessibilityMessage';
-// import ErrorPage from '../components/common/ErrorPage';
-//import { ListView } from '../components/ListView';
-// import { AccountSelector } from '../components/AccountSelector';
-// import { DocumentView } from '../components/DocumentView';
-//import DraftSecureMessage from '../components/DraftSecureMessage';
 
 function RouteWithLayout({ Component, ...restProps }) {
   return (
@@ -67,7 +50,7 @@ const DraftSecureMessage = lazy(() =>
   import('../components/DraftSecureMessage').then((mod) => mod.default)
 );
 
-const ReplySecuremessage = lazy(() =>
+const ReplySecureMessage = lazy(() =>
   import('../components/ReplySecureMessage').then((mod) => mod.default)
 );
 
@@ -106,7 +89,7 @@ function RoutesWithLayout(props) {
       <RouteWithLayout
         exact
         path={`/securemessages/reply`}
-        Component={ReplySecuremessage}
+        Component={ReplySecureMessage}
         content={props.content}
         isDocumentLibraryEnabled={props.isDocumentLibraryEnabled}
         session={props.session}
@@ -141,8 +124,6 @@ const RoutesWithLayoutAndSubscription = withRouter(
  */
 function AppRouter(props) {
   const { isDocumentLibraryEnabled } = props;
-  let location = useLocation();
-  let params = useParams();
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Route
@@ -163,15 +144,7 @@ function AppRouter(props) {
           path={`/my-documents/:bankId(CB|YB)/:documentId`}
           exact
           render={({ match, location, ...restProps }) => {
-            console.log('location');
-            console.dir(location);
-            console.log('restProps');
-            console.dir(restProps);
-            console.log('route props');
-            console.dir(props);
             const query = queryString.parse(location.search);
-            console.log('query');
-            console.dir(query);
             const { category } = query;
             return (
               <DocumentView
