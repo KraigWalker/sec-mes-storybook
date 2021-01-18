@@ -1,6 +1,6 @@
 {
   "name": "secure-messages-webapp",
-  "version": "3.0.30",
+  "version": "3.0.31",
   "description": "Secure Message Web application",
   "author": "",
   "license": "UNLICENSED",
@@ -32,10 +32,10 @@
     "whatwg-fetch": "3.5.0"
   },
   "peerDependencies": {
+    "moment": "2.21.0",
     "react": "16.14.0",
     "react-dom": "16.14.0",
-    "web-ui-components": "27.4.1",
-    "moment": "2.21.0"
+    "web-ui-components": "27.4.1"
   },
   "devDependencies": {
     "@babel/core": "7.12.9",
