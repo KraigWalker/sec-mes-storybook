@@ -4,7 +4,7 @@ import { ButtonGroup } from 'web-ui-components/lib/molecules/buttons';
 import withMessaging from './common/WithMessaging';
 import { ARCHIVED } from '../constants/StringsConstants';
 import { TEXT_LIMIT } from '../constants/NumericalConstants';
-import Attachment from './common/Attachment';
+import { Attachment } from './common/Attachment';
 import { DocumentDownloadLink } from 'document-management-lib';
 import { truncateMessage } from '../utils/SecureMessageUtils';
 
