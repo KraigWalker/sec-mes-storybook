@@ -21,7 +21,7 @@ import { Container, Row } from 'web-ui-components/lib/global/layout';
 import { withBreakpoints } from '../components/common/hoc/WithBreakpoint';
 import { getParentPath } from '../utils/GeneralUtils';
 import { popupState } from '../actions/AppActions';
-import SuccessModal from '../components/common/SuccessModal';
+import { SuccessModal } from '../components/common/SuccessModal';
 import { getSuccessModalMessage } from '../constants/ModalConstants';
 import { MessageSelectors } from '../reducers';
 import withRetry from '../components/common/WithRetry';

@@ -11,10 +11,9 @@ const SecureMessageSummary = (props) => {
     if (threadFlag) {
       return;
     }
-    const path =
-      message.status === DRAFT
-        ? `/securemessages/draft`
-        : `/securemessages/view`;
+    const path = `/securemessages/${
+      message.status === DRAFT ? 'draft' : 'view'
+    }`;
 
     props.history.push({ pathname: path, messageDetail: message });
   };
