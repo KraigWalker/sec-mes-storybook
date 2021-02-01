@@ -9,7 +9,7 @@ function handleAttachmentClick({
   getDocumentByIdNative,
   enableCategoryAttachmentParam,
 }) {
-  const { bank_id, access_token, brand, state } = session;
+  const { bank_id, access_token, brand, state = '' } = session;
   const {
     client: { app_title, user_tracking_id },
   } = client;
@@ -21,7 +21,8 @@ function handleAttachmentClick({
   const isStatementDownload =
     enableCategoryAttachmentParam && category && category === 'Statements';
 
-  const stateQueryParam = state && state.length() > 0 ? `&state=${state}` : '';
+  const stateQueryParam =
+    state.length && state.length > 0 ? `&state=${state}` : '';
   const webDownloadUrl = `${basePath}/my-documents/${bank_id}/${id}?bank_id=${bank_id}&client_context=${app_title}&user_tracking_id=${user_tracking_id}&brandId=${brand}`;
   const categoryQueryParam = isStatementDownload ? '&category=Statements' : '';
   const accessTokenHash = `#access_token=${access_token}`;

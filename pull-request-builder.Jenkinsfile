@@ -3,7 +3,7 @@
 // Todo: Replace Jest unit tests with Cypress Unit/Integration tests
 
 pipeline {
-    agent { label 'nodejs12' }
+    agent { label 'nodejs1216' }
     options {
         timestamps ()
         timeout(time: 10, unit: 'MINUTES')
