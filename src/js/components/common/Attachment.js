@@ -21,27 +21,27 @@ function handleAttachmentClick({
   const isStatementDownload =
     enableCategoryAttachmentParam && category && category === 'Statements';
 
-  const webDownloadUrl = `${basePath}/my-documents/${bank_id}/${id}?bank_id=${bank_id}&client_context=${app_title}&user_tracking_id=${user_tracking_id}&brandId=${brand}&state=${state}`;
-  const categoryQueryParam = '&category=Statements';
+  const stateQueryParam = state && state.length() > 0 ? `&state=${state}` : '';
+  const webDownloadUrl = `${basePath}/my-documents/${bank_id}/${id}?bank_id=${bank_id}&client_context=${app_title}&user_tracking_id=${user_tracking_id}&brandId=${brand}`;
+  const categoryQueryParam = isStatementDownload ? '&category=Statements' : '';
   const accessTokenHash = `#access_token=${access_token}`;
+  const completeDownloadURL =
+    webDownloadUrl + stateQueryParam + categoryQueryParam + accessTokenHash;
+
   /**
    * Only trigger the native document download view if not a statement and in
    * a native mobile app WebView
    */
   if (isWebView) {
     if (isStatementDownload) {
-      window.location.href = `${webDownloadUrl}${categoryQueryParam}${accessTokenHash}`;
+      // triggers a new page load within the WebView.
+      // perhaps we should use the router instead??
+      window.location.href = completeDownloadURL;
     } else {
       getDocumentByIdNative(id, fileSize);
     }
   } else {
-    window.open(
-      `${webDownloadUrl}${
-        isStatementDownload
-          ? categoryQueryParam // Because adding the category param can throw off other types of attachments, we hardcode Statements
-          : ''
-      }${accessTokenHash}`
-    );
+    window.open(completeDownloadURL);
   }
 }
 
