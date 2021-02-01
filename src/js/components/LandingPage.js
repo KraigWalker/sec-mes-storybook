@@ -13,7 +13,7 @@ import { SubHeading } from 'web-ui-components/lib/typography/headings';
 import { getMessageSubjects, getActiveTab } from '../actions/AppActions';
 import { withBreakpoints } from '../components/common/hoc/WithBreakpoint';
 import { compose } from 'redux';
-import SuccessModal from '../components/common/SuccessModal';
+import { SuccessModal } from '../components/common/SuccessModal';
 import { getSuccessModalMessage } from '../constants/ModalConstants';
 import { MessageSelectors } from '../reducers';
 import WithRetry from './common/WithRetry';

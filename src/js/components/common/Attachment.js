@@ -21,19 +21,26 @@ function handleAttachmentClick({
   const isStatementDownload =
     enableCategoryAttachmentParam && category && category === 'Statements';
 
+  const webDownloadUrl = `${basePath}/my-documents/${bank_id}/${id}?bank_id=${bank_id}&client_context=${app_title}&user_tracking_id=${user_tracking_id}&brandId=${brand}&state=${state}`;
+  const categoryQueryParam = '&category=Statements';
+  const accessTokenHash = `#access_token=${access_token}`;
   /**
    * Only trigger the native document download view if not a statement and in
    * a native mobile app WebView
    */
-  if (isWebView && !isStatementDownload) {
-    getDocumentByIdNative(id, fileSize);
+  if (isWebView) {
+    if (isStatementDownload) {
+      window.location.href = `${webDownloadUrl}${categoryQueryParam}${accessTokenHash}`;
+    } else {
+      getDocumentByIdNative(id, fileSize);
+    }
   } else {
     window.open(
-      `${basePath}/my-documents/${bank_id}/${id}?bank_id=${bank_id}&client_context=${app_title}&user_tracking_id=${user_tracking_id}&brandId=${brand}&state=${state}${
+      `${webDownloadUrl}${
         isStatementDownload
-          ? '&category=Statements' // Because adding the category param can throw off other types of attachments, we hardcode Statements
+          ? categoryQueryParam // Because adding the category param can throw off other types of attachments, we hardcode Statements
           : ''
-      }#access_token=${access_token}`
+      }${accessTokenHash}`
     );
   }
 }
