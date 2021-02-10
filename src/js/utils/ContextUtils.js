@@ -6,7 +6,7 @@ export const buildClientContext = (appTitle, userTrackingId, fingerprint) => ({
     user_tracking_id: userTrackingId,
     client_id: fingerprint,
     app_version_code: '1.0.0',
-    app_version_name: navigator.appName,
+    app_version_name: navigator.appVersion,
   },
   env: {
     platform_version: BrowserUtils.getBrowserVersion(),
