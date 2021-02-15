@@ -56,7 +56,7 @@ describe('TextAreaWrapper prop testing', () => {
       value: 'hello world!!!',
     };
     let wrapper = shallow(<TextAreaWrapper {...props} />);
-    expect(wrapper.find(ValidationMessage).length).toBe(2);
+    expect(wrapper.find(ValidationMessage).length).toBe(1);
   });
 
   it('has no error initially, then exceeds max chars', () => {
@@ -66,15 +66,13 @@ describe('TextAreaWrapper prop testing', () => {
       charsLeftDisplayThreshold: 5,
       value: '',
     };
-    let event = {
-      target: {
-        value: 'Hello world!!!',
-      },
+    let newValue = {
+      value: 'Hello world!!!',
     };
     let wrapper = shallow(<TextAreaWrapper {...props} />);
-    wrapper.instance().handleChange(event);
+    wrapper.instance().handleChange(newValue);
 
-    expect(wrapper.find(ValidationMessage).length).toBe(2);
+    expect(wrapper.find(ValidationMessage).length).toBe(1);
   });
 
   /*it('has errors initially, then characters reduce to within threshold that char count displays', () => {
