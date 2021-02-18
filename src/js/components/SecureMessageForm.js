@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import DropDownComponent from './common/DropDownComponent';
 import MessageEntity from '../entities/MessageEntity';
 
+import { ContentContainer } from 'web-ui-components/lib/layout/containers';
 import { StandardBody } from 'web-ui-components/lib/typography/body';
 import { Icon } from 'web-ui-components/lib/atoms/iconography';
 import { Label } from 'web-ui-components/lib/atoms/forms';
@@ -11,10 +12,8 @@ import { Button } from 'web-ui-components/lib/atoms/buttons';
 import { ButtonGroup } from 'web-ui-components/lib/molecules/buttons';
 import { BackButton } from 'web-ui-components/lib/molecules/navigation';
 import { UnfinishedWorkModal } from 'web-ui-components/lib/organisms/modals';
-import { Card } from 'web-ui-components/lib/organisms/cards';
 import { LoadingLocalTakeover } from 'web-ui-components/lib/organisms/takeovers';
-
-import { Container, Row } from 'web-ui-components/lib/global/layout';
+import { ShellSidebarPanel } from 'web-ui-components/lib/layout/content';
 import { SubHeading } from 'web-ui-components/lib/typography/headings';
 
 import TextAreaWrapper from './common/TextAreaWrapper';
@@ -22,7 +21,6 @@ import SuccessMpdal from './common/SuccessModal';
 import ErrorModal from './common/ErrorModal';
 import { withBreakpoints } from '../components/common/hoc/WithBreakpoint';
 import { maskCardDetails } from '../bl/SecureMessageBL';
-import { getPaddingProps, getRowMarginProps } from '../utils/GeneralUtils';
 
 const CHARS_LEFT_DISPLAY_THRESHOLD = 300;
 const MAX_CHARS = 3000;
@@ -110,8 +108,7 @@ export class SecureMessageForm extends Component {
     }
   }
 
-  handleTextChange(e, chars_left) {
-    const value = e.target.value;
+  handleTextChange(value, chars_left) {
     let disabled;
     if (value === '') {
       disabled = true;
@@ -321,111 +318,109 @@ export class SecureMessageForm extends Component {
 
     return (
       <Suspense fallback={null}>
-        <Container {...getPaddingProps(noPadding)} size={containerSize}>
+        <ContentContainer size={containerSize}>
           <LoadingLocalTakeover
             show={isUpdatingMessage || isSavingDraft}
             title={
               isUpdatingMessage ? content.sendingMessage : content.savingMessage
             }
           >
-            <Row {...getRowMarginProps(noPadding)}>
-              <Card>
-                <SubHeading>{title}</SubHeading>
-                <StandardBody>
-                  <BackButton
+            <ShellSidebarPanel>
+              <SubHeading>{title}</SubHeading>
+              <StandardBody>
+                <BackButton
+                  onClick={this.determineBackAction}
+                  label={content.back}
+                />
+              </StandardBody>
+              <StandardBody>
+                <Label id="subjectTitle" htmlFor="subjects">
+                  {content.subject}
+                </Label>
+              </StandardBody>
+              <DropDownComponent
+                accessID="Subject"
+                subjects={subjects}
+                name="subjects"
+                id="subjects"
+                ddId="ddlSubject"
+                selectSubject={this.selectSubject}
+                showSubjectError={showSubjectInvalid}
+                subjectErrors={subjectErrors}
+                selectedValue={this.props.selectedSubject}
+                content={content}
+              />
+              <StandardBody>
+                <Label id="relatesTitle" htmlFor="subjects">
+                  {content.messageRelatesTo}
+                </Label>
+              </StandardBody>
+              <DropDownComponent
+                accessID="Message relates to"
+                accounts={accounts}
+                selectSubject={this.selectSubject}
+                name="accounts"
+                ddId="ddlAccount"
+                id="accounts"
+                showAccountError={showAccountInvalid}
+                selectedValue={this.props.selectedAccountValue}
+                content={content}
+              />
+              <StandardBody>
+                <Label id="messageTitle" htmlFor="subjects">
+                  {content.message}
+                </Label>
+              </StandardBody>
+              <StandardBody>
+                <div
+                  className="u-visually-hidden off-screen"
+                  id="textAreaMaxMsg"
+                >
+                  {content.maxCharLimit}
+                </div>
+                {/* DEBT:  would like to use TextAreaCharacterCount, but no hook available to tie into change event and props not spread */}
+                <TextAreaWrapper
+                  onChange={this.handleTextChange}
+                  rows={20}
+                  cols={50}
+                  id="message"
+                  value={messageText}
+                  content={content}
+                  maxChars={MAX_CHARS}
+                  charsLeftDisplayThreshold={CHARS_LEFT_DISPLAY_THRESHOLD}
+                />
+              </StandardBody>
+              <StandardBody>
+                <ButtonGroup>
+                  <Button
+                    name="Back"
+                    display="secondary"
+                    width="flush"
                     onClick={this.determineBackAction}
-                    label={content.back}
-                  />
-                </StandardBody>
-                <StandardBody>
-                  <Label id="subjectTitle" htmlFor="subjects">
-                    {content.subject}
-                  </Label>
-                </StandardBody>
-                <DropDownComponent
-                  accessID="Subject"
-                  subjects={subjects}
-                  name="subjects"
-                  id="subjects"
-                  ddId="ddlSubject"
-                  selectSubject={this.selectSubject}
-                  showSubjectError={showSubjectInvalid}
-                  subjectErrors={subjectErrors}
-                  selectedValue={this.props.selectedSubject}
-                  content={content}
-                />
-                <StandardBody>
-                  <Label id="relatesTitle" htmlFor="subjects">
-                    {content.messageRelatesTo}
-                  </Label>
-                </StandardBody>
-                <DropDownComponent
-                  accessID="Message relates to"
-                  accounts={accounts}
-                  selectSubject={this.selectSubject}
-                  name="accounts"
-                  ddId="ddlAccount"
-                  id="accounts"
-                  showAccountError={showAccountInvalid}
-                  selectedValue={this.props.selectedAccountValue}
-                  content={content}
-                />
-                <StandardBody>
-                  <Label id="messageTitle" htmlFor="subjects">
-                    {content.message}
-                  </Label>
-                </StandardBody>
-                <StandardBody>
-                  <div
-                    className="u-visually-hidden off-screen"
-                    id="textAreaMaxMsg"
+                    disabled={false}
                   >
-                    {content.maxCharLimit}
-                  </div>
-                  {/* DEBT:  would like to use TextAreaCharacterCount, but no hook available to tie into change event and props not spread */}
-                  <TextAreaWrapper
-                    onChange={this.handleTextChange}
-                    rows="20"
-                    cols="20"
-                    id="message"
-                    value={messageText}
-                    content={content}
-                    maxChars={MAX_CHARS}
-                    charsLeftDisplayThreshold={CHARS_LEFT_DISPLAY_THRESHOLD}
-                  />
-                </StandardBody>
-                <StandardBody>
-                  <ButtonGroup>
-                    <Button
-                      name="Back"
-                      display="secondary"
-                      width="flush"
-                      onClick={this.determineBackAction}
-                      disabled={false}
-                    >
-                      <Icon iconType="ChevronLeftLarge" />
-                      {content.back}
-                    </Button>
-                    <Button
-                      name="Save Draft"
-                      display="secondary"
-                      onClick={this.saveDraftData}
-                      disabled={this.state.disabled}
-                    >
-                      {content.saveDraft}
-                    </Button>
-                    <Button
-                      name="Send"
-                      display="primary"
-                      onClick={this.sendData}
-                      disabled={this.state.disabled}
-                    >
-                      {content.send}
-                    </Button>
-                  </ButtonGroup>
-                </StandardBody>
-              </Card>
-            </Row>
+                    <Icon iconType="ChevronLeftLarge" />
+                    {content.back}
+                  </Button>
+                  <Button
+                    name="Save Draft"
+                    display="secondary"
+                    onClick={this.saveDraftData}
+                    disabled={this.state.disabled}
+                  >
+                    {content.saveDraft}
+                  </Button>
+                  <Button
+                    name="Send"
+                    display="primary"
+                    onClick={this.sendData}
+                    disabled={this.state.disabled}
+                  >
+                    {content.send}
+                  </Button>
+                </ButtonGroup>
+              </StandardBody>
+            </ShellSidebarPanel>
           </LoadingLocalTakeover>
           {showPopup && this.returnModalComponent()}
           {showSentMessageModal && successModal
@@ -435,7 +430,7 @@ export class SecureMessageForm extends Component {
           {messageError && showSaveServiceErrorModal && this.returnErrorModal()}
           {messageError && showSendServiceErrorModal && this.returnErrorModal()}
           {this.props.threads}
-        </Container>
+        </ContentContainer>
       </Suspense>
     );
   }

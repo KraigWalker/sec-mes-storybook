@@ -49,25 +49,11 @@ describe('SecureMessageForm snapshot', () => {
     expect(component.instance().state.showSaveServiceErrorModal).toBeFalsy();
   });
   it('textChange function test with no text', () => {
-    component.instance().handleTextChange(
-      {
-        target: {
-          value: '',
-        },
-      },
-      5
-    );
+    component.instance().handleTextChange('', 5);
     expect(component.instance().state.disabled).toBeTruthy();
   });
   it('textChange function test with text', () => {
-    component.instance().handleTextChange(
-      {
-        target: {
-          value: 'message',
-        },
-      },
-      5
-    );
+    component.instance().handleTextChange('message', 5);
     expect(component.instance().state.disabled).toBeFalsy();
   });
   it('checkValidation function test with selectAccount', () => {
