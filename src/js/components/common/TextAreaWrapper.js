@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { Textarea } from 'web-ui-components/lib/atoms/forms';
+import { GenericTextArea } from 'web-ui-components/lib/data/capture';
 import { ValidationMessage } from 'web-ui-components/lib/molecules/forms';
 import { StandardBody } from 'web-ui-components/lib/typography/body';
 import PropTypes from 'prop-types';
@@ -19,15 +19,18 @@ class TextAreaWrapper extends Component {
     };
   }
   render() {
+    const { charsLeft, message } = this.state;
+    const { charsLeftDisplayThreshold, maxChars, cols, rows, id } = this.props;
     return (
       <div>
-        <Textarea
+        <GenericTextArea
+          id={id}
+          value={message}
           onChange={this.handleChange}
-          rows={this.props.rows}
-          cols={this.props.cols}
-          id={this.props.id}
-          maxLength="infinity"
-          defaultValue={this.props.value}
+          maximumCharacters={maxChars}
+          characterWidth={cols}
+          rowCount={rows}
+          hideCharacterCount={charsLeft >= charsLeftDisplayThreshold}
         />
         {this.renderRemainingChar()}
       </div>
@@ -36,35 +39,18 @@ class TextAreaWrapper extends Component {
 
   renderRemainingChar() {
     const { charsLeft } = this.state;
-    const { content, charsLeftDisplayThreshold } = this.props;
-
+    const { content } = this.props;
     if (charsLeft < 0) {
       return (
-        <>
-          <StandardBody>
-            <ValidationMessage
-              value={`${charsLeft} ${content.charLeft}`}
-              hasIcon={false}
-            />
-          </StandardBody>
-          <StandardBody>
-            <ValidationMessage value={content.messageVal} />
-          </StandardBody>
-        </>
-      );
-    } else if (charsLeft <= charsLeftDisplayThreshold) {
-      return (
         <StandardBody>
-          <p>
-            {charsLeft} {content.charLeft}
-          </p>
+          <ValidationMessage value={content.messageVal} />
         </StandardBody>
       );
     }
   }
 
-  handleChange(e) {
-    const value = e.target.value;
+  handleChange(obj) {
+    const { value = '' } = obj;
     const charsLeft = calcCharsLeft(this.props.maxChars, value.length);
 
     this.setState({
@@ -72,7 +58,7 @@ class TextAreaWrapper extends Component {
       charsLeft,
     });
 
-    this.props.onChange(e, charsLeft);
+    this.props.onChange(value, charsLeft);
   }
 }
 
