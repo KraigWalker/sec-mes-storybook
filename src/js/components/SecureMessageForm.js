@@ -301,7 +301,6 @@ export class SecureMessageForm extends Component {
       title,
       messageText,
       containerSize,
-      noPadding,
       isUpdatingMessage,
       isSavingDraft,
     } = this.props;
