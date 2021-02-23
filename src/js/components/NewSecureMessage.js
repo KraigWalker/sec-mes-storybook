@@ -21,6 +21,8 @@ class NewSecureMessage extends Component {
   constructor() {
     super();
     this.sendMessageData = this.sendMessageData.bind(this);
+    this.onSend = this.onSend.bind(this);
+    this.onSave = this.onSave.bind(this);
   }
 
   sendMessageData(messageEntity, status) {
@@ -37,18 +39,21 @@ class NewSecureMessage extends Component {
     });
   }
 
+  onSend(messageEntity) {
+    this.sendMessageData(messageEntity, PENDING);
+  }
+  onSave(messageEntity) {
+    this.sendMessageData(messageEntity, DRAFT);
+  }
+
   render() {
     const { content, isSavingDraft, isUpdatingMessage } = this.props;
     return (
       <SecureMessageForm
         /** @todo Get specific about what props are being passed. Remove spread */
         {...this.props}
-        onSend={(messageEntity) => {
-          this.sendMessageData(messageEntity, PENDING);
-        }}
-        onSave={(messageEntity) => {
-          this.sendMessageData(messageEntity, DRAFT);
-        }}
+        onSend={this.onSend}
+        onSave={this.onSave}
         onMount={this.onMount}
         title={content.newMessagePageTitle}
         selectedSubject={content.pleaseSelect}
