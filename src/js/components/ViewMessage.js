@@ -14,7 +14,7 @@ import {
 import MailMessage from './MailMessage';
 import { withRouter } from 'react-router-dom';
 import { SubordinatePanel } from 'web-ui-components/lib/molecules/panels';
-import { SectionHeading } from 'web-ui-components/lib/molecules/text';
+import { PageHeading } from 'web-ui-components/lib/typography/headings';
 import { Card } from 'web-ui-components/lib/organisms/cards';
 import { Container, Row } from 'web-ui-components/lib/global/layout';
 import { withBreakpoints } from '../components/common/hoc/WithBreakpoint';
@@ -140,12 +140,9 @@ class ViewMessage extends Component {
         <Container {...getPaddingProps(noPadding)} size={containerSize}>
           <Row {...getRowMarginProps(noPadding)}>
             <Card>
-              <SectionHeading
-                heading1={getTitle(messageDetail.status, content)}
-              >
+              <PageHeading>
                 {getTitle(messageDetail.status, content)}
-              </SectionHeading>
-
+              </PageHeading>
               <MailMessage
                 {...this.props}
                 newMessageStatus={messageStatus}

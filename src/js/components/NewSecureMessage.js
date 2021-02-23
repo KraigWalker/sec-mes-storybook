@@ -43,10 +43,10 @@ class NewSecureMessage extends Component {
       <SecureMessageForm
         /** @todo Get specific about what props are being passed. Remove spread */
         {...this.props}
-        onSend={function onSend(messageEntity) {
+        onSend={(messageEntity) => {
           this.sendMessageData(messageEntity, PENDING);
         }}
-        onSave={function onSave(messageEntity) {
+        onSave={(messageEntity) => {
           this.sendMessageData(messageEntity, DRAFT);
         }}
         onMount={this.onMount}
