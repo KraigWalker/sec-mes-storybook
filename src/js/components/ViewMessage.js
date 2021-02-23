@@ -1,8 +1,7 @@
 import { Component } from 'react';
 import { compose } from 'redux';
-import { utils, actions as documentActions } from 'document-management-lib';
-import { map } from 'lodash-es';
 import { connect } from 'react-redux';
+import { utils, actions as documentActions } from 'document-management-lib';
 import { setViewMessageDetail, setMessageRead } from '../actions/AppActions';
 import { getThreadsBL } from '../bl/SecureMessageBL';
 import {
@@ -22,6 +21,8 @@ import { withBreakpoints } from '../components/common/hoc/WithBreakpoint';
 import { getParentPath } from '../utils/GeneralUtils';
 import { popupState } from '../actions/AppActions';
 import { SuccessModal } from '../components/common/SuccessModal';
+import { InformationModal } from 'web-ui-components/lib/layout/content';
+import { StandardBody } from 'web-ui-components/lib/typography/body';
 import { getSuccessModalMessage } from '../constants/ModalConstants';
 import { MessageSelectors } from '../reducers';
 import withRetry from '../components/common/WithRetry';
@@ -42,11 +43,15 @@ class ViewMessage extends Component {
   constructor(props) {
     super(props);
 
+    this.displayAppUpgradeInfoModal = this.displayAppUpgradeInfoModal.bind(
+      this
+    );
     this.getThreads = this.getThreads.bind(this);
     this.handleCloseSuccessModal = this.handleCloseSuccessModal.bind(this);
 
     this.state = {
       justBeenRead: false,
+      showAppUpgradeRequiredForStatementViewModal: false,
     };
   }
 
@@ -74,24 +79,35 @@ class ViewMessage extends Component {
     window.scrollTo(0, 0);
   }
 
+  /**
+   * Threads show prior messages in a conversation history to the customer regarding
+   * a particular case or product.
+   */
   getThreads({ messages, deletingMessages, currentMessage }) {
+    // `getThreadsBL()` organises releated messages into order
     const threads = getThreadsBL({
       messages,
       deletingMessages,
       currentMessage,
     });
-    return map(threads, (thread, index) => {
-      return (
-        <SubordinatePanel key={index}>
-          <MailMessage {...this.props} message={{ ...thread }} />
-        </SubordinatePanel>
-      );
-    });
+    return threads.map((thread, index) => (
+      <SubordinatePanel key={index}>
+        <MailMessage {...this.props} message={{ ...thread }} />
+      </SubordinatePanel>
+    ));
   }
 
   handleCloseSuccessModal() {
     this.props.popupState();
     this.props.history.push('/securemessages');
+  }
+
+  displayAppUpgradeInfoModal() {
+    this.setState(() => {
+      return {
+        showAppUpgradeRequiredForStatementViewModal: true,
+      };
+    });
   }
 
   render() {
@@ -136,6 +152,9 @@ class ViewMessage extends Component {
                 hasAttachment={hasAttachment}
                 justBeenRead={this.state.justBeenRead}
                 basePath={basePath}
+                onUpgradeRequiredToViewStatementError={
+                  this.displayAppUpgradeInfoModal
+                }
               />
               {messageDetail.threadID !== null &&
                 this.getThreads({
@@ -146,6 +165,24 @@ class ViewMessage extends Component {
             </Card>
           </Row>
         </Container>
+        <InformationModal
+          isOpen={this.state.showAppUpgradeRequiredForStatementViewModal}
+          onClose={() => {
+            this.setState(() => {
+              return { showAppUpgradeRequiredForStatementViewModal: false };
+            });
+          }}
+          titleText={'App Upgrade Required'}
+        >
+          <StandardBody>
+            <p>
+              We’re improving your app all the time. You’ll need to update your
+              app to the latest version in order to be able to view and save
+              this Statement.
+            </p>
+          </StandardBody>
+        </InformationModal>
+
         {modalType > 0 && (
           <SuccessModal
             onClick={this.handleCloseSuccessModal}

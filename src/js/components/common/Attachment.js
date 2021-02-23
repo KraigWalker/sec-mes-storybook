@@ -6,6 +6,7 @@ function handleAttachmentClick({
   session,
   message,
   client,
+  onUpgradeRequiredToViewStatementError,
   getDocumentByIdNative,
   enableCategoryAttachmentParam,
 }) {
@@ -35,13 +36,26 @@ function handleAttachmentClick({
    */
   if (isWebView) {
     if (isStatementDownload) {
-      // triggers a new page load within the WebView.
-      // perhaps we should use the router instead??
-      window.location.href = completeDownloadURL;
+      if (
+        window.webkit &&
+        window.webkit.messageHandlers &&
+        window.webkit.messageHandlers.downloadStatement
+      ) {
+        window.webkit.messageHandlers.downloadStatement(id);
+      } else if (
+        window.AndroidInterface &&
+        window.AndroidInterface.downloadStatement
+      ) {
+        window.AndroidInterface.downloadStatement(id);
+      } else {
+        onUpgradeRequiredToViewStatementError();
+      }
     } else {
+      // normal document.
       getDocumentByIdNative(id, fileSize);
     }
   } else {
+    // we're on a web browser. Open url in new window/tab
     window.open(completeDownloadURL);
   }
 }
@@ -53,6 +67,7 @@ function Attachment({
   session,
   message,
   client,
+  onUpgradeRequiredToViewStatementError,
   getDocumentByIdNative,
 }) {
   return (
@@ -67,6 +82,7 @@ function Attachment({
             session,
             message,
             client,
+            onUpgradeRequiredToViewStatementError,
             getDocumentByIdNative,
             enableCategoryAttachmentParam:
               window.flagContext.enableCategoryAttachmentParam || false,

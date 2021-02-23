@@ -15,7 +15,13 @@ const attachmentLink = (props, document) => {
       documentName={document.label}
     />
   ) : (
-    <Attachment {...props} document={document} />
+    <Attachment
+      {...props}
+      document={document}
+      onUpgradeRequiredToViewStatementError={
+        props.onUpgradeRequiredToViewStatementError
+      }
+    />
   );
 };
 

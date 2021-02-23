@@ -17,7 +17,7 @@ import { ShellSidebarPanel } from 'web-ui-components/lib/layout/content';
 import { SubHeading } from 'web-ui-components/lib/typography/headings';
 
 import TextAreaWrapper from './common/TextAreaWrapper';
-import SuccessMpdal from './common/SuccessModal';
+import { SuccessModal } from './common/SuccessModal';
 import ErrorModal from './common/ErrorModal';
 import { withBreakpoints } from '../components/common/hoc/WithBreakpoint';
 import { maskCardDetails } from '../bl/SecureMessageBL';
@@ -145,7 +145,7 @@ export class SecureMessageForm extends Component {
   getSuccessModal(body) {
     const { content } = this.props;
     return (
-      <SuccessMpdal onClick={this.goHome} bodyText={body} okText={content.ok} />
+      <SuccessModal onClick={this.goHome} bodyText={body} okText={content.ok} />
     );
   }
 

@@ -88,6 +88,7 @@ export const SecureMessageBL = (messageState) => {
 
 /**
  * to fetch all related threads on the current message.
+ * @todo stop using a single object as function argument
  * @param {array} messages //total list of secure messages.
  * @param {object} currentMessage //current message.
  */
