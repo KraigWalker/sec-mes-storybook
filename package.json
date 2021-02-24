@@ -1,6 +1,6 @@
 {
   "name": "secure-messages-webapp",
-  "version": "3.12.0",
+  "version": "3.13.0",
   "description": "Secure Message Web application",
   "author": "",
   "license": "UNLICENSED",
@@ -133,7 +133,9 @@
     "format": "prettier 'src/**/*.js' ",
     "format:fix": "prettier --write 'src/**/*.js'",
     "test:coverage": "jest --coverage --u",
-    "pack:dev": "rollup -c && npm pack && mv *.tgz node_modules_offline/"
+    "pack:dev": "rollup -c && npm pack && mv *.tgz node_modules_offline/",
+    "changelog": "auto-changelog -p && git add CHANGELOG.md",
+    "version": "git fetch --tags && npm run changelog"
   },
   "jest": {
     "setupFilesAfterEnv": [
@@ -157,7 +159,13 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run test:ci"
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run test:ci"
+    }
+  },
+  "auto-changelog": {
+    "replaceText": {
+      "[\\(]([a-zA-z]+-+\\d+)[\\)]": "([`$1`](https://abouthere.atlassian.net/browse/$1))"
     }
   }
 }
