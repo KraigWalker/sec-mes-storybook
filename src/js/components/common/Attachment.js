@@ -8,7 +8,6 @@ function handleAttachmentClick({
   client,
   onUpgradeRequiredToViewStatementError,
   getDocumentByIdNative,
-  enableCategoryAttachmentParam,
 }) {
   const { bank_id, access_token, brand, state = '' } = session;
   const {
@@ -19,8 +18,7 @@ function handleAttachmentClick({
     document: { id, fileSize },
   } = message;
 
-  const isStatementDownload =
-    enableCategoryAttachmentParam && category && category === 'Statements';
+  const isStatementDownload = category && category === 'Statements';
 
   const stateQueryParam =
     state.length && state.length > 0 ? `&state=${state}` : '';
@@ -84,8 +82,6 @@ function Attachment({
             client,
             onUpgradeRequiredToViewStatementError,
             getDocumentByIdNative,
-            enableCategoryAttachmentParam:
-              window.flagContext.enableCategoryAttachmentParam || false,
           });
         }}
         hasIcon

@@ -28,7 +28,6 @@ export const App = ({ config }) => {
   const envConfig = {
     libertyBaseApiUrl: config.bpiApiUrl,
     paasBaseApiUrl: config.ibApiUrl + '/ibapi/v2',
-    enableCategoryAttachmentParam: config.enableCategoryAttachmentParam,
   };
 
   const staffHeaders = getStaffHeaders(session);

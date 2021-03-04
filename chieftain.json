@@ -40,8 +40,7 @@
   "route_url": "{{ dns_name }}.{{ namespace }}.{{ base_microservice_bom.environment }}",
   "runtime_config": {
     "libertyBaseApiUrl": "{{ cybservices_url.api_url_https }}",
-    "paasBaseApiUrl": "{{ api_gateway_vars.external_url}}/ibapi/v2",
-    "enableCategoryAttachmentParam": "{{ secure_messages_webapp_metadata.flags.enableCategoryAttachmentParam }}"
+    "paasBaseApiUrl": "{{ api_gateway_vars.external_url}}/ibapi/v2"
   },
   "sslcerts": "{{ ib_web_https_certs.sslcerts }}",
   "sslkey": "{{ ib_web_https_certs.sslkey }}",

@@ -1,5 +1,4 @@
 {
   "libertyBaseApiUrl": "http://localhost:8888/ibapi/v2",
-  "paasBaseApiUrl": "http://localhost:8888/ibapi/v2",
-  "enableCategoryAttachmentParam": true
+  "paasBaseApiUrl": "http://localhost:8888/ibapi/v2"
 }
