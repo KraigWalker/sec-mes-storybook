@@ -41,7 +41,7 @@ function handleAttachmentClick({
         window.webkit.messageHandlers &&
         window.webkit.messageHandlers.downloadStatement
       ) {
-        window.webkit.messageHandlers.downloadStatement(id);
+        window.webkit.messageHandlers.downloadStatement.postMessage(id);
       } else if (
         window.AndroidInterface &&
         window.AndroidInterface.downloadStatement
