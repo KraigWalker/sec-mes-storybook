@@ -4,7 +4,7 @@ import {
   dependencies as docDependencies,
 } from 'document-management-lib';
 import AppApi from '../api/AppApi';
-import reducer from '../reducers';
+import getReducer from '../reducers';
 
 const composeEnhancers =
   process.env.NODE_ENV !== 'production' &&
@@ -38,8 +38,9 @@ const middleware = (
   );
 };
 
-export default (session, clientContext, config, dependencies) =>
-  createStore(
-    reducer,
+export default (session, clientContext, config, dependencies) => {
+  return createStore(
+    getReducer(session.brand),
     composeEnhancers(middleware(session, clientContext, config, dependencies))
   );
+};

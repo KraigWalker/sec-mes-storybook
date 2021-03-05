@@ -15,6 +15,7 @@ import segmentData from './SegmentsReducer';
 import customerDetails, {
   selectors as customerSelectors,
 } from './CustomerReducer';
+import { getBrandReducer } from './BrandReducer';
 
 //one for one mapping with methods in messageSelectors and functionality here
 export const MessageSelectors = Object.entries(messageSelectors).reduce(
@@ -46,13 +47,16 @@ export function getCustomerError(state) {
   return customerSelectors.getCustomerError(state.customerDetails);
 }
 
-export default combineReducers({
-  messages,
-  subjects,
-  accounts,
-  viewMessage,
-  accessibility,
-  segmentData,
-  customerDetails,
-  documentManagement,
-});
+export default function getReducer(brandId) {
+  return combineReducers({
+    brand: getBrandReducer(brandId),
+    messages,
+    subjects,
+    accounts,
+    viewMessage,
+    accessibility,
+    segmentData,
+    customerDetails,
+    documentManagement,
+  });
+}

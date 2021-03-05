@@ -30,10 +30,10 @@ class AccessibilityMessage extends Component {
  * Maps the state of the component to the state of the redux store
  * @param {object} state. State of the application
  */
-const mapState = (state) => {
+const mapStateToProps = (state) => {
   return {
     message: state.accessibility.message,
   };
 };
 
-export default connect(mapState)(AccessibilityMessage);
+export default connect(mapStateToProps)(AccessibilityMessage);

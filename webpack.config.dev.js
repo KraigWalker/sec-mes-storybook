@@ -62,6 +62,14 @@ module.exports = (env) => {
         'css-loader',
       ],
     },
+    {
+      test: /\.(png|jpe?g|gif|svg)$/i,
+      use: [
+        {
+          loader: 'file-loader',
+        },
+      ],
+    },
   ];
   if (env && env.APP_CONTEXT === 'ios') {
     console.log('   INTERFACE: IOS');
