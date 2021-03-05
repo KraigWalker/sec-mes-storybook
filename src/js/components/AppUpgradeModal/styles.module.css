@@ -1,0 +1,76 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  animation: 0.3s ease-in fadeIn;
+}
+
+.modalBody {
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+  display: flex;
+  background-color: #fff;
+  background-image: ('./');
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.modalBody.vm {
+  background-image: url('./vm.svg');
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.iconContainer {
+  margin: 64px 0 40px 0;
+  padding: 0;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottom {
+  padding: 0 6px;
+}
+
+.headingWrapper {
+  margin-bottom: 64px;
+}
+
+/**
+ * Override web-ui-components heading colours to give a
+ * text-colour that's inline with the mobile app.
+ */
+
+.headingWrapper.cb h1 {
+  color: #b32519 !important;
+}
+
+.headingWrapper.yb h1 {
+  color: #529bca !important;
+}
+
+.headingWrapper.b h1 {
+  color: #00db6d !important;
+}
+
+.headingWrapper.vm h1 {
+  color: #e10a0a !important;
+}

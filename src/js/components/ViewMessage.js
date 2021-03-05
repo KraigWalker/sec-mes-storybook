@@ -1,4 +1,5 @@
-import { Component } from 'react';
+import { Component, Suspense, lazy } from 'react';
+import ReactDOM from 'react-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { utils, actions as documentActions } from 'document-management-lib';
@@ -21,8 +22,6 @@ import { withBreakpoints } from '../components/common/hoc/WithBreakpoint';
 import { getParentPath } from '../utils/GeneralUtils';
 import { popupState } from '../actions/AppActions';
 import { SuccessModal } from '../components/common/SuccessModal';
-import { InformationModal } from 'web-ui-components/lib/layout/content';
-import { StandardBody } from 'web-ui-components/lib/typography/body';
 import { getSuccessModalMessage } from '../constants/ModalConstants';
 import { MessageSelectors } from '../reducers';
 import withRetry from '../components/common/WithRetry';
@@ -39,13 +38,18 @@ function getTitle(status, content) {
   }
 }
 
+/**
+ * The majority of customers won't need to see this modal, so we only load it in
+ * when required.
+ */
+const AppUpgradeModal = lazy(() => import('./AppUpgradeModal/index'));
+
 class ViewMessage extends Component {
   constructor(props) {
     super(props);
 
-    this.displayAppUpgradeInfoModal = this.displayAppUpgradeInfoModal.bind(
-      this
-    );
+    this.displayAppUpgradeModal = this.displayAppUpgradeModal.bind(this);
+    this.hideAppUpgradeModal = this.hideAppUpgradeModal.bind(this);
     this.getThreads = this.getThreads.bind(this);
     this.handleCloseSuccessModal = this.handleCloseSuccessModal.bind(this);
 
@@ -102,10 +106,18 @@ class ViewMessage extends Component {
     this.props.history.push('/securemessages');
   }
 
-  displayAppUpgradeInfoModal() {
+  displayAppUpgradeModal() {
     this.setState(() => {
       return {
         showAppUpgradeRequiredForStatementViewModal: true,
+      };
+    });
+  }
+
+  hideAppUpgradeModal() {
+    this.setState(() => {
+      return {
+        showAppUpgradeRequiredForStatementViewModal: false,
       };
     });
   }
@@ -148,7 +160,7 @@ class ViewMessage extends Component {
                 justBeenRead={this.state.justBeenRead}
                 basePath={basePath}
                 onUpgradeRequiredToViewStatementError={
-                  this.displayAppUpgradeInfoModal
+                  this.displayAppUpgradeModal
                 }
               />
               {messageDetail.threadID !== null &&
@@ -160,23 +172,17 @@ class ViewMessage extends Component {
             </Card>
           </Row>
         </Container>
-        <InformationModal
-          isOpen={this.state.showAppUpgradeRequiredForStatementViewModal}
-          onClose={() => {
-            this.setState(() => {
-              return { showAppUpgradeRequiredForStatementViewModal: false };
-            });
-          }}
-          titleText={'App Upgrade Required'}
-        >
-          <StandardBody>
-            <p>
-              We’re improving your app all the time. You’ll need to update your
-              app to the latest version in order to be able to view and save
-              this Statement.
-            </p>
-          </StandardBody>
-        </InformationModal>
+        {this.state.showAppUpgradeRequiredForStatementViewModal &&
+          /**
+           * Render the version upgrade outside the rest of the app heirarchy,
+           * this allows the modal display in front of everything without hacks.
+           */
+          ReactDOM.createPortal(
+            <Suspense fallback={null}>
+              <AppUpgradeModal onDismiss={this.hideAppUpgradeModal} />
+            </Suspense>,
+            document.getElementById('modal-portal')
+          )}
 
         {modalType > 0 && (
           <SuccessModal
