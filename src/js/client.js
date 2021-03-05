@@ -98,10 +98,6 @@ function loadStyles() {
 fetch(`/config.json`)
   .then((response) => response.json())
   .then((data) => {
-    window.flagContext = {
-      enableCategoryAttachmentParam:
-        data.enableCategoryAttachmentParam || false,
-    };
     startApp(data);
   })
   .catch((err) => console.log(err));
