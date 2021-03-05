@@ -53,11 +53,6 @@ module.exports = (env) => {
       },
     },
     {
-      test: /\.json$/,
-      exclude: ['/node_modules/'],
-      loader: 'json-loader',
-    },
-    {
       test: /\.css$/,
       use: [
         {
