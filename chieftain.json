@@ -1,4 +1,5 @@
 {
+  "override_deployment_config": "true",
   "appdynamics": {
     "accesskey": "{{ base_microservice_bom.appdynamics.accesskey }}",
     "hostname": "{{ base_microservice_bom.appdynamics.hostname }}",

@@ -225,7 +225,7 @@
       "kind": "Route",
       "apiVersion": "v1",
       "metadata": {
-        "name": "${NAME}-cb-external",
+        "name": "${NAME}-cb-external-v2",
         "creationTimestamp": null,
         "labels": {
           "app": "${NAME}"
@@ -250,7 +250,7 @@
       "kind": "Route",
       "apiVersion": "v1",
       "metadata": {
-        "name": "${NAME}-vm-external",
+        "name": "${NAME}-vm-external-v2",
         "creationTimestamp": null,
         "labels": {
           "app": "${NAME}"
