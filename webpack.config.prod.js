@@ -9,6 +9,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
+const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
 //const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
 //  .BundleAnalyzerPlugin;
 
@@ -29,6 +30,7 @@ module.exports = {
     publicPath: '../../',
   },
   plugins: [
+    new NodePolyfillPlugin(),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
