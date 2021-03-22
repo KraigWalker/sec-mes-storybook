@@ -6,6 +6,7 @@ const { resolve } = path;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
 
 const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath);
@@ -91,6 +92,7 @@ module.exports = (env) => {
       publicPath: '../../',
     },
     plugins: [
+      new NodePolyfillPlugin(),
       new webpack.HotModuleReplacementPlugin(),
       new MiniCssExtractPlugin({
         // Options similar to the same options in webpackOptions.output

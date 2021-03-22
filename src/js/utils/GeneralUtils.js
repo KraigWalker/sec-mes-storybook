@@ -28,3 +28,9 @@ export const preventWindowZoom = () => {
     'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
   );
 };
+
+export const parseUrlParams = (value) =>
+  value
+    .split('&')
+    .map((v) => v.split('='))
+    .reduce((pre, [key, value]) => ({ ...pre, [key]: value }), {});
