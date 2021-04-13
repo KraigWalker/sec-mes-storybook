@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# Secure Messages Web App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project allows customers to view, manage, and send Secure Messages with the Bank. It also provides the "Letters and Documents" View that allows customers to view digital copies of communications we've sent them related to past or present products that they've had with us.
+
+Depending on your background, you or your colleagues may also refer to this app under the name "CommsHub" or simply "Letters and Documents".
 
 ## Available Scripts
 
@@ -52,10 +54,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/c
 ### Analyzing the Bundle Size
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
 ### Advanced Configuration
 
