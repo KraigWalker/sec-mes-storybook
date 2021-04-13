@@ -1,4 +1,0 @@
-/* CYBG TECH DEBT - OVER RIDE STYLES NOT INHERITED FROM DOC MANAGER APP WHEN IMPORTED AS NODE MODULE DEP*/
-@import "./DocumentView.css";
-@import "./FilterCard.css";
-@import "./ListView.css";

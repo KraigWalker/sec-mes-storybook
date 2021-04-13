@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`New Secure message snapshot New Secure message snapshot should match to snapshot 1`] = `ShallowWrapper {}`;
-
-exports[`New Secure message snapshot should match to snapshot 1`] = `ShallowWrapper {}`;

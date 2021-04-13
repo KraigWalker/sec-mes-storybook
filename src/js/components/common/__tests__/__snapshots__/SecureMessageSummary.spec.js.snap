@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`SecureMessageSummary snapshot SecureMessageSummary snapshot should match to snapshot 1`] = `ShallowWrapper {}`;
-
-exports[`SecureMessageSummary snapshot SecureMessageSummary snapshot should match to snapshot 2`] = `ShallowWrapper {}`;
-
-exports[`SecureMessageSummary snapshot should match to snapshot 1`] = `ShallowWrapper {}`;
