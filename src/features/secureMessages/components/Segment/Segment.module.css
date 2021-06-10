@@ -1,0 +1,30 @@
+.segment,
+.link {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+.segment {
+  padding: 0;
+  position: relative;
+}
+
+.visuallyHidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.link {
+  display: flex;
+  color: white;
+  text-decoration: none;
+  padding: 0 1rem;
+  align-items: center;
+  justify-content: center;
+}

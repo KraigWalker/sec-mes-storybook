@@ -1,15 +1,18 @@
 import { Link } from 'react-router-dom';
+import s from './Segment.module.css';
 
 export function Segment({ label, to, isCurrent = false }) {
   return (
-    <li>
+    <li className={s.segment}>
       {isCurrent ? (
-        <span className={'current'}>
-          <span className="visuallyhidden">Current Page: </span>
+        <span className={`${s.current} ${s.link}`}>
+          <span className={s.visuallyHidden}>Current Page: </span>
           <span>{label}</span>
         </span>
       ) : (
-        <Link to={to}>{label}</Link>
+        <Link className={s.link} to={to}>
+          {label}
+        </Link>
       )}
     </li>
   );

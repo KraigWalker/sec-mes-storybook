@@ -2,13 +2,6 @@ import { Link, useRouteMatch } from 'react-router-dom';
 import { SegmentedControl } from '../../components/SegmentedControl';
 import { MessageList } from '../../components/MessageList';
 
-const segments = [
-  { label: 'Inbox', to: '/' },
-  { label: 'Sent', to: '/' },
-  { label: 'Drafts', to: '/' },
-  { label: 'Archive', to: '/' },
-];
-
 function SecureMessageListView() {
   const { url } = useRouteMatch();
 

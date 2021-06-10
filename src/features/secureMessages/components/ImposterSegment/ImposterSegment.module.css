@@ -1,0 +1,13 @@
+.imposterSegment {
+  /*user-select: none;
+  pointer-events: none;*/
+  margin: 0;
+  padding: 0 1rem;
+  display: inline-flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.label {
+  color: red;
+}
