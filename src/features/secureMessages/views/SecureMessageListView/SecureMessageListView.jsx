@@ -12,7 +12,7 @@ function SecureMessageListView() {
       <div>Success Modal (?)</div>
       <div>
         Secure Message Tabs
-        <SegmentedControl segments={segments} />
+        <SegmentedControl />
         <div>
           Secure Message List
           <MessageList messages={[{ id: '123' }, { id: '456' }]} />

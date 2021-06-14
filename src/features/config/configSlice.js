@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-const fetchConfig = createAsyncThunk('', async () => {
-  const response = await fetch('./config');
+export const fetchConfig = createAsyncThunk('fetchConfig', async () => {
+  const response = await fetch('./config.json');
   return response.json();
 });
 
@@ -15,8 +15,7 @@ const configSlice = createSlice({
   },
   extraReducers: {
     [fetchConfig.fulfilled]: (state, action) => {
-      // Add user to the state array
-      state = action.payload;
+      return action.payload;
     },
   },
 });
