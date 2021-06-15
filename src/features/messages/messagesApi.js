@@ -17,21 +17,31 @@ const rawBaseQuery = fetchBaseQuery({
 });
 
 const dynamicBaseQuery = async (args, api, extraOptions) => {
-  const { baseApiUrl } = api.getState().config;
+  const {
+    config: { baseApiUrl },
+    session: { bankId },
+  } = api.getState();
 
   // gracefully handle scenarios where data to generate the URL is missing
   if (!baseApiUrl) {
     return {
       error: {
         status: 400,
-        data: 'No base API URL recieved',
+        data: 'No `baseApiUrl` received from config.',
+      },
+    };
+  } else if (!bankId) {
+    return {
+      error: {
+        status: 400,
+        data: 'No `bankId` received from session parameters.',
       },
     };
   }
 
   const urlEnd = typeof args === 'string' ? args : args.url;
   // construct a dynamically generated potion of the url
-  const adjustedUrl = `${baseApiUrl}/${urlEnd}`;
+  const adjustedUrl = `${baseApiUrl}/banks/${bankId}/${urlEnd}`;
   const adjustedArgs =
     typeof args === 'string' ? adjustedUrl : { ...args, url: adjustedUrl };
   // provide the amended url and other params to the raw base query
@@ -44,24 +54,9 @@ export const messagesApi = createApi({
   tagTypes: ['Message'],
   endpoints: (builder) => ({
     getMessages: builder.query({
-      query: () => `bank/cb/securemessages`,
-      /*queryFn: /(
-        arg,
-        { signal, dispatch, getState },
-        extraOptions,
-        baseQuery
-      ) => {
-        return dynamicBaseQuery({
-          url: `/banks/${
-            /*api.getState().session.bankId ||*/ /* 'cb'
-          }/securemessages`,
-        });
-      },*/
+      query: () => `securemessages`,
       transformResponse(response) {
-        //return messagesAdapter.addMany(
-        //  messagesAdapter.getInitialState(),
-        //  response.secure_messages
-        // );
+        /** @todo should we be adding this to a more uniform entity store? */
         return response.secure_messages || [];
       },
     }),

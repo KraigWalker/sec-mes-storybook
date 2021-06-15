@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { authReducer as auth } from '../features/auth/authSlice';
+import { oAuthApi } from '../features/auth/oAuthApi';
 import { configReducer as config } from '../features/config/configSlice';
 // import { messagesReducer as messages } from '../features/messages/messagesSlice';
 import { messagesApi } from '../features/messages/messagesApi';
+import { sessionReducer as session } from '../features/session/sessionSlice';
 
 /**
  * The central Redux store used throughout the app, combining multiple "feature"
@@ -13,7 +15,9 @@ export const store = configureStore({
     auth,
     config,
     [messagesApi.reducerPath]: messagesApi.reducer,
+    [oAuthApi.reducerPath]: oAuthApi.reducer,
+    session,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(messagesApi.middleware),
+    getDefaultMiddleware().concat(messagesApi.middleware, oAuthApi.middleware),
 });

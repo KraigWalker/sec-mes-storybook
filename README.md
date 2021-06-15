@@ -4,6 +4,15 @@ This project allows customers to view, manage, and send Secure Messages with the
 
 Depending on your background, you or your colleagues may also refer to this app under the name "CommsHub" or simply "Letters and Documents".
 
+## Third Party Dependencies
+
+* React 17: incoprorating modern practices including async rendering with `Suspense`, error handling with `componentDidCatch`, and light use of Hooks, particuarly where dispatching redux actions and consuming store data is involved.
+* Redux Toolkit: A library built around the best practices of redux, which forms the bulk of the front end architecture in the app. Any "business logic" in the app is performed in a "feature" slice, which keeps the majority of our React code presentational-by-design.
+* React Router v5:
+* Connected React Router:
+* Mock Service Worker
+* DayJS
+
 ## Available Scripts
 
 In the project directory, you can run:

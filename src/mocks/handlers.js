@@ -5,13 +5,15 @@ import { rest } from 'msw';
  * OR can we pretend it's the int3 url?
  */
 //const baseUrl = 'https://localhost:8888/ibapi/v2';
+//https://localhost:8888/ibapi/v2/banks/:bankId/auth/provider/oauth2/token/exchange/jwt"
 
 export const handlers = [
   // Handles a GET `/banks/(cb|yb)/securemessages` request
   rest.get(
-    'https://localhost:8888/ibapi/v2/bank/cb/securemessages',
+    'https://localhost:8888/ibapi/v2/banks/cb/securemessages',
     (request, response, context) => {
       // Check if the user is authenticated in this session
+
       // const isAuthenticated = sessionStorage.getItem('is-authenticated')
 
       // if (!isAuthenticated) {
@@ -150,6 +152,17 @@ export const handlers = [
             },
           ],
         })
+      );
+    }
+  ),
+  rest.post(
+    'https://localhost:8888/ibapi/v2/banks/:bankId/auth/provider/oauth2/token/exchange/jwt',
+    (request, response, context) => {
+      return response(
+        context.status(200),
+        context.json(
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.VSeAGgj19UBhOkoHye8YylGME-xofB-2ouemo2EFVXQ'
+        )
       );
     }
   ),

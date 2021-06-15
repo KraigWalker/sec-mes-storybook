@@ -3,20 +3,33 @@ import {
   createSlice,
   createSelector,
 } from '@reduxjs/toolkit';
+import { getAuthToken } from '../auth/getAuthToken';
+import { getSessionDetails } from '../session/sessionSlice';
 
 export const fetchConfig = createAsyncThunk('fetchConfig', async () => {
   const response = await fetch('./config.json');
   return response.json();
 });
 
+export const appStartup = createAsyncThunk(
+  'startup',
+  async (args, { dispatch }) =>
+    Promise.all([
+      await dispatch(fetchConfig()),
+      await dispatch(getSessionDetails()),
+    ]).then(async () =>
+      Promise.all([
+        /** get  */
+        await dispatch(getAuthToken()),
+      ]).then(() => {
+        Promise.resolve();
+      })
+    )
+);
+
 const configSlice = createSlice({
   name: 'config',
-  initialState: {},
-  reducers: {
-    getConfig(state, action) {},
-    updateConfig(state, action) {},
-    clearConfig(state, action) {},
-  },
+  initialState: { baseApiUrl: null },
   extraReducers: {
     [fetchConfig.fulfilled]: (state, action) => {
       state.baseApiUrl = action.payload.paasBaseApiUrl;

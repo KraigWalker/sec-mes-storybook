@@ -1,8 +1,17 @@
 import { MessageListItem } from '../MessageListItem';
 import { useGetMessagesQuery } from '../../messagesApi';
+import { useSelector } from 'react-redux';
 
 function MessageList() {
-  const { data: messages = [], isLoading, isFetching } = useGetMessagesQuery();
+  const accessToken = useSelector((state) => state.auth.accessToken);
+  const bankId = useSelector((state) => state.session.bankId);
+  const skip = accessToken == null || typeof bankId !== 'string';
+
+  const {
+    data: messages = [],
+    isLoading,
+    isFetching,
+  } = useGetMessagesQuery(undefined, { skip });
 
   return (
     <ol>

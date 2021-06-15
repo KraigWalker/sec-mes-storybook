@@ -1,7 +1,7 @@
-import { AppRouter } from './features/routes/AppRouter';
-import { useDispatch } from 'react-redux';
-import { fetchConfig } from './features/config/configSlice';
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { AppRouter } from './features/routes/AppRouter';
+import { appStartup } from './features/config/configSlice';
 
 function App({ isSMEUser = false }) {
   /**
@@ -15,11 +15,8 @@ function App({ isSMEUser = false }) {
   const dispatch = useDispatch();
 
   useEffect(
-    /**
-     * Fetch the contents of `config.json` on startup.
-     */
-    function startupFetchConfigHook() {
-      dispatch(fetchConfig());
+    function startupHook() {
+      dispatch(appStartup());
     },
     [dispatch]
   );
