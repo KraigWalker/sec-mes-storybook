@@ -1,4 +1,8 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import {
+  createAsyncThunk,
+  createSlice,
+  createSelector,
+} from '@reduxjs/toolkit';
 
 export const fetchConfig = createAsyncThunk('fetchConfig', async () => {
   const response = await fetch('./config.json');
@@ -15,7 +19,7 @@ const configSlice = createSlice({
   },
   extraReducers: {
     [fetchConfig.fulfilled]: (state, action) => {
-      return action.payload;
+      state.baseApiUrl = action.payload.paasBaseApiUrl;
     },
   },
 });
@@ -27,3 +31,9 @@ const { actions, reducer } = configSlice;
 export const { getConfig, updateConfig, clearConfig } = actions;
 // Export the reducer, as a named export
 export { reducer as configReducer };
+
+function baseApiUrlSelector(state) {
+  return state.baseApiUrl;
+}
+
+export const selectBaseApiUrl = createSelector(baseApiUrlSelector);

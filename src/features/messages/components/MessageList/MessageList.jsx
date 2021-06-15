@@ -1,14 +1,19 @@
 import { MessageListItem } from '../MessageListItem';
+import { useGetMessagesQuery } from '../../messagesApi';
 
-function MessageList({ messages }) {
+function MessageList() {
+  const { data: messages = [], isLoading, isFetching } = useGetMessagesQuery();
+
   return (
     <ol>
-      {messages.map(({ id }, index) => (
-        <MessageListItem
-          id={id}
-          key={`message_item_${id || `_no_id_${index}`}'}`}
-        />
-      ))}
+      {!isLoading &&
+        !isFetching &&
+        messages.map(({ id }, index) => (
+          <MessageListItem
+            id={id}
+            key={`message_item_${id || `_no_id_${index}`}'}`}
+          />
+        ))}
     </ol>
   );
 }

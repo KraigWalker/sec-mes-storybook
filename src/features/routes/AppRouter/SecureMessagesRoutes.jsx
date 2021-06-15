@@ -3,19 +3,19 @@ import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import loadable from '@loadable/component';
 
 const DraftSecureMessageView = loadable(() =>
-  import('../../secureMessages/views/DraftSecureMessageView')
+  import('../../messages/views/DraftSecureMessageView')
 );
 const NewSecureMessageView = loadable(() =>
-  import('../../secureMessages/views/NewSecureMessageView')
+  import('../../messages/views/NewSecureMessageView')
 );
 const SecureMessagesListView = loadable(() =>
-  import('../../secureMessages/views/SecureMessageListView')
+  import('../../messages/views/SecureMessageListView')
 );
 const SingleSecureMessageView = loadable(() =>
-  import('../../secureMessages/views/SingleSecureMessageView')
+  import('../../messages/views/SingleSecureMessageView')
 );
 const ReplySecureMessageView = loadable(() =>
-  import('../../secureMessages/views/ReplySecureMessageView')
+  import('../../messages/views/ReplySecureMessageView')
 );
 
 /**

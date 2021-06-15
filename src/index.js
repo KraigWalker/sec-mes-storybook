@@ -8,9 +8,26 @@ import { App } from './App';
 import { store } from './app/store';
 import './index.css';
 
+function prepare() {
+  if (process.env.NODE_ENV !== 'production') {
+    const { worker } = require('./mocks/browser');
+
+    return worker.start({
+      /**
+       * Don't warn the developer about every request that goes unhandled by
+       * mock-service-worker (msw) in development mode.
+       * This reduces the `console.warn()` spam for legitimate static asset requests
+       * or dynamic `import()`s that shouldn't be mocked by msw.
+       * If you find a mocked api response isn't working as you expected,
+       * change this back to `'warn'` to help you debug the issue.
+       */
+      onUnhandledRequest: 'bypass',
+    });
+  }
+  return Promise.resolve();
+}
+
 /**
- * Retrieves the runtime configuration file, session details, and mounts
- * the web app on the DOM.
  * The App is wrapped in all the relevant Router, Theme, and Redux Providers
  * at this level to allow the UI code to be more testable and portable in the
  * future.
@@ -28,4 +45,4 @@ function startApp() {
   );
 }
 
-startApp();
+prepare().then(() => startApp());
