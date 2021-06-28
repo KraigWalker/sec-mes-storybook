@@ -1,0 +1,195 @@
+.Segment_segment__3ATOs,
+.Segment_link__3GJAF {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+.Segment_current__27GOg {
+  /* functional class */
+  position: relative;
+}
+
+.Segment_segment__3ATOs {
+  padding: 0 1rem;
+  /* margin: 0 1rem; */
+  position: relative;
+  list-style: none;
+  -webkit-flex-grow: 1;
+          flex-grow: 1;
+  -webkit-flex-basis: 0;
+          flex-basis: 0;
+}
+
+@media (max-width: 320px) {
+  .Segment_segment__3ATOs {
+    padding: 0;
+  }
+}
+
+.Segment_visuallyHidden__ptxAn {
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+          clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.Segment_link__3GJAF {
+  display: -webkit-flex;
+  display: flex;
+  color: white;
+  text-decoration: none;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+
+/*user-select: none;
+  pointer-events: none;*/
+
+.ImposterSegment_imposterSegment__2FqLz {
+  margin: 0;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-flex-grow: 1;
+          flex-grow: 1;
+  -webkit-flex-basis: 0;
+          flex-basis: 0;
+}
+
+.ImposterSegment_label__3VJ9L {
+  color: rgb(224, 10, 11);
+  text-decoration: none;
+  padding: 0 1rem;
+  /*margin: 0 1rem;*/
+}
+
+@media (max-width: 320px) {
+  .ImposterSegment_label__3VJ9L {
+    padding: 0;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Add's 2px border around the component without impacting
+it's measured width */
+.SegmentedControl_borderWrapper__1RaU5 {
+  border: 2px solid rgb(224, 10, 11);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.SegmentedControl_segmentedControl__DlosJ {
+  display: block;
+  overflow: hidden;
+  height: 2rem;
+}
+
+.SegmentedControl_segmentedControl__DlosJ > * {
+  font-weight: 500;
+}
+
+.SegmentedControl_listContainer__1c8Fo {
+  display: block;
+  height: 100%;
+  position: relative;
+}
+
+.SegmentedControl_stepper__2lVFg {
+  position: relative;
+  height: 100%;
+  width: 25%;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  transition: -webkit-transform 0.3s cubic-bezier(0, 0.95, 0.38, 0.98);
+  transition: transform 0.3s cubic-bezier(0, 0.95, 0.38, 0.98);
+  transition: transform 0.3s cubic-bezier(0, 0.95, 0.38, 0.98), -webkit-transform 0.3s cubic-bezier(0, 0.95, 0.38, 0.98);
+}
+
+.SegmentedControl_imposterListContainer__Mx9_F {
+  z-index: 10;
+  pointer-events: none;
+  -webkit-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.SegmentedControl_imposterList__2gnI9 {
+  transition: -webkit-transform 0.3s cubic-bezier(0, 0.95, 0.38, 0.98);
+  transition: transform 0.3s cubic-bezier(0, 0.95, 0.38, 0.98);
+  transition: transform 0.3s cubic-bezier(0, 0.95, 0.38, 0.98), -webkit-transform 0.3s cubic-bezier(0, 0.95, 0.38, 0.98);
+  z-index: 10;
+  display: -webkit-flex;
+  display: flex;
+  position: fixed;
+  background: #fff;
+  width: 400%;
+  height: 100%;
+}
+
+.SegmentedControl_list__owtKB {
+  z-index: 1;
+  display: -webkit-flex;
+  display: flex;
+  white-space: nowrap;
+  list-style: none;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html[data-theme='b'] .SegmentedControl_list__owtKB {
+  background: limegreen;
+}
+
+html[data-theme='cb'] .SegmentedControl_list__owtKB {
+  background: darkred;
+}
+
+html[data-theme='yb'] .SegmentedControl_list__owtKB {
+  background: lightskyblue;
+}
+
+html[data-theme='vm'] .SegmentedControl_list__owtKB {
+  background: rgb(224, 10, 11);
+}
+
+.SegmentedControl_list__owtKB {
+  background: rgb(224, 10, 11);
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+/*# sourceMappingURL=main.62f3b6c6.chunk.css.map*/
