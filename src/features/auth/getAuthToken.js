@@ -10,8 +10,7 @@ export const getAuthToken = createAsyncThunk(
     if (error) {
       const { payload, error } = await dispatch(getAuthTokenFromLocationHash());
       return error ? rejectWithValue() : payload;
-    } else {
-      return payload;
     }
+    return payload;
   }
 );

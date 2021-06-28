@@ -1,8 +1,23 @@
-.segmentedControl {
-  border-radius: 15px;
-  display: inline-block;
+* {
+  box-sizing: border-box;
+}
+
+/* Add's 2px border around the component without impacting
+it's measured width */
+.borderWrapper {
+  border: 2px solid rgb(224, 10, 11);
+  border-radius: 10px;
   overflow: hidden;
-  height: 3rem;
+}
+
+.segmentedControl {
+  display: block;
+  overflow: hidden;
+  height: 2rem;
+}
+
+.segmentedControl > * {
+  font-weight: 500;
 }
 
 .listContainer {
@@ -13,13 +28,12 @@
 
 .stepper {
   position: relative;
-  height: calc(100% - 2px);
-  border: 1px solid transparent;
-  width: calc(25% - 2px);
-  border-radius: 10px;
+  height: 100%;
+  width: 25%;
+  border-radius: 8px;
   overflow: hidden;
   background: #fff;
-  transition: transform 0.3s ease-out;
+  transition: transform 0.3s cubic-bezier(0, 0.95, 0.38, 0.98);
 }
 
 .imposterListContainer {
@@ -34,20 +48,18 @@
 }
 
 .imposterList {
-  transition: transform 0.3s ease-out;
+  transition: transform 0.3s cubic-bezier(0, 0.95, 0.38, 0.98);
   z-index: 10;
   display: flex;
-  flex: 1 1 0px;
   position: fixed;
   background: #fff;
-  width: 100%;
+  width: 400%;
   height: 100%;
 }
 
 .list {
   z-index: 1;
-  display: inline-flex;
-  flex: 1 1 0px;
+  display: flex;
   white-space: nowrap;
   list-style: none;
   height: 100%;
@@ -69,5 +81,9 @@ html[data-theme='yb'] .list {
 }
 
 html[data-theme='vm'] .list {
-  background: red;
+  background: rgb(224, 10, 11);
+}
+
+.list {
+  background: rgb(224, 10, 11);
 }

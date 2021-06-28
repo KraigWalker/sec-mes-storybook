@@ -7,25 +7,13 @@ function SecureMessageListView() {
 
   return (
     <div>
-      <h1>SecureMessageListView</h1>
       <Link to={`${url}/new`}>New Secure Message</Link>
       <div>Success Modal (?)</div>
       <div>
-        Secure Message Tabs
         <SegmentedControl />
-        <div>
-          Secure Message List
+        <main id="main">
           <MessageList messages={[{ id: '123' }, { id: '456' }]} />
-          <div>
-            showMessages
-            <div>
-              SecureMessageSummary
-              <div>
-                Mail List<div>Mail Item</div>
-              </div>
-            </div>
-          </div>
-        </div>
+        </main>
       </div>
     </div>
   );

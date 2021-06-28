@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
+import dayjs from 'dayjs';
 
-function MessageListItem({ id }) {
+function MessageListItem({ id, dateCreated }) {
   return (
     <li>
       <Link to={`view/${id}`}>
@@ -12,7 +13,7 @@ function MessageListItem({ id }) {
           <dt>00-00-00 | 61234567</dt>
           <dd>Date Recieved</dd>
           <dt>
-            <time>01 Oct 2021</time>
+            <time>{dayjs(dateCreated).format('DD-MM-YYYY')}</time>
           </dt>
         </dl>
       </Link>

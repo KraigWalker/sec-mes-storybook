@@ -45,4 +45,13 @@ function startApp() {
   );
 }
 
-prepare().then(() => startApp());
+prepare()
+  .then(() => {
+    /**
+     * If in development mode and @todo process.env.REACT_APP_MOCK_JWT_COOKIE
+     */
+    //if (process.env.NODE_ENV !== 'production') {
+    //  return fetch('https://localhost:8888/mock-jwt-token');
+    //}
+  })
+  .then(() => startApp());

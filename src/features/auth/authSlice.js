@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getAuthTokenFromLocationHash } from './getAuthTokenFromLocationHash';
 import { getAuthToken } from './getAuthToken';
+// import { getAuthTokenFromCookie } from './getAuthTokenFromCookie';
 
 const authSlice = createSlice({
   name: 'auth',
@@ -8,7 +9,9 @@ const authSlice = createSlice({
     accessToken: null,
     publicToken: null,
   },
-  reducers: {},
+  reducers: {
+    //   getAuthTokenFromCookie,
+  },
   extraReducers: {
     // [getAuthTokenFromCookie.fulfilled]: (state, action) => {
     //   state.accessToken = action.payload;

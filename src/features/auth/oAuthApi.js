@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query';
+import { buildClientContextHeader } from './buildClientContextHeader';
 
 /**
   "createOAuthJWTTokenPath": "/banks/:bankId/auth/provider/oauth2/token/jwt",
@@ -7,41 +8,6 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query';
   "getPublicKeyPath": "/banks/auth/provider/oauth2/jwt/publickey"
  */
 
-/**
- *
- * @param {String} bankId
- * @param {String?} appTitle
- * @returns
- */
-function getAppIdFromBankId(bankId, appTitle) {
-  return appTitle || `${bankId.toUpperCase()} Web`;
-}
-
-function buildClientContextHeader(bankId, userTrackingId = '') {
-  /**
-   * @todo Some of these values seem excessively verbose and retrograde.
-   * Test to see if we can get rid of some of these through a
-   * process of trial and error.
-   * Or perhaps find an API Spec with information on the Headers required.
-   */
-  return JSON.stringify({
-    client: {
-      user_tracking_id: userTrackingId,
-      app_title: getAppIdFromBankId(bankId),
-      app_package_name: 'WEB',
-      app_version_code: navigator.appVersion,
-      app_version_name: navigator.appName,
-    },
-    env: {
-      platform: 'WEB',
-      platform_version:
-        navigator.appVersion || navigator.vendor || window.opera,
-      make: navigator.platform || window.opera,
-      locale: navigator.language,
-    },
-  });
-}
-
 const rawBaseQuery = fetchBaseQuery({
   baseUrl: '/',
 });
@@ -49,7 +15,6 @@ const rawBaseQuery = fetchBaseQuery({
 const dynamicBaseQuery = async (args, api, extraOptions) => {
   const {
     config: { baseApiUrl },
-    session: { bankId },
   } = api.getState();
 
   // gracefully handle scenarios where data to generate the URL is missing
@@ -65,12 +30,15 @@ const dynamicBaseQuery = async (args, api, extraOptions) => {
   const urlEnd = typeof args === 'string' ? args : args.url;
 
   // construct a dynamically generated potion of the url
-  const adjustedUrl = `${baseApiUrl}/banks/${bankId}/${urlEnd}`;
+  const adjustedUrl = `${baseApiUrl}/banks/${urlEnd}`;
   const adjustedArgs =
     typeof args === 'string' ? adjustedUrl : { ...args, url: adjustedUrl };
   // provide the amended url and other params to the raw base query
   return rawBaseQuery(adjustedArgs, api, extraOptions);
 };
+
+const authProviderOAuth2Path = 'auth/provider/oauth2/';
+const USER = 'USER';
 
 export const oAuthApi = createApi({
   reducerPath: 'oAuth',
@@ -81,24 +49,40 @@ export const oAuthApi = createApi({
         shortExchangeToken = 'fakeShortToken' /** @todo get from state.session.exchangeToken instead */,
         bankId,
       }) => ({
-        url: 'auth/provider/oauth2/token/exchange/jwt',
+        url: `${bankId}/${authProviderOAuth2Path}token/exchange/jwt`,
         method: 'POST',
         headers: {
           'content-type': 'application/x-www-form-urlencoded',
           Authorization: `Bearer ${shortExchangeToken}`,
+          /** @todo generalize these by adding to dynamicBaseQuery */
           'x-bpi-client-context': buildClientContextHeader(bankId),
-          'x-bpi-service-context': 'USER',
+          'x-bpi-service-context': USER,
           'X-TS-AJAX-Request': true,
         },
         body: 'grant_type=client_credentials&scope=30',
       }),
     }),
-    getPublicToken: build.query({
-      query: () => ({}),
+
+    /// oauthService.getPublicKey(
+    // paasApiUrl,
+    // bank_id.toUpperCase(),
+    // user_tracking_id
+    //);
+
+    getPublicKey: build.query({
+      query: ({ bankId }) => ({
+        url: `${authProviderOAuth2Path}jwt/publickey`,
+        headers: {
+          /** @todo generalize these by adding to dynamicBaseQuery */
+          'x-bpi-client-context': buildClientContextHeader(bankId),
+          'x-bpi-service-context': USER,
+          'X-TS-AJAX-Request': true,
+        },
+      }),
     }),
   }),
 });
 
 export const {
-  endpoints: { getExchangeToken },
+  endpoints: { getExchangeToken, getPublicKey },
 } = oAuthApi;

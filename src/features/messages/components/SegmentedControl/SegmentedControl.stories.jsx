@@ -1,15 +1,14 @@
 import { MemoryRouter } from 'react-router-dom';
 import mdx from './SegmentedControl.mdx';
 import { SegmentedControl } from './SegmentedControl';
+import '../../../../index.css';
 
 const Template = (args) => (
-  <html data-theme="vm">
-    <MemoryRouter {...args}>
-      <div style={{ width: '400px', height: 'auto' }}>
-        <SegmentedControl />
-      </div>
-    </MemoryRouter>
-  </html>
+  <MemoryRouter {...args}>
+    <div style={{ width: '100%', height: 'auto' }}>
+      <SegmentedControl />
+    </div>
+  </MemoryRouter>
 );
 
 const WithCurrentItem = Template.bind({});

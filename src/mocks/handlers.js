@@ -8,6 +8,18 @@ import { rest } from 'msw';
 //https://localhost:8888/ibapi/v2/banks/:bankId/auth/provider/oauth2/token/exchange/jwt"
 
 export const handlers = [
+  // Mock cookie response for development mode that sets an ibjwt cookie in document.cookie
+  rest.get(
+    'https://localhost:8888/mock-jwt-token',
+    (request, response, context) => {
+      return response(
+        context.cookie(
+          'ibjwt',
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.VSeAGgj19UBhOkoHye8YylGME-xofB-2ouemo2EFVXQ'
+        )
+      );
+    }
+  ),
   // Handles a GET `/banks/(cb|yb)/securemessages` request
   rest.get(
     'https://localhost:8888/ibapi/v2/banks/cb/securemessages',
@@ -163,6 +175,18 @@ export const handlers = [
         context.json(
           'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.VSeAGgj19UBhOkoHye8YylGME-xofB-2ouemo2EFVXQ'
         )
+      );
+    }
+  ),
+  rest.get(
+    'https://localhost:8888/ibapi/v2/banks/auth/provider/oauth2/jwt/publickey',
+    (request, response, context) => {
+      return response(
+        context.status(200),
+        context.json({
+          public_key:
+            'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArEknHZaI38opEHj/xN5xHO+66WQIA3qb87EqNqH54b4iDQdyoxF3pSbT/4dm69oUQ8ROEJW/ndReEVsrdalfACXehz6VPx2zSXIFFobF2tPumQOxgWdlO4ogMEPfGu8qugEVWHkNmO0yCSpLjE/MEKgqeK26ZsvWgv0i97Zya01SAaoA0g0pRAw+W5O2vnhEXxRGRm+jL6fF8aEJaIXWsk6jR8YWVTvJeqkTL9Y/syi1EwKy3V/fv44KHzg+DCSINOHeewEPFg9FTdKnU65pLj0M6WD3Nc6aF6jC2RWokNMwUE05lPogd2Xhk8jVio17Hl8v+YuT80WhRC5yt09QXQIDAQAB',
+        })
       );
     }
   ),

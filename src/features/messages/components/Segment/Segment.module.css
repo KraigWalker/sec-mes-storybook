@@ -5,9 +5,24 @@
   margin: 0;
 }
 
-.segment {
-  padding: 0;
+.current {
+  /* functional class */
   position: relative;
+}
+
+.segment {
+  padding: 0 1rem;
+  /* margin: 0 1rem; */
+  position: relative;
+  list-style: none;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+@media (max-width: 320px) {
+  .segment {
+    padding: 0;
+  }
 }
 
 .visuallyHidden {
@@ -24,7 +39,6 @@
   display: flex;
   color: white;
   text-decoration: none;
-  padding: 0 1rem;
   align-items: center;
   justify-content: center;
 }

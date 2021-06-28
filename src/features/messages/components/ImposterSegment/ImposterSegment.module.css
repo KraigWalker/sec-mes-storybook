@@ -1,13 +1,24 @@
-.imposterSegment {
-  /*user-select: none;
+/*user-select: none;
   pointer-events: none;*/
+
+.imposterSegment {
   margin: 0;
-  padding: 0 1rem;
-  display: inline-flex;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  flex-direction: row;
+  flex-grow: 1;
+  flex-basis: 0;
 }
 
 .label {
-  color: red;
+  color: rgb(224, 10, 11);
+  text-decoration: none;
+  padding: 0 1rem;
+  /*margin: 0 1rem;*/
+}
+
+@media (max-width: 320px) {
+  .label {
+    padding: 0;
+  }
 }
