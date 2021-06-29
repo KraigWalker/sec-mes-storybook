@@ -40,21 +40,15 @@ function SecureMessagesRoutes() {
         <Route
           strict
           exact
-          path={`${path}`}
-          component={SecureMessagesListView}
-        />
-        <Route
-          strict
-          exact
           path={`${path}/new`}
           component={NewSecureMessageView}
         />
-        <Route
+        {/*<Route
           strict
           exact
-          paths={`${path}/draft`}
+          path={`${path}/draft`}
           component={DraftSecureMessageView}
-        />
+        />*}
         {/**
          * @todo consider the possible /:messageId/reply in tandem with changes
          * to the `/view` behaviour discussed below
@@ -75,6 +69,7 @@ function SecureMessagesRoutes() {
           path={`${path}/view/:messageId`}
           component={SingleSecureMessageView}
         />
+        <Route path={`*`} component={SecureMessagesListView} />
         {/*<Route path={`${path}/error`} />*/}
       </Switch>
     </Suspense>

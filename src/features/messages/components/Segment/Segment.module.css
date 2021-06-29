@@ -6,23 +6,15 @@
 }
 
 .current {
-  /* functional class */
   position: relative;
 }
 
 .segment {
-  padding: 0 1rem;
-  /* margin: 0 1rem; */
+  padding: 0;
   position: relative;
   list-style: none;
   flex-grow: 1;
   flex-basis: 0;
-}
-
-@media (max-width: 320px) {
-  .segment {
-    padding: 0;
-  }
 }
 
 .visuallyHidden {
@@ -36,9 +28,16 @@
 }
 
 .link {
+  padding: 0 1rem;
   display: flex;
   color: white;
   text-decoration: none;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 320px) {
+  .link {
+    padding: 0;
+  }
 }

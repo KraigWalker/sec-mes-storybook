@@ -33,7 +33,7 @@ it's measured width */
   border-radius: 8px;
   overflow: hidden;
   background: #fff;
-  transition: transform 0.3s cubic-bezier(0, 0.95, 0.38, 0.98);
+  transition: transform 250ms ease-out;
 }
 
 .imposterListContainer {
@@ -48,7 +48,7 @@ it's measured width */
 }
 
 .imposterList {
-  transition: transform 0.3s cubic-bezier(0, 0.95, 0.38, 0.98);
+  transition: transform 250ms ease-out;
   z-index: 10;
   display: flex;
   position: fixed;

@@ -8,20 +8,26 @@ const INBOX_LABEL = 'Inbox',
   DRAFTS_LABEL = 'Drafts',
   ARCHIVES_LABEL = 'Archives';
 
+const BASE_PATH = '/secure-messages';
+
+function getCalc(val) {
+  return `calc(${val}00% + 0px)`;
+}
+
 function getTranslateX(pathname) {
   switch (pathname) {
     default:
-    case '/': {
+    case BASE_PATH: {
       return 0;
     }
-    case '/sent': {
-      return `calc(100% + 0px)`; // ;99;
+    case `${BASE_PATH}/sent`: {
+      return getCalc(1);
     }
-    case '/draft': {
-      return `calc(200% + 0px)`; //198;
+    case `${BASE_PATH}/drafts`: {
+      return getCalc(2);
     }
-    case '/archive': {
-      return `calc(300% + 0px)`; // 300;
+    case `${BASE_PATH}/archive`: {
+      return getCalc(3);
     }
   }
 }
@@ -32,20 +38,21 @@ function getListTranslateX(pathname) {
     case '/': {
       return 0;
     }
-    case '/sent': {
-      return `calc(-25% + 0px)`; // ;99;
+    case `${BASE_PATH}/sent`: {
+      return `calc(-25% + 0px)`;
     }
-    case '/draft': {
-      return `calc(-50% + 0px)`; //198;
+    case `${BASE_PATH}/drafts`: {
+      return `calc(-50% + 0px)`;
     }
-    case '/archive': {
-      return `calc(-75% + 0px)`; // 300;
+    case `${BASE_PATH}/archive`: {
+      return `calc(-75% + 0px)`;
     }
   }
 }
 
 function SegmentedControl() {
   const { pathname } = useLocation();
+  console.log(pathname);
 
   return (
     <div className={s.borderWrapper}>
@@ -70,33 +77,33 @@ function SegmentedControl() {
                     'translateX(' + getListTranslateX(pathname, true) + ')',
                 }}
               >
-                <ImposterSegment label={INBOX_LABEL} /> {/* translateX(0) */}
-                <ImposterSegment label={SENT_LABEL} /> {/* -100% */}
-                <ImposterSegment label={DRAFTS_LABEL} /> {/* -200% */}
-                <ImposterSegment label={ARCHIVES_LABEL} /> {/* -300% */}
+                <ImposterSegment label={INBOX_LABEL} />
+                <ImposterSegment label={SENT_LABEL} />
+                <ImposterSegment label={DRAFTS_LABEL} />
+                <ImposterSegment label={ARCHIVES_LABEL} />
               </div>
             </div>
           </div>
           <ul className={s.list}>
             <Segment
               label={INBOX_LABEL}
-              to={'/'}
-              isCurrent={pathname === '/'}
+              to={BASE_PATH}
+              isCurrent={pathname === BASE_PATH}
             />
             <Segment
               label={SENT_LABEL}
-              to={'/sent'}
-              isCurrent={pathname === '/sent'}
+              to={`${BASE_PATH}/sent`}
+              isCurrent={pathname === `${BASE_PATH}/sent`}
             />
             <Segment
               label={DRAFTS_LABEL}
-              to={'/draft'}
-              isCurrent={pathname === '/drafts'}
+              to={`${BASE_PATH}/drafts`}
+              isCurrent={pathname === `${BASE_PATH}/drafts`}
             />
             <Segment
               label={ARCHIVES_LABEL}
-              to={'/archive'}
-              isCurrent={pathname === '/archive'}
+              to={`${BASE_PATH}/archive`}
+              isCurrent={pathname === `${BASE_PATH}/archive`}
             />
           </ul>
         </div>

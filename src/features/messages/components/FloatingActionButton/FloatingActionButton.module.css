@@ -1,27 +1,84 @@
-.floatingActionButton {
-  box-sizing: border-box;
-  color: #fff;
-  border: 0;
-  padding: 0;
-  overflow: hidden;
-  border-radius: 50%;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  letter-spacing: 1px;
-  text-indent: -9999px;
-  text-overflow: initial;
-  font-family: Segoe UI, system-ui, -apple-system, sans-serif;
-  font-size: 0.875em;
-  font-weight: 600;
-  height: 56px;
-  width: 56px;
+.button {
   position: relative;
-  box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%), 0 4px 5px 0 rgb(0 0 0 / 14%),
-    0 1px 10px 0 rgb(0 0 0 / 12%);
-  background-color: #3740ff;
+  box-sizing: border-box;
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 56px;
+  height: 56px;
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+  outline: none;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background-color: rgb(224, 10, 11);
+  cursor: pointer;
+  user-select: none;
+  transition: all 99ms ease-in-out;
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+}
+
+.button:active,
+.button:focus {
+  outline: none;
+}
+
+.button:hover,
+.button:focus {
+  box-shadow: 0 5px 5px -3px rgb(0 0 0 / 20%), 0 8px 10px 1px rgb(0 0 0 / 14%),
+    0 3px 14px 2px rgb(0 0 0 / 12%);
+}
+
+.button:active {
+  transform: translate3d(0, 4px, 0) scale3d(0.96, 0.96, 0.96);
+  box-shadow: 0 7px 8px -4px rgb(0 0 0 / 20%), 0 12px 17px 2px rgb(0 0 0 / 14%),
+    0 5px 22px 4px rgb(0 0 0 / 12%);
+}
+
+.iconWrapper {
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.icon {
+  justify-content: center;
 }
 
 .label {
-  width: 100%;
+  width: 0;
+  font-weight: 500;
+
+  word-spacing: 0;
+  text-align: center;
+  overflow: hidden;
+  justify-content: flex-start;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  font-size: 16px;
+}
+
+@media (min-width: 600px) {
+  .button {
+    width: auto;
+    border-radius: 25%;
+    padding: 0 20px;
+    height: 48px;
+    line-height: 36px;
+    border-radius: 24px;
+  }
+
+  .icon {
+    margin-left: -8px;
+    margin-right: 12px;
+  }
+
+  .label {
+    width: auto;
+  }
 }

@@ -37,6 +37,7 @@ function AppRouter() {
           from={OLD_LETTERS_AND_DOCUMENTS_PATH}
           to={LETTERS_AND_DOCUMENTS}
         />
+        {/** @todo We actually wanna create a SecureMessagesAppLayout that provides handles `/secure-messages/*` */}
         <Route path={SECURE_MESSAGES} component={SecureMessagesRoutes} />
         <Route
           path={LETTERS_AND_DOCUMENTS}
