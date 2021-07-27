@@ -1,0 +1,26 @@
+.button {
+  color: #e10a0a;
+  font-family: inherit;
+  appearance: none;
+  display: block;
+  max-width: 19.125rem;
+  width: 100%;
+  min-height: 3rem;
+  font-weight: 500;
+  border: #e10a0a 1px solid;
+  background: #fff;
+  border-radius: 10px;
+  font-size: 1.125rem;
+  margin: 1rem 0;
+}
+
+.button.primary,
+.button:active {
+  color: #fff;
+  background: #e10a0a;
+}
+
+.button.primary:active {
+  background: #fff;
+  color: #e10a0a;
+}

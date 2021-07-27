@@ -2,6 +2,8 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useGetMessagesQuery } from '../../messagesApi';
 import { MetadataBar } from '../../components/MetadataBar';
+import { FullWidthButtonInput } from '../../components/FullWidthButtonInput';
+import s from './ViewSecureMessageView.module.css';
 
 const useAuth = process.env.NODE_ENV === 'production';
 
@@ -33,24 +35,24 @@ function ViewSecureMessageView() {
     } = message;
 
     return (
-      <div>
+      <div className={s.container}>
         <MetadataBar />
-        <section>
-          <h1>{subject}</h1>
-          <div>
-            <p>{body}</p>
-          </div>
+        <div className={s.bodyWrapper}>
+          <h1 className={s.subjectHeader}>{subject}</h1>
+          <p className={s.bodyText}>{body}</p>
           {document && (
             <div>
               <p>Icon</p>
               <a href="#main">{document.display_label}</a>
             </div>
           )}
-        </section>
-        <section>
-          {!userCannotReply && <button>Reply</button>}
-          <button>Archive</button>
-        </section>
+        </div>
+        <div className={s.buttonPositioner}>
+          {!userCannotReply && (
+            <FullWidthButtonInput primary={true} value="Reply" />
+          )}
+          <FullWidthButtonInput value="Archive" />
+        </div>
       </div>
     );
   } else {

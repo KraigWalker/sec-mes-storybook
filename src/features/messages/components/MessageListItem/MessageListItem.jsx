@@ -25,7 +25,7 @@ function MessageListItem({ id, subject, account, dateCreated, isUnread }) {
           <div>
             <span className={s.visuallyHidden}>Recieved: </span>
             <time className={s.time}>
-              {dayjs(dateCreated).format('DD-MM-YYYY')}
+              {dayjs(dateCreated).format('DD/MM/YYYY')}
             </time>
             <span className={s.chevron}></span>
           </div>

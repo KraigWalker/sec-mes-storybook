@@ -1,4 +1,11 @@
 .metadataBar {
   width: 100%;
+  padding: 0 1rem;
   background: #fafafa;
+  display: flex;
+  justify-content: space-between;
+}
+
+.right {
+  text-align: right;
 }

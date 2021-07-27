@@ -13,7 +13,7 @@ it's measured width */
 .segmentedControl {
   display: block;
   overflow: hidden;
-  height: 2rem;
+  height: 1.777rem;
 }
 
 .segmentedControl > * {

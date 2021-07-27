@@ -1,0 +1,23 @@
+import { Meta } from '@storybook/addon-docs';
+import { FullWidthButtonInput } from './';
+
+<Meta title="FullWidthButtonInput/Default" component={FullWidthButtonInput} />
+
+# FullWidthButtonInput
+
+A button-shaped input component
+
+Todo: Rename to WideButtonInput to reflect the truth...
+
+## Testing Tasks
+
+- When a `type` prop is provided of `submit`, the rendered type attribute should be `submit`.
+- When a `type` prop is provided of `button`, the rendered type attribute should be `button`.
+- When no `type` the rendered type attribute defaults to `button`.
+- When a `className` prop is provided, the `className` of the rendered `<input />` element does not change.
+
+Bonus
+
+- Line wrapping of Long `value` props (the text displayed inside)
+
+## Accessibility Tasks
