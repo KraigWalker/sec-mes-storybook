@@ -2,17 +2,17 @@ import { Suspense } from 'react';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import loadable from '@loadable/component';
 
-const DraftSecureMessageView = loadable(() =>
-  import('../../messages/views/DraftSecureMessageView')
-);
+//const DraftSecureMessageView = loadable(() =>
+//  import('../../messages/views/DraftSecureMessageView')
+//);
 const NewSecureMessageView = loadable(() =>
   import('../../messages/views/NewSecureMessageView')
 );
 const SecureMessagesListView = loadable(() =>
   import('../../messages/views/SecureMessageListView')
 );
-const SingleSecureMessageView = loadable(() =>
-  import('../../messages/views/SingleSecureMessageView')
+const ViewSecureMessageView = loadable(() =>
+  import('../../messages/views/ViewSecureMessageView')
 );
 const ReplySecureMessageView = loadable(() =>
   import('../../messages/views/ReplySecureMessageView')
@@ -66,8 +66,8 @@ function SecureMessagesRoutes() {
         <Route
           strict
           exact
-          path={`${path}/view/:messageId`}
-          component={SingleSecureMessageView}
+          path={`${path}/view/:id`}
+          component={ViewSecureMessageView}
         />
         <Route path={`*`} component={SecureMessagesListView} />
         {/*<Route path={`${path}/error`} />*/}

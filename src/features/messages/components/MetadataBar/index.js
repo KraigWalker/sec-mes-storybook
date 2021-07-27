@@ -1,0 +1,1 @@
+export { MetadataBar } from './MetadataBar';

@@ -3,11 +3,12 @@ import {
   createSlice,
   createSelector,
 } from '@reduxjs/toolkit';
-import { getAuthToken } from '../auth/getAuthToken';
+//import { getAuthToken } from '../auth/getAuthToken';
 import { getSessionDetails } from '../session/sessionSlice';
 
 export const fetchConfig = createAsyncThunk('fetchConfig', async () => {
-  const response = await fetch('./config.json');
+  console.log(window.location.origin);
+  const response = await fetch(`${window.location.origin}/config.json`);
   return response.json();
 });
 
@@ -20,7 +21,7 @@ export const appStartup = createAsyncThunk(
     ]).then(async () =>
       Promise.all([
         /** get  */
-        await dispatch(getAuthToken()),
+        // await dispatch(getAuthToken()),
       ]).then(() => {
         Promise.resolve();
       })

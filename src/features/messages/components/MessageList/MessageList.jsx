@@ -1,13 +1,14 @@
+import { useSelector } from 'react-redux';
 import { MessageListItem } from '../MessageListItem';
 import { useGetMessagesQuery } from '../../messagesApi';
-import { useSelector } from 'react-redux';
-import { FixedSizeList } from 'react-window';
-import AutoSizer from 'react-virtualized-auto-sizer';
+import s from './MessageList.module.css';
 
-function MessageList() {
+const useAuth = process.env.NODE_ENV === 'production';
+
+function MessageList({ statusFilter = 'Inbox' }) {
   const accessToken = useSelector((state) => state.auth.accessToken);
   const bankId = useSelector((state) => state.session.bankId);
-  const skip = accessToken == null || typeof bankId !== 'string';
+  const skip = (useAuth && accessToken == null) || typeof bankId !== 'string';
 
   const {
     data: messages = [],
@@ -15,46 +16,33 @@ function MessageList() {
     isFetching,
   } = useGetMessagesQuery(undefined, { skip });
 
+  const filteredMessages = messages.filter((message) => {
+    if (statusFilter === 'Inbox') {
+      return message.status === 'NEW' || message.status === 'READ';
+    } else {
+      return message.status === statusFilter;
+    }
+  });
+
   return (
-    <ol
-      style={{
-        position: 'relative',
-        display: 'block',
-        height: '100vh',
-        width: '100%',
-      }}
-    >
-      {!isLoading && !isFetching && (
-        <AutoSizer disableWidth={true}>
-          {({ height, width }) => (
-            <FixedSizeList
-              height={height}
-              width={width}
-              itemSize={240}
-              itemCount={messages.length}
-            >
-              {({ index }) => (
-                <MessageListItem
-                  dateCreated={messages[index].date_created}
-                  key={`message_item_${
-                    messages[index].id || `_no_id_${index}`
-                  }'}`}
-                />
-              )}
-            </FixedSizeList>
-          )}
-        </AutoSizer>
-      )}
+    <ol className={s.messageList}>
+      {!isLoading &&
+        !isFetching &&
+        filteredMessages.map(
+          ({ id, subject, date_created, account }, index) => {
+            return (
+              <MessageListItem
+                id={id}
+                subject={subject}
+                account={account}
+                dateCreated={date_created}
+                key={`message_item_${id || `_no_id_${index}`}'}`}
+              />
+            );
+          }
+        )}
     </ol>
   );
 }
-
-// messages.map(({ id, date_created }, index) => (
-//   <MessageListItem
-//     id={id}
-//     dateCreated={date_created}
-//     key={`message_item_${id || `_no_id_${index}`}'}`}
-//   />
-// ))}*/
 
 export { MessageList };

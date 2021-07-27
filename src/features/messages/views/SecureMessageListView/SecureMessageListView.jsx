@@ -1,26 +1,14 @@
 import {
-  Link,
   Switch,
   Route,
   useRouteMatch,
   useLocation,
+  useHistory,
 } from 'react-router-dom';
 import { SegmentedControl } from '../../components/SegmentedControl';
-//import { MessageList } from '../../components/MessageList';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import { MessageList } from '../../components/MessageList';
+import { FloatingActionButton } from '../../components/FloatingActionButton';
 import s from './SecureMessageListView.module.css';
-
-function Container({ children }) {
-  return <div className={s.container}>{children}</div>;
-}
-
-function Wrap({ children, colour }) {
-  return (
-    <div className={s.wrapper} style={{ backgroundColor: colour }}>
-      {children}
-    </div>
-  );
-}
 
 /**
  * @todo
@@ -36,54 +24,49 @@ function Wrap({ children, colour }) {
 function SecureMessageListView() {
   const { url } = useRouteMatch('/secure-messages');
   const location = useLocation();
+  const history = useHistory();
 
   return (
     <>
-      <Link to={`${url}/new`}>New Secure Message</Link>
-      <div>Success Modal (?)</div>
-      <div>
-        <SegmentedControl />
+      {/**
+       * @todo dispatch a push action to connected-react-router, taking them to /new
+       */}
+      <div className={s.buttonPositioner}>
+        <FloatingActionButton
+          label="Compose"
+          labelId="actionButton"
+          onClick={() => {
+            history.push('/secure-messages/new');
+          }}
+        />
+      </div>
+      {/*<div>Success Modal (?)</div>*/}
+      <div className={s.scrollContainer}>
+        <div className={s.navContainer}>
+          <div className={s.navPositioner}>
+            <SegmentedControl />
+          </div>
+        </div>
         <main id="main" className={s.main}>
           <Switch location={location}>
-            <Route
-              exact
-              strict
-              path={url}
-              children={
-                <Wrap colour="blue">
-                  <h1>Inbox</h1>
-                </Wrap>
-              }
-            />
+            <Route exact strict path={url} children={<MessageList />} />
             <Route
               exact
               strict
               path={`${url}/sent`}
-              children={
-                <Wrap colour="red">
-                  <h1>Sent</h1>
-                </Wrap>
-              }
+              children={<MessageList statusFilter={'SENT'} />}
             />
             <Route
               exact
               strict
               path={`${url}/drafts`}
-              children={
-                <Wrap colour="green">
-                  <h1>Drafts</h1>
-                </Wrap>
-              }
+              children={<MessageList statusFilter={'DRAFT'} />}
             />
             <Route
               exact
-              strict
+              strict // ARCHIVED
               path={`${url}/archive`}
-              children={
-                <Wrap colour="purple">
-                  <h1>Archive</h1>
-                </Wrap>
-              }
+              children={<MessageList statusFilter={'ARCHIVED'} />}
             />
           </Switch>
         </main>

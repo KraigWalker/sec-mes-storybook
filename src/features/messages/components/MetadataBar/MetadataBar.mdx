@@ -1,0 +1,19 @@
+import { Meta } from '@storybook/addon-docs';
+import { MetadataBar } from './';
+
+<Meta title="MetadataBar/Default" component={MetadataBar} />
+
+# MetadataBar
+
+A full-width header bar displaying metadata about a specific
+Secure Message; including account name, Date recieved, and time received.
+
+## Things to test
+
+- Should display an account name on the left side when given an accountName prop.
+- Should display "No specific account" when not relevant to a specific account.
+- (bonus) can we test super-long account names? i.e ellipses presence?
+- Should display "Today" on the top right if current date is the same as date recieved.
+- Should display the time in 24hr format on bottom right.
+
+## Accessibility Tasks

@@ -1,6 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { parse } from 'query-string';
 
+/**
+ * It's a hassle to plug query params into local dev, so use some sensible defaults
+ */
+const devDefaults =
+  process.env.NODE_ENV !== 'production'
+    ? {
+        bankId: 'cb',
+      }
+    : {};
+
+if (process.env.NODE_ENV !== 'production') {
+  console.warn('process.env.NODE_ENV !== "production".');
+  console.warn('Enabling developer fallback session values.');
+}
+
 const sessionSlice = createSlice({
   name: 'session',
   initialState: {
@@ -32,12 +47,17 @@ const sessionSlice = createSlice({
           userTrackingId:
             query.user_tracking_id || hash.user_tracking_id || null,
         }),
-        ...((query.bank_id || query.bankId || hash.bank_id || hash.bankId) && {
+        ...((query.bank_id ||
+          query.bankId ||
+          hash.bank_id ||
+          hash.bankId ||
+          devDefaults.bankId) && {
           bankId:
             query.bank_id ||
             query.bankId ||
             hash.bank_id ||
             hash.bankId ||
+            devDefaults.bankId ||
             null,
         }),
         ...((query.brandId ||
