@@ -1,0 +1,1 @@
+{"version":3,"sources":["features/documents/views/DocumentListView/DocumentListView.jsx"],"names":["DocumentListView"],"mappings":"mMAAA,SAASA,IACP,OACE,8BACE","file":"static/js/9.85a644c5.chunk.js","sourcesContent":["function DocumentListView() {\n  return (\n    <div>\n      <h1>DocumentListView</h1>\n    </div>\n  );\n}\n\nexport { DocumentListView };\n"],"sourceRoot":""}

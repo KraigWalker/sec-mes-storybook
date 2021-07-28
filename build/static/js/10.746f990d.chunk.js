@@ -1,0 +1,2 @@
+(this["webpackJsonpsecure-messages-webapp"]=this["webpackJsonpsecure-messages-webapp"]||[]).push([[10],{663:function(e,c,s){"use strict";s.r(c),s.d(c,"default",(function(){return i}));var n=s(16),t=s(18);function i(){var e=Object(n.i)().documentId;return Object(t.jsxs)("div",{children:[Object(t.jsx)("h1",{children:"SingleDocumentView"}),Object(t.jsx)("p",{children:"".concat(e)})]})}}}]);
+//# sourceMappingURL=10.746f990d.chunk.js.map
