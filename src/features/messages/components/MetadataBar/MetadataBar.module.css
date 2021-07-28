@@ -1,9 +1,9 @@
 .metadataBar {
-  width: 100%;
   padding: 0 1rem;
   background: #fafafa;
   display: flex;
   justify-content: space-between;
+  font-size: 0.75rem;
 }
 
 .right {

@@ -1,3 +1,53 @@
+.container,
+.form {
+  width: 100%;
+  min-height: 100%;
+}
+
 .topBar {
   background: #fafafa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  font-size: 1.125rem;
+}
+
+.bodyContainer {
+  max-width: 100%;
+  padding: 0 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.buttonPositioner {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.textAreaSizer {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  width: 100%;
+}
+
+.textArea {
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  max-height: 20rem;
+  border-radius: 10px;
 }

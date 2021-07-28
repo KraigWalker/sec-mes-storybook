@@ -36,7 +36,7 @@ function ViewSecureMessageView() {
 
     return (
       <div className={s.container}>
-        <MetadataBar />
+        <MetadataBar dateCreated={dateCreated} />
         <div className={s.bodyWrapper}>
           <h1 className={s.subjectHeader}>{subject}</h1>
           <p className={s.bodyText}>{body}</p>
