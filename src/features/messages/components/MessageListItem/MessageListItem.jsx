@@ -13,7 +13,26 @@ function chunkSubstr(str, size) {
   return chunks;
 }
 
+function resolveAccountDisplayName(account) {
+  if (
+    account.metadata &&
+    account.metadata.display_name &&
+    typeof account.metadata.display_name === 'string'
+  ) {
+    return [account.metadata.display_name, true];
+  } else if (
+    account.product &&
+    account.product.name &&
+    typeof account.product.name === 'string'
+  ) {
+    return [account.product.name, true];
+  }
+  return ['', false];
+}
+
 function MessageListItem({ id, subject, account, dateCreated, isUnread }) {
+  const [accountName, displayAccountName] = resolveAccountDisplayName(account);
+
   return (
     <li className={s.messageListItem}>
       <Link to={`/secure-messages/view/${id}`} className={s.linkContainer}>
@@ -31,8 +50,12 @@ function MessageListItem({ id, subject, account, dateCreated, isUnread }) {
           </div>
         </div>
         <dl className={s.detailsContainer}>
-          <dd className={s.detailHeading}>Account Name</dd>
-          <dt className={s.detailValue}>Main Account</dt>
+          {displayAccountName && (
+            <>
+              <dd className={s.detailHeading}>Account Name</dd>
+              <dt className={s.detailValue}>{accountName}</dt>
+            </>
+          )}
           <dd className={s.detailHeading}>Sortcode and Account Number</dd>
           <dt className={s.detailValue}>
             {account && account.number ? (

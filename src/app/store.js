@@ -4,6 +4,7 @@ import { oAuthApi } from '../features/auth/oAuthApi';
 import { configReducer as config } from '../features/config/configSlice';
 // import { messagesReducer as messages } from '../features/messages/messagesSlice';
 import { messagesApi } from '../features/messages/messagesApi';
+import { accountsApi } from '../features/accounts/accountsApi';
 import { sessionReducer as session } from '../features/session/sessionSlice';
 
 /**
@@ -14,10 +15,15 @@ export const store = configureStore({
   reducer: {
     auth,
     config,
+    [accountsApi.reducerPath]: accountsApi.reducer,
     [messagesApi.reducerPath]: messagesApi.reducer,
     [oAuthApi.reducerPath]: oAuthApi.reducer,
     session,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(messagesApi.middleware, oAuthApi.middleware),
+    getDefaultMiddleware().concat(
+      accountsApi.middleware,
+      messagesApi.middleware,
+      oAuthApi.middleware
+    ),
 });
